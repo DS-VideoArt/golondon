@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>מפת כשרות לונדון | גו לונדון</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Heebo', sans-serif; background: #0a0a1a; color: #fff; direction: rtl; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+    /* ===== ניווט ===== */
+    .navbar {
+      background: #06060f; border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 24px; height: 60px; display: flex; align-items: center;
+      justify-content: space-between; flex-shrink: 0; z-index: 1000;
+    }
+    .logo { direction: ltr; font-size: 20px; font-weight: 900; text-decoration: none; }
+    .logo-go { color: #DC2626; }
+    .back-btn {
+      display: flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; font-weight: 600;
+      padding: 7px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.2s;
+    }
+    .back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+
+    /* ===== סרגל כלים ===== */
+    .toolbar {
+      background: #0d0d20; border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 12px 20px; display: flex; align-items: center; gap: 10px;
+      flex-wrap: wrap; flex-shrink: 0; z-index: 999;
+    }
+    .toolbar-title { font-size: 15px; font-weight: 800; margin-left: 8px; white-space: nowrap; }
+    .toolbar-title span { color: #DC2626; }
+
+    .filter-btn {
+      padding: 8px 16px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.7);
+      font-family: 'Heebo', sans-serif; font-size: 13px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    }
+    .filter-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .filter-btn.active { background: #DC2626; border-color: #DC2626; color: #fff; }
+    .filter-btn.active-dairy { background: #0891B2; border-color: #0891B2; color: #fff; }
+    .filter-btn.active-meat  { background: #DC2626; border-color: #DC2626; color: #fff; }
+    .filter-btn.active-bakery{ background: #D97706; border-color: #D97706; color: #fff; }
+
+    .locate-btn {
+      margin-right: auto; padding: 8px 18px; border-radius: 50px;
+      background: #16a34a; border: none; color: #fff;
+      font-family: 'Heebo', sans-serif; font-size: 13px; font-weight: 700;
+      cursor: pointer; display: flex; align-items: center; gap: 7px;
+      transition: background 0.2s; white-space: nowrap;
+    }
+    .locate-btn:hover { background: #15803d; }
+
+    /* ===== מפה ===== */
+    #map { flex: 1; width: 100%; z-index: 1; }
+
+    /* ===== פופאפ מותאם ===== */
+    .place-popup { direction: rtl; font-family: 'Heebo', sans-serif; min-width: 200px; }
+    .place-popup .popup-name { font-size: 15px; font-weight: 800; margin-bottom: 6px; color: #111; }
+    .place-popup .popup-cat {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 2px 10px; border-radius: 50px; margin-bottom: 8px;
+      background: #fee2e2; color: #991b1b;
+    }
+    .place-popup .popup-cat.dairy { background: #e0f2fe; color: #075985; }
+    .place-popup .popup-cat.bakery { background: #fef3c7; color: #92400e; }
+    .place-popup .popup-row { font-size: 13px; color: #444; margin-bottom: 4px; display: flex; gap: 6px; align-items: flex-start; }
+    .place-popup .popup-row i { color: #888; flex-shrink: 0; margin-top: 2px; }
+    .place-popup .popup-kashrus { font-size: 11px; color: #15803d; font-weight: 700; margin-top: 6px; }
+    .place-popup .popup-phone a { color: #1D4ED8; text-decoration: none; font-weight: 600; }
+    .place-popup .popup-waze {
+      display: block; margin-top: 10px; padding: 7px 14px; border-radius: 8px;
+      background: #06ADEF; color: #fff; text-align: center;
+      text-decoration: none; font-size: 13px; font-weight: 700;
+    }
+
+    /* ===== מונה ===== */
+    .count-badge {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50px; padding: 6px 14px; font-size: 12px; color: rgba(255,255,255,0.5);
+      white-space: nowrap;
+    }
+    .count-badge strong { color: #fff; }
+
+    @media (max-width: 600px) {
+      .toolbar { padding: 10px 12px; gap: 7px; }
+      .toolbar-title { display: none; }
+      .filter-btn { padding: 7px 12px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ניווט -->
+<nav class="navbar">
+  <a href="index.html" class="logo"><span class="logo-go">GO</span><span>LONDON</span></a>
+  <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> דף הבית</a>
+</nav>
+
+<!-- סרגל כלים -->
+<div class="toolbar">
+  <span class="toolbar-title">🗺️ מפת <span>כשרות</span> לונדון</span>
+
+  <button class="filter-btn active" data-filter="הכל" onclick="setFilter('הכל', this)">🍽️ הכל</button>
+  <button class="filter-btn" data-filter="מסעדה חלבית" onclick="setFilter('מסעדה חלבית', this)">🥛 חלבי</button>
+  <button class="filter-btn" data-filter="מסעדה בשרית" onclick="setFilter('מסעדה בשרית', this)">🥩 בשרי</button>
+  <button class="filter-btn" data-filter="מאפייה" onclick="setFilter('מאפייה', this)">🥐 מאפיות</button>
+
+  <span class="count-badge"><strong id="visibleCount">54</strong> מקומות</span>
+
+  <button class="locate-btn" onclick="locateMe()">
+    <i class="fas fa-location-arrow"></i> המיקום שלי
+  </button>
+</div>
+
+<!-- מפה -->
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// ===== אתחול המפה =====
+const map = L.map('map', {
+  center: [51.5726, -0.1941],
+  zoom: 13,
+  zoomControl: true
+});
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+  attribution: '© OpenStreetMap © CARTO',
+  maxZoom: 19
+}).addTo(map);
+
+// ===== צבעי קטגוריות =====
+const catColors = {
+  'מסעדה חלבית': '#0891B2',
+  'מסעדה בשרית': '#DC2626',
+  'מאפייה': '#D97706'
+};
+const catEmoji = {
+  'מסעדה חלבית': '🥛',
+  'מסעדה בשרית': '🥩',
+  'מאפייה': '🥐'
+};
+
+function makeIcon(category) {
+  const color = catColors[category] || '#DC2626';
+  const emoji = catEmoji[category] || '🍽️';
+  return L.divIcon({
+    className: '',
+    html: `<div style="
+      background:${color}; color:#fff; border-radius:50% 50% 50% 0;
+      width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+      font-size:16px; box-shadow:0 2px 8px rgba(0,0,0,0.4);
+      border:2px solid rgba(255,255,255,0.3);
+      transform: rotate(-45deg);
+    "><span style="transform:rotate(45deg)">${emoji}</span></div>`,
+    iconSize: [36, 36],
+    iconAnchor: [18, 36],
+    popupAnchor: [0, -36]
+  });
+}
+
+// ===== טעינת נתונים =====
+let allPlaces = [];
+let markers = [];
+let currentFilter = 'הכל';
+
+fetch('kosher-places.json')
+  .then(r => r.json())
+  .then(data => {
+    allPlaces = data;
+    renderMarkers(allPlaces);
+  });
+
+function renderMarkers(places) {
+  markers.forEach(m => map.removeLayer(m));
+  markers = [];
+
+  places.forEach(p => {
+    const isDairy  = p.category === 'מסעדה חלבית';
+    const isBakery = p.category === 'מאפייה';
+    const catClass = isDairy ? 'dairy' : isBakery ? 'bakery' : '';
+
+    const wazeUrl = `https://waze.com/ul?ll=${p.lat},${p.lng}&navigate=yes`;
+
+    const popup = `
+      <div class="place-popup">
+        <div class="popup-name">${p.name}</div>
+        <span class="popup-cat ${catClass}">${catEmoji[p.category] || ''} ${p.category}</span>
+        <div class="popup-row"><i class="fas fa-map-marker-alt"></i> ${p.address}, ${p.postcode}</div>
+        ${p.phone ? `<div class="popup-row popup-phone"><i class="fas fa-phone"></i> <a href="tel:${p.phone}">${p.phone}</a></div>` : ''}
+        <div class="popup-kashrus"><i class="fas fa-star-of-david"></i> ${p.kashrus}</div>
+        <a class="popup-waze" href="${wazeUrl}" target="_blank">🚗 נווט בוויז</a>
+      </div>`;
+
+    const marker = L.marker([p.lat, p.lng], { icon: makeIcon(p.category) })
+      .bindPopup(popup, { maxWidth: 260, className: 'custom-popup' });
+
+    marker.placeData = p;
+    marker.addTo(map);
+    markers.push(marker);
+  });
+
+  document.getElementById('visibleCount').textContent = places.length;
+}
+
+// ===== סינון =====
+function setFilter(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.className = 'filter-btn';
+  });
+  if (filter === 'הכל') btn.classList.add('active');
+  else if (filter === 'מסעדה חלבית') btn.classList.add('active-dairy');
+  else if (filter === 'מסעדה בשרית') btn.classList.add('active-meat');
+  else if (filter === 'מאפייה') btn.classList.add('active-bakery');
+
+  const filtered = filter === 'הכל' ? allPlaces : allPlaces.filter(p => p.category === filter);
+  renderMarkers(filtered);
+}
+
+// ===== מיקום המשתמש =====
+let userMarker = null;
+function locateMe() {
+  if (!navigator.geolocation) {
+    alert('הדפדפן שלך לא תומך באיתור מיקום');
+    return;
+  }
+  navigator.geolocation.getCurrentPosition(pos => {
+    const { latitude: lat, longitude: lng } = pos.coords;
+
+    if (userMarker) map.removeLayer(userMarker);
+    userMarker = L.circleMarker([lat, lng], {
+      radius: 10, color: '#fff', fillColor: '#16a34a',
+      fillOpacity: 1, weight: 3
+    }).bindPopup('<div style="text-align:center;font-family:Heebo;font-weight:700">📍 המיקום שלך</div>')
+      .addTo(map);
+
+    map.setView([lat, lng], 14);
+  }, () => {
+    alert('לא הצלחנו לאתר את המיקום שלך. אפשר לאשר גישה למיקום בהגדרות הדפדפן.');
+  });
+}
+</script>
+</body>
+</html>

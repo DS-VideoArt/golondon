@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>גו לונדון | קטגוריה</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Heebo', sans-serif; background: #0a0a1a; color: #fff; direction: rtl; min-height: 100vh; }
+
+    /* ===== פס עליון ===== */
+    .topbar {
+      position: fixed; top: 0; right: 0; left: 0; z-index: 1100;
+      background: #06060f; border-bottom: 1px solid rgba(255,255,255,0.07);
+      height: 38px;
+    }
+    .topbar-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; height: 100%;
+    }
+    .topbar-item { display: flex; align-items: center; gap: 7px; padding: 0 24px; font-size: 13px; font-weight: 600; }
+    .topbar-label { font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 400; }
+    .topbar-divider { width: 1px; height: 18px; background: rgba(255,255,255,0.1); }
+    #gbp-rate { color: #4ade80; font-weight: 700; }
+    #weather-temp { color: #60a5fa; }
+
+    /* ===== ניווט ===== */
+    .navbar {
+      position: fixed; top: 38px; right: 0; left: 0; z-index: 1000;
+      background: rgba(10,10,26,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07); padding: 0 32px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { direction: ltr; font-size: 22px; font-weight: 900; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .logo-go { color: #DC2626; }
+    .logo-london { color: #fff; }
+    .logo-il { font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.35); margin-right: 4px; }
+    .back-btn {
+      display: flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; font-weight: 600;
+      padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.2s;
+    }
+    .back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== כותרת קטגוריה ===== */
+    .cat-hero {
+      margin-top: 102px;
+      padding: 64px 0 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cat-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--hero-grad, linear-gradient(135deg, #DC2626, #DB2777));
+      opacity: 0.12;
+    }
+    .cat-hero-inner { position: relative; z-index: 1; }
+    .cat-breadcrumb {
+      font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 20px;
+    }
+    .cat-breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; }
+    .cat-breadcrumb a:hover { color: #fff; }
+    .cat-emoji-big { font-size: 56px; display: block; margin-bottom: 16px; }
+    .cat-title {
+      font-size: clamp(32px, 5vw, 52px); font-weight: 900;
+      background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    .cat-desc { font-size: 17px; color: rgba(255,255,255,0.5); max-width: 600px; line-height: 1.7; }
+
+    /* ===== תת-נושאים ===== */
+    .subtopics {
+      padding: 40px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .subtopics-title { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.35); margin-bottom: 16px; letter-spacing: 1px; }
+    .subtopics-list { display: flex; flex-wrap: wrap; gap: 10px; }
+    .subtopic-tag {
+      padding: 8px 18px; border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.7);
+      cursor: default; transition: all 0.2s;
+    }
+    .subtopic-tag:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+    /* ===== פוסטים ===== */
+    .posts-section { padding: 56px 0 80px; }
+    .posts-section-title {
+      font-size: 22px; font-weight: 800; margin-bottom: 32px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .posts-section-title span { color: rgba(255,255,255,0.3); font-size: 15px; font-weight: 400; }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .post-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .post-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.2); }
+
+    .post-card-img {
+      width: 100%; height: 210px; object-fit: cover;
+      background: var(--hero-grad, linear-gradient(135deg, #DC2626, #DB2777));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 56px;
+    }
+    .post-card-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    .post-card-body { padding: 22px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+    .post-card-title { font-size: 18px; font-weight: 800; line-height: 1.4; }
+    .post-card-text {
+      font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.75; flex: 1;
+      white-space: pre-wrap;
+    }
+    .post-card-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.07);
+      font-size: 13px; color: rgba(255,255,255,0.3);
+    }
+    .post-card-footer a {
+      color: #60a5fa; text-decoration: none; font-weight: 700; font-size: 13px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .post-card-footer a:hover { color: #93c5fd; }
+
+    /* ===== ריק ===== */
+    .empty-state {
+      text-align: center; padding: 80px 20px; color: rgba(255,255,255,0.25);
+    }
+    .empty-state .big { font-size: 64px; display: block; margin-bottom: 20px; }
+    .empty-state h3 { font-size: 22px; font-weight: 800; margin-bottom: 10px; color: rgba(255,255,255,0.4); }
+    .empty-state p { font-size: 15px; }
+
+    /* ===== פוטר קטן ===== */
+    .mini-footer {
+      background: #06060f; border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 24px; text-align: center;
+      font-size: 13px; color: rgba(255,255,255,0.25);
+    }
+    .mini-footer a { color: #DC2626; text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .posts-grid { grid-template-columns: 1fr; }
+      .cat-hero { padding: 40px 0 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- פס מידע חי -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-item">
+      <i class="far fa-clock" style="color:rgba(255,255,255,0.4);font-size:12px"></i>
+      <span id="london-time">--:--</span>
+      <span class="topbar-label">לונדון</span>
+    </div>
+    <div class="topbar-divider"></div>
+    <div class="topbar-item">
+      <span id="weather-icon">🌤️</span>
+      <span id="weather-temp">--°C</span>
+      <span class="topbar-label">מזג אוויר</span>
+    </div>
+    <div class="topbar-divider"></div>
+    <div class="topbar-item">
+      <span style="color:#4ade80;font-weight:800">£</span>
+      <span id="gbp-rate">--</span>
+      <span class="topbar-label">₪ לכל לירה</span>
+    </div>
+  </div>
+</div>
+
+<!-- ניווט -->
+<nav class="navbar">
+  <a href="index.html" class="logo">
+    <span class="logo-go">GO</span><span class="logo-london">LONDON</span>
+    <span class="logo-il">לישראלים</span>
+  </a>
+  <a href="index.html" class="back-btn">
+    <i class="fas fa-arrow-right"></i> חזרה לדף הבית
+  </a>
+</nav>
+
+<!-- כותרת קטגוריה -->
+<section class="cat-hero" id="catHero">
+  <div class="container cat-hero-inner">
+    <div class="cat-breadcrumb">
+      <a href="index.html">דף הבית</a> &lsaquo; <span id="catBreadcrumb">קטגוריה</span>
+    </div>
+    <span class="cat-emoji-big" id="catEmoji">🎉</span>
+    <h1 class="cat-title" id="catTitle">טוען...</h1>
+    <p class="cat-desc" id="catDesc"></p>
+  </div>
+</section>
+
+<!-- תת-נושאים -->
+<section class="subtopics">
+  <div class="container">
+    <div class="subtopics-title">נושאים בקטגוריה זו</div>
+    <div class="subtopics-list" id="subtopicsList"></div>
+  </div>
+</section>
+
+<!-- פוסטים -->
+<section class="posts-section">
+  <div class="container">
+    <div class="posts-section-title">
+      <span id="postsSectionTitle">פוסטים</span> <span id="postsCount"></span>
+    </div>
+    <div class="posts-grid" id="postsGrid"></div>
+    <div class="empty-state" id="emptyState" style="display:none">
+      <span class="big" id="emptyEmoji">🎉</span>
+      <h3>עדיין אין פוסטים בקטגוריה זו</h3>
+      <p>בקרוב יתווספו כאן עדכונים מהקהילה</p>
+    </div>
+  </div>
+</section>
+
+<footer class="mini-footer">
+  © 2025 <a href="index.html">Go London</a> — המדריך הישראלי ללונדון
+</footer>
+
+<script>
+// ===== נתוני קטגוריות =====
+const CATEGORIES = {
+  'תכנון הטיול': {
+    emoji: '✈️',
+    title: 'תכנון הטיול ללונדון',
+    desc: 'כל מה שצריך לדעת לפני שעולים על המטוס — כניסה לבריטניה, כסף, מזג אוויר וטעויות שכדאי להימנע מהן.',
+    grad: 'linear-gradient(135deg, #1E3A8A, #7C3AED)',
+    subtopics: ['היכרות עם לונדון', 'כניסה לבריטניה', 'הכנות לטיסה', 'דברים חיוניים', 'מזג האוויר', 'כסף והתנהלות כלכלית', 'טעויות נפוצות של מטיילים']
+  },
+  'אטרקציות': {
+    emoji: '🎡',
+    title: 'אטרקציות בלונדון',
+    desc: 'מגלגל לונדון ועד גני קנסינגטון — כל האטרקציות המרכזיות, הנסתרות, והמיוחדות שלונדון מציעה.',
+    grad: 'linear-gradient(135deg, #7C3AED, #DB2777)',
+    subtopics: ['האטרקציות המרכזיות', 'פארקים וגנים', 'נהר התמזה', 'אדריכלות ומבנים', 'היסטוריה', 'אטרקציות פחות מוכרות']
+  },
+  'תחבורה': {
+    emoji: '🚇',
+    title: 'תחבורה בלונדון',
+    desc: 'כרטיס האויסטר, קווי האנדרגראונד, אוטובוסים אדומים ואיך להתנייד בלונדון כמו מקומי.',
+    grad: 'linear-gradient(135deg, #DC2626, #EA580C)',
+    subtopics: ['האנדרגראונד', 'אוטובוסים', 'מוניות ואוברה', 'אופניים', 'רכבת לאזורי הפרברים', 'שדות תעופה']
+  },
+  'לינה': {
+    emoji: '🏨',
+    title: 'לינה בלונדון',
+    desc: 'מלונות, דירות, אירבנבי — איפה כדאי להתאכסן, באיזו שכונה, וכמה זה עולה.',
+    grad: 'linear-gradient(135deg, #0F766E, #0891B2)',
+    subtopics: ['מלונות מומלצים', 'דירות להשכרה', 'שכונות מומלצות', 'כמה לשלם', 'טיפים לחיסכון']
+  },
+  'אוכל': {
+    emoji: '🍔',
+    title: 'אוכל בלונדון',
+    desc: 'מסעדות ישראליות, אוכל כשר, פאב בריטי, שווקי אוכל ואיפה הכי שווה לאכול בלונדון.',
+    grad: 'linear-gradient(135deg, #15803D, #65A30D)',
+    subtopics: ['מסעדות ישראליות', 'אוכל כשר', 'אוכל בריטי מסורתי', 'שווקי אוכל', 'קפה וארוחות בוקר', 'מסעדות חדשות']
+  },
+  'שופינג': {
+    emoji: '🛍️',
+    title: 'שופינג ושווקים',
+    desc: 'מפורטובלו עד אוקספורד סטריט — השווקים הכי שווים, רחובות הקניות ומה חייבים לקנות בלונדון.',
+    grad: 'linear-gradient(135deg, #EA580C, #D97706)',
+    subtopics: ['שוק פורטובלו', 'שוק בורו', 'שוק קמדן', 'אוקספורד סטריט', 'מה לקנות', 'טיפים לשופינג']
+  },
+  'תרבות': {
+    emoji: '🎭',
+    title: 'תרבות ובילויים',
+    desc: 'ווסט אנד, מוזיאונים חינמיים, הופעות חיות וחיי לילה — לונדון היא אחת הערים התרבותיות בעולם.',
+    grad: 'linear-gradient(135deg, #DB2777, #9333EA)',
+    subtopics: ['ווסט אנד ומחזות זמר', 'מוזיאונים חינמיים', 'הופעות חיות', 'חיי לילה', 'תרבות בריטית', 'קולנוע ואמנות']
+  },
+  'כדורגל': {
+    emoji: '⚽',
+    title: 'כדורגל בלונדון',
+    desc: 'צ׳לסי, ארסנל, טוטנהאם, וועסט האם — איך מגיעים למשחק, איפה קונים כרטיסים ומה חייבים לחוות.',
+    grad: 'linear-gradient(135deg, #15803D, #0F766E)',
+    subtopics: ['קבוצות לונדון', 'כרטיסים למשחקים', 'האצטדיונים', 'איך מגיעים', 'טיפים למעריצים', 'טורים לאצטדיונים']
+  },
+  'מלוכה': {
+    emoji: '👑',
+    title: 'המלוכה הבריטית',
+    desc: 'בקינגהם פאלאס, חילופי משמר, ארמון המגדל וסיפורי המלוכה שגורמים ללונדון להיות מיוחדת.',
+    grad: 'linear-gradient(135deg, #B45309, #DC2626)',
+    subtopics: ['בקינגהם פאלאס', 'חילופי משמר', 'ארמון המגדל', 'ונסר קאסל', 'ההיסטוריה המלכותית', 'הקשר לישראל']
+  },
+  'סוגי מטיילים': {
+    emoji: '👨‍👩‍👧‍👦',
+    title: 'לונדון לכל סוג מטייל',
+    desc: 'עם ילדים, זוג, קבוצת חברים או סולו — טיפים מותאמים לכל אחד ואחת.',
+    grad: 'linear-gradient(135deg, #0891B2, #2563EB)',
+    subtopics: ['לונדון עם ילדים', 'לונדון לזוגות', 'לונדון לקבוצות', 'טיול סולו', 'טיפים לכל סוג']
+  },
+  'אירועים': {
+    emoji: '🎉',
+    title: 'אירועים מיוחדים',
+    desc: 'פסטיבלים, חגיגות, כריסמס ואירועים שלונדון מיוחדת בהם — מה לא לפספס לפי עונה.',
+    grad: 'linear-gradient(135deg, #DC2626, #DB2777)',
+    subtopics: ['אירועים עונתיים', 'כריסמס בלונדון', 'סילבסטר', 'פסטיבלים', 'ניו יר', 'מצעדים ואירועי רחוב']
+  },
+  'מסלולים': {
+    emoji: '🗺️',
+    title: 'מסלולים מוכנים',
+    desc: 'מסלולים יומיים מוכנים לשימוש — 3 ימים, שבוע שלם, עם ילדים, וסופי שבוע מושלמים.',
+    grad: 'linear-gradient(135deg, #1E3A8A, #15803D)',
+    subtopics: ['לונדון ב-3 ימים', 'לונדון ב-5 ימים', 'שבוע שלם', 'לונדון עם ילדים', 'סוף שבוע', 'מסלול תרבות']
+  }
+};
+
+// ===== קריאת פרמטר מהכתובת =====
+const params = new URLSearchParams(window.location.search);
+const catKey = params.get('cat') || 'אירועים';
+const cat = CATEGORIES[catKey] || CATEGORIES['אירועים'];
+
+// ===== מילוי נתוני קטגוריה =====
+document.title = cat.title + ' | גו לונדון';
+document.getElementById('catEmoji').textContent = cat.emoji;
+document.getElementById('catTitle').textContent = cat.title;
+document.getElementById('catDesc').textContent = cat.desc;
+document.getElementById('catBreadcrumb').textContent = cat.title;
+document.getElementById('emptyEmoji').textContent = cat.emoji;
+document.getElementById('postsSectionTitle').textContent = 'מה הקהילה אומרת על ' + cat.title;
+document.getElementById('catHero').style.setProperty('--hero-grad', cat.grad);
+document.querySelectorAll('.post-card-img').forEach(el => el.style.setProperty('--hero-grad', cat.grad));
+
+// תת-נושאים
+document.getElementById('subtopicsList').innerHTML = cat.subtopics
+  .map(s => `<span class="subtopic-tag">${s}</span>`).join('');
+
+// ===== שליפת פוסטים =====
+function escHtml(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+async function loadPosts() {
+  let posts = [];
+  try {
+    const res = await fetch('posts.json?v=' + Date.now());
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data)) posts = data;
+    }
+  } catch {}
+  if (!posts.length) {
+    try { posts = JSON.parse(localStorage.getItem('golondon_posts') || '[]'); } catch {}
+  }
+
+  const filtered = posts.filter(p => p.category === catKey);
+  const grid = document.getElementById('postsGrid');
+  const empty = document.getElementById('emptyState');
+  const count = document.getElementById('postsCount');
+
+  if (!filtered.length) {
+    grid.style.display = 'none';
+    empty.style.display = 'block';
+    count.textContent = '';
+    return;
+  }
+
+  count.textContent = `(${filtered.length} פוסטים)`;
+  grid.style.display = 'grid';
+  empty.style.display = 'none';
+
+  grid.innerHTML = filtered.map(p => `
+    <div class="post-card">
+      <div class="post-card-img" style="--hero-grad:${cat.grad}">
+        ${p.image
+          ? `<img src="${escHtml(p.image)}" alt="${escHtml(p.title)}" onerror="this.parentElement.innerHTML='${cat.emoji}'" />`
+          : cat.emoji}
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-title">${escHtml(p.title)}</div>
+        <div class="post-card-text">${escHtml(p.desc)}</div>
+        <div class="post-card-footer">
+          <span>${escHtml(p.author || '')}${p.date ? ' · ' + escHtml(p.date) : ''}</span>
+          ${p.url ? `<a href="${escHtml(p.url)}" target="_blank" rel="noopener"><i class="fab fa-facebook"></i> לפוסט המקורי</a>` : ''}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+loadPosts();
+
+// ===== שעון לונדון =====
+function updateClock() {
+  document.getElementById('london-time').textContent = new Date().toLocaleTimeString('he-IL', {
+    timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit', hour12: false
+  });
+}
+updateClock(); setInterval(updateClock, 1000);
+
+// ===== מזג אוויר =====
+const weatherCodes = {0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌧️',61:'🌧️',63:'🌧️',65:'🌧️',71:'❄️',80:'🌦️',95:'⛈️'};
+fetch('https://api.open-meteo.com/v1/forecast?latitude=51.5074&longitude=-0.1278&current_weather=true')
+  .then(r => r.json()).then(d => {
+    document.getElementById('weather-icon').textContent = weatherCodes[d.current_weather.weathercode] || '🌤️';
+    document.getElementById('weather-temp').textContent = Math.round(d.current_weather.temperature) + '°C';
+  }).catch(() => {});
+
+// ===== שער מטבע =====
+fetch('https://open.er-api.com/v6/latest/GBP')
+  .then(r => r.json()).then(d => {
+    document.getElementById('gbp-rate').textContent = d.rates.ILS.toFixed(2);
+  }).catch(() => {});
+</script>
+</body>
+</html>

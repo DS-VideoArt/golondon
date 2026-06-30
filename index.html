@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>גו לונדון | המדריך הישראלי המלא ללונדון</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- פס מידע חי -->
+  <div class="topbar" id="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-item" id="tb-time">
+        <i class="far fa-clock"></i>
+        <span id="london-time">טוען...</span>
+        <span class="topbar-label">לונדון</span>
+      </div>
+      <div class="topbar-divider"></div>
+      <div class="topbar-item" id="tb-weather">
+        <span id="weather-icon">🌤️</span>
+        <span id="weather-temp">טוען...</span>
+        <span class="topbar-label">מזג אוויר</span>
+      </div>
+      <div class="topbar-divider"></div>
+      <div class="topbar-item" id="tb-rate">
+        <span class="gbp-symbol">£</span>
+        <span id="gbp-rate">טוען...</span>
+        <span class="topbar-label">₪ לכל לירה</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ניווט עליון -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <div class="logo">
+        <span class="logo-go">GO</span><span class="logo-london">LONDON</span>
+        <span class="logo-il">לישראלים</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#categories">נושאים</a>
+        <a href="#articles">כתבות</a>
+        <a href="#routes">מסלולים</a>
+        <a href="#community">קהילה</a>
+        <a href="kosher-map.html" style="color:#4ade80;font-weight:800">🗺️ מפת כשרות</a>
+      </nav>
+      <a href="https://www.facebook.com/groups/golondonisrael" target="_blank" class="btn btn-primary nav-cta">
+        <i class="fab fa-facebook"></i> הצטרף לקבוצה
+      </a>
+      <button class="burger" id="burger" aria-label="תפריט">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#categories">נושאים</a>
+      <a href="#articles">כתבות</a>
+      <a href="#routes">מסלולים</a>
+      <a href="#community">קהילה</a>
+      <a href="kosher-map.html" style="color:#4ade80;font-weight:800">🗺️ מפת כשרות</a>
+      <a href="https://www.facebook.com/groups/golondonisrael" target="_blank" class="btn btn-primary">
+        <i class="fab fa-facebook"></i> הצטרף לקבוצה
+      </a>
+    </div>
+  </header>
+
+  <!-- גיבור -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-glow hero-glow--red"></div>
+      <div class="hero-glow hero-glow--blue"></div>
+      <svg class="skyline" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="120" y="160" width="40" height="140" fill="rgba(255,255,255,0.12)"/>
+        <rect x="115" y="140" width="50" height="25" fill="rgba(255,255,255,0.12)"/>
+        <rect x="125" y="105" width="30" height="40" fill="rgba(255,255,255,0.12)"/>
+        <polygon points="140,75 125,115 155,115" fill="rgba(255,255,255,0.18)"/>
+        <rect x="10" y="210" width="80" height="90" fill="rgba(255,255,255,0.07)"/>
+        <rect x="80" y="230" width="50" height="70" fill="rgba(255,255,255,0.05)"/>
+        <rect x="160" y="190" width="180" height="110" fill="rgba(255,255,255,0.08)"/>
+        <rect x="170" y="175" width="10" height="20" fill="rgba(255,255,255,0.1)"/>
+        <rect x="195" y="175" width="10" height="20" fill="rgba(255,255,255,0.1)"/>
+        <rect x="220" y="175" width="10" height="20" fill="rgba(255,255,255,0.1)"/>
+        <rect x="245" y="175" width="10" height="20" fill="rgba(255,255,255,0.1)"/>
+        <rect x="270" y="175" width="10" height="20" fill="rgba(255,255,255,0.1)"/>
+        <rect x="295" y="175" width="10" height="20" fill="rgba(255,255,255,0.1)"/>
+        <circle cx="430" cy="185" r="70" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="5"/>
+        <line x1="430" y1="115" x2="430" y2="255" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+        <line x1="360" y1="185" x2="500" y2="185" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+        <line x1="380" y1="135" x2="480" y2="235" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+        <line x1="480" y1="135" x2="380" y2="235" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+        <rect x="425" y="250" width="10" height="50" fill="rgba(255,255,255,0.15)"/>
+        <rect x="510" y="200" width="60" height="100" fill="rgba(255,255,255,0.06)"/>
+        <rect x="560" y="175" width="45" height="125" fill="rgba(255,255,255,0.08)"/>
+        <rect x="600" y="210" width="70" height="90" fill="rgba(255,255,255,0.06)"/>
+        <polygon points="700,55 678,300 722,300" fill="rgba(255,255,255,0.16)"/>
+        <rect x="780" y="200" width="30" height="100" fill="rgba(255,255,255,0.13)"/>
+        <rect x="870" y="200" width="30" height="100" fill="rgba(255,255,255,0.13)"/>
+        <rect x="780" y="230" width="120" height="8" fill="rgba(255,255,255,0.18)"/>
+        <line x1="790" y1="195" x2="840" y2="230" stroke="rgba(255,255,255,0.18)" stroke-width="3"/>
+        <line x1="890" y1="195" x2="840" y2="230" stroke="rgba(255,255,255,0.18)" stroke-width="3"/>
+        <rect x="940" y="195" width="55" height="105" fill="rgba(255,255,255,0.07)"/>
+        <rect x="985" y="170" width="40" height="130" fill="rgba(255,255,255,0.09)"/>
+        <ellipse cx="1080" cy="165" rx="25" ry="120" fill="rgba(255,255,255,0.11)"/>
+        <rect x="1140" y="200" width="80" height="100" fill="rgba(255,255,255,0.06)"/>
+        <rect x="1200" y="175" width="50" height="125" fill="rgba(255,255,255,0.08)"/>
+        <rect x="1280" y="210" width="100" height="90" fill="rgba(255,255,255,0.05)"/>
+        <rect x="1350" y="185" width="90" height="115" fill="rgba(255,255,255,0.07)"/>
+        <rect x="0" y="300" width="1440" height="20" fill="rgba(255,255,255,0.06)"/>
+      </svg>
+    </div>
+
+    <div class="hero-content container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        המדריך הישראלי המלא ללונדון
+      </div>
+      <h1 class="hero-title">
+        כל מה שצריך לדעת<br />
+        <span class="hero-highlight">על לונדון</span>
+      </h1>
+      <p class="hero-sub">
+        מידע, טיפים ומסלולים — הכל בעברית, הכל במקום אחד
+      </p>
+      <div class="hero-actions">
+        <a href="#categories" class="btn btn-red btn-lg btn-glow">
+          <i class="fas fa-compass"></i> גלה את המדריכים
+        </a>
+        <a href="https://www.facebook.com/groups/golondonisrael" target="_blank" class="btn btn-outline btn-lg">
+          <i class="fab fa-facebook"></i> קהילת הפייסבוק
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <strong class="counter" data-target="25000">0</strong>
+          <span>חברים בקהילה</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <strong class="counter" data-target="60">0</strong>
+          <span>מדריכים ומאמרים</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <strong class="counter" data-target="12">0</strong>
+          <span>נושאים מרכזיים</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#0a0a1a"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- פס יתרונות -->
+  <section class="why-bar">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-icon"><i class="fas fa-language"></i></div>
+          <div>
+            <strong>הכל בעברית</strong>
+            <span>מידע ברור ונגיש</span>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon"><i class="fas fa-sync-alt"></i></div>
+          <div>
+            <strong>מעודכן לתאריך</strong>
+            <span>מחירים ומידע עדכני</span>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon"><i class="fas fa-users"></i></div>
+          <div>
+            <strong>קהילה אמיתית</strong>
+            <span>ישראלים שחיים בלונדון</span>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <div>
+            <strong>מסלולים מוכנים</strong>
+            <span>מ-3 ימים עד שבוע שלם</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- קטגוריות ראשיות -->
+  <section class="categories" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">12 נושאים מרכזיים</span>
+        <h2>כל מה שצריך לדעת על לונדון</h2>
+        <p>בחר נושא ומצא את כל המידע שחיפשת</p>
+      </div>
+
+      <!-- שורה ראשונה — שני כרטיסים גדולים -->
+      <div class="cat-row cat-row--hero">
+
+        <a href="category.html?cat=תכנון הטיול" class="cat-card cat-card--large" style="--grad: linear-gradient(135deg, #1E3A8A 0%, #7C3AED 100%);">
+          <div class="cat-card-bg"></div>
+          <div class="cat-emoji">✈️</div>
+          <h3>תכנון הטיול ללונדון</h3>
+          <ul class="cat-sub">
+            <li>היכרות עם לונדון</li>
+            <li>כניסה לבריטניה והכנות לטיסה</li>
+            <li>דברים חיוניים לפני הטיסה</li>
+            <li>מזג האוויר ⋅ כסף ⋅ טעויות נפוצות</li>
+          </ul>
+          <span class="cat-link">קרא את המדריך <i class="fas fa-arrow-left"></i></span>
+        </a>
+
+        <a href="category.html?cat=אטרקציות" class="cat-card cat-card--large" style="--grad: linear-gradient(135deg, #7C3AED 0%, #DB2777 100%);">
+          <div class="cat-card-bg"></div>
+          <div class="cat-emoji">🎡</div>
+          <h3>אטרקציות בלונדון</h3>
+          <ul class="cat-sub">
+            <li>האטרקציות המרכזיות</li>
+            <li>פארקים וגנים ⋅ נהר התמזה</li>
+            <li>אדריכלות ומבנים ⋅ היסטוריה</li>
+            <li>דברים מיוחדים ופחות מוכרים</li>
+          </ul>
+          <span class="cat-link">קרא את המדריך <i class="fas fa-arrow-left"></i></span>
+        </a>
+
+      </div>
+
+      <!-- שורה שנייה — ארבעה כרטיסים בינוניים -->
+      <div class="cat-row cat-row--4">
+
+        <a href="category.html?cat=תחבורה" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #DC2626 0%, #EA580C 100%);">
+          <div class="cat-emoji">🚇</div>
+          <h3>תחבורה בלונדון</h3>
+          <ul class="cat-sub">
+            <li>האנדרגראונד</li>
+            <li>אוטובוסים ומוניות</li>
+            <li>אופניים ורכבת</li>
+          </ul>
+          <span class="cat-link">קרא עוד <i class="fas fa-arrow-left"></i></span>
+        </a>
+
+        <a href="category.html?cat=לינה" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #0F766E 0%, #0891B2 100%);">
+          <div class="cat-emoji">🏨</div>
+          <h3>לינה בלונדון</h3>
+          <ul class="cat-sub">
+            <li>מלונות ⋅ דירות</li>
+            <li>שכונות מומלצות</li>
+            <li>מה לחפש וכמה לשלם</li>
+          </ul>
+          <span class="cat-link">קרא עוד <i class="fas fa-arrow-left"></i></span>
+        </a>
+
+        <a href="category.html?cat=אוכל" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #15803D 0%, #65A30D 100%);">
+          <div class="cat-emoji">🍔</div>
+          <h3>אוכל בלונדון</h3>
+          <ul class="cat-sub">
+            <li>מסעדות ישראליות וכשרות</li>
+            <li>אוכל בריטי מסורתי</li>
+            <li>שווקי אוכל</li>
+          </ul>
+          <span class="cat-link">קרא עוד <i class="fas fa-arrow-left"></i></span>
+        </a>
+
+        <a href="category.html?cat=שופינג" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #EA580C 0%, #D97706 100%);">
+          <div class="cat-emoji">🛍️</div>
+          <h3>שופינג ושווקים</h3>
+          <ul class="cat-sub">
+            <li>שווקים מפורסמים</li>
+            <li>רחובות קניות</li>
+            <li>מה לקנות בלונדון</li>
+          </ul>
+          <span class="cat-link">קרא עוד <i class="fas fa-arrow-left"></i></span>
+        </a>
+
+      </div>
+
+      <!-- שורה שלישית — ארבעה כרטיסים בינוניים -->
+      <div class="cat-row cat-row--4">
+
+        <a href="category.html?cat=תרבות" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #DB2777 0%, #9333EA 100%);">
+          <div class="cat-emoji">🎭</div>
+          <h3>תרבות ובילויים</h3>
+          <ul class="cat-sub">
+            <li>הופעות חיות ⋅ חיי לילה</li>
+            <li>ווסט אנד ומחזות זמר</li>
+            <li>תרבות בריטית מקומית</li>
+          </ul>
+          <span class="cat-link">קרא עוד <i class="fas fa-arrow-left"></i></span>
+        </a>
+
+        <a href="category.html?cat=כדורגל" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #15803D 0%, #0F766E 100%);">
+          <div class="cat-emoji">⚽</div>
+          <h3>כדורגל בלונדון</h3>
+          <ul class="cat-sub">
+            <li>הקבוצות של לונדון</li>
+            <li>איך מגיעים למשחק</li>
+            <li>כרטיסים וטיפים</li>
+          </ul>
+          <span class="cat-link">קרא עוד <i class="fas fa-arrow-left"></i></span>
+        </a>
+
+        <a href="category.html?cat=מלוכה" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #B45309 0%, #DC2626 100%);">
+          <div class="cat-emoji">👑</div>
+          <h3>המלוכה הבריטית</h3>
+          <ul class="cat-sub">
+            <li>בקינגהם פאלאס</li>
+            <li>חילופי משמר</li>
+            <li>ההיסטוריה המלכותית</li>
+          </ul>
+          <span class="cat-link">קרא עוד <i class="fas fa-arrow-left"></i></span>
+        </a>
+
+        <a href="category.html?cat=סוגי מטיילים" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #0891B2 0%, #2563EB 100%);">
+          <div class="cat-emoji">👨‍👩‍👧‍👦</div>
+          <h3>סוגי מטיילים</h3>
+          <ul class="cat-sub">
+            <li>לונדון עם ילדים</li>
+            <li>לונדון לזוגות</li>
+            <li>טיפים לכל סוג מטייל</li>
+          </ul>
+          <span class="cat-link">קרא עוד <i class="fas fa-arrow-left"></i></span>
+        </a>
+
+      </div>
+
+      <!-- שורה רביעית — שני כרטיסים בינוניים -->
+      <div class="cat-row cat-row--2">
+
+        <a href="category.html?cat=אירועים" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #DC2626 0%, #DB2777 100%);">
+          <div class="cat-emoji">🎉</div>
+          <h3>אירועים מיוחדים</h3>
+          <ul class="cat-sub">
+            <li>אירועים מיוחדים בלונדון</li>
+            <li>כריסמס בלונדון</li>
+          </ul>
+          <span class="cat-link">קרא עוד <i class="fas fa-arrow-left"></i></span>
+        </a>
+
+        <a href="#community" class="cat-card cat-card--med cat-card--community" style="--grad: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%);">
+          <div class="cat-emoji">👥</div>
+          <h3>קהילת Go London</h3>
+          <ul class="cat-sub">
+            <li>+25,000 ישראלים</li>
+            <li>שאלות ועצות</li>
+            <li>קבוצת פייסבוק פעילה</li>
+          </ul>
+          <span class="cat-link">הצטרף עכשיו <i class="fab fa-facebook"></i></span>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- מסלולים מוכנים — באנר מיוחד -->
+  <section class="routes-banner" id="routes">
+    <div class="container">
+      <div class="routes-header">
+        <span class="section-tag section-tag--light">מסלולים מוכנים 🗺️</span>
+        <h2>לא יודע מאיפה להתחיל? יש לנו מסלולים מוכנים</h2>
+        <p>מסלולים שנבנו על ידי ישראלים שגרים בלונדון — לכל סוג מטייל ולכל אורך טיול</p>
+      </div>
+      <div class="routes-grid">
+        <a href="#" class="route-card">
+          <div class="route-days">3</div>
+          <div class="route-label">ימים</div>
+          <h4>לונדון ב-3 ימים</h4>
+          <p>הטוב ביותר בזמן קצר</p>
+        </a>
+        <a href="#" class="route-card route-card--featured">
+          <div class="route-badge">הכי פופולרי</div>
+          <div class="route-days">5</div>
+          <div class="route-label">ימים</div>
+          <h4>לונדון ב-5 ימים</h4>
+          <p>הטיול המושלם</p>
+        </a>
+        <a href="#" class="route-card">
+          <div class="route-days">2</div>
+          <div class="route-label">ימים</div>
+          <h4>סוף שבוע בלונדון</h4>
+          <p>מינימום זמן, מקסימום חוויה</p>
+        </a>
+        <a href="#" class="route-card">
+          <div class="route-days">7</div>
+          <div class="route-label">ימים</div>
+          <h4>שבוע בלונדון</h4>
+          <p>ראה הכל בלי לרוץ</p>
+        </a>
+        <a href="#" class="route-card">
+          <div class="route-emoji">👨‍👩‍👧‍👦</div>
+          <h4>לונדון עם ילדים</h4>
+          <p>מסלול מותאם למשפחות</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- כתבות אחרונות -->
+  <section class="articles" id="articles">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">כתבות ומדריכים</span>
+        <h2>המדריכים הכי שימושיים</h2>
+        <p>תוכן שנכתב על ידי ישראלים שחיים ומכירים את לונדון</p>
+      </div>
+      <div class="articles-grid">
+
+        <article class="article-card article-card--featured">
+          <div class="article-img" style="background: linear-gradient(135deg, #1E3A8A 0%, #7C3AED 100%);">
+            <span class="article-category-tag">✈️ תכנון הטיול</span>
+          </div>
+          <div class="article-body">
+            <h3>המדריך המלא לטיסה ללונדון — כל מה שצריך לדעת לפני שעולים על המטוס</h3>
+            <p>מהמסמכים, דרך הוויזה, עד מה לארוז — הכל במקום אחד</p>
+            <div class="article-meta">
+              <span><i class="far fa-clock"></i> 10 דקות קריאה</span>
+              <span><i class="far fa-calendar"></i> ינואר 2025</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <div class="article-img" style="background: linear-gradient(135deg, #DC2626 0%, #EA580C 100%);">
+            <span class="article-category-tag">🚇 תחבורה</span>
+          </div>
+          <div class="article-body">
+            <h3>כרטיס אויסטר — המדריך המלא לתחבורה בלונדון</h3>
+            <p>איך עובד הכרטיס, כמה עולה ואיפה לטעון</p>
+            <div class="article-meta">
+              <span><i class="far fa-clock"></i> 6 דקות קריאה</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <div class="article-img" style="background: linear-gradient(135deg, #15803D 0%, #0F766E 100%);">
+            <span class="article-category-tag">⚽ כדורגל</span>
+          </div>
+          <div class="article-body">
+            <h3>איך מגיעים למשחק כדורגל בלונדון — המדריך לישראלי</h3>
+            <p>כרטיסים, הגעה לאצטדיון וכל הטיפים</p>
+            <div class="article-meta">
+              <span><i class="far fa-clock"></i> 5 דקות קריאה</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="article-card">
+          <div class="article-img" style="background: linear-gradient(135deg, #7C3AED 0%, #DB2777 100%);">
+            <span class="article-category-tag">🎡 אטרקציות</span>
+          </div>
+          <div class="article-body">
+            <h3>20 דברים שחייבים לעשות בלונדון לפחות פעם אחת</h3>
+            <p>הרשימה של הישראלים שגרים שם — לא של הספרים הישנים</p>
+            <div class="article-meta">
+              <span><i class="far fa-clock"></i> 7 דקות קריאה</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+      <div class="section-cta">
+        <a href="#" class="btn btn-outline-navy">כל הכתבות והמדריכים <i class="fas fa-arrow-left"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- באנר מפת כשרות -->
+  <section class="kosher-banner">
+    <div class="container">
+      <div class="kosher-banner-inner">
+        <div class="kosher-banner-text">
+          <div class="kosher-badge">✡️ חדש</div>
+          <h2>מפת כשרות לונדון</h2>
+          <p>54 מקומות כשרים על המפה — מסעדות חלביות, בשריות ומאפיות. לחץ על כל מקום לפרטים וניווט בוויז.</p>
+        </div>
+        <a href="kosher-map.html" class="kosher-banner-btn">
+          🗺️ פתח את המפה
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- פוסטים מהקהילה -->
+  <section class="community-posts" id="community-posts">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">מהקהילה שלנו</h2>
+        <p class="section-sub">עדכונים וטיפים שחברי הקהילה שיתפו</p>
+      </div>
+      <div class="posts-grid" id="postsGrid">
+        <!-- מתמלא דינמית -->
+      </div>
+      <div class="empty-posts" id="emptyPosts" style="display:none">
+        <i class="fab fa-facebook"></i>
+        <p>עדיין אין פוסטים — בקרוב!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- באנר קהילה -->
+  <section class="community-banner" id="community">
+    <div class="community-glow"></div>
+    <div class="container">
+      <div class="banner-inner">
+        <div class="banner-text">
+          <div class="banner-badge"><i class="fab fa-facebook"></i> קבוצת פייסבוק</div>
+          <h2>כבר 25,000+ ישראלים בקהילה שלנו</h2>
+          <p>שאל שאלות, קבל עצות, מצא חברים — ביחד הרבה יותר קל</p>
+          <a href="https://www.facebook.com/groups/golondonisrael" target="_blank" class="btn btn-white btn-lg">
+            <i class="fab fa-facebook"></i> הצטרף בחינם
+          </a>
+        </div>
+        <div class="banner-visual">
+          <div class="fb-bubble fb-bubble--1">🤔 כמה עולה שכירות בלונדון?</div>
+          <div class="fb-bubble fb-bubble--2">💬 247 תגובות</div>
+          <div class="fb-bubble fb-bubble--3">❓ מה הכי כדאי לעשות ב-3 ימים?</div>
+          <div class="fb-bubble fb-bubble--4">💬 89 תגובות</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ניוזלטר -->
+  <section class="newsletter">
+    <div class="container">
+      <div class="newsletter-inner">
+        <div class="newsletter-text">
+          <h3><i class="fas fa-envelope"></i> קבל עדכונים ישירות למייל</h3>
+          <p>מדריכים חדשים, מידע שימושי ודילים — בלי ספאם, מבטיחים</p>
+        </div>
+        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+          <input type="email" placeholder="כתובת המייל שלך" required />
+          <button type="submit" class="btn btn-red">הרשמה — חינם</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- כותרת תחתונה -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo logo--light">
+            <span class="logo-go">GO</span><span class="logo-london">LONDON</span>
+          </div>
+          <p>המדריך הישראלי המלא ללונדון. כל המידע שצריך, בעברית, במקום אחד.</p>
+          <div class="social-links">
+            <a href="https://www.facebook.com/groups/golondonisrael" target="_blank" aria-label="פייסבוק"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="אינסטגרם"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="וואטסאפ"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" aria-label="טיקטוק"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>נושאים</h4>
+          <ul>
+            <li><a href="#">✈️ תכנון הטיול</a></li>
+            <li><a href="#">🚇 תחבורה</a></li>
+            <li><a href="#">🏨 לינה</a></li>
+            <li><a href="#">🎡 אטרקציות</a></li>
+            <li><a href="#">🛍️ שופינג</a></li>
+            <li><a href="#">🍔 אוכל</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>עוד נושאים</h4>
+          <ul>
+            <li><a href="#">🎭 תרבות ובילויים</a></li>
+            <li><a href="#">⚽ כדורגל</a></li>
+            <li><a href="#">👑 המלוכה</a></li>
+            <li><a href="#">👨‍👩‍👧‍👦 סוגי מטיילים</a></li>
+            <li><a href="#">🎉 אירועים</a></li>
+            <li><a href="#">🗺️ מסלולים</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>צור קשר</h4>
+          <ul class="contact-list">
+            <li><i class="fab fa-facebook"></i><a href="https://www.facebook.com/groups/golondonisrael" target="_blank">קבוצת הפייסבוק</a></li>
+            <li><i class="far fa-envelope"></i><a href="mailto:info@golondon.co.il">info@golondon.co.il</a></li>
+          </ul>
+          <h4 style="margin-top:24px">מידע</h4>
+          <ul>
+            <li><a href="#">אודות</a></li>
+            <li><a href="#">פרסום באתר</a></li>
+            <li><a href="#">תנאי שימוש</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 גו לונדון. כל הזכויות שמורות.</p>
+        <p>נבנה באהבה עבור הקהילה הישראלית 🇮🇱 🇬🇧</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

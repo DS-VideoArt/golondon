@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ניהול פוסטים | גו לונדון</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Heebo', sans-serif; background: #0a0a1a; color: #fff; min-height: 100vh; direction: rtl; }
+
+    /* ===== כניסה ===== */
+    .login-screen {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(ellipse at 30% 50%, #1a1a4e, #0a0a1a);
+    }
+    .login-box {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px; padding: 48px 40px; width: 380px; text-align: center;
+    }
+    .login-box .logo { font-size: 28px; font-weight: 900; margin-bottom: 8px; }
+    .login-box .logo span:first-child { color: #DC2626; }
+    .login-box p { color: rgba(255,255,255,0.5); margin-bottom: 32px; font-size: 14px; }
+    .login-box input {
+      width: 100%; padding: 14px 18px; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.07);
+      color: #fff; font-family: 'Heebo', sans-serif; font-size: 15px;
+      margin-bottom: 12px; text-align: center; letter-spacing: 3px;
+    }
+    .login-box input:focus { outline: none; border-color: #DC2626; }
+    .login-box button {
+      width: 100%; padding: 14px; background: #DC2626; color: #fff;
+      border: none; border-radius: 12px; font-family: 'Heebo', sans-serif;
+      font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.2s;
+    }
+    .login-box button:hover { background: #B91C1C; }
+    .login-error { color: #f87171; font-size: 14px; margin-top: 10px; display: none; }
+
+    /* ===== לוח ניהול ===== */
+    .admin-screen { display: none; }
+    .admin-header {
+      background: rgba(0,0,0,0.4); border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 16px 32px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .admin-header .logo { font-size: 20px; font-weight: 900; }
+    .admin-header .logo span:first-child { color: #DC2626; }
+    .admin-header small { color: rgba(255,255,255,0.4); font-size: 13px; }
+    .logout-btn {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.6); padding: 8px 16px; border-radius: 8px;
+      cursor: pointer; font-family: 'Heebo', sans-serif; font-size: 13px;
+      transition: all 0.2s;
+    }
+    .logout-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+    .admin-body { max-width: 860px; margin: 0 auto; padding: 40px 24px; }
+
+    /* ===== טופס הוספה ===== */
+    .add-form {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 32px; margin-bottom: 40px;
+    }
+    .add-form h2 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+    .add-form h2 i { color: #DC2626; margin-left: 8px; }
+    .add-form .subtitle {
+      font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 28px;
+    }
+
+    .form-row { margin-bottom: 16px; }
+    .form-row label {
+      display: block; font-size: 13px; font-weight: 700;
+      color: rgba(255,255,255,0.6); margin-bottom: 7px;
+    }
+    .form-row label span { color: #f87171; margin-right: 3px; }
+
+    .form-input, .form-textarea, .form-select {
+      width: 100%; padding: 13px 16px; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.07);
+      color: #fff; font-family: 'Heebo', sans-serif; font-size: 15px;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none; border-color: #DC2626;
+    }
+    .form-textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.25); }
+
+    .form-input-ltr {
+      direction: ltr; text-align: left;
+    }
+    .form-input-ltr::placeholder { direction: rtl; text-align: right; }
+
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+
+    /* תצוגה מקדימה של תמונה */
+    .img-preview-wrap { margin-top: 8px; }
+    .img-preview {
+      display: none; width: 100%; max-height: 200px; object-fit: cover;
+      border-radius: 10px; border: 1px solid rgba(255,255,255,0.12);
+    }
+    .img-preview.show { display: block; }
+
+    .save-btn {
+      width: 100%; padding: 15px 28px; background: #16a34a; color: #fff; border: none;
+      border-radius: 12px; font-family: 'Heebo', sans-serif; font-size: 16px;
+      font-weight: 700; cursor: pointer; transition: background 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin-top: 24px;
+    }
+    .save-btn:hover { background: #15803d; }
+
+    /* ===== הודעת הצלחה ===== */
+    .toast {
+      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: #16a34a; color: #fff; padding: 14px 28px; border-radius: 50px;
+      font-weight: 700; font-size: 15px; transition: transform 0.3s;
+      z-index: 1000; display: flex; align-items: center; gap: 8px;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ===== רשימת פוסטים ===== */
+    .posts-section h2 { font-size: 20px; font-weight: 800; margin-bottom: 20px; }
+    .posts-section h2 span { color: rgba(255,255,255,0.4); font-size: 14px; font-weight: 400; margin-right: 8px; }
+    .posts-section h2 i { color: #DC2626; margin-left: 8px; }
+
+    .toolbar { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+    .download-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #1E3A8A; color: #fff; border: none; border-radius: 10px;
+      padding: 10px 20px; font-family: 'Heebo', sans-serif; font-size: 14px;
+      font-weight: 700; cursor: pointer; transition: background 0.2s;
+    }
+    .download-btn:hover { background: #1D4ED8; }
+
+    .empty-state {
+      text-align: center; padding: 60px 20px; color: rgba(255,255,255,0.3);
+    }
+    .empty-state i { font-size: 48px; display: block; margin-bottom: 16px; }
+
+    .post-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; display: flex; align-items: center; gap: 16px;
+      padding: 16px; margin-bottom: 12px; transition: border-color 0.2s;
+    }
+    .post-card:hover { border-color: rgba(255,255,255,0.15); }
+    .post-card-img {
+      width: 80px; height: 60px; border-radius: 8px; object-fit: cover; flex-shrink: 0;
+      background: linear-gradient(135deg, #1E3A8A, #7C3AED);
+      display: flex; align-items: center; justify-content: center; font-size: 24px;
+    }
+    .post-card-info { flex: 1; min-width: 0; }
+    .post-card-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .post-card-desc { font-size: 13px; color: rgba(255,255,255,0.45); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 6px; }
+    .post-card-meta { display: flex; gap: 10px; align-items: center; }
+    .category-badge {
+      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 50px;
+      background: rgba(220,38,38,0.2); color: #f87171; border: 1px solid rgba(220,38,38,0.3);
+    }
+    .post-date { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .delete-btn {
+      background: rgba(220,38,38,0.1); border: 1px solid rgba(220,38,38,0.2);
+      color: #f87171; padding: 8px 14px; border-radius: 8px;
+      cursor: pointer; font-family: 'Heebo', sans-serif; font-size: 13px;
+      transition: all 0.2s; display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+    }
+    .delete-btn:hover { background: rgba(220,38,38,0.25); }
+
+    @media (max-width: 600px) {
+      .form-row-2 { grid-template-columns: 1fr; }
+      .admin-body { padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- מסך כניסה -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-box">
+    <div class="logo"><span>GO</span><span style="color:#fff">LONDON</span></div>
+    <p>ניהול פוסטים — כניסה מורשית בלבד</p>
+    <input type="password" id="passwordInput" placeholder="סיסמה" onkeydown="if(event.key==='Enter') login()" />
+    <button onclick="login()"><i class="fas fa-sign-in-alt"></i> כניסה</button>
+    <div class="login-error" id="loginError">סיסמה שגויה. נסה שוב.</div>
+  </div>
+</div>
+
+<!-- לוח ניהול -->
+<div class="admin-screen" id="adminScreen">
+  <div class="admin-header">
+    <div>
+      <div class="logo"><span>GO</span><span>LONDON</span> <small>— לוח ניהול</small></div>
+    </div>
+    <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> יציאה</button>
+  </div>
+
+  <div class="admin-body">
+
+    <!-- טופס הוספת פוסט -->
+    <div class="add-form">
+      <h2><i class="fas fa-plus-circle"></i> הוספת פוסט חדש</h2>
+      <p class="subtitle">העתק את הטקסט מהפוסט בפייסבוק והדבק אותו כאן</p>
+
+      <!-- כותרת -->
+      <div class="form-row">
+        <label>כותרת הפוסט <span>*</span></label>
+        <input type="text" class="form-input" id="postTitle" placeholder="למשל: מסעדה ישראלית חדשה בלונדון שכולם מדברים עליה" />
+      </div>
+
+      <!-- תוכן -->
+      <div class="form-row">
+        <label>תוכן הפוסט <span>*</span></label>
+        <textarea class="form-textarea" id="postContent" placeholder="העתק והדבק כאן את הטקסט של הפוסט..."></textarea>
+      </div>
+
+      <!-- קטגוריה + תאריך -->
+      <div class="form-row-2">
+        <div class="form-row" style="margin-bottom:0">
+          <label>קטגוריה <span>*</span></label>
+          <select class="form-select" id="categorySelect">
+            <option value="">— בחר קטגוריה —</option>
+            <option value="תכנון הטיול">✈️ תכנון הטיול ללונדון</option>
+            <option value="תחבורה">🚇 תחבורה בלונדון</option>
+            <option value="לינה">🏨 לינה בלונדון</option>
+            <option value="אטרקציות">🎡 אטרקציות בלונדון</option>
+            <option value="שופינג">🛍️ שופינג ושווקים</option>
+            <option value="אוכל">🍔 אוכל בלונדון</option>
+            <option value="תרבות">🎭 תרבות ובילויים</option>
+            <option value="כדורגל">⚽ כדורגל בלונדון</option>
+            <option value="מלוכה">👑 המלוכה הבריטית</option>
+            <option value="סוגי מטיילים">👨‍👩‍👧‍👦 סוגי מטיילים</option>
+            <option value="אירועים">🎉 אירועים מיוחדים</option>
+            <option value="מסלולים">🗺️ מסלולים מוכנים</option>
+          </select>
+        </div>
+        <div class="form-row" style="margin-bottom:0">
+          <label>שם הכותב (אופציונלי)</label>
+          <input type="text" class="form-input" id="postAuthor" placeholder="למשל: דנה כהן" />
+        </div>
+      </div>
+
+      <!-- קישור לתמונה -->
+      <div class="form-row" style="margin-top:16px">
+        <label>קישור לתמונה (אופציונלי)</label>
+        <input type="url" class="form-input form-input-ltr" id="postImage" placeholder="הדבק כאן קישור לתמונה — https://..." oninput="previewImage()" />
+        <div class="img-preview-wrap">
+          <img class="img-preview" id="imgPreview" src="" alt="תצוגה מקדימה" onerror="this.classList.remove('show')" />
+        </div>
+      </div>
+
+      <!-- קישור לפוסט המקורי -->
+      <div class="form-row">
+        <label>קישור לפוסט המקורי (אופציונלי)</label>
+        <input type="url" class="form-input form-input-ltr" id="postUrl" placeholder="קישור לפוסט בפייסבוק — https://www.facebook.com/..." />
+      </div>
+
+      <button class="save-btn" onclick="savePost()">
+        <i class="fas fa-plus-circle"></i> הוסף לאתר
+      </button>
+    </div>
+
+    <!-- רשימת פוסטים קיימים -->
+    <div class="posts-section">
+      <h2>
+        <i class="fas fa-list"></i> פוסטים באתר
+        <span id="postsCount"></span>
+      </h2>
+      <div class="toolbar">
+        <button class="download-btn" onclick="downloadJson()">
+          <i class="fas fa-download"></i> הורד posts.json לעדכון האתר
+        </button>
+      </div>
+      <div id="postsList"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- הודעת הצלחה -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg"></span></div>
+
+<script>
+const PASS = 'golondon2025';
+let posts = [];
+
+// ===== כניסה =====
+function login() {
+  const val = document.getElementById('passwordInput').value;
+  if (val === PASS) {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('adminScreen').style.display = 'block';
+    loadPosts();
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+  }
+}
+function logout() {
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('adminScreen').style.display = 'none';
+  document.getElementById('passwordInput').value = '';
+}
+
+// ===== תצוגה מקדימה תמונה =====
+function previewImage() {
+  const url = document.getElementById('postImage').value.trim();
+  const img = document.getElementById('imgPreview');
+  if (url) {
+    img.src = url;
+    img.classList.add('show');
+  } else {
+    img.classList.remove('show');
+  }
+}
+
+// ===== שמירת פוסט =====
+function savePost() {
+  const title   = document.getElementById('postTitle').value.trim();
+  const content = document.getElementById('postContent').value.trim();
+  const cat     = document.getElementById('categorySelect').value;
+  const author  = document.getElementById('postAuthor').value.trim();
+  const image   = document.getElementById('postImage').value.trim();
+  const url     = document.getElementById('postUrl').value.trim();
+
+  if (!title)   { showToast('חסרה כותרת לפוסט'); return; }
+  if (!content) { showToast('חסר תוכן לפוסט'); return; }
+  if (!cat)     { showToast('בחר קטגוריה'); return; }
+
+  const post = {
+    id: Date.now(),
+    title,
+    desc: content,
+    image,
+    url,
+    author,
+    category: cat,
+    date: new Date().toLocaleDateString('he-IL')
+  };
+
+  posts.unshift(post);
+  savePosts();
+  renderPosts();
+  clearForm();
+  showToast('הפוסט נוסף לאתר!');
+}
+
+function clearForm() {
+  ['postTitle','postContent','postAuthor','postImage','postUrl'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('categorySelect').value = '';
+  document.getElementById('imgPreview').classList.remove('show');
+}
+
+// ===== ניהול נתונים =====
+function loadPosts() {
+  try {
+    posts = JSON.parse(localStorage.getItem('golondon_posts') || '[]');
+  } catch { posts = []; }
+  renderPosts();
+}
+function savePosts() {
+  localStorage.setItem('golondon_posts', JSON.stringify(posts));
+}
+function deletePost(id) {
+  if (!confirm('למחוק את הפוסט?')) return;
+  posts = posts.filter(p => p.id !== id);
+  savePosts();
+  renderPosts();
+}
+
+// ===== הורדת JSON =====
+function downloadJson() {
+  const blob = new Blob([JSON.stringify(posts, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'posts.json';
+  a.click();
+  showToast('posts.json הורד — החלף את הקובץ בתיקיית האתר');
+}
+
+// ===== תצוגת רשימה =====
+function renderPosts() {
+  const list  = document.getElementById('postsList');
+  const count = document.getElementById('postsCount');
+  count.textContent = posts.length ? `(${posts.length} פוסטים)` : '';
+
+  if (!posts.length) {
+    list.innerHTML = `<div class="empty-state"><i class="far fa-newspaper"></i><br>אין פוסטים עדיין. הוסף את הראשון!</div>`;
+    return;
+  }
+
+  list.innerHTML = posts.map(p => `
+    <div class="post-card">
+      ${p.image
+        ? `<img class="post-card-img" src="${p.image}" alt="" onerror="this.outerHTML='<div class=\\'post-card-img\\'>📰</div>'" />`
+        : `<div class="post-card-img">📰</div>`}
+      <div class="post-card-info">
+        <div class="post-card-title">${escHtml(p.title)}</div>
+        <div class="post-card-desc">${escHtml(p.desc.substring(0, 100))}${p.desc.length > 100 ? '...' : ''}</div>
+        <div class="post-card-meta">
+          <span class="category-badge">${escHtml(p.category)}</span>
+          <span class="post-date">${p.date}</span>
+          ${p.author ? `<span class="post-date">✍️ ${escHtml(p.author)}</span>` : ''}
+        </div>
+      </div>
+      <button class="delete-btn" onclick="deletePost(${p.id})">
+        <i class="fas fa-trash"></i> מחק
+      </button>
+    </div>
+  `).join('');
+}
+
+function escHtml(str) {
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ===== הודעת הצלחה =====
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>
