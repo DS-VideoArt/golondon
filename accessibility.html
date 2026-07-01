@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>הצהרת נגישות | גו לונדון</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Heebo', sans-serif; background: #0a0a1a; color: #e2e8f0; direction: rtl; line-height: 1.8; }
+    a { color: #f87171; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .navbar {
+      background: rgba(10,10,26,0.95); border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 24px; height: 64px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 100;
+    }
+    .logo { direction: ltr; font-size: 22px; font-weight: 900; text-decoration: none; }
+    .logo-go { color: #DC2626; }
+    .logo-london { color: #fff; }
+    .back-btn {
+      display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.6);
+      font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s;
+    }
+    .back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); text-decoration: none; }
+
+    .page-hero {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+      padding: 60px 24px; text-align: center;
+    }
+    .page-hero h1 { font-size: 36px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+    .page-hero p { color: rgba(255,255,255,0.6); font-size: 15px; }
+
+    .content { max-width: 780px; margin: 0 auto; padding: 60px 24px; }
+    .content h2 {
+      font-size: 20px; font-weight: 800; color: #fff;
+      margin: 40px 0 12px; padding-right: 14px;
+      border-right: 3px solid #1d4ed8;
+    }
+    .content h2:first-child { margin-top: 0; }
+    .content p { color: rgba(255,255,255,0.7); margin-bottom: 14px; font-size: 15px; }
+    .content ul { margin: 10px 0 14px 0; padding-right: 20px; color: rgba(255,255,255,0.7); font-size: 15px; }
+    .content ul li { margin-bottom: 8px; }
+
+    .level-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(29,78,216,0.2); border: 1px solid rgba(29,78,216,0.4);
+      border-radius: 12px; padding: 14px 20px; margin: 16px 0 24px;
+    }
+    .level-badge .level-icon { font-size: 28px; }
+    .level-badge .level-text strong { display: block; color: #fff; font-size: 16px; font-weight: 800; }
+    .level-badge .level-text span { color: rgba(255,255,255,0.6); font-size: 13px; }
+
+    .contact-box {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 22px 24px; margin: 24px 0;
+    }
+    .contact-box h3 { color: #fff; font-size: 16px; font-weight: 800; margin-bottom: 12px; }
+    .contact-box p { margin: 0; font-size: 14px; }
+
+    .updated { text-align: center; color: rgba(255,255,255,0.3); font-size: 13px; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.07); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo"><span class="logo-go">GO</span><span class="logo-london">LONDON</span></a>
+  <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> חזרה לדף הבית</a>
+</nav>
+
+<div class="page-hero">
+  <h1>♿ הצהרת נגישות</h1>
+  <p>עודכן לאחרונה: יולי 2026</p>
+</div>
+
+<div class="content">
+
+  <h2>מחויבותנו לנגישות</h2>
+  <p>גו לונדון שואף להנגיש את תכניו לכלל המשתמשים, לרבות אנשים עם מוגבלויות. אנו פועלים להתאים את האתר להנחיות WCAG 2.1 ולתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות) התשע"ג–2013.</p>
+
+  <div class="level-badge">
+    <div class="level-icon">♿</div>
+    <div class="level-text">
+      <strong>רמת נגישות: AA חלקי</strong>
+      <span>אנו בתהליך שיפור מתמיד לעמידה מלאה בתקן</span>
+    </div>
+  </div>
+
+  <h2>מה כבר נגיש באתר</h2>
+  <ul>
+    <li>ניווט מלא במקלדת בין רכיבי הדף</li>
+    <li>תגיות alt על תמונות משמעותיות</li>
+    <li>ניגודיות צבעים גבוהה בין טקסט ורקע</li>
+    <li>מבנה כותרות היררכי (H1, H2, H3)</li>
+    <li>תגיות ARIA על רכיבים אינטראקטיביים</li>
+    <li>תמיכה בגדלי גופן שונים דרך הדפדפן</li>
+    <li>הגדרת שפה (lang="he") ורכיב RTL</li>
+    <li>קישורי דילוג לתוכן הראשי</li>
+  </ul>
+
+  <h2>מה עוד בפיתוח</h2>
+  <ul>
+    <li>תיאורים מלאים לכל רכיבי המפה האינטראקטיבית</li>
+    <li>תמיכה מיטבית בקוראי מסך לכל הפופאפים</li>
+    <li>בדיקת נגישות מלאה על ידי גורם מוסמך</li>
+  </ul>
+
+  <h2>דפדפנים וטכנולוגיות נתמכות</h2>
+  <p>האתר נבדק ועובד על הדפדפנים הבאים:</p>
+  <ul>
+    <li>כרום (גרסה עדכנית)</li>
+    <li>ספארי (iOS ו-Mac)</li>
+    <li>פיירפוקס (גרסה עדכנית)</li>
+    <li>אדג' (גרסה עדכנית)</li>
+  </ul>
+
+  <h2>מצאת בעיית נגישות?</h2>
+  <div class="contact-box">
+    <h3>📬 דווח לנו</h3>
+    <p>אם נתקלת בבעיית נגישות או זקוק לתוכן בפורמט חלופי, פנה אלינו ונשתדל לסייע בהקדם:</p>
+    <p style="margin-top:10px"><strong style="color:#fff">מייל:</strong> <a href="mailto:videoartds@gmail.com">videoartds@gmail.com</a></p>
+    <p><strong style="color:#fff">זמן תגובה מצופה:</strong> עד 5 ימי עסקים</p>
+  </div>
+
+  <h2>בסיס חוקי</h2>
+  <p>הצהרה זו ניתנת בהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע"ג–2013, ולהנחיות WCAG 2.1 של ארגון W3C.</p>
+
+  <p class="updated">© 2026 גו לונדון · הצהרת נגישות</p>
+</div>
+
+</body>
+</html>
