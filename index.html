@@ -39,8 +39,11 @@
   <header class="navbar" id="navbar">
     <div class="container nav-inner">
       <div class="logo">
-        <span class="logo-go">GO</span><span class="logo-london">LONDON</span>
-        <span class="logo-il">לישראלים</span>
+        <img src="images/logo.png" alt="גו לונדון" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="logo-text-fallback">
+          <span class="logo-go">GO</span><span class="logo-london">LONDON</span>
+        </div>
+        <span class="logo-slogan">המדריך הישראלי ללונדון</span>
       </div>
       <nav class="nav-links">
         <a href="#categories">נושאים</a>
@@ -73,43 +76,22 @@
     <div class="hero-bg">
       <div class="hero-glow hero-glow--red"></div>
       <div class="hero-glow hero-glow--blue"></div>
-      <svg class="skyline" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="120" y="160" width="40" height="140" fill="rgba(255,255,255,0.12)"/>
-        <rect x="115" y="140" width="50" height="25" fill="rgba(255,255,255,0.12)"/>
-        <rect x="125" y="105" width="30" height="40" fill="rgba(255,255,255,0.12)"/>
-        <polygon points="140,75 125,115 155,115" fill="rgba(255,255,255,0.18)"/>
-        <rect x="10" y="210" width="80" height="90" fill="rgba(255,255,255,0.07)"/>
-        <rect x="80" y="230" width="50" height="70" fill="rgba(255,255,255,0.05)"/>
-        <rect x="160" y="190" width="180" height="110" fill="rgba(255,255,255,0.08)"/>
-        <rect x="170" y="175" width="10" height="20" fill="rgba(255,255,255,0.1)"/>
-        <rect x="195" y="175" width="10" height="20" fill="rgba(255,255,255,0.1)"/>
-        <rect x="220" y="175" width="10" height="20" fill="rgba(255,255,255,0.1)"/>
-        <rect x="245" y="175" width="10" height="20" fill="rgba(255,255,255,0.1)"/>
-        <rect x="270" y="175" width="10" height="20" fill="rgba(255,255,255,0.1)"/>
-        <rect x="295" y="175" width="10" height="20" fill="rgba(255,255,255,0.1)"/>
-        <circle cx="430" cy="185" r="70" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="5"/>
-        <line x1="430" y1="115" x2="430" y2="255" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
-        <line x1="360" y1="185" x2="500" y2="185" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
-        <line x1="380" y1="135" x2="480" y2="235" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
-        <line x1="480" y1="135" x2="380" y2="235" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
-        <rect x="425" y="250" width="10" height="50" fill="rgba(255,255,255,0.15)"/>
-        <rect x="510" y="200" width="60" height="100" fill="rgba(255,255,255,0.06)"/>
-        <rect x="560" y="175" width="45" height="125" fill="rgba(255,255,255,0.08)"/>
-        <rect x="600" y="210" width="70" height="90" fill="rgba(255,255,255,0.06)"/>
-        <polygon points="700,55 678,300 722,300" fill="rgba(255,255,255,0.16)"/>
-        <rect x="780" y="200" width="30" height="100" fill="rgba(255,255,255,0.13)"/>
-        <rect x="870" y="200" width="30" height="100" fill="rgba(255,255,255,0.13)"/>
-        <rect x="780" y="230" width="120" height="8" fill="rgba(255,255,255,0.18)"/>
-        <line x1="790" y1="195" x2="840" y2="230" stroke="rgba(255,255,255,0.18)" stroke-width="3"/>
-        <line x1="890" y1="195" x2="840" y2="230" stroke="rgba(255,255,255,0.18)" stroke-width="3"/>
-        <rect x="940" y="195" width="55" height="105" fill="rgba(255,255,255,0.07)"/>
-        <rect x="985" y="170" width="40" height="130" fill="rgba(255,255,255,0.09)"/>
-        <ellipse cx="1080" cy="165" rx="25" ry="120" fill="rgba(255,255,255,0.11)"/>
-        <rect x="1140" y="200" width="80" height="100" fill="rgba(255,255,255,0.06)"/>
-        <rect x="1200" y="175" width="50" height="125" fill="rgba(255,255,255,0.08)"/>
-        <rect x="1280" y="210" width="100" height="90" fill="rgba(255,255,255,0.05)"/>
-        <rect x="1350" y="185" width="90" height="115" fill="rgba(255,255,255,0.07)"/>
-        <rect x="0" y="300" width="1440" height="20" fill="rgba(255,255,255,0.06)"/>
+      <!-- דגל אנגליה דקורטיבי -->
+      <svg class="union-jack-overlay" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <!-- רקע כחול -->
+        <rect width="60" height="40" fill="#012169"/>
+        <!-- אלכסון לבן (X) -->
+        <line x1="0" y1="0" x2="60" y2="40" stroke="#fff" stroke-width="8"/>
+        <line x1="60" y1="0" x2="0" y2="40" stroke="#fff" stroke-width="8"/>
+        <!-- אלכסון אדום (X, קצת צדי) -->
+        <line x1="0" y1="0" x2="60" y2="40" stroke="#C8102E" stroke-width="4"/>
+        <line x1="60" y1="0" x2="0" y2="40" stroke="#C8102E" stroke-width="4"/>
+        <!-- + לבן -->
+        <rect x="24" y="0" width="12" height="40" fill="#fff"/>
+        <rect x="0" y="14" width="60" height="12" fill="#fff"/>
+        <!-- + אדום -->
+        <rect x="26" y="0" width="8" height="40" fill="#C8102E"/>
+        <rect x="0" y="16" width="60" height="8" fill="#C8102E"/>
       </svg>
     </div>
 
