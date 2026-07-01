@@ -35,10 +35,12 @@
       border-bottom: 1px solid rgba(255,255,255,0.07); padding: 0 32px; height: 64px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .logo { direction: ltr; font-size: 22px; font-weight: 900; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .logo-go { color: #DC2626; }
-    .logo-london { color: #fff; }
-    .logo-il { font-size: 12px; font-weight: 400; color: rgba(255,255,255,0.35); margin-right: 4px; }
+    .logo { direction: ltr; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-img { height: 44px; width: auto; object-fit: contain; mix-blend-mode: screen; }
+    .logo-text-fallback { display: none; align-items: baseline; gap: 2px; }
+    .logo-go { font-size: 22px; font-weight: 900; color: #DC2626; }
+    .logo-london { font-size: 22px; font-weight: 900; color: #fff; }
+    .logo-slogan { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.4); direction: rtl; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.15); padding-right: 10px; }
     .back-btn {
       display: flex; align-items: center; gap: 8px;
       color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; font-weight: 600;
@@ -191,8 +193,9 @@
 <!-- ניווט -->
 <nav class="navbar">
   <a href="index.html" class="logo">
-    <span class="logo-go">GO</span><span class="logo-london">LONDON</span>
-    <span class="logo-il">לישראלים</span>
+    <img src="images/logo.png" alt="גו לונדון" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <div class="logo-text-fallback"><span class="logo-go">GO</span><span class="logo-london">LONDON</span></div>
+    <span class="logo-slogan">המדריך הישראלי ללונדון</span>
   </a>
   <a href="index.html" class="back-btn">
     <i class="fas fa-arrow-right"></i> חזרה לדף הבית
