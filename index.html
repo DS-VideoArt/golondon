@@ -446,12 +446,17 @@
     <div class="container">
       <div class="banner-inner">
         <div class="banner-text">
-          <div class="banner-badge"><i class="fab fa-facebook"></i> קבוצת פייסבוק</div>
+          <div class="banner-badge"><i class="fas fa-users"></i> הקהילה שלנו</div>
           <h2>הקהילה הישראלית בלונדון</h2>
           <p>שאל שאלות, קבל עצות, מצא חברים — ביחד הרבה יותר קל</p>
-          <a href="https://www.facebook.com/groups/golondonisrael" target="_blank" class="btn btn-white btn-lg">
-            <i class="fab fa-facebook"></i> הצטרף בחינם
-          </a>
+          <div class="community-btns">
+            <a href="https://www.facebook.com/groups/golondonisrael" target="_blank" class="btn btn-white btn-lg">
+              <i class="fab fa-facebook"></i> פייסבוק
+            </a>
+            <a href="https://t.me/+Z3OeBIML7FBjOTFk" target="_blank" class="btn btn-telegram btn-lg">
+              <i class="fab fa-telegram-plane"></i> טלגרם
+            </a>
+          </div>
         </div>
         <div class="banner-visual">
           <div class="fb-bubble fb-bubble--1">🤔 כמה עולה שכירות בלונדון?</div>
@@ -522,8 +527,8 @@
           <p>המדריך הישראלי המלא ללונדון. כל המידע שצריך, בעברית, במקום אחד.</p>
           <div class="social-links">
             <a href="https://www.facebook.com/groups/golondonisrael" target="_blank" aria-label="פייסבוק"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://t.me/+Z3OeBIML7FBjOTFk" target="_blank" aria-label="טלגרם"><i class="fab fa-telegram-plane"></i></a>
             <a href="#" aria-label="אינסטגרם"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="וואטסאפ"><i class="fab fa-whatsapp"></i></a>
             <a href="#" aria-label="טיקטוק"><i class="fab fa-tiktok"></i></a>
           </div>
         </div>
@@ -553,6 +558,7 @@
           <h4>צור קשר</h4>
           <ul class="contact-list">
             <li><i class="fab fa-facebook"></i><a href="https://www.facebook.com/groups/golondonisrael" target="_blank">קבוצת הפייסבוק</a></li>
+            <li><i class="fab fa-telegram-plane" style="color:#29b6f6"></i><a href="https://t.me/+Z3OeBIML7FBjOTFk" target="_blank">קבוצת הטלגרם</a></li>
             <li><i class="far fa-envelope"></i><a href="mailto:info@golondon.co.il">info@golondon.co.il</a></li>
           </ul>
           <h4 style="margin-top:24px">מידע משפטי</h4>
@@ -581,14 +587,46 @@
   <!-- באנר מרחף מפת כשרות -->
   <div class="kosher-float" id="kosherFloat">
     <button class="kosher-float-close" onclick="closeKosherBanner()" aria-label="סגור">✕</button>
-    <div class="kosher-float-content">
-      <span class="kosher-float-badge">🆕 חדש</span>
+
+    <!-- מובייל בלבד -->
+    <div class="kosher-float-mobile">
       <div class="kosher-float-icon">🗺️</div>
       <div class="kosher-float-text">
-        <strong>מפת כשרות לונדון</strong>
+        <strong>🆕 מפת כשרות לונדון</strong>
         <span>54 מקומות כשרים עם ניווט וויז</span>
       </div>
-      <a href="kosher-map.html" class="kosher-float-btn">פתח את המפה</a>
+      <a href="kosher-map.html" class="kosher-float-btn">פתח</a>
+    </div>
+
+    <!-- דסקטופ בלבד -->
+    <div class="kosher-float-desktop">
+      <div class="kfd-visual">
+        <div class="kfd-map-emoji">🗺️</div>
+        <div class="kfd-dots">
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="kfd-body">
+        <span class="kfd-badge">🆕 חדש באתר</span>
+        <h3 class="kfd-title">מפת כשרות<br/>לונדון</h3>
+        <p class="kfd-sub">המדריך הכשר המלא לבירה הבריטית</p>
+        <div class="kfd-stats">
+          <div class="kfd-stat"><span class="kfd-stat-num">54</span><span class="kfd-stat-label">מקומות</span></div>
+          <div class="kfd-stat-div"></div>
+          <div class="kfd-stat"><span class="kfd-stat-num">3</span><span class="kfd-stat-label">קטגוריות</span></div>
+        </div>
+        <ul class="kfd-features">
+          <li><i class="fas fa-check-circle"></i> ניווט ישיר בוויז</li>
+          <li><i class="fas fa-check-circle"></i> בשרי · חלבי · מאפיות</li>
+          <li><i class="fas fa-check-circle"></i> כתובות ומידע כשרות</li>
+        </ul>
+        <a href="kosher-map.html" class="kfd-btn">
+          <i class="fas fa-map-marked-alt"></i> פתח את המפה
+        </a>
+        <p class="kfd-free">חינמי לחלוטין</p>
+      </div>
     </div>
   </div>
 

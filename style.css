@@ -626,50 +626,116 @@ a { text-decoration: none; color: inherit; }
 }
 .kosher-float-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(239,68,68,0.5); }
 
-/* באנר כשרות — דסקטופ: סרגל אנכי בצד */
+/* באנר כשרות — מובייל: הסתר את גרסת הדסקטופ */
+.kosher-float-desktop { display: none; }
+.kosher-float-mobile { display: contents; }
+
+/* באנר כשרות — דסקטופ: באנר פרסומי אנכי גבוה */
 @media (min-width: 700px) {
   .kosher-float {
     bottom: auto; left: auto;
     right: 0; top: 50%;
-    transform: translateY(-50%) translateX(100%);
-    width: 168px; max-width: 168px;
-    flex-direction: column; align-items: center;
-    padding: 22px 16px 18px; gap: 14px;
+    transform: translateY(-50%) translateX(105%);
+    width: 220px; max-width: 220px;
+    flex-direction: column; align-items: stretch;
+    padding: 0; gap: 0;
     border-radius: 20px 0 0 20px;
-    box-shadow: -6px 0 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08),
-                -6px 0 50px rgba(139,92,246,0.35);
-    text-align: center;
+    overflow: hidden;
+    box-shadow: -8px 0 48px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.1),
+                -8px 0 60px rgba(139,92,246,0.4);
   }
   .kosher-float--visible {
     transform: translateY(-50%) translateX(0);
     opacity: 1; pointer-events: all;
   }
   .kosher-float-close {
-    position: static; order: -1;
-    align-self: flex-start;
-    width: 24px; height: 24px; font-size: 11px;
+    position: absolute; top: 10px; left: 10px; z-index: 2;
+    width: 26px; height: 26px; font-size: 11px;
+    background: rgba(0,0,0,0.35);
   }
-  .kosher-float-badge {
+  .kosher-float-mobile { display: none; }
+  .kosher-float-desktop { display: flex; flex-direction: column; align-items: stretch; }
+
+  /* חלק ויזואלי עליון */
+  .kfd-visual {
+    background: linear-gradient(160deg, #0f0f24 0%, #1e1040 60%, #2d1b69 100%);
+    padding: 36px 20px 28px;
+    display: flex; flex-direction: column; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .kfd-visual::before {
+    content: ''; position: absolute; top: -30px; right: -30px;
+    width: 120px; height: 120px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(139,92,246,0.35), transparent 70%);
+  }
+  .kfd-visual::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  }
+  .kfd-map-emoji {
+    font-size: 64px; line-height: 1; position: relative; z-index: 1;
+    filter: drop-shadow(0 6px 20px rgba(139,92,246,0.6));
+  }
+  .kfd-dots {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 5px;
+    margin-top: 16px; opacity: 0.3;
+  }
+  .kfd-dots span {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: #fff; display: block;
+  }
+
+  /* גוף הבאנר */
+  .kfd-body {
+    background: linear-gradient(180deg, #1a1040 0%, #0f0f24 100%);
+    padding: 20px 18px 22px;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; gap: 12px;
+  }
+  .kfd-badge {
     display: inline-block;
-    background: linear-gradient(135deg, #ef4444, #f59e0b);
+    background: linear-gradient(135deg, #7c3aed, #ef4444);
     color: #fff; font-size: 10px; font-weight: 900;
-    padding: 3px 10px; border-radius: 50px; letter-spacing: 0.5px;
+    padding: 4px 12px; border-radius: 50px; letter-spacing: 0.5px;
   }
-  .kosher-float-icon { font-size: 40px; }
-  .kosher-float-content { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-  .kosher-float-text { flex: none; }
-  .kosher-float-text strong {
-    font-size: 13px; white-space: normal; line-height: 1.3;
-    margin-bottom: 4px;
+  .kfd-title {
+    font-size: 22px; font-weight: 900; color: #fff; line-height: 1.2;
+    margin: 0;
   }
-  .kosher-float-text span {
-    font-size: 11px; white-space: normal; overflow: visible; text-overflow: unset;
-    line-height: 1.4;
+  .kfd-sub {
+    font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; margin: 0;
   }
-  .kosher-float-btn {
-    width: 100%; text-align: center;
-    border-radius: 12px; padding: 11px 8px;
-    font-size: 14px;
+  .kfd-stats {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    background: rgba(255,255,255,0.06); border-radius: 12px;
+    padding: 10px 16px; width: 100%;
+  }
+  .kfd-stat { text-align: center; }
+  .kfd-stat-num { display: block; font-size: 22px; font-weight: 900; color: #fff; line-height: 1; }
+  .kfd-stat-label { font-size: 10px; color: rgba(255,255,255,0.45); }
+  .kfd-stat-div { width: 1px; height: 28px; background: rgba(255,255,255,0.12); }
+  .kfd-features {
+    list-style: none; padding: 0; margin: 0; width: 100%;
+    display: flex; flex-direction: column; gap: 7px;
+    text-align: right;
+  }
+  .kfd-features li {
+    font-size: 12px; color: rgba(255,255,255,0.65);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .kfd-features li i { color: #4ade80; font-size: 11px; flex-shrink: 0; }
+  .kfd-btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 13px;
+    background: linear-gradient(135deg, #7c3aed, #ef4444);
+    color: #fff; font-family: 'Heebo', sans-serif; font-size: 15px; font-weight: 800;
+    border-radius: 12px; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(124,58,237,0.45);
+    transition: all 0.2s;
+  }
+  .kfd-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,58,237,0.6); }
+  .kfd-free {
+    font-size: 11px; color: rgba(255,255,255,0.3); margin: 0;
   }
 }
 
@@ -762,4 +828,14 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 500px) {
   .club-section { padding: 60px 0; }
   .club-card { width: 220px; padding: 28px 24px; }
+}
+
+/* ===== כפתור טלגרם וכפתורי קהילה ===== */
+.btn-telegram {
+  background: linear-gradient(135deg, #0088cc, #29b6f6);
+  color: #fff !important; border-color: transparent;
+}
+.btn-telegram:hover { background: linear-gradient(135deg, #006699, #0288d1); }
+.community-btns {
+  display: flex; gap: 12px; flex-wrap: wrap;
 }
