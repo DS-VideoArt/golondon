@@ -122,12 +122,11 @@ a { text-decoration: none; color: inherit; }
 }
 .union-jack-overlay {
   position: absolute;
-  left: -80px; top: 50%;
-  transform: translateY(-50%) rotate(-15deg);
-  width: 420px; height: 280px;
-  opacity: 0.07;
+  right: -60px; top: 50%;
+  transform: translateY(-50%) rotate(12deg);
+  width: 520px; height: 346px;
+  opacity: 0.18;
   pointer-events: none;
-  filter: blur(0.5px);
 }
 .hero-content { position: relative; z-index: 1; text-align: center; padding: 80px 24px 180px; }
 .hero-badge {
@@ -526,8 +525,8 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 900px) {
   .nav-links, .nav-cta { display: none; }
   .burger { display: flex; }
-  .cat-row--hero { grid-template-columns: 1fr; }
-  .cat-row--2 { grid-template-columns: 1fr; }
+  .cat-row--hero { grid-template-columns: repeat(2, 1fr); }
+  .cat-row--2 { grid-template-columns: repeat(2, 1fr); }
   .articles-grid { grid-template-columns: 1fr; }
   .article-card--featured { grid-row: span 1; }
   .article-card--featured .article-img { height: 200px; }
@@ -538,16 +537,28 @@ a { text-decoration: none; color: inherit; }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
-  .cat-row--4 { grid-template-columns: 1fr; }
+  .cat-row { gap: 10px; margin-bottom: 10px; }
+  .cat-row--4 { grid-template-columns: repeat(2, 1fr); }
+  .cat-row--hero { grid-template-columns: repeat(2, 1fr); }
+  .cat-row--2 { grid-template-columns: repeat(2, 1fr); }
+
+  .cat-card { padding: 16px 14px; border-radius: 14px; gap: 6px; }
+  .cat-card--large { min-height: 130px; }
+  .cat-card--large .cat-emoji { font-size: 28px; }
+  .cat-card--large h3 { font-size: 14px; }
+  .cat-card--med { min-height: 110px; }
+  .cat-card--med .cat-emoji { font-size: 24px; }
+  .cat-card--med h3 { font-size: 13px; }
+  .cat-sub { display: none; }
+  .cat-link { font-size: 11px; margin-top: 4px; }
+
   .routes-grid { grid-template-columns: repeat(2, 1fr); }
-  .hero-stats .stat { padding: 0 20px; }
-  .hero-stats .stat strong { font-size: 28px; }
   .hero-actions { flex-direction: column; align-items: stretch; }
   .hero-actions .btn { justify-content: center; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-brand { grid-column: span 1; }
   .footer-bottom { flex-direction: column; text-align: center; }
-  .why-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
   .newsletter-inner { flex-direction: column; align-items: flex-start; }
   .newsletter-form { width: 100%; }
   .newsletter-form input { width: 100%; }
