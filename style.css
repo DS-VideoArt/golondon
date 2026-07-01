@@ -527,9 +527,16 @@ a { text-decoration: none; color: inherit; }
   .burger { display: flex; }
   .cat-row--hero { grid-template-columns: repeat(2, 1fr); }
   .cat-row--2 { grid-template-columns: repeat(2, 1fr); }
-  .articles-grid { grid-template-columns: 1fr; }
+  .articles-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .article-card--featured { grid-row: span 1; }
-  .article-card--featured .article-img { height: 200px; }
+  .article-card--featured .article-img { height: 90px; }
+  .article-img { height: 90px; padding: 10px; }
+  .article-body { padding: 12px; }
+  .article-body h3 { font-size: 13px; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .article-card--featured .article-body h3 { font-size: 13px; }
+  .article-body p { display: none; }
+  .article-meta { font-size: 11px; gap: 8px; }
+  .article-category-tag { font-size: 10px; padding: 3px 8px; }
   .banner-inner { flex-direction: column; }
   .banner-visual { display: none; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
