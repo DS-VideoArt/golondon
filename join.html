@@ -282,11 +282,22 @@
 </div>
 
 <script>
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwko0el5Yc8eTi4MyX1msuQG5_2vOsxYCFRhVKyFP2ASmEslixgPowLxZtZ2mwVG09vsg/exec';
+
 function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
   const data = new FormData(form);
 
+  // שמירה ב-Google Sheets
+  fetch(SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(data).toString()
+  });
+
+  // גיבוי ב-Netlify Forms
   fetch('/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
