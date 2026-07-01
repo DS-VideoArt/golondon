@@ -580,3 +580,63 @@ a { text-decoration: none; color: inherit; }
   .newsletter-form { width: 100%; }
   .newsletter-form input { width: 100%; }
 }
+
+/* ===== באנר מרחף מפת כשרות ===== */
+.kosher-float {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(120px);
+  z-index: 9999; width: calc(100% - 32px); max-width: 480px;
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+  border-radius: 20px; padding: 18px 20px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1),
+              0 0 30px rgba(16,185,129,0.25);
+  display: flex; flex-direction: column; gap: 14px;
+  opacity: 0; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease;
+  pointer-events: none;
+}
+.kosher-float--visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1; pointer-events: all;
+}
+.kosher-float-close {
+  position: absolute; top: 12px; left: 14px;
+  background: rgba(255,255,255,0.15); border: none; color: #fff;
+  width: 26px; height: 26px; border-radius: 50%; font-size: 12px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.kosher-float-close:hover { background: rgba(255,255,255,0.3); }
+.kosher-float-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.2); color: #fff;
+  font-size: 11px; font-weight: 800; padding: 3px 12px;
+  border-radius: 50px; width: fit-content;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+@keyframes badge-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.3); }
+  50% { box-shadow: 0 0 0 6px rgba(255,255,255,0); }
+}
+.kosher-float-content {
+  display: flex; align-items: center; gap: 14px;
+}
+.kosher-float-icon {
+  font-size: 36px; line-height: 1; flex-shrink: 0;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+.kosher-float-text { flex: 1; }
+.kosher-float-text strong {
+  display: block; font-size: 17px; font-weight: 900; color: #fff; margin-bottom: 3px;
+}
+.kosher-float-text span {
+  font-size: 13px; color: rgba(255,255,255,0.75);
+}
+.kosher-float-btn {
+  display: block; text-align: center;
+  background: #fff; color: #065f46;
+  font-weight: 800; font-size: 15px;
+  padding: 12px; border-radius: 12px;
+  text-decoration: none; transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.kosher-float-btn:hover { background: #ecfdf5; transform: translateY(-1px); }

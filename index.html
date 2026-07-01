@@ -536,6 +536,36 @@
     </div>
   </footer>
 
+  <!-- באנר מרחף מפת כשרות -->
+  <div class="kosher-float" id="kosherFloat">
+    <button class="kosher-float-close" onclick="closeKosherBanner()" aria-label="סגור">✕</button>
+    <div class="kosher-float-badge">🆕 חדש!</div>
+    <div class="kosher-float-content">
+      <div class="kosher-float-icon">🗺️</div>
+      <div class="kosher-float-text">
+        <strong>מפת כשרות לונדון</strong>
+        <span>54 מסעדות ומאפיות כשרות עם ניווט וויז</span>
+      </div>
+    </div>
+    <a href="kosher-map.html" class="kosher-float-btn">פתח את המפה</a>
+  </div>
+
   <script src="script.js"></script>
+  <script>
+    // באנר מפת כשרות
+    (function() {
+      if (localStorage.getItem('kosherBannerClosed')) return;
+      setTimeout(function() {
+        document.getElementById('kosherFloat').classList.add('kosher-float--visible');
+      }, 2000);
+    })();
+    function closeKosherBanner() {
+      document.getElementById('kosherFloat').classList.remove('kosher-float--visible');
+      setTimeout(function() {
+        document.getElementById('kosherFloat').style.display = 'none';
+      }, 400);
+      localStorage.setItem('kosherBannerClosed', '1');
+    }
+  </script>
 </body>
 </html>
