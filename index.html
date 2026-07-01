@@ -111,10 +111,13 @@
         מידע, טיפים ומסלולים — הכל בעברית, הכל במקום אחד
       </p>
       <div class="hero-actions">
-        <a href="#categories" class="btn btn-red btn-lg btn-glow">
+        <a href="#categories" class="btn btn-red btn-glow">
           <i class="fas fa-compass"></i> גלה את המדריכים
         </a>
-        <a href="https://www.facebook.com/groups/golondonisrael" target="_blank" class="btn btn-outline btn-lg">
+        <a href="join.html" class="btn btn-hero-club">
+          <i class="fas fa-star"></i> הצטרף למועדון
+        </a>
+        <a href="https://www.facebook.com/groups/golondonisrael" target="_blank" class="btn btn-outline btn-hero-sm">
           <i class="fab fa-facebook"></i> קהילת הפייסבוק
         </a>
       </div>
@@ -633,19 +636,15 @@
 
   <script src="script.js"></script>
   <script>
-    // באנר מפת כשרות
-    (function() {
-      if (localStorage.getItem('kosherBannerClosed')) return;
-      setTimeout(function() {
-        document.getElementById('kosherFloat').classList.add('kosher-float--visible');
-      }, 2000);
-    })();
+    // באנר מפת כשרות — מופיע בכל רענון
+    setTimeout(function() {
+      document.getElementById('kosherFloat').classList.add('kosher-float--visible');
+    }, 2000);
     function closeKosherBanner() {
       document.getElementById('kosherFloat').classList.remove('kosher-float--visible');
       setTimeout(function() {
         document.getElementById('kosherFloat').style.display = 'none';
       }, 400);
-      localStorage.setItem('kosherBannerClosed', '1');
     }
   </script>
 </body>

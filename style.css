@@ -163,8 +163,18 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-actions {
   display: flex; align-items: center; justify-content: center;
-  gap: 16px; flex-wrap: wrap; margin-bottom: 60px;
+  gap: 12px; flex-wrap: wrap; margin-bottom: 60px;
   animation: fadeInUp 0.7s ease 0.3s both;
+}
+.btn-hero-club {
+  background: linear-gradient(135deg, #d97706, #DC2626);
+  color: #fff; padding: 12px 22px; font-size: 15px; font-weight: 800;
+  border-radius: 50px; box-shadow: 0 4px 18px rgba(217,119,6,0.4);
+  transition: all 0.3s;
+}
+.btn-hero-club:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(217,119,6,0.55); }
+.btn-hero-sm {
+  padding: 10px 20px; font-size: 14px;
 }
 .hero-stats {
   display: flex; align-items: center; justify-content: center;
