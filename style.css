@@ -537,6 +537,15 @@ a { text-decoration: none; color: inherit; }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
+  .topbar-label { display: none; }
+  .topbar-item#tb-time .topbar-label,
+  .topbar-item#tb-weather .topbar-label { display: none; }
+  #tb-time span:not(#london-time) { display: none; }
+  #tb-weather span:not(#weather-icon):not(#weather-temp) { display: none; }
+  #tb-rate .topbar-label { display: none; }
+  .gbp-symbol { display: none; }
+  #tb-rate::before { content: '£'; color: #4ade80; font-weight: 800; font-size: 14px; }
+
   .cat-row { gap: 10px; margin-bottom: 10px; }
   .cat-row--4 { grid-template-columns: repeat(2, 1fr); }
   .cat-row--hero { grid-template-columns: repeat(2, 1fr); }
