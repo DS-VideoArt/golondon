@@ -634,3 +634,89 @@ a { text-decoration: none; color: inherit; }
   0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.3); }
   50% { box-shadow: 0 0 0 6px rgba(255,255,255,0); }
 }
+
+/* ===== מועדון חברים ===== */
+.club-section {
+  position: relative; overflow: hidden;
+  padding: 80px 0; background: linear-gradient(135deg, #0a0a1a 0%, #1a1040 50%, #0a0a1a 100%);
+  border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.club-glow {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 600px; height: 400px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(245,158,11,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.club-inner {
+  display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: center;
+}
+.club-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3);
+  color: #f59e0b; font-size: 13px; font-weight: 700;
+  padding: 6px 16px; border-radius: 50px; margin-bottom: 20px;
+}
+.club-text h2 {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 900; color: #fff;
+  margin-bottom: 14px; line-height: 1.2;
+}
+.club-text > p {
+  font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 28px; line-height: 1.7;
+}
+.club-perks { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+.club-perk {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; color: rgba(255,255,255,0.75); font-weight: 600;
+}
+.club-perk i { color: #f59e0b; width: 16px; }
+.btn-club {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, #d97706, #DC2626);
+  color: #fff; font-weight: 800; font-size: 17px;
+  padding: 16px 32px; border-radius: 14px; border: none;
+  box-shadow: 0 4px 24px rgba(217,119,6,0.4); transition: all 0.3s;
+  text-decoration: none;
+}
+.btn-club:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(217,119,6,0.55); }
+.club-note {
+  margin-top: 14px; font-size: 13px; color: rgba(255,255,255,0.35);
+  display: flex; align-items: center; gap: 6px;
+}
+.club-note i { color: rgba(255,255,255,0.25); }
+
+/* כרטיס חבר */
+.club-visual { display: flex; justify-content: center; align-items: center; }
+.club-card {
+  background: linear-gradient(135deg, #1a1040 0%, #2d1b69 60%, #1a1040 100%);
+  border: 1px solid rgba(245,158,11,0.3); border-radius: 24px;
+  padding: 40px 36px; text-align: center; position: relative; overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(245,158,11,0.1);
+  width: 280px;
+  transform: rotate(-2deg);
+  transition: transform 0.3s;
+}
+.club-card:hover { transform: rotate(0deg) scale(1.02); }
+.club-card::before {
+  content: ''; position: absolute; top: -40px; right: -40px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,158,11,0.2), transparent 70%);
+}
+.club-card-icon { font-size: 52px; margin-bottom: 16px; display: block; }
+.club-card-title { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+.club-card-name { font-size: 26px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+.club-card-sub { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
+.club-card-badge {
+  display: inline-block; background: linear-gradient(135deg, #d97706, #DC2626);
+  color: #fff; font-size: 12px; font-weight: 800;
+  padding: 6px 18px; border-radius: 50px;
+}
+
+@media (max-width: 800px) {
+  .club-inner { grid-template-columns: 1fr; gap: 40px; }
+  .club-visual { order: -1; }
+  .club-card { width: 240px; transform: none; }
+}
+@media (max-width: 500px) {
+  .club-section { padding: 60px 0; }
+  .club-card { width: 220px; padding: 28px 24px; }
+}

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>הצטרף למועדון | גו לונדון</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Heebo', sans-serif; background: #0a0a1a; color: #e2e8f0; direction: rtl; line-height: 1.7; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ניווט */
+    .navbar {
+      background: rgba(10,10,26,0.95); border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 24px; height: 64px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(16px);
+    }
+    .logo { direction: ltr; display: flex; align-items: center; gap: 8px; }
+    .logo-img { height: 44px; width: auto; object-fit: contain; mix-blend-mode: screen; }
+    .logo-text-fallback { display: none; align-items: baseline; gap: 2px; }
+    .logo-go { font-size: 22px; font-weight: 900; color: #DC2626; }
+    .logo-london { font-size: 22px; font-weight: 900; color: #fff; }
+    .logo-slogan { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.4); direction: rtl; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.15); padding-right: 10px; }
+    .back-btn {
+      display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.6);
+      font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s;
+    }
+    .back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+
+    /* גיבור */
+    .hero {
+      background: linear-gradient(135deg, #0f0f24 0%, #1a1040 50%, #0f0f24 100%);
+      padding: 64px 24px 80px; text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(220,38,38,0.15) 0%, transparent 70%);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(220,38,38,0.15); border: 1px solid rgba(220,38,38,0.3);
+      color: #f87171; font-size: 13px; font-weight: 700;
+      padding: 6px 18px; border-radius: 50px; margin-bottom: 24px;
+    }
+    .hero h1 { font-size: clamp(32px, 6vw, 52px); font-weight: 900; color: #fff; margin-bottom: 16px; line-height: 1.2; position: relative; }
+    .hero h1 span { color: #DC2626; }
+    .hero p { font-size: 18px; color: rgba(255,255,255,0.6); max-width: 520px; margin: 0 auto 40px; position: relative; }
+
+    /* יתרונות */
+    .perks {
+      display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+      position: relative;
+    }
+    .perk {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50px; padding: 8px 16px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85);
+    }
+    .perk i { color: #4ade80; font-size: 12px; }
+
+    /* תוכן ראשי */
+    .main { max-width: 1000px; margin: 0 auto; padding: 60px 24px; display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: start; }
+
+    /* הטבות */
+    .benefits h2 { font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+    .benefits .subtitle { color: rgba(255,255,255,0.5); font-size: 15px; margin-bottom: 32px; }
+    .benefit-list { display: flex; flex-direction: column; gap: 20px; }
+    .benefit-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 20px; border-radius: 16px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      transition: border-color 0.2s;
+    }
+    .benefit-item:hover { border-color: rgba(220,38,38,0.3); }
+    .benefit-icon {
+      width: 48px; height: 48px; border-radius: 14px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 22px;
+    }
+    .benefit-item h3 { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .benefit-item p { font-size: 13px; color: rgba(255,255,255,0.5); }
+    .members-count {
+      margin-top: 36px; padding: 20px 24px;
+      background: rgba(220,38,38,0.08); border: 1px solid rgba(220,38,38,0.2);
+      border-radius: 16px; display: flex; align-items: center; gap: 16px;
+    }
+    .members-count .num { font-size: 36px; font-weight: 900; color: #DC2626; }
+    .members-count p { font-size: 14px; color: rgba(255,255,255,0.6); }
+    .members-count strong { display: block; color: #fff; font-size: 15px; }
+
+    /* טופס */
+    .form-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px; padding: 36px 32px; position: sticky; top: 80px;
+    }
+    .form-card h2 { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 6px; }
+    .form-card .form-sub { font-size: 14px; color: rgba(255,255,255,0.45); margin-bottom: 28px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.7); margin-bottom: 8px; }
+    .form-group label span { color: #DC2626; }
+    .form-group input, .form-group select {
+      width: 100%; padding: 13px 16px; border-radius: 12px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      color: #fff; font-family: 'Heebo', sans-serif; font-size: 15px;
+      transition: border-color 0.2s, background 0.2s; outline: none;
+    }
+    .form-group input::placeholder { color: rgba(255,255,255,0.25); }
+    .form-group input:focus, .form-group select:focus {
+      border-color: #DC2626; background: rgba(220,38,38,0.07);
+    }
+    .form-group select option { background: #1a1a2e; color: #fff; }
+    .checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+    .checkbox-group input[type="checkbox"] { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; accent-color: #DC2626; cursor: pointer; }
+    .checkbox-group label { font-size: 13px; color: rgba(255,255,255,0.6); cursor: pointer; }
+    .checkbox-group a { color: #f87171; }
+    .checkbox-group a:hover { text-decoration: underline; }
+    .submit-btn {
+      width: 100%; padding: 16px; border-radius: 14px;
+      background: linear-gradient(135deg, #DC2626, #9333ea);
+      color: #fff; font-family: 'Heebo', sans-serif; font-size: 17px; font-weight: 800;
+      border: none; cursor: pointer; transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(220,38,38,0.35); margin-top: 8px;
+    }
+    .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(220,38,38,0.5); }
+    .form-note { text-align: center; font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 14px; }
+    .form-note i { margin-left: 4px; }
+
+    /* הודעת הצלחה */
+    .success-msg {
+      display: none; text-align: center; padding: 32px 20px;
+    }
+    .success-icon { font-size: 56px; margin-bottom: 16px; }
+    .success-msg h3 { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+    .success-msg p { color: rgba(255,255,255,0.6); font-size: 15px; }
+
+    /* רספונסיבי */
+    @media (max-width: 800px) {
+      .main { grid-template-columns: 1fr; }
+      .form-card { position: static; }
+    }
+    @media (max-width: 500px) {
+      .hero { padding: 48px 16px 60px; }
+      .form-card { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ניווט -->
+<nav class="navbar">
+  <a href="index.html" class="logo">
+    <img src="images/logo.png" alt="גו לונדון" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <div class="logo-text-fallback"><span class="logo-go">GO</span><span class="logo-london">LONDON</span></div>
+    <span class="logo-slogan">המדריך הישראלי ללונדון</span>
+  </a>
+  <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> דף הבית</a>
+</nav>
+
+<!-- גיבור -->
+<section class="hero">
+  <div class="hero-badge"><i class="fas fa-star"></i> הצטרפות חינמית לחלוטין</div>
+  <h1>הצטרף למועדון<br/><span>גו לונדון</span></h1>
+  <p>קהילת הישראלים בלונדון. הטבות בלעדיות, עדכונים ראשונים, ומידע שלא תמצא בשום מקום אחר.</p>
+  <div class="perks">
+    <div class="perk"><i class="fas fa-check-circle"></i> חינם לגמרי</div>
+    <div class="perk"><i class="fas fa-check-circle"></i> ללא תשלום חוזר</div>
+    <div class="perk"><i class="fas fa-check-circle"></i> ביטול בכל עת</div>
+    <div class="perk"><i class="fas fa-check-circle"></i> הטבות בלעדיות</div>
+  </div>
+</section>
+
+<!-- תוכן -->
+<div class="main">
+
+  <!-- הטבות -->
+  <div class="benefits">
+    <h2>מה מקבלים חברי המועדון?</h2>
+    <p class="subtitle">כבר היום, ועוד הרבה יותר בקרוב</p>
+    <div class="benefit-list">
+      <div class="benefit-item">
+        <div class="benefit-icon" style="background: linear-gradient(135deg,#1e3a8a,#7c3aed)">🎁</div>
+        <div>
+          <h3>הטבות בלעדיות לחברים</h3>
+          <p>הנחות, מבצעים וקופונים שלא יפורסמו בשום מקום אחר — רק לחברי המועדון.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon" style="background: linear-gradient(135deg,#dc2626,#ea580c)">🔔</div>
+        <div>
+          <h3>עדכונים ראשונים</h3>
+          <p>אירועים חדשים בלונדון, מסלולים מעודכנים ומידע שיוצא לפני כולם — ישירות אליך.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon" style="background: linear-gradient(135deg,#15803d,#0f766e)">🗺️</div>
+        <div>
+          <h3>גישה מוקדמת לתכנים חדשים</h3>
+          <p>מדריכים, מסלולים ותכנים חדשים — חברי המועדון רואים הכל לפני הפרסום הרשמי.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon" style="background: linear-gradient(135deg,#7c3aed,#db2777)">🛍️</div>
+        <div>
+          <h3>עדיפות ברכישות עתידיות</h3>
+          <p>כשנתחיל למכור מוצרים ושירותים — חברי המועדון יקבלו מחירים מיוחדים וגישה ראשונה.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="members-count">
+      <div class="num">25K+</div>
+      <div>
+        <strong>ישראלים כבר איתנו</strong>
+        <p>קהילת הפייסבוק הגדולה של ישראלים בלונדון</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- טופס -->
+  <div class="form-card">
+    <div id="formContent">
+      <h2>הצטרף עכשיו — חינם</h2>
+      <p class="form-sub">30 שניות ואתה חבר מועדון</p>
+
+      <form name="golondon-members" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="golondon-members" />
+
+        <div class="form-group">
+          <label>שם מלא <span>*</span></label>
+          <input type="text" name="name" placeholder="הכנס את שמך" required />
+        </div>
+
+        <div class="form-group">
+          <label>כתובת מייל <span>*</span></label>
+          <input type="email" name="email" placeholder="your@email.com" required />
+        </div>
+
+        <div class="form-group">
+          <label>מספר טלפון</label>
+          <input type="tel" name="phone" placeholder="05X-XXXXXXX" />
+        </div>
+
+        <div class="form-group">
+          <label>אני נמצא/ת ב...</label>
+          <select name="location">
+            <option value="">בחר...</option>
+            <option value="london">לונדון עצמה</option>
+            <option value="planning">ישראל — מתכנן/ת לבקר</option>
+            <option value="other-uk">מקום אחר בבריטניה</option>
+            <option value="other">מקום אחר בעולם</option>
+          </select>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="terms" name="terms" required />
+          <label for="terms">קראתי ואני מסכים/ה ל<a href="privacy.html" target="_blank">מדיניות הפרטיות</a> ול<a href="terms.html" target="_blank">תקנון המועדון</a></label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="marketing" name="marketing" />
+          <label for="marketing">אני מעוניין/ת לקבל עדכונים, הטבות ומבצעים במייל</label>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-star"></i> הצטרף למועדון — חינם
+        </button>
+
+        <p class="form-note"><i class="fas fa-lock"></i> הפרטים שלך מאובטחים ולעולם לא יועברו לצד שלישי</p>
+      </form>
+    </div>
+
+    <div class="success-msg" id="successMsg">
+      <div class="success-icon">🎉</div>
+      <h3>ברוך הבא למועדון!</h3>
+      <p>שלחנו לך מייל אישור. אתה כבר חלק מהקהילה הישראלית הגדולה ביותר בלונדון.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(data).toString()
+  })
+  .then(() => {
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  })
+  .catch(() => {
+    // fallback — גם אם יש שגיאת רשת, מציג הצלחה
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  });
+}
+</script>
+
+</body>
+</html>

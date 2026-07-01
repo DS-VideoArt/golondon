@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>תקנון מועדון חברים | גו לונדון</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Heebo', sans-serif; background: #0a0a1a; color: #e2e8f0; direction: rtl; line-height: 1.8; }
+    a { color: #f87171; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .navbar {
+      background: rgba(10,10,26,0.95); border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 24px; height: 64px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 100;
+    }
+    .logo { direction: ltr; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-img { height: 44px; width: auto; object-fit: contain; mix-blend-mode: screen; }
+    .logo-text-fallback { display: none; align-items: baseline; gap: 2px; }
+    .logo-go { font-size: 22px; font-weight: 900; color: #DC2626; }
+    .logo-london { font-size: 22px; font-weight: 900; color: #fff; }
+    .logo-slogan { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.4); direction: rtl; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.15); padding-right: 10px; }
+    .back-btn {
+      display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.6);
+      font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s;
+    }
+    .back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); text-decoration: none; }
+
+    .page-hero {
+      background: linear-gradient(135deg, #1a1040 0%, #2d1b69 100%);
+      padding: 60px 24px; text-align: center;
+    }
+    .page-hero h1 { font-size: 36px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+    .page-hero p { color: rgba(255,255,255,0.6); font-size: 15px; }
+
+    .content { max-width: 780px; margin: 0 auto; padding: 60px 24px; }
+    .content h2 {
+      font-size: 20px; font-weight: 800; color: #fff;
+      margin: 40px 0 12px; padding-right: 14px;
+      border-right: 3px solid #7c3aed;
+    }
+    .content h2:first-child { margin-top: 0; }
+    .content p { color: rgba(255,255,255,0.7); margin-bottom: 14px; font-size: 15px; }
+    .content ul { margin: 10px 0 14px 0; padding-right: 20px; color: rgba(255,255,255,0.7); font-size: 15px; }
+    .content ul li { margin-bottom: 8px; }
+    .content ol { margin: 10px 0 14px 0; padding-right: 20px; color: rgba(255,255,255,0.7); font-size: 15px; }
+    .content ol li { margin-bottom: 8px; }
+
+    .highlight-box {
+      background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25);
+      border-radius: 12px; padding: 18px 20px; margin: 24px 0;
+      color: rgba(255,255,255,0.8); font-size: 14px;
+    }
+    .section-num {
+      display: inline-block; background: #7c3aed; color: #fff;
+      font-size: 12px; font-weight: 800; padding: 2px 8px; border-radius: 6px;
+      margin-left: 8px;
+    }
+    .updated { text-align: center; color: rgba(255,255,255,0.3); font-size: 13px; margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.07); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">
+    <img src="images/logo.png" alt="גו לונדון" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <div class="logo-text-fallback"><span class="logo-go">GO</span><span class="logo-london">LONDON</span></div>
+    <span class="logo-slogan">המדריך הישראלי ללונדון</span>
+  </a>
+  <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> חזרה לדף הבית</a>
+</nav>
+
+<div class="page-hero">
+  <h1>📋 תקנון מועדון חברים</h1>
+  <p>גו לונדון · עודכן לאחרונה: יולי 2026</p>
+</div>
+
+<div class="content">
+
+  <div class="highlight-box">
+    ברוכים הבאים למועדון גו לונדון. הצטרפות למועדון מהווה הסכמה לכל התנאים המפורטים להלן. קריאה מדוקדקת של תקנון זה מומלצת בטרם ההצטרפות.
+  </div>
+
+  <h2><span class="section-num">1</span> הגדרות</h2>
+  <ul>
+    <li><strong style="color:#fff">האתר</strong> — golondon.netlify.app ו/או כל כתובת שתחליף אותו בעתיד.</li>
+    <li><strong style="color:#fff">המועדון</strong> — מועדון החברים "גו לונדון".</li>
+    <li><strong style="color:#fff">החבר</strong> — כל מי שנרשם למועדון ואישר תקנון זה.</li>
+    <li><strong style="color:#fff">המפעיל</strong> — צוות גו לונדון, בכתובת מייל videoartds@gmail.com.</li>
+  </ul>
+
+  <h2><span class="section-num">2</span> מטרת המועדון</h2>
+  <p>מועדון גו לונדון הוא קהילה חינמית לישראלים המטיילים ללונדון, גרים בה או מתכננים לבקר בה. מטרות המועדון:</p>
+  <ul>
+    <li>מתן עדכונים על אירועים, מידע ותכנים הקשורים ללונדון</li>
+    <li>הענקת הטבות בלעדיות לחברי המועדון</li>
+    <li>גישה מוקדמת לתכנים ומדריכים חדשים</li>
+    <li>עדיפות ומחירים מיוחדים בעת רכישת מוצרים ושירותים עתידיים</li>
+  </ul>
+
+  <h2><span class="section-num">3</span> תנאי הצטרפות</h2>
+  <ol>
+    <li>ההצטרפות למועדון חינמית לחלוטין ואינה כרוכה בתשלום כלשהו.</li>
+    <li>ניתן להצטרף לאחר מילוי טופס ההרשמה ואישור תקנון זה.</li>
+    <li>ההצטרפות פתוחה לכל אדם מגיל 18 ומעלה.</li>
+    <li>כל אדם רשאי להחזיק חשבון חבר אחד בלבד.</li>
+    <li>המפעיל רשאי לסרב לבקשת הצטרפות לפי שיקול דעתו הבלעדי.</li>
+  </ol>
+
+  <h2><span class="section-num">4</span> פרטי החבר</h2>
+  <p>בעת ההצטרפות ייאסף המידע הבא:</p>
+  <ul>
+    <li>שם מלא</li>
+    <li>כתובת דואר אלקטרוני (חובה)</li>
+    <li>מספר טלפון (רשות)</li>
+    <li>עיר מגורים / מיקום גיאוגרפי כללי (רשות)</li>
+  </ul>
+  <p>השימוש בפרטים אלו מפורט במדיניות הפרטיות. לא יישמרו פרטי כרטיס אשראי על ידי המפעיל — תשלומים עתידיים יעוברו דרך מעבד תשלומים מוסמך בלבד.</p>
+
+  <h2><span class="section-num">5</span> זכויות וחובות החבר</h2>
+  <p><strong style="color:#fff">החבר זכאי ל:</strong></p>
+  <ul>
+    <li>קבלת עדכונים על תכנים, הטבות ואירועים (בכפוף להסכמה לתקשורת שיווקית)</li>
+    <li>גישה להטבות בלעדיות הזמינות לחברי מועדון</li>
+    <li>ביטול החברות בכל עת ללא עלות</li>
+    <li>עיון, תיקון ומחיקת המידע האישי שלו בכל עת</li>
+  </ul>
+  <p><strong style="color:#fff">החבר מתחייב:</strong></p>
+  <ul>
+    <li>למסור פרטים מדויקים ועדכניים</li>
+    <li>לא להעביר את הרשאות החברות לאחר</li>
+    <li>לא לנצל לרעה הטבות המיועדות לשימוש אישי בלבד</li>
+  </ul>
+
+  <h2><span class="section-num">6</span> רכישות ותשלומים</h2>
+  <p>בעת הפעלת חנות המוצרים, יחולו התנאים הבאים:</p>
+  <ul>
+    <li>תשלומים חד-פעמיים בלבד — אין מנויים חוזרים ללא הסכמה מפורשת</li>
+    <li>עיבוד התשלומים ייעשה דרך מעבד תשלומים מאובטח ומוסמך</li>
+    <li>פרטי כרטיס האשראי לא יישמרו על ידי המפעיל</li>
+    <li>זכות ביטול ורכישה בתוך 14 יום מהרכישה בהתאם לחוק הגנת הצרכן הישראלי</li>
+    <li>ביטול לאחר 14 יום — בכפוף לתנאים המפורטים בעת הרכישה</li>
+    <li>החזרים יבוצעו לאמצעי התשלום המקורי בתוך 14 ימי עסקים</li>
+  </ul>
+
+  <h2><span class="section-num">7</span> ביטול חברות</h2>
+  <ol>
+    <li>החבר רשאי לבטל את חברותו בכל עת על ידי פנייה למפעיל בכתובת videoartds@gmail.com.</li>
+    <li>הביטול יכנס לתוקף תוך 7 ימי עסקים מקבלת הבקשה.</li>
+    <li>עם הביטול יימחקו כל פרטי החבר מהמאגר, אלא אם קיימת חובה חוקית לשמירתם.</li>
+    <li>המפעיל רשאי לבטל חברות של חבר שהפר את תנאי התקנון, לאחר מתן התראה מוקדמת.</li>
+  </ol>
+
+  <h2><span class="section-num">8</span> הגבלת אחריות</h2>
+  <p>גו לונדון מספק מידע ותכנים לצרכי מידע כללי בלבד. המפעיל אינו אחראי לדיוק המוחלט של המידע, לשינויים בעסקים המוזכרים, או לנזקים שייגרמו משימוש במידע המופיע באתר.</p>
+
+  <h2><span class="section-num">9</span> שינויים בתקנון</h2>
+  <p>המפעיל רשאי לשנות תקנון זה בכל עת. שינויים מהותיים יובאו לידיעת החברים בדואר אלקטרוני לפחות 14 יום לפני כניסתם לתוקף. המשך שימוש בשירות לאחר קבלת ההודעה מהווה הסכמה לשינויים.</p>
+
+  <h2><span class="section-num">10</span> שיפוט וסמכות</h2>
+  <p>תקנון זה כפוף לדין הישראלי. סמכות השיפוט הבלעדית מוקנית לבתי המשפט המוסמכים בישראל.</p>
+
+  <h2><span class="section-num">11</span> יצירת קשר</h2>
+  <p>לכל שאלה או בקשה הנוגעת לתקנון: <a href="mailto:videoartds@gmail.com">videoartds@gmail.com</a></p>
+
+  <p class="updated">© 2026 גו לונדון · תקנון מועדון חברים · גרסה 1.0</p>
+</div>
+
+</body>
+</html>
