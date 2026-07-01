@@ -582,6 +582,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ===== באנר מרחף מפת כשרות ===== */
+/* באנר כשרות — מובייל: רצועה תחתונה */
 .kosher-float {
   position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(120px);
   z-index: 9999; width: calc(100% - 32px); max-width: 400px;
@@ -590,7 +591,7 @@ a { text-decoration: none; color: inherit; }
   box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08),
               0 0 40px rgba(139,92,246,0.3);
   display: flex; align-items: center; gap: 12px;
-  opacity: 0; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease;
+  opacity: 0; transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease;
   pointer-events: none;
 }
 .kosher-float--visible {
@@ -605,15 +606,9 @@ a { text-decoration: none; color: inherit; }
   transition: background 0.2s; flex-shrink: 0;
 }
 .kosher-float-close:hover { background: rgba(255,255,255,0.25); color: #fff; }
-.kosher-float-badge {
-  display: none;
-}
-.kosher-float-icon {
-  font-size: 28px; line-height: 1; flex-shrink: 0;
-}
-.kosher-float-content {
-  display: contents;
-}
+.kosher-float-badge { display: none; }
+.kosher-float-icon { font-size: 28px; line-height: 1; flex-shrink: 0; }
+.kosher-float-content { display: contents; }
 .kosher-float-text { flex: 1; min-width: 0; }
 .kosher-float-text strong {
   display: block; font-size: 14px; font-weight: 900; color: #fff; margin-bottom: 2px; white-space: nowrap;
@@ -630,6 +625,54 @@ a { text-decoration: none; color: inherit; }
   box-shadow: 0 4px 14px rgba(239,68,68,0.4);
 }
 .kosher-float-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(239,68,68,0.5); }
+
+/* באנר כשרות — דסקטופ: סרגל אנכי בצד */
+@media (min-width: 700px) {
+  .kosher-float {
+    bottom: auto; left: auto;
+    right: 0; top: 50%;
+    transform: translateY(-50%) translateX(100%);
+    width: 168px; max-width: 168px;
+    flex-direction: column; align-items: center;
+    padding: 22px 16px 18px; gap: 14px;
+    border-radius: 20px 0 0 20px;
+    box-shadow: -6px 0 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08),
+                -6px 0 50px rgba(139,92,246,0.35);
+    text-align: center;
+  }
+  .kosher-float--visible {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1; pointer-events: all;
+  }
+  .kosher-float-close {
+    position: static; order: -1;
+    align-self: flex-start;
+    width: 24px; height: 24px; font-size: 11px;
+  }
+  .kosher-float-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #ef4444, #f59e0b);
+    color: #fff; font-size: 10px; font-weight: 900;
+    padding: 3px 10px; border-radius: 50px; letter-spacing: 0.5px;
+  }
+  .kosher-float-icon { font-size: 40px; }
+  .kosher-float-content { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .kosher-float-text { flex: none; }
+  .kosher-float-text strong {
+    font-size: 13px; white-space: normal; line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .kosher-float-text span {
+    font-size: 11px; white-space: normal; overflow: visible; text-overflow: unset;
+    line-height: 1.4;
+  }
+  .kosher-float-btn {
+    width: 100%; text-align: center;
+    border-radius: 12px; padding: 11px 8px;
+    font-size: 14px;
+  }
+}
+
 @keyframes badge-pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.3); }
   50% { box-shadow: 0 0 0 6px rgba(255,255,255,0); }
