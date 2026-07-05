@@ -384,7 +384,10 @@ async function loadPosts() {
   grid.style.display = 'grid';
   empty.style.display = 'none';
 
-  grid.innerHTML = filtered.map(p => `
+  grid.innerHTML = filtered.map(p => {
+    const text = p.desc || p.content || '';
+    const link = p.url || p.source || '';
+    return `
     <div class="post-card">
       <div class="post-card-img" style="--hero-grad:${cat.grad}">
         ${p.image
@@ -393,14 +396,15 @@ async function loadPosts() {
       </div>
       <div class="post-card-body">
         <div class="post-card-title">${escHtml(p.title)}</div>
-        <div class="post-card-text">${escHtml(p.desc)}</div>
+        <div class="post-card-text">${escHtml(text)}</div>
         <div class="post-card-footer">
           <span>${escHtml(p.author || '')}${p.date ? ' · ' + escHtml(p.date) : ''}</span>
-          ${p.url ? `<a href="${escHtml(p.url)}" target="_blank" rel="noopener"><i class="fab fa-facebook"></i> לפוסט המקורי</a>` : ''}
+          ${link ? `<a href="${escHtml(link)}" target="_blank" rel="noopener"><i class="fab fa-facebook"></i> לפוסט המקורי</a>` : ''}
         </div>
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 loadPosts();
