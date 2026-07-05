@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>20 דברים שחייבים לעשות בלונדון | גו לונדון</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Heebo', sans-serif; background: #0a0a1a; color: #e2e8f0; direction: rtl; line-height: 1.8; }
+    a { color: #93c5fd; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .navbar {
+      background: rgba(10,10,26,0.95); border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 24px; height: 64px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 100;
+    }
+    .logo { direction: ltr; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-img { height: 44px; width: auto; object-fit: contain; mix-blend-mode: screen; }
+    .logo-text-fallback { display: none; align-items: baseline; gap: 2px; }
+    .logo-go { font-size: 22px; font-weight: 900; color: #DC2626; }
+    .logo-london { font-size: 22px; font-weight: 900; color: #fff; }
+    .logo-slogan { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.4); direction: rtl; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.15); padding-right: 10px; }
+    .back-btn {
+      display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.6);
+      font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s;
+    }
+    .back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); text-decoration: none; }
+
+    .page-hero {
+      background: linear-gradient(135deg, #7C3AED 0%, #DB2777 100%);
+      padding: 70px 24px 60px; text-align: center;
+    }
+    .page-hero .tag { display: inline-block; background: rgba(255,255,255,0.15); padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+    .page-hero h1 { font-size: 34px; font-weight: 900; color: #fff; margin-bottom: 10px; max-width: 720px; margin-inline: auto; }
+    .page-hero p { color: rgba(255,255,255,0.75); font-size: 15px; }
+    .page-hero .meta { margin-top: 18px; display: flex; gap: 18px; justify-content: center; color: rgba(255,255,255,0.6); font-size: 13px; }
+
+    .content { max-width: 760px; margin: 0 auto; padding: 56px 24px 40px; }
+    .content h2 {
+      font-size: 21px; font-weight: 800; color: #fff;
+      margin: 42px 0 14px; padding-right: 14px;
+      border-right: 3px solid #DB2777;
+    }
+    .content h2:first-child { margin-top: 0; }
+    .content p { color: rgba(255,255,255,0.72); margin-bottom: 14px; font-size: 15.5px; }
+    .content strong { color: #fff; }
+
+    .num-list { display: flex; flex-direction: column; gap: 14px; margin: 16px 0 30px; }
+    .num-item { display: flex; gap: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 18px 20px; }
+    .num-item .num { flex-shrink: 0; width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, #7C3AED, #DB2777); display: flex; align-items: center; justify-content: center; font-weight: 900; color: #fff; font-size: 15px; }
+    .num-item h4 { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .num-item p { font-size: 14.5px; color: rgba(255,255,255,0.65); margin: 0; }
+    .num-item .free-badge { display: inline-block; background: rgba(21,128,61,0.25); color: #4ade80; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 6px; margin-right: 8px; }
+
+    .highlight-box {
+      background: rgba(219,39,119,0.12); border: 1px solid rgba(219,39,119,0.28);
+      border-radius: 14px; padding: 20px 22px; margin: 26px 0;
+      color: rgba(255,255,255,0.85); font-size: 14.5px;
+    }
+    .highlight-box strong { color: #f9a8d4; }
+
+    .sources { margin-top: 50px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .sources h3 { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 10px; }
+    .sources ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+    .sources a { font-size: 13px; color: rgba(147,197,253,0.7); }
+
+    .back-cta { text-align: center; margin-top: 40px; }
+    .back-cta a {
+      display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12); color: #fff; padding: 12px 24px;
+      border-radius: 10px; font-weight: 700; font-size: 14px;
+    }
+    .back-cta a:hover { background: rgba(255,255,255,0.1); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">
+    <img src="images/logo.png" alt="גו לונדון" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <div class="logo-text-fallback"><span class="logo-go">GO</span><span class="logo-london">LONDON</span></div>
+    <span class="logo-slogan">המדריך הישראלי ללונדון</span>
+  </a>
+  <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> חזרה לדף הבית</a>
+</nav>
+
+<div class="page-hero">
+  <span class="tag">🎡 אטרקציות</span>
+  <h1>20 דברים שחייבים לעשות בלונדון לפחות פעם אחת</h1>
+  <p>הרשימה של מי שגר שם — לא של המדריכים הישנים</p>
+  <div class="meta">
+    <span><i class="far fa-clock"></i> 7 דקות קריאה</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <p>לונדון עצומה, ואי אפשר לראות הכל בביקור אחד. הרשימה הזאת משלבת בין האייקונים שבאמת שווה לראות, לבין חוויות פחות מוכרות שגם ישראלים שגרים בעיר עדיין אוהבים לחזור אליהן.</p>
+
+  <h2>אייקונים שלא מפספסים</h2>
+  <div class="num-list">
+    <div class="num-item"><div class="num">1</div><div><h4>ביג בן וארמון הפרלמנט</h4><p>הצילום הכי מזוהה עם לונדון — הכי יפה בשעות הדמדומים, כשהאור מחמם את האבן.</p></div></div>
+    <div class="num-item"><div class="num">2</div><div><h4>גשר הטאואר (Tower Bridge)</h4><p>אפשר גם לעלות על הגשר עצמו ולצפות מלמעלה על נהר התמזה מריצפת זכוכית.</p></div></div>
+    <div class="num-item"><div class="num">3</div><div><h4>ארמון המגדל (Tower of London)</h4><p>מבצר בן כמעט אלף שנה, ובו שמורים תכשיטי הכתר האמיתיים.</p></div></div>
+    <div class="num-item"><div class="num">4</div><div><h4>בקינגהם פאלאס וטקס חילופי המשמר</h4><p>הטקס מתקיים בימים מסוימים בלבד — כדאי לבדוק לוח זמנים מראש לפני שמתכננים להגיע.</p></div></div>
+    <div class="num-item"><div class="num">5</div><div><h4>סוהו וקובנט גארדן</h4><p>רחובות תוססים עם אמני רחוב, חנויות ובתי קפה — הלב הפועם של מרכז העיר.</p></div></div>
+  </div>
+
+  <h2>מוזיאונים ותרבות — הרבה מהם בחינם</h2>
+  <div class="num-list">
+    <div class="num-item"><div class="num">6</div><div><h4>המוזיאון הבריטי<span class="free-badge">חינם</span></h4><p>אחד המוזיאונים הגדולים בעולם — כולל אבן רוזטה ואוצרות מכל יבשת.</p></div></div>
+    <div class="num-item"><div class="num">7</div><div><h4>מוזיאון ההיסטוריה הטבעית<span class="free-badge">חינם</span></h4><p>האטרקציה הכי מבוקרת בבריטניה כולה — בניין מרהיב בפני עצמו, גם בלי תערוכות.</p></div></div>
+    <div class="num-item"><div class="num">8</div><div><h4>הטייט מודרן<span class="free-badge">חינם</span></h4><p>אמנות מודרנית ועכשווית על גדת נהר התמזה, בתוך תחנת כוח ישנה ומרשימה.</p></div></div>
+    <div class="num-item"><div class="num">9</div><div><h4>ווסט אנד — מחזמר</h4><p>אזור התיאטראות המקביל לברודוויי הניו-יורקי. כרטיסים ברגע האחרון לפעמים במחיר מוזל בדוכנים במרכז העיר.</p></div></div>
+    <div class="num-item"><div class="num">10</div><div><h4>מוזיאון ויקטוריה ואלברט<span class="free-badge">חינם</span></h4><p>אמנות, אופנה ועיצוב מחמשת אלפי שנות היסטוריה אנושית תחת קורת גג אחת.</p></div></div>
+  </div>
+
+  <h2>נופים ונקודות תצפית</h2>
+  <div class="num-list">
+    <div class="num-item"><div class="num">11</div><div><h4>סקיי גארדן (Sky Garden)<span class="free-badge">חינם</span></h4><p>גן טרופי בקומה העליונה של גורד שחקים במרכז העיר, עם נוף פתוח לכל האתרים המרכזיים. חובה להזמין כניסה מראש — מתמלא מהר.</p></div></div>
+    <div class="num-item"><div class="num">12</div><div><h4>גלגל הענק לונדון איי</h4><p>נסיעה של כחצי שעה עם נוף מהגובה על כל מרכז העיר, במיוחד יפה סמוך לשקיעה.</p></div></div>
+    <div class="num-item"><div class="num">13</div><div><h4>פרימרוז היל</h4><p>גבעה קטנה עם אחד מהנופים הפנורמיים היפים ביותר על קו הרקיע של לונדון — ובחינם.</p></div></div>
+  </div>
+
+  <h2>שווקים, אוכל וחיי רחוב</h2>
+  <div class="num-list">
+    <div class="num-item"><div class="num">14</div><div><h4>שוק בורו (Borough Market)</h4><p>שוק האוכל הכי מפורסם בעיר — דוכנים מכל העולם, טעימות ואווירה תוססת.</p></div></div>
+    <div class="num-item"><div class="num">15</div><div><h4>שוק קמדן</h4><p>שוק אלטרנטיבי עם אופנה, אוכל רחוב ואווירה ייחודית על תעלת המים.</p></div></div>
+    <div class="num-item"><div class="num">16</div><div><h4>נוטינג היל ושוק פורטובלו</h4><p>שכונה צבעונית עם בתים פסטליים ושוק עתיקות ואספנות בסופי שבוע.</p></div></div>
+    <div class="num-item"><div class="num">17</div><div><h4>פאב בריטי אמיתי</h4><p>לא סתם ארוחה — חוויה תרבותית שלמה. חפשו פאב עם היסטוריה של מאות שנים.</p></div></div>
+  </div>
+
+  <h2>חוויות פחות מוכרות ששוות את הזמן</h2>
+  <div class="num-list">
+    <div class="num-item"><div class="num">18</div><div><h4>מקדש מיתרס העתיק</h4><p>שרידי מקדש רומי בן כ-1,800 שנה, שהתגלה בעבודות בנייה ופתוח כיום לציבור מתחת לרחובות העיר.</p></div></div>
+    <div class="num-item"><div class="num">19</div><div><h4>סנט דנסטן אין דה איסט</h4><p>כנסייה מהמאה ה-12 שנפגעה בהפצצות מלחמת העולם השנייה, והפכה לגן ציבורי שקט ומרהיב בלב העיר.</p></div></div>
+    <div class="num-item"><div class="num">20</div><div><h4>שיטוט ללא תוכנית ברובע חדש</h4><p>לפעמים הרגע הכי טוב בלונדון הוא סתם ללכת ברחוב לא מוכר ולראות מה קורה. תנו לזה מקום בלוח הזמנים.</p></div></div>
+  </div>
+
+  <div class="highlight-box">
+    <strong>טיפ מהקהילה:</strong> הרבה מהאטרקציות הכי טובות בלונדון בחינם לגמרי — המוזיאונים הגדולים, חלק מהגנים, ולפעמים גם מופעים קצרים באולמות תרבות. שווה לתכנן את הטיול כך שהתקציב ילך על החוויות שבאמת עולות כסף, ולא לפספס את מה שממילא בחינם.
+  </div>
+
+  <div class="sources">
+    <h3>מקורות</h3>
+    <ul>
+      <li><a href="https://www.visitlondon.com/things-to-do/budget-london/101-free-things-to-do-in-london" target="_blank" rel="noopener">Visit London — Free things to do</a></li>
+      <li><a href="https://www.timeout.com/london/things-to-do/free-london" target="_blank" rel="noopener">Time Out London — Free things to do</a></li>
+    </ul>
+  </div>
+
+  <div class="back-cta">
+    <a href="index.html#articles"><i class="fas fa-arrow-right"></i> חזרה לכל המדריכים</a>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>איך מגיעים למשחק כדורגל בלונדון | גו לונדון</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Heebo', sans-serif; background: #0a0a1a; color: #e2e8f0; direction: rtl; line-height: 1.8; }
+    a { color: #93c5fd; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .navbar {
+      background: rgba(10,10,26,0.95); border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 24px; height: 64px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 100;
+    }
+    .logo { direction: ltr; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-img { height: 44px; width: auto; object-fit: contain; mix-blend-mode: screen; }
+    .logo-text-fallback { display: none; align-items: baseline; gap: 2px; }
+    .logo-go { font-size: 22px; font-weight: 900; color: #DC2626; }
+    .logo-london { font-size: 22px; font-weight: 900; color: #fff; }
+    .logo-slogan { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.4); direction: rtl; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.15); padding-right: 10px; }
+    .back-btn {
+      display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.6);
+      font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s;
+    }
+    .back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); text-decoration: none; }
+
+    .page-hero {
+      background: linear-gradient(135deg, #15803D 0%, #0F766E 100%);
+      padding: 70px 24px 60px; text-align: center;
+    }
+    .page-hero .tag { display: inline-block; background: rgba(255,255,255,0.15); padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+    .page-hero h1 { font-size: 34px; font-weight: 900; color: #fff; margin-bottom: 10px; max-width: 720px; margin-inline: auto; }
+    .page-hero p { color: rgba(255,255,255,0.75); font-size: 15px; }
+    .page-hero .meta { margin-top: 18px; display: flex; gap: 18px; justify-content: center; color: rgba(255,255,255,0.6); font-size: 13px; }
+
+    .content { max-width: 760px; margin: 0 auto; padding: 56px 24px 40px; }
+    .content h2 {
+      font-size: 21px; font-weight: 800; color: #fff;
+      margin: 42px 0 14px; padding-right: 14px;
+      border-right: 3px solid #0F766E;
+    }
+    .content h2:first-child { margin-top: 0; }
+    .content h3 { font-size: 16px; font-weight: 800; color: #fff; margin: 22px 0 8px; }
+    .content p { color: rgba(255,255,255,0.72); margin-bottom: 14px; font-size: 15.5px; }
+    .content ul, .content ol { margin: 10px 0 16px 0; padding-right: 22px; color: rgba(255,255,255,0.72); font-size: 15.5px; }
+    .content ul li, .content ol li { margin-bottom: 9px; }
+    .content strong { color: #fff; }
+
+    .highlight-box {
+      background: rgba(15,118,110,0.15); border: 1px solid rgba(15,118,110,0.35);
+      border-radius: 14px; padding: 20px 22px; margin: 26px 0;
+      color: rgba(255,255,255,0.85); font-size: 14.5px;
+    }
+    .highlight-box strong { color: #5eead4; }
+    .warning-box {
+      background: rgba(220,38,38,0.1); border: 1px solid rgba(220,38,38,0.3);
+      border-radius: 14px; padding: 20px 22px; margin: 26px 0;
+      color: rgba(255,255,255,0.85); font-size: 14.5px;
+    }
+    .warning-box strong { color: #f87171; }
+
+    .clubs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin: 16px 0 24px; }
+    .club-item { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 16px; }
+    .club-item h4 { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .club-item p { font-size: 13px; color: rgba(255,255,255,0.55); margin: 0; }
+
+    .sources { margin-top: 50px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .sources h3 { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 10px; }
+    .sources ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+    .sources a { font-size: 13px; color: rgba(147,197,253,0.7); }
+
+    .back-cta { text-align: center; margin-top: 40px; }
+    .back-cta a {
+      display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12); color: #fff; padding: 12px 24px;
+      border-radius: 10px; font-weight: 700; font-size: 14px;
+    }
+    .back-cta a:hover { background: rgba(255,255,255,0.1); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">
+    <img src="images/logo.png" alt="גו לונדון" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <div class="logo-text-fallback"><span class="logo-go">GO</span><span class="logo-london">LONDON</span></div>
+    <span class="logo-slogan">המדריך הישראלי ללונדון</span>
+  </a>
+  <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> חזרה לדף הבית</a>
+</nav>
+
+<div class="page-hero">
+  <span class="tag">⚽ כדורגל</span>
+  <h1>איך מגיעים למשחק כדורגל בלונדון — המדריך לישראלי</h1>
+  <p>כרטיסים, הגעה לאצטדיון וכל מה שכדאי לדעת לפני</p>
+  <div class="meta">
+    <span><i class="far fa-clock"></i> 5 דקות קריאה</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <h2>לונדון היא בירת הכדורגל של אירופה</h2>
+  <p>אין עוד עיר בעולם עם כל כך הרבה קבוצות ליגת העל האנגלית (Premier League) במרחק נסיעה קצרה זו מזו. זה אומר גם אפשרויות מדהימות לצפייה במשחק, וגם תחרות גבוהה על כרטיסים.</p>
+
+  <div class="clubs-grid">
+    <div class="club-item"><h4>ארסנל</h4><p>Emirates Stadium — צפון לונדון</p></div>
+    <div class="club-item"><h4>צ'לסי</h4><p>Stamford Bridge — מערב לונדון</p></div>
+    <div class="club-item"><h4>טוטנהאם</h4><p>Tottenham Hotspur Stadium — צפון לונדון</p></div>
+    <div class="club-item"><h4>ווסט האם</h4><p>London Stadium — מזרח לונדון</p></div>
+    <div class="club-item"><h4>פולהאם</h4><p>Craven Cottage — מערב לונדון</p></div>
+    <div class="club-item"><h4>קריסטל פאלאס</h4><p>Selhurst Park — דרום לונדון</p></div>
+    <div class="club-item"><h4>ברנטפורד</h4><p>Gtech Community Stadium — מערב לונדון</p></div>
+  </div>
+
+  <h2>איך משיגים כרטיסים — ובאמת ליזהר</h2>
+  <p>הדרך הבטוחה היחידה לקנות כרטיס היא <strong>ישירות דרך האתר הרשמי של הקבוצה</strong>, או מהשותפים הרשמיים שהקבוצה עצמה מפרסמת. כרטיסים למשחקי בית נפתחים בדרך כלל למכירה כחודש וחצי לפני המשחק, ולעיתים קרובות בשלבים: קודם לחברי מועדון האוהדים, ואז לציבור הרחב.</p>
+  <div class="warning-box">
+    <strong>אזהרה חשובה:</strong> קניית כרטיסים מגורמים לא רשמיים (אתרי צד שלישי לא מוכרים, מוכרים ברחוב מחוץ לאצטדיון וכו') מסוכנת. אצטדיונים באנגליה רשאים לבטל כרטיס שהגיע ממקור לא מורשה — ולסרב כניסה בשער, גם אם שילמתם עליו כסף אמיתי. תמיד לרכוש רק דרך ערוצים רשמיים.
+  </div>
+
+  <h2>ארסנל וצ'לסי — קשה יותר</h2>
+  <p>בשתי הקבוצות האלה הביקוש עולה משמעותית על ההיצע, ולרוב נדרשת חברות מועדון אוהדים (Membership) כדי בכלל לקבל גישה לרכישת כרטיס, גם למשחקים פחות "חמים". אם יש לכם משחק ספציפי בראש, שווה להירשם לחברות הרבה זמן מראש.</p>
+
+  <h2>טוטנהאם ווסט האם — נגיש יותר</h2>
+  <p>בקבוצות האלה לפעמים אפשר להשיג כרטיסים גם בלי חברות ותיקה — במיוחד למשחקי גביע, משחקי אמצע שבוע, או בעונות פחות מוצלחות לקבוצה. עדיין מומלץ לעקוב אחרי לוח המכירות באתר הרשמי ולפעול מיד כשהמכירה נפתחת.</p>
+
+  <h2>איך מגיעים לאצטדיון</h2>
+  <ul>
+    <li>כל האצטדיונים בלונדון נגישים ברכבת התחתית או ברכבת קלה — יש לתכנן את הנסיעה מראש ולהגיע לפחות שעה לפני תחילת המשחק</li>
+    <li>בימי משחק, התחנות הקרובות לאצטדיון עמוסות מאוד — במיוחד ביציאה מהמשחק, כדאי לתכנן זמן המתנה</li>
+    <li>שווה לבדוק מראש אם יש הגבלות על מה שניתן להכניס לאצטדיון (כגון גודל תיקים)</li>
+  </ul>
+
+  <div class="highlight-box">
+    <strong>טיפ מהקהילה:</strong> אם קשה להשיג כרטיס למשחק ליגה, כדאי לבדוק גם משחקי גביע (FA Cup, Carabao Cup) או משחקי אירופה — לרוב יש בהם יותר זמינות, והאווירה באצטדיון לא פחות מיוחדת.
+  </div>
+
+  <div class="sources">
+    <h3>מקורות</h3>
+    <ul>
+      <li><a href="https://www.premierleague.com/en/tickets" target="_blank" rel="noopener">Premier League — Official Ticket Information</a></li>
+      <li><a href="https://www.premierleague.com/en/tickets/safe-buying-tickets" target="_blank" rel="noopener">Premier League — Safe Buying Tickets</a></li>
+    </ul>
+  </div>
+
+  <div class="back-cta">
+    <a href="index.html#articles"><i class="fas fa-arrow-right"></i> חזרה לכל המדריכים</a>
+  </div>
+
+</div>
+
+</body>
+</html>

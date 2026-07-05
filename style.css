@@ -325,6 +325,7 @@ a { text-decoration: none; color: inherit; }
 .article-card {
   background: rgba(255,255,255,0.04); border-radius: 16px; overflow: hidden;
   border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s;
+  display: block; color: inherit; text-decoration: none;
 }
 .article-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.4); border-color: rgba(255,255,255,0.15); }
 .article-card--featured { grid-row: span 2; }

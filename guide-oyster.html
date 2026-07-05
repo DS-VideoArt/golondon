@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>כרטיס אויסטר — המדריך המלא לתחבורה בלונדון | גו לונדון</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Heebo', sans-serif; background: #0a0a1a; color: #e2e8f0; direction: rtl; line-height: 1.8; }
+    a { color: #93c5fd; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .navbar {
+      background: rgba(10,10,26,0.95); border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 24px; height: 64px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 100;
+    }
+    .logo { direction: ltr; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-img { height: 44px; width: auto; object-fit: contain; mix-blend-mode: screen; }
+    .logo-text-fallback { display: none; align-items: baseline; gap: 2px; }
+    .logo-go { font-size: 22px; font-weight: 900; color: #DC2626; }
+    .logo-london { font-size: 22px; font-weight: 900; color: #fff; }
+    .logo-slogan { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.4); direction: rtl; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.15); padding-right: 10px; }
+    .back-btn {
+      display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.6);
+      font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s;
+    }
+    .back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); text-decoration: none; }
+
+    .page-hero {
+      background: linear-gradient(135deg, #DC2626 0%, #EA580C 100%);
+      padding: 70px 24px 60px; text-align: center;
+    }
+    .page-hero .tag { display: inline-block; background: rgba(255,255,255,0.15); padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+    .page-hero h1 { font-size: 34px; font-weight: 900; color: #fff; margin-bottom: 10px; max-width: 720px; margin-inline: auto; }
+    .page-hero p { color: rgba(255,255,255,0.75); font-size: 15px; }
+    .page-hero .meta { margin-top: 18px; display: flex; gap: 18px; justify-content: center; color: rgba(255,255,255,0.6); font-size: 13px; }
+
+    .content { max-width: 760px; margin: 0 auto; padding: 56px 24px 40px; }
+    .content h2 {
+      font-size: 21px; font-weight: 800; color: #fff;
+      margin: 42px 0 14px; padding-right: 14px;
+      border-right: 3px solid #EA580C;
+    }
+    .content h2:first-child { margin-top: 0; }
+    .content h3 { font-size: 16px; font-weight: 800; color: #fff; margin: 22px 0 8px; }
+    .content p { color: rgba(255,255,255,0.72); margin-bottom: 14px; font-size: 15.5px; }
+    .content ul, .content ol { margin: 10px 0 16px 0; padding-right: 22px; color: rgba(255,255,255,0.72); font-size: 15.5px; }
+    .content ul li, .content ol li { margin-bottom: 9px; }
+    .content strong { color: #fff; }
+    .content table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 14.5px; }
+    .content th, .content td { padding: 10px 12px; text-align: right; border-bottom: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.75); }
+    .content th { color: #fff; font-weight: 800; }
+
+    .highlight-box {
+      background: rgba(234,88,12,0.12); border: 1px solid rgba(234,88,12,0.28);
+      border-radius: 14px; padding: 20px 22px; margin: 26px 0;
+      color: rgba(255,255,255,0.85); font-size: 14.5px;
+    }
+    .highlight-box strong { color: #fdba74; }
+    .warning-box {
+      background: rgba(220,38,38,0.1); border: 1px solid rgba(220,38,38,0.3);
+      border-radius: 14px; padding: 20px 22px; margin: 26px 0;
+      color: rgba(255,255,255,0.85); font-size: 14.5px;
+    }
+    .warning-box strong { color: #f87171; }
+
+    .sources { margin-top: 50px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .sources h3 { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 10px; }
+    .sources ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+    .sources a { font-size: 13px; color: rgba(147,197,253,0.7); }
+
+    .back-cta { text-align: center; margin-top: 40px; }
+    .back-cta a {
+      display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12); color: #fff; padding: 12px 24px;
+      border-radius: 10px; font-weight: 700; font-size: 14px;
+    }
+    .back-cta a:hover { background: rgba(255,255,255,0.1); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">
+    <img src="images/logo.png" alt="גו לונדון" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <div class="logo-text-fallback"><span class="logo-go">GO</span><span class="logo-london">LONDON</span></div>
+    <span class="logo-slogan">המדריך הישראלי ללונדון</span>
+  </a>
+  <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> חזרה לדף הבית</a>
+</nav>
+
+<div class="page-hero">
+  <span class="tag">🚇 תחבורה</span>
+  <h1>כרטיס אויסטר — המדריך המלא לתחבורה בלונדון</h1>
+  <p>איך עובד הכרטיס, כמה עולה, ואיך להתנייד בעיר כמו מקומי</p>
+  <div class="meta">
+    <span><i class="far fa-clock"></i> 6 דקות קריאה</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <h2>אויסטר או כרטיס אשראי — מה בעצם עדיף</h2>
+  <p>כרטיס אויסטר (Oyster) הוא כרטיס תחבורה חכם ברשת התחבורה הציבורית של לונדון — רכבת תחתית, אוטובוסים, רכבות קלות ועוד. טוענים עליו כסף מראש, ומורידים ממנו את עלות הנסיעה בכל פעם שמצמידים אותו לקורא בכניסה וביציאה.</p>
+  <p><strong>החדשות הטובות:</strong> אפשר גם פשוט להשתמש בכרטיס האשראי או הדביט הרגיל שלכם (כל עוד הוא תומך בתשלום אלחוטי) ולהצמיד אותו ישירות לקוראים באותו אופן בדיוק. המחירים זהים לחלוטין לאויסטר.</p>
+  <div class="highlight-box">
+    <strong>המלצה:</strong> אם זו הפעם הראשונה שלכם בלונדון ויש לכם כרטיס אשראי עם תשלום אלחוטי, פשוט השתמשו בו ישירות. כרטיס אויסטר פיזי עולה כ-£5 בקנייה ראשונית (סכום פיקדון שניתן לקבל בחזרה), ולכן אם אתם לא מתכננים חזרות תכופות ללונדון, אין סיבה אמיתית לרכוש אותו.
+  </div>
+
+  <h2>איך המחיר מחושב — אזורים ותקרות</h2>
+  <p>לונדון מחולקת לאזורי תחבורה (Zones) שמסודרים במעגלים סביב המרכז — אזור 1 הוא המרכז עצמו, ומשם האזורים מתרחקים החוצה. ככל שנוסעים דרך יותר אזורים, הנסיעה יקרה יותר.</p>
+  <p>כל התשלומים — הן באויסטר והן בכרטיס אשראי — כפופים ל<strong>תקרה יומית ושבועית</strong>. המשמעות: לא משנה כמה נסיעות תעשו באותו יום באותם אזורים, לעולם לא תשלמו יותר מהתקרה הקבועה. המערכת מחשבת את זה אוטומטית בסוף היום, בלי שצריך לעשות דבר.</p>
+  <ul>
+    <li>נוסעים בעיקר באזורים 1-2 (רוב האטרקציות המרכזיות נמצאות שם) — התקרה היומית נעה סביב £9</li>
+    <li>יש גם תקרה שבועית שמשתלמת מאוד למי שנשאר בעיר כמה ימים</li>
+  </ul>
+  <div class="warning-box">
+    <strong>חשוב לדעת:</strong> המחירים המדויקים מתעדכנים מעת לעת על ידי רשות התחבורה של לונדון (TfL). מומלץ לבדוק את המחיר העדכני ביום הנסיעה באתר הרשמי שלהם, כדי לתכנן תקציב מדויק.
+  </div>
+
+  <h2>איך זה עובד בפועל</h2>
+  <ol>
+    <li><strong>בכניסה לתחנה:</strong> מצמידים את הכרטיס (או הטלפון עם תשלום אלחוטי) לקורא הצהוב בשער הכניסה</li>
+    <li><strong>ביציאה מהתחנה:</strong> חובה להצמיד שוב לקורא הצהוב ביציאה — שכחה לעשות זאת עלולה לגרום לחיוב הגבוה ביותר האפשרי לאותה נסיעה</li>
+    <li><strong>באוטובוסים:</strong> מצמידים פעם אחת בעליה בלבד, אין צורך להצמיד ביציאה</li>
+  </ol>
+
+  <h2>טיפים שימושיים</h2>
+  <ul>
+    <li>אם משתמשים בכרטיס אשראי ישראלי, כדאי לוודא מראש מול הבנק שהוא תומך בתשלום אלחוטי בחו"ל</li>
+    <li>אפליקציית התחבור הציבורית של לונדון (Citymapper או האפליקציה הרשמית של TfL) מראה מסלולים, זמני הגעה ומחירים משוערים בזמן אמת — כדאי להוריד לפני הטיסה</li>
+    <li>הרכבת התחתית עמוסה מאוד בשעות השיא (בבוקר ואחר הצהריים) — אם אפשר לתכנן סיורים מחוץ לשעות אלו, החוויה נעימה משמעותית</li>
+    <li>לא כל תחנות הרכבת התחתית נגישות לנכים או לעגלות — אם רלוונטי, כדאי לבדוק מראש נגישות בתחנות הספציפיות בתכנון המסלול</li>
+  </ul>
+
+  <div class="sources">
+    <h3>מקורות</h3>
+    <ul>
+      <li><a href="https://www.visitlondon.com/traveller-information/getting-around-london/oyster" target="_blank" rel="noopener">Visit London — Oyster card guide</a></li>
+      <li><a href="https://www.nationalrail.co.uk/tickets-railcards-and-offers/ticket-types/oyster-contactless-and-travelcards/" target="_blank" rel="noopener">National Rail — Oyster, Contactless and Travelcards</a></li>
+    </ul>
+  </div>
+
+  <div class="back-cta">
+    <a href="index.html#articles"><i class="fas fa-arrow-right"></i> חזרה לכל המדריכים</a>
+  </div>
+
+</div>
+
+</body>
+</html>

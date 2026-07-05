@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>המדריך המלא לטיסה ללונדון | גו לונדון</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Heebo', sans-serif; background: #0a0a1a; color: #e2e8f0; direction: rtl; line-height: 1.8; }
+    a { color: #93c5fd; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .navbar {
+      background: rgba(10,10,26,0.95); border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 24px; height: 64px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 100;
+    }
+    .logo { direction: ltr; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-img { height: 44px; width: auto; object-fit: contain; mix-blend-mode: screen; }
+    .logo-text-fallback { display: none; align-items: baseline; gap: 2px; }
+    .logo-go { font-size: 22px; font-weight: 900; color: #DC2626; }
+    .logo-london { font-size: 22px; font-weight: 900; color: #fff; }
+    .logo-slogan { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.4); direction: rtl; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.15); padding-right: 10px; }
+    .back-btn {
+      display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.6);
+      font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s;
+    }
+    .back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); text-decoration: none; }
+
+    .page-hero {
+      background: linear-gradient(135deg, #1E3A8A 0%, #7C3AED 100%);
+      padding: 70px 24px 60px; text-align: center;
+    }
+    .page-hero .tag { display: inline-block; background: rgba(255,255,255,0.15); padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+    .page-hero h1 { font-size: 34px; font-weight: 900; color: #fff; margin-bottom: 10px; max-width: 720px; margin-inline: auto; }
+    .page-hero p { color: rgba(255,255,255,0.75); font-size: 15px; }
+    .page-hero .meta { margin-top: 18px; display: flex; gap: 18px; justify-content: center; color: rgba(255,255,255,0.6); font-size: 13px; }
+
+    .content { max-width: 760px; margin: 0 auto; padding: 56px 24px 40px; }
+    .content h2 {
+      font-size: 21px; font-weight: 800; color: #fff;
+      margin: 42px 0 14px; padding-right: 14px;
+      border-right: 3px solid #7C3AED;
+    }
+    .content h2:first-child { margin-top: 0; }
+    .content h3 { font-size: 16px; font-weight: 800; color: #fff; margin: 22px 0 8px; }
+    .content p { color: rgba(255,255,255,0.72); margin-bottom: 14px; font-size: 15.5px; }
+    .content ul, .content ol { margin: 10px 0 16px 0; padding-right: 22px; color: rgba(255,255,255,0.72); font-size: 15.5px; }
+    .content ul li, .content ol li { margin-bottom: 9px; }
+    .content strong { color: #fff; }
+
+    .highlight-box {
+      background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.28);
+      border-radius: 14px; padding: 20px 22px; margin: 26px 0;
+      color: rgba(255,255,255,0.85); font-size: 14.5px;
+    }
+    .highlight-box strong { color: #c4b5fd; }
+    .warning-box {
+      background: rgba(220,38,38,0.1); border: 1px solid rgba(220,38,38,0.3);
+      border-radius: 14px; padding: 20px 22px; margin: 26px 0;
+      color: rgba(255,255,255,0.85); font-size: 14.5px;
+    }
+    .warning-box strong { color: #f87171; }
+
+    .sources { margin-top: 50px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .sources h3 { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 10px; }
+    .sources ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+    .sources a { font-size: 13px; color: rgba(147,197,253,0.7); }
+
+    .back-cta { text-align: center; margin-top: 40px; }
+    .back-cta a {
+      display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12); color: #fff; padding: 12px 24px;
+      border-radius: 10px; font-weight: 700; font-size: 14px;
+    }
+    .back-cta a:hover { background: rgba(255,255,255,0.1); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">
+    <img src="images/logo.png" alt="גו לונדון" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <div class="logo-text-fallback"><span class="logo-go">GO</span><span class="logo-london">LONDON</span></div>
+    <span class="logo-slogan">המדריך הישראלי ללונדון</span>
+  </a>
+  <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> חזרה לדף הבית</a>
+</nav>
+
+<div class="page-hero">
+  <span class="tag">✈️ תכנון הטיול</span>
+  <h1>המדריך המלא לטיסה ללונדון — כל מה שצריך לדעת לפני שעולים על המטוס</h1>
+  <p>מהמסמכים, דרך אישור הכניסה, ועד מה לארוז</p>
+  <div class="meta">
+    <span><i class="far fa-clock"></i> 10 דקות קריאה</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <h2>אישור כניסה לבריטניה — ETA</h2>
+  <p>מאז ינואר 2025, אזרחים ישראלים הנכנסים לבריטניה (כולל לצורך תיירות קצרה) חייבים להחזיק <strong>אישור כניסה אלקטרוני</strong> הנקרא ETA (ר"ת של Electronic Travel Authorisation). זהו לא ויזה במובן המסורתי, אלא אישור דיגיטלי שמאשרים אונליין לפני הטיסה.</p>
+  <ul>
+    <li>ההגשה נעשית באתר הרשמי של ממשלת בריטניה או באפליקציה הרשמית שלהם — התהליך אורך בדרך כלל דקות ספורות</li>
+    <li>נדרש דרכון ביומטרי בתוקף ואמצעי תשלום (כרטיס אשראי או ארנק דיגיטלי)</li>
+    <li>האישור תקף לתקופה ממושכת ומקושר אלקטרונית לדרכון, כך שאין צורך להדפיס אותו</li>
+    <li>חשוב: אישור ה-ETA <strong>לא מבטיח כניסה</strong> — בסופו של דבר הביקורת בגבול היא זו שמחליטה, ולכן חשוב להגיע עם כל המסמכים התומכים (הזמנת מלון, כרטיס חזור וכו')</li>
+  </ul>
+  <div class="warning-box">
+    <strong>חשוב:</strong> יש להגיש את הבקשה מספיק ימים לפני הטיסה כדי להשאיר מרווח לאישור. מומלץ לבדוק את הדרישות העדכניות ביותר באתר הרשמי של ממשלת בריטניה סמוך למועד הטיסה, מכיוון שתהליכי הגירה משתנים מעת לעת.
+  </div>
+
+  <h2>מסמכים שכדאי לוודא לפני הטיסה</h2>
+  <ul>
+    <li><strong>דרכון בתוקף</strong> — רצוי עם תוקף של לפחות חצי שנה קדימה מיום הטיסה</li>
+    <li><strong>אישור ה-ETA</strong> המאושר</li>
+    <li><strong>כרטיס טיסה הלוך ושוב</strong> — לעיתים נבדק בביקורת הגבול כהוכחת כוונה לצאת מהמדינה</li>
+    <li><strong>הוכחת מקום לינה</strong> — הזמנת מלון או פרטי איפה תשהו</li>
+    <li><strong>ביטוח נסיעות</strong> — לא חובה חוקית, אך מומלץ מאוד ובריטניה יקרה משמעותית בכל הקשור לטיפול רפואי לתייר</li>
+  </ul>
+
+  <h2>מזג האוויר — מה לצפות ומה לארוז</h2>
+  <p>מזג האוויר בלונדון ידוע כהפכפך — יום אחד שמש, למחרת גשם, ולפעמים שניהם באותו יום. עצה כללית: תמיד לארוז שכבות ומטריה קומפקטית, ללא קשר לעונה.</p>
+  <ul>
+    <li><strong>קיץ (יוני–אוגוסט):</strong> טמפרטורות נעימות יחסית, אך עדיין מומלץ מעיל קליל לערבים</li>
+    <li><strong>חורף (דצמבר–פברואר):</strong> קר ולח, שכבות חמות ומעיל עמיד במים הם חובה</li>
+    <li><strong>אביב וסתיו:</strong> העונות הכי בלתי צפויות מבחינת מזג אוויר — שכבות הן החבר הכי טוב שלכם</li>
+  </ul>
+
+  <h2>כסף והתנהלות כלכלית</h2>
+  <p>המטבע הרשמי הוא הלירה שטרלינג (£), ולא היורו. כדאי לדעת:</p>
+  <ul>
+    <li>כמעט כל מקום בלונדון מקבל תשלום באמצעות כרטיס אשראי או תשלום אלחוטי מהטלפון — מזומן כמעט ולא נחוץ</li>
+    <li>מומלץ לוודא מול הבנק הישראלי שכרטיס האשראי מאופשר לשימוש בחו"ל, ולבדוק את עמלת ההמרה</li>
+    <li>שווה לבדוק אם לבנק שלכם יש כרטיס עם עמלת המרה נמוכה במיוחד למטבע חוץ — זה יכול לחסוך לא מעט לאורך טיול</li>
+  </ul>
+
+  <h2>טעויות נפוצות של מטיילים ישראלים</h2>
+  <ol>
+    <li><strong>לא לבדוק את דרישות ה-ETA מספיק מראש</strong> — ולהגיע לשדה התעופה בלי אישור בתוקף</li>
+    <li><strong>לתכנן יותר מדי אטרקציות ליום אחד</strong> — לונדון עיר גדולה, והזמן בין אזורים לוקח יותר ממה שנראה על המפה</li>
+    <li><strong>להתעלם מהגשם</strong> — ולמצוא את עצמם קונים מטריה יקרה בדוכן רחוב</li>
+    <li><strong>לא לתכנן זמן פנוי</strong> — ולפספס את החוויה של סתם לשוטט ברובע חדש</li>
+  </ol>
+
+  <div class="highlight-box">
+    <strong>טיפ מהקהילה:</strong> תמיד להשאיר לפחות יום אחד בטיול ללא תוכניות קבועות מראש. חלק מהרגעים הכי טובים בלונדון קורים כשפשוט מסתובבים ברובע לא מתוכנן ומגלים פאב, שוק או רחוב שלא הייתם יודעים לחפש.
+  </div>
+
+  <div class="sources">
+    <h3>מקורות</h3>
+    <ul>
+      <li><a href="https://www.gov.uk/foreign-travel-advice/israel/entry-requirements" target="_blank" rel="noopener">GOV.UK — Entry requirements</a></li>
+      <li><a href="https://uk-eta.com/eta-eligibility/the-uk-eta-for-israeli-citizens-what-you-need-to-know/" target="_blank" rel="noopener">UK ETA for Israeli Citizens</a></li>
+    </ul>
+  </div>
+
+  <div class="back-cta">
+    <a href="index.html#articles"><i class="fas fa-arrow-right"></i> חזרה לכל המדריכים</a>
+  </div>
+
+</div>
+
+</body>
+</html>
