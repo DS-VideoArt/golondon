@@ -27,7 +27,8 @@
     "author": "צוות גו לונדון",
     "image": "images/posts/trip-planning-flatlay.png",
     "source": "",
-    "date": "2026-07-05"
+    "date": "2026-07-05",
+    "pinned": true
   },
   {
     "id": 1800000000002,
@@ -37,7 +38,8 @@
     "author": "צוות גו לונדון",
     "image": "images/posts/tower-bridge-golden-hour.png",
     "source": "",
-    "date": "2026-07-05"
+    "date": "2026-07-05",
+    "pinned": true
   },
   {
     "id": 1800000000003,
@@ -47,7 +49,8 @@
     "author": "צוות גו לונדון",
     "image": "images/posts/tube-train-platform.png",
     "source": "",
-    "date": "2026-07-05"
+    "date": "2026-07-05",
+    "pinned": true
   },
   {
     "id": 1800000000004,
@@ -57,7 +60,8 @@
     "author": "צוות גו לונדון",
     "image": "images/posts/hotel-room-bigben-view.png",
     "source": "",
-    "date": "2026-07-05"
+    "date": "2026-07-05",
+    "pinned": true
   },
   {
     "id": 1800000000005,
@@ -67,7 +71,8 @@
     "author": "צוות גו לונדון",
     "image": "images/posts/afternoon-tea.png",
     "source": "",
-    "date": "2026-07-05"
+    "date": "2026-07-05",
+    "pinned": true
   },
   {
     "id": 1800000000006,
@@ -77,7 +82,8 @@
     "author": "צוות גו לונדון",
     "image": "images/posts/borough-market.png",
     "source": "",
-    "date": "2026-07-05"
+    "date": "2026-07-05",
+    "pinned": true
   },
   {
     "id": 1800000000007,
@@ -87,7 +93,8 @@
     "author": "צוות גו לונדון",
     "image": "images/posts/west-end-theatre-night.png",
     "source": "",
-    "date": "2026-07-05"
+    "date": "2026-07-05",
+    "pinned": true
   },
   {
     "id": 1800000000008,
@@ -97,7 +104,8 @@
     "author": "צוות גו לונדון",
     "image": "images/posts/football-stadium-night.png",
     "source": "",
-    "date": "2026-07-05"
+    "date": "2026-07-05",
+    "pinned": true
   },
   {
     "id": 1800000000009,
@@ -107,7 +115,8 @@
     "author": "צוות גו לונדון",
     "image": "images/posts/buckingham-palace-guards.png",
     "source": "",
-    "date": "2026-07-05"
+    "date": "2026-07-05",
+    "pinned": true
   },
   {
     "id": 1800000000010,
@@ -117,7 +126,8 @@
     "author": "צוות גו לונדון",
     "image": "images/posts/family-bigben.png",
     "source": "",
-    "date": "2026-07-05"
+    "date": "2026-07-05",
+    "pinned": true
   },
   {
     "id": 1800000000011,
@@ -127,7 +137,8 @@
     "author": "צוות גו לונדון",
     "image": "images/posts/oxford-street-christmas.png",
     "source": "",
-    "date": "2026-07-05"
+    "date": "2026-07-05",
+    "pinned": true
   },
   {
     "id": 1800000000012,
@@ -137,6 +148,7 @@
     "author": "צוות גו לונדון",
     "image": "images/posts/london-map-planning.png",
     "source": "",
-    "date": "2026-07-05"
+    "date": "2026-07-05",
+    "pinned": true
   }
 ]

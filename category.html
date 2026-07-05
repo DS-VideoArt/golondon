@@ -368,7 +368,8 @@ async function loadPosts() {
     try { posts = JSON.parse(localStorage.getItem('golondon_posts') || '[]'); } catch {}
   }
 
-  const filtered = posts.filter(p => p.category === catKey);
+  const filtered = posts.filter(p => p.category === catKey)
+    .sort((a, b) => (a.pinned === b.pinned) ? 0 : a.pinned ? -1 : 1);
   const grid = document.getElementById('postsGrid');
   const empty = document.getElementById('emptyState');
   const count = document.getElementById('postsCount');
