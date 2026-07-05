@@ -121,6 +121,21 @@ function escHtml(str) {
   return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
+const POST_CATEGORY_STYLE = {
+  'תכנון הטיול':   { emoji: '✈️',  grad: 'linear-gradient(135deg, #1E3A8A, #7C3AED)' },
+  'אטרקציות':      { emoji: '🎡',  grad: 'linear-gradient(135deg, #7C3AED, #DB2777)' },
+  'תחבורה':        { emoji: '🚇',  grad: 'linear-gradient(135deg, #DC2626, #EA580C)' },
+  'לינה':          { emoji: '🏨',  grad: 'linear-gradient(135deg, #0F766E, #0891B2)' },
+  'אוכל':          { emoji: '🍔',  grad: 'linear-gradient(135deg, #15803D, #65A30D)' },
+  'שופינג':        { emoji: '🛍️', grad: 'linear-gradient(135deg, #EA580C, #D97706)' },
+  'תרבות':         { emoji: '🎭',  grad: 'linear-gradient(135deg, #DB2777, #9333EA)' },
+  'כדורגל':        { emoji: '⚽',  grad: 'linear-gradient(135deg, #15803D, #0F766E)' },
+  'מלוכה':         { emoji: '👑',  grad: 'linear-gradient(135deg, #B45309, #DC2626)' },
+  'סוגי מטיילים':  { emoji: '👨‍👩‍👧‍👦', grad: 'linear-gradient(135deg, #0891B2, #2563EB)' },
+  'אירועים':       { emoji: '🎉',  grad: 'linear-gradient(135deg, #DC2626, #DB2777)' },
+  'מסלולים':       { emoji: '🗺️', grad: 'linear-gradient(135deg, #1E3A8A, #15803D)' },
+};
+
 function renderPosts(posts) {
   const grid  = document.getElementById('postsGrid');
   const empty = document.getElementById('emptyPosts');
@@ -135,24 +150,29 @@ function renderPosts(posts) {
   grid.style.display = 'grid';
   if (empty) empty.style.display = 'none';
 
-  grid.innerHTML = posts.slice(0, 9).map(p => `
+  grid.innerHTML = posts.slice(0, 9).map(p => {
+    const catStyle = POST_CATEGORY_STYLE[p.category] || { emoji: '📰', grad: 'linear-gradient(135deg, #1E3A8A, #7C3AED)' };
+    const text = p.desc || p.content || '';
+    const link = p.url || p.source || '';
+    return `
     <div class="post-item">
-      <div class="post-item-img">
+      <div class="post-item-img" style="background:${catStyle.grad}">
         ${p.image
-          ? `<img src="${escHtml(p.image)}" alt="${escHtml(p.title)}" onerror="this.parentElement.innerHTML='📰'" />`
-          : '📰'}
+          ? `<img src="${escHtml(p.image)}" alt="${escHtml(p.title)}" onerror="this.parentElement.innerHTML='${catStyle.emoji}'" />`
+          : catStyle.emoji}
       </div>
       <div class="post-item-body">
-        <span class="post-item-cat">${escHtml(p.category)}</span>
+        <span class="post-item-cat" style="background:${catStyle.grad}">${escHtml(p.category)}</span>
         <div class="post-item-title">${escHtml(p.title)}</div>
-        <div class="post-item-text">${escHtml(p.desc)}</div>
+        <div class="post-item-text">${escHtml(text)}</div>
         <div class="post-item-footer">
           <span>${escHtml(p.author || '')}${p.date ? ' · ' + escHtml(p.date) : ''}</span>
-          ${p.url ? `<a href="${escHtml(p.url)}" target="_blank" rel="noopener">לפוסט המקורי →</a>` : ''}
+          ${link ? `<a href="${escHtml(link)}" target="_blank" rel="noopener">לפוסט המקורי →</a>` : ''}
         </div>
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 async function loadCommunityPosts() {
