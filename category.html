@@ -197,9 +197,14 @@
     <div class="logo-text-fallback"><span class="logo-go">GO</span><span class="logo-london">LONDON</span></div>
     <span class="logo-slogan">המדריך הישראלי ללונדון</span>
   </a>
-  <a href="index.html" class="back-btn">
-    <i class="fas fa-arrow-right"></i> חזרה לדף הבית
-  </a>
+  <div style="display:flex; align-items:center; gap:10px;">
+    <a href="search.html" class="back-btn" aria-label="חיפוש באתר">
+      <i class="fas fa-search"></i>
+    </a>
+    <a href="index.html" class="back-btn">
+      <i class="fas fa-arrow-right"></i> חזרה לדף הבית
+    </a>
+  </div>
 </nav>
 
 <!-- כותרת קטגוריה -->
@@ -389,7 +394,7 @@ async function loadPosts() {
     const text = p.desc || p.content || '';
     const link = p.url || p.source || '';
     return `
-    <div class="post-card">
+    <div class="post-card" id="post-${p.id}">
       <div class="post-card-img" style="--hero-grad:${cat.grad}">
         ${p.image
           ? `<img src="${escHtml(p.image)}" alt="${escHtml(p.title)}" onerror="this.parentElement.innerHTML='${cat.emoji}'" />`
@@ -406,6 +411,18 @@ async function loadPosts() {
     </div>
   `;
   }).join('');
+
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        target.style.transition = 'box-shadow 0.4s';
+        target.style.boxShadow = '0 0 0 3px #7C3AED';
+        setTimeout(() => { target.style.boxShadow = 'none'; }, 2500);
+      }, 200);
+    }
+  }
 }
 
 loadPosts();
