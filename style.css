@@ -182,10 +182,14 @@ a { text-decoration: none; color: inherit; }
 .categories { padding: 90px 0 100px; background: #FAF9F6; position: relative; overflow: hidden; }
 .categories::before {
   content: ''; position: absolute; inset: 0; z-index: 0;
-  background: url('images/bg-red-bus.jpg') left bottom / 640px no-repeat;
-  opacity: 0.07;
-  mask-image: linear-gradient(to top left, #000 0%, transparent 60%);
-  -webkit-mask-image: linear-gradient(to top left, #000 0%, transparent 60%);
+  background:
+    linear-gradient(100deg, rgba(220,38,38,0.78) 0%, rgba(124,58,237,0.62) 100%),
+    url('images/bg-red-bus.jpg') left center / 820px no-repeat;
+  background-blend-mode: multiply;
+  filter: grayscale(0.35) contrast(1.05);
+  opacity: 0.9;
+  mask-image: linear-gradient(to right, #000 0%, #000 42%, transparent 75%);
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 42%, transparent 75%);
 }
 .categories > .container { position: relative; z-index: 1; }
 
@@ -296,10 +300,14 @@ a { text-decoration: none; color: inherit; }
 .articles { padding: 90px 0 100px; background: #F1F0EB; position: relative; overflow: hidden; }
 .articles::before {
   content: ''; position: absolute; inset: 0; z-index: 0;
-  background: url('images/bg-ferris-wheel.jpg') right top / 620px no-repeat;
-  opacity: 0.08;
-  mask-image: linear-gradient(to bottom left, #000 0%, transparent 60%);
-  -webkit-mask-image: linear-gradient(to bottom left, #000 0%, transparent 60%);
+  background:
+    linear-gradient(260deg, rgba(30,58,138,0.78) 0%, rgba(124,58,237,0.62) 100%),
+    url('images/bg-ferris-wheel.jpg') right top / 760px no-repeat;
+  background-blend-mode: multiply;
+  filter: grayscale(0.35) contrast(1.05);
+  opacity: 0.9;
+  mask-image: linear-gradient(to left, #000 0%, #000 42%, transparent 75%);
+  -webkit-mask-image: linear-gradient(to left, #000 0%, #000 42%, transparent 75%);
 }
 .articles > .container { position: relative; z-index: 1; }
 .articles .section-header h2 { color: #201f2b; }
