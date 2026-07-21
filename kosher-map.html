@@ -4,11 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>מפת כשרות לונדון | גו לונדון</title>
+  <meta name="description" content="מפת כשרות אינטראקטיבית ללונדון: מסעדות בשריות, חלביות ומאפיות כשרות עם ניווט ישיר בוויז." />
+  <link rel="canonical" href="https://golondon.co.il/kosher-map.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="מפת כשרות לונדון | גו לונדון" />
+  <meta property="og:description" content="מפת כשרות אינטראקטיבית ללונדון: מסעדות בשריות, חלביות ומאפיות כשרות עם ניווט ישיר בוויז." />
+  <meta property="og:url" content="https://golondon.co.il/kosher-map.html" />
+  <meta property="og:image" content="https://golondon.co.il/images/hero.jpg" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:site_name" content="גו לונדון" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="מפת כשרות לונדון | גו לונדון" />
+  <meta name="twitter:description" content="מפת כשרות אינטראקטיבית ללונדון: מסעדות בשריות, חלביות ומאפיות כשרות עם ניווט ישיר בוויז." />
+  <meta name="twitter:image" content="https://golondon.co.il/images/hero.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    main { display: flex; flex-direction: column; flex: 1; min-height: 0; }
     body { font-family: 'Heebo', sans-serif; background: #0a0a1a; color: #fff; direction: rtl; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
 
     /* ===== ניווט ===== */
@@ -37,7 +51,7 @@
       padding: 12px 20px; display: flex; align-items: center; gap: 10px;
       flex-wrap: wrap; flex-shrink: 0; z-index: 999;
     }
-    .toolbar-title { font-size: 15px; font-weight: 800; margin-left: 8px; white-space: nowrap; }
+    .toolbar-title { font-size: 15px; font-weight: 800; margin: 0 8px 0 8px; white-space: nowrap; }
     .toolbar-title span { color: #DC2626; }
 
     .filter-btn {
@@ -104,16 +118,18 @@
 <!-- ניווט -->
 <nav class="navbar">
   <a href="index.html" class="logo">
-    <img src="images/logo.png" alt="גו לונדון" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <img src="images/logo.png" alt="גו לונדון" class="logo-img" width="86" height="48" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
     <div class="logo-text-fallback"><span class="logo-go">GO</span><span class="logo-london">LONDON</span></div>
     <span class="logo-slogan">המדריך הישראלי ללונדון</span>
   </a>
   <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> דף הבית</a>
 </nav>
 
+
+<main>
 <!-- סרגל כלים -->
 <div class="toolbar">
-  <span class="toolbar-title">🗺️ מפת <span>כשרות</span> לונדון</span>
+  <h1 class="toolbar-title">🗺️ מפת <span>כשרות</span> לונדון</h1>
 
   <button class="filter-btn active" data-filter="הכל" onclick="setFilter('הכל', this)">🍽️ הכל</button>
   <button class="filter-btn" data-filter="מסעדה חלבית" onclick="setFilter('מסעדה חלבית', this)">🥛 חלבי</button>
@@ -256,5 +272,6 @@ function locateMe() {
   });
 }
 </script>
+</main>
 </body>
 </html>

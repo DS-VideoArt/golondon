@@ -4,6 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>גו לונדון | קטגוריה</title>
+  <meta name="description" content="מדריכים ופוסטים לפי קטגוריה על לונדון: תחבורה, אוכל, אטרקציות, תרבות, כדורגל ועוד, הכל בעברית למטיילים ישראלים." />
+  <link rel="canonical" href="https://golondon.co.il/category.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="קטגוריות מידע על לונדון | גו לונדון" />
+  <meta property="og:description" content="מדריכים ופוסטים לפי קטגוריה על לונדון: תחבורה, אוכל, אטרקציות, תרבות, כדורגל ועוד, הכל בעברית למטיילים ישראלים." />
+  <meta property="og:url" content="https://golondon.co.il/category.html" />
+  <meta property="og:image" content="https://golondon.co.il/images/hero.jpg" />
+  <meta property="og:locale" content="he_IL" />
+  <meta property="og:site_name" content="גו לונדון" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="קטגוריות מידע על לונדון | גו לונדון" />
+  <meta name="twitter:description" content="מדריכים ופוסטים לפי קטגוריה על לונדון: תחבורה, אוכל, אטרקציות, תרבות, כדורגל ועוד, הכל בעברית למטיילים ישראלים." />
+  <meta name="twitter:image" content="https://golondon.co.il/images/hero.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
@@ -193,7 +206,7 @@
 <!-- ניווט -->
 <nav class="navbar">
   <a href="index.html" class="logo">
-    <img src="images/logo.png" alt="גו לונדון" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <img src="images/logo.png" alt="גו לונדון" class="logo-img" width="86" height="48" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
     <div class="logo-text-fallback"><span class="logo-go">GO</span><span class="logo-london">LONDON</span></div>
     <span class="logo-slogan">המדריך הישראלי ללונדון</span>
   </a>
@@ -207,6 +220,7 @@
   </div>
 </nav>
 
+<main>
 <!-- כותרת קטגוריה -->
 <section class="cat-hero" id="catHero">
   <div class="container cat-hero-inner">
@@ -241,6 +255,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer class="mini-footer">
   © 2025 <a href="index.html">Go London</a> — המדריך הישראלי ללונדון
@@ -349,6 +364,27 @@ document.getElementById('catBreadcrumb').textContent = cat.title;
 document.getElementById('emptyEmoji').textContent = cat.emoji;
 document.getElementById('postsSectionTitle').textContent = 'מה הקהילה אומרת על ' + cat.title;
 document.getElementById('catHero').style.setProperty('--hero-grad', cat.grad);
+
+// ===== עדכון meta תגיות לפי קטגוריה (SEO ושיתוף) =====
+(function updateMetaForCategory() {
+  const canonicalUrl = 'https://golondon.co.il/category.html?cat=' + encodeURIComponent(catKey);
+  const fullTitle = cat.title + ' | גו לונדון';
+  const desc = cat.desc;
+
+  const canonicalLink = document.querySelector('link[rel="canonical"]');
+  if (canonicalLink) canonicalLink.setAttribute('href', canonicalUrl);
+
+  const setMeta = (selector, attr, value) => {
+    const el = document.querySelector(selector);
+    if (el) el.setAttribute(attr, value);
+  };
+  setMeta('meta[name="description"]', 'content', desc);
+  setMeta('meta[property="og:title"]', 'content', fullTitle);
+  setMeta('meta[property="og:description"]', 'content', desc);
+  setMeta('meta[property="og:url"]', 'content', canonicalUrl);
+  setMeta('meta[name="twitter:title"]', 'content', fullTitle);
+  setMeta('meta[name="twitter:description"]', 'content', desc);
+})();
 document.querySelectorAll('.post-card-img').forEach(el => el.style.setProperty('--hero-grad', cat.grad));
 
 // תת-נושאים
@@ -397,7 +433,7 @@ async function loadPosts() {
     <div class="post-card" id="post-${p.id}">
       <div class="post-card-img" style="--hero-grad:${cat.grad}">
         ${p.image
-          ? `<img src="${escHtml(p.image)}" alt="${escHtml(p.title)}" onerror="this.parentElement.innerHTML='${cat.emoji}'" />`
+          ? `<img src="${escHtml(p.image)}" alt="${escHtml(p.title)}" loading="lazy" width="400" height="220" onerror="this.parentElement.innerHTML='${cat.emoji}'" />`
           : cat.emoji}
       </div>
       <div class="post-card-body">

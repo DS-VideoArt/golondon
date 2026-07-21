@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>הדף לא נמצא | גו לונדון</title>
+  <meta name="robots" content="noindex, follow" />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Heebo', sans-serif; background: #0a0a1a; color: #e2e8f0;
+      direction: rtl; min-height: 100vh; display: flex; flex-direction: column;
+    }
+    .navbar {
+      background: rgba(10,10,26,0.95); border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 24px; height: 64px; display: flex; align-items: center;
+      justify-content: space-between;
+    }
+    .logo { direction: ltr; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-img { height: 44px; width: auto; object-fit: contain; mix-blend-mode: screen; }
+    .logo-text-fallback { display: none; align-items: baseline; gap: 2px; }
+    .logo-go { font-size: 22px; font-weight: 900; color: #DC2626; }
+    .logo-london { font-size: 22px; font-weight: 900; color: #fff; }
+    .not-found {
+      flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 60px 24px;
+      background: linear-gradient(180deg, #1a1040 0%, #0a0a1a 60%);
+    }
+    .not-found .emoji { font-size: 64px; margin-bottom: 20px; }
+    .not-found h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 900; color: #fff; margin-bottom: 14px; }
+    .not-found p { font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 36px; max-width: 460px; }
+    .not-found-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 50px; font-weight: 700; font-size: 15px;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .btn-primary { background: #DC2626; color: #fff; }
+    .btn-primary:hover { background: #B91C1C; transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.25); }
+    .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.4); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="/" class="logo">
+    <img src="images/logo.png" alt="גו לונדון" class="logo-img" width="79" height="44" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <div class="logo-text-fallback"><span class="logo-go">GO</span><span class="logo-london">LONDON</span></div>
+  </a>
+</nav>
+
+<div class="not-found">
+  <div class="emoji">🧭</div>
+  <h1>הדף הזה לא קיים</h1>
+  <p>נראה שהגעתם לכתובת שלא קיימת יותר, או שהוקלדה לא נכון. בואו נחזיר אתכם למסלול הנכון.</p>
+  <div class="not-found-actions">
+    <a href="/" class="btn btn-primary"><i class="fas fa-home"></i> חזרה לדף הבית</a>
+    <a href="/search.html" class="btn btn-outline"><i class="fas fa-search"></i> חיפוש באתר</a>
+  </div>
+</div>
+
+</body>
+</html>
