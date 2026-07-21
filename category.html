@@ -177,6 +177,7 @@
       .cat-hero { padding: 40px 0 32px; }
     }
   </style>
+  <link rel="stylesheet" href="accessibility-widget.css" />
 </head>
 <body>
 
@@ -485,5 +486,6 @@ fetch('https://open.er-api.com/v6/latest/GBP')
     document.getElementById('gbp-rate').textContent = d.rates.ILS.toFixed(2);
   }).catch(() => {});
 </script>
+<script src="accessibility-widget.js" defer></script>
 </body>
 </html>
