@@ -14,18 +14,18 @@
 
   var style = document.createElement('style');
   style.textContent = [
-    '#install-app-btn{position:fixed;bottom:24px;left:88px;z-index:9000;display:none;align-items:center;gap:8px;',
+    '#install-app-btn{position:fixed;bottom:24px;right:24px;z-index:9000;display:none;align-items:center;gap:8px;',
     'background:linear-gradient(135deg,#DC2626,#7C3AED);color:#fff;border:none;border-radius:50px;',
     'padding:12px 18px;font-family:Heebo,system-ui,sans-serif;font-size:14px;font-weight:700;cursor:pointer;',
     'box-shadow:0 8px 24px rgba(0,0,0,0.25);transition:transform 0.2s ease;}',
     '#install-app-btn:hover{transform:translateY(-2px);}',
     '#install-app-btn .close-x{background:rgba(255,255,255,0.25);border-radius:50%;width:18px;height:18px;',
     'display:flex;align-items:center;justify-content:center;font-size:11px;margin-right:2px;}',
-    '#install-ios-tip{position:fixed;bottom:78px;left:24px;right:24px;max-width:340px;margin:0 auto;z-index:9001;',
+    '#install-ios-tip{position:fixed;bottom:78px;right:16px;left:16px;max-width:340px;margin:0 0 0 auto;z-index:9001;',
     'background:#201f2b;color:#fff;padding:16px 18px;border-radius:14px;font-family:Heebo,system-ui,sans-serif;',
     'font-size:13.5px;line-height:1.7;box-shadow:0 12px 30px rgba(0,0,0,0.3);display:none;direction:rtl;text-align:right;}',
     '#install-ios-tip strong{color:#f97316;}',
-    '@media (max-width:640px){#install-app-btn{left:16px;bottom:16px;}}'
+    '@media (max-width:640px){#install-app-btn{right:16px;bottom:16px;}}'
   ].join('');
   document.head.appendChild(style);
 
