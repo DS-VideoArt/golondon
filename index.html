@@ -66,6 +66,7 @@
   <!-- מסך פתיחה -->
   <div id="splash-screen" role="dialog" aria-label="ברוכים הבאים לגו לונדון">
     <div class="splash-content">
+      <div class="splash-flag-bar"></div>
       <h1 class="splash-title">ברוכים הבאים הביתה</h1>
     </div>
   </div>
@@ -87,12 +88,17 @@
         splash.remove();
         return;
       }
+      var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.documentElement.classList.add('splash-active');
+      if (scrollbarWidth > 0) { document.body.style.paddingRight = scrollbarWidth + 'px'; }
 
       function hideSplash() {
         splash.classList.add('splash-hidden');
-        document.documentElement.classList.remove('splash-active');
-        setTimeout(function () { splash.remove(); }, 750);
+        setTimeout(function () {
+          splash.remove();
+          document.documentElement.classList.remove('splash-active');
+          document.body.style.paddingRight = '';
+        }, 750);
       }
 
       var timer = setTimeout(hideSplash, 2400);
