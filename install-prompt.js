@@ -15,10 +15,11 @@
   var style = document.createElement('style');
   style.textContent = [
     '#install-app-btn{position:fixed;bottom:86px;left:20px;z-index:9000;display:none;align-items:center;justify-content:center;',
-    'width:58px;height:58px;border-radius:50%;',
-    'background:linear-gradient(135deg,#DC2626,#7C3AED);color:#fff;border:2px solid rgba(255,255,255,0.3);',
-    'font-size:24px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.3);',
+    'width:58px;height:58px;border-radius:50%;padding:6px;box-sizing:border-box;',
+    'background:#fff;border:2px solid rgba(255,255,255,0.6);',
+    'cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.3);',
     'transition:transform 0.2s ease, box-shadow 0.2s ease;}',
+    '#install-app-btn img{width:100%;height:100%;object-fit:contain;border-radius:50%;}',
     '#install-app-btn:hover{transform:scale(1.08);box-shadow:0 10px 28px rgba(0,0,0,0.4);}',
     '#install-app-btn .close-x{position:absolute;top:-4px;right:-4px;background:#201f2b;color:#fff;',
     'border:2px solid #fff;border-radius:50%;width:22px;height:22px;font-size:11px;font-weight:700;',
@@ -36,7 +37,7 @@
   btn.id = 'install-app-btn';
   btn.setAttribute('aria-label', 'התקן את גו לונדון כאפליקציה');
   btn.style.position = 'fixed';
-  btn.innerHTML = '<span>📲</span><span class="close-x" aria-label="סגור" role="button">✕</span>';
+  btn.innerHTML = '<img src="images/icon-192.png" alt="" /><span class="close-x" aria-label="סגור" role="button">✕</span>';
 
   var iosTip = document.createElement('div');
   iosTip.id = 'install-ios-tip';
