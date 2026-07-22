@@ -9,7 +9,7 @@
   if (isStandalone) return;
 
   var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
-  var dismissed = localStorage.getItem('golondon_install_dismissed');
+  var dismissed = localStorage.getItem('golondon_install_dismissed_v2');
   var deferredPrompt = null;
 
   var style = document.createElement('style');
@@ -52,7 +52,12 @@
   function closeAll() {
     btn.style.display = 'none';
     iosTip.style.display = 'none';
-    localStorage.setItem('golondon_install_dismissed', '1');
+    localStorage.setItem('golondon_install_dismissed_v2', '1');
+  }
+
+  function hideButtonOnly() {
+    btn.style.display = 'none';
+    iosTip.style.display = 'none';
   }
 
   btn.addEventListener('click', function (e) {
@@ -78,7 +83,7 @@
   });
 
   window.addEventListener('appinstalled', function () {
-    closeAll();
+    hideButtonOnly();
   });
 
   if (isIOS) {
