@@ -332,6 +332,7 @@ a { text-decoration: none; color: inherit; }
 .article-card--featured .article-img { height: 260px; }
 .article-img {
   height: 160px; position: relative; display: flex; align-items: flex-start; padding: 16px;
+  background-blend-mode: multiply; filter: saturate(1.05);
 }
 .article-category-tag {
   background: rgba(0,0,0,0.3); backdrop-filter: blur(4px);
