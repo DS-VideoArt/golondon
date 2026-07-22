@@ -74,13 +74,20 @@
       var splash = document.getElementById('splash-screen');
       if (!splash) return;
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var alreadyShown = sessionStorage.getItem('golondon_splash_shown');
-      if (alreadyShown || reduceMotion) {
+
+      var navEntries = performance.getEntriesByType ? performance.getEntriesByType('navigation') : [];
+      var navType = navEntries.length ? navEntries[0].type : 'navigate';
+      var referrerIsInternal = false;
+      if (document.referrer) {
+        try { referrerIsInternal = new URL(document.referrer).origin === location.origin; } catch (e) {}
+      }
+      var isFreshEntry = navType === 'reload' || !referrerIsInternal;
+
+      if (reduceMotion || !isFreshEntry) {
         splash.remove();
         return;
       }
       document.documentElement.classList.add('splash-active');
-      sessionStorage.setItem('golondon_splash_shown', '1');
 
       function hideSplash() {
         splash.classList.add('splash-hidden');

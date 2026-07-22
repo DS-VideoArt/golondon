@@ -4,7 +4,7 @@
   display: flex; align-items: center; justify-content: center;
   background:
     radial-gradient(ellipse 85% 55% at 50% 55%, rgba(8,16,36,0.4) 0%, rgba(8,16,36,0.18) 55%, rgba(8,16,36,0.04) 100%),
-    url('images/splash.jpg') center 32% / cover no-repeat;
+    url('images/splash.jpg') center center / cover no-repeat;
   transition: opacity 0.7s ease, visibility 0.7s ease;
   opacity: 1; visibility: visible;
 }
