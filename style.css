@@ -22,7 +22,7 @@ html.splash-active, html.splash-active body { overflow: hidden; height: 100%; }
 .splash-content { position: relative; z-index: 2; text-align: center; padding: 24px; }
 .splash-content::before {
   content: ''; position: absolute; inset: -50px -80px; z-index: -1;
-  background: radial-gradient(ellipse at center, rgba(253,186,59,0.35) 0%, rgba(253,186,59,0) 70%);
+  background: radial-gradient(ellipse at center, rgba(220,38,38,0.35) 0%, rgba(220,38,38,0) 70%);
   filter: blur(6px);
   animation: splashGlowPulse 3s ease-in-out 0.6s infinite;
 }
@@ -40,13 +40,13 @@ html.splash-active, html.splash-active body { overflow: hidden; height: 100%; }
   animation: splashIn 0.9s ease 0.15s both;
 }
 .splash-home {
-  color: #FDBA3B;
-  text-shadow: 0 0 40px rgba(253,186,59,0.9), 0 0 80px rgba(253,186,59,0.5), 0 4px 20px rgba(0,0,0,0.5);
+  color: #DC2626;
+  text-shadow: 0 0 40px rgba(220,38,38,0.9), 0 0 80px rgba(220,38,38,0.55), 0 4px 20px rgba(0,0,0,0.55);
   animation: splashHomeGlow 2.4s ease-in-out 1.2s infinite;
 }
 @keyframes splashHomeGlow {
-  0%, 100% { text-shadow: 0 0 40px rgba(253,186,59,0.9), 0 0 80px rgba(253,186,59,0.5), 0 4px 20px rgba(0,0,0,0.5); }
-  50% { text-shadow: 0 0 58px rgba(253,186,59,1), 0 0 105px rgba(253,186,59,0.75), 0 4px 20px rgba(0,0,0,0.5); }
+  0%, 100% { text-shadow: 0 0 40px rgba(220,38,38,0.9), 0 0 80px rgba(220,38,38,0.55), 0 4px 20px rgba(0,0,0,0.55); }
+  50% { text-shadow: 0 0 58px rgba(220,38,38,1), 0 0 105px rgba(220,38,38,0.8), 0 4px 20px rgba(0,0,0,0.55); }
 }
 @keyframes splashGlowPulse {
   0%, 100% { opacity: 0.55; }

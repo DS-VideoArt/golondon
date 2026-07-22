@@ -14,25 +14,29 @@
 
   var style = document.createElement('style');
   style.textContent = [
-    '#install-app-btn{position:fixed;bottom:24px;right:24px;z-index:9000;display:none;align-items:center;gap:8px;',
-    'background:linear-gradient(135deg,#DC2626,#7C3AED);color:#fff;border:none;border-radius:50px;',
-    'padding:12px 18px;font-family:Heebo,system-ui,sans-serif;font-size:14px;font-weight:700;cursor:pointer;',
-    'box-shadow:0 8px 24px rgba(0,0,0,0.25);transition:transform 0.2s ease;}',
-    '#install-app-btn:hover{transform:translateY(-2px);}',
-    '#install-app-btn .close-x{background:rgba(255,255,255,0.25);border-radius:50%;width:18px;height:18px;',
-    'display:flex;align-items:center;justify-content:center;font-size:11px;margin-right:2px;}',
-    '#install-ios-tip{position:fixed;bottom:78px;right:16px;left:16px;max-width:340px;margin:0 0 0 auto;z-index:9001;',
+    '#install-app-btn{position:fixed;bottom:86px;left:20px;z-index:9000;display:none;align-items:center;justify-content:center;',
+    'width:58px;height:58px;border-radius:50%;',
+    'background:linear-gradient(135deg,#DC2626,#7C3AED);color:#fff;border:2px solid rgba(255,255,255,0.3);',
+    'font-size:24px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,0.3);',
+    'transition:transform 0.2s ease, box-shadow 0.2s ease;}',
+    '#install-app-btn:hover{transform:scale(1.08);box-shadow:0 10px 28px rgba(0,0,0,0.4);}',
+    '#install-app-btn .close-x{position:absolute;top:-4px;right:-4px;background:#201f2b;color:#fff;',
+    'border:2px solid #fff;border-radius:50%;width:22px;height:22px;font-size:11px;font-weight:700;',
+    'display:flex;align-items:center;justify-content:center;line-height:1;}',
+    '#install-ios-tip{position:fixed;bottom:150px;left:16px;max-width:260px;z-index:9001;',
     'background:#201f2b;color:#fff;padding:16px 18px;border-radius:14px;font-family:Heebo,system-ui,sans-serif;',
     'font-size:13.5px;line-height:1.7;box-shadow:0 12px 30px rgba(0,0,0,0.3);display:none;direction:rtl;text-align:right;}',
     '#install-ios-tip strong{color:#f97316;}',
-    '@media (max-width:640px){#install-app-btn{right:16px;bottom:16px;}}'
+    '@media (max-width:640px){#install-app-btn{left:12px;bottom:68px;width:50px;height:50px;font-size:20px;}',
+    '#install-ios-tip{bottom:126px;left:12px;max-width:calc(100vw - 24px);}}'
   ].join('');
   document.head.appendChild(style);
 
   var btn = document.createElement('button');
   btn.id = 'install-app-btn';
   btn.setAttribute('aria-label', 'התקן את גו לונדון כאפליקציה');
-  btn.innerHTML = '<span>📲</span><span>התקן כאפליקציה</span><span class="close-x">✕</span>';
+  btn.style.position = 'fixed';
+  btn.innerHTML = '<span>📲</span><span class="close-x" aria-label="סגור" role="button">✕</span>';
 
   var iosTip = document.createElement('div');
   iosTip.id = 'install-ios-tip';
