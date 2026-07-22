@@ -51,9 +51,51 @@
     }
   }
   </script>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#DC2626" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Go London" />
   <link rel="stylesheet" href="accessibility-widget.css" />
 </head>
 <body>
+
+  <!-- מסך פתיחה -->
+  <div id="splash-screen" role="dialog" aria-label="ברוכים הבאים לגו לונדון">
+    <div class="splash-content">
+      <h1 class="splash-title">ברוכים הבאים הביתה</h1>
+      <p class="splash-sub">גו לונדון · המדריך הישראלי ללונדון</p>
+    </div>
+  </div>
+  <script>
+    (function() {
+      var splash = document.getElementById('splash-screen');
+      if (!splash) return;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var alreadyShown = sessionStorage.getItem('golondon_splash_shown');
+      if (alreadyShown || reduceMotion) {
+        splash.remove();
+        return;
+      }
+      document.documentElement.classList.add('splash-active');
+      sessionStorage.setItem('golondon_splash_shown', '1');
+
+      function hideSplash() {
+        splash.classList.add('splash-hidden');
+        document.documentElement.classList.remove('splash-active');
+        setTimeout(function () { splash.remove(); }, 750);
+      }
+
+      var timer = setTimeout(hideSplash, 2400);
+      splash.addEventListener('click', function () { clearTimeout(timer); hideSplash(); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { clearTimeout(timer); hideSplash(); }
+      });
+    })();
+  </script>
 
   <!-- פס מידע חי -->
   <div class="topbar" id="topbar">
@@ -123,23 +165,6 @@
     <div class="hero-bg">
       <div class="hero-glow hero-glow--red"></div>
       <div class="hero-glow hero-glow--blue"></div>
-      <!-- דגל אנגליה דקורטיבי -->
-      <svg class="union-jack-overlay" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-        <!-- רקע כחול -->
-        <rect width="60" height="40" fill="#012169"/>
-        <!-- אלכסון לבן (X) -->
-        <line x1="0" y1="0" x2="60" y2="40" stroke="#fff" stroke-width="8"/>
-        <line x1="60" y1="0" x2="0" y2="40" stroke="#fff" stroke-width="8"/>
-        <!-- אלכסון אדום (X, קצת צדי) -->
-        <line x1="0" y1="0" x2="60" y2="40" stroke="#C8102E" stroke-width="4"/>
-        <line x1="60" y1="0" x2="0" y2="40" stroke="#C8102E" stroke-width="4"/>
-        <!-- + לבן -->
-        <rect x="24" y="0" width="12" height="40" fill="#fff"/>
-        <rect x="0" y="14" width="60" height="12" fill="#fff"/>
-        <!-- + אדום -->
-        <rect x="26" y="0" width="8" height="40" fill="#C8102E"/>
-        <rect x="0" y="16" width="60" height="8" fill="#C8102E"/>
-      </svg>
     </div>
 
     <div class="hero-content container">
@@ -644,5 +669,6 @@
     }
   </script>
 <script src="accessibility-widget.js" defer></script>
+<script src="install-prompt.js" defer></script>
 </body>
 </html>

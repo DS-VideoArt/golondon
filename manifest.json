@@ -1,0 +1,40 @@
+{
+  "name": "גו לונדון | המדריך הישראלי ללונדון",
+  "short_name": "Go London",
+  "description": "המדריך הישראלי המקיף לטיול וחיים בלונדון: תחבורה, אוכל כשר, אטרקציות, אירועים ומפת כשרות, הכל בעברית.",
+  "start_url": "/index.html",
+  "id": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FAF9F6",
+  "theme_color": "#DC2626",
+  "lang": "he",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
