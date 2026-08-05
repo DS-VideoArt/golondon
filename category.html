@@ -67,15 +67,23 @@
     /* ===== כותרת קטגוריה ===== */
     .cat-hero {
       margin-top: 102px;
-      padding: 64px 0 48px;
+      padding: 100px 0 56px;
       position: relative;
       overflow: hidden;
     }
     .cat-hero::before {
       content: '';
       position: absolute; inset: 0;
-      background: var(--hero-grad, linear-gradient(135deg, #DC2626, #DB2777));
-      opacity: 0.12;
+      background:
+        var(--hero-tint, linear-gradient(135deg, rgba(220,38,38,0.75), rgba(219,39,119,0.62))),
+        var(--hero-img, none) center 38% / cover no-repeat;
+      background-blend-mode: multiply;
+      filter: saturate(1.05);
+    }
+    .cat-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,26,0) 40%, #0a0a1a 100%);
     }
     .cat-hero-inner { position: relative; z-index: 1; }
     .cat-breadcrumb {
@@ -89,8 +97,10 @@
       background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       margin-bottom: 12px;
+      filter: drop-shadow(0 3px 14px rgba(0,0,0,0.55));
     }
-    .cat-desc { font-size: 17px; color: rgba(255,255,255,0.5); max-width: 600px; line-height: 1.7; }
+    .cat-desc { font-size: 17px; color: rgba(255,255,255,0.85); max-width: 600px; line-height: 1.7; text-shadow: 0 2px 10px rgba(0,0,0,0.6); }
+    .cat-emoji-big { filter: drop-shadow(0 3px 10px rgba(0,0,0,0.5)); }
 
     /* ===== תת-נושאים ===== */
     .subtopics {
@@ -278,6 +288,8 @@ const CATEGORIES = {
     title: 'תכנון הטיול ללונדון',
     desc: 'כל מה שצריך לדעת לפני שעולים על המטוס, כניסה לבריטניה, כסף, מזג אוויר וטעויות שכדאי להימנע מהן.',
     grad: 'linear-gradient(135deg, #1E3A8A, #7C3AED)',
+    img: 'cat-planning.jpg',
+    tint: 'linear-gradient(135deg, rgba(30,58,138,0.75) 0%, rgba(124,58,237,0.6) 100%)',
     subtopics: ['היכרות עם לונדון', 'כניסה לבריטניה', 'הכנות לטיסה', 'דברים חיוניים', 'מזג האוויר', 'כסף והתנהלות כלכלית', 'טעויות נפוצות של מטיילים']
   },
   'אטרקציות': {
@@ -285,6 +297,8 @@ const CATEGORIES = {
     title: 'אטרקציות בלונדון',
     desc: 'מגלגל לונדון ועד גני קנסינגטון, כל האטרקציות המרכזיות, הנסתרות, והמיוחדות שלונדון מציעה.',
     grad: 'linear-gradient(135deg, #7C3AED, #DB2777)',
+    img: 'cat-attractions.jpg',
+    tint: 'linear-gradient(135deg, rgba(124,58,237,0.72) 0%, rgba(219,39,119,0.58) 100%)',
     subtopics: ['האטרקציות המרכזיות', 'פארקים וגנים', 'נהר התמזה', 'אדריכלות ומבנים', 'היסטוריה', 'אטרקציות פחות מוכרות']
   },
   'תחבורה': {
@@ -292,6 +306,8 @@ const CATEGORIES = {
     title: 'תחבורה בלונדון',
     desc: 'כרטיס האויסטר, קווי האנדרגראונד, אוטובוסים אדומים ואיך להתנייד בלונדון כמו מקומי.',
     grad: 'linear-gradient(135deg, #DC2626, #EA580C)',
+    img: 'cat-transport.jpg',
+    tint: 'linear-gradient(135deg, rgba(220,38,38,0.75) 0%, rgba(234,88,12,0.62) 100%)',
     subtopics: ['האנדרגראונד', 'אוטובוסים', 'מוניות ואוברה', 'אופניים', 'רכבת לאזורי הפרברים', 'שדות תעופה']
   },
   'לינה': {
@@ -299,6 +315,8 @@ const CATEGORIES = {
     title: 'לינה בלונדון',
     desc: 'מלונות, דירות, אירבנבי, איפה כדאי להתאכסן, באיזו שכונה, וכמה זה עולה.',
     grad: 'linear-gradient(135deg, #0F766E, #0891B2)',
+    img: 'cat-accommodation.jpg',
+    tint: 'linear-gradient(135deg, rgba(15,118,110,0.75) 0%, rgba(8,145,178,0.62) 100%)',
     subtopics: ['מלונות מומלצים', 'דירות להשכרה', 'שכונות מומלצות', 'כמה לשלם', 'טיפים לחיסכון']
   },
   'אוכל': {
@@ -306,6 +324,8 @@ const CATEGORIES = {
     title: 'אוכל בלונדון',
     desc: 'מסעדות ישראליות, אוכל כשר, פאב בריטי, שווקי אוכל ואיפה הכי שווה לאכול בלונדון.',
     grad: 'linear-gradient(135deg, #15803D, #65A30D)',
+    img: 'cat-food.jpg',
+    tint: 'linear-gradient(135deg, rgba(21,128,61,0.75) 0%, rgba(101,163,13,0.62) 100%)',
     subtopics: ['מסעדות ישראליות', 'אוכל כשר', 'אוכל בריטי מסורתי', 'שווקי אוכל', 'קפה וארוחות בוקר', 'מסעדות חדשות']
   },
   'שופינג': {
@@ -313,6 +333,8 @@ const CATEGORIES = {
     title: 'שופינג ושווקים',
     desc: 'מפורטובלו עד אוקספורד סטריט, השווקים הכי שווים, רחובות הקניות ומה חייבים לקנות בלונדון.',
     grad: 'linear-gradient(135deg, #EA580C, #D97706)',
+    img: 'cat-shopping.jpg',
+    tint: 'linear-gradient(135deg, rgba(234,88,12,0.75) 0%, rgba(217,119,6,0.62) 100%)',
     subtopics: ['שוק פורטובלו', 'שוק בורו', 'שוק קמדן', 'אוקספורד סטריט', 'מה לקנות', 'טיפים לשופינג']
   },
   'תרבות': {
@@ -320,6 +342,8 @@ const CATEGORIES = {
     title: 'תרבות ובילויים',
     desc: 'ווסט אנד, מוזיאונים חינמיים, הופעות חיות וחיי לילה, לונדון היא אחת הערים התרבותיות בעולם.',
     grad: 'linear-gradient(135deg, #DB2777, #9333EA)',
+    img: 'cat-culture.jpg',
+    tint: 'linear-gradient(135deg, rgba(219,39,119,0.75) 0%, rgba(147,51,234,0.62) 100%)',
     subtopics: ['ווסט אנד ומחזות זמר', 'מוזיאונים חינמיים', 'הופעות חיות', 'חיי לילה', 'תרבות בריטית', 'קולנוע ואמנות']
   },
   'כדורגל': {
@@ -327,6 +351,8 @@ const CATEGORIES = {
     title: 'כדורגל בלונדון',
     desc: 'צ׳לסי, ארסנל, טוטנהאם, וועסט האם, איך מגיעים למשחק, איפה קונים כרטיסים ומה חייבים לחוות.',
     grad: 'linear-gradient(135deg, #15803D, #0F766E)',
+    img: 'cat-football.jpg',
+    tint: 'linear-gradient(135deg, rgba(21,128,61,0.75) 0%, rgba(15,118,110,0.62) 100%)',
     subtopics: ['קבוצות לונדון', 'כרטיסים למשחקים', 'האצטדיונים', 'איך מגיעים', 'טיפים למעריצים', 'טורים לאצטדיונים']
   },
   'מלוכה': {
@@ -334,6 +360,8 @@ const CATEGORIES = {
     title: 'המלוכה הבריטית',
     desc: 'בקינגהם פאלאס, חילופי משמר, ארמון המגדל וסיפורי המלוכה שגורמים ללונדון להיות מיוחדת.',
     grad: 'linear-gradient(135deg, #B45309, #DC2626)',
+    img: 'cat-royalty.jpg',
+    tint: 'linear-gradient(135deg, rgba(180,83,9,0.75) 0%, rgba(220,38,38,0.62) 100%)',
     subtopics: ['בקינגהם פאלאס', 'חילופי משמר', 'ארמון המגדל', 'ונסר קאסל', 'ההיסטוריה המלכותית', 'הקשר לישראל']
   },
   'סוגי מטיילים': {
@@ -341,6 +369,8 @@ const CATEGORIES = {
     title: 'לונדון לכל סוג מטייל',
     desc: 'עם ילדים, זוג, קבוצת חברים או סולו, טיפים מותאמים לכל אחד ואחת.',
     grad: 'linear-gradient(135deg, #0891B2, #2563EB)',
+    img: 'cat-travelers.jpg',
+    tint: 'linear-gradient(135deg, rgba(8,145,178,0.75) 0%, rgba(37,99,235,0.62) 100%)',
     subtopics: ['לונדון עם ילדים', 'לונדון לזוגות', 'לונדון לקבוצות', 'טיול סולו', 'טיפים לכל סוג']
   },
   'אירועים': {
@@ -348,6 +378,8 @@ const CATEGORIES = {
     title: 'אירועים מיוחדים',
     desc: 'פסטיבלים, חגיגות, כריסמס ואירועים שלונדון מיוחדת בהם, מה לא לפספס לפי עונה.',
     grad: 'linear-gradient(135deg, #DC2626, #DB2777)',
+    img: 'cat-events.jpg',
+    tint: 'linear-gradient(135deg, rgba(220,38,38,0.75) 0%, rgba(219,39,119,0.62) 100%)',
     subtopics: ['אירועים עונתיים', 'כריסמס בלונדון', 'סילבסטר', 'פסטיבלים', 'ניו יר', 'מצעדים ואירועי רחוב']
   },
   'מסלולים': {
@@ -355,6 +387,8 @@ const CATEGORIES = {
     title: 'מסלולים מוכנים',
     desc: 'מסלולים יומיים מוכנים לשימוש, 3 ימים, שבוע שלם, עם ילדים, וסופי שבוע מושלמים.',
     grad: 'linear-gradient(135deg, #1E3A8A, #15803D)',
+    img: 'splash.jpg',
+    tint: 'linear-gradient(135deg, rgba(30,58,138,0.75) 0%, rgba(21,128,61,0.62) 100%)',
     subtopics: ['לונדון ב-3 ימים', 'לונדון ב-5 ימים', 'שבוע שלם', 'לונדון עם ילדים', 'סוף שבוע', 'מסלול תרבות']
   }
 };
@@ -373,6 +407,8 @@ document.getElementById('catBreadcrumb').textContent = cat.title;
 document.getElementById('emptyEmoji').textContent = cat.emoji;
 document.getElementById('postsSectionTitle').textContent = 'מה הקהילה אומרת על ' + cat.title;
 document.getElementById('catHero').style.setProperty('--hero-grad', cat.grad);
+document.getElementById('catHero').style.setProperty('--hero-tint', cat.tint);
+document.getElementById('catHero').style.setProperty('--hero-img', cat.img ? `url('images/${cat.img}')` : 'none');
 
 // ===== עדכון meta תגיות לפי קטגוריה (SEO ושיתוף) =====
 (function updateMetaForCategory() {
