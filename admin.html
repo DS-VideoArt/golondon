@@ -180,7 +180,7 @@
 <div class="login-screen" id="loginScreen">
   <div class="login-box">
     <div class="logo"><span>GO</span><span style="color:#fff">LONDON</span></div>
-    <p>ניהול פוסטים — כניסה מורשית בלבד</p>
+    <p>ניהול פוסטים, כניסה מורשית בלבד</p>
     <input type="password" id="passwordInput" placeholder="סיסמה" onkeydown="if(event.key==='Enter') login()" />
     <button onclick="login()"><i class="fas fa-sign-in-alt"></i> כניסה</button>
     <div class="login-error" id="loginError">סיסמה שגויה. נסה שוב.</div>
@@ -191,7 +191,7 @@
 <div class="admin-screen" id="adminScreen">
   <div class="admin-header">
     <div>
-      <div class="logo"><span>GO</span><span>LONDON</span> <small>— לוח ניהול</small></div>
+      <div class="logo"><span>GO</span><span>LONDON</span> <small>לוח ניהול</small></div>
     </div>
     <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> יציאה</button>
   </div>
@@ -220,7 +220,7 @@
         <div class="form-row" style="margin-bottom:0">
           <label>קטגוריה <span>*</span></label>
           <select class="form-select" id="categorySelect">
-            <option value="">— בחר קטגוריה —</option>
+            <option value="">בחר קטגוריה</option>
             <option value="תכנון הטיול">✈️ תכנון הטיול ללונדון</option>
             <option value="תחבורה">🚇 תחבורה בלונדון</option>
             <option value="לינה">🏨 לינה בלונדון</option>
@@ -244,7 +244,7 @@
       <!-- קישור לתמונה -->
       <div class="form-row" style="margin-top:16px">
         <label>קישור לתמונה (אופציונלי)</label>
-        <input type="url" class="form-input form-input-ltr" id="postImage" placeholder="הדבק כאן קישור לתמונה — https://..." oninput="previewImage()" />
+        <input type="url" class="form-input form-input-ltr" id="postImage" placeholder="הדבק כאן קישור לתמונה, לדוגמה https://..." oninput="previewImage()" />
         <div class="img-preview-wrap">
           <img class="img-preview" id="imgPreview" src="" alt="תצוגה מקדימה" onerror="this.classList.remove('show')" />
         </div>
@@ -253,7 +253,7 @@
       <!-- קישור לפוסט המקורי -->
       <div class="form-row">
         <label>קישור לפוסט המקורי (אופציונלי)</label>
-        <input type="url" class="form-input form-input-ltr" id="postUrl" placeholder="קישור לפוסט בפייסבוק — https://www.facebook.com/..." />
+        <input type="url" class="form-input form-input-ltr" id="postUrl" placeholder="קישור לפוסט בפייסבוק, לדוגמה https://www.facebook.com/..." />
       </div>
 
       <button class="save-btn" onclick="savePost()">
@@ -377,7 +377,7 @@ function downloadJson() {
   a.href = URL.createObjectURL(blob);
   a.download = 'posts.json';
   a.click();
-  showToast('posts.json הורד — החלף את הקובץ בתיקיית האתר');
+  showToast('posts.json הורד, החלף את הקובץ בתיקיית האתר');
 }
 
 // ===== תצוגת רשימה =====
