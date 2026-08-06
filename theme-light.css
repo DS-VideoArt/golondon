@@ -828,3 +828,70 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
   .cat-card .cat-link { font-size: 13px; padding-bottom: 15px; }
   .cat-card--large, .cat-card--med { min-height: 0 !important; }
 }
+
+/* ============================================================
+   כרטיסי המדריכים
+   ============================================================
+   מצב המיזוג הזה נועד לשלב את התצלום עם שכבת צבע כהה. השכבה
+   כבר הוסרה, אבל המיזוג עצמו נשאר והמשיך להכהות את התמונה.
+*/
+.article-img {
+  background-blend-mode: normal !important;
+  filter: saturate(1.08) brightness(1.05) !important;
+}
+
+/* ============================================================
+   קטע "הכלים שלנו"
+   ============================================================
+   מחליף את רשימת המדריכים הכפולה. שלושה כלים שעושים משהו
+   בפועל, ולא עוד רשימת קישורים לקריאה.
+*/
+
+.tools-section { padding: 70px 0 90px; }
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 12px;
+}
+.tool-card {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
+  padding: 30px 26px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.tool-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(220,38,38,0.28);
+  text-decoration: none;
+}
+.tool-card--featured {
+  background: linear-gradient(160deg, rgba(220,38,38,0.06), rgba(234,88,12,0.04));
+  border-color: rgba(220,38,38,0.22);
+}
+.tool-icon {
+  width: 54px; height: 54px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 15px;
+  background: linear-gradient(135deg, var(--brand), var(--brand-warm));
+  color: #fff; font-size: 22px;
+  margin-bottom: 4px;
+}
+.tool-card h3 { color: var(--ink) !important; font-size: 19px; }
+.tool-card p { color: var(--ink-soft) !important; font-size: 14.5px; line-height: 1.7; margin: 0; }
+.tool-link {
+  margin-top: auto; padding-top: 6px;
+  color: var(--brand) !important;
+  font-weight: 800; font-size: 14.5px;
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.tool-card:hover .tool-link { color: var(--brand-warm) !important; }
+
+@media (max-width: 620px) {
+  .tools-section { padding: 50px 0 60px; }
+  .tool-card { padding: 24px 20px; }
+}
