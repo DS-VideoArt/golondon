@@ -66,6 +66,10 @@
     מוחזר הקישור הישיר לספק. העמוד עובד ומועיל לגולש בכל מקרה.
   */
   function buildUrl(cfg, offer, slotId, offerId, extra) {
+    /* חלק מהספקים ב-Travelpayouts לא עובדים עם פורמט ה-marker/program_id הרגיל
+       ומספקים במקום זה קישור מעקב קבוע משלהם. אם קיים כזה, משתמשים בו ישירות. */
+    if (offer.direct_link) return offer.direct_link;
+
     var net = cfg.network || {};
     var ready = net.marker && offer.program_id;
     if (!ready) return offer.url;
