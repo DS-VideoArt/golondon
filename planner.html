@@ -156,9 +156,161 @@
     .fact.free { background: rgba(34,197,94,0.14); color: #86efac; }
     .fact.paid { background: rgba(234,88,12,0.16); color: #fdba74; }
     .fact.book { background: rgba(59,130,246,0.14); color: #93c5fd; }
+    .stop-desc { font-size: 14px; color: rgba(255,255,255,0.78); line-height: 1.7; margin: 2px 0 7px; }
     .stop-tip { font-size: 13.5px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+    .stop-tip::before { content: "💡 "; }
     .stop-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 9px; font-size: 13.5px; font-weight: 800; color: #fdba74; }
     .stop-link:hover { color: #fb923c; text-decoration: none; }
+
+    /* מעבר בין בנייה אוטומטית להרכבה ידנית */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+    }
+    .mode-tabs {
+      display: flex; gap: 8px; margin-bottom: 18px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 6px;
+    }
+    .mode-tab {
+      flex: 1; font: inherit; font-size: 15px; font-weight: 800; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 16px; border-radius: 10px; border: none;
+      background: transparent; color: rgba(255,255,255,0.62);
+      transition: background .15s, color .15s;
+    }
+    .mode-tab:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .mode-tab.active { background: linear-gradient(135deg, #DC2626, #EA580C); color: #fff; }
+
+    /* ההרכבה הידנית */
+    .manual-intro {
+      font-size: 14.5px; color: rgba(255,255,255,0.68); line-height: 1.75;
+      margin: 0 0 18px;
+    }
+    .manual-layout { display: grid; grid-template-columns: 330px 1fr; gap: 20px; align-items: start; }
+
+    .palette {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 16px; position: sticky; top: 16px;
+    }
+    .palette-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+    .pal-search {
+      font: inherit; font-size: 14.5px; width: 100%;
+      padding: 11px 14px; border-radius: 10px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+      color: #fff;
+    }
+    .pal-search::placeholder { color: rgba(255,255,255,0.4); }
+    .pal-search:focus { outline: 2px solid rgba(234,88,12,0.6); outline-offset: 1px; }
+    .pal-areas { gap: 6px; }
+    .pal-areas .chip { font-size: 12.5px; padding: 6px 11px; }
+    .palette-list { display: flex; flex-direction: column; gap: 9px; max-height: 60vh; overflow-y: auto; padding-inline-end: 4px; }
+    .pal-empty { font-size: 13.5px; color: rgba(255,255,255,0.45); margin: 6px 2px; }
+
+    .cube {
+      font: inherit; text-align: start; cursor: grab; width: 100%;
+      display: flex; flex-direction: column; gap: 5px;
+      padding: 13px 15px; border-radius: 12px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+      transition: background .15s, border-color .15s, transform .15s;
+    }
+    .cube:hover { background: rgba(234,88,12,0.12); border-color: rgba(234,88,12,0.45); transform: translateY(-1px); }
+    .cube:active { cursor: grabbing; }
+    .cube.dragging { opacity: .5; }
+    .cube--used { opacity: .62; }
+    .cube-name { font-size: 14.5px; font-weight: 800; color: #fff; }
+    .cube-meta { font-size: 12px; color: rgba(255,255,255,0.55); }
+    .cube-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 2px; }
+    .cube-badge { font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 50px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
+    .cube-badge.is-free { background: rgba(74,222,128,0.16); color: #86efac; }
+    .cube-badge.is-paid { background: rgba(251,146,60,0.16); color: #fdba74; }
+    .cube-badge.is-used { background: rgba(147,197,253,0.16); color: #93c5fd; }
+
+    .board-head {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 12px; margin-bottom: 16px;
+    }
+    .board-summary { font-size: 14px; font-weight: 800; color: rgba(255,255,255,0.72); }
+    .board-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .mini-btn--danger { color: #fca5a5; }
+
+    .board-day { border: 1px solid rgba(255,255,255,0.1); transition: border-color .15s, background .15s; }
+    .board-day.is-active { border-color: rgba(234,88,12,0.5); }
+    .board-day.drop-on { border-color: #4ade80; background: rgba(74,222,128,0.07); }
+    .board-day-head { display: flex; align-items: center; gap: 10px; }
+    .board-day-actions { margin-inline-start: auto; display: flex; gap: 6px; }
+    .day-btn {
+      font: inherit; font-size: 12.5px; font-weight: 800; cursor: pointer;
+      padding: 7px 13px; border-radius: 9px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.72);
+    }
+    .day-btn:hover { background: rgba(255,255,255,0.13); color: #fff; }
+    .day-btn.is-on { background: linear-gradient(135deg,#DC2626,#EA580C); border-color: transparent; color: #fff; }
+    .day-btn--danger { color: #fca5a5; }
+    .day-warn {
+      background: rgba(251,146,60,0.1); border: 1px solid rgba(251,146,60,0.3);
+      border-radius: 10px; padding: 10px 13px; margin-bottom: 12px;
+      font-size: 13px; color: #fdba74; line-height: 1.6;
+    }
+
+    .stop-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 10px; }
+    .ctl {
+      font: inherit; font-size: 12.5px; cursor: pointer;
+      width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 8px; background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.7);
+    }
+    .ctl:hover:not(:disabled) { background: rgba(255,255,255,0.14); color: #fff; }
+    .ctl:disabled { opacity: .3; cursor: default; }
+    .ctl--danger { color: #fca5a5; }
+    .ctl-sel {
+      font: inherit; font-size: 12.5px; cursor: pointer; padding: 6px 9px; border-radius: 8px;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.72);
+    }
+
+    @media (max-width: 900px) {
+      .manual-layout { grid-template-columns: 1fr; }
+      .palette { position: static; }
+      .palette-list { max-height: 340px; }
+    }
+
+    /* רצועת הגרסאות ולוח ההשוואה */
+    .versions {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+      margin: 4px 0 18px; padding: 12px 14px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 13px;
+    }
+    .versions-label { font-size: 13px; font-weight: 800; color: rgba(255,255,255,0.5); margin-inline-end: 4px; }
+    .ver-chip {
+      font: inherit; font-size: 13.5px; font-weight: 800; cursor: pointer;
+      padding: 7px 15px; border-radius: 50px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.72); transition: background .15s, border-color .15s, color .15s;
+    }
+    .ver-chip:hover { background: rgba(255,255,255,0.12); color: #fff; }
+    .ver-chip.active {
+      background: linear-gradient(135deg, #DC2626, #EA580C);
+      border-color: transparent; color: #fff;
+    }
+
+    .compare {
+      margin-bottom: 20px; padding: 18px 20px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+    }
+    .cmp-head { font-size: 14.5px; font-weight: 900; color: #fff; margin-bottom: 14px; }
+    .cmp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .cmp-col { background: rgba(255,255,255,0.04); border-radius: 11px; padding: 14px 16px; border-inline-start: 3px solid transparent; }
+    .cmp-col.cmp-add  { border-inline-start-color: #4ade80; }
+    .cmp-col.cmp-rem  { border-inline-start-color: #fb923c; }
+    .cmp-col.cmp-same { border-inline-start-color: rgba(255,255,255,0.25); }
+    .cmp-col-title { font-size: 12.5px; font-weight: 900; color: rgba(255,255,255,0.62); margin-bottom: 9px; }
+    .cmp-list { margin: 0; padding-inline-start: 17px; }
+    .cmp-list li { font-size: 13.5px; color: rgba(255,255,255,0.85); line-height: 1.75; }
+    .cmp-none { margin: 0; font-size: 13.5px; color: rgba(255,255,255,0.4); }
+    @media (max-width: 700px) { .cmp-grid { grid-template-columns: 1fr; } }
 
     .empty-note {
       background: rgba(220,38,38,0.1); border: 1px solid rgba(220,38,38,0.3);
@@ -240,7 +392,16 @@
 
 <div class="wrap">
 
-  <section class="builder" aria-label="בניית מסלול">
+  <div class="mode-tabs" role="tablist" aria-label="דרך בניית המסלול">
+    <button class="mode-tab active" id="tab-auto" type="button" role="tab" aria-selected="true" aria-controls="panel-auto">
+      <i class="fas fa-wand-magic-sparkles"></i> שיבנו לי מסלול
+    </button>
+    <button class="mode-tab" id="tab-manual" type="button" role="tab" aria-selected="false" aria-controls="panel-manual">
+      <i class="fas fa-hand-pointer"></i> אני מרכיב לבד
+    </button>
+  </div>
+
+  <section class="builder" id="panel-auto" role="tabpanel" aria-labelledby="tab-auto" aria-label="בניית מסלול">
     <div class="field">
       <label class="field-label" id="lbl-days">כמה ימים אתם בלונדון?</label>
       <span class="field-hint">לא כולל את יום הנחיתה אם הוא מגיע בערב</span>
@@ -270,6 +431,38 @@
     </button>
   </section>
 
+  <!-- הרכבה ידנית, קוביות אטרקציה שגוררים או לוחצים כדי להוסיף ליום -->
+  <section class="manual" id="panel-manual" role="tabpanel" aria-labelledby="tab-manual" hidden>
+    <p class="manual-intro">
+      בוחרים מהרשימה משמאל ומוסיפים לימים. אפשר לגרור קובייה אל היום, או פשוט ללחוץ עליה
+      והיא תתווסף ליום המסומן. כל מה שתרכיבו נשמר בדפדפן, גם אם תסגרו את העמוד ותחזרו מחר.
+    </p>
+
+    <div class="manual-layout">
+      <aside class="palette" aria-label="מאגר האטרקציות">
+        <div class="palette-head">
+          <label class="sr-only" for="pal-search">חיפוש מקום</label>
+          <input type="search" id="pal-search" class="pal-search" placeholder="חיפוש מקום או שכונה" autocomplete="off" />
+          <div class="chips pal-areas" id="pal-areas" role="group" aria-label="סינון לפי אזור"></div>
+        </div>
+        <div class="palette-list" id="pal-list"></div>
+      </aside>
+
+      <div class="board">
+        <div class="board-head">
+          <div class="board-summary" id="board-summary"></div>
+          <div class="board-actions">
+            <button class="mini-btn" id="add-day" type="button"><i class="fas fa-plus"></i> הוספת יום</button>
+            <button class="mini-btn" id="m-copy" type="button"><i class="far fa-copy"></i> העתקה</button>
+            <button class="mini-btn" id="m-print" type="button"><i class="fas fa-print"></i> הדפסה</button>
+            <button class="mini-btn mini-btn--danger" id="m-clear" type="button"><i class="far fa-trash-can"></i> ניקוי</button>
+          </div>
+        </div>
+        <div id="board-days"></div>
+      </div>
+    </div>
+  </section>
+
   <section class="results" id="results" aria-live="polite">
     <div class="results-head">
       <h2 id="results-title">המסלול שלכם</h2>
@@ -277,9 +470,14 @@
         <button class="mini-btn" id="copy" type="button"><i class="far fa-copy"></i> העתקה</button>
         <button class="mini-btn" id="print" type="button"><i class="fas fa-print"></i> הדפסה</button>
         <button class="mini-btn" id="again" type="button"><i class="fas fa-rotate"></i> גרסה אחרת</button>
+        <button class="mini-btn" id="compare-btn" type="button" hidden><i class="fas fa-code-compare"></i> השוואה</button>
       </div>
     </div>
     <p class="results-sub" id="results-sub"></p>
+
+    <div class="versions" id="versions" hidden></div>
+    <div class="compare" id="compare" hidden></div>
+
     <div id="days-out"></div>
 
     <div class="closing">
@@ -489,9 +687,26 @@
     });
   }
 
+  /*
+    בוחר את ספק הכרטיסים שממנו ייבנה הקישור.
+    מעדיפים ספק שכבר מחובר בפועל לרשת השותפים, כלומר כזה שיש לו
+    program_id או קישור מעקב ישיר, כדי שהלחיצה תיספר. אם אף אחד לא
+    מחובר עדיין, עדיין מוחזר קישור ישיר שימושי לגולש.
+  */
+  var TICKET_OFFERS = ['attractions_alt', 'attractions'];
+
+  function ticketOfferId() {
+    var offers = (AFF_CFG && AFF_CFG.offers) || {};
+    for (var i = 0; i < TICKET_OFFERS.length; i++) {
+      var o = offers[TICKET_OFFERS[i]];
+      if (o && (o.program_id || o.direct_link)) return TICKET_OFFERS[i];
+    }
+    return TICKET_OFFERS[0];
+  }
+
   function ticketLink(attraction) {
     if (!AFF_CFG || !window.GoLondonAffiliate) return null;
-    return window.GoLondonAffiliate.linkFor(AFF_CFG, 'attractions', 'planner', attraction.id);
+    return window.GoLondonAffiliate.linkFor(AFF_CFG, ticketOfferId(), 'planner', attraction.id);
   }
 
   function renderDay(d) {
@@ -514,60 +729,78 @@
     card.appendChild(meta);
 
     d.items.forEach(function (it) {
-      var stop = document.createElement('div');
-      stop.className = 'stop';
-
-      var dot = document.createElement('div');
-      dot.className = 'stop-dot';
-
-      var body = document.createElement('div');
-      body.className = 'stop-body';
-
-      var name = document.createElement('div');
-      name.className = 'stop-name';
-      name.textContent = it.name;
-
-      var en = document.createElement('div');
-      en.className = 'stop-en';
-      en.textContent = it.nameEn;
-
-      var facts = document.createElement('div');
-      facts.className = 'stop-facts';
-      facts.innerHTML =
-        '<span class="fact ' + (it.free ? 'free' : 'paid') + '">' +
-          '<i class="fas ' + (it.free ? 'fa-check' : 'fa-tag') + '"></i>' + it.priceBand + '</span>' +
-        '<span class="fact"><i class="far fa-clock"></i>' + hoursText(it.hours) + '</span>' +
-        '<span class="fact"><i class="fas fa-train-subway"></i>' + it.tube + '</span>' +
-        (it.bookAhead ? '<span class="fact book"><i class="far fa-calendar-check"></i>להזמין מראש</span>' : '');
-
-      var tip = document.createElement('p');
-      tip.className = 'stop-tip';
-      tip.textContent = it.tip;
-
-      body.appendChild(name);
-      body.appendChild(en);
-      body.appendChild(facts);
-      body.appendChild(tip);
-
-      if (!it.free) {
-        var url = ticketLink(it);
-        if (url) {
-          var a = document.createElement('a');
-          a.className = 'stop-link';
-          a.href = url;
-          a.target = '_blank';
-          a.rel = 'sponsored noopener nofollow';
-          a.innerHTML = '<i class="fas fa-ticket"></i> בדיקת כרטיסים וזמינות';
-          body.appendChild(a);
-        }
-      }
-
-      stop.appendChild(dot);
-      stop.appendChild(body);
-      card.appendChild(stop);
+      card.appendChild(renderStop(it));
     });
 
     return card;
+  }
+
+  /*
+    כרטיס עצירה בודד. משמש גם את המסלול האוטומטי וגם את ההרכבה הידנית,
+    כדי שההסבר, העובדות וכפתור ההזמנה יהיו זהים בשני המצבים.
+    controls מוסיף את כפתורי הסידור והמחיקה, ורלוונטי רק להרכבה ידנית.
+  */
+  function renderStop(it, controls) {
+    var stop = document.createElement('div');
+    stop.className = 'stop';
+
+    var dot = document.createElement('div');
+    dot.className = 'stop-dot';
+
+    var body = document.createElement('div');
+    body.className = 'stop-body';
+
+    var name = document.createElement('div');
+    name.className = 'stop-name';
+    name.textContent = it.name;
+
+    var en = document.createElement('div');
+    en.className = 'stop-en';
+    en.textContent = it.nameEn;
+
+    var facts = document.createElement('div');
+    facts.className = 'stop-facts';
+    facts.innerHTML =
+      '<span class="fact ' + (it.free ? 'free' : 'paid') + '">' +
+        '<i class="fas ' + (it.free ? 'fa-check' : 'fa-tag') + '"></i>' + it.priceBand + '</span>' +
+      '<span class="fact"><i class="far fa-clock"></i>' + hoursText(it.hours) + '</span>' +
+      '<span class="fact"><i class="fas fa-train-subway"></i>' + it.tube + '</span>' +
+      (it.bookAhead ? '<span class="fact book"><i class="far fa-calendar-check"></i>להזמין מראש</span>' : '');
+
+    var desc = document.createElement('p');
+    desc.className = 'stop-desc';
+    desc.textContent = it.desc || '';
+
+    var tip = document.createElement('p');
+    tip.className = 'stop-tip';
+    tip.textContent = it.tip;
+
+    body.appendChild(name);
+    body.appendChild(en);
+    body.appendChild(facts);
+    if (it.desc) body.appendChild(desc);
+    body.appendChild(tip);
+
+    /* כפתור הזמנה מוצג גם לאתר שהכניסה אליו חינם אך מחייב תפיסת מקום מראש */
+    if (!it.free || it.bookAhead) {
+      var url = ticketLink(it);
+      if (url) {
+        var a = document.createElement('a');
+        a.className = 'stop-link';
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'sponsored noopener nofollow';
+        a.innerHTML = '<i class="fas fa-ticket"></i> ' +
+          (it.free ? 'תפיסת מקום מראש' : 'בדיקת כרטיסים וזמינות');
+        body.appendChild(a);
+      }
+    }
+
+    if (controls) body.appendChild(controls);
+
+    stop.appendChild(dot);
+    stop.appendChild(body);
+    return stop;
   }
 
   function render(plan) {
@@ -622,9 +855,514 @@
     return ok;
   }
 
-  function run() {
-    LAST = build();
+  /* ============================================================
+     גרסאות המסלול
+     ============================================================
+     כפתור "גרסה אחרת" נהג לדרוס את המסלול הקודם בלי דרך לחזור אליו.
+     כאן כל גרסה נשמרת, אפשר לעבור ביניהן חופשי, ואפשר להעמיד שתיים
+     זו מול זו ולראות מה בדיוק השתנה. בנייה חדשה מאפסת את הרשימה,
+     כי היא נעשית לפי קריטריונים אחרים ואין טעם להשוות בין השניים.
+  */
+  var VERSIONS = [];
+  var curIdx = -1;
+
+  function pushVersion(plan) {
+    VERSIONS.push(plan);
+    curIdx = VERSIONS.length - 1;
+    renderVersions();
+  }
+
+  function renderVersions() {
+    var box = $('versions');
+    var cmpBtn = $('compare-btn');
+    box.innerHTML = '';
+
+    if (VERSIONS.length < 2) {
+      box.hidden = true;
+      cmpBtn.hidden = true;
+      return;
+    }
+    box.hidden = false;
+    cmpBtn.hidden = false;
+
+    var lbl = document.createElement('span');
+    lbl.className = 'versions-label';
+    lbl.textContent = 'הגרסאות שבניתם:';
+    box.appendChild(lbl);
+
+    VERSIONS.forEach(function (v, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'ver-chip' + (i === curIdx ? ' active' : '');
+      b.setAttribute('aria-pressed', i === curIdx ? 'true' : 'false');
+      b.textContent = 'גרסה ' + (i + 1);
+      b.addEventListener('click', function () { showVersion(i); });
+      box.appendChild(b);
+    });
+  }
+
+  function showVersion(i) {
+    if (i < 0 || i >= VERSIONS.length || i === curIdx) return;
+    curIdx = i;
+    LAST = VERSIONS[i];
     render(LAST);
+    renderVersions();
+    if (!$('compare').hidden) renderCompare();
+    toast('חזרתם לגרסה ' + (i + 1));
+  }
+
+  /* אוסף את כל העצירות בגרסה למילון של מזהה מול שם, בלי חלוקה לימים */
+  function planStops(plan) {
+    var m = {};
+    plan.forEach(function (d) {
+      d.items.forEach(function (it) { m[it.id] = it.name; });
+    });
+    return m;
+  }
+
+  function compareColumn(title, names, cls) {
+    var col = document.createElement('div');
+    col.className = 'cmp-col ' + cls;
+
+    var h = document.createElement('div');
+    h.className = 'cmp-col-title';
+    h.textContent = title + ' (' + names.length + ')';
+    col.appendChild(h);
+
+    if (!names.length) {
+      var none = document.createElement('p');
+      none.className = 'cmp-none';
+      none.textContent = 'אין';
+      col.appendChild(none);
+      return col;
+    }
+
+    var ul = document.createElement('ul');
+    ul.className = 'cmp-list';
+    names.forEach(function (n) {
+      var li = document.createElement('li');
+      li.textContent = n;
+      ul.appendChild(li);
+    });
+    col.appendChild(ul);
+    return col;
+  }
+
+  function renderCompare() {
+    var panel = $('compare');
+    panel.innerHTML = '';
+    if (VERSIONS.length < 2) return;
+
+    var otherIdx = curIdx > 0 ? curIdx - 1 : curIdx + 1;
+    var cur = planStops(VERSIONS[curIdx]);
+    var oth = planStops(VERSIONS[otherIdx]);
+
+    var onlyCur = Object.keys(cur).filter(function (k) { return !oth[k]; }).map(function (k) { return cur[k]; });
+    var onlyOth = Object.keys(oth).filter(function (k) { return !cur[k]; }).map(function (k) { return oth[k]; });
+    var shared  = Object.keys(cur).filter(function (k) { return oth[k]; }).map(function (k) { return cur[k]; });
+
+    var head = document.createElement('div');
+    head.className = 'cmp-head';
+    head.textContent = 'השוואה בין גרסה ' + (curIdx + 1) + ' לגרסה ' + (otherIdx + 1);
+    panel.appendChild(head);
+
+    var grid = document.createElement('div');
+    grid.className = 'cmp-grid';
+    grid.appendChild(compareColumn('רק בגרסה ' + (curIdx + 1), onlyCur, 'cmp-add'));
+    grid.appendChild(compareColumn('רק בגרסה ' + (otherIdx + 1), onlyOth, 'cmp-rem'));
+    grid.appendChild(compareColumn('בשתיהן', shared, 'cmp-same'));
+    panel.appendChild(grid);
+  }
+
+  /* ============================================================
+     הרכבה ידנית
+     ============================================================
+     מאגר קוביות משמאל, ולוח ימים מימין. אפשר לגרור קובייה אל יום,
+     או ללחוץ עליה והיא נכנסת ליום המסומן. הבחירה נשמרת בדפדפן,
+     כדי שתכנון שנעשה בערב אחד לא ילך לאיבוד למחרת.
+  */
+  var MANUAL_KEY = 'golondon_manual_v1';
+  var manual = { days: [[]], active: 0 };
+  var palState = { area: 'all', q: '' };
+
+  function byId(id) {
+    for (var i = 0; i < DATA.attractions.length; i++) {
+      if (DATA.attractions[i].id === id) return DATA.attractions[i];
+    }
+    return null;
+  }
+
+  function saveManual() {
+    try { localStorage.setItem(MANUAL_KEY, JSON.stringify(manual)); } catch (e) {}
+  }
+
+  function loadManual() {
+    try {
+      var raw = localStorage.getItem(MANUAL_KEY);
+      if (!raw) return;
+      var v = JSON.parse(raw);
+      if (!v || !Array.isArray(v.days) || !v.days.length) return;
+      /* מסננים מזהים שכבר לא קיימים בנתונים, כדי ששינוי בקובץ לא ישבור מסלול שמור */
+      manual.days = v.days.map(function (d) {
+        return (Array.isArray(d) ? d : []).filter(function (id) { return !!byId(id); });
+      });
+      manual.active = Math.min(v.active || 0, manual.days.length - 1);
+    } catch (e) {}
+  }
+
+  function dayAreaLabel(ids) {
+    if (!ids.length) return { emoji: '📍', name: 'יום ריק', mixed: 0 };
+    var counts = {};
+    ids.forEach(function (id) {
+      var a = byId(id);
+      if (a) counts[a.area] = (counts[a.area] || 0) + 1;
+    });
+    var keys = Object.keys(counts);
+    if (keys.length === 1) {
+      var ar = DATA.areas[keys[0]] || {};
+      return { emoji: ar.emoji || '📍', name: ar.name || '', mixed: 1 };
+    }
+    return { emoji: '🧩', name: 'יום שמשלב ' + keys.length + ' אזורים', mixed: keys.length };
+  }
+
+  function usedIds() {
+    var s = {};
+    manual.days.forEach(function (d) { d.forEach(function (id) { s[id] = true; }); });
+    return s;
+  }
+
+  function renderPaletteAreas() {
+    var box = $('pal-areas');
+    box.innerHTML = '';
+    var areas = [{ id: 'all', name: 'הכל', emoji: '🗺️' }];
+    Object.keys(DATA.areas).forEach(function (k) {
+      areas.push({ id: k, name: DATA.areas[k].name, emoji: DATA.areas[k].emoji });
+    });
+    areas.forEach(function (a) {
+      box.appendChild(makeChip(a.name, a.emoji, palState.area === a.id, function () {
+        palState.area = a.id;
+        renderPaletteAreas();
+        renderPalette();
+      }));
+    });
+  }
+
+  function renderPalette() {
+    var list = $('pal-list');
+    list.innerHTML = '';
+    var used = usedIds();
+    var q = palState.q.trim().toLowerCase();
+
+    var items = DATA.attractions.filter(function (a) {
+      if (palState.area !== 'all' && a.area !== palState.area) return false;
+      if (!q) return true;
+      return (a.name + ' ' + a.nameEn + ' ' + a.tube + ' ' + (a.desc || '')).toLowerCase().indexOf(q) !== -1;
+    });
+
+    if (!items.length) {
+      var none = document.createElement('p');
+      none.className = 'pal-empty';
+      none.textContent = 'לא נמצאו מקומות שמתאימים לחיפוש הזה.';
+      list.appendChild(none);
+      return;
+    }
+
+    items.forEach(function (a) {
+      var cube = document.createElement('button');
+      cube.type = 'button';
+      cube.className = 'cube' + (used[a.id] ? ' cube--used' : '');
+      cube.setAttribute('draggable', 'true');
+      cube.setAttribute('data-id', a.id);
+      cube.title = a.desc || a.name;
+
+      var area = DATA.areas[a.area] || {};
+      cube.innerHTML =
+        '<span class="cube-name">' + a.name + '</span>' +
+        '<span class="cube-meta">' + (area.emoji || '📍') + ' ' + (area.name || '') + ' · ' + hoursText(a.hours) + '</span>' +
+        '<span class="cube-badges">' +
+          '<span class="cube-badge ' + (a.free ? 'is-free' : 'is-paid') + '">' + a.priceBand + '</span>' +
+          (used[a.id] ? '<span class="cube-badge is-used">כבר במסלול</span>' : '') +
+        '</span>';
+
+      cube.addEventListener('click', function () { addStop(a.id); });
+      cube.addEventListener('dragstart', function (ev) {
+        ev.dataTransfer.setData('text/plain', a.id);
+        ev.dataTransfer.effectAllowed = 'copy';
+        cube.classList.add('dragging');
+      });
+      cube.addEventListener('dragend', function () { cube.classList.remove('dragging'); });
+
+      list.appendChild(cube);
+    });
+  }
+
+  function addStop(id, dayIdx) {
+    var target = typeof dayIdx === 'number' ? dayIdx : manual.active;
+    if (target < 0 || target >= manual.days.length) target = 0;
+    if (manual.days[target].indexOf(id) !== -1) {
+      toast('המקום הזה כבר נמצא ביום ' + (target + 1));
+      return;
+    }
+    manual.days[target].push(id);
+    manual.active = target;
+    syncManual();
+    var a = byId(id);
+    toast((a ? a.name : 'המקום') + ' נוסף ליום ' + (target + 1));
+  }
+
+  function removeStop(dayIdx, pos) {
+    manual.days[dayIdx].splice(pos, 1);
+    syncManual();
+  }
+
+  function moveStop(dayIdx, pos, dir) {
+    var arr = manual.days[dayIdx];
+    var to = pos + dir;
+    if (to < 0 || to >= arr.length) return;
+    var tmp = arr[pos]; arr[pos] = arr[to]; arr[to] = tmp;
+    syncManual();
+  }
+
+  function moveStopToDay(dayIdx, pos, toDay) {
+    if (toDay === dayIdx || toDay < 0 || toDay >= manual.days.length) return;
+    var id = manual.days[dayIdx][pos];
+    if (manual.days[toDay].indexOf(id) !== -1) { toast('המקום כבר נמצא ביום ' + (toDay + 1)); return; }
+    manual.days[dayIdx].splice(pos, 1);
+    manual.days[toDay].push(id);
+    syncManual();
+  }
+
+  function addDay() {
+    manual.days.push([]);
+    manual.active = manual.days.length - 1;
+    syncManual();
+  }
+
+  function removeDay(idx) {
+    if (manual.days.length === 1) { manual.days[0] = []; }
+    else { manual.days.splice(idx, 1); }
+    manual.active = Math.min(manual.active, manual.days.length - 1);
+    syncManual();
+  }
+
+  /* ממיר את הלוח הידני למבנה מסלול רגיל, כדי שההעתקה וההדפסה יעבדו בלי קוד נפרד */
+  function manualPlan() {
+    return manual.days.map(function (ids, i) {
+      var items = ids.map(byId).filter(Boolean);
+      var lbl = dayAreaLabel(ids);
+      var hours = items.reduce(function (s, it) { return s + it.hours; }, 0);
+      return { day: i + 1, area: null, areaLabel: lbl, items: items, hours: hours };
+    }).filter(function (d) { return d.items.length; });
+  }
+
+  function renderBoard() {
+    var out = $('board-days');
+    out.innerHTML = '';
+
+    manual.days.forEach(function (ids, di) {
+      var items = ids.map(byId).filter(Boolean);
+      var lbl = dayAreaLabel(ids);
+
+      var card = document.createElement('article');
+      card.className = 'day-card board-day' + (di === manual.active ? ' is-active' : '');
+
+      var head = document.createElement('div');
+      head.className = 'day-head board-day-head';
+      head.innerHTML =
+        '<div class="day-num">' + (di + 1) + '</div>' +
+        '<div class="day-title">' + lbl.emoji + ' ' + lbl.name + '</div>';
+
+      var headActions = document.createElement('div');
+      headActions.className = 'board-day-actions';
+
+      var pick = document.createElement('button');
+      pick.type = 'button';
+      pick.className = 'day-btn' + (di === manual.active ? ' is-on' : '');
+      pick.textContent = di === manual.active ? 'מוסיפים לכאן' : 'הוספה לכאן';
+      pick.addEventListener('click', function () { manual.active = di; syncManual(); });
+
+      var del = document.createElement('button');
+      del.type = 'button';
+      del.className = 'day-btn day-btn--danger';
+      del.setAttribute('aria-label', 'מחיקת יום ' + (di + 1));
+      del.innerHTML = '<i class="far fa-trash-can"></i>';
+      del.addEventListener('click', function () { removeDay(di); });
+
+      headActions.appendChild(pick);
+      headActions.appendChild(del);
+      head.appendChild(headActions);
+      card.appendChild(head);
+
+      var meta = document.createElement('div');
+      meta.className = 'day-meta';
+      if (items.length) {
+        var freeCount = items.filter(function (i) { return i.free; }).length;
+        var dayHours = items.reduce(function (s, it) { return s + it.hours; }, 0);
+        meta.textContent = items.length + ' עצירות, ' + hoursText(dayHours) + ', ' +
+          (freeCount === items.length ? 'כולן אפשריות בלי תשלום כניסה' : freeCount + ' מהן בלי תשלום כניסה');
+      } else {
+        meta.textContent = 'עדיין ריק. בחרו מקום מהרשימה או גררו אותו לכאן.';
+      }
+      card.appendChild(meta);
+
+      if (lbl.mixed > 2) {
+        var warn = document.createElement('div');
+        warn.className = 'day-warn';
+        warn.textContent = 'היום הזה מפוזר על יותר משני אזורים, וזה אומר הרבה זמן ברכבת התחתית. שווה לפצל אותו לשני ימים.';
+        card.appendChild(warn);
+      }
+
+      items.forEach(function (it, pos) {
+        var controls = document.createElement('div');
+        controls.className = 'stop-controls';
+
+        var up = document.createElement('button');
+        up.type = 'button'; up.className = 'ctl'; up.title = 'העלאה למעלה';
+        up.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        up.disabled = pos === 0;
+        up.addEventListener('click', function () { moveStop(di, pos, -1); });
+
+        var down = document.createElement('button');
+        down.type = 'button'; down.className = 'ctl'; down.title = 'הורדה למטה';
+        down.innerHTML = '<i class="fas fa-arrow-down"></i>';
+        down.disabled = pos === items.length - 1;
+        down.addEventListener('click', function () { moveStop(di, pos, 1); });
+
+        controls.appendChild(up);
+        controls.appendChild(down);
+
+        if (manual.days.length > 1) {
+          var sel = document.createElement('select');
+          sel.className = 'ctl-sel';
+          sel.setAttribute('aria-label', 'העברה ליום אחר');
+          var ph = document.createElement('option');
+          ph.value = ''; ph.textContent = 'העברה ליום';
+          sel.appendChild(ph);
+          manual.days.forEach(function (_, k) {
+            if (k === di) return;
+            var o = document.createElement('option');
+            o.value = String(k); o.textContent = 'יום ' + (k + 1);
+            sel.appendChild(o);
+          });
+          sel.addEventListener('change', function () {
+            if (sel.value !== '') moveStopToDay(di, pos, parseInt(sel.value, 10));
+          });
+          controls.appendChild(sel);
+        }
+
+        var rm = document.createElement('button');
+        rm.type = 'button'; rm.className = 'ctl ctl--danger'; rm.title = 'הסרה מהמסלול';
+        rm.innerHTML = '<i class="fas fa-xmark"></i>';
+        rm.addEventListener('click', function () { removeStop(di, pos); });
+        controls.appendChild(rm);
+
+        card.appendChild(renderStop(it, controls));
+      });
+
+      /* אזור שחרור לגרירה */
+      card.addEventListener('dragover', function (ev) {
+        ev.preventDefault();
+        ev.dataTransfer.dropEffect = 'copy';
+        card.classList.add('drop-on');
+      });
+      card.addEventListener('dragleave', function () { card.classList.remove('drop-on'); });
+      card.addEventListener('drop', function (ev) {
+        ev.preventDefault();
+        card.classList.remove('drop-on');
+        var id = ev.dataTransfer.getData('text/plain');
+        if (id) addStop(id, di);
+      });
+
+      out.appendChild(card);
+    });
+
+    var plan = manualPlan();
+    var total = plan.reduce(function (s, d) { return s + d.items.length; }, 0);
+    var freeTotal = plan.reduce(function (s, d) {
+      return s + d.items.filter(function (i) { return i.free; }).length;
+    }, 0);
+    $('board-summary').textContent = total
+      ? manual.days.length + (manual.days.length === 1 ? ' יום' : ' ימים') + ', ' + total + ' עצירות, ' + freeTotal + ' מהן בלי תשלום כניסה'
+      : 'המסלול שלכם עדיין ריק';
+  }
+
+  function syncManual() {
+    saveManual();
+    renderPalette();
+    renderBoard();
+  }
+
+  function manualText() {
+    var plan = manualPlan();
+    if (!plan.length) return '';
+    var lines = ['המסלול שהרכבתי בלונדון', 'נבנה בגו לונדון, golondon.co.il', ''];
+    plan.forEach(function (d) {
+      lines.push('יום ' + d.day + ', ' + d.areaLabel.name);
+      d.items.forEach(function (it) {
+        lines.push('• ' + it.name + ' (' + it.nameEn + '), ' + it.priceBand + ', תחנה: ' + it.tube);
+      });
+      lines.push('');
+    });
+    return lines.join('\n');
+  }
+
+  function copyText(text, okMsg) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        toast(okMsg);
+      }).catch(function () {
+        toast(legacyCopy(text) ? okMsg : 'ההעתקה נכשלה');
+      });
+    } else {
+      toast(legacyCopy(text) ? okMsg : 'ההעתקה נכשלה');
+    }
+  }
+
+  function setMode(mode) {
+    var isManual = mode === 'manual';
+    $('panel-auto').hidden = isManual;
+    $('panel-manual').hidden = !isManual;
+    $('results').style.display = isManual ? 'none' : '';
+    $('tab-auto').classList.toggle('active', !isManual);
+    $('tab-manual').classList.toggle('active', isManual);
+    $('tab-auto').setAttribute('aria-selected', String(!isManual));
+    $('tab-manual').setAttribute('aria-selected', String(isManual));
+    if (isManual) syncManual();
+  }
+
+  function wireManual() {
+    loadManual();
+    renderPaletteAreas();
+
+    $('tab-auto').addEventListener('click', function () { setMode('auto'); });
+    $('tab-manual').addEventListener('click', function () { setMode('manual'); });
+
+    $('pal-search').addEventListener('input', function (e) {
+      palState.q = e.target.value || '';
+      renderPalette();
+    });
+
+    $('add-day').addEventListener('click', addDay);
+    $('m-print').addEventListener('click', function () { window.print(); });
+    $('m-copy').addEventListener('click', function () {
+      var t = manualText();
+      if (!t) { toast('אין עדיין מה להעתיק'); return; }
+      copyText(t, 'המסלול הועתק');
+    });
+    $('m-clear').addEventListener('click', function () {
+      manual.days = [[]];
+      manual.active = 0;
+      syncManual();
+      toast('הלוח נוקה');
+    });
+  }
+
+  function run() {
+    VERSIONS = [];
+    LAST = build();
+    pushVersion(LAST);
+    render(LAST);
+    $('compare').hidden = true;
     $('results').classList.add('show');
     $('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -633,8 +1371,19 @@
     $('build').addEventListener('click', run);
     $('again').addEventListener('click', function () {
       LAST = build();
+      pushVersion(LAST);
       render(LAST);
-      toast('נבנתה גרסה אחרת');
+      if (!$('compare').hidden) renderCompare();
+      toast('נבנתה גרסה ' + VERSIONS.length + ', הקודמות נשמרו');
+    });
+    $('compare-btn').addEventListener('click', function () {
+      var panel = $('compare');
+      if (panel.hidden) {
+        renderCompare();
+        panel.hidden = false;
+      } else {
+        panel.hidden = true;
+      }
     });
     $('print').addEventListener('click', function () { window.print(); });
     $('copy').addEventListener('click', function () {
@@ -679,6 +1428,7 @@
       DATA = d;
       renderControls();
       wire();
+      wireManual();
       hookAffiliate();
     })
     .catch(function (err) {

@@ -1,35 +1,81 @@
 {
   "_מה_זה_הקובץ_הזה": "מאגר האטרקציות של בונה המסלול. תהליך התחזוקה החודשי מעדכן כאן מחירים, שעות ומידע שהתיישן, בלי לגעת בקוד של הכלי עצמו.",
   "_עודכן": "2026-08",
-
   "areas": {
-    "westminster": { "name": "וסטמינסטר ומרכז העיר", "emoji": "🏛️" },
-    "city": { "name": "הסיטי ומזרח", "emoji": "🏙️" },
-    "southbank": { "name": "הגדה הדרומית", "emoji": "🌉" },
-    "kensington": { "name": "קנזינגטון ומערב", "emoji": "🎨" },
-    "camden": { "name": "קמדן וצפון", "emoji": "🎸" },
-    "shoreditch": { "name": "שורדיטש ומזרח טרנדי", "emoji": "🖌️" },
-    "greenwich": { "name": "גריניץ׳", "emoji": "⏱️" },
-    "outer": { "name": "מחוץ למרכז", "emoji": "🚆" }
+    "westminster": {
+      "name": "וסטמינסטר ומרכז העיר",
+      "emoji": "🏛️"
+    },
+    "city": {
+      "name": "הסיטי ומזרח",
+      "emoji": "🏙️"
+    },
+    "southbank": {
+      "name": "הגדה הדרומית",
+      "emoji": "🌉"
+    },
+    "kensington": {
+      "name": "קנזינגטון ומערב",
+      "emoji": "🎨"
+    },
+    "camden": {
+      "name": "קמדן וצפון",
+      "emoji": "🎸"
+    },
+    "shoreditch": {
+      "name": "שורדיטש ומזרח טרנדי",
+      "emoji": "🖌️"
+    },
+    "greenwich": {
+      "name": "גריניץ׳",
+      "emoji": "⏱️"
+    },
+    "outer": {
+      "name": "מחוץ למרכז",
+      "emoji": "🚆"
+    }
   },
-
   "interests": {
-    "museums": { "name": "מוזיאונים ותרבות", "emoji": "🏛️" },
-    "views": { "name": "נופים ותצפיות", "emoji": "👁️" },
-    "royal": { "name": "היסטוריה ומלוכה", "emoji": "👑" },
-    "food": { "name": "שווקים ואוכל", "emoji": "🍽️" },
-    "parks": { "name": "פארקים וטבע", "emoji": "🌳" },
-    "street": { "name": "רחוב ואמנות עכשווית", "emoji": "🎨" },
-    "kids": { "name": "אטרקציות לילדים", "emoji": "🧸" }
+    "museums": {
+      "name": "מוזיאונים ותרבות",
+      "emoji": "🏛️"
+    },
+    "views": {
+      "name": "נופים ותצפיות",
+      "emoji": "👁️"
+    },
+    "royal": {
+      "name": "היסטוריה ומלוכה",
+      "emoji": "👑"
+    },
+    "food": {
+      "name": "שווקים ואוכל",
+      "emoji": "🍽️"
+    },
+    "parks": {
+      "name": "פארקים וטבע",
+      "emoji": "🌳"
+    },
+    "street": {
+      "name": "רחוב ואמנות עכשווית",
+      "emoji": "🎨"
+    },
+    "kids": {
+      "name": "אטרקציות לילדים",
+      "emoji": "🧸"
+    }
   },
-
   "attractions": [
     {
       "id": "british-museum",
       "name": "המוזיאון הבריטי",
       "nameEn": "The British Museum",
+      "desc": "אוסף ענק של תרבויות העולם, ובו אבן רוזטה ופסלי הפרתנון. יושב בשכונת בלומסברי, שכונת הספריות והאוניברסיטאות, במרחק הליכה מקובנט גארדן ומסוהו.",
       "area": "westminster",
-      "interests": ["museums", "royal"],
+      "interests": [
+        "museums",
+        "royal"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 3,
@@ -43,8 +89,11 @@
       "id": "national-gallery",
       "name": "הגלריה הלאומית",
       "nameEn": "The National Gallery",
+      "desc": "אוסף הציור האירופי הגדול של בריטניה, מטרנר ועד ואן גוך. ניצבת ממש על טרפלגר סקוור, הכיכר המרכזית של לונדון, כמה דקות הליכה מסוהו ומקובנט גארדן.",
       "area": "westminster",
-      "interests": ["museums"],
+      "interests": [
+        "museums"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -58,8 +107,12 @@
       "id": "westminster-abbey",
       "name": "מנזר וסטמינסטר",
       "nameEn": "Westminster Abbey",
+      "desc": "כנסיית ההכתרות של מלכי אנגליה כבר קרוב לאלף שנה, וגם מקום קבורתם של ניוטון ודארווין. עומד ממש מול בתי הפרלמנט, מעבר לכביש מביג בן.",
       "area": "westminster",
-      "interests": ["royal", "museums"],
+      "interests": [
+        "royal",
+        "museums"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 2,
@@ -73,8 +126,12 @@
       "id": "big-ben",
       "name": "ביג בן ובתי הפרלמנט",
       "nameEn": "Big Ben and Houses of Parliament",
+      "desc": "מגדל השעון המזוהה ביותר עם לונדון, כשהשם ביג בן שייך במקור לפעמון שבתוכו ולא למגדל עצמו. נמצא בקצה גשר וסטמינסטר, והנוף המפורסם שלו נפתח דווקא מהגדה הנגדית של התמזה.",
       "area": "westminster",
-      "interests": ["royal", "views"],
+      "interests": [
+        "royal",
+        "views"
+      ],
       "free": true,
       "priceBand": "צפייה מבחוץ חינם",
       "hours": 1,
@@ -88,8 +145,11 @@
       "id": "buckingham",
       "name": "ארמון בקינגהאם וחילופי המשמר",
       "nameEn": "Buckingham Palace",
+      "desc": "מעון המלוכה הרשמי בלונדון, וטקס חילופי המשמר מתקיים בחזיתו בימים מסוימים. יושב בקצה השדרה המלכותית, בין פארק סנט ג׳יימס לגרין פארק.",
       "area": "westminster",
-      "interests": ["royal"],
+      "interests": [
+        "royal"
+      ],
       "free": true,
       "priceBand": "החילופים חינם, הארמון בתשלום",
       "hours": 2,
@@ -103,8 +163,12 @@
       "id": "churchill-rooms",
       "name": "חדרי המלחמה של צ׳רצ׳יל",
       "nameEn": "Churchill War Rooms",
+      "desc": "הבונקר התת קרקעי שממנו נוהלה בריטניה במלחמת העולם השנייה, ששוחזר כמעט בדיוק כפי שהיה. הכניסה מרחוב צדדי בוסטמינסטר, דקות הליכה מביג בן ומפארק סנט ג׳יימס.",
       "area": "westminster",
-      "interests": ["museums", "royal"],
+      "interests": [
+        "museums",
+        "royal"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 2,
@@ -118,8 +182,11 @@
       "id": "st-james-park",
       "name": "פארק סנט ג׳יימס",
       "nameEn": "St James's Park",
+      "desc": "הפארק המלכותי הוותיק בלונדון, עם אגם, פליקנים וגשר שממנו נשקף ארמון בקינגהאם. משתרע בין הארמון לבין מתחם הורס גארדס, ומחבר ברגל כמעט את כל אתרי וסטמינסטר.",
       "area": "westminster",
-      "interests": ["parks"],
+      "interests": [
+        "parks"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -133,8 +200,12 @@
       "id": "covent-garden",
       "name": "קובנט גארדן",
       "nameEn": "Covent Garden",
+      "desc": "כיכר שוק מקורה עם חנויות, בתי קפה ואמני רחוב שמופיעים לאורך כל היום. נמצאת בלב הווסט אנד, במרחק הליכה מרחוב התיאטראות, מסוהו ומהגלריה הלאומית.",
       "area": "westminster",
-      "interests": ["food", "street"],
+      "interests": [
+        "food",
+        "street"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -148,8 +219,12 @@
       "id": "tower-of-london",
       "name": "מצודת לונדון",
       "nameEn": "Tower of London",
+      "desc": "מבצר בן קרוב לאלף שנה ששימש ארמון, כלא ובית מטבעה, וכיום שמורים בו תכשיטי הכתר. עומד על גדת התמזה בקצה המזרחי של הסיטי, ממש ליד גשר המגדלים.",
       "area": "city",
-      "interests": ["royal", "museums"],
+      "interests": [
+        "royal",
+        "museums"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 3,
@@ -163,8 +238,12 @@
       "id": "tower-bridge",
       "name": "גשר המגדלים",
       "nameEn": "Tower Bridge",
+      "desc": "גשר ההרמה הוויקטוריאני שרבים מבלבלים בינו לבין גשר לונדון הסמוך והאפור יותר. חוצה את התמזה בסמוך למצודת לונדון, ואפשר לעבור עליו ברגל בלי לשלם.",
       "area": "city",
-      "interests": ["views", "royal"],
+      "interests": [
+        "views",
+        "royal"
+      ],
       "free": true,
       "priceBand": "מעבר חינם, התערוכה בתשלום",
       "hours": 1,
@@ -178,8 +257,12 @@
       "id": "st-pauls",
       "name": "קתדרלת סנט פול",
       "nameEn": "St Paul's Cathedral",
+      "desc": "הכיפה של כריסטופר רן, ששרדה את הפצצות הבליץ והפכה לסמל של עמידות לונדונית. עומדת בלב הסיטי, וממנה נפתח מעבר להולכי רגל בגשר המילניום ישירות אל הטייט מודרן.",
       "area": "city",
-      "interests": ["royal", "views"],
+      "interests": [
+        "royal",
+        "views"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 2,
@@ -193,8 +276,11 @@
       "id": "sky-garden",
       "name": "סקיי גארדן",
       "nameEn": "Sky Garden",
+      "desc": "תצפית עם גן טרופי בקומות העליונות של הבניין המכונה ווקי טוקי, והגבוהה מבין התצפיות שהכניסה אליהן אינה כרוכה בתשלום. נמצא בלב הסיטי, ליד תחנת מונומנט.",
       "area": "city",
-      "interests": ["views"],
+      "interests": [
+        "views"
+      ],
       "free": true,
       "priceBand": "כניסה חינם בהזמנה מראש",
       "hours": 1,
@@ -208,8 +294,11 @@
       "id": "borough-market",
       "name": "שוק בורו",
       "nameEn": "Borough Market",
+      "desc": "אחד משווקי המזון הוותיקים בלונדון, שמתמחה בחומרי גלם טריים ובדוכני אוכל מוכן. ממוקם מתחת לקשתות המסילה ליד גשר לונדון, בפתח הגדה הדרומית.",
       "area": "southbank",
-      "interests": ["food"],
+      "interests": [
+        "food"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -223,8 +312,13 @@
       "id": "tate-modern",
       "name": "טייט מודרן",
       "nameEn": "Tate Modern",
+      "desc": "מוזיאון האמנות המודרנית של בריטניה, בתוך תחנת כוח לשעבר על גדת הנהר. מחובר לקתדרלת סנט פול שממול בגשר המילניום להולכי רגל.",
       "area": "southbank",
-      "interests": ["museums", "street", "views"],
+      "interests": [
+        "museums",
+        "street",
+        "views"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -238,8 +332,12 @@
       "id": "london-eye",
       "name": "הלונדון איי",
       "nameEn": "London Eye",
+      "desc": "גלגל הענק שעל גדת התמזה, כשסיבוב שלם נמשך כחצי שעה. עומד בדיוק מול בתי הפרלמנט, בקצה הצפוני של הגדה הדרומית.",
       "area": "southbank",
-      "interests": ["views", "kids"],
+      "interests": [
+        "views",
+        "kids"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 1,
@@ -253,8 +351,13 @@
       "id": "southbank-walk",
       "name": "טיילת הגדה הדרומית",
       "nameEn": "South Bank",
+      "desc": "טיילת רציפה לאורך הנהר, עם אמני רחוב, דוכנים ומרכזי תרבות. נמתחת מהלונדון איי ועד אזור גשר המגדלים, וזו הדרך הנעימה ביותר לעבור ברגל בין אתרי המרכז.",
       "area": "southbank",
-      "interests": ["street", "views", "parks"],
+      "interests": [
+        "street",
+        "views",
+        "parks"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -268,8 +371,11 @@
       "id": "shard",
       "name": "השארד, תצפית",
       "nameEn": "The Shard",
+      "desc": "הבניין הגבוה בבריטניה, עם תצפית פתוחה בקומות העליונות שלו. ניצב ממש מעל תחנת גשר לונדון, במרחק דקות משוק בורו.",
       "area": "southbank",
-      "interests": ["views"],
+      "interests": [
+        "views"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 1,
@@ -283,8 +389,12 @@
       "id": "natural-history",
       "name": "מוזיאון הטבע",
       "nameEn": "Natural History Museum",
+      "desc": "מבנה ויקטוריאני מרשים בפני עצמו, ובתוכו שלדי דינוזאורים ואולם כניסה שנראה כמו קתדרלה. יושב באותו רחוב עם מוזיאון המדע ומוזיאון ויקטוריה ואלברט, בדרום קנזינגטון.",
       "area": "kensington",
-      "interests": ["museums", "kids"],
+      "interests": [
+        "museums",
+        "kids"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 3,
@@ -298,8 +408,12 @@
       "id": "science-museum",
       "name": "מוזיאון המדע",
       "nameEn": "Science Museum",
+      "desc": "מוזיאון עם תצוגות להפעלה, חלליות ומכונות קיטור, מהאהובים בעיר על ילדים. שכן קרוב של מוזיאון הטבע, דקות הליכה מתחנת סאות׳ קנזינגטון.",
       "area": "kensington",
-      "interests": ["museums", "kids"],
+      "interests": [
+        "museums",
+        "kids"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -313,8 +427,12 @@
       "id": "va-museum",
       "name": "מוזיאון ויקטוריה ואלברט",
       "nameEn": "Victoria and Albert Museum",
+      "desc": "מוזיאון העיצוב והאמנות השימושית הגדול בעולם, מאופנה ותכשיטים ועד רהיטים ופיסול. משלים את שלישיית המוזיאונים של דרום קנזינגטון, ויש בו חצר פנימית שקטה עם בריכה רדודה.",
       "area": "kensington",
-      "interests": ["museums", "street"],
+      "interests": [
+        "museums",
+        "street"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -328,8 +446,11 @@
       "id": "hyde-park",
       "name": "הייד פארק וקנזינגטון גארדנס",
       "nameEn": "Hyde Park",
+      "desc": "הפארק הגדול במרכז לונדון, ובו אגם הסרפנטיין ופינת הנואמים. נמתח מקצה מייפייר ועד קנזינגטון, ומפריד בין מרכז העיר לשכונות המערב.",
       "area": "kensington",
-      "interests": ["parks"],
+      "interests": [
+        "parks"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -343,8 +464,11 @@
       "id": "kensington-palace",
       "name": "ארמון קנזינגטון",
       "nameEn": "Kensington Palace",
+      "desc": "ארמון מלכותי פעיל שבו נולדה המלכה ויקטוריה, ובו מוצגים חדרי המדינה ותצוגות אופנה מלכותית. עומד בתוך קנזינגטון גארדנס, בקצה המערבי של הייד פארק.",
       "area": "kensington",
-      "interests": ["royal"],
+      "interests": [
+        "royal"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 2,
@@ -358,8 +482,12 @@
       "id": "notting-hill",
       "name": "נוטינג היל ופורטובלו רוד",
       "nameEn": "Notting Hill and Portobello Road",
+      "desc": "שכונת בתים צבעוניים ורחוב פורטובלו, שהופך בשבתות לאחד משווקי העתיקות הגדולים באירופה. נמצאת ממערב להייד פארק, כמה תחנות בלבד מהמרכז.",
       "area": "kensington",
-      "interests": ["street", "food"],
+      "interests": [
+        "street",
+        "food"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -373,8 +501,12 @@
       "id": "camden-market",
       "name": "שוק קמדן",
       "nameEn": "Camden Market",
+      "desc": "מתחם שווקים על גדת התעלה, עם דוכני אוכל מכל העולם, אופנה ומוזיקה. נמצא בצפון העיר, ואפשר להמשיך ממנו ברגל לאורך התעלה עד ריג׳נטס פארק.",
       "area": "camden",
-      "interests": ["food", "street"],
+      "interests": [
+        "food",
+        "street"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 3,
@@ -388,8 +520,11 @@
       "id": "regents-park",
       "name": "ריג׳נטס פארק",
       "nameEn": "Regent's Park",
+      "desc": "פארק מלכותי עם גן ורדים מפורסם, ובקצהו הצפוני גבעת פרימרוז היל שממנה נשקף קו הרקיע של העיר. גובל בגן החיות ובשכונת קמדן.",
       "area": "camden",
-      "interests": ["parks"],
+      "interests": [
+        "parks"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -403,8 +538,11 @@
       "id": "london-zoo",
       "name": "גן החיות של לונדון",
       "nameEn": "ZSL London Zoo",
+      "desc": "אחד מגני החיות המדעיים הוותיקים בעולם, שיושב בתוך ריג׳נטס פארק עצמו. הכניסה מצדו הצפוני של הפארק, במרחק הליכה משוק קמדן.",
       "area": "camden",
-      "interests": ["kids"],
+      "interests": [
+        "kids"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 3,
@@ -418,8 +556,11 @@
       "id": "shoreditch-art",
       "name": "אמנות רחוב בשורדיטש",
       "nameEn": "Shoreditch Street Art",
+      "desc": "רחובות שלמים שהפכו לגלריה פתוחה, והציורים שעליהם מתחלפים כל הזמן. מרוכזת סביב בריק ליין ורחוב רדצ׳רץ׳, במזרח העיר.",
       "area": "shoreditch",
-      "interests": ["street"],
+      "interests": [
+        "street"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -433,8 +574,12 @@
       "id": "brick-lane",
       "name": "בריק ליין",
       "nameEn": "Brick Lane",
+      "desc": "רחוב שנושא היסטוריה של גלי הגירה, והיום מרכז של מסעדות, חנויות יד שנייה וכריכי בייגל. ממשיך ישירות משכונת שורדיטש, ובימי ראשון נפתחים בו שווקים לאורכו.",
       "area": "shoreditch",
-      "interests": ["food", "street"],
+      "interests": [
+        "food",
+        "street"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -448,8 +593,13 @@
       "id": "greenwich",
       "name": "גריניץ׳ וקו האפס",
       "nameEn": "Greenwich and the Prime Meridian",
+      "desc": "קו האורך אפס, מצפה הכוכבים המלכותי והמוזיאונים סביבו, על גבעה שממנה נשקף מגדלי קנרי וורף. בדרום מזרח העיר, ואפשר להגיע אליו בשיט על התמזה במקום ברכבת.",
       "area": "greenwich",
-      "interests": ["views", "museums", "parks"],
+      "interests": [
+        "views",
+        "museums",
+        "parks"
+      ],
       "free": true,
       "priceBand": "הפארק חינם, המצפה בתשלום",
       "hours": 4,
@@ -463,8 +613,12 @@
       "id": "maritime-museum",
       "name": "המוזיאון הימי הלאומי",
       "nameEn": "National Maritime Museum",
+      "desc": "המוזיאון הימי הגדול בעולם, שמספר את סיפור הצי הבריטי ואת קרבות נלסון. נמצא בתוך מתחם גריניץ׳, כמה צעדים מקו האפס.",
       "area": "greenwich",
-      "interests": ["museums", "kids"],
+      "interests": [
+        "museums",
+        "kids"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -478,8 +632,11 @@
       "id": "kew-gardens",
       "name": "גני קיו",
       "nameEn": "Kew Gardens",
+      "desc": "גנים בוטניים ענקיים, עם חממות ויקטוריאניות ומסלול הליכה מוגבה בין צמרות העצים. בדרום מערב לונדון על גדת התמזה, ודורשים כמעט יום שלם.",
       "area": "outer",
-      "interests": ["parks"],
+      "interests": [
+        "parks"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 4,
@@ -493,8 +650,11 @@
       "id": "harry-potter",
       "name": "סיור האולפנים של הארי פוטר",
       "nameEn": "Warner Bros Studio Tour",
+      "desc": "הסטים, התלבושות והאביזרים המקוריים של סדרת הסרטים, באולפנים שבהם היא צולמה בפועל. נמצא מחוץ ללונדון באזור ווטפורד, והגעה אליו מצריכה רכבת והסעה משלימה.",
       "area": "outer",
-      "interests": ["kids"],
+      "interests": [
+        "kids"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 6,
@@ -508,8 +668,12 @@
       "id": "hampton-court",
       "name": "ארמון המפטון קורט",
       "nameEn": "Hampton Court Palace",
+      "desc": "ארמונו של הנרי השמיני, עם מטבחי טיודור משוחזרים ומבוך גדרות חי בגנים. עומד על גדת התמזה בדרום מערב, כשעה נסיעה מהמרכז.",
       "area": "outer",
-      "interests": ["royal", "parks"],
+      "interests": [
+        "royal",
+        "parks"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 4,
