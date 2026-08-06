@@ -658,35 +658,82 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
    כדי שהתמונה תיראה ותהיה נעימה ולא מוכהה לגמרי.
 */
 
-/* התצלום עצמו יושב הכי מאחור, ומואר קלות */
-.cat-card-bg { filter: brightness(1.22) saturate(1.12); z-index: 0 !important; }
-
 /*
-  הכותרת בכרטיסים האלה יושבת באמצע ולא בתחתית, ולכן שכבת ההגנה
-  חייבת לכסות את כל הכרטיס ולא רק את החלק התחתון. היא מתחזקת
-  כלפי מטה, כך שהחלק העליון של התצלום עדיין נראה.
-*/
-.cat-card::before {
-  content: "";
-  position: absolute; inset: 0; z-index: 1;
-  border-radius: inherit;
-  pointer-events: none;
-  background: linear-gradient(to top,
-    rgba(10,12,20,0.82) 0%,
-    rgba(10,12,20,0.70) 38%,
-    rgba(10,12,20,0.44) 62%,
-    rgba(10,12,20,0.14) 84%,
-    rgba(10,12,20,0.02) 100%);
-}
-.cat-card > *:not(.cat-card-bg) { position: relative; z-index: 2; }
+  ============================================================
+  כרטיסי הקטגוריות, מבנה חדש
+  ============================================================
+  קודם הטקסט ישב על גבי התצלום, ולכן היה חייב מעליו שכבת כהות
+  כדי להיות קריא. זה מה שהחשיך את התמונות.
 
-.cat-card h3, .cat-card h4, .cat-card p, .cat-card span, .cat-card li,
-.cat-card .cat-emoji, .cat-card .cat-sub, .cat-card .cat-link,
-.cat-card .cat-count {
-  color: #fff !important;
+  עכשיו התצלום תופס את החלק העליון של הכרטיס בלי שום שכבה מעליו,
+  והטקסט יורד אליו מתחת על משטח לבן. התוצאה: תמונה בהירה לגמרי,
+  וטקסט כהה שקריא באופן מובטח. האמוג׳י הופך לתג מרחף שמחבר בין השניים.
+*/
+
+.cat-card {
+  background: #fff !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  border: 1px solid var(--line) !important;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
 }
-.cat-card h3 { text-shadow: 0 2px 14px rgba(0,0,0,0.75); }
-.cat-card li, .cat-card .cat-link, .cat-card .cat-emoji { text-shadow: 0 1px 10px rgba(0,0,0,0.7); }
+.cat-card:hover { box-shadow: var(--shadow-md); border-color: rgba(220,38,38,0.28) !important; }
+.cat-card::before, .cat-card::after { display: none !important; }
+
+/* התצלום, בלי שום שכבת צבע מעליו */
+.cat-card-bg {
+  position: relative !important;
+  inset: auto !important;
+  width: 100%;
+  flex: 0 0 auto;
+  height: 158px;
+  background: var(--img) center 45% / cover no-repeat !important;
+  filter: saturate(1.06) brightness(1.03);
+  z-index: 0 !important;
+}
+.cat-card--large .cat-card-bg { height: 190px; }
+.cat-card--med .cat-card-bg   { height: 140px; }
+
+.cat-card > *:not(.cat-card-bg) {
+  position: relative;
+  z-index: 2;
+  padding-inline: 22px;
+}
+
+/* האמוג׳י כתג מרחף על התפר בין התצלום לטקסט */
+.cat-card .cat-emoji {
+  width: 54px; height: 54px;
+  min-width: 54px;
+  margin-block: -32px 8px;
+  margin-inline: 22px auto;
+  padding: 0 !important;
+  display: flex; align-items: center; justify-content: center;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(16,24,40,0.14);
+  font-size: 26px !important;
+  line-height: 1;
+}
+.cat-card--large .cat-emoji { width: 60px; height: 60px; min-width: 60px; font-size: 30px !important; }
+
+.cat-card h3 {
+  color: var(--ink) !important;
+  text-shadow: none !important;
+  margin-bottom: 8px;
+}
+.cat-card li, .cat-card .cat-sub, .cat-card p, .cat-card span {
+  color: var(--ink-soft) !important;
+  text-shadow: none !important;
+}
+.cat-card .cat-link {
+  color: var(--brand) !important;
+  font-weight: 800;
+  text-shadow: none !important;
+  margin-top: auto;
+  padding-bottom: 20px;
+}
+.cat-card:hover .cat-link { background: transparent !important; }
 
 /* תגית הקטגוריה על כרטיסי הכתבות, כדי שתישאר קריאה על תצלום בהיר */
 .article-category-tag {
@@ -762,3 +809,22 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
 .social-links a[aria-label="פייסבוק"]:hover  { color: #1877F2 !important; border-color: #1877F2 !important; }
 .social-links a[aria-label="אינסטגרם"]:hover { color: #E1306C !important; border-color: #E1306C !important; }
 .social-links a[aria-label="טיקטוק"]:hover   { color: #111318 !important; border-color: #111318 !important; }
+
+/* כרטיסי הקטגוריות במובייל: שניים בשורה, ולכן פס התצלום נמוך יותר */
+@media (max-width: 640px) {
+  .cat-card-bg               { height: 118px; }
+  .cat-card--large .cat-card-bg { height: 134px; }
+  .cat-card--med .cat-card-bg   { height: 110px; }
+  .cat-card > *:not(.cat-card-bg) { padding-inline: 15px; }
+  .cat-card .cat-emoji {
+    width: 42px; height: 42px; min-width: 42px;
+    font-size: 20px !important;
+    border-radius: 13px;
+    margin-block: -24px 6px;
+    margin-inline: 15px auto;
+  }
+  .cat-card--large .cat-emoji { width: 46px; height: 46px; min-width: 46px; font-size: 22px !important; }
+  .cat-card h3 { font-size: 15.5px !important; margin-bottom: 6px; }
+  .cat-card .cat-link { font-size: 13px; padding-bottom: 15px; }
+  .cat-card--large, .cat-card--med { min-height: 0 !important; }
+}
