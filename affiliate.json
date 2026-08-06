@@ -1,6 +1,5 @@
 {
   "_מה_זה_הקובץ_הזה": "קובץ ההגדרות המרכזי של כל קישורי ההכנסה באתר. כל שינוי בקישור, בטקסט או בספק נעשה כאן בלבד, ומתעדכן אוטומטית בכל העמודים. אין לשכפל קישורים לתוך עמודי HTML.",
-
   "network": {
     "_הסבר": "רשת השותפים שדרכה נמדדות ההכנסות. כל עוד marker ריק, האתר מציג קישורים ישירים רגילים לספקים, בלי עמלה ובלי מעקב. ברגע שנפתח החשבון ומוזן כאן המזהה, כל הקישורים באתר הופכים אוטומטית לקישורי עמלה, בלי לגעת באף עמוד.",
     "id": "travelpayouts",
@@ -8,13 +7,11 @@
     "redirect_base": "https://tp.media/r",
     "trs": ""
   },
-
   "tracking": {
     "_הסבר": "כל קישור נושא מזהה מקור ייחודי בפורמט עמוד__מיקום__ספק. זה מה שמאפשר לתהליך האופטימיזציה השבועי לדעת בדיוק איזה עמוד ואיזה מיקום בתוך העמוד הכניסו כסף, בלי להסתמך על מערכת מדידה חיצונית.",
     "sub_id_separator": "__",
     "max_sub_id_length": 60
   },
-
   "offers": {
     "attractions": {
       "title": "כרטיסים לאטרקציות בלונדון",
@@ -107,14 +104,40 @@
       "campaign_id": ""
     }
   },
-
   "slots": {
     "_הסבר": "אילו הצעות מוצגות בכל עמוד, ובאיזה סדר. השמות כאן חייבים להתאים לערך שמופיע בתכונת data-affiliate בעמוד עצמו.",
-    "oyster": ["attractions", "esim"],
-    "attractions": ["attractions", "attractions_alt", "hotels"],
-    "flight": ["esim", "insurance", "transfer"],
-    "football": ["stadium", "attractions"],
-    "planner": ["attractions", "hotels", "esim"],
-    "kosher": ["hotels", "esim", "transfer"]
+    "oyster": [
+      "attractions",
+      "esim"
+    ],
+    "attractions": [
+      "attractions",
+      "attractions_alt",
+      "hotels"
+    ],
+    "flight": [
+      "esim",
+      "insurance",
+      "transfer"
+    ],
+    "football": [
+      "stadium",
+      "attractions"
+    ],
+    "planner": [
+      "attractions",
+      "hotels",
+      "esim"
+    ],
+    "kosher": [
+      "hotels",
+      "esim",
+      "transfer"
+    ],
+    "stay": [
+      "hotels",
+      "transfer",
+      "esim"
+    ]
   }
 }
