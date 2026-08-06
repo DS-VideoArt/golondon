@@ -903,3 +903,42 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
   margin-bottom: 18px;
 }
 .freshness i { color: #15803D; }
+
+/* ============================================================
+   פריטים לחיצים עם מידע מורחב
+   ============================================================
+   פריטי רשימה שמסומנים data-place מקבלים סימן חזותי שהם לחיצים,
+   ומעבר עכבר שמזמין ללחוץ. הרכיב עצמו, החלון שנפתח, מנוהל
+   על ידי place-info.js.
+*/
+[data-place] {
+  position: relative;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+[data-place]:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(220,38,38,0.3) !important;
+}
+[data-place]:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+[data-place]::after {
+  content: "פרטים נוספים \f105";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 12px;
+  color: var(--brand);
+  opacity: 0;
+  transition: opacity .15s ease;
+  position: absolute;
+  bottom: 10px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  direction: rtl;
+}
+[data-place]:hover::after, [data-place]:focus-visible::after { opacity: 1; }
+.num-item[data-place] { padding-bottom: 34px; }
