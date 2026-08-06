@@ -41,8 +41,8 @@ body::before {
   content: "";
   position: fixed; inset: 0; z-index: -2;
   background: url('images/bg-soft.jpg') center center / cover no-repeat;
-  opacity: 0.55;
-  filter: saturate(0.72) brightness(1.12);
+  opacity: 0.26;
+  filter: saturate(0.55) brightness(1.2);
   pointer-events: none;
 }
 
@@ -55,7 +55,7 @@ body::after {
     radial-gradient(70% 52% at 8% 4%,   rgba(220,38,38,0.16), transparent 70%),
     radial-gradient(64% 50% at 95% 16%, rgba(30,58,138,0.18), transparent 70%),
     radial-gradient(85% 58% at 44% 106%, rgba(21,128,61,0.13), transparent 70%),
-    linear-gradient(180deg, rgba(250,249,246,0.42) 0%, rgba(250,249,246,0.58) 48%, rgba(250,249,246,0.68) 100%);
+    linear-gradient(180deg, rgba(250,249,246,0.55) 0%, rgba(250,249,246,0.68) 48%, rgba(250,249,246,0.78) 100%);
 }
 
 /* ---------- גיליון התוכן ---------- */
@@ -558,16 +558,16 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
 .route-card h4 { color: var(--ink) !important; }
 .route-card p { color: var(--ink-soft) !important; }
 
-/* רקע קטע הכתבות: אותו תצלום, אבל שטוף באור במקום מוכהה */
+/*
+  קישוטי הרקע החלקיים הוסרו.
+  היו כאן שני תצלומים שכיסו כחצי מרוחב הקטע ונמוגו באמצע, מה שנראה
+  כמו טעות רינדור ולא כמו עיצוב. הרקע של האתר ממילא נושא מרקם משלו,
+  ולכן הקטעים האלה נשארים נקיים.
+*/
 .articles { background: transparent !important; }
-.articles::before {
-  background:
-    linear-gradient(260deg, rgba(30,58,138,0.16) 0%, rgba(124,58,237,0.13) 100%),
-    url('images/bg-ferris-wheel.jpg') right top / 760px no-repeat !important;
-  background-blend-mode: normal !important;
-  filter: grayscale(0.2) contrast(1.02) brightness(1.5) !important;
-  opacity: 0.5 !important;
-}
+.articles::before,
+.categories::before { display: none !important; }
+.categories { background: transparent !important; }
 
 /* הכותרת התחתונה */
 .footer {
@@ -648,3 +648,116 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
 /* קישור הירוק בסרגל הניווט, גוון כהה יותר כדי שייקרא על רקע לבן */
 .nav-links a[href="kosher-map.html"] { color: #15803D !important; }
 .post-card-footer a, .post-card a { color: var(--navy) !important; }
+
+/* ============================================================
+   כרטיסים עם תמונת רקע
+   ============================================================
+   בכרטיסים האלה הטקסט יושב ישירות על התצלום. הכלל הגורף שהופך
+   טקסט לכהה היה הופך אותו לבלתי קריא כאן, ולכן מחזירים לבן.
+   בנוסף, התצלום עצמו מואר ושכבת הכהות ממוקדת רק מתחת לטקסט,
+   כדי שהתמונה תיראה ותהיה נעימה ולא מוכהה לגמרי.
+*/
+
+/* התצלום עצמו יושב הכי מאחור, ומואר קלות */
+.cat-card-bg { filter: brightness(1.1) saturate(1.05); z-index: 0 !important; }
+
+/*
+  הכותרת בכרטיסים האלה יושבת באמצע ולא בתחתית, ולכן שכבת ההגנה
+  חייבת לכסות את כל הכרטיס ולא רק את החלק התחתון. היא מתחזקת
+  כלפי מטה, כך שהחלק העליון של התצלום עדיין נראה.
+*/
+.cat-card::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(to top,
+    rgba(10,12,20,0.72) 0%,
+    rgba(10,12,20,0.56) 45%,
+    rgba(10,12,20,0.40) 75%,
+    rgba(10,12,20,0.28) 100%);
+}
+.cat-card > *:not(.cat-card-bg) { position: relative; z-index: 2; }
+
+.cat-card h3, .cat-card h4, .cat-card p, .cat-card span, .cat-card li,
+.cat-card .cat-emoji, .cat-card .cat-sub, .cat-card .cat-link,
+.cat-card .cat-count {
+  color: #fff !important;
+}
+.cat-card h3 { text-shadow: 0 2px 14px rgba(0,0,0,0.75); }
+.cat-card li, .cat-card .cat-link, .cat-card .cat-emoji { text-shadow: 0 1px 10px rgba(0,0,0,0.7); }
+
+/* תגית הקטגוריה על כרטיסי הכתבות, כדי שתישאר קריאה על תצלום בהיר */
+.article-category-tag {
+  background: rgba(12,14,22,0.62) !important;
+  backdrop-filter: blur(6px);
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.22);
+}
+
+/* ============================================================
+   הרשתות החברתיות
+   ============================================================
+   שלוש אריחים גדולים בקטע הקהילה, כל אחד בצבע הרשת שלו, וגם
+   שדרוג של האייקונים הקטנים בכותרת התחתונה.
+*/
+
+.social-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+.social-tile {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 3px;
+  padding: 20px 22px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.social-tile::before {
+  content: ""; position: absolute; inset: 0 auto 0 0; width: 5px;
+  background: var(--social); transition: width .2s ease;
+}
+.social-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--social);
+  text-decoration: none;
+}
+.social-tile:hover::before { width: 8px; }
+.social-tile i {
+  font-size: 26px;
+  color: var(--social) !important;
+  margin-bottom: 6px;
+}
+.social-tile .social-name {
+  font-size: 17px; font-weight: 900; color: var(--ink) !important;
+}
+.social-tile .social-sub {
+  font-size: 13.5px; color: var(--ink-soft) !important; line-height: 1.5;
+}
+.social-fb { --social: #1877F2; }
+.social-ig { --social: #E1306C; }
+.social-tt { --social: #111318; }
+
+/* האייקונים הקטנים בכותרת התחתונה */
+.social-links { gap: 12px !important; }
+.social-links a {
+  width: 42px; height: 42px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 12px;
+  font-size: 17px;
+  background: #fff !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink-soft) !important;
+  transition: all .2s ease;
+}
+.social-links a:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.social-links a[aria-label="פייסבוק"]:hover  { color: #1877F2 !important; border-color: #1877F2 !important; }
+.social-links a[aria-label="אינסטגרם"]:hover { color: #E1306C !important; border-color: #E1306C !important; }
+.social-links a[aria-label="טיקטוק"]:hover   { color: #111318 !important; border-color: #111318 !important; }
