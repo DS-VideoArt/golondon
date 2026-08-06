@@ -138,6 +138,11 @@
       "hotels",
       "transfer",
       "esim"
+    ],
+    "kids": [
+      "attractions",
+      "hotels",
+      "esim"
     ]
   }
 }
