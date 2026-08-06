@@ -1,0 +1,120 @@
+{
+  "_מה_זה_הקובץ_הזה": "קובץ ההגדרות המרכזי של כל קישורי ההכנסה באתר. כל שינוי בקישור, בטקסט או בספק נעשה כאן בלבד, ומתעדכן אוטומטית בכל העמודים. אין לשכפל קישורים לתוך עמודי HTML.",
+
+  "network": {
+    "_הסבר": "רשת השותפים שדרכה נמדדות ההכנסות. כל עוד marker ריק, האתר מציג קישורים ישירים רגילים לספקים, בלי עמלה ובלי מעקב. ברגע שנפתח החשבון ומוזן כאן המזהה, כל הקישורים באתר הופכים אוטומטית לקישורי עמלה, בלי לגעת באף עמוד.",
+    "id": "travelpayouts",
+    "marker": "",
+    "redirect_base": "https://tp.media/r",
+    "trs": ""
+  },
+
+  "tracking": {
+    "_הסבר": "כל קישור נושא מזהה מקור ייחודי בפורמט עמוד__מיקום__ספק. זה מה שמאפשר לתהליך האופטימיזציה השבועי לדעת בדיוק איזה עמוד ואיזה מיקום בתוך העמוד הכניסו כסף, בלי להסתמך על מערכת מדידה חיצונית.",
+    "sub_id_separator": "__",
+    "max_sub_id_length": 60
+  },
+
+  "offers": {
+    "attractions": {
+      "title": "כרטיסים לאטרקציות בלונדון",
+      "desc": "הזמנה מראש חוסכת המתנה בתור, ובחלק מהאתרים המחיר המקוון זול מהמחיר בקופה.",
+      "cta": "בדיקת זמינות ומחירים",
+      "icon": "fa-ticket",
+      "url": "https://www.getyourguide.com/london-l57/",
+      "brand": "GetYourGuide",
+      "program_id": "",
+      "campaign_id": ""
+    },
+    "attractions_alt": {
+      "title": "כרטיסי כניסה למוזיאונים ואתרים",
+      "desc": "כניסה בשעה קבועה מראש, כולל ביטול חינם ברוב האתרים עד יממה לפני.",
+      "cta": "בדיקת כרטיסים",
+      "icon": "fa-landmark",
+      "url": "https://www.tiqets.com/en/london-attractions-c66342/",
+      "brand": "Tiqets",
+      "program_id": "",
+      "campaign_id": ""
+    },
+    "esim": {
+      "title": "חבילת גלישה לבריטניה",
+      "desc": "כרטיס סים וירטואלי שמופעל לפני הטיסה. נחיתה עם אינטרנט פעיל, בלי חיפוש חנות סלולר ובלי חיוב נדידה.",
+      "cta": "השוואת חבילות גלישה",
+      "icon": "fa-signal",
+      "url": "https://www.airalo.com/united-kingdom-esim",
+      "brand": "Airalo",
+      "program_id": "",
+      "campaign_id": ""
+    },
+    "insurance": {
+      "title": "ביטוח נסיעות לחו\"ל",
+      "desc": "כיסוי רפואי בבריטניה יקר מאוד ללא ביטוח. שווה לבדוק מחיר לפני שסוגרים את הטיסה.",
+      "cta": "השוואת מחירי ביטוח",
+      "icon": "fa-shield-heart",
+      "url": "https://ekta.insure/",
+      "brand": "EKTA",
+      "program_id": "",
+      "campaign_id": ""
+    },
+    "flights": {
+      "title": "טיסות לונדון",
+      "desc": "השוואת מחירים בין חברות התעופה והסוכנויות, כולל טיסות עם עצירה שלרוב זולות יותר.",
+      "cta": "השוואת מחירי טיסות",
+      "icon": "fa-plane",
+      "url": "https://www.aviasales.com/",
+      "brand": "Aviasales",
+      "program_id": "",
+      "campaign_id": ""
+    },
+    "hotels": {
+      "title": "מלונות ולינה בלונדון",
+      "desc": "המיקום משפיע על המחיר יותר מכל דבר אחר. שכונה במרחק שתי תחנות מהמרכז יכולה לחסוך הרבה.",
+      "cta": "בדיקת מחירי לינה",
+      "icon": "fa-bed",
+      "url": "https://www.booking.com/city/gb/london.html",
+      "brand": "Booking",
+      "program_id": "",
+      "campaign_id": ""
+    },
+    "transfer": {
+      "title": "הסעה משדה התעופה",
+      "desc": "נהג שממתין עם שלט בשם שלכם. שווה במיוחד בנחיתת לילה, עם ילדים או עם הרבה מזוודות.",
+      "cta": "בדיקת מחיר הסעה",
+      "icon": "fa-van-shuttle",
+      "url": "https://kiwitaxi.com/",
+      "brand": "Kiwitaxi",
+      "program_id": "",
+      "campaign_id": ""
+    },
+    "car": {
+      "title": "השכרת רכב בבריטניה",
+      "desc": "רלוונטי בעיקר ליציאה מחוץ ללונדון. בתוך העיר עצמה הרכבת התחתית מהירה וזולה יותר.",
+      "cta": "השוואת מחירי השכרה",
+      "icon": "fa-car",
+      "url": "https://www.discovercars.com/",
+      "brand": "DiscoverCars",
+      "program_id": "",
+      "campaign_id": ""
+    },
+    "stadium": {
+      "title": "סיורי אצטדיון בלונדון",
+      "desc": "כרטיסים למשחקים עצמם נמכרים דרך המועדונים, אבל סיור מודרך באצטדיון פתוח לכולם ואפשר להזמין מראש.",
+      "cta": "בדיקת סיורים",
+      "icon": "fa-futbol",
+      "url": "https://www.getyourguide.com/london-l57/tours-tc1/",
+      "brand": "GetYourGuide",
+      "program_id": "",
+      "campaign_id": ""
+    }
+  },
+
+  "slots": {
+    "_הסבר": "אילו הצעות מוצגות בכל עמוד, ובאיזה סדר. השמות כאן חייבים להתאים לערך שמופיע בתכונת data-affiliate בעמוד עצמו.",
+    "oyster": ["attractions", "esim"],
+    "attractions": ["attractions", "attractions_alt", "hotels"],
+    "flight": ["esim", "insurance", "transfer"],
+    "football": ["stadium", "attractions"],
+    "planner": ["attractions", "hotels", "esim"],
+    "kosher": ["hotels", "esim", "transfer"]
+  }
+}

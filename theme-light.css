@@ -1,0 +1,650 @@
+/*
+  ============================================================
+  התמה הבהירה של גו לונדון
+  ============================================================
+  הקובץ הזה נטען אחרון בכל עמוד, ולכן הוא גובר על העיצוב הכהה
+  שכתוב בתוך העמודים עצמם. כל שינוי צבע באתר נעשה כאן בלבד.
+
+  עקרון העיצוב: הרקע בהיר אבל אף פעם לא אחיד. יש מתחתיו
+  שכבת תצלום מטושטש ושלוש הילות צבע רכות, כדי שיהיה עומק
+  בלי שהעין תרגיש רקע שטוח.
+*/
+
+:root {
+  --bg:            #FAF9F6;
+  --surface:       #ffffff;
+  --surface-soft:  rgba(255,255,255,0.72);
+  --ink:           #201f2b;
+  --ink-soft:      #55596b;
+  --ink-faint:     #858a9c;
+  --line:          rgba(32,31,43,0.10);
+  --line-soft:     rgba(32,31,43,0.06);
+  --brand:         #DC2626;
+  --brand-warm:    #EA580C;
+  --navy:          #1E3A8A;
+  --green:         #15803D;
+  --shadow-sm:     0 1px 2px rgba(16,24,40,0.05), 0 4px 14px rgba(16,24,40,0.05);
+  --shadow-md:     0 2px 4px rgba(16,24,40,0.05), 0 12px 30px rgba(16,24,40,0.08);
+}
+
+/* ---------- הבסיס, כולל שכבות העומק שמחליפות את הרקע האחיד ---------- */
+
+html { background: var(--bg); }
+
+body {
+  background: transparent !important;
+  color: var(--ink);
+}
+
+/* שכבה ראשונה: תצלום זעיר שנמתח על כל המסך ולכן נראה מטושטש לחלוטין */
+body::before {
+  content: "";
+  position: fixed; inset: 0; z-index: -2;
+  background: url('images/bg-soft.jpg') center center / cover no-repeat;
+  opacity: 0.55;
+  filter: saturate(0.72) brightness(1.12);
+  pointer-events: none;
+}
+
+/* שכבה שנייה: הילות צבע רכות בגווני המותג, ומעליהן הלבנה עדינה שמחזירה בהירות */
+body::after {
+  content: "";
+  position: fixed; inset: 0; z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(70% 52% at 8% 4%,   rgba(220,38,38,0.16), transparent 70%),
+    radial-gradient(64% 50% at 95% 16%, rgba(30,58,138,0.18), transparent 70%),
+    radial-gradient(85% 58% at 44% 106%, rgba(21,128,61,0.13), transparent 70%),
+    linear-gradient(180deg, rgba(250,249,246,0.42) 0%, rgba(250,249,246,0.58) 48%, rgba(250,249,246,0.68) 100%);
+}
+
+/* ---------- גיליון התוכן ---------- */
+/*
+  התוכן יושב על משטח לבן מרחף במקום ישירות על הרקע.
+  זה מה שמאפשר לרקע להיות עשיר ובעל מרקם בלי לפגוע כהוא זה בקריאות.
+*/
+.content, .seo-text {
+  position: relative;
+  z-index: 3;
+  background: rgba(255,255,255,0.90);
+  backdrop-filter: blur(14px) saturate(1.15);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  border: 1px solid rgba(255,255,255,0.85);
+  border-radius: 24px;
+  box-shadow: 0 1px 2px rgba(16,24,40,0.04), 0 18px 48px rgba(16,24,40,0.10);
+  margin-bottom: 56px;
+  padding-inline: 40px !important;
+  padding-bottom: 46px !important;
+}
+.content { margin-top: -40px !important; }
+/* בעמודים אינטראקטיביים העטיפה נשארת שקופה, כי הכרטיסים שבתוכה כבר לבנים */
+.wrap { position: relative; z-index: 3; }
+.seo-text {
+  padding-top: 34px !important;
+  border-top: none !important;
+  margin-top: 30px;
+}
+/* פירורי הלחם יושבים מעל הגיליון, לכן הם מקבלים רקע משלהם */
+.breadcrumb {
+  position: relative; z-index: 4;
+  margin-top: -40px !important;
+  margin-bottom: 14px;
+  padding-top: 26px !important;
+}
+.breadcrumb + .content { margin-top: 0 !important; }
+
+@media (max-width: 620px) {
+  .content, .seo-text {
+    border-radius: 18px;
+    margin-inline: 12px;
+    padding-inline: 20px !important;
+  }
+}
+
+a { color: var(--navy); }
+
+/* ---------- ברירת מחדל לכל הטקסט באתר ---------- */
+/*
+  הרבה עמודים מגדירים טקסט לבן על תגיות בלי מחלקה, ולכן צריך
+  ברירת מחדל רחבה. החריגים, כלומר משטחי המותג הצבעוניים שבהם
+  הטקסט חייב להישאר לבן, מוחזרים בסוף הקובץ.
+*/
+h1, h2, h3, h4, h5, h6 { color: var(--ink) !important; }
+p, li, label, dt, dd, figcaption, blockquote, span, td, th { color: var(--ink-soft) !important; }
+strong, b { color: var(--ink) !important; }
+small { color: var(--ink-faint) !important; }
+
+/* ---------- סרגל ניווט ---------- */
+
+.navbar {
+  background: rgba(255,255,255,0.82) !important;
+  backdrop-filter: saturate(1.6) blur(14px);
+  -webkit-backdrop-filter: saturate(1.6) blur(14px);
+  border-bottom: 1px solid var(--line) !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6), 0 6px 24px rgba(16,24,40,0.05);
+}
+/* על רקע כהה הלוגו הוצג במצב מיזוג. על רקע בהיר זה מוחק אותו. */
+.logo-img { mix-blend-mode: normal !important; }
+.logo-london { color: var(--ink) !important; }
+.logo-slogan {
+  color: var(--ink-faint) !important;
+  border-right-color: var(--line) !important;
+}
+.back-btn {
+  color: var(--ink-soft) !important;
+  background: rgba(255,255,255,0.7);
+  border-color: var(--line) !important;
+}
+.back-btn:hover {
+  color: var(--ink) !important;
+  background: #fff;
+  border-color: rgba(32,31,43,0.22) !important;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------- כותרת העמוד ---------- */
+/* התצלום נשאר. רק שכבת ההיתוך משתנה, כדי שהכותרת תימס לתוך עמוד בהיר */
+
+/*
+  התצלום נשאר, אבל מטושטש ומולבן, כך שהוא מרקם ולא מסך כהה.
+  בתחתית הוא נמס לשקיפות מלאה, כדי שלא ייווצר תפר בינו לבין רקע העמוד.
+*/
+.page-hero::before {
+  filter: blur(4px) brightness(1.3) saturate(0.85) !important;
+  transform: scale(1.12) !important;
+  opacity: 0.62;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 22%, rgba(0,0,0,0.62) 52%, rgba(0,0,0,0.24) 78%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 22%, rgba(0,0,0,0.62) 52%, rgba(0,0,0,0.24) 78%, transparent 100%);
+}
+.page-hero::after {
+  background:
+    linear-gradient(180deg, rgba(250,249,246,0.72) 0%, rgba(250,249,246,0.56) 44%, rgba(250,249,246,0.12) 82%, rgba(250,249,246,0) 100%),
+    radial-gradient(70% 60% at 12% 8%, rgba(220,38,38,0.10), transparent 70%),
+    radial-gradient(66% 58% at 90% 14%, rgba(30,58,138,0.12), transparent 70%) !important;
+}
+/*
+  עמודים שאין להם תצלום ברקע, כמו התקנון והגילוי הנאות, מקבלים כאן
+  שטיפת צבע רכה בגווני המותג במקום מלבן צבע אחיד. בעמודים שכן יש בהם
+  תצלום, שכבת התצלום ממילא יושבת מעל זה ומכסה אותו.
+*/
+.page-hero {
+  border-bottom: none;
+  padding-bottom: 104px !important;
+  background:
+    radial-gradient(82% 72% at 18% 0%,  rgba(220,38,38,0.16), transparent 70%),
+    radial-gradient(74% 68% at 88% 8%,  rgba(30,58,138,0.16), transparent 70%),
+    radial-gradient(90% 60% at 50% 100%, rgba(21,128,61,0.10), transparent 72%),
+    linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(250,249,246,0.15) 70%, rgba(250,249,246,0) 100%) !important;
+}
+
+.page-hero .tag {
+  background: rgba(255,255,255,0.92) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--brand) !important;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(6px);
+}
+.page-hero h1 {
+  color: var(--ink) !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.7) !important;
+}
+.page-hero p {
+  color: var(--ink-soft) !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.6) !important;
+}
+.page-hero .meta {
+  color: var(--ink-faint) !important;
+  text-shadow: none !important;
+}
+
+/* ---------- טיפוגרפיה של גוף העמוד ---------- */
+
+.content h2, .content h3, .content h4,
+.seo-text h2, .seo-text h3 { color: var(--ink) !important; }
+.content p, .content li, .content ul, .content ol,
+.seo-text p, .seo-text ul, .seo-text li { color: var(--ink-soft) !important; }
+.content strong, .seo-text strong { color: var(--ink) !important; }
+
+.content h2 { border-right-color: var(--brand) !important; }
+.lead {
+  color: var(--ink) !important;
+  border-right-color: var(--brand) !important;
+}
+
+.breadcrumb { color: var(--ink-faint) !important; }
+.breadcrumb a { color: var(--ink-soft) !important; }
+
+/* ---------- טבלאות ---------- */
+
+.content table {
+  background: var(--surface);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.content th {
+  color: var(--ink) !important;
+  background: rgba(32,31,43,0.035) !important;
+  border-bottom-color: var(--line) !important;
+}
+.content td {
+  color: var(--ink-soft) !important;
+  border-bottom-color: var(--line-soft) !important;
+}
+.content td:first-child { color: var(--ink) !important; }
+
+/* ---------- כרטיסים, קופסאות ומשטחים ---------- */
+
+.stat, .place, .day-card, .builder, .club-item, .num-item, .sibling {
+  background: var(--surface) !important;
+  border-color: var(--line) !important;
+  box-shadow: var(--shadow-sm);
+}
+.stat-num { color: var(--green) !important; }
+.stat-lbl { color: var(--ink-faint) !important; }
+
+.place-name { color: var(--ink) !important; }
+.place-addr { color: var(--ink-soft) !important; }
+.place-kosher { color: var(--ink-faint) !important; }
+.place-meta a { color: var(--green) !important; }
+.badge-meat   { background: rgba(220,38,38,0.10) !important; color: #b42318 !important; }
+.badge-dairy  { background: rgba(30,58,138,0.10) !important; color: #1e40af !important; }
+.badge-bakery { background: rgba(180,120,10,0.13) !important; color: #92610a !important; }
+
+.highlight-box {
+  background: rgba(21,128,61,0.07) !important;
+  border-color: rgba(21,128,61,0.22) !important;
+  color: var(--ink-soft) !important;
+  box-shadow: var(--shadow-sm);
+}
+.highlight-box strong { color: #15803D !important; }
+
+.warning-box, .empty-note {
+  background: rgba(234,88,12,0.07) !important;
+  border-color: rgba(234,88,12,0.24) !important;
+  color: var(--ink-soft) !important;
+  box-shadow: var(--shadow-sm);
+}
+.warning-box strong, .empty-note strong { color: #c2410c !important; }
+
+.closing {
+  background: rgba(30,58,138,0.06) !important;
+  border-color: rgba(30,58,138,0.18) !important;
+  color: var(--ink-soft) !important;
+}
+.closing strong { color: var(--navy) !important; }
+
+.map-cta {
+  background: linear-gradient(135deg, rgba(21,128,61,0.09), rgba(15,118,110,0.06)) !important;
+  border-color: rgba(21,128,61,0.25) !important;
+  box-shadow: var(--shadow-sm);
+}
+.map-cta h3 { color: var(--ink) !important; }
+.map-cta p { color: var(--ink-soft) !important; }
+
+.siblings { border-top-color: var(--line) !important; }
+.siblings h3 { color: var(--ink-faint) !important; }
+.sibling { color: var(--ink-soft) !important; }
+.sibling:hover {
+  background: #fff !important;
+  border-color: rgba(21,128,61,0.35) !important;
+  color: var(--ink) !important;
+  box-shadow: var(--shadow-md);
+}
+
+.sources { border-top-color: var(--line) !important; }
+.sources h3 { color: var(--ink-faint) !important; }
+.sources a { color: var(--navy) !important; }
+
+.back-cta a {
+  background: var(--surface) !important;
+  border-color: var(--line) !important;
+  color: var(--ink) !important;
+  box-shadow: var(--shadow-sm);
+}
+.back-cta a:hover { background: #fff !important; box-shadow: var(--shadow-md); }
+
+.updated { border-top-color: var(--line) !important; color: var(--ink-faint) !important; }
+
+/* ---------- בלוק ההמלצות ---------- */
+
+.aff-block-title { color: var(--ink-faint) !important; }
+.aff-block-title::after { background: var(--line) !important; }
+.aff-card {
+  background: var(--surface) !important;
+  border-color: var(--line) !important;
+  box-shadow: var(--shadow-sm);
+}
+.aff-card:hover {
+  background: #fff !important;
+  border-color: rgba(234,88,12,0.4) !important;
+  box-shadow: var(--shadow-md);
+}
+.aff-card-title { color: var(--ink) !important; }
+.aff-card-desc { color: var(--ink-soft) !important; }
+.aff-card-cta { color: #c2410c !important; }
+.aff-card:hover .aff-card-cta { color: var(--brand-warm) !important; }
+.aff-note { color: var(--ink-faint) !important; }
+.aff-note a { color: var(--navy) !important; }
+
+/* ---------- בונה המסלול ---------- */
+
+.field-label { color: var(--ink) !important; }
+.field-hint { color: var(--ink-faint) !important; }
+.chip {
+  background: var(--surface) !important;
+  border-color: var(--line) !important;
+  color: var(--ink-soft) !important;
+  box-shadow: var(--shadow-sm);
+}
+.chip:hover { color: var(--ink) !important; border-color: rgba(234,88,12,0.45) !important; }
+.chip[aria-pressed="true"] {
+  background: linear-gradient(135deg, var(--brand), var(--brand-warm)) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 14px rgba(220,38,38,0.28);
+}
+.results-head h2 { color: var(--ink) !important; }
+.results-sub { color: var(--ink-faint) !important; }
+.mini-btn {
+  background: var(--surface) !important;
+  border-color: var(--line) !important;
+  color: var(--ink-soft) !important;
+  box-shadow: var(--shadow-sm);
+}
+.mini-btn:hover { background: #fff !important; color: var(--ink) !important; box-shadow: var(--shadow-md); }
+.day-title, .stop-name { color: var(--ink) !important; }
+.day-meta { color: var(--ink-faint) !important; }
+.stop { border-top-color: var(--line-soft) !important; }
+.stop-en { color: var(--ink-faint) !important; }
+.stop-tip { color: var(--ink-soft) !important; }
+.stop-link { color: #c2410c !important; }
+.stop-link:hover { color: var(--brand-warm) !important; }
+.fact { background: rgba(32,31,43,0.05) !important; color: var(--ink-soft) !important; }
+.fact.free { background: rgba(21,128,61,0.10) !important; color: #15803D !important; }
+.fact.paid { background: rgba(234,88,12,0.11) !important; color: #c2410c !important; }
+.fact.book { background: rgba(30,58,138,0.10) !important; color: #1e40af !important; }
+.seo-text { border-top-color: var(--line) !important; }
+.seo-text h2 { border-right-color: var(--brand) !important; }
+.toast {
+  background: var(--ink) !important;
+  border-color: rgba(255,255,255,0.14) !important;
+  color: #fff !important;
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------- כדורגל ואטרקציות ---------- */
+
+.club-item h4, .num-item h4 { color: var(--ink) !important; }
+.club-item p, .num-item p { color: var(--ink-soft) !important; }
+.num-item .free-badge { background: rgba(21,128,61,0.12) !important; color: #15803D !important; }
+
+/* ---------- הדפסה ---------- */
+
+@media print {
+  body::before, body::after { display: none !important; }
+  html, body { background: #fff !important; }
+}
+
+/* ============================================================
+   שאר עמודי האתר
+   הבלוק הזה מכסה מחלקות שקיימות רק בעמודים מסוימים, כדי
+   שלא יישאר אף משטח כהה באתר.
+   ============================================================ */
+
+/* כרטיסים ותיבות כלליים */
+.channel-card, .stat-box, .contact-box, .email-box, .form-card,
+.benefits, .benefit-item, .post-card, .result-card, .search-form,
+.not-found, .empty-state, .add-form, .login-box, .posts-section,
+.checkbox-group, .success-msg, .place-popup {
+  background: rgba(255,255,255,0.92) !important;
+  border-color: var(--line) !important;
+  color: var(--ink-soft) !important;
+  box-shadow: var(--shadow-sm);
+}
+.post-card:hover, .result-card:hover, .channel-card:hover {
+  background: #fff !important;
+  box-shadow: var(--shadow-md);
+}
+
+/* כותרות וטקסט בתוכם */
+.title, .post-card h3, .post-card h4, .result-title, .form-card h2,
+.channel-card h3, .channel-card h4, .contact-box h3, .stat-box strong,
+.benefit-item strong, .not-found h1, .not-found h2, .posts-section-title,
+.cat-desc, .subtopics-title, .results-count, .members-count, .level-text {
+  color: var(--ink) !important;
+}
+.sub, .subtitle, .form-sub, .form-note, .post-card-text, .post-card-desc,
+.result-snippet, .post-date, .post-card-footer, .cat-breadcrumb,
+.topbar-label, .empty-state, .form-group label {
+  color: var(--ink-soft) !important;
+}
+.email-addr { color: var(--navy) !important; }
+
+/* תגיות ותוויות */
+.subtopic-tag, .level-badge, .count-badge, .perk {
+  background: rgba(32,31,43,0.05) !important;
+  border-color: var(--line) !important;
+  color: var(--ink-soft) !important;
+}
+.subtopic-tag:hover { background: rgba(220,38,38,0.08) !important; color: var(--brand) !important; }
+
+/* שדות טופס */
+.form-input, .form-select, .form-textarea,
+input[type="text"], input[type="email"], input[type="tel"],
+input[type="search"], textarea, select {
+  background: #fff !important;
+  border-color: var(--line) !important;
+  color: var(--ink) !important;
+}
+input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; }
+
+/* כותרות עמוד ייעודיות */
+.cat-hero, .search-hero {
+  background:
+    radial-gradient(82% 72% at 18% 0%, rgba(220,38,38,0.16), transparent 70%),
+    radial-gradient(74% 68% at 88% 8%, rgba(30,58,138,0.16), transparent 70%),
+    linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(250,249,246,0) 100%) !important;
+}
+.cat-hero h1, .search-hero h1 { color: var(--ink) !important; text-shadow: none !important; }
+.cat-hero p, .search-hero p { color: var(--ink-soft) !important; text-shadow: none !important; }
+
+/* מפת הכשרות */
+.filter-btn {
+  background: rgba(255,255,255,0.92) !important;
+  border-color: var(--line) !important;
+  color: var(--ink-soft) !important;
+  box-shadow: var(--shadow-sm);
+}
+.filter-btn.active { color: #fff !important; }
+.filter-btn.active-meat   { background: var(--brand) !important; border-color: transparent !important; }
+.filter-btn.active-dairy  { background: var(--navy) !important;  border-color: transparent !important; }
+.filter-btn.active-bakery { background: #92610a !important;      border-color: transparent !important; }
+.locate-btn { background: #fff !important; color: var(--ink) !important; box-shadow: var(--shadow-md); }
+.place-popup h3 { color: var(--ink) !important; }
+
+/* כותרת תחתונה מוקטנת */
+.mini-footer {
+  background: rgba(255,255,255,0.7) !important;
+  border-top: 1px solid var(--line) !important;
+  color: var(--ink-faint) !important;
+}
+
+/* מסך הניהול הפנימי */
+.admin-header, .login-screen {
+  background: rgba(255,255,255,0.9) !important;
+  border-color: var(--line) !important;
+  color: var(--ink) !important;
+}
+.form-row { color: var(--ink-soft) !important; }
+
+/* ============================================================
+   חריגי הטקסט הלבן
+   ============================================================
+   הבלוק הזה חייב להישאר אחרון בקובץ. אלה המשטחים הצבעוניים
+   של המותג, שבהם הטקסט הלבן הוא הנכון ולא צריך להתהפך לכהה.
+*/
+
+.btn-primary, .btn-primary *,
+.btn-red, .btn-red *,
+.build-btn, .build-btn *,
+.submit-btn, .submit-btn *,
+.save-btn, .save-btn *,
+.download-btn, .download-btn *,
+.logout-btn, .logout-btn *,
+.chip[aria-pressed="true"], .chip[aria-pressed="true"] *,
+.filter-btn.active, .filter-btn.active *,
+.day-num, .num, .aff-card-icon,
+.map-cta a, .map-cta a *,
+.toast, .toast *,
+.nav-cta, .nav-cta *,
+.popup-waze, .popup-waze *,
+.locate-btn i,
+.splash-title, .splash-title * {
+  color: #fff !important;
+}
+
+/* המספר בכרטיסי הסטטיסטיקה נשאר ירוק, והקישורים נשארים בצבע שלהם */
+.stat-num { color: var(--green) !important; }
+.place-meta a { color: var(--green) !important; }
+.aff-card-cta { color: #c2410c !important; }
+.stop-link { color: #c2410c !important; }
+.email-addr { color: var(--navy) !important; }
+.logo-go { color: var(--brand) !important; }
+.page-hero .tag { color: var(--brand) !important; }
+.highlight-box strong { color: #15803D !important; }
+.warning-box strong, .empty-note strong { color: #c2410c !important; }
+.closing strong { color: var(--navy) !important; }
+.fact.free { color: #15803D !important; }
+.fact.paid { color: #c2410c !important; }
+.fact.book { color: #1e40af !important; }
+.badge-meat { color: #b42318 !important; }
+.badge-dairy { color: #1e40af !important; }
+.badge-bakery { color: #92610a !important; }
+
+/* ============================================================
+   קטעי דף הבית שהיו כהים
+   ============================================================
+   בדף הבית היו שלושה פסים כהים: קטע המסלולים, רקע הכתבות
+   והכותרת התחתונה. כאן הם הופכים לבהירים עם מרקם, לפי אותו
+   עיקרון של כל האתר.
+*/
+
+.routes-banner {
+  background:
+    radial-gradient(70% 60% at 10% 0%,  rgba(220,38,38,0.13), transparent 70%),
+    radial-gradient(66% 58% at 92% 10%, rgba(30,58,138,0.14), transparent 70%),
+    linear-gradient(180deg, #F4F2ED 0%, #FAF9F6 100%) !important;
+  border-block: 1px solid var(--line);
+}
+.routes-header h2 { color: var(--ink) !important; }
+.routes-header p { color: var(--ink-soft) !important; }
+.route-card {
+  background: rgba(255,255,255,0.9) !important;
+  border-color: var(--line) !important;
+  box-shadow: var(--shadow-sm);
+}
+.route-card:hover {
+  background: #fff !important;
+  border-color: rgba(220,38,38,0.3) !important;
+  box-shadow: var(--shadow-md);
+}
+.route-card--featured {
+  background: linear-gradient(135deg, rgba(220,38,38,0.10), rgba(124,58,237,0.09)) !important;
+  border-color: rgba(220,38,38,0.28) !important;
+}
+.route-days { color: var(--brand) !important; }
+.route-label { color: var(--ink-faint) !important; }
+.route-card h4 { color: var(--ink) !important; }
+.route-card p { color: var(--ink-soft) !important; }
+
+/* רקע קטע הכתבות: אותו תצלום, אבל שטוף באור במקום מוכהה */
+.articles { background: transparent !important; }
+.articles::before {
+  background:
+    linear-gradient(260deg, rgba(30,58,138,0.16) 0%, rgba(124,58,237,0.13) 100%),
+    url('images/bg-ferris-wheel.jpg') right top / 760px no-repeat !important;
+  background-blend-mode: normal !important;
+  filter: grayscale(0.2) contrast(1.02) brightness(1.5) !important;
+  opacity: 0.5 !important;
+}
+
+/* הכותרת התחתונה */
+.footer {
+  background:
+    radial-gradient(80% 70% at 12% 0%, rgba(220,38,38,0.09), transparent 70%),
+    radial-gradient(70% 65% at 90% 8%, rgba(30,58,138,0.10), transparent 70%),
+    linear-gradient(180deg, #F4F2ED 0%, #EFEDE7 100%) !important;
+  color: var(--ink-soft) !important;
+  border-top: 1px solid var(--line);
+}
+.footer h4, .footer h3, .footer strong { color: var(--ink) !important; }
+.footer a, .footer li, .footer p, .footer span { color: var(--ink-soft) !important; }
+.footer a:hover { color: var(--brand) !important; }
+.footer-brand p { color: var(--ink-faint) !important; }
+.footer-bottom { border-top: 1px solid var(--line) !important; }
+.footer-bottom p, .footer-bottom a { color: var(--ink-faint) !important; }
+.social-links a {
+  background: rgba(255,255,255,0.8) !important;
+  border: 1px solid var(--line) !important;
+  color: var(--ink-soft) !important;
+}
+.social-links a:hover { background: #fff !important; color: var(--brand) !important; box-shadow: var(--shadow-sm); }
+
+/* הפס העליון עם השעה, מזג האוויר ושער הלירה */
+.topbar {
+  background: linear-gradient(180deg, #F1EFE9 0%, #EAE7DF 100%) !important;
+  border-bottom: 1px solid var(--line) !important;
+  color: var(--ink-soft) !important;
+}
+.topbar-item, .topbar-item span { color: var(--ink-soft) !important; }
+.topbar-item i { color: var(--ink-faint) !important; }
+.topbar-label { color: var(--ink-faint) !important; }
+.topbar-divider { background: var(--line) !important; }
+.gbp-symbol, .gbp-eq { color: var(--ink) !important; }
+#london-time, #weather-temp, #gbp-rate { color: var(--ink) !important; font-weight: 700; }
+
+/* ---------- כותרת דף הבית ---------- */
+/*
+  כאן התצלום נשאר חי ובוהק, והטקסט מעליו לבן במכוון.
+  לכן צריך להחזיר את הצבעים המקוריים אחרי הכלל הגורף.
+*/
+.hero-title, .hero-title * { color: #fff !important; }
+.hero-highlight { color: #f97316 !important; }
+.hero-sub, .hero-sub * { color: rgba(255,255,255,0.92) !important; }
+.hero-badge, .hero-badge * { color: #fff !important; }
+.hero-stats, .hero-stats * { color: #fff !important; }
+.hero-title { text-shadow: 0 3px 26px rgba(0,0,0,0.5); }
+.hero-sub { text-shadow: 0 2px 16px rgba(0,0,0,0.55); }
+.hero-badge {
+  background: rgba(0,0,0,0.34) !important;
+  border-color: rgba(255,255,255,0.35) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* ---------- שאריות אחרונות ---------- */
+
+/* קטע הקהילה בדף הבית */
+.community-banner {
+  background:
+    radial-gradient(72% 62% at 12% 0%, rgba(220,38,38,0.12), transparent 70%),
+    radial-gradient(68% 60% at 90% 8%, rgba(30,58,138,0.13), transparent 70%),
+    linear-gradient(180deg, #F4F2ED 0%, #FAF9F6 100%) !important;
+  border-block: 1px solid var(--line);
+}
+.community-banner h2, .community-banner h3 { color: var(--ink) !important; }
+.community-banner p, .community-banner li, .community-banner span { color: var(--ink-soft) !important; }
+
+/* סרגל הכלים של מפת הכשרות */
+.toolbar {
+  background: rgba(255,255,255,0.92) !important;
+  border-bottom: 1px solid var(--line) !important;
+  box-shadow: 0 4px 20px rgba(16,24,40,0.06);
+}
+.toolbar-title { color: var(--ink) !important; }
+.toolbar-title span { color: var(--brand) !important; }
+.count-badge, .count-badge strong { color: var(--ink) !important; }
+
+/* קישור הירוק בסרגל הניווט, גוון כהה יותר כדי שייקרא על רקע לבן */
+.nav-links a[href="kosher-map.html"] { color: #15803D !important; }
+.post-card-footer a, .post-card a { color: var(--navy) !important; }
