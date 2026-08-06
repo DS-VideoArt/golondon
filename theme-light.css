@@ -659,7 +659,7 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
 */
 
 /* התצלום עצמו יושב הכי מאחור, ומואר קלות */
-.cat-card-bg { filter: brightness(1.1) saturate(1.05); z-index: 0 !important; }
+.cat-card-bg { filter: brightness(1.22) saturate(1.12); z-index: 0 !important; }
 
 /*
   הכותרת בכרטיסים האלה יושבת באמצע ולא בתחתית, ולכן שכבת ההגנה
@@ -672,10 +672,11 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
   border-radius: inherit;
   pointer-events: none;
   background: linear-gradient(to top,
-    rgba(10,12,20,0.72) 0%,
-    rgba(10,12,20,0.56) 45%,
-    rgba(10,12,20,0.40) 75%,
-    rgba(10,12,20,0.28) 100%);
+    rgba(10,12,20,0.82) 0%,
+    rgba(10,12,20,0.70) 38%,
+    rgba(10,12,20,0.44) 62%,
+    rgba(10,12,20,0.14) 84%,
+    rgba(10,12,20,0.02) 100%);
 }
 .cat-card > *:not(.cat-card-bg) { position: relative; z-index: 2; }
 
