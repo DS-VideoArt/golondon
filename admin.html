@@ -183,7 +183,7 @@
     <div class="logo"><span>GO</span><span style="color:#fff">LONDON</span></div>
     <p>ניהול פוסטים, כניסה מורשית בלבד</p>
     <input type="password" id="passwordInput" placeholder="סיסמה" onkeydown="if(event.key==='Enter') login()" />
-    <button onclick="login()"><i class="fas fa-sign-in-alt"></i> כניסה</button>
+    <button id="loginBtn" onclick="login()"><i class="fas fa-sign-in-alt"></i> כניסה</button>
     <div class="login-error" id="loginError">סיסמה שגויה. נסה שוב.</div>
   </div>
 </div>
@@ -283,25 +283,82 @@
 <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg"></span></div>
 
 <script>
-const PASS = '3688';
 let posts = [];
+const AUTH_KEY = 'golondon_admin_auth';
 
 // ===== כניסה =====
-function login() {
-  const val = document.getElementById('passwordInput').value;
-  if (val === PASS) {
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('adminScreen').style.display = 'block';
-    loadPosts();
-  } else {
-    document.getElementById('loginError').style.display = 'block';
+async function login() {
+  const input = document.getElementById('passwordInput');
+  const btn = document.getElementById('loginBtn');
+  const err = document.getElementById('loginError');
+  const val = input.value;
+  if (!val) return;
+
+  err.style.display = 'none';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('/.netlify/functions/admin-login', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ password: val })
+    });
+    if (!res.ok) {
+      err.textContent = res.status === 401 ? 'סיסמה שגויה. נסה שוב.' : 'שגיאה בהתחברות, נסה שוב.';
+      err.style.display = 'block';
+      return;
+    }
+    const { token, exp } = await res.json();
+    sessionStorage.setItem(AUTH_KEY, JSON.stringify({ token, exp }));
+    enterAdmin();
+  } catch {
+    err.textContent = 'שגיאת רשת, נסה שוב.';
+    err.style.display = 'block';
+  } finally {
+    btn.disabled = false;
   }
 }
+
+function enterAdmin() {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('adminScreen').style.display = 'block';
+  document.getElementById('passwordInput').value = '';
+  loadPosts();
+}
+
 function logout() {
+  sessionStorage.removeItem(AUTH_KEY);
   document.getElementById('loginScreen').style.display = 'flex';
   document.getElementById('adminScreen').style.display = 'none';
   document.getElementById('passwordInput').value = '';
 }
+
+// ===== בדיקת התחברות קיימת =====
+async function checkExistingAuth() {
+  let stored;
+  try {
+    stored = JSON.parse(sessionStorage.getItem(AUTH_KEY) || 'null');
+  } catch {
+    stored = null;
+  }
+  if (!stored || !stored.token || Date.now() >= stored.exp) {
+    sessionStorage.removeItem(AUTH_KEY);
+    return;
+  }
+  try {
+    const res = await fetch('/.netlify/functions/admin-verify', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ token: stored.token })
+    });
+    const { valid } = res.ok ? await res.json() : { valid: false };
+    if (valid) enterAdmin();
+    else sessionStorage.removeItem(AUTH_KEY);
+  } catch {
+    // רשת לא זמינה, נשאר במסך הכניסה
+  }
+}
+checkExistingAuth();
 
 // ===== תצוגה מקדימה תמונה =====
 function previewImage() {
