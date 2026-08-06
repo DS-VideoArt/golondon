@@ -30,8 +30,8 @@
       "icon": "fa-landmark",
       "url": "https://www.tiqets.com/en/london-attractions-c66342/",
       "brand": "Tiqets",
-      "program_id": "",
-      "campaign_id": ""
+      "program_id": "2074",
+      "campaign_id": "89"
     },
     "esim": {
       "title": "חבילת גלישה לבריטניה",
@@ -40,8 +40,8 @@
       "icon": "fa-signal",
       "url": "https://www.airalo.com/united-kingdom-esim",
       "brand": "Airalo",
-      "program_id": "",
-      "campaign_id": ""
+      "program_id": "8310",
+      "campaign_id": "541"
     },
     "insurance": {
       "title": "ביטוח נסיעות לחו\"ל",
