@@ -143,6 +143,11 @@
       "attractions",
       "hotels",
       "esim"
+    ],
+    "transport": [
+      "transfer",
+      "esim",
+      "attractions"
     ]
   }
 }
