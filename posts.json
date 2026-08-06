@@ -2,12 +2,12 @@
   {
     "id": 1782844572861,
     "title": "צ'לסי פלאוור שואו",
-    "desc": "צ'לסי פלאוור שואו הוא האירוע הכי יפה שלונדון מציעה במאי ❤️\n\nכל שנה, לחמישה ימים בלבד, הופכים שטחי Royal Hospital Chelsea לגן עדן פורח. גינות שנבנו במשך חודשים על ידי מעצבים מהעולם כולו, צמחים נדירים מכל יבשת, ואווירה שאי אפשר למצוא בשום מקום אחר בעולם.\n\nהאירוע הזה פועל מאז 1913. יותר ממאה שנה שלונדון עושה את זה, ועדיין מצליחים להפתיע מחדש כל פעם.\n\n💡 טיפ שרוב המטיילים לא יודעים: הכרטיסים לימים הראשונים נגמרים חודשים מראש. אבל ימי הסיום זמינים יותר ויש בהם בונוס אמיתי: בסוף האירוע הצמחים עצמם נמכרים לקהל במחירי מציאה. אנשים יוצאים עם שתילים שעלו מאות פאונד בשילינגים בודדים.\n\n🎯 בשורה התחתונה: אם אתם בלונדון בתאריכים 19 עד 24 במאי, זה לא אופציה. זה חובה. שעתיים בפארק הזה שוות יותר מכל מוזיאון בעיר.",
     "image": "https://scontent.ftlv19-2.fna.fbcdn.net/v/t39.99422-6/736182260_1595300152215189_8033487780079600421_n.png?stp=dst-jpg_tt6&cstp=mx1122x1402&ctp=s1122x1402&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=SVv8XhIXukAQ7kNvwFKvzr2&_nc_oc=AdpOCB9r7tRs1YsS-Kz1gBaVe0cs4geYtmYdRwlPDXyBImoKspOpPwk88NfMeCVHB9_elofshIePxZcrAhpXxE9p&_nc_zt=14&_nc_ht=scontent.ftlv19-2.fna&_nc_gid=TVE_7AbIcxizsQaQcRFOmA&_nc_ss=7f2a8&oh=00_AQAO-4_3kJJ5Conr2xD9s1b-0V-E_zqsyc0LB0zL-yXu5g&oe=6A49DDC3",
     "url": "https://www.facebook.com/photo?fbid=122127211797227705&set=a.122105721801227705&locale=he_IL",
     "author": "",
     "category": "אירועים",
-    "date": "30.6.2026"
+    "date": "30.6.2026",
+    "content": "צ'לסי פלאוור שואו הוא האירוע הכי יפה שלונדון מציעה במאי ❤️\n\nכל שנה, לחמישה ימים בלבד, הופכים שטחי Royal Hospital Chelsea לגן עדן פורח. גינות שנבנו במשך חודשים על ידי מעצבים מהעולם כולו, צמחים נדירים מכל יבשת, ואווירה שאי אפשר למצוא בשום מקום אחר בעולם.\n\nהאירוע הזה פועל מאז 1913. יותר ממאה שנה שלונדון עושה את זה, ועדיין מצליחים להפתיע מחדש כל פעם.\n\n💡 טיפ שרוב המטיילים לא יודעים: הכרטיסים לימים הראשונים נגמרים חודשים מראש. אבל ימי הסיום זמינים יותר ויש בהם בונוס אמיתי: בסוף האירוע הצמחים עצמם נמכרים לקהל במחירי מציאה. אנשים יוצאים עם שתילים שעלו מאות פאונד בשילינגים בודדים.\n\n🎯 בשורה התחתונה: אם אתם בלונדון בתאריכים 19 עד 24 במאי, זה לא אופציה. זה חובה. שעתיים בפארק הזה שוות יותר מכל מוזיאון בעיר."
   },
   {
     "id": 1751760000000,
@@ -17,7 +17,8 @@
     "author": "",
     "image": "images/posts/london-pubs-facebook.jpg",
     "source": "",
-    "date": "2026-07-05"
+    "date": "2026-07-05",
+    "url": "guide-attractions.html"
   },
   {
     "id": 1800000000001,
@@ -28,7 +29,8 @@
     "image": "images/posts/trip-planning-flatlay.jpg",
     "source": "",
     "date": "2026-07-05",
-    "pinned": true
+    "pinned": true,
+    "url": "guide-transport-airport.html"
   },
   {
     "id": 1800000000002,
@@ -39,7 +41,8 @@
     "image": "images/posts/tower-bridge-golden-hour.jpg",
     "source": "",
     "date": "2026-07-05",
-    "pinned": true
+    "pinned": true,
+    "url": "guide-attractions.html"
   },
   {
     "id": 1800000000003,
@@ -50,7 +53,8 @@
     "image": "images/posts/tube-train-platform.jpg",
     "source": "",
     "date": "2026-07-05",
-    "pinned": true
+    "pinned": true,
+    "url": "guide-transport.html"
   },
   {
     "id": 1800000000004,
@@ -61,7 +65,8 @@
     "image": "images/posts/hotel-room-bigben-view.jpg",
     "source": "",
     "date": "2026-07-05",
-    "pinned": true
+    "pinned": true,
+    "url": "guide-stay.html"
   },
   {
     "id": 1800000000005,
@@ -72,7 +77,8 @@
     "image": "images/posts/afternoon-tea.jpg",
     "source": "",
     "date": "2026-07-05",
-    "pinned": true
+    "pinned": true,
+    "url": "guide-kosher.html"
   },
   {
     "id": 1800000000006,
@@ -83,7 +89,8 @@
     "image": "images/posts/borough-market.jpg",
     "source": "",
     "date": "2026-07-05",
-    "pinned": true
+    "pinned": true,
+    "url": "guide-attractions.html"
   },
   {
     "id": 1800000000007,
@@ -94,7 +101,8 @@
     "image": "images/posts/west-end-theatre-night.jpg",
     "source": "",
     "date": "2026-07-05",
-    "pinned": true
+    "pinned": true,
+    "url": "guide-attractions.html"
   },
   {
     "id": 1800000000008,
@@ -105,7 +113,8 @@
     "image": "images/posts/football-stadium-night.jpg",
     "source": "",
     "date": "2026-07-05",
-    "pinned": true
+    "pinned": true,
+    "url": "guide-football.html"
   },
   {
     "id": 1800000000009,
@@ -116,7 +125,8 @@
     "image": "images/posts/buckingham-palace-guards.jpg",
     "source": "",
     "date": "2026-07-05",
-    "pinned": true
+    "pinned": true,
+    "url": "guide-attractions.html"
   },
   {
     "id": 1800000000010,
@@ -127,7 +137,8 @@
     "image": "images/posts/family-bigben.jpg",
     "source": "",
     "date": "2026-07-05",
-    "pinned": true
+    "pinned": true,
+    "url": "guide-kids.html"
   },
   {
     "id": 1800000000011,
@@ -138,7 +149,8 @@
     "image": "images/posts/oxford-street-christmas.jpg",
     "source": "",
     "date": "2026-07-05",
-    "pinned": true
+    "pinned": true,
+    "url": "guide-attractions.html"
   },
   {
     "id": 1800000000012,
@@ -149,7 +161,8 @@
     "image": "images/posts/london-map-planning.jpg",
     "source": "",
     "date": "2026-07-05",
-    "pinned": true
+    "pinned": true,
+    "url": "planner.html"
   },
   {
     "id": 1783270906028,
@@ -159,6 +172,7 @@
     "author": "",
     "image": "images/posts/london-film-festival.jpg",
     "source": "https://www.facebook.com/photo/?fbid=122126920107227705&set=pcb.2065549157716535&locale=he_IL",
-    "date": "2026-07-05"
+    "date": "2026-07-05",
+    "url": "guide-attractions.html"
   }
 ]
