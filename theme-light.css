@@ -1126,3 +1126,51 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
 }
 [data-place]:hover::after, [data-place]:focus-visible::after { opacity: 1; }
 .num-item[data-place] { padding-bottom: 34px; }
+
+
+/* אשכול החודשים, צבעי הערכה הבהירה */
+.m-card { background: #fff !important; border-color: var(--line) !important; box-shadow: var(--shadow-sm); }
+.m-card:hover { border-color: rgba(234,88,12,0.45) !important; box-shadow: var(--shadow-md); }
+.m-card-name { color: var(--ink) !important; }
+.m-card-sub { color: var(--ink-soft) !important; }
+.m-card-stats { color: var(--ink-faint) !important; }
+.m-fact { background: #fff !important; border-color: var(--line) !important; box-shadow: var(--shadow-sm); }
+.m-fact-num { color: var(--brand) !important; }
+.m-fact-lbl { color: var(--ink-soft) !important; }
+.m-list li { color: var(--ink-soft) !important; }
+.m-list li::before { color: #15803D !important; }
+.m-nav a { background: #fff !important; border-color: var(--line) !important; color: var(--ink-soft) !important; }
+.m-nav a:hover { background: rgba(32,31,43,0.05) !important; color: var(--ink) !important; }
+.m-nav a.is-on, .m-nav a.is-on * { color: #fff !important; }
+.m-prevnext a { background: #fff !important; border-color: var(--line) !important; color: var(--ink-soft) !important; }
+.m-prevnext a:hover { background: rgba(32,31,43,0.05) !important; color: var(--ink) !important; }
+
+/* באנר "לונדון לפי חודשים" בדף הבית */
+.month-banner { padding: 10px 0 46px; }
+.month-banner-inner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px;
+  background: linear-gradient(135deg, rgba(30,58,138,0.08), rgba(21,128,61,0.07)), #fff;
+  border: 1px solid rgba(30,58,138,0.22);
+  border-radius: 22px; padding: 30px 34px;
+  box-shadow: var(--shadow-md);
+}
+.month-banner-text { flex: 1 1 320px; }
+.month-badge {
+  display: inline-block; font-size: 11.5px; font-weight: 900; letter-spacing: .5px;
+  color: #1e40af !important; background: rgba(30,58,138,0.12);
+  padding: 4px 12px; border-radius: 50px; margin-bottom: 10px;
+}
+.month-banner h2 { color: var(--ink) !important; font-size: clamp(21px, 3vw, 27px); font-weight: 900; margin-bottom: 9px; }
+.month-banner p { color: var(--ink-soft) !important; font-size: 15px; line-height: 1.75; margin: 0; max-width: 62ch; }
+.month-banner-btn {
+  flex: 0 0 auto; display: inline-flex; align-items: center; gap: 9px;
+  background: linear-gradient(135deg, #1E3A8A, #2563EB);
+  color: #fff !important; font-size: 15.5px; font-weight: 900;
+  padding: 15px 26px; border-radius: 13px; text-decoration: none !important;
+  box-shadow: 0 8px 22px rgba(30,58,138,0.28);
+}
+.month-banner-btn:hover { filter: brightness(1.08); }
+@media (max-width: 760px) {
+  .month-banner-inner { padding: 26px 20px; }
+  .month-banner-btn { width: 100%; justify-content: center; }
+}
