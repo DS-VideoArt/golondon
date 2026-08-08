@@ -430,8 +430,8 @@
     <div class="container">
       <div class="newsletter-inner">
         <div class="newsletter-text">
-          <h3><i class="fas fa-envelope"></i> קבלו עדכונים ישירות למייל</h3>
-          <p>מדריכים חדשים, מידע שימושי ודילים, בלי ספאם, מבטיחים</p>
+          <h3><i class="fas fa-envelope"></i> שנעדכן אתכם כשיהיה משהו ששווה?</h3>
+          <p>נשלח רק כשיוצא מדריך חדש או כשמשהו משמעותי משתנה בלונדון, לא יותר מפעם בחודש. אפשר להסיר את עצמכם בכל רגע, בלחיצה אחת.</p>
         </div>
         <form class="newsletter-form" name="golondon-newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleNewsletter(event)">
           <input type="hidden" name="form-name" value="golondon-newsletter" />
@@ -439,6 +439,10 @@
           <label class="sr-only" for="nlEmail">כתובת המייל שלכם</label>
           <input type="email" id="nlEmail" name="email" placeholder="כתובת המייל שלכם" autocomplete="email" required />
           <button type="submit" class="btn btn-red">הרשמה בחינם</button>
+          <label class="nl-consent">
+            <input type="checkbox" name="consent" value="כן" required />
+            <span>אני מאשר קבלת עדכונים במייל מגו לונדון, ויודע שאפשר להסיר בכל עת</span>
+          </label>
         </form>
       </div>
     </div>
@@ -588,6 +592,7 @@
 <form name="golondon-newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
   <input type="hidden" name="form-name" value="golondon-newsletter" />
   <input type="email" name="email" />
+  <input type="checkbox" name="consent" />
   <input type="text" name="bot-field" />
 </form>
 </body>

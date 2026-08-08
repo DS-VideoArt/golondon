@@ -1337,3 +1337,16 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
   .why-link { font-size: 13.5px; }
   .why-chip { font-size: 10.5px; padding: 5px 10px; }
 }
+
+/* תיבת ההסכמה בטופס העדכונים */
+.nl-consent {
+  flex-basis: 100%;
+  display: flex; align-items: flex-start; gap: 9px;
+  margin-top: 10px;
+  font-size: 12.5px; line-height: 1.6;
+  color: rgba(255,255,255,0.82) !important;
+  cursor: pointer;
+}
+.nl-consent input { width: 16px; height: 16px; margin-top: 2px; flex: 0 0 16px; accent-color: #DC2626; cursor: pointer; }
+.nl-consent span { color: inherit !important; }
+@media (max-width: 620px) { .nl-consent { font-size: 12px; } }
