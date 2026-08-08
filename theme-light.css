@@ -1358,3 +1358,39 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
 .nl-consent span { color: var(--ink-soft) !important; }
 .nl-consent:hover span { color: var(--ink) !important; }
 @media (max-width: 620px) { .nl-consent { font-size: 12px; } }
+
+/* הבאנר המרחף של מפת הכשרות, כולו לחיץ */
+/*
+  קודם רק כפתור "פתח" הקטן היה קישור, ומי שלחץ על הטקסט או על האייקון
+  לא קיבל כלום. עכשיו כל הבאנר הוא קישור אחד.
+
+  שימו לב לנקודה שהכשילה את הניסיון הראשון: העיצוב המקורי הגדיר לעטיפה
+  display:contents, כלומר היא לא ייצרה תיבה משלה. קישור בלי תיבה אי אפשר
+  ללחוץ עליו. לכן כאן היא מקבלת תיבה אמיתית שמתנהגת בדיוק כמו השורה
+  שהייתה שם קודם.
+*/
+a.kosher-float-mobile {
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+a.kosher-float-desktop { text-decoration: none !important; cursor: pointer; }
+a.kosher-float-mobile:hover,
+a.kosher-float-desktop:hover { text-decoration: none !important; }
+a.kosher-float-mobile:active { transform: scale(0.985); }
+
+/* הכפתורים שבתוך הקישור הם קישוט בלבד, הלחיצה שייכת לבאנר כולו */
+.kosher-float-mobile .kosher-float-btn,
+.kosher-float-desktop .kfd-btn { pointer-events: none; }
+
+/* כפתור הסגירה חייב להישאר מעל שטח הלחיצה של הבאנר */
+.kosher-float-close { position: relative; z-index: 5; }
+
+@media (min-width: 700px) {
+  a.kosher-float-mobile { display: none !important; }
+  a.kosher-float-desktop { display: flex; flex-direction: column; align-items: stretch; }
+}

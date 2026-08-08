@@ -250,7 +250,7 @@
         </a>
         <a href="kosher-map.html" class="why-card">
           <span class="why-photo" style="background-image:url('images/why-kosher.jpg')">
-            <span class="why-chip">54 מקומות על המפה</span>
+            <span class="why-chip">78 מקומות על המפה</span>
           </span>
           <span class="why-body">
             <span class="why-icon why-icon--green"><i class="fas fa-map-location-dot"></i></span>
@@ -343,7 +343,7 @@
           <div class="cat-emoji">🥙</div>
           <h3>אוכל כשר בלונדון</h3>
           <ul class="cat-sub">
-            <li>54 מקומות בהשגחה</li>
+            <li>78 מקומות בהשגחה</li>
             <li>לפי אזור בעיר</li>
             <li>בשרי, חלבי ומאפיות</li>
           </ul>
@@ -521,17 +521,17 @@
     <button class="kosher-float-close" onclick="closeKosherBanner()" aria-label="סגור">✕</button>
 
     <!-- מובייל בלבד -->
-    <div class="kosher-float-mobile">
-      <div class="kosher-float-icon">🗺️</div>
-      <div class="kosher-float-text">
+    <a href="kosher-map.html" class="kosher-float-mobile">
+      <span class="kosher-float-icon">🗺️</span>
+      <span class="kosher-float-text">
         <strong>🆕 מפת כשרות לונדון</strong>
-        <span>54 מקומות כשרים עם ניווט וויז</span>
-      </div>
-      <a href="kosher-map.html" class="kosher-float-btn">פתח</a>
-    </div>
+        <span>78 מקומות כשרים עם ניווט וויז</span>
+      </span>
+      <span class="kosher-float-btn">פתח</span>
+    </a>
 
     <!-- דסקטופ בלבד -->
-    <div class="kosher-float-desktop">
+    <a href="kosher-map.html" class="kosher-float-desktop">
       <div class="kfd-visual">
         <div class="kfd-map-emoji">🗺️</div>
         <div class="kfd-dots">
@@ -545,24 +545,24 @@
         <h3 class="kfd-title">מפת כשרות<br/>לונדון</h3>
         <p class="kfd-sub">המדריך הכשר המלא לבירה הבריטית</p>
         <div class="kfd-stats">
-          <div class="kfd-stat"><span class="kfd-stat-num">54</span><span class="kfd-stat-label">מקומות</span></div>
+          <div class="kfd-stat"><span class="kfd-stat-num">78</span><span class="kfd-stat-label">מקומות</span></div>
           <div class="kfd-stat-div"></div>
-          <div class="kfd-stat"><span class="kfd-stat-num">3</span><span class="kfd-stat-label">קטגוריות</span></div>
+          <div class="kfd-stat"><span class="kfd-stat-num">4</span><span class="kfd-stat-label">קטגוריות</span></div>
         </div>
         <ul class="kfd-features">
           <li><i class="fas fa-check-circle"></i> ניווט ישיר בוויז</li>
-          <li><i class="fas fa-check-circle"></i> בשרי · חלבי · מאפיות</li>
+          <li><i class="fas fa-check-circle"></i> בשרי · חלבי · מאפיות · חנויות</li>
           <li><i class="fas fa-check-circle"></i> כתובות ומידע כשרות</li>
         </ul>
-        <a href="kosher-map.html" class="kfd-btn">
+        <span class="kfd-btn">
           <i class="fas fa-map-marked-alt"></i> פתח את המפה
-        </a>
+        </span>
         <p class="kfd-free">חינמי לחלוטין</p>
       </div>
-    </div>
+    </a>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
   <script>
     // באנר מפת כשרות, מופיע בכל רענון
     setTimeout(function() {
@@ -587,7 +587,7 @@
   <input type="text" name="page" />
   <input type="text" name="bot-field" />
 </form>
-<script src="community-ask.js" defer></script>
+<script src="community-ask.js?v=2" defer></script>
 
 <form name="golondon-newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
   <input type="hidden" name="form-name" value="golondon-newsletter" />
