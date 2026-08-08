@@ -262,7 +262,9 @@
     .cube-badge.is-free { background: rgba(74,222,128,0.16); color: #86efac; }
     .cube-badge.is-paid { background: rgba(251,146,60,0.16); color: #fdba74; }
     .cube-badge.is-used { background: rgba(147,197,253,0.18); color: #93c5fd; }
-    .cube-actions { grid-column: 1 / -1; display: flex; gap: 7px; margin-top: 11px; }
+    .cube-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 7px; margin-top: 11px; }
+    .cube-btn--book { background: rgba(30,58,138,0.14); border-color: rgba(30,58,138,0.34); color: #1e40af; text-decoration: none; }
+    .cube-btn--book:hover { background: rgba(30,58,138,0.22); color: #1e3a8a; text-decoration: none; }
     .cube-btn {
       font: inherit; font-size: 12.5px; font-weight: 800; cursor: pointer;
       display: inline-flex; align-items: center; justify-content: center; gap: 6px;
@@ -827,6 +829,20 @@
     return window.GoLondonAffiliate.linkFor(AFF_CFG, ticketOfferId(), 'planner', attraction.id);
   }
 
+  /*
+    לכל מקום יש כפתור הזמנה, גם לאלה שהכניסה הבסיסית אליהם חינם.
+    הסיבה: כמעט בכל אתר חינמי גדול יש חלק שכן עולה כסף, תערוכה מתחלפת,
+    חדרי מדינה בארמון או סיור מודרך, ואנחנו לא רוצים שהמבקר יצא לחפש
+    את זה לבד במקום אחר. הניסוח משתנה לפי סוג המקום, כדי לא להבטיח
+    כרטיס במקום שבו אין כזה.
+  */
+  function bookingLabel(a) {
+    if (!a.free) return 'כרטיסים ומחירים';
+    if (a.bookAhead) return 'תפיסת מקום מראש';
+    if (a.partlyPaid) return 'כרטיסים לחלקים שבתשלום';
+    return 'סיורים וכרטיסים באזור';
+  }
+
   function renderDay(d) {
     var area = DATA.areas[d.area] || { name: '', emoji: '📍' };
     var card = document.createElement('article');
@@ -913,19 +929,15 @@
     infoBtn.addEventListener('click', function () { openInfo(it); });
     acts.appendChild(infoBtn);
 
-    /* כפתור הזמנה מוצג גם לאתר שהכניסה אליו חינם אך מחייב תפיסת מקום מראש */
-    if (!it.free || it.bookAhead) {
-      var url = ticketLink(it);
-      if (url) {
-        var a = document.createElement('a');
-        a.className = 'stop-btn stop-btn--book';
-        a.href = url;
-        a.target = '_blank';
-        a.rel = 'sponsored noopener nofollow';
-        a.innerHTML = '<i class="fas fa-ticket"></i> ' +
-          (it.free ? 'תפיסת מקום מראש' : 'כרטיסים ומחירים');
-        acts.appendChild(a);
-      }
+    var url = ticketLink(it);
+    if (url) {
+      var a = document.createElement('a');
+      a.className = 'stop-btn stop-btn--book';
+      a.href = url;
+      a.target = '_blank';
+      a.rel = 'sponsored noopener nofollow';
+      a.innerHTML = '<i class="fas fa-ticket"></i> ' + bookingLabel(it);
+      acts.appendChild(a);
     }
 
     body.appendChild(acts);
@@ -1185,18 +1197,15 @@
     add.addEventListener('click', function () { addStop(a.id); closeInfo(); });
     actions.appendChild(add);
 
-    if (!a.free || a.bookAhead) {
-      var url = ticketLink(a);
-      if (url) {
-        var book = document.createElement('a');
-        book.className = 'info-btn info-btn--book';
-        book.href = url;
-        book.target = '_blank';
-        book.rel = 'sponsored noopener nofollow';
-        book.innerHTML = '<i class="fas fa-ticket"></i> ' +
-          (a.free ? 'תפיסת מקום מראש' : 'כרטיסים ומחירים');
-        actions.appendChild(book);
-      }
+    var url = ticketLink(a);
+    if (url) {
+      var book = document.createElement('a');
+      book.className = 'info-btn info-btn--book';
+      book.href = url;
+      book.target = '_blank';
+      book.rel = 'sponsored noopener nofollow';
+      book.innerHTML = '<i class="fas fa-ticket"></i> ' + bookingLabel(a);
+      actions.appendChild(book);
     }
 
     infoEl.classList.add('open');
@@ -1402,6 +1411,18 @@
 
       actions.appendChild(addBtn);
       actions.appendChild(infoBtn);
+
+      var bookUrl = ticketLink(a);
+      if (bookUrl) {
+        var bookBtn = document.createElement('a');
+        bookBtn.className = 'cube-btn cube-btn--book';
+        bookBtn.href = bookUrl;
+        bookBtn.target = '_blank';
+        bookBtn.rel = 'sponsored noopener nofollow';
+        bookBtn.title = bookingLabel(a);
+        bookBtn.innerHTML = '<i class="fas fa-ticket"></i> הזמנה';
+        actions.appendChild(bookBtn);
+      }
 
       cube.appendChild(emoji);
       cube.appendChild(name);
