@@ -1339,14 +1339,22 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
 }
 
 /* תיבת ההסכמה בטופס העדכונים */
+/*
+  קטע העדכונים יושב על רקע בהיר, ולכן הטקסט כאן כהה.
+  בגרסה קודמת הוא נכתב בלבן והיה בלתי נראה לחלוטין.
+*/
 .nl-consent {
   flex-basis: 100%;
   display: flex; align-items: flex-start; gap: 9px;
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 12.5px; line-height: 1.6;
-  color: rgba(255,255,255,0.82) !important;
+  color: var(--ink-soft) !important;
   cursor: pointer;
 }
-.nl-consent input { width: 16px; height: 16px; margin-top: 2px; flex: 0 0 16px; accent-color: #DC2626; cursor: pointer; }
-.nl-consent span { color: inherit !important; }
+.nl-consent input {
+  width: 17px; height: 17px; margin-top: 1px; flex: 0 0 17px;
+  accent-color: #DC2626; cursor: pointer;
+}
+.nl-consent span { color: var(--ink-soft) !important; }
+.nl-consent:hover span { color: var(--ink) !important; }
 @media (max-width: 620px) { .nl-consent { font-size: 12px; } }
