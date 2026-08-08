@@ -150,16 +150,21 @@
     לכן בעמודים כאלה מדלגים על התיבה. עדיף בלי תיבת הצעות מאשר בלי מפה.
   */
   function isFullScreenLayout() {
+    /*
+      הגרסה הקודמת השוותה את גובה הגוף לגובה החלון. במחשב זה עבד,
+      ובנייד אמיתי זה נכשל: יחידת vh מודדת את המסך כולל האזור שמאחורי
+      שורת הכתובת, ולכן היא גדולה מגובה החלון וההשוואה לא התקיימה.
+      הבדיקה כאן מבנית בלבד: גוף שהוא flex או grid, ובתוכו ילד שנמתח
+      למלא את השאר, זו פריסה של אפליקציה ולא של מסמך שנגללים בו.
+    */
     var b = getComputedStyle(document.body);
     if (b.display !== 'flex' && b.display !== 'grid') return false;
-    var h = b.height;
-    var locked = /vh$/.test(b.height) || Math.abs(parseFloat(h) - window.innerHeight) < 2;
-    if (!locked) return false;
-    /* יש ילד שנמתח למלא את השאר, כלומר פריסה של אפליקציה ולא של מסמך */
+
     var kids = document.body.children;
     for (var i = 0; i < kids.length; i++) {
-      var f = getComputedStyle(kids[i]).flexGrow;
-      if (parseFloat(f) > 0) return true;
+      var el = kids[i];
+      if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') continue;
+      if (parseFloat(getComputedStyle(el).flexGrow) > 0) return true;
     }
     return false;
   }

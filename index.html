@@ -120,10 +120,10 @@
           splash.remove();
           document.documentElement.classList.remove('splash-active');
           document.body.style.paddingRight = '';
-        }, 750);
+        }, 380);
       }
 
-      var timer = setTimeout(hideSplash, 2400);
+      var timer = setTimeout(hideSplash, 1000);
       splash.addEventListener('click', function () { clearTimeout(timer); hideSplash(); });
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') { clearTimeout(timer); hideSplash(); }
