@@ -30,7 +30,7 @@
     "phone": "",
     "kashrus": "KLBD, חלב ישראל",
     "lat": 51.5849,
-    "lng": -0.2270
+    "lng": -0.227
   },
   {
     "id": 4,
@@ -63,7 +63,7 @@
     "phone": "020 3761 5151",
     "kashrus": "KLBD, חלב ישראל",
     "lat": 51.5713,
-    "lng": -0.1940
+    "lng": -0.194
   },
   {
     "id": 7,
@@ -84,7 +84,7 @@
     "postcode": "NW11 8EN",
     "phone": "020 8458 7273",
     "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.5730,
+    "lat": 51.573,
     "lng": -0.1948
   },
   {
@@ -95,7 +95,7 @@
     "postcode": "NW4 2HH",
     "phone": "020 8191 1217",
     "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.5850,
+    "lat": 51.585,
     "lng": -0.2271
   },
   {
@@ -184,7 +184,7 @@
     "phone": "020 7112 9253",
     "kashrus": "KLBD, גלאט",
     "lat": 51.6574,
-    "lng": -0.2720
+    "lng": -0.272
   },
   {
     "id": 18,
@@ -206,7 +206,7 @@
     "phone": "020 7625 4504",
     "kashrus": "KLBD, גלאט",
     "lat": 51.5787,
-    "lng": -0.1960
+    "lng": -0.196
   },
   {
     "id": 20,
@@ -227,7 +227,7 @@
     "postcode": "NW4 2DX",
     "phone": "020 3948 5005",
     "kashrus": "KLBD, גלאט",
-    "lat": 51.5850,
+    "lat": 51.585,
     "lng": -0.2272
   },
   {
@@ -250,7 +250,7 @@
     "phone": "020 3441 3527",
     "kashrus": "KLBD, גלאט",
     "lat": 51.5763,
-    "lng": -0.1860
+    "lng": -0.186
   },
   {
     "id": 24,
@@ -294,7 +294,7 @@
     "phone": "020 8958 2288",
     "kashrus": "KLBD, גלאט",
     "lat": 51.6196,
-    "lng": -0.2750
+    "lng": -0.275
   },
   {
     "id": 28,
@@ -558,7 +558,7 @@
     "phone": "020 8455 5026",
     "kashrus": "KLBD, פת ישראל",
     "lat": 51.5723,
-    "lng": -0.1940
+    "lng": -0.194
   },
   {
     "id": 52,
@@ -592,5 +592,269 @@
     "kashrus": "KLBD, פת ישראל",
     "lat": 51.6189,
     "lng": -0.2743
+  },
+  {
+    "id": 55,
+    "name": "Kosher Wok",
+    "category": "מסעדה בשרית",
+    "address": "313 Hale Lane, Edgware",
+    "postcode": "HA8 7AX",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.615807,
+    "lng": -0.275175
+  },
+  {
+    "id": 56,
+    "name": "1070 Kitchen",
+    "category": "חנות ומעדנייה",
+    "address": "400 Oxford Street, London",
+    "postcode": "W1A 1AB",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.514828,
+    "lng": -0.153911
+  },
+  {
+    "id": 57,
+    "name": "Allenby Market",
+    "category": "חנות ומעדנייה",
+    "address": "55 Brent Street, Hendon",
+    "postcode": "NW4 2EA",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.586262,
+    "lng": -0.220201
+  },
+  {
+    "id": 58,
+    "name": "Booya Gelato",
+    "category": "חנות ומעדנייה",
+    "address": "90 Golders Green Road, Golders Green",
+    "postcode": "NW11 8LN",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.572581,
+    "lng": -0.198579
+  },
+  {
+    "id": 59,
+    "name": "Chocolate Fantasies",
+    "category": "חנות ומעדנייה",
+    "address": "62 Stamford Hill, Stamford Hill",
+    "postcode": "N16 6XS",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.566415,
+    "lng": -0.072688
+  },
+  {
+    "id": 60,
+    "name": "Flax's Foods",
+    "category": "חנות ומעדנייה",
+    "address": "43 High Road, Bushey",
+    "postcode": "WD23 1EE",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.634547,
+    "lng": -0.342548
+  },
+  {
+    "id": 61,
+    "name": "Just Kosher",
+    "category": "חנות ומעדנייה",
+    "address": "5-7 Croxdale Road, Borehamwood",
+    "postcode": "WD6 4QD",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.661377,
+    "lng": -0.279873
+  },
+  {
+    "id": 62,
+    "name": "Kosher Deli Borehamwood",
+    "category": "חנות ומעדנייה",
+    "address": "51 Shenley Road, Borehamwood",
+    "postcode": "WD6 1AE",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.655213,
+    "lng": -0.27732
+  },
+  {
+    "id": 63,
+    "name": "Kosher Deli Edgware",
+    "category": "חנות ומעדנייה",
+    "address": "13 The Promenade, Hale Lane, Edgware",
+    "postcode": "HA8 7JZ",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.61599,
+    "lng": -0.27565
+  },
+  {
+    "id": 64,
+    "name": "Kosher Deli Golders Green",
+    "category": "חנות ומעדנייה",
+    "address": "132 Golders Green Road, Golders Green",
+    "postcode": "NW11 8HB",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.574128,
+    "lng": -0.200982
+  },
+  {
+    "id": 65,
+    "name": "Kosher Deli Hendon",
+    "category": "חנות ומעדנייה",
+    "address": "43 Brent Street, Hendon",
+    "postcode": "NW4 2EA",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.585566,
+    "lng": -0.21992
+  },
+  {
+    "id": 66,
+    "name": "Kosher Deli Temple Fortune",
+    "category": "חנות ומעדנייה",
+    "address": "9a Halleswelle Parade, Finchley Road, Temple Fortune",
+    "postcode": "NW11 0QS",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.583252,
+    "lng": -0.199846
+  },
+  {
+    "id": 67,
+    "name": "Kosher Edge",
+    "category": "חנות ומעדנייה",
+    "address": "15-19 Edgwarebury Lane, Edgware",
+    "postcode": "HA8 8LH",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.615666,
+    "lng": -0.275754
+  },
+  {
+    "id": 68,
+    "name": "Kosher Kingdom",
+    "category": "חנות ומעדנייה",
+    "address": "3 Broadfields Parade, Glengall Road, Edgware",
+    "postcode": "HA8 8TD",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.62648,
+    "lng": -0.26986
+  },
+  {
+    "id": 69,
+    "name": "Leon's Fruit Shop",
+    "category": "חנות ומעדנייה",
+    "address": "5 Russell Parade, Golders Green",
+    "postcode": "NW11 9NN",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.577932,
+    "lng": -0.207056
+  },
+  {
+    "id": 70,
+    "name": "Manna Deli",
+    "category": "חנות ומעדנייה",
+    "address": "146 Brent Street, Hendon",
+    "postcode": "NW4 2DR",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.588429,
+    "lng": -0.221318
+  },
+  {
+    "id": 71,
+    "name": "Menachem's",
+    "category": "חנות ומעדנייה",
+    "address": "15 Russell Parade, Golders Green",
+    "postcode": "NW11 9NN",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.578508,
+    "lng": -0.207622
+  },
+  {
+    "id": 72,
+    "name": "Piu Gusto",
+    "category": "חנות ומעדנייה",
+    "address": "31-33 Theobald Street, Borehamwood",
+    "postcode": "WD6 4RN",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.654123,
+    "lng": -0.279857
+  },
+  {
+    "id": 73,
+    "name": "Sushi Haven Hadar",
+    "category": "חנות ומעדנייה",
+    "address": "301-303 Hale Lane, Edgware",
+    "postcode": "HA8 7AX",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.615739,
+    "lng": -0.275524
+  },
+  {
+    "id": 74,
+    "name": "Tapuach",
+    "category": "חנות ומעדנייה",
+    "address": "108-110 Brent Street, Hendon",
+    "postcode": "NW4 2HH",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.585825,
+    "lng": -0.219853
+  },
+  {
+    "id": 75,
+    "name": "The Kelman Deli",
+    "category": "חנות ומעדנייה",
+    "address": "100 High Road, Bushey",
+    "postcode": "WD23 1GE",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.635142,
+    "lng": -0.342642
+  },
+  {
+    "id": 76,
+    "name": "Wrap a Wish",
+    "category": "חנות ומעדנייה",
+    "address": "106 Regents Park Road, Finchley",
+    "postcode": "N3 3JG",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.590733,
+    "lng": -0.199759
+  },
+  {
+    "id": 77,
+    "name": "So Real Cadoxton",
+    "category": "חנות ומעדנייה",
+    "address": "27 Cadoxton Avenue, Stamford Hill",
+    "postcode": "N16 6LD",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.568023,
+    "lng": -0.067292
+  },
+  {
+    "id": 78,
+    "name": "So Real Oldhill",
+    "category": "חנות ומעדנייה",
+    "address": "43c Oldhill Street, Stamford Hill",
+    "postcode": "N16 6LR",
+    "phone": "",
+    "kashrus": "KLBD",
+    "lat": 51.568198,
+    "lng": -0.066707
   }
 ]

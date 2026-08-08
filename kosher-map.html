@@ -74,6 +74,7 @@
     .filter-btn.active-dairy { background: #0891B2; border-color: #0891B2; color: #fff; }
     .filter-btn.active-meat  { background: #DC2626; border-color: #DC2626; color: #fff; }
     .filter-btn.active-bakery{ background: #D97706; border-color: #D97706; color: #fff; }
+    .filter-btn.active-shop  { background: #7C3AED; border-color: #7C3AED; color: #fff; }
 
     .locate-btn {
       margin-right: auto; padding: 8px 18px; border-radius: 50px;
@@ -97,6 +98,7 @@
     }
     .place-popup .popup-cat.dairy { background: #e0f2fe; color: #075985; }
     .place-popup .popup-cat.bakery { background: #fef3c7; color: #92400e; }
+    .place-popup .popup-cat.shop { background: #ede9fe; color: #5b21b6; }
     .place-popup .popup-row { font-size: 13px; color: #444; margin-bottom: 4px; display: flex; gap: 6px; align-items: flex-start; }
     .place-popup .popup-row i { color: #888; flex-shrink: 0; margin-top: 2px; }
     .place-popup .popup-kashrus { font-size: 11px; color: #15803d; font-weight: 700; margin-top: 6px; }
@@ -158,6 +160,7 @@
   <button class="filter-btn" data-filter="מסעדה חלבית" onclick="setFilter('מסעדה חלבית', this)">🥛 חלבי</button>
   <button class="filter-btn" data-filter="מסעדה בשרית" onclick="setFilter('מסעדה בשרית', this)">🥩 בשרי</button>
   <button class="filter-btn" data-filter="מאפייה" onclick="setFilter('מאפייה', this)">🥐 מאפיות</button>
+  <button class="filter-btn" data-filter="חנות ומעדנייה" onclick="setFilter('חנות ומעדנייה', this)">🛒 חנויות</button>
 
   <span class="count-badge"><strong id="visibleCount">54</strong> מקומות</span>
 
@@ -187,12 +190,14 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r
 const catColors = {
   'מסעדה חלבית': '#0891B2',
   'מסעדה בשרית': '#DC2626',
-  'מאפייה': '#D97706'
+  'מאפייה': '#D97706',
+  'חנות ומעדנייה': '#7C3AED'
 };
 const catEmoji = {
   'מסעדה חלבית': '🥛',
   'מסעדה בשרית': '🥩',
-  'מאפייה': '🥐'
+  'מאפייה': '🥐',
+  'חנות ומעדנייה': '🛒'
 };
 
 function makeIcon(category) {
@@ -232,7 +237,8 @@ function renderMarkers(places) {
   places.forEach(p => {
     const isDairy  = p.category === 'מסעדה חלבית';
     const isBakery = p.category === 'מאפייה';
-    const catClass = isDairy ? 'dairy' : isBakery ? 'bakery' : '';
+    const isShop   = p.category === 'חנות ומעדנייה';
+    const catClass = isDairy ? 'dairy' : isBakery ? 'bakery' : isShop ? 'shop' : '';
 
     const wazeUrl = `https://waze.com/ul?ll=${p.lat},${p.lng}&navigate=yes`;
 
@@ -267,6 +273,7 @@ function setFilter(filter, btn) {
   else if (filter === 'מסעדה חלבית') btn.classList.add('active-dairy');
   else if (filter === 'מסעדה בשרית') btn.classList.add('active-meat');
   else if (filter === 'מאפייה') btn.classList.add('active-bakery');
+  else if (filter === 'חנות ומעדנייה') btn.classList.add('active-shop');
 
   const filtered = filter === 'הכל' ? allPlaces : allPlaces.filter(p => p.category === filter);
   renderMarkers(filtered);

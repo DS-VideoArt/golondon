@@ -143,8 +143,31 @@
     });
   }
 
+  /*
+    עמודים מסוימים באתר בנויים כמסך מלא: הגוף נעול לגובה החלון, והתוכן
+    המרכזי תופס את כל מה שנשאר. מפת הכשרות היא כזו. הוספת קטע ארוך
+    לתוך מבנה כזה מוחצת את התוכן המרכזי לגובה אפס והמפה נעלמת.
+    לכן בעמודים כאלה מדלגים על התיבה. עדיף בלי תיבת הצעות מאשר בלי מפה.
+  */
+  function isFullScreenLayout() {
+    var b = getComputedStyle(document.body);
+    if (b.display !== 'flex' && b.display !== 'grid') return false;
+    var h = b.height;
+    var locked = /vh$/.test(b.height) || Math.abs(parseFloat(h) - window.innerHeight) < 2;
+    if (!locked) return false;
+    /* יש ילד שנמתח למלא את השאר, כלומר פריסה של אפליקציה ולא של מסמך */
+    var kids = document.body.children;
+    for (var i = 0; i < kids.length; i++) {
+      var f = getComputedStyle(kids[i]).flexGrow;
+      if (parseFloat(f) > 0) return true;
+    }
+    return false;
+  }
+
   function init() {
     if (document.querySelector('.ca-wrap')) return;
+    if (isFullScreenLayout()) return;
+
     injectStyles();
     var node = build();
 
