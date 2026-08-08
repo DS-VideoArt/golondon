@@ -195,10 +195,22 @@
       .posts-grid { grid-template-columns: 1fr; }
       .cat-hero { padding: 40px 0 32px; }
     }
+
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+    .cat-search { position: relative; margin: 4px 0 14px; }
+    .cat-search-icon { position: absolute; inset-inline-start: 16px; top: 50%; transform: translateY(-50%); font-size: 14px; pointer-events: none; }
+    .cat-search-input { width: 100%; font: inherit; font-size: 15px; padding: 14px 46px; border-radius: 13px; border: 1px solid; }
+    .cat-search-input:focus { outline: 2px solid rgba(234,88,12,0.55); outline-offset: 1px; }
+    .cat-search-clear { position: absolute; inset-inline-end: 12px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 8px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+    .cat-search-status { font-size: 13.5px; font-weight: 700; margin: -6px 0 14px; }
   </style>
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#DC2626" />
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -276,6 +288,16 @@
     <div class="posts-section-title">
       <span id="postsSectionTitle">פוסטים</span> <span id="postsCount"></span>
     </div>
+
+    <div class="cat-search">
+      <label class="sr-only" for="catSearch">חיפוש בתוך הקטגוריה</label>
+      <i class="fas fa-magnifying-glass cat-search-icon"></i>
+      <input type="search" id="catSearch" class="cat-search-input" placeholder="חיפוש בתוך הקטגוריה" autocomplete="off" />
+      <button type="button" id="catSearchClear" class="cat-search-clear" hidden aria-label="ניקוי החיפוש">
+        <i class="fas fa-xmark"></i>
+      </button>
+    </div>
+    <div class="cat-search-status" id="catSearchStatus" hidden></div>
     <div class="posts-grid" id="postsGrid"></div>
     <div class="empty-state" id="emptyState" style="display:none">
       <span class="big" id="emptyEmoji">🎉</span>
@@ -466,6 +488,7 @@ async function loadPosts() {
 
   const filtered = posts.filter(p => p.category === catKey)
     .sort((a, b) => (a.pinned === b.pinned) ? 0 : a.pinned ? -1 : 1);
+  window.__catPosts = filtered;
   const grid = document.getElementById('postsGrid');
   const empty = document.getElementById('emptyState');
   const count = document.getElementById('postsCount');
@@ -514,6 +537,60 @@ async function loadPosts() {
       }, 200);
     }
   }
+
+  wireCategorySearch();
+}
+
+/*
+  חיפוש בתוך הקטגוריה.
+  מסנן את הכרטיסים שכבר מוצגים, בלי טעינה מחדש. החיפוש רץ על הכותרת
+  ועל גוף הפוסט, ומציג תמיד כמה תוצאות נמצאו, כדי שלא יהיה מצב
+  שהמסך מתרוקן בלי הסבר.
+*/
+function wireCategorySearch() {
+  var input = document.getElementById('catSearch');
+  if (!input || input.__wired) return;
+  input.__wired = true;
+
+  var clear = document.getElementById('catSearchClear');
+  var status = document.getElementById('catSearchStatus');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#postsGrid .post-card'));
+  var posts = window.__catPosts || [];
+
+  function apply() {
+    var q = (input.value || '').trim().toLowerCase();
+    clear.hidden = !q;
+
+    if (!q) {
+      cards.forEach(function (c) { c.style.display = ''; });
+      status.hidden = true;
+      return;
+    }
+
+    var shown = 0;
+    cards.forEach(function (c, i) {
+      var p = posts[i] || {};
+      var hay = ((p.title || '') + ' ' + (p.content || p.desc || '')).toLowerCase();
+      var hit = hay.indexOf(q) !== -1;
+      c.style.display = hit ? '' : 'none';
+      if (hit) shown++;
+    });
+
+    status.hidden = false;
+    status.textContent = shown === 0
+      ? 'לא נמצאו פוסטים שמתאימים לחיפוש הזה בקטגוריה. אפשר לנסות חיפוש בכל האתר.'
+      : (shown === 1 ? 'נמצא פוסט אחד' : 'נמצאו ' + shown + ' פוסטים');
+  }
+
+  input.addEventListener('input', apply);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); input.blur(); apply(); }
+  });
+  clear.addEventListener('click', function () {
+    input.value = '';
+    apply();
+    input.focus();
+  });
 }
 
 loadPosts();
@@ -542,5 +619,6 @@ fetch('https://open.er-api.com/v6/latest/GBP')
 </script>
 <script src="accessibility-widget.js" defer></script>
 <script src="install-prompt.js" defer></script>
+<script src="community-ask.js" defer></script>
 </body>
 </html>
