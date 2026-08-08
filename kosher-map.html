@@ -84,6 +84,56 @@
     }
     .kashrus-note:hover { color: #15803D; background: rgba(21,128,61,0.08); text-decoration: none; }
 
+    /* חלון ההסבר על הכשרות. יושב מעל הכל ולא משפיע על פריסת המפה */
+    .ki-overlay {
+      position: fixed; inset: 0; z-index: 4000;
+      background: rgba(20,20,30,0.55); backdrop-filter: blur(3px);
+      display: flex; align-items: flex-end; justify-content: center;
+    }
+    /*
+      החלון גלוי ברגע שהוא לא מוסתר, בלי להמתין למעבר.
+      בעבר הוא התחיל בשקיפות אפס וחיכה לאנימציה, ובסביבות שבהן
+      אנימציות לא רצות הוא נשאר בלתי נראה למרות שהיה פתוח.
+    */
+    .ki-overlay[hidden] { display: none; }
+    @media (min-width: 640px) { .ki-overlay { align-items: center; padding: 24px; } }
+    .ki-panel {
+      background: #fff; width: 100%; max-width: 540px; max-height: 88vh; overflow-y: auto;
+      border-radius: 20px 20px 0 0; padding: 26px 22px 28px; position: relative;
+      box-shadow: 0 -8px 40px rgba(16,24,40,.28);
+    }
+    @media (min-width: 640px) { .ki-panel { border-radius: 20px; } }
+    .ki-close {
+      position: absolute; top: 14px; left: 14px; width: 32px; height: 32px;
+      border-radius: 10px; border: none; cursor: pointer; font-size: 14px;
+      background: rgba(32,31,43,.07); color: #55596b;
+    }
+    .ki-close:hover { background: rgba(32,31,43,.14); color: #201f2b; }
+    .ki-title { font-size: 21px; font-weight: 900; color: #201f2b; margin: 0 0 12px; padding-left: 42px; }
+    .ki-h3 { font-size: 15px; font-weight: 900; color: #201f2b; margin: 18px 0 8px; }
+    .ki-lead { font-size: 15px; line-height: 1.8; color: #55596b; margin: 0; }
+    .ki-p { font-size: 14.5px; line-height: 1.8; color: #55596b; margin: 0 0 12px; }
+    .ki-p a, .ki-warn a { color: #1e40af; font-weight: 700; }
+    .ki-list { margin: 0 0 4px; padding-inline-start: 20px; }
+    .ki-list li { font-size: 14.5px; line-height: 1.75; color: #55596b; margin-bottom: 7px; }
+    .ki-list strong, .ki-lead strong, .ki-p strong { color: #201f2b; }
+    .ki-warn {
+      background: rgba(30,58,138,.07); border: 1px solid rgba(30,58,138,.22);
+      border-radius: 13px; padding: 13px 15px; margin: 14px 0;
+      font-size: 14px; line-height: 1.75; color: #55596b;
+    }
+    .ki-warn--amber { background: rgba(234,88,12,.08); border-color: rgba(234,88,12,.26); }
+    .ki-warn strong { color: #201f2b; }
+    .ki-btn {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 6px;
+      background: linear-gradient(135deg,#15803D,#22A055); color: #fff;
+      font-size: 14px; font-weight: 800; padding: 12px 20px; border-radius: 11px;
+      text-decoration: none;
+    }
+    .ki-btn:hover { filter: brightness(1.07); text-decoration: none; }
+    button.kashrus-note { border: none; background: none; cursor: pointer; font: inherit; }
+
+
     .locate-btn {
       margin-right: auto; padding: 8px 18px; border-radius: 50px;
       background: #16a34a; border: none; color: #fff;
@@ -173,9 +223,9 @@
   <span id="kashrusFilters"></span>
 
   <span class="count-badge"><strong id="visibleCount">78</strong> מקומות</span>
-  <a class="kashrus-note" href="https://www.kosher.org.uk/KLBD_Establishments" target="_blank" rel="noopener">
-    <i class="fas fa-circle-info"></i> המקור: רשימות KLBD הרשמיות
-  </a>
+  <button type="button" class="kashrus-note" onclick="openKashrusInfo()">
+    <i class="fas fa-circle-info"></i> על הכשרות במפה
+  </button>
 
   <button class="locate-btn" onclick="locateMe()">
     <i class="fas fa-location-arrow"></i> המיקום שלי
@@ -357,5 +407,65 @@ function locateMe() {
 </main>
 <script src="accessibility-widget.js" defer></script>
 <script src="install-prompt.js" defer></script>
+
+<div class="ki-overlay" id="kashrusInfo" role="dialog" aria-modal="true" aria-labelledby="kiTitle" hidden>
+  <div class="ki-panel" role="document">
+    <button type="button" class="ki-close" onclick="closeKashrusInfo()" aria-label="סגירה">✕</button>
+    <h2 class="ki-title" id="kiTitle">על הכשרות שבמפה</h2>
+
+    <p class="ki-lead">כל 78 המקומות במפה נמצאים בהשגחת <strong>KLBD</strong>, מחלקת הכשרות של בית הדין של לונדון, הגוף המרכזי בבריטניה. הרשימה נבנתה מול הרשימות הרשמיות שלהם.</p>
+
+    <h3 class="ki-h3">מה מצוין ומה לא</h3>
+    <ul class="ki-list">
+      <li><strong>מסעדות בשריות:</strong> KLBD מצהירים שכולן מגישות בשר גלאט בלבד</li>
+      <li><strong>מקומות חלביים:</strong> KLBD מצהירים שכולם משתמשים בחלב ישראל בלבד</li>
+      <li><strong>מאפיות וחנויות:</strong> מצוין KLBD בלבד. על פת ישראל אין להם הצהרה פומבית, ולכן לא כתבנו זאת</li>
+    </ul>
+
+    <h3 class="ki-h3">גופי כשרות אחרים</h3>
+    <p class="ki-p">בלונדון פועל יותר מגוף כשרות אחד. <strong>קדסיה</strong>, ועדת הכשרות של איגוד הקהילות החרדיות, נחשבת מחמירה יותר, ויש ציבור שאוכל בהשגחתה בלבד. יש גם <strong>SKA</strong> של הקהילה הספרדית.</p>
+
+    <div class="ki-warn">
+      <strong>חשוב:</strong> המפה מציגה KLBD בלבד. מקום בהשגחת קדסיה שאינו מופיע כאן <strong>אינו בהכרח לא כשר</strong>, הוא פשוט תחת השגחה אחרת. קדסיה אינם מפרסמים רשימה מקוונת, ולא הכנסנו מקומות ממקורות משניים כדי לא לטעות.
+    </div>
+
+    <p class="ki-p">מי שמקפיד על השגחת קדסיה מוזמן לפנות אליהם ולברר:
+      <a href="mailto:kedassia@kedassia.org.uk">kedassia@kedassia.org.uk</a></p>
+
+    <div class="ki-warn ki-warn--amber">
+      <strong>ומעל הכל:</strong> תעודות כשרות מתחדשות ומשתנות, ומקום שהיה מושגח אשתקד לא בהכרח מושגח היום. אם רמת ההקפדה שלכם מחייבת ודאות, בקשו לראות את התעודה במקום.
+    </div>
+
+    <a class="ki-btn" href="https://www.kosher.org.uk/KLBD_Establishments" target="_blank" rel="noopener">
+      <i class="fas fa-arrow-up-right-from-square"></i> הרשימה הרשמית של KLBD
+    </a>
+  </div>
+</div>
+
+<script>
+function openKashrusInfo() {
+  var m = document.getElementById('kashrusInfo');
+  m.hidden = false;
+  /*
+    כפיית חישוב פריסה לפני הוספת המחלקה, כדי שהמעבר ירוץ.
+    בעבר השתמשנו כאן ב-requestAnimationFrame, אבל הוא לא תמיד מופעל,
+    ואז החלון היה נשאר שקוף לחלוטין ובלתי נראה. זה בטוח יותר.
+  */
+  m.classList.add('ki-open');
+}
+function closeKashrusInfo() {
+  var m = document.getElementById('kashrusInfo');
+  m.classList.remove('ki-open');
+  m.hidden = true;
+}
+document.addEventListener('keydown', function (e) {
+  var m = document.getElementById('kashrusInfo');
+  if (e.key === 'Escape' && m && !m.hidden) closeKashrusInfo();
+});
+document.addEventListener('click', function (e) {
+  var m = document.getElementById('kashrusInfo');
+  if (m && e.target === m) closeKashrusInfo();
+});
+</script>
 </body>
 </html>
