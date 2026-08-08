@@ -1,6 +1,6 @@
 {
   "_מה_זה_הקובץ_הזה": "מאגר האטרקציות של בונה המסלול. תהליך התחזוקה החודשי מעדכן כאן מחירים, שעות ומידע שהתיישן, בלי לגעת בקוד של הכלי עצמו.",
-  "_עודכן": "2026-08",
+  "_עודכן": "אוגוסט 2026",
   "areas": {
     "westminster": {
       "name": "וסטמינסטר ומרכז העיר",
@@ -566,7 +566,7 @@
       "hours": 2,
       "tube": "Shoreditch High Street",
       "kids": false,
-      "anchor": false,
+      "anchor": true,
       "bookAhead": false,
       "tip": "הציורים משתנים כל הזמן, ולכן מה שרואים היום כנראה לא יהיה שם בשנה הבאה."
     },
@@ -585,7 +585,7 @@
       "hours": 2,
       "tube": "Aldgate East",
       "kids": false,
-      "anchor": false,
+      "anchor": true,
       "bookAhead": false,
       "tip": "השוק של יום ראשון הוא האירוע המרכזי שם. בשאר הימים זה בעיקר רחוב מסעדות."
     },
@@ -682,6 +682,1036 @@
       "anchor": true,
       "bookAhead": true,
       "tip": "הארמון של הנרי השמיני, עם מבוך גדרות חיות שהילדים אוהבים. כשעה נסיעה מהמרכז."
+    },
+    {
+      "id": "national-portrait-gallery",
+      "name": "הגלריה הלאומית לדיוקנאות",
+      "nameEn": "National Portrait Gallery",
+      "desc": "אוסף הדיוקנאות הלאומי של בריטניה, מהתקופה הטיודורית ועד דיוקנאות צילום של ימינו. נמצאת ממש מאחורי הגלריה הלאומית בטרפלגר סקוור, ונפתחה מחדש אחרי שיפוץ יסודי.",
+      "area": "westminster",
+      "interests": [
+        "museums",
+        "royal"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 2,
+      "tube": "Leicester Square",
+      "kids": false,
+      "anchor": true,
+      "bookAhead": false,
+      "tip": "פחות עמוסה מהגלריה הלאומית שלידה, ולכן נעימה במיוחד בשעות הצהריים."
+    },
+    {
+      "id": "tate-britain",
+      "name": "טייט בריטן",
+      "nameEn": "Tate Britain",
+      "desc": "אוסף האמנות הבריטית הגדול בעולם, מהמאה השש עשרה ועד היום, כולל אולם שלם המוקדש לטרנר. יושב על גדת התמזה בפימליקו, דרומית לבתי הפרלמנט.",
+      "area": "westminster",
+      "interests": [
+        "museums"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 2,
+      "tube": "Pimlico",
+      "kids": false,
+      "anchor": true,
+      "bookAhead": false,
+      "tip": "שקט בהרבה מהטייט מודרן, ובין שני המוזיאונים יש שירות סירה על התמזה."
+    },
+    {
+      "id": "wallace-collection",
+      "name": "אוסף ואלאס",
+      "nameEn": "The Wallace Collection",
+      "desc": "אוסף פרטי היסטורי של ציור, רהיטים ושריונים, בתוך אחוזה עירונית שנשמרה כפי שהייתה. נמצא ברחוב צדדי צפונית לאוקספורד סטריט, ורוב התיירים כלל לא יודעים עליו.",
+      "area": "westminster",
+      "interests": [
+        "museums",
+        "royal"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 2,
+      "tube": "Bond Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "אחת ההפתעות הגדולות של לונדון, חינם ובלי תורים, דקות הליכה מהקניות באוקספורד סטריט."
+    },
+    {
+      "id": "soane-museum",
+      "name": "מוזיאון סר ג׳ון סון",
+      "nameEn": "Sir John Soane's Museum",
+      "desc": "ביתו של אדריכל בן המאה התשע עשרה, שנשמר בדיוק כפי שהשאיר אותו, עמוס בעתיקות מהרצפה ועד התקרה. נמצא בכיכר שקטה בהולבורן, בין הסיטי לווסט אנד.",
+      "area": "westminster",
+      "interests": [
+        "museums",
+        "royal"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Holborn",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "הבית קטן ולכן נכנסים בקבוצות מוגבלות. שווה להגיע מוקדם או להזמין מקום מראש."
+    },
+    {
+      "id": "transport-museum",
+      "name": "מוזיאון התחבורה של לונדון",
+      "nameEn": "London Transport Museum",
+      "desc": "הסיפור של הרכבת התחתית והאוטובוסים האדומים, עם קרונות ואוטובוסים היסטוריים שאפשר לעלות עליהם. יושב בתוך כיכר קובנט גארדן עצמה.",
+      "area": "westminster",
+      "interests": [
+        "museums",
+        "kids"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 2,
+      "tube": "Covent Garden",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "מהמקומות הטובים בלונדון לילדים, וחנות המזכרות שלו נחשבת לאחת הטובות בעיר."
+    },
+    {
+      "id": "trafalgar-square",
+      "name": "טרפלגר סקוור",
+      "nameEn": "Trafalgar Square",
+      "desc": "הכיכר המרכזית של לונדון, עם עמוד נלסון, האריות ומזרקות. מהווה צומת טבעי בין הגלריה הלאומית, סוהו ווסטמינסטר, ומרבית ההפגנות והחגיגות בעיר מתקיימות בה.",
+      "area": "westminster",
+      "interests": [
+        "royal",
+        "street"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Charing Cross",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "נקודת מפגש נוחה במיוחד, כי ממנה אפשר להגיע ברגל כמעט לכל אתר במרכז."
+    },
+    {
+      "id": "chinatown-soho",
+      "name": "צ׳יינה טאון וסוהו",
+      "nameEn": "Chinatown and Soho",
+      "desc": "רחובות עמוסים בפנסים אדומים, מסעדות אסייתיות ובתי קפה, שממשיכים לשכונת הבילויים של לונדון. יושבים בין פיקדילי לקובנט גארדן, בלב הווסט אנד.",
+      "area": "westminster",
+      "interests": [
+        "food",
+        "street"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 2,
+      "tube": "Leicester Square",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "הכי חי בערב, וזה גם האזור הנוח לאכול בו לפני הצגה בווסט אנד."
+    },
+    {
+      "id": "piccadilly-circus",
+      "name": "פיקדילי סרקוס",
+      "nameEn": "Piccadilly Circus",
+      "desc": "הצומת עם מסכי הענק והמזרקה, שנחשב לכיכר טיימס סקוור של לונדון. משמש נקודת מעבר בין ריג׳נט סטריט, סוהו וסנט ג׳יימס.",
+      "area": "westminster",
+      "interests": [
+        "street"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Piccadilly Circus",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "שווה בעיקר כתחנת מעבר קצרה בדרך למקום אחר, לא כיעד בפני עצמו."
+    },
+    {
+      "id": "dickens-museum",
+      "name": "מוזיאון צ׳ארלס דיקנס",
+      "nameEn": "Charles Dickens Museum",
+      "desc": "הבית שבו גר דיקנס וכתב חלק מיצירותיו המוקדמות, משוחזר כבית מגורים ויקטוריאני. נמצא בבלומסברי, במרחק הליכה מהמוזיאון הבריטי.",
+      "area": "westminster",
+      "interests": [
+        "museums"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 1,
+      "tube": "Russell Square",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "משתלב היטב עם ביקור במוזיאון הבריטי, שנמצא באותה שכונה."
+    },
+    {
+      "id": "neals-yard",
+      "name": "נילס יארד וסבן דיאלס",
+      "nameEn": "Neal's Yard and Seven Dials",
+      "desc": "חצר קטנה ומצוירת בצבעים עזים, ומסביבה רשת סמטאות עם חנויות עצמאיות ובתי קפה. מוסתרת בתוך קובנט גארדן, וקל לפספס את הכניסה אליה.",
+      "area": "westminster",
+      "interests": [
+        "street",
+        "food"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Covent Garden",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "אחת הפינות המצולמות ביותר בלונדון, ולכן שווה להגיע בבוקר לפני שהיא מתמלאת."
+    },
+    {
+      "id": "leadenhall-market",
+      "name": "שוק לידנהול",
+      "nameEn": "Leadenhall Market",
+      "desc": "שוק מקורה ויקטוריאני עם תקרה מעוטרת וחזיתות ירוקות וזהובות, שמוקף היום במגדלי הסיטי. שימש כאתר צילום ללונדון הקסומה בסרטי הארי פוטר.",
+      "area": "city",
+      "interests": [
+        "street",
+        "food"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Monument",
+      "kids": true,
+      "anchor": true,
+      "bookAhead": false,
+      "tip": "פעיל בעיקר בימי חול, כי הוא משרת את עובדי הסיטי. בסופי שבוע הוא כמעט ריק אבל יפה לצילום."
+    },
+    {
+      "id": "monument",
+      "name": "המונומנט לשריפה הגדולה",
+      "nameEn": "Monument to the Great Fire of London",
+      "desc": "עמוד אבן שנבנה לזכר השריפה הגדולה של 1666, ובתוכו גרם מדרגות לולייני אל תצפית פתוחה. עומד ממש במקום שבו פרצה השריפה, בלב הסיטי.",
+      "area": "city",
+      "interests": [
+        "views",
+        "royal"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 1,
+      "tube": "Monument",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "למעלה מ-300 מדרגות ואין מעלית, אבל התצפית זולה בהרבה מהתצפיות המסחריות."
+    },
+    {
+      "id": "st-dunstan",
+      "name": "סנט דנסטן אין דה איסט",
+      "nameEn": "St Dunstan in the East",
+      "desc": "חורבות כנסייה שנהרסה בהפצצות מלחמת העולם השנייה, שהוסבו לגן ציבורי קטן שבו צמחייה מטפסת על הקשתות. מוסתר בסמטה בין מגדלי הסיטי למצודת לונדון.",
+      "area": "city",
+      "interests": [
+        "parks",
+        "street"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Monument",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "אחת הפינות השקטות והיפות בלונדון, וכמעט ריקה מתיירים בבוקר."
+    },
+    {
+      "id": "bank-museum",
+      "name": "מוזיאון בנק אוף אינגלנד",
+      "nameEn": "Bank of England Museum",
+      "desc": "מוזיאון שמסביר איך עובד הכסף בבריטניה, ומאפשר להרים מטיל זהב אמיתי. נמצא בתוך מתחם הבנק המרכזי, בצומת המרכזי של הסיטי.",
+      "area": "city",
+      "interests": [
+        "museums",
+        "kids"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Bank",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "פתוח בעיקר בימי חול. הרמת מטיל הזהב היא הדבר שהילדים זוכרים ממנו."
+    },
+    {
+      "id": "guildhall",
+      "name": "גילדהול והאמפיתאטרון הרומי",
+      "nameEn": "Guildhall and Roman Amphitheatre",
+      "desc": "אולם העירייה ההיסטורי של הסיטי, ומתחתיו שרידי האמפיתאטרון הרומי של לונדיניום שהתגלו בחפירות. נמצא צפונית לקתדרלת סנט פול.",
+      "area": "city",
+      "interests": [
+        "museums",
+        "royal"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "St Paul's",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "השרידים הרומיים נמצאים מתחת לגלריית האמנות, וקל לפספס את הכניסה אליהם."
+    },
+    {
+      "id": "barbican",
+      "name": "מרכז הברביקן",
+      "nameEn": "Barbican Centre",
+      "desc": "מתחם תרבות ומגורים ענק בסגנון ברוטליסטי, עם מסדרונות מוגבהים, בריכות מים וחממה טרופית. נחשב לאחד המבנים השנויים במחלוקת והמצולמים בלונדון.",
+      "area": "city",
+      "interests": [
+        "street",
+        "museums"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Barbican",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "ההסתובבות במתחם ובגנים חינמית. אפשר לעלות למפלסים המוגבהים ולראות את האדריכלות מלמעלה."
+    },
+    {
+      "id": "st-katharine-docks",
+      "name": "סנט קתרין דוקס",
+      "nameEn": "St Katharine Docks",
+      "desc": "מרינה שקטה עם יאכטות, מסעדות ומחסנים היסטוריים שהוסבו, ממש ליד גשר המגדלים. מקום מנוחה טבעי אחרי ביקור במצודת לונדון.",
+      "area": "city",
+      "interests": [
+        "food",
+        "street"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Tower Hill",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "דקות הליכה ממצודת לונדון אבל כמעט בלי תיירים, וזה המקום הנוח לעצור בו לאכול באזור."
+    },
+    {
+      "id": "postal-museum",
+      "name": "מוזיאון הדואר ורכבת הדואר",
+      "nameEn": "The Postal Museum and Mail Rail",
+      "desc": "מוזיאון שמספר את סיפור הדואר הבריטי, ולצידו נסיעה ברכבת התת קרקעית הזעירה ששינעה מכתבים מתחת ללונדון. נמצא בקלרקנוול, צפונית לסיטי.",
+      "area": "city",
+      "interests": [
+        "museums",
+        "kids"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 2,
+      "tube": "Farringdon",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": true,
+      "tip": "הנסיעה ברכבת הדואר היא בקרונות צרים מאוד ובשעות מוגדרות, ולכן שווה להזמין מקום מראש."
+    },
+    {
+      "id": "imperial-war-museum",
+      "name": "המוזיאון הצבאי הקיסרי",
+      "nameEn": "Imperial War Museum",
+      "desc": "מוזיאון על מלחמות המאה העשרים והשפעתן על החברה, ובו תערוכת שואה קבועה ומקיפה. נמצא דרומית לנהר, באזור למבת׳, ובחזיתו שני תותחי ענק.",
+      "area": "southbank",
+      "interests": [
+        "museums",
+        "royal"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 3,
+      "tube": "Lambeth North",
+      "kids": false,
+      "anchor": true,
+      "bookAhead": false,
+      "tip": "תערוכת השואה קשה מאוד רגשית ואינה מיועדת לילדים צעירים. שאר המוזיאון מתאים לכל הגילים."
+    },
+    {
+      "id": "hms-belfast",
+      "name": "אוניית הקרב HMS בלפסט",
+      "nameEn": "HMS Belfast",
+      "desc": "סיירת מלחמה בריטית מתקופת מלחמת העולם השנייה, שעוגנת בתמזה ופתוחה לביקור על כל תשעת סיפוניה. עוגנת בין גשר לונדון לגשר המגדלים.",
+      "area": "southbank",
+      "interests": [
+        "museums",
+        "kids"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 2,
+      "tube": "London Bridge",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "הרבה סולמות ומעברים צרים, חוויה מצוינת לילדים אבל פחות נוחה למי שמתקשה בתנועה."
+    },
+    {
+      "id": "globe-theatre",
+      "name": "התיאטרון של שייקספיר",
+      "nameEn": "Shakespeare's Globe",
+      "desc": "שחזור מדויק של תיאטרון הגלוב מהמאה השש עשרה, בנוי מעץ ופתוח לשמיים. עומד על גדת התמזה, במרחק קצר מהטייט מודרן.",
+      "area": "southbank",
+      "interests": [
+        "royal",
+        "museums"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 2,
+      "tube": "Southwark",
+      "kids": false,
+      "anchor": true,
+      "bookAhead": false,
+      "tip": "אפשר לבחור בין סיור מודרך במבנה לבין צפייה בהצגה. הכרטיסים בעמידה הם הזולים ביותר."
+    },
+    {
+      "id": "southwark-cathedral",
+      "name": "קתדרלת סאות׳ווארק",
+      "nameEn": "Southwark Cathedral",
+      "desc": "אחת הכנסיות הוותיקות בלונדון, עם חלקים מהתקופה הגותית, שמוקפת היום בבנייני זכוכית. נמצאת ממש בכניסה לשוק בורו.",
+      "area": "southbank",
+      "interests": [
+        "royal"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "London Bridge",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "עצירה טבעית ושקטה של רבע שעה בדרך אל שוק בורו או ממנו."
+    },
+    {
+      "id": "leake-street",
+      "name": "מנהרת הגרפיטי ליק סטריט",
+      "nameEn": "Leake Street Arches",
+      "desc": "מנהרה שבה ציור על הקירות מותר באופן חוקי, ולכן היצירות מתחלפות כמעט מדי יום. עוברת מתחת לתחנת ווטרלו, דקות הליכה מהלונדון איי.",
+      "area": "southbank",
+      "interests": [
+        "street"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Waterloo",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "לרוב יש שם אמנים שמציירים בזמן אמת, וזה החלק המעניין באמת בביקור."
+    },
+    {
+      "id": "old-operating-theatre",
+      "name": "תיאטרון הניתוחים הישן",
+      "nameEn": "Old Operating Theatre Museum",
+      "desc": "חדר ניתוחים מהמאה התשע עשרה, מלפני עידן ההרדמה, ששרד בעליית הגג של כנסייה. נמצא ממש ליד תחנת גשר לונדון.",
+      "area": "southbank",
+      "interests": [
+        "museums"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 1,
+      "tube": "London Bridge",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "העלייה אליו היא במדרגות לולייניות צרות ותלולות, ואין דרך אחרת להגיע."
+    },
+    {
+      "id": "sea-life",
+      "name": "אקווריום סי לייף",
+      "nameEn": "Sea Life London Aquarium",
+      "desc": "אקווריום גדול עם מנהרת כרישים ומדור פינגווינים, בתוך מבנה העירייה הישן. נמצא ממש ליד הלונדון איי על גדת התמזה.",
+      "area": "southbank",
+      "interests": [
+        "kids"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 2,
+      "tube": "Waterloo",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "מהאטרקציות היקרות בלונדון. מי שנוסע עם ילדים ובודק גם את הלונדון איי, כדאי שיבדוק כרטיס משולב."
+    },
+    {
+      "id": "design-museum",
+      "name": "מוזיאון העיצוב",
+      "nameEn": "The Design Museum",
+      "desc": "מוזיאון המוקדש לעיצוב תעשייתי, אופנה ואדריכלות, בתוך מבנה עם גג מעוגל דרמטי. יושב בקצה הולנד פארק, מערבית לקנזינגטון.",
+      "area": "kensington",
+      "interests": [
+        "museums"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 2,
+      "tube": "High Street Kensington",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "התצוגה הקבועה חינמית, והתערוכות המתחלפות בתשלום. גם המבנה עצמו שווה ביקור."
+    },
+    {
+      "id": "holland-park",
+      "name": "הולנד פארק וגן קיוטו",
+      "nameEn": "Holland Park and Kyoto Garden",
+      "desc": "פארק שקט עם גן יפני ובו מפל ובריכת דגים, וטווסים שמסתובבים חופשי בשבילים. נמצא מערבית לקנזינגטון, הרחק ממסלולי התיירים.",
+      "area": "kensington",
+      "interests": [
+        "parks"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Holland Park",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "הגן היפני קטן יחסית, ולכן הכי נעים בו בבוקר לפני שמתמלא."
+    },
+    {
+      "id": "harrods",
+      "name": "הרודס",
+      "nameEn": "Harrods",
+      "desc": "חנות הכולבו המפורסמת בלונדון, עם אולמות מזון מעוטרים ותאורת לילה שהפכה לסמל. נמצאת בנייטסברידג׳, בין הייד פארק לדרום קנזינגטון.",
+      "area": "kensington",
+      "interests": [
+        "food",
+        "street"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Knightsbridge",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "הכניסה חינמית וגם מי שלא קונה שווה לו לעבור באולמות המזון ובחדר המדרגות המצרי."
+    },
+    {
+      "id": "royal-albert-hall",
+      "name": "רויאל אלברט הול",
+      "nameEn": "Royal Albert Hall",
+      "desc": "אולם הקונצרטים המעגלי המפורסם של לונדון, שנבנה לזכר הנסיך אלברט. עומד מול אנדרטת אלברט בקצה הדרומי של הייד פארק, ליד מוזיאוני קנזינגטון.",
+      "area": "kensington",
+      "interests": [
+        "royal",
+        "museums"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 1,
+      "tube": "South Kensington",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "אפשר גם סיור מודרך במבנה וגם הופעה בערב. הסיור זול בהרבה מכרטיס להופעה."
+    },
+    {
+      "id": "british-library",
+      "name": "הספרייה הבריטית",
+      "nameEn": "The British Library",
+      "desc": "הספרייה הלאומית של בריטניה, ובגלריה שלה מוצגים כתבי יד נדירים, מגילות עתיקות וטיוטות מקוריות. נמצאת ליד תחנת קינגס קרוס.",
+      "area": "camden",
+      "interests": [
+        "museums"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "King's Cross St Pancras",
+      "kids": false,
+      "anchor": true,
+      "bookAhead": false,
+      "tip": "גלריית האוצרות היא החלק שכדאי לתייר, והכניסה אליה חינמית."
+    },
+    {
+      "id": "wellcome-collection",
+      "name": "אוסף וולקאם",
+      "nameEn": "Wellcome Collection",
+      "desc": "מוזיאון שמחבר בין רפואה, מדע ואמנות, עם תצוגות על הגוף והנפש. נמצא ברחוב יוסטון, ליד תחנת יוסטון סקוור.",
+      "area": "camden",
+      "interests": [
+        "museums"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 2,
+      "tube": "Euston Square",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "שקט, חינמי, ועם חדר קריאה נעים. אחד המקומות הטובים בעיר ליום גשום."
+    },
+    {
+      "id": "sherlock-museum",
+      "name": "מוזיאון שרלוק הולמס",
+      "nameEn": "The Sherlock Holmes Museum",
+      "desc": "שחזור של דירת הבלש הבדיוני ברחוב בייקר 221ב, מסודרת כמו בסיפורים. נמצא ברחוב בייקר, ליד ריג׳נטס פארק.",
+      "area": "camden",
+      "interests": [
+        "museums"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 1,
+      "tube": "Baker Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "הבית קטן מאוד והתור בחוץ ארוך. מי שלא מעריץ מושבע, מספיק לו לצלם את החזית."
+    },
+    {
+      "id": "madame-tussauds",
+      "name": "מדאם טוסו",
+      "nameEn": "Madame Tussauds London",
+      "desc": "מוזיאון בובות השעווה הוותיק בעולם, עם דמויות מפורסמות מהיסטוריה, קולנוע וספורט. נמצא ברחוב בייקר, ליד מוזיאון שרלוק הולמס.",
+      "area": "camden",
+      "interests": [
+        "kids"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 2,
+      "tube": "Baker Street",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": true,
+      "tip": "מהאטרקציות היקרות בעיר והתורים בכניסה ארוכים, ולכן כרטיס עם שעה קבועה מראש חוסך המתנה."
+    },
+    {
+      "id": "hampstead-heath",
+      "name": "המפסטד הית׳",
+      "nameEn": "Hampstead Heath",
+      "desc": "שטח פתוח וגדול בצפון לונדון, יותר טבע פראי מפארק מטופח, ובראשו נקודת תצפית על קו הרקיע של העיר. גובל בשכונת המפסטד.",
+      "area": "camden",
+      "interests": [
+        "parks",
+        "views"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 2,
+      "tube": "Hampstead",
+      "kids": true,
+      "anchor": true,
+      "bookAhead": false,
+      "tip": "התצפית מפרלמנט היל היא אחת הטובות בלונדון, וההגעה אליה חינמית לגמרי."
+    },
+    {
+      "id": "kenwood-house",
+      "name": "בית קנווד",
+      "nameEn": "Kenwood House",
+      "desc": "אחוזה לבנה מהמאה השמונה עשרה בקצה המפסטד הית׳, ובתוכה אוסף ציורים הכולל יצירות של רמברנדט ורנואר. הכניסה לבית ולגנים אינה כרוכה בתשלום.",
+      "area": "camden",
+      "interests": [
+        "museums",
+        "parks",
+        "royal"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Hampstead",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "משתלב באופן טבעי עם הליכה בהמפסטד הית׳, ורוב המבקרים בו הם מקומיים."
+    },
+    {
+      "id": "highgate-cemetery",
+      "name": "בית הקברות הייגייט",
+      "nameEn": "Highgate Cemetery",
+      "desc": "בית קברות ויקטוריאני שהצמחייה השתלטה עליו, עם מצבות מעוטרות וקבריהם של קרל מרקס ואישים נוספים. נמצא בצפון לונדון, ליד המפסטד הית׳.",
+      "area": "camden",
+      "interests": [
+        "royal",
+        "parks"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 1,
+      "tube": "Archway",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": true,
+      "tip": "החלק המערבי נפתח רק בסיור מודרך ובשעות קבועות, ולכן חובה לבדוק מראש."
+    },
+    {
+      "id": "coal-drops-yard",
+      "name": "קול דרופס יארד",
+      "nameEn": "Coal Drops Yard",
+      "desc": "מחסני פחם היסטוריים שהוסבו למתחם חנויות ומסעדות על גדת התעלה, עם מזרקות רחוב שילדים משחקים בהן. נמצא מאחורי תחנת קינגס קרוס.",
+      "area": "camden",
+      "interests": [
+        "food",
+        "street"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "King's Cross St Pancras",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "אפשר להמשיך ממנו בהליכה לאורך התעלה עד קמדן, מסלול נעים של כשעה."
+    },
+    {
+      "id": "little-venice",
+      "name": "ונציה הקטנה",
+      "nameEn": "Little Venice",
+      "desc": "מפגש תעלות עם סירות מגורים צבעוניות, בתי קפה צפים ושבילי גרירה שקטים. נמצאת מערבית לריג׳נטס פארק, באזור מיידה וייל.",
+      "area": "camden",
+      "interests": [
+        "parks",
+        "street"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Warwick Avenue",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "אפשר ללכת משם לאורך התעלה דרך גן החיות ועד קמדן, אחת ההליכות היפות בלונדון."
+    },
+    {
+      "id": "spitalfields-market",
+      "name": "שוק ספיטלפילדס",
+      "nameEn": "Old Spitalfields Market",
+      "desc": "שוק מקורה היסטורי עם דוכני עיצוב, וינטג׳ ואוכל, מוקף במסעדות. נמצא בין הסיטי לשורדיטש, ליד תחנת ליברפול סטריט.",
+      "area": "shoreditch",
+      "interests": [
+        "food",
+        "street"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Liverpool Street",
+      "kids": true,
+      "anchor": true,
+      "bookAhead": false,
+      "tip": "הדוכנים משתנים לפי ימי השבוע, ולכן שווה לבדוק מה מתקיים ביום שאתם מגיעים."
+    },
+    {
+      "id": "columbia-road",
+      "name": "שוק הפרחים קולומביה רוד",
+      "nameEn": "Columbia Road Flower Market",
+      "desc": "רחוב שלם שמתמלא בדוכני פרחים וצמחים, עם חנויות קטנות ובתי קפה משני הצדדים. נמצא מצפון לשורדיטש, ופועל בימי ראשון בלבד.",
+      "area": "shoreditch",
+      "interests": [
+        "food",
+        "street"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Hoxton",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "פועל רק בימי ראשון. מי שמגיע בבוקר רואה את השוק במלואו, ובסוף היום המחירים יורדים."
+    },
+    {
+      "id": "museum-of-home",
+      "name": "מוזיאון הבית",
+      "nameEn": "Museum of the Home",
+      "desc": "מוזיאון שמציג איך נראו בתים בבריטניה לאורך ארבע מאות שנה, חדר אחרי חדר. נמצא בהוקסטון, מצפון לשורדיטש.",
+      "area": "shoreditch",
+      "interests": [
+        "museums"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Hoxton",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "הגנים שמאחורי המוזיאון מסודרים לפי תקופות, והכניסה אליהם חינמית גם היא."
+    },
+    {
+      "id": "whitechapel-gallery",
+      "name": "גלריית וייטצ׳אפל",
+      "nameEn": "Whitechapel Gallery",
+      "desc": "גלריה היסטורית לאמנות עכשווית, שהציגה בעבר יוצרים גדולים לפני שהתפרסמו. נמצאת בוייטצ׳אפל, במרחק הליכה מבריק ליין.",
+      "area": "shoreditch",
+      "interests": [
+        "museums",
+        "street"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Aldgate East",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "התערוכות מתחלפות, ולכן שווה לבדוק מה מוצג לפני שמתכננים אליה זמן."
+    },
+    {
+      "id": "dennis-severs",
+      "name": "בית דניס סוורס",
+      "nameEn": "Dennis Severs' House",
+      "desc": "בית מהמאה השמונה עשרה שמוצג כאילו המשפחה שגרה בו יצאה הרגע, עם אוכל על השולחן ונרות דולקים. הביקור נעשה בשקט מוחלט, וזו חוויה בפני עצמה.",
+      "area": "shoreditch",
+      "interests": [
+        "museums",
+        "royal"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 1,
+      "tube": "Liverpool Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": true,
+      "tip": "הכניסה מוגבלת מאוד במספר המבקרים ובשעות, ולכן חובה להזמין מקום מראש."
+    },
+    {
+      "id": "royal-observatory",
+      "name": "מצפה הכוכבים המלכותי",
+      "nameEn": "Royal Observatory Greenwich",
+      "desc": "המקום שבו נקבע קו האורך אפס ושעון גריניץ׳, עם תצוגות אסטרונומיה ופלנטריום. עומד על ראש הגבעה בפארק גריניץ׳, עם נוף לנהר ולמגדלי קנרי וורף.",
+      "area": "greenwich",
+      "interests": [
+        "museums",
+        "views"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 2,
+      "tube": "Cutty Sark",
+      "kids": true,
+      "anchor": true,
+      "bookAhead": true,
+      "tip": "העלייה לגבעה תלולה, אבל התצפית ממנה חינמית גם בלי כרטיס למצפה עצמו."
+    },
+    {
+      "id": "cutty-sark",
+      "name": "ספינת קאטי סארק",
+      "nameEn": "Cutty Sark",
+      "desc": "ספינת מפרש מהמאה התשע עשרה ששימשה להובלת תה מסין, משומרת ומורמת כך שאפשר להלך גם מתחת לגוף שלה. עומדת ממש ליד תחנת הרכבת הקלה בגריניץ׳.",
+      "area": "greenwich",
+      "interests": [
+        "museums",
+        "kids"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 1,
+      "tube": "Cutty Sark",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "ההליכה מתחת לגוף הספינה היא החלק הייחודי, ואפשר לראות אותה מבחוץ גם בלי כרטיס."
+    },
+    {
+      "id": "queens-house",
+      "name": "בית המלכה",
+      "nameEn": "Queen's House",
+      "desc": "בית מלכותי מהמאה השבע עשרה עם גרם מדרגות לולייני מפורסם, ובתוכו אוסף ציורים ימיים. נמצא בין המוזיאון הימי לפארק גריניץ׳.",
+      "area": "greenwich",
+      "interests": [
+        "museums",
+        "royal"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Cutty Sark",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "הכניסה חינמית, וגרם המדרגות המסתלסל הוא אחד המקומות המצולמים בגריניץ׳."
+    },
+    {
+      "id": "greenwich-market",
+      "name": "שוק גריניץ׳",
+      "nameEn": "Greenwich Market",
+      "desc": "שוק מקורה עם דוכני אוכל, מלאכת יד ועתיקות, בלב המרכז ההיסטורי של גריניץ׳. נמצא דקות הליכה מהקאטי סארק ומהמוזיאון הימי.",
+      "area": "greenwich",
+      "interests": [
+        "food",
+        "street"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Cutty Sark",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "נקודת עצירה טבעית לאוכל באמצע יום בגריניץ׳, בין המוזיאונים לפארק."
+    },
+    {
+      "id": "greenwich-foot-tunnel",
+      "name": "מנהרת ההולכים של גריניץ׳",
+      "nameEn": "Greenwich Foot Tunnel",
+      "desc": "מנהרה להולכי רגל מתחילת המאה העשרים שעוברת מתחת לתמזה ומחברת את גריניץ׳ לגדה הצפונית. הכניסה אליה דרך ביתן כיפה מזכוכית ליד הקאטי סארק.",
+      "area": "greenwich",
+      "interests": [
+        "street",
+        "views"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Cutty Sark",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "בצד השני נפתח הנוף הקלאסי על גריניץ׳ מעבר לנהר, וזו הדרך החינמית להגיע אליו."
+    },
+    {
+      "id": "richmond-park",
+      "name": "ריצ׳מונד פארק",
+      "nameEn": "Richmond Park",
+      "desc": "הפארק המלכותי הגדול בלונדון, שטח פתוח וענק שבו חיים עדרי אַיָּלִים חופשיים. נמצא בדרום מערב העיר, ונדרשת אליו נסיעה מהמרכז.",
+      "area": "outer",
+      "interests": [
+        "parks",
+        "views"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 3,
+      "tube": "Richmond",
+      "kids": true,
+      "anchor": true,
+      "bookAhead": false,
+      "tip": "האיילים הם חיות בר ולא חיות מחמד. שומרים מרחק, במיוחד בעונת הייחום בסתיו."
+    },
+    {
+      "id": "windsor-castle",
+      "name": "טירת ווינדזור",
+      "nameEn": "Windsor Castle",
+      "desc": "הטירה המאוישת הוותיקה והגדולה בעולם, ומשמשת עד היום את בית המלוכה. נמצאת מחוץ ללונדון, ומגיעים אליה ברכבת מתחנת פדינגטון או ווטרלו.",
+      "area": "outer",
+      "interests": [
+        "royal",
+        "museums"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 4,
+      "tube": "Windsor",
+      "kids": true,
+      "anchor": true,
+      "bookAhead": true,
+      "tip": "דורשת כמעט יום שלם כולל הנסיעה. הכרטיסים נמכרים לשעה קבועה ונגמרים בעונה."
+    },
+    {
+      "id": "wembley-tour",
+      "name": "סיור באצטדיון ומבלי",
+      "nameEn": "Wembley Stadium Tour",
+      "desc": "סיור מאחורי הקלעים באצטדיון הלאומי של אנגליה, כולל חדרי ההלבשה, המנהרה והמדרגות אל הגביע. נמצא בצפון מערב לונדון.",
+      "area": "outer",
+      "interests": [
+        "kids"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 2,
+      "tube": "Wembley Park",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": true,
+      "tip": "הסיורים לא מתקיימים בימי משחק או אירוע, ולכן חובה לבדוק את התאריך מראש."
+    },
+    {
+      "id": "cable-car",
+      "name": "הרכבל של לונדון",
+      "nameEn": "London Cable Car",
+      "desc": "רכבל שחוצה את התמזה באוויר בין חצי האי גריניץ׳ לרויאל דוקס, עם נוף פתוח על מזרח לונדון. נקודת העלייה הנוחה היא ליד תחנת נורת׳ גריניץ׳.",
+      "area": "outer",
+      "interests": [
+        "views",
+        "kids"
+      ],
+      "free": false,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 1,
+      "tube": "North Greenwich",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "נסיעה קצרה אבל הנוף פתוח לכל הכיוונים, ובשעת השקיעה זה הזמן היפה ביותר."
+    },
+    {
+      "id": "docklands-museum",
+      "name": "מוזיאון הדוקלנדס",
+      "nameEn": "London Museum Docklands",
+      "desc": "מוזיאון בתוך מחסן סחר היסטורי, שמספר את סיפור נמל לונדון ואת הקשר שלו לסחר העבדים. נמצא בקנרי וורף, במזרח העיר.",
+      "area": "outer",
+      "interests": [
+        "museums"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 2,
+      "tube": "West India Quay",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "חינמי ולרוב ריק יחסית, והמחסן ההיסטורי עצמו מעניין לא פחות מהתצוגה."
+    },
+    {
+      "id": "battersea-power-station",
+      "name": "תחנת הכוח בטרסי",
+      "nameEn": "Battersea Power Station",
+      "desc": "תחנת כוח נטושה עם ארבע הארובות המפורסמות, שהוסבה למתחם חנויות, מסעדות ומשרדים. נמצאת על הגדה הדרומית של התמזה, עם תחנת רכבת תחתית משלה.",
+      "area": "outer",
+      "interests": [
+        "street",
+        "food"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 2,
+      "tube": "Battersea Power Station",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "הכניסה למתחם חינמית. יש גם מעלית זכוכית שעולה בתוך אחת הארובות, והיא בתשלום נפרד."
+    },
+    {
+      "id": "raf-museum",
+      "name": "מוזיאון חיל האוויר המלכותי",
+      "nameEn": "Royal Air Force Museum London",
+      "desc": "אוסף גדול של מטוסים היסטוריים בתוך האנגרים מקוריים, ממלחמת העולם הראשונה ועד ימינו. נמצא בקולינדייל, בצפון לונדון.",
+      "area": "outer",
+      "interests": [
+        "museums",
+        "kids"
+      ],
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 3,
+      "tube": "Colindale",
+      "kids": true,
+      "anchor": true,
+      "bookAhead": false,
+      "tip": "חינמי לגמרי ואחד המקומות הפחות מוכרים שמצוינים לילדים, בעיקר בימי גשם."
     }
   ]
 }

@@ -161,6 +161,17 @@
     .stop-tip::before { content: "💡 "; }
     .stop-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 9px; font-size: 13.5px; font-weight: 800; color: #fdba74; }
     .stop-link:hover { color: #fb923c; text-decoration: none; }
+    .stop-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .stop-btn {
+      font: inherit; font-size: 13px; font-weight: 800; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 14px; border-radius: 10px; text-decoration: none;
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8); transition: background .15s, color .15s;
+    }
+    .stop-btn:hover { background: rgba(255,255,255,0.14); color: #fff; text-decoration: none; }
+    .stop-btn--book { background: rgba(59,130,246,0.16); border-color: rgba(59,130,246,0.4); color: #93c5fd; }
+    .stop-btn--book:hover { background: rgba(59,130,246,0.26); color: #bfdbfe; }
 
     /* מעבר בין בנייה אוטומטית להרכבה ידנית */
     .sr-only {
@@ -169,72 +180,178 @@
     }
     .mode-tabs {
       display: flex; gap: 8px; margin-bottom: 18px;
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(32,31,43,0.035); border: 1px solid rgba(32,31,43,0.11);
       border-radius: 14px; padding: 6px;
     }
     .mode-tab {
       flex: 1; font: inherit; font-size: 15px; font-weight: 800; cursor: pointer;
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       padding: 13px 16px; border-radius: 10px; border: none;
-      background: transparent; color: rgba(255,255,255,0.62);
+      background: transparent; color: #55596b !important;
       transition: background .15s, color .15s;
     }
-    .mode-tab:hover { color: #fff; background: rgba(255,255,255,0.06); }
-    .mode-tab.active { background: linear-gradient(135deg, #DC2626, #EA580C); color: #fff; }
+    .mode-tab:hover { color: var(--ink); background: rgba(32,31,43,0.035); }
+    .mode-tab.active { background: linear-gradient(135deg, #DC2626, #EA580C) !important; }
+    .mode-tab.active, .mode-tab.active * { color: #fff !important; }
 
     /* ההרכבה הידנית */
     .manual-intro {
-      font-size: 14.5px; color: rgba(255,255,255,0.68); line-height: 1.75;
+      font-size: 14.5px; color: var(--ink-soft); line-height: 1.75;
       margin: 0 0 18px;
     }
     .manual-layout { display: grid; grid-template-columns: 330px 1fr; gap: 20px; align-items: start; }
 
     .palette {
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(32,31,43,0.035); border: 1px solid rgba(32,31,43,0.11);
       border-radius: 16px; padding: 16px; position: sticky; top: 16px;
     }
     .palette-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
     .pal-search {
       font: inherit; font-size: 14.5px; width: 100%;
       padding: 11px 14px; border-radius: 10px;
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
-      color: #fff;
+      background: rgba(32,31,43,0.035); border: 1px solid rgba(32,31,43,0.11);
+      color: var(--ink);
     }
-    .pal-search::placeholder { color: rgba(255,255,255,0.4); }
+    .pal-search::placeholder { color: var(--ink-faint); }
     .pal-search:focus { outline: 2px solid rgba(234,88,12,0.6); outline-offset: 1px; }
-    .pal-areas { gap: 6px; }
-    .pal-areas .chip { font-size: 12.5px; padding: 6px 11px; }
-    .palette-list { display: flex; flex-direction: column; gap: 9px; max-height: 60vh; overflow-y: auto; padding-inline-end: 4px; }
-    .pal-empty { font-size: 13.5px; color: rgba(255,255,255,0.45); margin: 6px 2px; }
-
-    .cube {
-      font: inherit; text-align: start; cursor: grab; width: 100%;
-      display: flex; flex-direction: column; gap: 5px;
-      padding: 13px 15px; border-radius: 12px;
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
-      transition: background .15s, border-color .15s, transform .15s;
+    .pal-areas { display: flex; flex-wrap: wrap; gap: 6px; }
+    .area-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      font: inherit; font-size: 12.5px; font-weight: 800; cursor: pointer;
+      padding: 7px 12px; border-radius: 10px;
+      background: rgba(32,31,43,0.035); border: 1px solid rgba(32,31,43,0.11);
+      color: var(--ink-soft); transition: border-color .15s, background .15s, color .15s;
     }
-    .cube:hover { background: rgba(234,88,12,0.12); border-color: rgba(234,88,12,0.45); transform: translateY(-1px); }
-    .cube:active { cursor: grabbing; }
-    .cube.dragging { opacity: .5; }
-    .cube--used { opacity: .62; }
-    .cube-name { font-size: 14.5px; font-weight: 800; color: #fff; }
-    .cube-meta { font-size: 12px; color: rgba(255,255,255,0.55); }
-    .cube-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 2px; }
-    .cube-badge { font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 50px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
+    .area-btn:hover { background: rgba(32,31,43,0.07); color: var(--ink); }
+    .area-btn.is-on { border-color: var(--area-color); background: rgba(32,31,43,0.07); color: var(--ink); }
+    .area-dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 9px; background: var(--area-color); }
+    .area-count { font-size: 11px; opacity: .55; font-weight: 700; }
+    .palette-list { display: flex; flex-direction: column; gap: 9px; max-height: 60vh; overflow-y: auto; padding-inline-end: 4px; }
+    .pal-empty { font-size: 13.5px; color: var(--ink-faint); margin: 6px 2px; }
+
+    /* כרטיס אטרקציה במאגר. פס צבע לפי אזור, תיאור מקוצר, ושתי פעולות ברורות */
+    .cube {
+      position: relative; text-align: start; width: 100%;
+      display: grid; grid-template-columns: auto 1fr; gap: 0 12px;
+      padding: 15px 16px 13px; border-radius: 14px;
+      background: linear-gradient(140deg, rgba(255,255,255,0.075), rgba(255,255,255,0.035));
+      border: 1px solid rgba(32,31,43,0.11);
+      transition: border-color .18s, transform .18s, box-shadow .18s;
+    }
+    .cube::before {
+      content: ""; position: absolute; inset-inline-start: 0; top: 14px; bottom: 14px;
+      width: 3px; border-radius: 0 3px 3px 0; background: var(--cube-accent, #EA580C);
+    }
+    .cube:hover { border-color: rgba(234,88,12,0.5); transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,0.3); }
+    .cube.dragging { opacity: .45; }
+    .cube--used { opacity: .55; }
+    .cube-emoji {
+      grid-row: 1 / span 2; width: 42px; height: 42px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+      background: rgba(32,31,43,0.035); border: 1px solid rgba(32,31,43,0.11);
+    }
+    .cube-name { font-size: 15px; font-weight: 800; color: var(--ink); line-height: 1.3; }
+    .cube-meta { font-size: 11.5px; color: var(--ink-faint); margin-top: 3px; }
+    .cube-desc {
+      grid-column: 1 / -1; font-size: 12.5px; color: var(--ink-soft);
+      line-height: 1.6; margin: 9px 0 0;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .cube-badges { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+    .cube-badge { font-size: 10.5px; font-weight: 800; padding: 3px 9px; border-radius: 50px; background: rgba(32,31,43,0.035); color: var(--ink-soft); }
     .cube-badge.is-free { background: rgba(74,222,128,0.16); color: #86efac; }
     .cube-badge.is-paid { background: rgba(251,146,60,0.16); color: #fdba74; }
-    .cube-badge.is-used { background: rgba(147,197,253,0.16); color: #93c5fd; }
+    .cube-badge.is-used { background: rgba(147,197,253,0.18); color: #93c5fd; }
+    .cube-actions { grid-column: 1 / -1; display: flex; gap: 7px; margin-top: 11px; }
+    .cube-btn {
+      font: inherit; font-size: 12.5px; font-weight: 800; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 8px 12px; border-radius: 9px; border: 1px solid rgba(32,31,43,0.11);
+      background: rgba(32,31,43,0.035); color: var(--ink);
+      transition: background .15s, color .15s, border-color .15s;
+    }
+    .cube-btn:hover { background: rgba(32,31,43,0.07); color: var(--ink); }
+    .cube-btn--add {
+      flex: 1; background: linear-gradient(135deg, rgba(220,38,38,0.9), rgba(234,88,12,0.9));
+      border-color: transparent; color: #fff;
+    }
+    .cube-btn--add:hover { filter: brightness(1.1); }
+    .cube-grip { cursor: grab; }
+    .cube-grip:active { cursor: grabbing; }
+
+    /* חלון מידע על מקום */
+    .info-overlay {
+      position: fixed; inset: 0; z-index: 3000; display: flex;
+      align-items: flex-end; justify-content: center;
+      background: rgba(10,10,16,0.62); backdrop-filter: blur(3px);
+      opacity: 0; pointer-events: none; transition: opacity .18s ease;
+    }
+    .info-overlay.open { opacity: 1; pointer-events: auto; }
+    @media (min-width: 640px) { .info-overlay { align-items: center; padding: 24px; } }
+    .info-panel {
+      background: #141420; width: 100%; max-width: 540px; max-height: 86vh; overflow-y: auto;
+      border: 1px solid rgba(32,31,43,0.11); border-radius: 20px 20px 0 0;
+      padding: 26px 24px 28px; position: relative;
+      transform: translateY(14px); transition: transform .2s ease;
+    }
+    @media (min-width: 640px) { .info-panel { border-radius: 20px; } }
+    .info-overlay.open .info-panel { transform: translateY(0); }
+    .info-close {
+      position: absolute; top: 16px; inset-inline-start: 16px;
+      width: 34px; height: 34px; border-radius: 10px; cursor: pointer;
+      background: rgba(32,31,43,0.035); border: 1px solid rgba(32,31,43,0.11);
+      color: var(--ink-soft); font-size: 15px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .info-close:hover { background: rgba(32,31,43,0.07); color: var(--ink); }
+    .info-area { font-size: 12.5px; font-weight: 800; color: #fdba74; margin-bottom: 7px; padding-inline-end: 44px; }
+    .info-title { font-size: 22px; font-weight: 900; color: var(--ink); line-height: 1.25; margin: 0 0 3px; padding-inline-end: 44px; }
+    .info-en { font-size: 13px; color: var(--ink-faint); margin-bottom: 14px; }
+    .info-facts { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 15px; }
+    .info-desc { font-size: 15px; color: var(--ink); line-height: 1.8; margin: 0 0 14px; }
+    .info-tip {
+      background: rgba(234,88,12,0.1); border: 1px solid rgba(234,88,12,0.28);
+      border-radius: 12px; padding: 13px 15px; font-size: 13.5px;
+      color: var(--ink); line-height: 1.7; margin-bottom: 16px;
+    }
+    .info-actions { display: flex; flex-wrap: wrap; gap: 9px; }
+    .info-btn {
+      font: inherit; font-size: 14px; font-weight: 800; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 20px; border-radius: 11px; border: 1px solid rgba(32,31,43,0.11);
+      background: rgba(32,31,43,0.035); color: var(--ink); text-decoration: none;
+    }
+    .info-btn:hover { background: rgba(32,31,43,0.07); color: var(--ink); text-decoration: none; }
+    .info-btn--primary { flex: 1; background: linear-gradient(135deg,#DC2626,#EA580C); border-color: transparent; color: #fff; }
+    .info-btn--book { background: rgba(59,130,246,0.16); border-color: rgba(59,130,246,0.4); color: #93c5fd; }
+    .info-btn--book:hover { background: rgba(59,130,246,0.26); color: #bfdbfe; }
+
+    /* חיווי תוצאות החיפוש */
+    .pal-status {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      font-size: 12.5px; font-weight: 800; color: var(--ink-faint);
+      padding: 2px 2px 8px;
+    }
+    .pal-clear {
+      font: inherit; font-size: 12px; font-weight: 800; cursor: pointer;
+      background: none; border: none; color: #fdba74; padding: 2px 4px;
+    }
+    .pal-clear:hover { color: #fb923c; text-decoration: underline; }
+    .pal-empty {
+      font-size: 13.5px; color: var(--ink-faint); margin: 10px 2px;
+      background: rgba(32,31,43,0.035); border: 1px dashed rgba(255,255,255,0.16);
+      border-radius: 12px; padding: 16px; line-height: 1.7; text-align: center;
+    }
 
     .board-head {
       display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
       gap: 12px; margin-bottom: 16px;
     }
-    .board-summary { font-size: 14px; font-weight: 800; color: rgba(255,255,255,0.72); }
+    .board-summary { font-size: 14px; font-weight: 800; color: var(--ink-soft); }
     .board-actions { display: flex; flex-wrap: wrap; gap: 8px; }
     .mini-btn--danger { color: #fca5a5; }
 
-    .board-day { border: 1px solid rgba(255,255,255,0.1); transition: border-color .15s, background .15s; }
+    .board-day { border: 1px solid rgba(32,31,43,0.11); transition: border-color .15s, background .15s; }
     .board-day.is-active { border-color: rgba(234,88,12,0.5); }
     .board-day.drop-on { border-color: #4ade80; background: rgba(74,222,128,0.07); }
     .board-day-head { display: flex; align-items: center; gap: 10px; }
@@ -242,10 +359,10 @@
     .day-btn {
       font: inherit; font-size: 12.5px; font-weight: 800; cursor: pointer;
       padding: 7px 13px; border-radius: 9px;
-      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14);
-      color: rgba(255,255,255,0.72);
+      background: rgba(32,31,43,0.035); border: 1px solid rgba(32,31,43,0.11);
+      color: var(--ink-soft);
     }
-    .day-btn:hover { background: rgba(255,255,255,0.13); color: #fff; }
+    .day-btn:hover { background: rgba(32,31,43,0.07); color: var(--ink); }
     .day-btn.is-on { background: linear-gradient(135deg,#DC2626,#EA580C); border-color: transparent; color: #fff; }
     .day-btn--danger { color: #fca5a5; }
     .day-warn {
@@ -258,15 +375,15 @@
     .ctl {
       font: inherit; font-size: 12.5px; cursor: pointer;
       width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
-      border-radius: 8px; background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.7);
+      border-radius: 8px; background: rgba(32,31,43,0.035);
+      border: 1px solid rgba(32,31,43,0.11); color: var(--ink-soft);
     }
-    .ctl:hover:not(:disabled) { background: rgba(255,255,255,0.14); color: #fff; }
+    .ctl:hover:not(:disabled) { background: rgba(32,31,43,0.07); color: var(--ink); }
     .ctl:disabled { opacity: .3; cursor: default; }
     .ctl--danger { color: #fca5a5; }
     .ctl-sel {
       font: inherit; font-size: 12.5px; cursor: pointer; padding: 6px 9px; border-radius: 8px;
-      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); color: rgba(255,255,255,0.72);
+      background: rgba(32,31,43,0.035); border: 1px solid rgba(32,31,43,0.11); color: var(--ink-soft);
     }
 
     @media (max-width: 900px) {
@@ -279,17 +396,17 @@
     .versions {
       display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
       margin: 4px 0 18px; padding: 12px 14px;
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(32,31,43,0.035); border: 1px solid rgba(32,31,43,0.11);
       border-radius: 13px;
     }
-    .versions-label { font-size: 13px; font-weight: 800; color: rgba(255,255,255,0.5); margin-inline-end: 4px; }
+    .versions-label { font-size: 13px; font-weight: 800; color: var(--ink-faint); margin-inline-end: 4px; }
     .ver-chip {
       font: inherit; font-size: 13.5px; font-weight: 800; cursor: pointer;
       padding: 7px 15px; border-radius: 50px;
-      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
-      color: rgba(255,255,255,0.72); transition: background .15s, border-color .15s, color .15s;
+      background: rgba(32,31,43,0.035); border: 1px solid rgba(32,31,43,0.11);
+      color: var(--ink-soft); transition: background .15s, border-color .15s, color .15s;
     }
-    .ver-chip:hover { background: rgba(255,255,255,0.12); color: #fff; }
+    .ver-chip:hover { background: rgba(32,31,43,0.07); color: var(--ink); }
     .ver-chip.active {
       background: linear-gradient(135deg, #DC2626, #EA580C);
       border-color: transparent; color: #fff;
@@ -297,19 +414,19 @@
 
     .compare {
       margin-bottom: 20px; padding: 18px 20px;
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(32,31,43,0.035); border: 1px solid rgba(32,31,43,0.11);
       border-radius: 14px;
     }
-    .cmp-head { font-size: 14.5px; font-weight: 900; color: #fff; margin-bottom: 14px; }
+    .cmp-head { font-size: 14.5px; font-weight: 900; color: var(--ink); margin-bottom: 14px; }
     .cmp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .cmp-col { background: rgba(255,255,255,0.04); border-radius: 11px; padding: 14px 16px; border-inline-start: 3px solid transparent; }
+    .cmp-col { background: rgba(32,31,43,0.035); border-radius: 11px; padding: 14px 16px; border-inline-start: 3px solid transparent; }
     .cmp-col.cmp-add  { border-inline-start-color: #4ade80; }
     .cmp-col.cmp-rem  { border-inline-start-color: #fb923c; }
-    .cmp-col.cmp-same { border-inline-start-color: rgba(255,255,255,0.25); }
-    .cmp-col-title { font-size: 12.5px; font-weight: 900; color: rgba(255,255,255,0.62); margin-bottom: 9px; }
+    .cmp-col.cmp-same { border-inline-start-color: rgba(32,31,43,0.2); }
+    .cmp-col-title { font-size: 12.5px; font-weight: 900; color: var(--ink-soft); margin-bottom: 9px; }
     .cmp-list { margin: 0; padding-inline-start: 17px; }
-    .cmp-list li { font-size: 13.5px; color: rgba(255,255,255,0.85); line-height: 1.75; }
-    .cmp-none { margin: 0; font-size: 13.5px; color: rgba(255,255,255,0.4); }
+    .cmp-list li { font-size: 13.5px; color: var(--ink); line-height: 1.75; }
+    .cmp-none { margin: 0; font-size: 13.5px; color: var(--ink-faint); }
     @media (max-width: 700px) { .cmp-grid { grid-template-columns: 1fr; } }
 
     .empty-note {
@@ -370,7 +487,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Go London" />
   <link rel="stylesheet" href="accessibility-widget.css" />
-  <link rel="stylesheet" href="theme-light.css" />
+  <link rel="stylesheet" href="theme-light.css?v=3" />
 </head>
 <body>
 
@@ -445,6 +562,7 @@
           <input type="search" id="pal-search" class="pal-search" placeholder="חיפוש מקום או שכונה" autocomplete="off" />
           <div class="chips pal-areas" id="pal-areas" role="group" aria-label="סינון לפי אזור"></div>
         </div>
+        <div class="pal-status" id="pal-status"></div>
         <div class="palette-list" id="pal-list"></div>
       </aside>
 
@@ -781,20 +899,36 @@
     if (it.desc) body.appendChild(desc);
     body.appendChild(tip);
 
+    /*
+      כל עצירה מקבלת כפתור מידע, ובנוסף כפתור הזמנה כשיש מה להזמין.
+      זה נכון גם למסלול שנבנה אוטומטית וגם ללוח ההרכבה הידנית.
+    */
+    var acts = document.createElement('div');
+    acts.className = 'stop-actions';
+
+    var infoBtn = document.createElement('button');
+    infoBtn.type = 'button';
+    infoBtn.className = 'stop-btn';
+    infoBtn.innerHTML = '<i class="fas fa-circle-info"></i> מידע על המקום';
+    infoBtn.addEventListener('click', function () { openInfo(it); });
+    acts.appendChild(infoBtn);
+
     /* כפתור הזמנה מוצג גם לאתר שהכניסה אליו חינם אך מחייב תפיסת מקום מראש */
     if (!it.free || it.bookAhead) {
       var url = ticketLink(it);
       if (url) {
         var a = document.createElement('a');
-        a.className = 'stop-link';
+        a.className = 'stop-btn stop-btn--book';
         a.href = url;
         a.target = '_blank';
         a.rel = 'sponsored noopener nofollow';
         a.innerHTML = '<i class="fas fa-ticket"></i> ' +
-          (it.free ? 'תפיסת מקום מראש' : 'בדיקת כרטיסים וזמינות');
-        body.appendChild(a);
+          (it.free ? 'תפיסת מקום מראש' : 'כרטיסים ומחירים');
+        acts.appendChild(a);
       }
     }
+
+    body.appendChild(acts);
 
     if (controls) body.appendChild(controls);
 
@@ -981,6 +1115,102 @@
      או ללחוץ עליה והיא נכנסת ליום המסומן. הבחירה נשמרת בדפדפן,
      כדי שתכנון שנעשה בערב אחד לא ילך לאיבוד למחרת.
   */
+  /* ============================================================
+     חלון מידע על מקום
+     ============================================================
+     נפתח מכל רשימה בעמוד, גם מהמאגר וגם מתוך מסלול בנוי, כדי שאפשר
+     יהיה להחליט על מקום לפני שמצרפים אותו. מכיל תמיד את ההסבר,
+     את הפרטים המעשיים, וכפתור הזמנה כשיש מה להזמין.
+  */
+  var infoEl = null;
+  var infoLastFocus = null;
+
+  function buildInfoModal() {
+    infoEl = document.createElement('div');
+    infoEl.className = 'info-overlay';
+    infoEl.setAttribute('role', 'dialog');
+    infoEl.setAttribute('aria-modal', 'true');
+    infoEl.innerHTML =
+      '<div class="info-panel" role="document">' +
+        '<button type="button" class="info-close" aria-label="סגירה"><i class="fas fa-xmark"></i></button>' +
+        '<div class="info-area"></div>' +
+        '<h3 class="info-title"></h3>' +
+        '<div class="info-en"></div>' +
+        '<div class="info-facts"></div>' +
+        '<p class="info-desc"></p>' +
+        '<div class="info-tip" hidden></div>' +
+        '<div class="info-actions"></div>' +
+      '</div>';
+    document.body.appendChild(infoEl);
+
+    infoEl.querySelector('.info-close').addEventListener('click', closeInfo);
+    infoEl.addEventListener('click', function (e) { if (e.target === infoEl) closeInfo(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && infoEl && infoEl.classList.contains('open')) closeInfo();
+    });
+  }
+
+  function openInfo(a) {
+    if (!infoEl) buildInfoModal();
+    infoLastFocus = document.activeElement;
+
+    var area = DATA.areas[a.area] || {};
+    infoEl.querySelector('.info-area').textContent = (area.emoji || '📍') + ' ' + (area.name || '');
+    infoEl.querySelector('.info-title').textContent = a.name;
+    infoEl.querySelector('.info-en').textContent = a.nameEn;
+    infoEl.querySelector('.info-desc').textContent = a.desc || '';
+
+    infoEl.querySelector('.info-facts').innerHTML =
+      '<span class="fact ' + (a.free ? 'free' : 'paid') + '">' +
+        '<i class="fas ' + (a.free ? 'fa-check' : 'fa-tag') + '"></i>' + a.priceBand + '</span>' +
+      '<span class="fact"><i class="far fa-clock"></i>' + hoursText(a.hours) + '</span>' +
+      '<span class="fact"><i class="fas fa-train-subway"></i>' + a.tube + '</span>' +
+      (a.bookAhead ? '<span class="fact book"><i class="far fa-calendar-check"></i>להזמין מראש</span>' : '');
+
+    var tipEl = infoEl.querySelector('.info-tip');
+    if (a.tip) {
+      tipEl.hidden = false;
+      tipEl.textContent = '💡 ' + a.tip;
+    } else {
+      tipEl.hidden = true;
+    }
+
+    var actions = infoEl.querySelector('.info-actions');
+    actions.innerHTML = '';
+
+    var add = document.createElement('button');
+    add.type = 'button';
+    add.className = 'info-btn info-btn--primary';
+    add.innerHTML = '<i class="fas fa-plus"></i> הוספה למסלול';
+    add.addEventListener('click', function () { addStop(a.id); closeInfo(); });
+    actions.appendChild(add);
+
+    if (!a.free || a.bookAhead) {
+      var url = ticketLink(a);
+      if (url) {
+        var book = document.createElement('a');
+        book.className = 'info-btn info-btn--book';
+        book.href = url;
+        book.target = '_blank';
+        book.rel = 'sponsored noopener nofollow';
+        book.innerHTML = '<i class="fas fa-ticket"></i> ' +
+          (a.free ? 'תפיסת מקום מראש' : 'כרטיסים ומחירים');
+        actions.appendChild(book);
+      }
+    }
+
+    infoEl.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    infoEl.querySelector('.info-close').focus();
+  }
+
+  function closeInfo() {
+    if (!infoEl) return;
+    infoEl.classList.remove('open');
+    document.body.style.overflow = '';
+    if (infoLastFocus && infoLastFocus.focus) infoLastFocus.focus();
+  }
+
   var MANUAL_KEY = 'golondon_manual_v1';
   var manual = { days: [[]], active: 0 };
   var palState = { area: 'all', q: '' };
@@ -1031,60 +1261,155 @@
     return s;
   }
 
+  /*
+    סינון לפי אזור. כל אזור מקבל נקודת צבע משלו וספירה של כמה מקומות יש בו,
+    כדי שיהיה ברור מראש לאן שווה ללחוץ ואיפה יש מעט תוכן.
+  */
   function renderPaletteAreas() {
     var box = $('pal-areas');
     box.innerHTML = '';
-    var areas = [{ id: 'all', name: 'הכל', emoji: '🗺️' }];
+
+    var counts = {};
+    DATA.attractions.forEach(function (a) { counts[a.area] = (counts[a.area] || 0) + 1; });
+
+    var areas = [{ id: 'all', name: 'כל האזורים', color: 'linear-gradient(135deg,#DC2626,#EA580C)', n: DATA.attractions.length }];
     Object.keys(DATA.areas).forEach(function (k) {
-      areas.push({ id: k, name: DATA.areas[k].name, emoji: DATA.areas[k].emoji });
+      areas.push({ id: k, name: DATA.areas[k].name, color: AREA_COLORS[k] || '#EA580C', n: counts[k] || 0 });
     });
+
     areas.forEach(function (a) {
-      box.appendChild(makeChip(a.name, a.emoji, palState.area === a.id, function () {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'area-btn' + (palState.area === a.id ? ' is-on' : '');
+      b.setAttribute('aria-pressed', palState.area === a.id ? 'true' : 'false');
+      b.style.setProperty('--area-color', a.color);
+      b.innerHTML =
+        '<span class="area-dot"></span>' +
+        '<span class="area-name">' + a.name + '</span>' +
+        '<span class="area-count">' + a.n + '</span>';
+      b.addEventListener('click', function () {
         palState.area = a.id;
         renderPaletteAreas();
         renderPalette();
-      }));
+      });
+      box.appendChild(b);
+    });
+  }
+
+  /* צבע הפס בכרטיס נגזר מהאזור, כדי שאפשר יהיה לזהות אזור במבט מהיר */
+  var AREA_COLORS = {
+    westminster: '#DC2626', city: '#2563EB', southbank: '#0891B2', kensington: '#7C3AED',
+    camden: '#DB2777', shoreditch: '#EA580C', greenwich: '#059669', outer: '#CA8A04'
+  };
+
+  function filteredAttractions() {
+    var q = palState.q.trim().toLowerCase();
+    return DATA.attractions.filter(function (a) {
+      if (palState.area !== 'all' && a.area !== palState.area) return false;
+      if (!q) return true;
+      return (a.name + ' ' + a.nameEn + ' ' + a.tube + ' ' + (a.desc || '')).toLowerCase().indexOf(q) !== -1;
     });
   }
 
   function renderPalette() {
     var list = $('pal-list');
+    var status = $('pal-status');
     list.innerHTML = '';
-    var used = usedIds();
-    var q = palState.q.trim().toLowerCase();
+    status.innerHTML = '';
 
-    var items = DATA.attractions.filter(function (a) {
-      if (palState.area !== 'all' && a.area !== palState.area) return false;
-      if (!q) return true;
-      return (a.name + ' ' + a.nameEn + ' ' + a.tube + ' ' + (a.desc || '')).toLowerCase().indexOf(q) !== -1;
-    });
+    var used = usedIds();
+    var items = filteredAttractions();
+    var filtering = palState.q.trim() !== '' || palState.area !== 'all';
+
+    /* חיווי כמות התוצאות, כי בלעדיו לא ברור אם החיפוש בכלל פעל */
+    var count = document.createElement('span');
+    count.textContent = items.length === 1 ? 'מקום אחד' : items.length + ' מקומות';
+    status.appendChild(count);
+
+    if (filtering) {
+      var clear = document.createElement('button');
+      clear.type = 'button';
+      clear.className = 'pal-clear';
+      clear.textContent = 'ניקוי הסינון';
+      clear.addEventListener('click', function () {
+        palState.q = '';
+        palState.area = 'all';
+        $('pal-search').value = '';
+        renderPaletteAreas();
+        renderPalette();
+      });
+      status.appendChild(clear);
+    }
 
     if (!items.length) {
       var none = document.createElement('p');
       none.className = 'pal-empty';
-      none.textContent = 'לא נמצאו מקומות שמתאימים לחיפוש הזה.';
+      none.textContent = palState.area !== 'all' && palState.q.trim()
+        ? 'אין מקום שמתאים גם לחיפוש הזה וגם לאזור שנבחר. נסו לנקות את אחד מהם.'
+        : 'לא נמצאו מקומות שמתאימים לחיפוש הזה.';
       list.appendChild(none);
       return;
     }
 
     items.forEach(function (a) {
-      var cube = document.createElement('button');
-      cube.type = 'button';
-      cube.className = 'cube' + (used[a.id] ? ' cube--used' : '');
+      var area = DATA.areas[a.area] || {};
+      var isUsed = !!used[a.id];
+
+      var cube = document.createElement('div');
+      cube.className = 'cube' + (isUsed ? ' cube--used' : '');
+      cube.style.setProperty('--cube-accent', AREA_COLORS[a.area] || '#EA580C');
       cube.setAttribute('draggable', 'true');
       cube.setAttribute('data-id', a.id);
-      cube.title = a.desc || a.name;
 
-      var area = DATA.areas[a.area] || {};
-      cube.innerHTML =
-        '<span class="cube-name">' + a.name + '</span>' +
-        '<span class="cube-meta">' + (area.emoji || '📍') + ' ' + (area.name || '') + ' · ' + hoursText(a.hours) + '</span>' +
-        '<span class="cube-badges">' +
-          '<span class="cube-badge ' + (a.free ? 'is-free' : 'is-paid') + '">' + a.priceBand + '</span>' +
-          (used[a.id] ? '<span class="cube-badge is-used">כבר במסלול</span>' : '') +
-        '</span>';
+      var emoji = document.createElement('span');
+      emoji.className = 'cube-emoji cube-grip';
+      emoji.textContent = area.emoji || '📍';
+      emoji.title = 'אפשר לגרור את הכרטיס אל אחד הימים';
 
-      cube.addEventListener('click', function () { addStop(a.id); });
+      var name = document.createElement('span');
+      name.className = 'cube-name';
+      name.textContent = a.name;
+
+      var meta = document.createElement('span');
+      meta.className = 'cube-meta';
+      meta.textContent = (area.name || '') + ' · ' + hoursText(a.hours) + ' · ' + a.tube;
+
+      var desc = document.createElement('p');
+      desc.className = 'cube-desc';
+      desc.textContent = a.desc || '';
+
+      var badges = document.createElement('span');
+      badges.className = 'cube-badges';
+      badges.innerHTML =
+        '<span class="cube-badge ' + (a.free ? 'is-free' : 'is-paid') + '">' + a.priceBand + '</span>' +
+        (a.bookAhead ? '<span class="cube-badge">להזמין מראש</span>' : '') +
+        (isUsed ? '<span class="cube-badge is-used">כבר במסלול</span>' : '');
+
+      var actions = document.createElement('span');
+      actions.className = 'cube-actions';
+
+      var addBtn = document.createElement('button');
+      addBtn.type = 'button';
+      addBtn.className = 'cube-btn cube-btn--add';
+      addBtn.innerHTML = '<i class="fas fa-plus"></i> הוספה למסלול';
+      addBtn.addEventListener('click', function () { addStop(a.id); });
+
+      var infoBtn = document.createElement('button');
+      infoBtn.type = 'button';
+      infoBtn.className = 'cube-btn';
+      infoBtn.innerHTML = '<i class="fas fa-circle-info"></i> מידע';
+      infoBtn.addEventListener('click', function () { openInfo(a); });
+
+      actions.appendChild(addBtn);
+      actions.appendChild(infoBtn);
+
+      cube.appendChild(emoji);
+      cube.appendChild(name);
+      cube.appendChild(meta);
+      if (a.desc) cube.appendChild(desc);
+      cube.appendChild(badges);
+      cube.appendChild(actions);
+
       cube.addEventListener('dragstart', function (ev) {
         ev.dataTransfer.setData('text/plain', a.id);
         ev.dataTransfer.effectAllowed = 'copy';
@@ -1337,10 +1662,29 @@
     $('tab-auto').addEventListener('click', function () { setMode('auto'); });
     $('tab-manual').addEventListener('click', function () { setMode('manual'); });
 
-    $('pal-search').addEventListener('input', function (e) {
+    var search = $('pal-search');
+    search.addEventListener('input', function (e) {
       palState.q = e.target.value || '';
       renderPalette();
     });
+
+    /*
+      במובייל המקלדת מכסה את התוצאות ולא ברור אם החיפוש בכלל פעל.
+      לחיצה על אישור סוגרת את המקלדת, מגלגלת אל התוצאות, ואומרת כמה נמצאו.
+    */
+    function commitSearch() {
+      search.blur();
+      var n = filteredAttractions().length;
+      var list = $('pal-list');
+      if (list.scrollIntoView) list.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      toast(n === 0 ? 'לא נמצאו מקומות מתאימים' : (n === 1 ? 'נמצא מקום אחד' : 'נמצאו ' + n + ' מקומות'));
+    }
+
+    search.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); commitSearch(); }
+    });
+    /* שדה מסוג search מפעיל את האירוע הזה גם בלחיצה על הכפתור לניקוי */
+    search.addEventListener('search', function () { commitSearch(); });
 
     $('add-day').addEventListener('click', addDay);
     $('m-print').addEventListener('click', function () { window.print(); });
