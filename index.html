@@ -123,7 +123,8 @@
         }, 380);
       }
 
-      var timer = setTimeout(hideSplash, 1000);
+      /* שנייה וארבע עשיריות. מספיק כדי לקלוט את הלוגו, ולא מספיק כדי להתעכב */
+      var timer = setTimeout(hideSplash, 1400);
       splash.addEventListener('click', function () { clearTimeout(timer); hideSplash(); });
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') { clearTimeout(timer); hideSplash(); }
