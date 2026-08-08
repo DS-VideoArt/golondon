@@ -21,6 +21,31 @@
   var data = null;
   var modal, panel, titleEl, tagEl, bodyEl, closeBtn;
   var lastFocused = null;
+  var affCfg = null;
+
+  /*
+    כתובת כפתור ההזמנה.
+    אם שכבת קישורי ההכנסה נטענה, הקישור נבנה דרכה כדי שהלחיצה תיספר
+    ותישא עמלה, עם מזהה מקור נפרד לכל מקום. אם היא לא נטענה, מוחזרת
+    הכתובת הישירה שרשומה בקובץ הנתונים, כדי שהכפתור תמיד יעבוד.
+  */
+  function ctaUrl(cta, placeId) {
+    var offerId = cta.offer || 'attractions_alt';
+    if (affCfg && window.GoLondonAffiliate && window.GoLondonAffiliate.linkFor) {
+      var url = window.GoLondonAffiliate.linkFor(affCfg, offerId, 'placeinfo', placeId);
+      if (url) return url;
+    }
+    return cta.href || '#';
+  }
+
+  function hookAffiliate(tries) {
+    tries = tries || 0;
+    if (window.GoLondonAffiliate && window.GoLondonAffiliate.whenReady) {
+      window.GoLondonAffiliate.whenReady(function (cfg) { affCfg = cfg; });
+      return;
+    }
+    if (tries < 40) setTimeout(function () { hookAffiliate(tries + 1); }, 50);
+  }
 
   /*
     document.currentScript תקף רק בזמן שהסקריפט רץ בפועל. אם נקרא לו
@@ -119,7 +144,7 @@
     if (item.cta) {
       var a = document.createElement('a');
       a.className = 'pi-cta';
-      a.href = item.cta.href || '#';
+      a.href = ctaUrl(item.cta, id);
       a.target = '_blank';
       a.rel = 'sponsored noopener nofollow';
       a.innerHTML = '<i class="fas fa-ticket"></i> ' + item.cta.label;
@@ -161,6 +186,7 @@
 
     injectStyles();
     buildModal();
+    hookAffiliate();
 
     fetch(src, { cache: 'no-cache' })
       .then(function (r) { if (!r.ok) throw new Error('place-info source לא נטען'); return r.json(); })
