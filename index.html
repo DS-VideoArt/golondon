@@ -214,11 +214,6 @@
         בונים מסלול יומי מותאם, מוצאים אוכל כשר על המפה, ויודעים בדיוק למה לצפות בחודש שבו אתם טסים
       </p>
 
-      <ul class="hero-points">
-        <li><i class="fas fa-check"></i> בעברית, ובלי תרגום מכונה</li>
-        <li><i class="fas fa-check"></i> נכתב לפי מה שישראלים באמת שואלים</li>
-        <li><i class="fas fa-check"></i> מתעדכן, ולא נשאר במחירים של אשתקד</li>
-      </ul>
       <div class="hero-actions">
         <a href="planner.html" class="btn btn-red btn-glow">
           <i class="fas fa-wand-magic-sparkles"></i> בנו לי מסלול
@@ -438,8 +433,11 @@
           <h3><i class="fas fa-envelope"></i> קבלו עדכונים ישירות למייל</h3>
           <p>מדריכים חדשים, מידע שימושי ודילים, בלי ספאם, מבטיחים</p>
         </div>
-        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
-          <input type="email" placeholder="כתובת המייל שלכם" required />
+        <form class="newsletter-form" name="golondon-newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleNewsletter(event)">
+          <input type="hidden" name="form-name" value="golondon-newsletter" />
+          <p style="display:none"><label>אל תמלאו <input name="bot-field" /></label></p>
+          <label class="sr-only" for="nlEmail">כתובת המייל שלכם</label>
+          <input type="email" id="nlEmail" name="email" placeholder="כתובת המייל שלכם" autocomplete="email" required />
           <button type="submit" class="btn btn-red">הרשמה בחינם</button>
         </form>
       </div>
@@ -586,5 +584,11 @@
   <input type="text" name="bot-field" />
 </form>
 <script src="community-ask.js" defer></script>
+
+<form name="golondon-newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="golondon-newsletter" />
+  <input type="email" name="email" />
+  <input type="text" name="bot-field" />
+</form>
 </body>
 </html>

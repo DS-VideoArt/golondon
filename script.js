@@ -117,12 +117,43 @@ document.head.insertAdjacentHTML('beforeend', `
 `);
 
 // טופס ניוזלטר
+/*
+  הרשמה לעדכונים במייל.
+  עד כה הפונקציה הזו רק הציגה הודעת הצלחה ולא שמרה שום דבר, ולכן כל
+  הכתובות שנרשמו אבדו. עכשיו הכתובת נשלחת לטפסים של נטליפיי ונשמרת שם,
+  ומשם גם יוצאת התראה למייל לפי ההגדרה בלוח הבקרה.
+*/
 function handleNewsletter(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('button');
-  const input = e.target.querySelector('input');
-  btn.textContent = '✓ נרשמת!';
-  btn.style.background = '#16a34a';
-  input.value = '';
-  setTimeout(() => { btn.textContent = 'הרשמה — חינם'; btn.style.background = ''; }, 3000);
+  const form = e.target;
+  const btn = form.querySelector('button');
+  const input = form.querySelector('input[type="email"]');
+  const original = btn.textContent;
+
+  if (form.querySelector('[name="bot-field"]') && form.querySelector('[name="bot-field"]').value) return;
+
+  btn.disabled = true;
+  btn.textContent = 'שולח...';
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(new FormData(form)).toString()
+  })
+  .then(function () {
+    btn.textContent = '✓ נרשמת!';
+    btn.style.background = '#16a34a';
+    input.value = '';
+  })
+  .catch(function () {
+    btn.textContent = 'נסו שוב';
+    btn.style.background = '#b91c1c';
+  })
+  .then(function () {
+    setTimeout(function () {
+      btn.disabled = false;
+      btn.textContent = original;
+      btn.style.background = '';
+    }, 3000);
+  });
 }
