@@ -86,6 +86,12 @@
 
     .empty-state { text-align: center; padding: 60px 0; color: rgba(255,255,255,0.35); }
     .empty-state i { font-size: 40px; display: block; margin-bottom: 14px; opacity: 0.4; }
+
+    .search-sub { font-size: 15px; margin-top: 10px; opacity: .85; }
+    .search-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .sf-btn { font: inherit; font-size: 13px; font-weight: 800; cursor: pointer; padding: 8px 14px; border-radius: 50px; border: 1px solid; }
+    .sf-count { font-size: 11.5px; opacity: .65; margin-inline-start: 5px; }
+    .result-type { font-size: 11px; font-weight: 900; padding: 3px 9px; border-radius: 50px; margin-inline-start: 7px; }
   </style>
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#DC2626" />
@@ -116,14 +122,16 @@
 
 <main>
 <div class="search-hero">
-  <h1>🔍 חפשו כל נושא באתר</h1>
+  <h1>🔍 חיפוש בכל האתר</h1>
+  <p class="search-sub">מדריכים, אטרקציות, מקומות כשרים, פוסטים ועמודי חודשים, הכל במקום אחד</p>
   <form class="search-form" id="searchForm">
-    <input type="text" id="searchInput" placeholder="לדוגמה: פאבים, כרטיס אויסטר, פסטיבל הקולנוע..." autocomplete="off" />
+    <input type="text" id="searchInput" placeholder="לדוגמה: מוזיאון, אויסטר, כשר בגולדרס גרין, לונדון בפברואר" autocomplete="off" />
     <button type="submit">חפש</button>
   </form>
 </div>
 
 <div class="results-wrap">
+  <div class="search-filters" id="searchFilters" hidden></div>
   <div class="results-count" id="resultsCount"></div>
   <div id="resultsList"></div>
 </div>
@@ -154,54 +162,133 @@ function snippetAround(text, q) {
   return (start > 0 ? '… ' : '') + plain.slice(start, start + 160);
 }
 
-async function runSearch(q) {
+/*
+  חיפוש בכל האתר.
+  טוען אינדקס אחד שנבנה מראש ומכיל מדריכים, עמודי חודשים, פוסטים,
+  אטרקציות ומקומות כשרים. הדירוג פשוט ומכוון: התאמה בכותרת שווה
+  יותר מהתאמה בגוף הטקסט, כדי שהתוצאה המדויקת תעלה למעלה.
+*/
+let SEARCH_INDEX = null;
+let LAST_MATCHES = [];
+let ACTIVE_TYPE = 'all';
+
+const TYPE_ORDER = ['guide', 'month', 'place', 'kosher', 'post', 'tool'];
+
+async function loadIndex() {
+  if (SEARCH_INDEX) return SEARCH_INDEX;
+  try {
+    const res = await fetch('search-index.json?v=' + Date.now());
+    SEARCH_INDEX = await res.json();
+  } catch (e) {
+    SEARCH_INDEX = { labels: {}, items: [] };
+  }
+  return SEARCH_INDEX;
+}
+
+function scoreOf(item, q) {
+  const title = (item.title || '').toLowerCase();
+  const cat = (item.cat || '').toLowerCase();
+  const desc = (item.desc || '').toLowerCase();
+  const text = (item.text || '').toLowerCase();
+
+  if (title === q) return 100;
+  if (title.startsWith(q)) return 80;
+  if (title.includes(q)) return 60;
+  if (cat.includes(q)) return 40;
+  if (desc.includes(q)) return 30;
+  if (text.includes(q)) return 15;
+  return 0;
+}
+
+function renderFilters(q) {
+  const box = document.getElementById('searchFilters');
+  const labels = (SEARCH_INDEX && SEARCH_INDEX.labels) || {};
+  const counts = {};
+  LAST_MATCHES.forEach(m => { counts[m.type] = (counts[m.type] || 0) + 1; });
+
+  const types = TYPE_ORDER.filter(t => counts[t]);
+  if (!LAST_MATCHES.length) { box.hidden = true; return; }
+  box.hidden = false;
+  box.innerHTML = '';
+
+  const mk = (key, name, n) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'sf-btn' + (ACTIVE_TYPE === key ? ' is-on' : '');
+    b.setAttribute('aria-pressed', ACTIVE_TYPE === key ? 'true' : 'false');
+    b.innerHTML = name + '<span class="sf-count">' + n + '</span>';
+    b.addEventListener('click', () => { ACTIVE_TYPE = key; paint(q); });
+    return b;
+  };
+
+  box.appendChild(mk('all', 'הכל', LAST_MATCHES.length));
+  types.forEach(t => box.appendChild(mk(t, labels[t] || t, counts[t])));
+}
+
+function paint(q) {
   const list = document.getElementById('resultsList');
   const count = document.getElementById('resultsCount');
-  list.innerHTML = '';
-  count.textContent = '';
-  if (!q || !q.trim()) return;
+  const labels = (SEARCH_INDEX && SEARCH_INDEX.labels) || {};
 
-  let posts = [];
-  try {
-    const res = await fetch('posts.json?v=' + Date.now());
-    posts = await res.json();
-  } catch {}
+  const shown = ACTIVE_TYPE === 'all'
+    ? LAST_MATCHES
+    : LAST_MATCHES.filter(m => m.type === ACTIVE_TYPE);
 
-  const qLower = q.trim().toLowerCase();
-  const matches = posts.filter(p => {
-    const text = p.title + ' ' + (p.desc || p.content || '') + ' ' + (p.category || '');
-    return text.toLowerCase().includes(qLower);
-  });
+  renderFilters(q);
 
-  count.textContent = matches.length ? `נמצאו ${matches.length} תוצאות` : '';
+  count.textContent = shown.length
+    ? (shown.length === 1 ? 'נמצאה תוצאה אחת' : 'נמצאו ' + shown.length + ' תוצאות')
+    : '';
 
-  if (!matches.length) {
-    list.innerHTML = `
-      <div class="empty-state">
-        <i class="fas fa-search"></i>
-        <p>לא נמצאו תוצאות עבור "${escHtml(q)}"</p>
-      </div>`;
+  if (!shown.length) {
+    list.innerHTML = '<div class="empty-state"><i class="fas fa-search"></i>' +
+      '<p>לא נמצאו תוצאות עבור "' + escHtml(q) + '"</p></div>';
     return;
   }
 
-  list.innerHTML = matches.map(p => {
-    const text = p.desc || p.content || '';
-    const emoji = CATEGORY_EMOJI[p.category] || '📰';
-    const img = p.image && !p.image.startsWith('http')
-      ? `<img src="${escHtml(p.image)}" alt="${escHtml(p.title)}" loading="lazy" width="96" height="96" onerror="this.parentElement.innerHTML='${emoji}'" />`
+  list.innerHTML = shown.slice(0, 60).map(p => {
+    const emoji = CATEGORY_EMOJI[p.cat] || TYPE_EMOJI[p.type] || '📄';
+    const img = p.img && !p.img.startsWith('http')
+      ? '<img src="' + escHtml(p.img) + '" alt="" loading="lazy" width="96" height="96" onerror="this.parentElement.innerHTML=\'' + emoji + '\'" />'
       : emoji;
-    return `
-    <a class="result-card" href="category.html?cat=${encodeURIComponent(p.category)}#post-${p.id}">
-      <div class="result-img">${img}</div>
-      <div class="result-body">
-        <span class="result-cat">${escHtml(p.category)}</span>
-        <div class="result-title">${highlight(p.title, q)}</div>
-        <div class="result-snippet">${highlight(snippetAround(text, q), q)}</div>
-      </div>
-    </a>`;
+    const body = p.desc || p.text || '';
+    return '<a class="result-card" href="' + escHtml(p.url) + '">' +
+      '<div class="result-img">' + img + '</div>' +
+      '<div class="result-body">' +
+        '<span class="result-cat">' + escHtml(p.cat || '') +
+          '<span class="result-type">' + escHtml(labels[p.type] || '') + '</span>' +
+        '</span>' +
+        '<div class="result-title">' + highlight(p.title, q) + '</div>' +
+        '<div class="result-snippet">' + highlight(snippetAround(body, q), q) + '</div>' +
+      '</div></a>';
   }).join('');
 }
 
+const TYPE_EMOJI = { guide: '📗', month: '📅', place: '📍', kosher: '✡️', post: '📰', tool: '🛠️' };
+
+async function runSearch(q) {
+  const list = document.getElementById('resultsList');
+  const count = document.getElementById('resultsCount');
+  const filters = document.getElementById('searchFilters');
+  list.innerHTML = '';
+  count.textContent = '';
+  filters.hidden = true;
+  if (!q || !q.trim()) return;
+
+  const idx = await loadIndex();
+  const qLower = q.trim().toLowerCase();
+
+  LAST_MATCHES = idx.items
+    .map(it => ({ it: it, s: scoreOf(it, qLower) }))
+    .filter(x => x.s > 0)
+    .sort((a, b) => b.s - a.s)
+    .map(x => x.it);
+
+  ACTIVE_TYPE = 'all';
+  paint(q);
+}
+
+/* טעינה עם פרמטר חיפוש בכתובת, למשל מהחיפוש שבתפריט העליון */
 const params = new URLSearchParams(window.location.search);
 const initialQ = params.get('q') || '';
 document.getElementById('searchInput').value = initialQ;
