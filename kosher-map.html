@@ -445,18 +445,15 @@ function locateMe() {
 <script>
 function openKashrusInfo() {
   var m = document.getElementById('kashrusInfo');
-  m.hidden = false;
   /*
-    כפיית חישוב פריסה לפני הוספת המחלקה, כדי שהמעבר ירוץ.
-    בעבר השתמשנו כאן ב-requestAnimationFrame, אבל הוא לא תמיד מופעל,
-    ואז החלון היה נשאר שקוף לחלוטין ובלתי נראה. זה בטוח יותר.
+    פתיחה וסגירה נשענות על תכונה אחת בלבד. אין כאן אנימציה ואין המתנה
+    לפריים הבא, כי בדיוק התלות הזאת היא שגרמה בעבר לחלון להישאר בלתי
+    נראה למרות שהוא היה פתוח.
   */
-  m.classList.add('ki-open');
+  m.hidden = false;
 }
 function closeKashrusInfo() {
-  var m = document.getElementById('kashrusInfo');
-  m.classList.remove('ki-open');
-  m.hidden = true;
+  document.getElementById('kashrusInfo').hidden = true;
 }
 document.addEventListener('keydown', function (e) {
   var m = document.getElementById('kashrusInfo');
