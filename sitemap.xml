@@ -81,6 +81,41 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://golondon.co.il/guide-football-matchday.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-football-arsenal.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-football-chelsea.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-football-tottenham.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-football-wembley.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-football-womens.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-football-other-sports.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://golondon.co.il/guide-attractions.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

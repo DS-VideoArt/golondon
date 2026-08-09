@@ -270,10 +270,52 @@
      "img": "images/football-tickets.jpg"
     },
     {
+     "url": "guide-football-matchday.html",
+     "title": "יום משחק, איך זה נראה בפועל",
+     "desc": "מתי לצאת, מה מותר להכניס לאצטדיון, איפה כדאי לשבת, ולמה אסור לבנות טיסות סביב תאריך משחק שעדיין לא סופי.",
+     "img": "images/football-matchday.jpg"
+    },
+    {
+     "url": "guide-football-arsenal.html",
+     "title": "ארסנל והאמירייטס",
+     "desc": "האמירייטס: כמה מקומות יש בו, איך מגיעים בשלוש תחנות שונות, ומה הסיכוי האמיתי להשיג כרטיס למשחק.",
+     "img": "images/football-arsenal.jpg"
+    },
+    {
+     "url": "guide-football-chelsea.html",
+     "title": "צ׳לסי וסטמפורד ברידג׳",
+     "desc": "סטמפורד ברידג׳: אצטדיון מ-1877 שתחום מכל צדדיו ולכן לא גדל, איך מגיעים אליו, ומה הסיכוי להשיג כרטיס.",
+     "img": "images/football-chelsea.jpg"
+    },
+    {
+     "url": "guide-football-tottenham.html",
+     "title": "טוטנהאם והאצטדיון הגדול בעיר",
+     "desc": "האצטדיון הגדול בעיר: מגרש נשלף ראשון מסוגו בעולם, מבשלת בירה, ומשחקי NFL. איך מגיעים ומה הסיכוי לכרטיס.",
+     "img": "images/football-tottenham.jpg"
+    },
+    {
+     "url": "guide-football-wembley.html",
+     "title": "ומבלי, האצטדיון הלאומי",
+     "desc": "תשעים אלף מקומות וקשת בגובה 133 מטרים. אילו אירועים מתקיימים שם, איך מגיעים, ולמה הסיור עדיף לילדים על משחק אמיתי.",
+     "img": "images/football-wembley.jpg"
+    },
+    {
+     "url": "guide-football-womens.html",
+     "title": "כדורגל נשים בלונדון",
+     "desc": "שבע קבוצות מלונדון בליגה הנשית, כרטיסים זמינים וזולים, ואפשרות לראות משחק בסטמפורד ברידג׳ או באמירייטס בלי חברות מועדון.",
+     "img": "images/football-womens.jpg"
+    },
+    {
      "url": "guide-football-tours.html",
      "title": "סיורי אצטדיון בלונדון, מה כלול ומה חשוב לבדוק",
      "desc": "סיורים מודרכים באצטדיוני לונדון: מה כלול בסיור, כמה זמן הוא נמשך, ולמה חובה לבדוק את לוח המשחקים לפני שקונים.",
      "img": "images/football-tours.jpg"
+    },
+    {
+     "url": "guide-football-other-sports.html",
+     "title": "ספורט אחר בלונדון",
+     "desc": "לורדס, טוויקנהאם, ווימבלדון והאובל. איפה קל יותר להשיג כרטיס מאשר לכדורגל, ומה שווה גם למי שלא מבין בענף.",
+     "img": "images/football-other-sports.jpg"
     }
    ]
   },
