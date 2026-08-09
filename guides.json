@@ -319,6 +319,73 @@
     }
    ]
   },
+  "events": {
+   "hub": "guide-events.html",
+   "label": "אירועים ומועדים",
+   "postCat": "אירועים",
+   "articles": [
+    {
+     "url": "guide-events-closures.html",
+     "title": "חגים רשמיים, מה סגור ומתי",
+     "desc": "טבלת ימי החג ל-2026 ול-2027, ומה באמת קורה בכל אחד. כולל האזהרה החשובה: בחג המולד אין תחבורה ציבורית בכלל.",
+     "img": "images/events-closures.jpg"
+    },
+    {
+     "url": "guide-events-bonfire.html",
+     "title": "בונפייר נייט, ליל המדורות",
+     "desc": "מה קרה ב-1605, איך חוגגים את זה היום בלונדון, איך מוצאים אירוע, ומה חשוב לדעת לפני שיוצאים בערב קר לפארק.",
+     "img": "images/events-bonfire.jpg"
+    },
+    {
+     "url": "guide-events-christmas.html",
+     "title": "חג המולד בלונדון",
+     "desc": "מתי נדלקת התאורה, אילו שווקי חורף שווים, איך לתכנן דצמבר בלי להיתקע בצפיפות, ומה קורה ב-25 בדצמבר.",
+     "img": "images/events-christmas.jpg"
+    },
+    {
+     "url": "guide-events-newyear.html",
+     "title": "ערב השנה החדשה בלונדון",
+     "desc": "איך רואים את הזיקוקים על התמזה בלי להיתקע, למה החזרה הביתה היא החלק שדורש תכנון, ולמה המצעד בבוקר עדיף עם ילדים.",
+     "img": "images/events-newyear.jpg"
+    },
+    {
+     "url": "guide-events-carnival.html",
+     "title": "קרנבל נוטינג היל",
+     "desc": "שני מיליון איש בסוף אוגוסט. מה ההבדל בין שלושת הימים, איזה יום מתאים למשפחות, ואיך מגיעים כשהתחנות נסגרות.",
+     "img": "images/events-carnival.jpg"
+    },
+    {
+     "url": "guide-events-pride.html",
+     "title": "מצעד הגאווה בלונדון",
+     "desc": "כמיליון וחצי איש, מסלול שעובר בפיקדילי ובטרפלגר סקוור, והצפייה חינם. גם למי שלא בא בשבילו כדאי לדעת שהמרכז חסום.",
+     "img": "images/events-pride.jpg"
+    },
+    {
+     "url": "guide-events-royal.html",
+     "title": "טקסים מלכותיים לאורך השנה",
+     "desc": "טרופינג דה קולור ביוני, מצעד הלורד מייור בנובמבר, וחילופי המשמר. מתי הם, איפה לעמוד, ולמה חובה לבדוק את הלוח הרשמי.",
+     "img": "images/events-royal.jpg"
+    },
+    {
+     "url": "guide-events-marathon.html",
+     "title": "מרתון לונדון",
+     "desc": "יותר ממיליון בקשות להגרלה וסיכוי של פחות משלושה אחוזים. איך נכנסים למרוץ, איפה הכי טוב לצפות, ואילו רחובות חסומים.",
+     "img": "images/events-marathon.jpg"
+    },
+    {
+     "url": "guide-events-wimbledon.html",
+     "title": "ווימבלדון, איך נכנסים",
+     "desc": "שלוש דרכים להיכנס: ההגרלה השנתית, התור הפיזי ביום המשחק, והסיור שפועל כל השנה בלי הגרלות ובלי המתנה.",
+     "img": "images/events-wimbledon.jpg"
+    },
+    {
+     "url": "guide-events-multicultural.html",
+     "title": "חגיגות של קהילות בלונדון",
+     "desc": "ראש השנה הסיני בצ׳יינה טאון, דיוואלי בטרפלגר סקוור ופסטיבלי קיץ. חגיגות רחוב חינמיות שלא מופיעות במדריכי התיירים.",
+     "img": "images/events-multicultural.jpg"
+    }
+   ]
+  },
   "flight": {
    "hub": "guide-flight.html",
    "label": "התכנון והטיסה",

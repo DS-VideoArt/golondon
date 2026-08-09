@@ -25,6 +25,11 @@ CLUSTERS = collections.OrderedDict([
                   'pages':['guide-kosher-meat.html','guide-kosher-dairy.html','guide-kosher-bakeries.html','guide-kosher-golders-green.html','guide-kosher-hendon.html','guide-kosher-edgware.html']}),
  ('football',    {'hub':'guide-football.html',    'label':'כדורגל',    'postCat':'כדורגל',
                   'pages':['guide-football-stadiums.html','guide-football-tickets.html','guide-football-matchday.html','guide-football-arsenal.html','guide-football-chelsea.html','guide-football-tottenham.html','guide-football-wembley.html','guide-football-womens.html','guide-football-tours.html','guide-football-other-sports.html']}),
+ ('events',       {'hub':'guide-events.html',      'label':'אירועים ומועדים','postCat':'אירועים',
+                  'pages':['guide-events-closures.html','guide-events-bonfire.html','guide-events-christmas.html',
+                           'guide-events-newyear.html','guide-events-carnival.html','guide-events-pride.html',
+                           'guide-events-royal.html','guide-events-marathon.html','guide-events-wimbledon.html',
+                           'guide-events-multicultural.html']}),
  ('flight',      {'hub':'guide-flight.html',      'label':'התכנון והטיסה','postCat':'תכנון הטיול',
                   'pages':['guide-flight-eta.html','guide-flight-budget.html','guide-flight-money.html']}),
 ])
