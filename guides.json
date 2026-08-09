@@ -105,10 +105,22 @@
    "postCat": "אטרקציות",
    "articles": [
     {
+     "url": "guide-attractions-museums.html",
+     "title": "המוזיאונים הגדולים של לונדון",
+     "desc": "שבעת המוזיאונים המרכזיים: מה יש בכל אחד, מה לראות אם יש לכם רק שעה, כמה מבקרים הם מקבלים, ומה כן עולה כסף.",
+     "img": "images/attractions-museums.jpg"
+    },
+    {
      "url": "guide-attractions-free.html",
      "title": "מה אפשר לעשות בלונדון בחינם",
      "desc": "המוזיאונים הלאומיים, תצפיות חינמיות, פארקים ושווקים. מה באמת אפשר לעשות בלונדון בלי לשלם על כניסה.",
      "img": "images/attractions-free.jpg"
+    },
+    {
+     "url": "guide-attractions-royal.html",
+     "title": "אתרי המלוכה וטקס חילופי המשמר",
+     "desc": "הארמונות, המנזר והטירות, ומה שחשוב לדעת על טקס חילופי המשמר: הוא לא מתקיים כל יום, ואיפה כדאי לעמוד כדי באמת לראות.",
+     "img": "images/attractions-royal.jpg"
     },
     {
      "url": "guide-attractions-views.html",
@@ -117,10 +129,40 @@
      "img": "images/attractions-views.jpg"
     },
     {
+     "url": "guide-attractions-parks.html",
+     "title": "הפארקים המלכותיים של לונדון",
+     "desc": "שמונת הפארקים המלכותיים לפי גודל: מה יש בכל אחד, למה שווה להגיע, ואיך לשלב אותם בטיול בלי לבזבז יום שלם.",
+     "img": "images/attractions-parks.jpg"
+    },
+    {
      "url": "guide-attractions-markets.html",
      "title": "שווקי לונדון, מה יש בכל אחד ומתי הוא פתוח",
      "desc": "מדריך לשווקים של לונדון: מה מוכרים בכל שוק, באילו ימים הוא פועל, ומתי הכי כדאי להגיע.",
      "img": "images/attractions-markets.jpg"
+    },
+    {
+     "url": "guide-attractions-thames.html",
+     "title": "התמזה, הגשרים והליכה לאורך הנהר",
+     "desc": "טיילת הגדה הדרומית מחברת חצי מהאטרקציות של לונדון. אילו גשרים שווה לעצור עליהם, ומתי שיט על הנהר עדיף על הרכבת התחתית.",
+     "img": "images/attractions-thames.jpg"
+    },
+    {
+     "url": "guide-attractions-hidden.html",
+     "title": "פינות נסתרות בלונדון",
+     "desc": "עשרה מקומות שרובם חינם וכולם דקות הליכה מאתר מרכזי: חורבות כנסייה שהפכו לגן, מקדש רומי מתחת לרחוב, ומנהרה מתחת לתמזה.",
+     "img": "images/attractions-hidden.jpg"
+    },
+    {
+     "url": "guide-attractions-westend.html",
+     "title": "ווסט אנד, מופעים ותיאטרון",
+     "desc": "איך קונים כרטיסים למחזמר בלונדון בלי ליפול על מתווכים, מה ההבדל בין הדוכן הרשמי לאתרים, ומה לעשות אם האנגלית מדאיגה אתכם.",
+     "img": "images/attractions-westend.jpg"
+    },
+    {
+     "url": "guide-attractions-rainy.html",
+     "title": "לונדון ביום גשום",
+     "desc": "מוזיאונים שקטים, שווקים מקורים ומתחמים מוגנים, ומה דווקא לא לעשות בגשם. תוכנית חלופית שמצילה יום.",
+     "img": "images/attractions-rainy.jpg"
     }
    ]
   },
