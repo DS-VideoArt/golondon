@@ -57,12 +57,16 @@
   function injectStyles() {
     if (document.getElementById('place-info-styles')) return;
     var css = [
-      '.pi-overlay{position:fixed;inset:0;z-index:2000;background:rgba(20,20,30,.46);backdrop-filter:blur(2px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .18s ease;}',
-      '.pi-overlay.pi-open{opacity:1;pointer-events:auto;}',
-      '@media(min-width:640px){.pi-overlay{align-items:center;padding:24px;}}',
-      '.pi-panel{background:#fff;width:100%;max-width:520px;max-height:82vh;overflow-y:auto;border-radius:20px 20px 0 0;box-shadow:0 -8px 40px rgba(16,24,40,.25);transform:translateY(16px);transition:transform .2s ease;padding:26px 24px 30px;position:relative;}',
-      '@media(min-width:640px){.pi-panel{border-radius:20px;transform:translateY(8px);}}',
-      '.pi-overlay.pi-open .pi-panel{transform:translateY(0);}',
+      /*
+        החלון גלוי ברגע שמוסיפים לו את המחלקה, בלי להמתין למעבר.
+        בעבר הוא התחיל בשקיפות אפס והסתמך על אנימציה, וזה בדיוק
+        הדפוס שגרם לרכיבים אחרים באתר להישאר בלתי נראים אף שהיו פתוחים.
+      */
+      '.pi-overlay{position:fixed;inset:0;z-index:2000;background:rgba(20,20,30,.46);backdrop-filter:blur(2px);align-items:flex-end;justify-content:center;display:none;}',
+      '.pi-overlay.pi-open{display:flex;}',
+      '@media(min-width:640px){.pi-overlay.pi-open{align-items:center;padding:24px;}}',
+      '.pi-panel{background:#fff;width:100%;max-width:520px;max-height:82vh;overflow-y:auto;border-radius:20px 20px 0 0;box-shadow:0 -8px 40px rgba(16,24,40,.25);padding:26px 24px 30px;position:relative;}',
+      '@media(min-width:640px){.pi-panel{border-radius:20px;}}',
       '.pi-close{position:absolute;top:16px;left:16px;width:34px;height:34px;border-radius:10px;background:rgba(32,31,43,.06);border:none;color:#55596b;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;}',
       '.pi-close:hover{background:rgba(32,31,43,.12);color:#201f2b;}',
       '.pi-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px;padding-left:44px;}',
