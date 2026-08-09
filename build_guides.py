@@ -14,7 +14,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 CLUSTERS = collections.OrderedDict([
  ('transport',   {'hub':'guide-transport.html',   'label':'תחבורה',    'postCat':'תחבורה',
-                  'pages':['guide-transport-airport.html','guide-transport-tube.html','guide-transport-lines.html','guide-transport-bus.html','guide-transport-cost.html','guide-oyster.html']}),
+                  'pages':['guide-transport-airport.html','guide-transport-tube.html','guide-transport-lines.html','guide-transport-zones.html','guide-transport-bus.html','guide-transport-bus-routes.html','guide-transport-cost.html','guide-oyster.html']}),
  ('stay',        {'hub':'guide-stay.html',        'label':'לינה',      'postCat':'לינה',
                   'pages':['guide-stay-center.html','guide-stay-kensington.html','guide-stay-bloomsbury.html','guide-stay-east.html','guide-stay-south.html','guide-stay-north.html']}),
  ('attractions', {'hub':'guide-attractions.html', 'label':'אטרקציות',  'postCat':'אטרקציות',
@@ -24,9 +24,9 @@ CLUSTERS = collections.OrderedDict([
  ('kosher',      {'hub':'guide-kosher.html',      'label':'אוכל כשר',  'postCat':'אוכל',
                   'pages':['guide-kosher-meat.html','guide-kosher-dairy.html','guide-kosher-bakeries.html','guide-kosher-golders-green.html','guide-kosher-hendon.html','guide-kosher-edgware.html']}),
  ('football',    {'hub':'guide-football.html',    'label':'כדורגל',    'postCat':'כדורגל',
-                  'pages':['guide-football-tickets.html','guide-football-tours.html']}),
+                  'pages':['guide-football-stadiums.html','guide-football-tickets.html','guide-football-tours.html']}),
  ('flight',      {'hub':'guide-flight.html',      'label':'התכנון והטיסה','postCat':'תכנון הטיול',
-                  'pages':['guide-flight-money.html']}),
+                  'pages':['guide-flight-eta.html','guide-flight-budget.html','guide-flight-money.html']}),
 ])
 
 

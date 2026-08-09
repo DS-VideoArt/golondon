@@ -281,7 +281,13 @@ small { color: var(--ink-faint) !important; }
   box-shadow: var(--shadow-sm);
 }
 .stat-num { color: var(--green) !important; }
-.stat-lbl { color: var(--ink-faint) !important; }
+/*
+  התווית שמתחת למספר היתה בגוון החיוור ביותר, בגודל 12.5 ובמשקל רגיל,
+  ויצאה בניגודיות של 3.44 מול הרקע הלבן. זה מתחת לסף הנגישות של 4.5.
+  הגוון הרך נותן 6.94, והוא עדיין משני ביחס למספר עצמו.
+  הכלל הזה משפיע על 52 עמודים.
+*/
+.stat-lbl { color: var(--ink-soft) !important; font-weight: 600; }
 
 .place-name { color: var(--ink) !important; }
 .place-addr { color: var(--ink-soft) !important; }
