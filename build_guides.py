@@ -14,7 +14,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 CLUSTERS = collections.OrderedDict([
  ('transport',   {'hub':'guide-transport.html',   'label':'תחבורה',    'postCat':'תחבורה',
-                  'pages':['guide-transport-airport.html','guide-transport-tube.html','guide-transport-bus.html','guide-transport-cost.html','guide-oyster.html']}),
+                  'pages':['guide-transport-airport.html','guide-transport-tube.html','guide-transport-lines.html','guide-transport-bus.html','guide-transport-cost.html','guide-oyster.html']}),
  ('stay',        {'hub':'guide-stay.html',        'label':'לינה',      'postCat':'לינה',
                   'pages':['guide-stay-center.html','guide-stay-kensington.html','guide-stay-bloomsbury.html','guide-stay-east.html','guide-stay-south.html','guide-stay-north.html']}),
  ('attractions', {'hub':'guide-attractions.html', 'label':'אטרקציות',  'postCat':'אטרקציות',
