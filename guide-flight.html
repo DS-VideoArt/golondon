@@ -19,13 +19,13 @@
   <meta property="og:title" content="המדריך המלא לטיסה ללונדון | גו לונדון" />
   <meta property="og:description" content="מדריך מלא לטיסה ללונדון: אישור כניסה ETA, מסמכים נדרשים, מזג אוויר, כסף וטעויות נפוצות של מטיילים ישראלים." />
   <meta property="og:url" content="https://golondon.co.il/guide-flight.html" />
-  <meta property="og:image" content="https://golondon.co.il/images/hero.jpg" />
+  <meta property="og:image" content="https://golondon.co.il/images/flight-hero.jpg" />
   <meta property="og:locale" content="he_IL" />
   <meta property="og:site_name" content="גו לונדון" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="המדריך המלא לטיסה ללונדון | גו לונדון" />
   <meta name="twitter:description" content="מדריך מלא לטיסה ללונדון: אישור כניסה ETA, מסמכים נדרשים, מזג אוויר, כסף וטעויות נפוצות של מטיילים ישראלים." />
-  <meta name="twitter:image" content="https://golondon.co.il/images/hero.jpg" />
+  <meta name="twitter:image" content="https://golondon.co.il/images/flight-hero.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
@@ -52,10 +52,10 @@
     }
     .back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); text-decoration: none; }
 
-    .page-hero {
-      background: linear-gradient(135deg, #1E3A8A 0%, #7C3AED 100%);
-      padding: 70px 24px 60px; text-align: center;
-    }
+    .page-hero { position: relative; padding: 92px 24px 78px; text-align: center; overflow: hidden; }
+    .page-hero::before { content: ""; position: absolute; inset: 0; background: url('images/flight-hero.jpg') center 55% / cover no-repeat; z-index: 0; }
+    .page-hero::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+    .page-hero > * { position: relative; z-index: 2; }
     .page-hero .tag { display: inline-block; background: rgba(255,255,255,0.15); padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 16px; }
     .page-hero h1 { font-size: 34px; font-weight: 900; color: #fff; margin-bottom: 10px; max-width: 720px; margin-inline: auto; }
     .page-hero p { color: rgba(255,255,255,0.75); font-size: 15px; }
@@ -174,7 +174,7 @@
 
 
 <main>
-<div class="page-hero">
+<div class="page-hero hero-photo">
   <span class="tag">✈️ תכנון הטיול</span>
   <h1>המדריך המלא לטיסה ללונדון, כל מה שצריך לדעת לפני שעולים על המטוס</h1>
   <p>מהמסמכים, דרך אישור הכניסה, ועד מה לארוז</p>
