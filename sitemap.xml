@@ -421,6 +421,56 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://golondon.co.il/guide-kids-toddlers.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-kids-teens.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-kids-eating.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-kids-shows.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-transport-accessibility.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-transport-daytrips.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-kosher-planning.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-kosher-shabbat.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-kosher-shopping.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-kosher-synagogues.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://golondon.co.il/guide-transport-airport.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
