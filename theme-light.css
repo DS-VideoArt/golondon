@@ -143,29 +143,21 @@ small { color: var(--ink-faint) !important; }
 }
 
 /* ---------- כותרת העמוד ---------- */
-/* התצלום נשאר. רק שכבת ההיתוך משתנה, כדי שהכותרת תימס לתוך עמוד בהיר */
+/*
+  יש כאן שני סוגי כותרות, והם מטופלים בנפרד לגמרי:
+
+  1. כותרת עם תצלום, מסומנת במחלקה hero-photo. התצלום מוצג במלואו,
+     ומעליו שכבה כהה אחידה שמבטיחה שהטקסט הלבן קריא מעל כל תמונה.
+
+  2. כותרת בלי תצלום, כמו התקנון או הגילוי הנאות. שם נשארת שטיפת צבע
+     בהירה עם טקסט כהה.
+
+  ההפרדה הזאת קריטית. טקסט לבן שיוחל על כל הכותרות היה נעלם לגמרי
+  בעמודים שאין בהם תמונה מאחוריו.
+*/
 
 /*
-  התצלום נשאר, אבל מטושטש ומולבן, כך שהוא מרקם ולא מסך כהה.
-  בתחתית הוא נמס לשקיפות מלאה, כדי שלא ייווצר תפר בינו לבין רקע העמוד.
-*/
-.page-hero::before {
-  filter: blur(4px) brightness(1.3) saturate(0.85) !important;
-  transform: scale(1.12) !important;
-  opacity: 0.62;
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 22%, rgba(0,0,0,0.62) 52%, rgba(0,0,0,0.24) 78%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 0%, #000 22%, rgba(0,0,0,0.62) 52%, rgba(0,0,0,0.24) 78%, transparent 100%);
-}
-.page-hero::after {
-  background:
-    linear-gradient(180deg, rgba(250,249,246,0.72) 0%, rgba(250,249,246,0.56) 44%, rgba(250,249,246,0.12) 82%, rgba(250,249,246,0) 100%),
-    radial-gradient(70% 60% at 12% 8%, rgba(220,38,38,0.10), transparent 70%),
-    radial-gradient(66% 58% at 90% 14%, rgba(30,58,138,0.12), transparent 70%) !important;
-}
-/*
-  עמודים שאין להם תצלום ברקע, כמו התקנון והגילוי הנאות, מקבלים כאן
-  שטיפת צבע רכה בגווני המותג במקום מלבן צבע אחיד. בעמודים שכן יש בהם
-  תצלום, שכבת התצלום ממילא יושבת מעל זה ומכסה אותו.
+  עמודים בלי תצלום: שטיפת צבע רכה בגווני המותג במקום מלבן אחיד.
 */
 .page-hero {
   border-bottom: none;
@@ -176,7 +168,6 @@ small { color: var(--ink-faint) !important; }
     radial-gradient(90% 60% at 50% 100%, rgba(21,128,61,0.10), transparent 72%),
     linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(250,249,246,0.15) 70%, rgba(250,249,246,0) 100%) !important;
 }
-
 .page-hero .tag {
   background: rgba(255,255,255,0.92) !important;
   border: 1px solid var(--line) !important;
@@ -184,18 +175,67 @@ small { color: var(--ink-faint) !important; }
   box-shadow: var(--shadow-sm);
   backdrop-filter: blur(6px);
 }
-.page-hero h1 {
-  color: var(--ink) !important;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.7) !important;
+.page-hero h1 { color: var(--ink) !important; text-shadow: 0 1px 0 rgba(255,255,255,0.7) !important; }
+.page-hero p  { color: var(--ink-soft) !important; text-shadow: 0 1px 0 rgba(255,255,255,0.6) !important; }
+.page-hero .meta { color: var(--ink-faint) !important; text-shadow: none !important; }
+
+/* ---------- כותרת עם תצלום ---------- */
+/*
+  בגרסה הקודמת התצלום היה מטושטש בארבעה פיקסלים, מואר פי 1.3, ברמת
+  שקיפות 0.62, ומעליו שכבת לבן ב-0.72. בפועל כמעט לא ראו אותו.
+  כאן הוא מוצג כמו שהוא.
+*/
+.page-hero.hero-photo {
+  padding-bottom: 82px !important;
+  background: #0b1220 !important;         /* נראה רק בשבריר שנייה עד שהתצלום נטען */
 }
-.page-hero p {
-  color: var(--ink-soft) !important;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.6) !important;
+.page-hero.hero-photo::before {
+  filter: saturate(1.06) contrast(1.04) !important;
+  transform: none !important;
+  opacity: 1;
+  -webkit-mask-image: none;
+  mask-image: none;
 }
-.page-hero .meta {
-  color: var(--ink-faint) !important;
-  text-shadow: none !important;
+/*
+  השכבה הכהה. היא אחידה במכוון ולא נמסה לשקיפות, כי תצלום בהיר
+  בתחתית הכותרת היה בולע את שורת התיאור.
+  החישוב: מעל תצלום לבן לגמרי, הצירוף הזה מוריד את הבהירות לרמה
+  שנותנת ניגודיות של כ-5.5 מול טקסט לבן, כלומר מעל הסף הנדרש.
+*/
+.page-hero.hero-photo::after {
+  background:
+    linear-gradient(180deg, rgba(10,14,26,0.58) 0%, rgba(10,14,26,0.46) 40%, rgba(10,14,26,0.64) 100%),
+    radial-gradient(82% 74% at 50% 52%, rgba(10,14,26,0.30), transparent 76%) !important;
 }
+.page-hero.hero-photo .tag {
+  background: rgba(255,255,255,0.16) !important;
+  border: 1px solid rgba(255,255,255,0.34) !important;
+  color: #fff !important;
+  backdrop-filter: blur(8px);
+  box-shadow: none;
+}
+.page-hero.hero-photo h1 {
+  color: #fff !important;
+  text-shadow: 0 2px 14px rgba(6,10,20,0.55) !important;
+}
+.page-hero.hero-photo p {
+  color: rgba(255,255,255,0.90) !important;
+  text-shadow: 0 1px 10px rgba(6,10,20,0.55) !important;
+}
+.page-hero.hero-photo .meta {
+  color: rgba(255,255,255,0.78) !important;
+  text-shadow: 0 1px 8px rgba(6,10,20,0.5) !important;
+}
+/*
+  פירורי הלחם נמשכים ארבעים פיקסלים כלפי מעלה ולכן הם יושבים בתוך
+  הרצועה התחתונה של הכותרת. כשהרצועה הזאת הפכה כהה, טקסט כהה עליה
+  נעשה בלתי קריא. לכן בעמודים עם תצלום הם מקבלים צבע בהיר.
+*/
+.page-hero.hero-photo + .breadcrumb {
+  color: rgba(255,255,255,0.92) !important;
+  text-shadow: 0 1px 8px rgba(6,10,20,0.6);
+}
+.page-hero.hero-photo + .breadcrumb a { color: #fff !important; }
 
 /* ---------- טיפוגרפיה של גוף העמוד ---------- */
 
@@ -1393,4 +1433,45 @@ a.kosher-float-mobile:active { transform: scale(0.985); }
 @media (min-width: 700px) {
   a.kosher-float-mobile { display: none !important; }
   a.kosher-float-desktop { display: flex; flex-direction: column; align-items: stretch; }
+}
+
+/* ---------- קוביות "מה כדאי לקרוא" ---------- */
+/*
+  הקוביות האלה היו div ולא קישור, ולכן לחיצה עליהן לא עשתה כלום.
+  עכשיו הן קישור מלא, וגם נראות ככזה.
+*/
+a.fit {
+  display: flex; flex-direction: column;
+  background: var(--surface);
+  border-color: var(--line) !important;
+  box-shadow: var(--shadow-sm);
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+  text-decoration: none !important;
+}
+a.fit:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(220,38,38,0.45) !important;
+}
+a.fit .fit-head { color: var(--ink) !important; }
+a.fit p { color: var(--ink-soft) !important; flex: 1; }
+.fit-go {
+  display: inline-flex; align-items: center; gap: 7px;
+  margin-top: 12px; font-size: 13px; font-weight: 800;
+  color: var(--brand) !important;
+}
+a.fit:hover .fit-go i { transform: translateX(-3px); }
+.fit-go i { transition: transform .16s ease; }
+
+/*
+  לעומתן, "למי זה הכי מתאים" בעמודי השכונות מתאר את העמוד שכבר פתוח
+  ולכן אינו ניווט. הן מעוצבות אחרת במכוון, בלי מסגרת מלאה ובלי צל,
+  כדי שלא ייקראו ככפתור שאינו מגיב.
+*/
+.fitlist-info .fit {
+  background: rgba(32,31,43,0.028);
+  border: none !important;
+  border-right: 3px solid rgba(220,38,38,0.5) !important;
+  border-radius: 0 12px 12px 0;
+  box-shadow: none;
 }
