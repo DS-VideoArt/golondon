@@ -1,5 +1,5 @@
 {
- "_מה_זה_הקובץ_הזה": "מפת האשכולות של האתר. נבנה אוטומטית מהעמודים עצמם על ידי build_guides.py. אין לערוך ידנית.",
+ "_מה_זה_הקובץ_הזה": "מפת האשכולות של האתר. נבנה אוטומטית על ידי build_guides.py, אין לערוך ידנית.",
  "clusters": {
   "transport": {
    "hub": "guide-transport.html",
@@ -34,7 +34,7 @@
      "url": "guide-oyster.html",
      "title": "כרטיס אויסטר, המדריך המלא לתחבורה בלונדון",
      "desc": "כרטיס אויסטר או תשלום אלחוטי? המדריך המלא לתחבורה הציבורית בלונדון: אזורים, תקרות מחיר וטיפים למטייל ישראלי.",
-     "img": ""
+     "img": "images/oyster-hero.jpg"
     }
    ]
   },
@@ -90,25 +90,25 @@
      "url": "guide-attractions-free.html",
      "title": "מה אפשר לעשות בלונדון בחינם",
      "desc": "המוזיאונים הלאומיים, תצפיות חינמיות, פארקים ושווקים. מה באמת אפשר לעשות בלונדון בלי לשלם על כניסה.",
-     "img": "images/transport-cost.jpg"
+     "img": "images/attractions-free.jpg"
     },
     {
      "url": "guide-attractions-views.html",
      "title": "תצפיות על לונדון, איזו שווה ואיזו פחות",
      "desc": "השוואה בין התצפיות של לונדון: הסקיי גארדן, השארד, גלגל הענק, המונומנט והתצפיות החינמיות.",
-     "img": "images/transport-cost.jpg"
+     "img": "images/attractions-views.jpg"
     },
     {
      "url": "guide-attractions-markets.html",
      "title": "שווקי לונדון, מה יש בכל אחד ומתי הוא פתוח",
      "desc": "מדריך לשווקים של לונדון: מה מוכרים בכל שוק, באילו ימים הוא פועל, ומתי הכי כדאי להגיע.",
-     "img": "images/transport-cost.jpg"
+     "img": "images/attractions-markets.jpg"
     }
    ]
   },
   "kids": {
    "hub": "guide-kids.html",
-   "label": "עם ילדים",
+   "label": "טיול עם ילדים",
    "postCat": "סוגי מטיילים",
    "articles": [
     {
@@ -145,7 +145,7 @@
      "url": "guide-kids-harry-potter.html",
      "title": "סיור האולפנים של הארי פוטר, מה חשוב לדעת לפני",
      "desc": "סיור האולפנים של הארי פוטר ליד ווטפורד: איך מגיעים, כמה זמן זה לוקח, ולמה חייבים להזמין כרטיסים מוקדם.",
-     "img": "images/transport-cost.jpg"
+     "img": "images/kids-harry-potter.jpg"
     }
    ]
   },
@@ -201,26 +201,26 @@
      "url": "guide-football-tickets.html",
      "title": "איך משיגים כרטיס למשחק בלונדון",
      "desc": "כרטיסים למשחקי פרמייר ליג בלונדון: איך פועלת שיטת החברות במועדון, מה הסיכון באתרי מכירה חוזרת, ולמה אי אפשר לתכנן טיסה סביב משחק.",
-     "img": "images/transport-cost.jpg"
+     "img": "images/football-tickets.jpg"
     },
     {
      "url": "guide-football-tours.html",
      "title": "סיורי אצטדיון בלונדון, מה כלול ומה חשוב לבדוק",
      "desc": "סיורים מודרכים באצטדיוני לונדון: מה כלול בסיור, כמה זמן הוא נמשך, ולמה חובה לבדוק את לוח המשחקים לפני שקונים.",
-     "img": "images/transport-cost.jpg"
+     "img": "images/football-tours.jpg"
     }
    ]
   },
   "flight": {
    "hub": "guide-flight.html",
-   "label": "לפני הטיסה",
+   "label": "התכנון והטיסה",
    "postCat": "תכנון הטיול",
    "articles": [
     {
      "url": "guide-flight-money.html",
      "title": "כסף בלונדון, תשלומים, טיפים והמרה",
      "desc": "תשלומים ללא מגע, כמה מזומן להביא, איך עובדים דמי שירות במסעדות, ומה לבדוק מול חברת האשראי לפני הטיסה.",
-     "img": "images/transport-cost.jpg"
+     "img": "images/flight-money.jpg"
     }
    ]
   }
