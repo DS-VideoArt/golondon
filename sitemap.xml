@@ -71,6 +71,41 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://golondon.co.il/guide-flight-airports.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-flight-when.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-flight-packing.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-flight-esim.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-flight-insurance.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-flight-customs.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://golondon.co.il/guide-flight-family.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://golondon.co.il/guide-oyster.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

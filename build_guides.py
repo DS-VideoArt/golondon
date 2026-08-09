@@ -31,7 +31,10 @@ CLUSTERS = collections.OrderedDict([
                            'guide-events-royal.html','guide-events-marathon.html','guide-events-wimbledon.html',
                            'guide-events-multicultural.html']}),
  ('flight',      {'hub':'guide-flight.html',      'label':'התכנון והטיסה','postCat':'תכנון הטיול',
-                  'pages':['guide-flight-eta.html','guide-flight-budget.html','guide-flight-money.html']}),
+                  'pages':['guide-flight-eta.html','guide-flight-airports.html','guide-flight-when.html',
+                           'guide-flight-budget.html','guide-flight-money.html','guide-flight-packing.html',
+                           'guide-flight-esim.html','guide-flight-insurance.html','guide-flight-customs.html',
+                           'guide-flight-family.html']}),
 ])
 
 
