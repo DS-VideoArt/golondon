@@ -108,11 +108,10 @@
   "slots": {
     "_הסבר": "אילו הצעות מוצגות בכל עמוד, ובאיזה סדר. השמות כאן חייבים להתאים לערך שמופיע בתכונת data-affiliate בעמוד עצמו.",
     "oyster": [
-      "attractions",
+      "attractions_alt",
       "esim"
     ],
     "attractions": [
-      "attractions",
       "attractions_alt",
       "hotels"
     ],
@@ -123,10 +122,10 @@
     ],
     "football": [
       "stadium",
-      "attractions"
+      "attractions_alt"
     ],
     "planner": [
-      "attractions",
+      "attractions_alt",
       "hotels",
       "esim"
     ],
@@ -141,14 +140,14 @@
       "esim"
     ],
     "kids": [
-      "attractions",
+      "attractions_alt",
       "hotels",
       "esim"
     ],
     "transport": [
       "transfer",
       "esim",
-      "attractions"
+      "attractions_alt"
     ]
   }
 }
