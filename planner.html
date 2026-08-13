@@ -402,6 +402,7 @@
       border-radius: 13px;
     }
     .versions-label { font-size: 13px; font-weight: 800; color: var(--ink-faint); margin-inline-end: 4px; }
+    .versions-hint { flex-basis: 100%; font-size: 12.5px; color: var(--ink-faint); margin-top: 2px; }
     .ver-chip {
       font: inherit; font-size: 13.5px; font-weight: 800; cursor: pointer;
       padding: 7px 15px; border-radius: 50px;
@@ -420,6 +421,17 @@
       border-radius: 14px;
     }
     .cmp-head { font-size: 14.5px; font-weight: 900; color: var(--ink); margin-bottom: 14px; }
+    .cmp-picker {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgba(32,31,43,0.1);
+    }
+    .cmp-picker label { font-size: 13px; font-weight: 800; color: var(--ink-soft); }
+    .cmp-picker select {
+      font: inherit; font-size: 13.5px; font-weight: 700; color: var(--ink);
+      background: #fff; border: 1px solid rgba(32,31,43,0.18); border-radius: 9px;
+      padding: 7px 12px; cursor: pointer;
+    }
+    .cmp-picker .cmp-vs { font-size: 13px; font-weight: 900; color: var(--ink-faint); }
     .cmp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .cmp-col { background: rgba(32,31,43,0.035); border-radius: 11px; padding: 14px 16px; border-inline-start: 3px solid transparent; }
     .cmp-col.cmp-add  { border-inline-start-color: #4ade80; }
@@ -493,7 +505,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Go London" />
   <link rel="stylesheet" href="accessibility-widget.css" />
-  <link rel="stylesheet" href="theme-light.css?v=3" />
+  <link rel="stylesheet" href="theme-light.css?v=4" />
 </head>
 <body>
 
@@ -539,7 +551,7 @@
 
     <div class="field">
       <label class="field-label" id="lbl-who">מי נוסע?</label>
-      <span class="field-hint">משפיע על סוג האטרקציות ועל קצב היום</span>
+      <span class="field-hint">אם נוסעים עם ילדים, בחרו את טווחי הגיל הרלוונטיים. אפשר לבחור כמה. המסלול והמומלצות יתאימו את עצמם</span>
       <div class="chips" id="who" role="group" aria-labelledby="lbl-who"></div>
     </div>
 
@@ -645,16 +657,25 @@
   var AFF_CFG = null;
   var LAST = null;
 
-  var state = { days: 4, interests: [], kids: false, budget: 'balanced' };
+  /* childAges ריק פירושו מבוגרים בלבד. אחרת, מערך מטווחי הגיל שנבחרו */
+  var state = { days: 4, interests: [], childAges: [], budget: 'balanced' };
 
   var BUDGETS = [
     { id: 'free', label: 'לחסוך כמה שאפשר', emoji: '🪙' },
     { id: 'balanced', label: 'מאוזן', emoji: '⚖️' },
     { id: 'any', label: 'התקציב לא חוסם', emoji: '✨' }
   ];
-  var WHO = [
-    { id: 'adults', label: 'מבוגרים בלבד', emoji: '🧑‍🤝‍🧑' },
-    { id: 'kids', label: 'עם ילדים', emoji: '🧸' }
+  /*
+    שלושה טווחי גיל, לא סתם "עם ילדים" אחד. הסיבה: תינוק בעגלה ונער בן
+    חמש עשרה צריכים מסלול שונה לגמרי. תינוקות ופעוטות וילדים צעירים
+    מסננים בפועל אטרקציות שלא מתאימות (a.kids=false יוצא מהמאגר), נוער
+    לא מסנן כלום, רק מעדיף במקצת אטרקציות שמסומנות כמתאימות למשפחות,
+    כי בגיל הזה כמעט הכל פתוח, כולל מוזיאונים כבדים כמו חדרי המלחמה.
+  */
+  var AGE_BANDS = [
+    { id: 'infant', label: 'תינוקות ופעוטות (עד גיל 4)', emoji: '👶', strict: true },
+    { id: 'kid',    label: 'ילדים (5 עד 11)',           emoji: '🧒', strict: true },
+    { id: 'teen',   label: 'נוער (12 עד 17)',            emoji: '🧑', strict: false }
   ];
 
   var $ = function (id) { return document.getElementById(id); };
@@ -713,10 +734,15 @@
 
     var whoBox = $('who');
     whoBox.innerHTML = '';
-    WHO.forEach(function (w) {
-      var on = (w.id === 'kids') === state.kids;
-      whoBox.appendChild(makeChip(w.label, w.emoji, on, function () {
-        state.kids = (w.id === 'kids');
+    whoBox.appendChild(makeChip('מבוגרים בלבד', '🧑‍🤝‍🧑', state.childAges.length === 0, function () {
+      state.childAges = [];
+      renderControls();
+    }));
+    AGE_BANDS.forEach(function (band) {
+      var on = state.childAges.indexOf(band.id) !== -1;
+      whoBox.appendChild(makeChip(band.label, band.emoji, on, function () {
+        var i = state.childAges.indexOf(band.id);
+        if (i === -1) state.childAges.push(band.id); else state.childAges.splice(i, 1);
         renderControls();
       }));
     });
@@ -739,8 +765,15 @@
   */
   function build() {
     var days = state.days;
+    /* סינון קשיח רק כשיש בפועל תינוק, פעוט או ילד צעיר. נוער לבדו לא מסנן
+       כלום, כי כמעט כל אטרקציה בעיר פתוחה ומתאימה לגילאים האלה. */
+    var needsStrictKidFilter = state.childAges.some(function (id) {
+      return AGE_BANDS.some(function (b) { return b.id === id && b.strict; });
+    });
+    var hasChildren = state.childAges.length > 0;
+
     var pool = DATA.attractions.filter(function (a) {
-      if (state.kids && !a.kids) return false;
+      if (needsStrictKidFilter && !a.kids) return false;
       if (state.budget === 'free' && !a.free) return false;
       return true;
     });
@@ -753,7 +786,7 @@
         if (!m) s -= 6;
       }
       if (a.anchor) s += 3;
-      if (state.kids && a.kids) s += 2;
+      if (hasChildren && a.kids) s += 2;
       /* יעדים מחוץ למרכז תופסים יום כמעט שלם, ולכן הם רלוונטיים רק לטיולים ארוכים */
       if (a.area === 'outer' && days < 4) s -= 40;
       s += Math.random() * 2.5;
@@ -1015,10 +1048,12 @@
   */
   var VERSIONS = [];
   var curIdx = -1;
+  var cmpA = null, cmpB = null; /* שתי הגרסאות שנבחרו בהשוואה, נבחרות מפורשות ולא אוטומטיות */
 
   function pushVersion(plan) {
     VERSIONS.push(plan);
     curIdx = VERSIONS.length - 1;
+    cmpA = null; cmpB = null;
     renderVersions();
   }
 
@@ -1049,6 +1084,11 @@
       b.addEventListener('click', function () { showVersion(i); });
       box.appendChild(b);
     });
+
+    var hint = document.createElement('span');
+    hint.className = 'versions-hint';
+    hint.textContent = 'לחצו על גרסה כדי לעבור לצפות בה. כדי לראות מה בדיוק שונה בין שתיים, לחצו על "השוואה" ובחרו את שתי הגרסאות מהרשימות שייפתחו.';
+    box.appendChild(hint);
   }
 
   function showVersion(i) {
@@ -1098,14 +1138,68 @@
     return col;
   }
 
+  function buildVersionSelect(id, selectedIdx) {
+    var sel = document.createElement('select');
+    sel.id = id;
+    VERSIONS.forEach(function (v, i) {
+      var opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = 'גרסה ' + (i + 1);
+      if (i === selectedIdx) opt.selected = true;
+      sel.appendChild(opt);
+    });
+    return sel;
+  }
+
   function renderCompare() {
     var panel = $('compare');
     panel.innerHTML = '';
     if (VERSIONS.length < 2) return;
 
-    var otherIdx = curIdx > 0 ? curIdx - 1 : curIdx + 1;
-    var cur = planStops(VERSIONS[curIdx]);
-    var oth = planStops(VERSIONS[otherIdx]);
+    /* בפעם הראשונה בוחרים אוטומטית את הגרסה הנוכחית מול הקודמת לה,
+       אבל מכאן והלאה הבחירה נשארת בידי המשתמש דרך שתי הרשימות הנפתחות. */
+    if (cmpA === null || cmpA >= VERSIONS.length) cmpA = curIdx;
+    if (cmpB === null || cmpB >= VERSIONS.length || cmpB === cmpA) {
+      cmpB = cmpA > 0 ? cmpA - 1 : (VERSIONS.length > 1 ? cmpA + 1 : cmpA);
+    }
+
+    var picker = document.createElement('div');
+    picker.className = 'cmp-picker';
+
+    var labelA = document.createElement('label');
+    labelA.textContent = 'השוו את גרסה';
+    labelA.setAttribute('for', 'cmp-sel-a');
+    var selA = buildVersionSelect('cmp-sel-a', cmpA);
+
+    var vs = document.createElement('span');
+    vs.className = 'cmp-vs';
+    vs.textContent = 'מול';
+
+    var labelB = document.createElement('label');
+    labelB.textContent = 'גרסה';
+    labelB.setAttribute('for', 'cmp-sel-b');
+    var selB = buildVersionSelect('cmp-sel-b', cmpB);
+
+    selA.addEventListener('change', function () {
+      cmpA = Number(selA.value);
+      if (cmpB === cmpA) cmpB = VERSIONS.findIndex(function (_, i) { return i !== cmpA; });
+      renderCompare();
+    });
+    selB.addEventListener('change', function () {
+      cmpB = Number(selB.value);
+      if (cmpA === cmpB) cmpA = VERSIONS.findIndex(function (_, i) { return i !== cmpB; });
+      renderCompare();
+    });
+
+    picker.appendChild(labelA);
+    picker.appendChild(selA);
+    picker.appendChild(vs);
+    picker.appendChild(labelB);
+    picker.appendChild(selB);
+    panel.appendChild(picker);
+
+    var cur = planStops(VERSIONS[cmpA]);
+    var oth = planStops(VERSIONS[cmpB]);
 
     var onlyCur = Object.keys(cur).filter(function (k) { return !oth[k]; }).map(function (k) { return cur[k]; });
     var onlyOth = Object.keys(oth).filter(function (k) { return !cur[k]; }).map(function (k) { return oth[k]; });
@@ -1113,13 +1207,13 @@
 
     var head = document.createElement('div');
     head.className = 'cmp-head';
-    head.textContent = 'השוואה בין גרסה ' + (curIdx + 1) + ' לגרסה ' + (otherIdx + 1);
+    head.textContent = 'ההבדל בין גרסה ' + (cmpA + 1) + ' לגרסה ' + (cmpB + 1);
     panel.appendChild(head);
 
     var grid = document.createElement('div');
     grid.className = 'cmp-grid';
-    grid.appendChild(compareColumn('רק בגרסה ' + (curIdx + 1), onlyCur, 'cmp-add'));
-    grid.appendChild(compareColumn('רק בגרסה ' + (otherIdx + 1), onlyOth, 'cmp-rem'));
+    grid.appendChild(compareColumn('רק בגרסה ' + (cmpA + 1), onlyCur, 'cmp-add'));
+    grid.appendChild(compareColumn('רק בגרסה ' + (cmpB + 1), onlyOth, 'cmp-rem'));
     grid.appendChild(compareColumn('בשתיהן', shared, 'cmp-same'));
     panel.appendChild(grid);
   }

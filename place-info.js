@@ -25,11 +25,15 @@
 
   /*
     כתובת כפתור ההזמנה.
-    אם שכבת קישורי ההכנסה נטענה, הקישור נבנה דרכה כדי שהלחיצה תיספר
-    ותישא עמלה, עם מזהה מקור נפרד לכל מקום. אם היא לא נטענה, מוחזרת
-    הכתובת הישירה שרשומה בקובץ הנתונים, כדי שהכפתור תמיד יעבוד.
+    כשcta.custom קיים, cta.href הוא כתובת האתר הרשמי הספציפי של המקום
+    (פרלמנט, IWM, HRP וכו'), שנמצאה במחקר בפועל, ואין לה קשר לרשת
+    השותפים. אסור להעביר אותה דרך בונה קישורי טיקטס הכללי, כי זה היה
+    דורס אותה בקישור לעמוד קטגוריה גנרי בטיקטס ומטעה את הקורא.
+    בכל שאר המקרים, אם שכבת קישורי ההכנסה נטענה, הקישור נבנה דרכה כדי
+    שהלחיצה תיספר ותישא עמלה. אם היא לא נטענה, מוחזרת הכתובת הישירה.
   */
   function ctaUrl(cta, placeId) {
+    if (cta.custom) return cta.href || '#';
     var offerId = cta.offer || 'attractions_alt';
     if (affCfg && window.GoLondonAffiliate && window.GoLondonAffiliate.linkFor) {
       var url = window.GoLondonAffiliate.linkFor(affCfg, offerId, 'placeinfo', placeId);
@@ -73,10 +77,19 @@
       '.pi-tag{font-size:11.5px;font-weight:800;padding:4px 11px;border-radius:50px;background:rgba(32,31,43,.06);color:#55596b!important;}',
       '.pi-tag.pi-free{background:rgba(21,128,61,.12);color:#15803D!important;}',
       '.pi-tag.pi-paid{background:rgba(234,88,12,.13);color:#c2410c!important;}',
+      '.pi-tag.pi-teen{background:rgba(202,138,4,.13);color:#854d0e!important;}',
       '.pi-title{font-size:21px;font-weight:900;color:#201f2b!important;margin-bottom:12px;padding-left:44px;line-height:1.3;}',
       '.pi-body{font-size:15px;color:#55596b!important;line-height:1.75;margin-bottom:16px;white-space:pre-line;}',
+      '.pi-video{display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;padding:9px 16px;border-radius:11px;background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.18);color:#c2410c!important;font-weight:700;font-size:13.5px;text-decoration:none!important;}',
+      '.pi-video:hover{background:rgba(220,38,38,.13);}',
+      '.pi-video i{color:#DC2626;}',
       '.pi-tip{background:rgba(21,128,61,.07);border:1px solid rgba(21,128,61,.2);border-radius:13px;padding:14px 16px;font-size:13.5px;color:#3d4152!important;line-height:1.65;margin-bottom:14px;}',
       '.pi-tip strong{color:#15803D!important;}',
+      '.pi-tour{background:rgba(32,31,43,.035);border:1px solid rgba(32,31,43,.11);border-radius:13px;padding:16px 18px;margin-bottom:16px;}',
+      '.pi-tour-price{display:flex;align-items:baseline;gap:8px;margin-bottom:8px;}',
+      '.pi-tour-price .num{font-size:19px;font-weight:900;color:#201f2b!important;}',
+      '.pi-tour-price .dur{font-size:12.5px;color:#858a9c!important;}',
+      '.pi-tour-desc{font-size:13.5px;color:#55596b!important;line-height:1.7;}',
       '.pi-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#DC2626,#EA580C);color:#fff!important;font-weight:800;font-size:14px;padding:12px 20px;border-radius:11px;text-decoration:none!important;}',
       '.pi-cta:hover{opacity:.92;}',
       '.pi-updated{font-size:11.5px;color:#858a9c;margin-top:16px;}',
@@ -98,8 +111,10 @@
         '<button type="button" class="pi-close" aria-label="סגירה"><i class="fas fa-xmark"></i></button>' +
         '<div class="pi-tags"></div>' +
         '<h3 class="pi-title"></h3>' +
+        '<a class="pi-video" href="#" target="_blank" rel="noopener" hidden><i class="fab fa-youtube"></i> צפייה בסרטון קצר על המקום</a>' +
         '<div class="pi-body"></div>' +
         '<div class="pi-tip" hidden></div>' +
+        '<div class="pi-tour" hidden></div>' +
         '<div class="pi-cta-wrap"></div>' +
         '<div class="pi-updated" hidden></div>' +
       '</div>';
@@ -135,12 +150,41 @@
 
     bodyEl.textContent = item.body || '';
 
+    var videoEl = modal.querySelector('.pi-video');
+    if (item.video && item.video.id) {
+      videoEl.hidden = false;
+      videoEl.href = 'https://www.youtube.com/watch?v=' + item.video.id;
+    } else {
+      videoEl.hidden = true;
+    }
+
     var tipEl = modal.querySelector('.pi-tip');
     if (item.tip) {
       tipEl.hidden = false;
       tipEl.innerHTML = '<strong>טיפ:</strong> ' + item.tip;
     } else {
       tipEl.hidden = true;
+    }
+
+    /*
+      כאשר cta.custom קיים, יש לפריט תוכן סיור מקורי שנכתב על ידינו,
+      עם מחיר אמיתי שנבדק. מוצג בלוק מפורט, וכפתור ההזמנה מוביל
+      לספק רק בסוף, אחרי שהקורא כבר קרא הסבר עברי מלא במקום.
+      בלי cta.custom חוזרים להתנהגות הרגילה, קישור בלבד.
+    */
+    var tourEl = modal.querySelector('.pi-tour');
+    var CURRENCY_SYMBOL = { GBP: '£', EUR: '€', USD: '$', ILS: '₪' };
+    if (item.cta && item.cta.custom) {
+      tourEl.hidden = false;
+      var sym = CURRENCY_SYMBOL[item.cta.currency] || (item.cta.currency || '');
+      var priceHtml = (item.cta.price != null)
+        ? '<span class="num">' + sym + item.cta.price + '</span>' + (item.cta.duration ? '<span class="dur">' + item.cta.duration + '</span>' : '')
+        : '';
+      tourEl.innerHTML =
+        (priceHtml ? '<div class="pi-tour-price">' + priceHtml + '</div>' : '') +
+        '<div class="pi-tour-desc">' + (item.cta.desc || '') + '</div>';
+    } else {
+      tourEl.hidden = true;
     }
 
     var ctaWrap = modal.querySelector('.pi-cta-wrap');

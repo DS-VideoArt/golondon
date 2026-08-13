@@ -1481,3 +1481,52 @@ a.fit:hover .fit-go i { transform: translateX(-3px); }
   border-radius: 0 12px 12px 0;
   box-shadow: none;
 }
+
+/* ---------- רוחב עמוד המדריך במסך רחב ---------- */
+/*
+  התוכן היה נעול על 800 פיקסלים גם במסך שולחני רחב, ולכן נשארו שוליים
+  ריקים ענקיים משני הצדדים והעמוד נמתח לאורך בלי סיבה.
+  כאן המכל מתרחב, אבל עמודת הטקסט עצמה נשארת ברוחב קריא.
+  בלי הגבלה על הטקסט שורה היתה נמתחת לרוחב כל המסך וזה קשה לקריאה.
+  הרשתות, שהן ויזואליות ולא טקסט רץ, מקבלות את כל הרוחב ולכן
+  מציגות יותר עמודות והעמוד מתקצר.
+*/
+@media (min-width: 1024px) {
+  .content { max-width: 1140px !important; }
+
+  /* עמודת הטקסט נשארת קריאה, וצמודה לימין כי הכיוון מימין לשמאל */
+  .content > p,
+  .content > ul,
+  .content > ol,
+  .content > h2,
+  .content > h3,
+  .content > .lead,
+  .content > .highlight-box,
+  .content > .warning-box,
+  .content > .sources {
+    max-width: 900px;
+    margin-inline-end: 0;
+  }
+
+  /* הרשתות מנצלות את הרוחב המלא ומציגות יותר עמודות */
+  .content .cix-grid { grid-template-columns: repeat(auto-fill, minmax(265px, 1fr)); }
+  .content .sibling-grid { grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); }
+}
+
+/* ---------- קרדיט הבנייה בתחתית ---------- */
+/*
+  מכוון להיות נוכח אך שקט, ברמת בולטות נמוכה מקישורי התקנון.
+  הצבע נבחר כדי לעבור את סף הניגודיות ולא להיבלע ברקע הכהה.
+*/
+.footer-bottom .build-credit {
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.42) !important;
+  letter-spacing: 0.2px;
+}
+.footer-bottom .build-credit-name {
+  direction: ltr;
+  display: inline-block;
+  font-weight: 700;
+  color: rgba(255,255,255,0.62) !important;
+}

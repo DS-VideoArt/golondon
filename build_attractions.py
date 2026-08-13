@@ -14,6 +14,16 @@ import json, collections, os, re, html
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
+"""
+העשרה חיצונית: attractions-research.json, קובץ נפרד שלא נגזר משום מקום
+אחר. הוא מחזיק וידאו יוטיוב אמיתי ותוכן סיור מקורי לעברית שנאספו בפועל
+מהרשת, לא הומצאו. אם קיים, מוזג לכל פריט. אם לא קיים, שום דבר לא נשבר,
+פשוט אין וידאו ואין תוכן סיור מותאם, והכפתור הרגיל נשאר כמו קודם.
+"""
+RESEARCH = {}
+if os.path.exists('attractions-research.json'):
+    RESEARCH = json.load(open('attractions-research.json', encoding='utf-8'))
+
 THEMES = collections.OrderedDict([
  ('אייקונים שאי אפשר לפספס', ['big-ben','tower-bridge','tower-of-london','buckingham','westminster-abbey','st-pauls','london-eye','trafalgar-square','piccadilly-circus']),
  ('המוזיאונים הגדולים, כניסה חינם', ['british-museum','national-gallery','natural-history','science-museum','va-museum','tate-modern','tate-britain','national-portrait-gallery','imperial-war-museum','maritime-museum','british-library','design-museum']),
@@ -100,6 +110,7 @@ def main():
                 name, area = a['name'], areas.get(a['area'], '')
                 desc, tip = a.get('desc', ''), a.get('tip', '')
                 free, book, partly = a.get('free'), a.get('bookAhead'), a.get('partlyPaid')
+                kids = a.get('kids')
                 short = (desc.split('.')[0] + '.') if desc else ''
             else:
                 e = EXTRA.get(pid)
@@ -109,6 +120,7 @@ def main():
                 name, area = e['name'], e['area']
                 desc, tip = e['desc'], e['tip']
                 free, book, partly = e.get('free'), e.get('bookAhead'), e.get('partlyPaid')
+                kids = e.get('kids')
                 short = e['short']
 
             if not desc:
@@ -126,13 +138,49 @@ def main():
             if book:
                 tags.append({'label': 'הזמנה מראש'})
             tags.append({'label': area})
+            """
+            אין כמעט אף אטרקציה בלונדון עם גיל כניסה מינימלי אמיתי, זה בעיקר
+            עניין של פאבים ומועדונים בערב. במקום למציא מספר גיל, מוצג תג רק
+            כשיש בו ערך אמיתי: אזהרה עדינה שהמקום פחות מתאים לילדים קטנים.
+            כשהמקום כן מתאים לילדים, ממילא אין צורך לציין את זה בכל פריט,
+            כי זאת ברירת המחדל בעיר.
+            """
+            if kids is False:
+                tags.append({'label': 'פחות מתאים לילדים קטנים', 'type': 'teen'})
 
-            info[pid] = collections.OrderedDict([
+            research = RESEARCH.get(pid) or {}
+            video = research.get('video')
+            tour = research.get('tour')
+
+            cta = {'label': cta_label({'free': free, 'bookAhead': book, 'partlyPaid': partly}),
+                   'offer': 'attractions_alt', 'href': TIQETS}
+            if tour and tour.get('applicable'):
+                src = tour.get('source_url') or TIQETS
+                """
+                רוב האתרים המלכותיים והממלכתיים (פרלמנט, ארמונות, מוזיאונים
+                ממלכתיים) מוכרים כרטיסים ישירות ולא דרך טיקטס בכלל. הכפתור
+                חייב לתאר נכון לאן הוא באמת שולח, אחרת זו הבטחת שווא.
+                """
+                label = 'מעבר לטיקטס ותשלום' if 'tiqets.com' in src else 'מעבר לאתר הרשמי ותשלום'
+                cta = {
+                    'label': label,
+                    'offer': 'attractions_alt',
+                    'href': src,
+                    'custom': True,
+                    'desc': tour.get('desc_he', ''),
+                    'price': tour.get('price'),
+                    'currency': tour.get('currency'),
+                    'duration': tour.get('duration'),
+                }
+
+            entry = collections.OrderedDict([
                 ('title', name), ('tags', tags), ('body', desc), ('tip', tip),
                 ('updated', 'אוגוסט 2026'),
-                ('cta', {'label': cta_label({'free': free, 'bookAhead': book, 'partlyPaid': partly}),
-                         'offer': 'attractions_alt', 'href': TIQETS}),
+                ('cta', cta),
             ])
+            if video and video.get('verified') and video.get('youtube_id'):
+                entry['video'] = {'id': video['youtube_id'], 'title': video.get('title', '')}
+            info[pid] = entry
 
             badge = '<span class="free-badge">חינם</span>' if free and not partly else ''
             items.append(
