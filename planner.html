@@ -309,6 +309,14 @@
     .info-area { font-size: 12.5px; font-weight: 800; color: #fdba74; margin-bottom: 7px; padding-inline-end: 44px; }
     .info-title { font-size: 22px; font-weight: 900; color: var(--ink); line-height: 1.25; margin: 0 0 3px; padding-inline-end: 44px; }
     .info-en { font-size: 13px; color: var(--ink-faint); margin-bottom: 14px; }
+    .info-video {
+      display: inline-flex; align-items: center; gap: 8px; margin-bottom: 14px;
+      padding: 9px 16px; border-radius: 11px; background: rgba(220,38,38,0.07);
+      border: 1px solid rgba(220,38,38,0.18); color: #c2410c; font-weight: 700;
+      font-size: 13.5px; text-decoration: none;
+    }
+    .info-video:hover { background: rgba(220,38,38,0.13); }
+    .info-video i { color: #DC2626; }
     .info-facts { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 15px; }
     .info-desc { font-size: 15px; color: var(--ink); line-height: 1.8; margin: 0 0 14px; }
     .info-tip {
@@ -1234,6 +1242,22 @@
   */
   var infoEl = null;
   var infoLastFocus = null;
+  /*
+    וידאו יוטיוב לכל מקום נטען בנפרד מ attractions-research.json, ולא
+    מ planner-data.json, כי זה קובץ העשרה חיצוני נפרד שמתעדכן על ידי
+    משימה מתוזמנת יומית שמוודאת שהסרטונים עדיין קיימים ותקינים.
+    אם הטעינה נכשלת, פשוט לא מוצג קישור וידאו, שום דבר אחר לא נשבר.
+  */
+  var VIDEO_BY_ID = {};
+  fetch('attractions-research.json', { cache: 'no-cache' })
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      Object.keys(d).forEach(function (id) {
+        var v = d[id] && d[id].video;
+        if (v && v.verified && v.youtube_id) VIDEO_BY_ID[id] = v.youtube_id;
+      });
+    })
+    .catch(function (err) { if (window.console) console.warn('[planner video]', err); });
 
   function buildInfoModal() {
     infoEl = document.createElement('div');
@@ -1246,6 +1270,7 @@
         '<div class="info-area"></div>' +
         '<h3 class="info-title"></h3>' +
         '<div class="info-en"></div>' +
+        '<a class="info-video" href="#" target="_blank" rel="noopener" hidden><i class="fab fa-youtube"></i> צפייה בסרטון קצר על המקום</a>' +
         '<div class="info-facts"></div>' +
         '<p class="info-desc"></p>' +
         '<div class="info-tip" hidden></div>' +
@@ -1268,6 +1293,16 @@
     infoEl.querySelector('.info-area').textContent = (area.emoji || '📍') + ' ' + (area.name || '');
     infoEl.querySelector('.info-title').textContent = a.name;
     infoEl.querySelector('.info-en').textContent = a.nameEn;
+
+    var videoEl = infoEl.querySelector('.info-video');
+    var ytId = VIDEO_BY_ID[a.id];
+    if (ytId) {
+      videoEl.hidden = false;
+      videoEl.href = 'https://www.youtube.com/watch?v=' + ytId;
+    } else {
+      videoEl.hidden = true;
+    }
+
     infoEl.querySelector('.info-desc').textContent = a.desc || '';
 
     infoEl.querySelector('.info-facts').innerHTML =
