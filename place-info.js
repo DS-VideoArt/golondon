@@ -80,9 +80,13 @@
       '.pi-tag.pi-teen{background:rgba(202,138,4,.13);color:#854d0e!important;}',
       '.pi-title{font-size:21px;font-weight:900;color:#201f2b!important;margin-bottom:12px;padding-left:44px;line-height:1.3;}',
       '.pi-body{font-size:15px;color:#55596b!important;line-height:1.75;margin-bottom:16px;white-space:pre-line;}',
-      '.pi-video{display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;padding:9px 16px;border-radius:11px;background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.18);color:#c2410c!important;font-weight:700;font-size:13.5px;text-decoration:none!important;}',
-      '.pi-video:hover{background:rgba(220,38,38,.13);}',
-      '.pi-video i{color:#DC2626;}',
+      '.pi-video{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding:12px 16px;border-radius:14px;background:#FF0000;border:none;color:#fff!important;font-weight:800;font-size:14.5px;text-decoration:none!important;box-shadow:0 2px 8px rgba(255,0,0,.25);transition:transform .12s ease,box-shadow .12s ease;}',
+      '.pi-video:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(255,0,0,.35);}',
+      '.pi-video-icon{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;}',
+      '.pi-video-icon i{color:#fff;font-size:18px;}',
+      '.pi-video-text{display:flex;flex-direction:column;gap:1px;}',
+      '.pi-video-label{font-size:11px;font-weight:700;color:rgba(255,255,255,.8)!important;}',
+      '.pi-video-title{font-size:14.5px;font-weight:800;color:#fff!important;}',
       '.pi-tip{background:rgba(21,128,61,.07);border:1px solid rgba(21,128,61,.2);border-radius:13px;padding:14px 16px;font-size:13.5px;color:#3d4152!important;line-height:1.65;margin-bottom:14px;}',
       '.pi-tip strong{color:#15803D!important;}',
       '.pi-tour{background:rgba(32,31,43,.035);border:1px solid rgba(32,31,43,.11);border-radius:13px;padding:16px 18px;margin-bottom:16px;}',
@@ -111,7 +115,10 @@
         '<button type="button" class="pi-close" aria-label="סגירה"><i class="fas fa-xmark"></i></button>' +
         '<div class="pi-tags"></div>' +
         '<h3 class="pi-title"></h3>' +
-        '<a class="pi-video" href="#" target="_blank" rel="noopener" hidden><i class="fab fa-youtube"></i> צפייה בסרטון קצר על המקום</a>' +
+        '<a class="pi-video" href="#" target="_blank" rel="noopener" hidden>' +
+          '<span class="pi-video-icon"><i class="fas fa-play"></i></span>' +
+          '<span class="pi-video-text"><span class="pi-video-label">יוטיוב</span><span class="pi-video-title">לצפייה בסרטון על המקום</span></span>' +
+        '</a>' +
         '<div class="pi-body"></div>' +
         '<div class="pi-tip" hidden></div>' +
         '<div class="pi-tour" hidden></div>' +
