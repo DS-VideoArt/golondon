@@ -72,7 +72,7 @@
   }
 
   function open(p) {
-    if (!modal) buildModal();
+    if (!modal) { injectStyles(); buildModal(); }
     modal.querySelector('.kp-badge').textContent = p.category || '';
     modal.querySelector('.kp-title').textContent = p.name;
 
@@ -135,4 +135,7 @@
   } else {
     init();
   }
+
+  /* ממשק ציבורי, לאותה סיבה שיש ל GoLondonPlaceInfo ב place-info.js */
+  window.GoLondonKosherInfo = { open: open };
 })();

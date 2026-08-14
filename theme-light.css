@@ -1577,3 +1577,17 @@ a.fit:hover .fit-go i { transform: translateX(-3px); }
 @media (max-width: 560px) {
   .jump-articles { margin: 16px 16px 2px; font-size: 13.5px; padding: 12px 16px; }
 }
+
+/* ---------- קישור מקום בתוך טקסט חופשי ---------- */
+/*
+  auto-link-places.js מזהה שמות של אטרקציות, קבוצות כדורגל, אירועים
+  ומסעדות כשרות בתוך פרוזה חופשית במאמרים ובפוסטים, ועוטף אותם
+  בסימון הזה. קו תחתי מקווקו ולא צבע לינק רגיל, כדי שהקורא יבין
+  שזה מידע נוסף באתר עצמו, לא קישור יציאה.
+*/
+.gl-place-link {
+  cursor: pointer; text-decoration: underline; text-decoration-style: dotted;
+  text-decoration-color: rgba(220,38,38,0.55); text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px; transition: text-decoration-color .12s ease;
+}
+.gl-place-link:hover { text-decoration-color: #DC2626; }

@@ -142,6 +142,18 @@
   function open(id) {
     var item = data && data[id];
     if (!item) return;
+    openItem(item, id);
+  }
+
+  /*
+    גרסה ציבורית שמקבלת פריט מוכן במקום לחפש אותו במילון של העמוד.
+    זה מה שמאפשר לסקריפט auto-link-places.js לפתוח את אותו חלון בדיוק
+    עבור מקום שהוזכר בתוך טקסט חופשי במאמר או בפוסט, גם כשהמקום מגיע
+    ממקור נתונים אחר לגמרי מזה שהעמוד עצמו טעון איתו.
+  */
+  function openItem(item, id) {
+    if (!modal) { injectStyles(); buildModal(); }
+    if (!item) return;
 
     lastFocused = document.activeElement;
 
@@ -259,4 +271,11 @@
   } else {
     init();
   }
+
+  /*
+    ממשק ציבורי, כדי ש auto-link-places.js יוכל לפתוח את אותו חלון
+    בדיוק עבור מקום שנמצא בתוך טקסט חופשי, בלי תלות בקובץ הנתונים
+    שהעמוד עצמו טעון איתו.
+  */
+  window.GoLondonPlaceInfo = { openItem: openItem };
 })();
