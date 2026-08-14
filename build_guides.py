@@ -42,6 +42,11 @@ CLUSTERS = collections.OrderedDict([
                            'guide-flight-budget.html','guide-flight-money.html','guide-flight-packing.html',
                            'guide-flight-esim.html','guide-flight-insurance.html','guide-flight-customs.html',
                            'guide-flight-family.html']}),
+ ('winter',      {'hub':'guide-winter.html',      'label':'לונדון בחורף', 'postCat':'לונדון בחורף',
+                  'pages':['guide-winter-hanukkah.html','guide-winter-markets.html','guide-winter-ice-skating.html',
+                           'guide-winter-lights.html','guide-winter-boxing-day.html','guide-winter-kids.html',
+                           'guide-winter-weather.html','guide-winter-dark.html','guide-winter-cozy.html',
+                           'guide-winter-january.html']}),
 ])
 
 
