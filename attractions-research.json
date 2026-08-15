@@ -28,7 +28,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 31,
+   "price": 27.13,
    "currency": "GBP",
    "duration": "כשעה עד שעה וחצי",
    "source_url": "https://www.westminster-abbey.org/visit-us/prices-and-entry-times",
@@ -73,7 +73,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 33,
+   "price": 29.75,
    "currency": "GBP",
    "duration": "כשעתיים",
    "source_url": "https://www.iwm.org.uk/visits/churchill-war-rooms/booking",
@@ -108,7 +108,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 34.8,
+   "price": 37.0,
    "currency": "GBP",
    "duration": "כשלוש שעות",
    "source_url": "https://www.hrp.org.uk/tower-of-london/visit/tickets-and-prices/",
@@ -123,7 +123,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 13.4,
+   "price": 15.8,
    "currency": "GBP",
    "duration": "כשעה עד שעה וחצי",
    "source_url": "https://www.towerbridge.org.uk/whats-on/entry-to-tower-bridge",
@@ -138,7 +138,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 27,
+   "price": 24,
    "currency": "GBP",
    "duration": "כשעה וחצי עד שעתיים",
    "source_url": "https://www.stpauls.co.uk/ticket-types-and-prices",
@@ -383,7 +383,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 58.5,
+   "price": 51.19,
    "currency": "GBP",
    "duration": "כשלוש שעות וחצי עד ארבע",
    "source_url": "https://www.wbstudiotour.co.uk/tickets/",
@@ -453,7 +453,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 24.5,
+   "price": 23.62,
    "currency": "GBP",
    "duration": "כשעתיים עד שלוש",
    "source_url": "https://www.ltmuseum.co.uk/visit/tickets",
@@ -598,7 +598,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 16,
+   "price": 18.0,
    "currency": "GBP",
    "duration": "כשעתיים",
    "source_url": "https://www.postalmuseum.org/visit-us/tickets/",
@@ -623,7 +623,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 26.8,
+   "price": 23.45,
    "currency": "GBP",
    "duration": "כשעתיים",
    "source_url": "https://www.iwm.org.uk/visits/hms-belfast/booking",
@@ -638,7 +638,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 27,
+   "price": 28.0,
    "currency": "GBP",
    "duration": "כשעה",
    "source_url": "https://www.tiqets.com/en/london-attractions-c67458/tickets-for-shakespeares-globe-theatre-guided-tour-p1110014/",
@@ -783,7 +783,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 29,
+   "price": 23.63,
    "currency": "GBP",
    "duration": "כשעה וחצי",
    "source_url": "https://www.madametussauds.com/london/tickets-prices/ways-to-visit/general-admission/",
