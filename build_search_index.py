@@ -77,9 +77,11 @@ for f in sorted(glob.glob('*.html')):
         cat = {'guide-transport': 'תחבורה', 'guide-kosher': 'אוכל כשר', 'guide-stay': 'לינה',
                'guide-kids': 'עם ילדים', 'guide-attractions': 'אטרקציות',
                'guide-football': 'כדורגל', 'guide-flight': 'לפני הטיסה',
+               'guide-winter': 'לונדון בחורף', 'guide-events': 'אירועים ומועדים',
                'guide-oyster': 'תחבורה'}.get(f.rsplit('-', 1)[0] if f.count('-') > 1 else f[:-5], 'מדריך')
         for k, v in [('transport', 'תחבורה'), ('kosher', 'אוכל כשר'), ('stay', 'לינה'),
-                     ('kids', 'עם ילדים'), ('attractions', 'אטרקציות'),
+                     ('kids', 'עם ילדים'), ('attractions', 'אטרקציות'), ('winter', 'לונדון בחורף'),
+                     ('events', 'אירועים ומועדים'),
                      ('football', 'כדורגל'), ('flight', 'לפני הטיסה'), ('oyster', 'תחבורה')]:
             if k in f:
                 cat = v
