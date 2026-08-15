@@ -208,7 +208,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 25.95,
+   "price": 28.0,
    "currency": "GBP",
    "duration": "כשעה",
    "source_url": "https://tickets.theviewfromtheshard.com/book-tickets/",
@@ -818,7 +818,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 18,
+   "price": 16.75,
    "currency": "GBP",
    "duration": "כשעה ורבע",
    "source_url": "https://highgatecemetery.org/visit",
@@ -1013,7 +1013,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 6,
+   "price": 10.28,
    "currency": "GBP",
    "duration": "כעשר דקות",
    "source_url": "https://www.emiratesaircablecar.com/products/ifs-cloud-cable-car-ticket",
