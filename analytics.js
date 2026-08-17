@@ -108,6 +108,23 @@
     var href = hrefOf(a);
     if (!href) return;
 
+    /*
+      כרטיס במקטע "מה חדש" נבדק ראשון ויוצא מיד. זה מה שמבטיח ירייה
+      אחת בלבד: בלי זה, כרטיס שמוביל לעמוד אשכול היה נספר גם כאן
+      וגם כ-category_open, ואותה לחיצה הייתה נמדדת פעמיים.
+      הכתובת נשלחת בלי מחרוזת שאילתה, כדי שלא ייסחב לשם מידע אישי.
+    */
+    var wn = a.closest ? a.closest('.wnc') : null;
+    if (wn) {
+      track('whats_new_click', {
+        item_title: (wn.getAttribute('data-wn-title') || '').slice(0, 100),
+        destination_url: href.split('?')[0],
+        item_type: wn.getAttribute('data-wn-type') || '',
+        published_date: wn.getAttribute('data-wn-pubdate') || ''
+      });
+      return;
+    }
+
     var file = href.split('?')[0].split('#')[0].split('/').pop() || '';
 
     if (/^planner(\.html?)?$/i.test(file)) {

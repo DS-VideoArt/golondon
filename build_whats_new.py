@@ -152,7 +152,7 @@ def head(title, desc, canonical, image, extra_ld=''):
 
 FOOT = '''</main>
 <script src="accessibility-widget.js" defer></script>
-<script src="analytics.js?v=3" defer></script>
+<script src="analytics.js?v=4" defer></script>
 <script src="whats-new.js?v=1" defer></script>
 </body>
 </html>
@@ -319,7 +319,10 @@ def build_home(items):
             img = ('<span class="wnc-img" style="background-image:url(\'%s\')"></span>'
                    % html.escape(it['image']))
         cards += f'''
-          <a href="{html.escape(target)}" class="wnc">
+          <a href="{html.escape(target)}" class="wnc"
+             data-wn-title="{html.escape(it['title'])}"
+             data-wn-type="{html.escape(it['category'])}"
+             data-wn-pubdate="{it['date']}">
             {img}
             <span class="wnc-body">
               <span class="wnc-meta">
