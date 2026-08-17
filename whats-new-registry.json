@@ -1,0 +1,81 @@
+{
+ "_מה_זה_הקובץ_הזה": "מרשם היסטורי מלא של כל מה שפורסם ב\"מה חדש בלונדון\". משמש למניעת פרסום כפול. אין למחוק ממנו רשומות.",
+ "published": [
+  {
+   "id": "2026-08-17-va-east-museum",
+   "title": "מוזיאון חדש לגמרי נפתח במזרח לונדון, והכניסה חינם",
+   "titleNorm": "מוזיאון לגמרי נפתח במזרח והכניסה חינם",
+   "slug": "guide-attractions-va-east.html",
+   "datePublished": "2026-08-17",
+   "sourceUrls": [
+    "https://www.vam.ac.uk/east/museum/visit"
+   ],
+   "sourceDomains": [
+    "www.vam.ac.uk"
+   ],
+   "entity": "V&A East Museum",
+   "entityNorm": "east museum",
+   "category": "אטרקציות",
+   "summary": "אחרי שנים של עבודות נפתח באפריל האחרון מוזיאון חדש בסטרטפורד, חלק ממשפחת מוזיאוני ויקטוריה ואלברט. הכניסה חינם, והוא פתוח עד עשר בלילה פעמיים בשבוע.",
+   "summaryNorm": "אחרי שנים עבודות נפתח באפריל האחרון מוזיאון בסטרטפורד חלק ממשפחת מוזיאוני ויקטוריה ואלברט הכניסה חינם והוא פתוח עד עשר בלילה פעמיים בשבוע",
+   "summaryHash": "8f11c2a46fe9cc83"
+  },
+  {
+   "id": "2026-08-17-notting-hill-carnival",
+   "title": "קרנבל נוטינג היל בעוד פחות משבועיים, ומה זה אומר על התכנון",
+   "titleNorm": "קרנבל נוטינג היל בעוד פחות משבועיים ומה אומר התכנון",
+   "slug": "notting-hill-carnival",
+   "datePublished": "2026-08-17",
+   "sourceUrls": [
+    "https://nhcarnival.org/carnival-info"
+   ],
+   "sourceDomains": [
+    "nhcarnival.org"
+   ],
+   "entity": "Notting Hill Carnival 2026",
+   "entityNorm": "notting hill carnival 2026",
+   "category": "אירועים",
+   "summary": "האירוע הגדול בלוח השנה של לונדון נופל השנה ב-29 עד 31 באוגוסט. מי שנמצא בעיר בתאריכים האלה צריך להחליט אם הוא בפנים או שהוא מתכנן סביבו.",
+   "summaryNorm": "האירוע הגדול בלוח השנה נופל השנה 29 עד 31 באוגוסט שנמצא בעיר בתאריכים האלה צריך להחליט אם בפנים או שהוא מתכנן סביבו",
+   "summaryHash": "e6179a2775cb46fb"
+  },
+  {
+   "id": "2026-08-17-premier-league-opens",
+   "title": "עונת הליגה האנגלית נפתחת ב-21 באוגוסט",
+   "titleNorm": "עונת הליגה האנגלית נפתחת 21 באוגוסט",
+   "slug": "premier-league-opens",
+   "datePublished": "2026-08-17",
+   "sourceUrls": [
+    "https://www.premierleague.com/en/news/4468487/dates-for-202627-premier-league-season-confirmed"
+   ],
+   "sourceDomains": [
+    "www.premierleague.com"
+   ],
+   "entity": "Premier League 2026/27 season",
+   "entityNorm": "premier league 2026 27 season",
+   "category": "כדורגל",
+   "summary": "מחזור הפתיחה של העונה החדשה יוצא לדרך ביום שישי הקרוב. לישראלים שמתכננים לשלב משחק בטיול, זו נקודת ההתחלה של החלון הרלוונטי.",
+   "summaryNorm": "מחזור הפתיחה העונה יוצא לדרך ביום שישי הקרוב לישראלים שמתכננים לשלב משחק בטיול נקודת ההתחלה החלון הרלוונטי",
+   "summaryHash": "0fd601bbdeb3e578"
+  },
+  {
+   "id": "2026-08-17-emin-tate-closing",
+   "title": "התערוכה הגדולה של טרייסי אמין בטייט מודרן נסגרת ב-31 באוגוסט",
+   "titleNorm": "התערוכה הגדולה טרייסי אמין בטייט מודרן נסגרת 31 באוגוסט",
+   "slug": "emin-tate-closing",
+   "datePublished": "2026-08-17",
+   "sourceUrls": [
+    "https://www.tate.org.uk/whats-on/tate-modern/tracey-emin"
+   ],
+   "sourceDomains": [
+    "www.tate.org.uk"
+   ],
+   "entity": "Tracey Emin A Second Life, Tate Modern",
+   "entityNorm": "tracey emin second life tate modern",
+   "category": "תרבות",
+   "summary": "אחת התערוכות המדוברות של השנה בלונדון יורדת בסוף החודש. מי שנמצא בעיר בשבועיים הקרובים, זו ההזדמנות האחרונה.",
+   "summaryNorm": "אחת התערוכות המדוברות השנה בלונדון יורדת בסוף החודש שנמצא בעיר בשבועיים הקרובים ההזדמנות האחרונה",
+   "summaryHash": "81983f70506c5e85"
+  }
+ ]
+}

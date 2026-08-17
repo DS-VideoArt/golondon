@@ -21,7 +21,7 @@ CLUSTERS = collections.OrderedDict([
                            'guide-stay-north.html','guide-stay-apartments.html','guide-stay-budget.html',
                            'guide-stay-family.html']}),
  ('attractions', {'hub':'guide-attractions.html', 'label':'אטרקציות',  'postCat':'אטרקציות',
-                  'pages':['guide-attractions-museums.html','guide-attractions-free.html','guide-attractions-royal.html','guide-attractions-views.html','guide-attractions-parks.html','guide-attractions-markets.html','guide-attractions-thames.html','guide-attractions-hidden.html','guide-attractions-westend.html','guide-attractions-rainy.html']}),
+                  'pages':['guide-attractions-va-east.html','guide-attractions-museums.html','guide-attractions-free.html','guide-attractions-royal.html','guide-attractions-views.html','guide-attractions-parks.html','guide-attractions-markets.html','guide-attractions-thames.html','guide-attractions-hidden.html','guide-attractions-westend.html','guide-attractions-rainy.html']}),
  ('kids',        {'hub':'guide-kids.html',        'label':'טיול עם ילדים','postCat':'סוגי מטיילים',
                   'pages':['guide-kids-toddlers.html','guide-kids-museums.html','guide-kids-parks.html','guide-kids-free.html',
                            'guide-kids-rain.html','guide-kids-transport.html','guide-kids-harry-potter.html',

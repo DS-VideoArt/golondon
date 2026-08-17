@@ -6,6 +6,7 @@
 
 צריך להריץ מחדש אחרי כל הוספה של עמוד או תוכן.
 """
+import html as _html
 import json, re, os, glob, collections
 
 ROOT = '/Users/mymac/דפי נחיתה ואתרים/golondon'
@@ -22,6 +23,7 @@ TYPE_LABEL = {
     'place': 'אטרקציה',
     'kosher': 'מקום כשר',
     'tool': 'כלי',
+    'update': 'מה חדש',
 }
 
 
@@ -64,7 +66,7 @@ for f in sorted(glob.glob('*.html')):
     if f in SKIP:
         continue
     html = open(f, encoding='utf-8').read()
-    t = title_of(html)
+    t = _html.unescape(title_of(html))
     if not t:
         continue
 
@@ -86,6 +88,8 @@ for f in sorted(glob.glob('*.html')):
             if k in f:
                 cat = v
                 break
+    elif f.startswith('whats-new'):
+        typ, cat = 'update', 'מה חדש בלונדון'
     elif f in ('planner.html', 'kosher-map.html', 'before-you-fly.html', 'index.html',
                'join.html', 'contact.html', 'about.html'):
         typ, cat = 'tool', 'כלים'
