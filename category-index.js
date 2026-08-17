@@ -23,6 +23,19 @@
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
+  /*
+    רקע עם נפילה לאחור. ההצהרה הראשונה היא קובץ המקור, והשנייה
+    גוברת בדפדפן שתומך ב-image-set ומגישה webp. הכרטיסים האלה
+    נבנים בג'אווהסקריפט, ולכן הם לא נכללו בשכתוב הסטטי של הגיליון.
+  */
+  function bgCss(img) {
+    var webp = img.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+    if (webp === img) return "background-image:url('" + esc(img) + "')";
+    return "background-image:url('" + esc(img) + "');" +
+           "background-image:image-set(url('" + esc(webp) + "') type('image/webp'), " +
+           "url('" + esc(img) + "') type('image/jpeg'))";
+  }
+
   /* קיצור לגבול מילים, כדי שלא ייחתך באמצע מילה */
   function trim(txt, max) {
     txt = String(txt || '').replace(/\s+/g, ' ').trim();
@@ -64,7 +77,7 @@
 
   function card(item) {
     var img = item.img
-      ? '<div class="cix-img" style="background-image:url(\'' + esc(item.img) + '\')"></div>'
+      ? '<div class="cix-img" style="' + bgCss(item.img) + '"></div>'
       : '';
     return '<a class="cix-card" href="' + esc(item.url) + '">' + img +
       '<div class="cix-body">' +

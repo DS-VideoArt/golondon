@@ -263,9 +263,9 @@ a { text-decoration: none; color: inherit; }
 .categories { padding: 90px 0 100px; background: #FAF9F6; position: relative; overflow: hidden; }
 .categories::before {
   content: ''; position: absolute; inset: 0; z-index: 0;
-  background:
-    linear-gradient(100deg, rgba(220,38,38,0.78) 0%, rgba(124,58,237,0.62) 100%),
-    url('images/bg-red-bus.jpg') left center / 820px no-repeat;
+  background: linear-gradient(100deg, rgba(220,38,38,0.78) 0%, rgba(124,58,237,0.62) 100%),
+    url('images/bg-red-bus.jpg') left center / 820px no-repeat; background: linear-gradient(100deg, rgba(220,38,38,0.78) 0%, rgba(124,58,237,0.62) 100%),
+    image-set(url('images/bg-red-bus.webp') type('image/webp'), url('images/bg-red-bus.jpg') type('image/jpeg')) left center / 820px no-repeat;
   background-blend-mode: multiply;
   filter: grayscale(0.35) contrast(1.05);
   opacity: 0.9;

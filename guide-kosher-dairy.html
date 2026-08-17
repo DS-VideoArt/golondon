@@ -55,7 +55,7 @@
     .back-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); text-decoration: none; }
     /* כותרת עמוד בפריסה מלאה: תצלום ברקע, שכבת כהות מדורגת מעליו, וטקסט קריא לחלוטין */
     .page-hero { position: relative; background: #0a0a1a; padding: 92px 24px 78px; text-align: center; overflow: hidden; }
-    .page-hero::before { content: ""; position: absolute; inset: 0; background: url('images/kosher-dairy.jpg') center 55% / cover no-repeat; transform: scale(1.04); filter: brightness(1.32) saturate(1.08); z-index: 0; }
+    .page-hero::before { content: ""; position: absolute; inset: 0; background: url('images/kosher-dairy.jpg') center 55% / cover no-repeat; background: image-set(url('images/kosher-dairy.webp') type('image/webp'), url('images/kosher-dairy.jpg') type('image/jpeg')) center 55% / cover no-repeat; transform: scale(1.04); filter: brightness(1.32) saturate(1.08); z-index: 0; }
     .page-hero::after { content: ""; position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(180deg, rgba(10,10,26,0.22) 0%, rgba(10,10,26,0.44) 42%, rgba(10,10,26,0.97) 100%),
                   linear-gradient(100deg, rgba(21,128,61,0.15) 0%, rgba(15,118,110,0.04) 55%, rgba(10,10,26,0) 100%); }
@@ -125,7 +125,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Go London" />
   <link rel="stylesheet" href="accessibility-widget.css" />
-  <link rel="stylesheet" href="theme-light.css?v=8" />
+  <link rel="stylesheet" href="theme-light.css?v=9" />
 </head>
 <body>
 

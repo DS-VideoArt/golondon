@@ -316,8 +316,15 @@ def build_home(items):
         icon = CAT_ICON.get(it['category'], 'fa-circle-info')
         img = ''
         if it.get('image'):
-            img = ('<span class="wnc-img" style="background-image:url(\'%s\')"></span>'
-                   % html.escape(it['image']))
+            # נפילה לאחור ואז image-set, כמו בשאר האתר. אם אין גרסת webp
+            # לתמונה הזאת, מוגשת רק המקורית.
+            jpg = it['image']
+            webp = jpg.rsplit('.', 1)[0] + '.webp'
+            css = "background-image:url('%s')" % html.escape(jpg)
+            if os.path.exists(webp):
+                css += ";background-image:image-set(url('%s') type('image/webp'), url('%s') type('image/jpeg'))" % (
+                    html.escape(webp), html.escape(jpg))
+            img = '<span class="wnc-img" style="%s"></span>' % css
         cards += f'''
           <a href="{html.escape(target)}" class="wnc"
              data-wn-title="{html.escape(it['title'])}"
