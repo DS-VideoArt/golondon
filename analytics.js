@@ -89,6 +89,12 @@
      האזנה אחת ברמת המסמך, במקום קוד מדידה מפוזר בעשרות עמודים.
      עובד גם על קישורים שנוצרים בג'אווהסקריפט אחרי טעינת העמוד.
   */
+  /*
+    שימו לב לסיומת האופציונלית בכל הביטויים כאן. נטליפיי מגישה את
+    האתר בכתובות ללא סיומת, כלומר href של planner.html מוגש בפועל
+    כ /planner. ביטוי שדורש .html עובד מצוין בבדיקה מקומית ומת
+    לגמרי באתר החי. זה בדיוק מה שקרה, ולכן הסיומת אופציונלית.
+  */
   function hrefOf(a) {
     var raw = a.getAttribute('href') || '';
     if (!raw || raw.charAt(0) === '#') return '';
@@ -104,29 +110,29 @@
 
     var file = href.split('?')[0].split('#')[0].split('/').pop() || '';
 
-    if (/^planner\.html?$/i.test(file)) {
+    if (/^planner(\.html?)?$/i.test(file)) {
       track('planner_open', { link_text: (a.textContent || '').trim().slice(0, 60) });
       return;
     }
 
-    if (/^kosher-map\.html?$/i.test(file)) {
+    if (/^kosher-map(\.html?)?$/i.test(file)) {
       track('kosher_map_open', { link_text: (a.textContent || '').trim().slice(0, 60) });
       return;
     }
 
-    var m = file.match(/^london-([a-z]+)\.html?$/i);
+    var m = file.match(/^london-([a-z]+)(\.html?)?$/i);
     if (m && MONTHS[m[1].toLowerCase()]) {
       track('month_select', { month: m[1].toLowerCase(), month_he: MONTHS[m[1].toLowerCase()] });
       return;
     }
 
-    if (/^london-by-month\.html?$/i.test(file)) {
+    if (/^london-by-month(\.html?)?$/i.test(file)) {
       track('month_hub_open', {});
       return;
     }
 
     /* עמוד ראשי של אשכול תוכן, לדוגמה guide-transport.html אבל לא guide-transport-tube.html */
-    var g = file.match(/^guide-([a-z]+)\.html?$/i);
+    var g = file.match(/^guide-([a-z]+)(\.html?)?$/i);
     if (g) {
       track('category_open', { cluster: g[1].toLowerCase() });
       return;

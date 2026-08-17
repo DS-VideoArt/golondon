@@ -147,7 +147,7 @@ def head(title, desc, canonical, image, extra_ld=''):
 
 FOOT = '''</main>
 <script src="accessibility-widget.js" defer></script>
-<script src="analytics.js?v=2" defer></script>
+<script src="analytics.js?v=3" defer></script>
 <script src="whats-new.js?v=1" defer></script>
 </body>
 </html>
