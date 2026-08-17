@@ -106,7 +106,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Go London" />
   <link rel="stylesheet" href="accessibility-widget.css" />
-  <link rel="stylesheet" href="theme-light.css?v=4" />
+  <link rel="stylesheet" href="theme-light.css?v=5" />
 </head>
 <body>
 
@@ -286,6 +286,11 @@ async function runSearch(q) {
 
   ACTIVE_TYPE = 'all';
   paint(q);
+
+  /* מה מחפשים ומה לא נמצא. שאילתה בלי תוצאות היא הסימן הכי ישיר לפער תוכן */
+  if (window.glTrack) {
+    glTrack('search_query', { search_term: q.trim().slice(0, 80), results: LAST_MATCHES.length });
+  }
 }
 
 /* טעינה עם פרמטר חיפוש בכתובת, למשל מהחיפוש שבתפריט העליון */
@@ -308,5 +313,6 @@ document.getElementById('searchForm').addEventListener('submit', (e) => {
 <script src="accessibility-widget.js" defer></script>
 <script src="install-prompt.js" defer></script>
 <script src="community-ask.js?v=2" defer></script>
+<script src="analytics.js?v=1" defer></script>
 </body>
 </html>

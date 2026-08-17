@@ -156,6 +156,7 @@
     if (!item) return;
 
     lastFocused = document.activeElement;
+    if (window.glTrack) glTrack('place_open', { place: item.title, place_id: id || '' });
 
     titleEl.textContent = item.title;
 

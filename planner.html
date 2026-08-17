@@ -520,7 +520,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Go London" />
   <link rel="stylesheet" href="accessibility-widget.css" />
-  <link rel="stylesheet" href="theme-light.css?v=4" />
+  <link rel="stylesheet" href="theme-light.css?v=5" />
 </head>
 <body>
 
@@ -1298,6 +1298,7 @@
   function openInfo(a) {
     if (!infoEl) buildInfoModal();
     infoLastFocus = document.activeElement;
+    if (window.glTrack) glTrack('place_open', { place: a.name, place_id: a.id });
 
     var area = DATA.areas[a.area] || {};
     infoEl.querySelector('.info-area').textContent = (area.emoji || '📍') + ' ' + (area.name || '');
@@ -1596,6 +1597,7 @@
     manual.active = target;
     syncManual();
     var a = byId(id);
+    if (window.glTrack) glTrack('add_to_trip', { place_id: id, place: a ? a.name : '', day: target + 1 });
     toast((a ? a.name : 'המקום') + ' נוסף ליום ' + (target + 1));
   }
 
@@ -1816,6 +1818,7 @@
     $('tab-manual').classList.toggle('active', isManual);
     $('tab-auto').setAttribute('aria-selected', String(!isManual));
     $('tab-manual').setAttribute('aria-selected', String(isManual));
+    if (window.glTrack) glTrack('planner_mode', { mode: mode });
     if (isManual) syncManual();
   }
 
@@ -1868,6 +1871,14 @@
   function run() {
     VERSIONS = [];
     LAST = build();
+    if (window.glTrack) {
+      glTrack('planner_complete', {
+        days: state.days,
+        budget: state.budget,
+        interests: state.interests.join(',') || 'ללא',
+        child_ages: state.childAges.join(',') || 'מבוגרים בלבד'
+      });
+    }
     pushVersion(LAST);
     render(LAST);
     $('compare').hidden = true;
@@ -1876,6 +1887,15 @@
   }
 
   function wire() {
+    /* הנגיעה הראשונה בכלי, לא משנה באיזה שדה. זה מה שמאפשר לדעת
+       כמה מהנכנסים בכלל התחילו, וכמה מהם הגיעו עד מסלול מוכן. */
+    var started = false;
+    document.querySelector('.wrap').addEventListener('click', function () {
+      if (started) return;
+      started = true;
+      if (window.glTrack) glTrack('planner_start', {});
+    }, true);
+
     $('build').addEventListener('click', run);
     $('again').addEventListener('click', function () {
       LAST = build();
@@ -1950,5 +1970,6 @@
 <script src="install-prompt.js" defer></script>
 <script src="affiliate.js?v=2" defer></script>
 <script src="community-ask.js?v=2" defer></script>
+<script src="analytics.js?v=1" defer></script>
 </body>
 </html>

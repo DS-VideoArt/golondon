@@ -73,6 +73,7 @@
 
   function open(p) {
     if (!modal) { injectStyles(); buildModal(); }
+    if (window.glTrack) glTrack('kosher_place_open', { place: p.name, category: p.category || '' });
     modal.querySelector('.kp-badge').textContent = p.category || '';
     modal.querySelector('.kp-title').textContent = p.name;
 
