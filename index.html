@@ -13,19 +13,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="oeLwknJFA2keAkBqqYpxisH1n8K51oIKVUq3IFdw6EQ" />
-  <title>גו לונדון | המדריך הישראלי המלא ללונדון</title>
-  <meta name="description" content="גו לונדון הוא המדריך הישראלי המקיף לטיול וחיים בלונדון: תחבורה, אוכל כשר, אטרקציות, אירועים ומפת כשרות, הכל בעברית." />
+  <title>גו לונדון | תכנון טיול ללונדון, המדריך הישראלי המלא</title>
+  <meta name="description" content="מתכננים טיול ללונדון? בונה מסלול יומי, מפת כשרות עם 78 מקומות, ומדריך לכל חודש בשנה. תחבורה, אטרקציות, אוכל כשר ואירועים, הכל בעברית." />
   <link rel="canonical" href="https://golondon.co.il/" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="גו לונדון | המדריך הישראלי המלא ללונדון" />
-  <meta property="og:description" content="גו לונדון הוא המדריך הישראלי המקיף לטיול וחיים בלונדון: תחבורה, אוכל כשר, אטרקציות, אירועים ומפת כשרות, הכל בעברית." />
+  <meta property="og:title" content="גו לונדון | תכנון טיול ללונדון, המדריך הישראלי המלא" />
+  <meta property="og:description" content="מתכננים טיול ללונדון? בונה מסלול יומי, מפת כשרות עם 78 מקומות, ומדריך לכל חודש בשנה. תחבורה, אטרקציות, אוכל כשר ואירועים, הכל בעברית." />
   <meta property="og:url" content="https://golondon.co.il/" />
   <meta property="og:image" content="https://golondon.co.il/images/hero.jpg" />
   <meta property="og:locale" content="he_IL" />
   <meta property="og:site_name" content="גו לונדון" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="גו לונדון | המדריך הישראלי המלא ללונדון" />
-  <meta name="twitter:description" content="גו לונדון הוא המדריך הישראלי המקיף לטיול וחיים בלונדון: תחבורה, אוכל כשר, אטרקציות, אירועים ומפת כשרות, הכל בעברית." />
+  <meta name="twitter:title" content="גו לונדון | תכנון טיול ללונדון, המדריך הישראלי המלא" />
+  <meta name="twitter:description" content="מתכננים טיול ללונדון? בונה מסלול יומי, מפת כשרות עם 78 מקומות, ומדריך לכל חודש בשנה. תחבורה, אטרקציות, אוכל כשר ואירועים, הכל בעברית." />
   <meta name="twitter:image" content="https://golondon.co.il/images/hero.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -73,7 +73,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Go London" />
   <link rel="stylesheet" href="accessibility-widget.css" />
-  <link rel="stylesheet" href="theme-light.css?v=4" />
+  <link rel="stylesheet" href="theme-light.css?v=5" />
 </head>
 <body>
 
@@ -89,7 +89,11 @@
         <rect x="27" width="6" height="30" fill="#C8102E"/>
         <rect y="13.5" width="60" height="3" fill="#C8102E"/>
       </svg>
-      <h1 class="splash-title">ברוכים הבאים <span class="splash-home">הביתה</span></h1>
+      <!--
+        זו כותרת ויזואלית של מסך הפתיחה בלבד, ולכן היא לא h1.
+        הכותרת הראשית היחידה של העמוד היא זו שבגיבור, וזו שמדברת על תכנון.
+      -->
+      <div class="splash-title">ברוכים הבאים <span class="splash-home">הביתה</span></div>
     </div>
   </div>
   <script>
@@ -205,7 +209,7 @@
     <div class="hero-content container">
       <div class="hero-badge">
         <span class="badge-dot"></span>
-        המדריך הישראלי המלא ללונדון
+        תכנון טיול ללונדון, בעברית
       </div>
       <h1 class="hero-title">
         תכננו את הטיול שלכם ללונדון<br />
@@ -219,8 +223,8 @@
         <a href="planner.html" class="btn btn-red btn-glow">
           <i class="fas fa-wand-magic-sparkles"></i> בנו לי מסלול
         </a>
-        <a href="https://www.facebook.com/groups/golondonisrael?locale=he_IL" target="_blank" class="btn btn-outline btn-hero-sm">
-          <i class="fab fa-facebook"></i> קהילת הפייסבוק
+        <a href="kosher-map.html" class="btn btn-outline btn-hero-sm btn-outline--green">
+          <i class="fas fa-map-location-dot"></i> מפת הכשרות
         </a>
       </div>
     </div>
@@ -234,9 +238,16 @@
 
 
 
-  <!-- למה גו לונדון שונה, שלוש נקודות -->
-  <section class="why-us">
+  <!--
+    שכבת התכנון. אלה לא עוד שלושה קישורים באתר, אלה הכלים שבשבילם באים לכאן,
+    ולכן הם יושבים מיד מתחת לגיבור ולפני כל התוכן.
+  -->
+  <section class="why-us" id="tools">
     <div class="container">
+      <div class="section-header section-header--tools">
+        <h2>שלושת הכלים שמתכננים איתם</h2>
+        <p>אלה הדברים שאין באף אתר אחר בעברית, וזו הסיבה שהאתר הזה קיים</p>
+      </div>
       <div class="why-grid">
         <a href="planner.html" class="why-card">
           <span class="why-photo" style="background-image:url('images/why-planner.jpg')">
@@ -275,12 +286,43 @@
     </div>
   </section>
 
+  <!--
+    שכבת הזמן. הכניסה המהירה לחודש הנסיעה, ישירות מדף הבית.
+    כתוב כ-HTML סטטי ולא נבנה בג'אווהסקריפט, כדי שגוגל יראה את שנים עשר
+    הקישורים הפנימיים האלה, וכדי לא להוסיף עבודה לדפדפן בטעינת דף הבית.
+  -->
+  <section class="months-strip" id="months">
+    <div class="container">
+      <div class="section-header">
+        <h2>מתי אתם טסים?</h2>
+        <p>בוחרים חודש ומקבלים מזג אוויר, שעות אור, עומס, מה קורה בעיר ומה כדאי להזמין מראש</p>
+      </div>
+      <div class="ms-scroll">
+        <div class="ms-grid">
+          <a href="london-january.html" class="ms-card"><span class="ms-emoji">❄️</span><span class="ms-name">ינואר</span><span class="ms-temp">2 עד 7°</span></a>
+          <a href="london-february.html" class="ms-card"><span class="ms-emoji">🌂</span><span class="ms-name">פברואר</span><span class="ms-temp">2 עד 7°</span></a>
+          <a href="london-march.html" class="ms-card"><span class="ms-emoji">🌼</span><span class="ms-name">מרץ</span><span class="ms-temp">3 עד 10°</span></a>
+          <a href="london-april.html" class="ms-card"><span class="ms-emoji">🌸</span><span class="ms-name">אפריל</span><span class="ms-temp">5 עד 13°</span></a>
+          <a href="london-may.html" class="ms-card"><span class="ms-emoji">🌳</span><span class="ms-name">מאי</span><span class="ms-temp">8 עד 17°</span></a>
+          <a href="london-june.html" class="ms-card"><span class="ms-emoji">☀️</span><span class="ms-name">יוני</span><span class="ms-temp">11 עד 20°</span></a>
+          <a href="london-july.html" class="ms-card"><span class="ms-emoji">🎾</span><span class="ms-name">יולי</span><span class="ms-temp">13 עד 22°</span></a>
+          <a href="london-august.html" class="ms-card"><span class="ms-emoji">🎭</span><span class="ms-name">אוגוסט</span><span class="ms-temp">13 עד 22°</span></a>
+          <a href="london-september.html" class="ms-card"><span class="ms-emoji">🍂</span><span class="ms-name">ספטמבר</span><span class="ms-temp">11 עד 19°</span></a>
+          <a href="london-october.html" class="ms-card"><span class="ms-emoji">🍁</span><span class="ms-name">אוקטובר</span><span class="ms-temp">8 עד 15°</span></a>
+          <a href="london-november.html" class="ms-card"><span class="ms-emoji">🎆</span><span class="ms-name">נובמבר</span><span class="ms-temp">4 עד 10°</span></a>
+          <a href="london-december.html" class="ms-card"><span class="ms-emoji">🎄</span><span class="ms-name">דצמבר</span><span class="ms-temp">2 עד 8°</span></a>
+        </div>
+      </div>
+      <a href="london-by-month.html" class="ms-all">להשוואה בין כל החודשים <i class="fas fa-arrow-left"></i></a>
+    </div>
+  </section>
+
   <!-- קטגוריות ראשיות -->
   <section class="categories" id="categories">
     <div class="container">
       <div class="section-header">
         <h2>המדריכים שמאחורי התכנון</h2>
-        <p>כל נושא הוא אשכול עמודים מלא, לצלול אליו כשצריך תשובה מדויקת</p>
+        <p>כשצריך תשובה מדויקת לשאלה אחת. כל נושא הוא אשכול עמודים מלא</p>
       </div>
 
       <!-- שורה ראשונה, שני כרטיסים גדולים -->
@@ -420,7 +462,7 @@
         <li><strong>להצמיד כרטיסים שונים בכניסה וביציאה.</strong> המערכת רואה שתי נסיעות לא גמורות וגובה מחיר מלא על שתיהן.</li>
       </ol>
       <a href="planner.html" class="mistakes-cta">
-        <i class="fas fa-wand-magic-sparkles"></i> שהכלי יבנה לכם מסלול שנמנע מכל אלה
+        <i class="fas fa-wand-magic-sparkles"></i> בנו לי מסלול שנמנע מכל אלה
       </a>
     </div>
   </section>
@@ -638,5 +680,6 @@
   <input type="checkbox" name="consent" />
   <input type="text" name="bot-field" />
 </form>
+<script src="analytics.js?v=1" defer></script>
 </body>
 </html>

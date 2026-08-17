@@ -1591,3 +1591,89 @@ a.fit:hover .fit-go i { transform: translateX(-3px); }
   text-decoration-thickness: 1.5px; transition: text-decoration-color .12s ease;
 }
 .gl-place-link:hover { text-decoration-color: #DC2626; }
+
+/* ============================================================
+   שכבת התכנון בדף הבית
+   ============================================================
+   שני שינויים בלבד, ושניהם משרתים את אותה מטרה: שהנכנס יבין
+   בשניות הראשונות שכאן מתכננים טיול ולא רק קוראים על לונדון.
+*/
+
+/* כותרת מעל שלושת הכלים. צמודה יותר מכותרת סעיף רגילה, כי הכרטיסים מתחתיה */
+.section-header--tools { margin-bottom: 26px; }
+.section-header--tools h2 { font-size: clamp(24px, 3.2vw, 34px); }
+.section-header--tools p { font-size: 16px; }
+
+/* כפתור משני ירוק בגיבור, בצבע של מפת הכשרות */
+.btn-outline--green {
+  border-color: rgba(74,222,128,0.55) !important;
+  color: #bbf7d0 !important;
+}
+.btn-outline--green:hover {
+  background: rgba(74,222,128,0.14) !important;
+  border-color: #4ade80 !important;
+  color: #fff !important;
+}
+
+/* ---------- מתי אתם טסים, שנים עשר החודשים ---------- */
+.months-strip { padding: 40px 0 6px; }
+.months-strip .section-header { margin-bottom: 24px; }
+.months-strip .section-header h2 { font-size: clamp(24px, 3.2vw, 34px); }
+.months-strip .section-header p { font-size: 16px; }
+
+.ms-scroll { margin-inline: -4px; padding: 4px; }
+.ms-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+.ms-card {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px; padding: 14px 8px;
+  background: var(--surface) !important;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none !important;
+  transition: transform .18s, box-shadow .18s, border-color .18s;
+}
+.ms-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(30,58,138,0.38);
+  box-shadow: 0 10px 26px rgba(16,24,40,0.12);
+}
+.ms-emoji { font-size: 20px; line-height: 1; }
+.ms-name  { font-size: 14.5px; font-weight: 900; color: var(--ink) !important; }
+.ms-temp  { font-size: 11.5px; font-weight: 600; color: var(--ink-faint) !important; }
+
+.ms-all {
+  display: inline-flex; align-items: center; gap: 7px;
+  margin-top: 16px; font-size: 14.5px; font-weight: 800;
+  color: var(--brand) !important;
+}
+.ms-all:hover { color: var(--brand-warm) !important; }
+
+@media (max-width: 900px) {
+  .ms-grid { grid-template-columns: repeat(4, 1fr); }
+}
+/*
+  במובייל הכרטיסים עוברים לגלילה אופקית במקום להצטמצם לרוחב בלתי קריא.
+  scroll-snap גורם לכל כרטיס לעצור במקום, וזה מה שהופך את זה לנוח באצבע.
+*/
+@media (max-width: 620px) {
+  .months-strip { padding: 30px 0 4px; }
+  .ms-scroll {
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-inline: -18px;
+    padding: 4px 18px 10px;
+  }
+  .ms-scroll::-webkit-scrollbar { display: none; }
+  .ms-grid {
+    grid-template-columns: repeat(12, 92px);
+    gap: 9px;
+  }
+  .ms-card { scroll-snap-align: start; padding: 13px 6px; }
+}
