@@ -1,15 +1,21 @@
-/* ===== מסך פתיחה ===== */
+/* ===== מסך פתיחה =====
+   כל המראה כאן נשאר כפי שהיה: אותה תמונה, אותם צבעים, אותה הילה
+   אדומה ואותם צללים. מה שהשתנה הוא הקצב בלבד. הפתיח היה נמשך
+   כשנייה וארבע עשיריות ועוד ארבע עשיריות של דעיכה, וזה בדיוק הזמן
+   שבו המבקר אמור להבין מה האתר עושה. עכשיו כל האנימציה מתכווצת
+   לתוך חלון של כשש עשיריות שנייה, בלי לוותר על אף אלמנט.
+*/
 #splash-screen {
   position: fixed; inset: 0; z-index: 99999;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
-  transition: opacity 0.35s ease, visibility 0.35s ease;
+  transition: opacity 0.26s ease, visibility 0.26s ease;
   opacity: 1; visibility: visible;
 }
 #splash-screen::before {
   content: ''; position: absolute; inset: -2%;
   background: url('images/splash.jpg') center center / cover no-repeat;
-  animation: splashZoom 5s ease-out forwards;
+  animation: splashZoom 2.2s ease-out forwards;
   z-index: 0;
 }
 #splash-screen::after {
@@ -18,31 +24,37 @@
   z-index: 1;
 }
 #splash-screen.splash-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-html.splash-active, html.splash-active body { overflow: hidden; height: 100%; }
+/*
+  נעילת הגלילה בזמן הפתיח. בעבר היה כאן גם height: 100% על body,
+  וזה כפה על העמוד גובה זמני אחר מהגובה האמיתי שלו. ברגע שהפתיח
+  ירד הגובה חזר, והתוכן קפץ. זו הייתה קפיצת פריסה אמיתית, ולכן
+  הוסר. overflow לבדו מספיק כדי למנוע גלילה מאחורי הפתיח.
+*/
+html.splash-active, html.splash-active body { overflow: hidden; }
 .splash-content { position: relative; z-index: 2; text-align: center; padding: 24px; }
 .splash-content::before {
   content: ''; position: absolute; inset: -50px -80px; z-index: -1;
   background: radial-gradient(ellipse at center, rgba(220,38,38,0.35) 0%, rgba(220,38,38,0) 70%);
   filter: blur(6px);
-  animation: splashGlowPulse 3s ease-in-out 0.6s infinite;
+  animation: splashGlowPulse 2s ease-in-out 0.2s infinite;
 }
 .splash-flag-icon {
   width: 96px; height: auto; margin: 0 auto 22px; display: block;
   border-radius: 5px; overflow: hidden;
   box-shadow: 0 8px 22px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.25);
-  animation: fadeInDown 0.7s ease both, splashFlagWave 3.2s ease-in-out 0.7s infinite;
+  animation: fadeInDown 0.34s ease both, splashFlagWave 3.2s ease-in-out 0.34s infinite;
   transform-origin: 15% 50%;
 }
 .splash-title {
   font-size: clamp(34px, 7.5vw, 66px); font-weight: 900; color: #fff8ec;
   letter-spacing: -0.5px;
   text-shadow: 0 4px 24px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.55);
-  animation: splashIn 0.9s ease 0.15s both;
+  animation: splashIn 0.4s ease 0.05s both;
 }
 .splash-home {
   color: #DC2626;
   text-shadow: 0 0 40px rgba(220,38,38,0.9), 0 0 80px rgba(220,38,38,0.55), 0 4px 20px rgba(0,0,0,0.55);
-  animation: splashHomeGlow 2.4s ease-in-out 1.2s infinite;
+  animation: splashHomeGlow 1.6s ease-in-out 0.35s infinite;
 }
 @keyframes splashHomeGlow {
   0%, 100% { text-shadow: 0 0 40px rgba(220,38,38,0.9), 0 0 80px rgba(220,38,38,0.55), 0 4px 20px rgba(0,0,0,0.55); }

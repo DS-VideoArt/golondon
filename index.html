@@ -29,9 +29,19 @@
   <meta name="twitter:image" content="https://golondon.co.il/images/hero.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!--
+    שתי התמונות האלה הן רקע ב-CSS ולא תגית img, ולכן הדפדפן מגלה אותן
+    רק אחרי שהוא מוריד ומפענח את גיליון הסגנון. הטעינה המוקדמת מזיזה
+    את הגילוי לרגע קריאת ה-HTML, וזה בדיוק מה שקובע את זמן הציור
+    של האלמנט הגדול בעמוד.
+    תמונת הפתיח מסומנת למי שלא ביקש להפחית תנועה, כי מי שביקש
+    לא רואה את הפתיח בכלל ואין טעם להוריד אצלו 310 קילובייט.
+  -->
+  <link rel="preload" as="image" href="images/splash.jpg" fetchpriority="high" media="(prefers-reduced-motion: no-preference)" />
+  <link rel="preload" as="image" href="images/hero.jpg" fetchpriority="high" />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css?v=3" />
+  <link rel="stylesheet" href="style.css?v=4" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -110,10 +120,21 @@
       }
       var isFreshEntry = navType === 'reload' || !referrerIsInternal;
 
-      if (reduceMotion || !isFreshEntry) {
+      /*
+        פעם אחת לכל ביקור באתר. מי שכבר ראה את הפתיח וחזר לדף הבית
+        באותו ביקור לא רואה אותו שוב. sessionStorage נמחק לבד כשסוגרים
+        את הלשונית, ולכן בביקור הבא הפתיח יופיע כרגיל.
+        גלישה פרטית בחלק מהדפדפנים זורקת כאן חריגה, ולכן try.
+      */
+      var seenThisSession = false;
+      try { seenThisSession = sessionStorage.getItem('gl_splash') === '1'; } catch (e) {}
+
+      if (reduceMotion || !isFreshEntry || seenThisSession) {
         splash.remove();
         return;
       }
+      try { sessionStorage.setItem('gl_splash', '1'); } catch (e) {}
+
       var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.documentElement.classList.add('splash-active');
       if (scrollbarWidth > 0) { document.body.style.paddingRight = scrollbarWidth + 'px'; }
@@ -124,11 +145,15 @@
           splash.remove();
           document.documentElement.classList.remove('splash-active');
           document.body.style.paddingRight = '';
-        }, 380);
+        }, 260);
       }
 
-      /* שנייה וארבע עשיריות. מספיק כדי לקלוט את הלוגו, ולא מספיק כדי להתעכב */
-      var timer = setTimeout(hideSplash, 1400);
+      /*
+        שש עשיריות שנייה. האנימציה כולה כבר הושלמה בנקודה הזאת,
+        והדעיכה מוסיפה עוד רבע שנייה. העמוד עצמו נטען מאחורי הפתיח
+        כל הזמן הזה, ולכן הקיצור לא דוחה שום משאב.
+      */
+      var timer = setTimeout(hideSplash, 600);
       splash.addEventListener('click', function () { clearTimeout(timer); hideSplash(); });
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') { clearTimeout(timer); hideSplash(); }
@@ -680,6 +705,6 @@
   <input type="checkbox" name="consent" />
   <input type="text" name="bot-field" />
 </form>
-<script src="analytics.js?v=1" defer></script>
+<script src="analytics.js?v=2" defer></script>
 </body>
 </html>

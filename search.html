@@ -287,9 +287,13 @@ async function runSearch(q) {
   ACTIVE_TYPE = 'all';
   paint(q);
 
-  /* מה מחפשים ומה לא נמצא. שאילתה בלי תוצאות היא הסימן הכי ישיר לפער תוכן */
+  /*
+    מה מחפשים ומה לא נמצא. שאילתה בלי תוצאות היא הסימן הכי ישיר לפער תוכן.
+    הטקסט עובר דרך מסנן המידע האישי שב-analytics.js לפני השליחה.
+  */
   if (window.glTrack) {
-    glTrack('search_query', { search_term: q.trim().slice(0, 80), results: LAST_MATCHES.length });
+    var term = window.glSafeTerm ? window.glSafeTerm(q) : '';
+    if (term) glTrack('search_query', { search_term: term, results: LAST_MATCHES.length });
   }
 }
 
@@ -313,6 +317,6 @@ document.getElementById('searchForm').addEventListener('submit', (e) => {
 <script src="accessibility-widget.js" defer></script>
 <script src="install-prompt.js" defer></script>
 <script src="community-ask.js?v=2" defer></script>
-<script src="analytics.js?v=1" defer></script>
+<script src="analytics.js?v=2" defer></script>
 </body>
 </html>
