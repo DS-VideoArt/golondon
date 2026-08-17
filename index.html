@@ -35,13 +35,15 @@
     את הגילוי לרגע קריאת ה-HTML, וזה בדיוק מה שקובע את זמן הציור
     של האלמנט הגדול בעמוד.
     תמונת הפתיח מסומנת למי שלא ביקש להפחית תנועה, כי מי שביקש
-    לא רואה את הפתיח בכלל ואין טעם להוריד אצלו 310 קילובייט.
+    לא רואה את הפתיח בכלל ואין טעם להוריד אצלו את הקובץ.
+    ה-type חיוני: דפדפן שלא תומך ב-webp מתעלם מהטעינה המוקדמת
+    ומוריד את קובץ ה-jpg דרך גיליון הסגנון, בלי הורדה כפולה.
   -->
-  <link rel="preload" as="image" href="images/splash.jpg" fetchpriority="high" media="(prefers-reduced-motion: no-preference)" />
-  <link rel="preload" as="image" href="images/hero.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="images/splash.webp" type="image/webp" fetchpriority="high" media="(prefers-reduced-motion: no-preference)" />
+  <link rel="preload" as="image" href="images/hero.webp" type="image/webp" fetchpriority="high" />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=5" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -189,7 +191,7 @@
   <header class="navbar" id="navbar">
     <div class="container nav-inner">
       <div class="logo">
-        <img src="images/logo.png" alt="גו לונדון" class="logo-img" width="86" height="48" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <img src="images/logo.png?v=2" alt="גו לונדון" class="logo-img" width="86" height="48" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
         <div class="logo-text-fallback">
           <span class="logo-go">GO</span><span class="logo-london">LONDON</span>
         </div>
@@ -299,7 +301,7 @@
           </span>
         </a>
         <a href="london-by-month.html" class="why-card">
-          <span class="why-photo" style="background-image:url('images/why-months.jpg')">
+          <span class="why-photo" style="background-image:url('images/why-months.jpg');background-image:image-set(url('images/why-months.webp') type('image/webp'), url('images/why-months.jpg') type('image/jpeg'))">
             <span class="why-chip">12 עמודי חודש</span>
           </span>
           <span class="why-body">
@@ -435,7 +437,7 @@
       <div class="cat-row cat-row--hero">
 
         <a href="guide-flight.html" class="cat-card cat-card--large" style="--grad: linear-gradient(135deg, #1E3A8A 0%, #7C3AED 100%);">
-          <div class="cat-card-bg" style="--img: url('images/cat-planning.jpg');"></div>
+          <div class="cat-card-bg" style="--img: url('images/cat-planning.jpg'); --img: image-set(url('images/cat-planning.webp') type('image/webp'), url('images/cat-planning.jpg') type('image/jpeg'));"></div>
           <div class="cat-emoji">✈️</div>
           <h3>תכנון הטיול ללונדון</h3>
           <ul class="cat-sub">
@@ -476,7 +478,7 @@
         </a>
 
         <a href="guide-stay.html" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #0F766E 0%, #0891B2 100%);">
-          <div class="cat-card-bg" style="--img: url('images/cat-stay.jpg');"></div>
+          <div class="cat-card-bg" style="--img: url('images/cat-stay.jpg'); --img: image-set(url('images/cat-stay.webp') type('image/webp'), url('images/cat-stay.jpg') type('image/jpeg'));"></div>
           <div class="cat-emoji">🏨</div>
           <h3>לינה בלונדון</h3>
           <ul class="cat-sub">
@@ -488,7 +490,7 @@
         </a>
 
         <a href="guide-kosher.html" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #15803D 0%, #65A30D 100%);">
-          <div class="cat-card-bg" style="--img: url('images/cat-kosher.jpg');"></div>
+          <div class="cat-card-bg" style="--img: url('images/cat-kosher.jpg'); --img: image-set(url('images/cat-kosher.webp') type('image/webp'), url('images/cat-kosher.jpg') type('image/jpeg'));"></div>
           <div class="cat-emoji">🥙</div>
           <h3>אוכל כשר בלונדון</h3>
           <ul class="cat-sub">
@@ -500,7 +502,7 @@
         </a>
 
         <a href="guide-kids.html" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #0891B2 0%, #2563EB 100%);">
-          <div class="cat-card-bg" style="--img: url('images/cat-kids.jpg');"></div>
+          <div class="cat-card-bg" style="--img: url('images/cat-kids.jpg'); --img: image-set(url('images/cat-kids.webp') type('image/webp'), url('images/cat-kids.jpg') type('image/jpeg'));"></div>
           <div class="cat-emoji">👨‍👩‍👧‍👦</div>
           <h3>לונדון עם ילדים</h3>
           <ul class="cat-sub">
@@ -524,7 +526,7 @@
         </a>
 
         <a href="guide-football.html" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #15803D 0%, #0F766E 100%);">
-          <div class="cat-card-bg" style="--img: url('images/cat-football.jpg');"></div>
+          <div class="cat-card-bg" style="--img: url('images/cat-football.jpg'); --img: image-set(url('images/cat-football.webp') type('image/webp'), url('images/cat-football.jpg') type('image/jpeg'));"></div>
           <div class="cat-emoji">⚽</div>
           <h3>כדורגל בלונדון</h3>
           <ul class="cat-sub">
@@ -536,7 +538,7 @@
         </a>
 
         <a href="guide-winter.html" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #1E40AF 0%, #0EA5E9 100%);">
-          <div class="cat-card-bg" style="--img: url('images/cat-winter.jpg');"></div>
+          <div class="cat-card-bg" style="--img: url('images/cat-winter.jpg'); --img: image-set(url('images/cat-winter.webp') type('image/webp'), url('images/cat-winter.jpg') type('image/jpeg'));"></div>
           <div class="cat-emoji">❄️</div>
           <h3>לונדון בחורף</h3>
           <ul class="cat-sub">

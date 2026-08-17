@@ -15,6 +15,7 @@
 #splash-screen::before {
   content: ''; position: absolute; inset: -2%;
   background: url('images/splash.jpg') center center / cover no-repeat;
+  background: image-set(url('images/splash.webp') type('image/webp'), url('images/splash.jpg') type('image/jpeg')) center center / cover no-repeat;
   animation: splashZoom 2.2s ease-out forwards;
   z-index: 0;
 }
@@ -180,6 +181,9 @@ a { text-decoration: none; color: inherit; }
   background:
     linear-gradient(180deg, rgba(10,20,40,0.1) 0%, rgba(10,20,40,0.15) 30%, rgba(10,20,40,0.4) 62%, rgba(10,20,40,0.7) 88%, #FAF9F6 100%),
     url('images/hero.jpg') center 42% / cover no-repeat;
+  background:
+    linear-gradient(180deg, rgba(10,20,40,0.1) 0%, rgba(10,20,40,0.15) 30%, rgba(10,20,40,0.4) 62%, rgba(10,20,40,0.7) 88%, #FAF9F6 100%),
+    image-set(url('images/hero.webp') type('image/webp'), url('images/hero.jpg') type('image/jpeg')) center 42% / cover no-repeat;
   display: flex; align-items: center; overflow: hidden; padding-top: 110px;
 }
 .hero-bg { position: absolute; inset: 0; pointer-events: none; }
