@@ -73,7 +73,14 @@
 
   function open(p) {
     if (!modal) { injectStyles(); buildModal(); }
-    if (window.glTrack) glTrack('kosher_place_open', { place: p.name, category: p.category || '' });
+    /* אותו אירוע בדיוק כמו במפה, ונבדל ממנה רק בפרמטר source */
+    if (window.glTrack) glTrack('kosher_place_open', {
+      place: p.name,
+      place_id: p.id || '',
+      category: p.category || '',
+      area: (String(p.postcode || '').match(/^[A-Z]+/) || [''])[0],
+      source: 'article'
+    });
     modal.querySelector('.kp-badge').textContent = p.category || '';
     modal.querySelector('.kp-title').textContent = p.name;
 

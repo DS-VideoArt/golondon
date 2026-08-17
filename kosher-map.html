@@ -28,7 +28,15 @@
   <meta name="twitter:image" content="https://golondon.co.il/images/hero.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!--
+    Leaflet ו-MarkerCluster מוגשים מהאתר עצמו ולא מ-unpkg.
+    המפה היא מוצר דגל, ותלות ב-CDN חיצוני היא נקודת כשל יחידה
+    שמפילה אותה לגמרי. הקבצים סטטיים, אין שלב בנייה, ואותו מקור
+    גם חוסך פתיחת חיבור נוסף.
+  -->
+  <link rel="stylesheet" href="vendor/leaflet.css?v=1" />
+  <link rel="stylesheet" href="vendor/markercluster.css?v=1" />
+  <link rel="stylesheet" href="vendor/markercluster-default.css?v=1" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     main { display: flex; flex-direction: column; flex: 1; min-height: 0; }
@@ -194,7 +202,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Go London" />
   <link rel="stylesheet" href="accessibility-widget.css" />
-  <link rel="stylesheet" href="theme-light.css?v=9" />
+  <link rel="stylesheet" href="theme-light.css?v=11" />
 </head>
 <body>
 
@@ -235,7 +243,8 @@
 <!-- מפה -->
 <div id="map"></div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="vendor/leaflet.js?v=1"></script>
+<script src="vendor/markercluster.js?v=1"></script>
 <script>
 // ===== אתחול המפה =====
 const map = L.map('map', {
@@ -281,6 +290,20 @@ function makeIcon(category) {
   });
 }
 
+/*
+  קבוצת אשכולות. שבעים ושמונה סמנים על שטח קטן, ובגולדרס גרין ובהנדון
+  הם נערמים זה על זה עד שאי אפשר ללחוץ על אף אחד. האשכול מאחד אותם
+  בזום נמוך ומתפרק לסמנים בודדים בזום גבוה.
+  disableClusteringAtZoom מבטיח שברמת רחוב רואים תמיד את המקומות עצמם.
+*/
+const clusterGroup = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  spiderfyOnMaxZoom: true,
+  disableClusteringAtZoom: 16,
+  maxClusterRadius: 45
+});
+map.addLayer(clusterGroup);
+
 // ===== טעינת נתונים =====
 let allPlaces = [];
 let markers = [];
@@ -293,6 +316,15 @@ fetch('kosher-places.json?v=2')
     allPlaces = data;
     buildKashrusFilters();
     applyFilters();
+    /*
+      map_open נורה רק כאן, אחרי שהספרייה נטענה, הנתונים הגיעו והסמנים
+      כבר על המפה. הוא מודד שימוש אמיתי, בשונה מ-kosher_map_open שמודד
+      כוונה להגיע אליה מתוך האתר. שני האירועים אינם חופפים.
+    */
+    if (window.glTrack) glTrack('map_open', { places: allPlaces.length });
+  })
+  .catch(function (err) {
+    if (window.console) console.warn('[kosher-map]', err && err.message);
   });
 
 /*
@@ -319,7 +351,19 @@ function buildKashrusFilters() {
     b.type = 'button';
     b.className = 'filter-btn' + (currentKashrus === val ? ' active-kashrus' : '');
     b.textContent = label;
-    b.onclick = () => { currentKashrus = val; buildKashrusFilters(); applyFilters(); };
+    b.onclick = () => {
+      const changed = currentKashrus !== val;
+      currentKashrus = val;
+      buildKashrusFilters();
+      applyFilters();
+      if (changed && window.glTrack) {
+        glTrack('filter_used', {
+          filter_type: 'kashrus',
+          filter_value: val,
+          results_count: markers.length
+        });
+      }
+    };
     return b;
   };
   box.appendChild(mk('הכל', '✡️ כל ההשגחות'));
@@ -334,7 +378,13 @@ function applyFilters() {
 }
 
 function renderMarkers(places) {
-  markers.forEach(m => map.removeLayer(m));
+  /*
+    ניקוי מלא של הקבוצה במקום הסרה סמן אחר סמן. זה מה שמונע סמני רפאים
+    ואשכולות שנשארים עם ספירה ישנה אחרי החלפת פילטר.
+    סוגרים גם חלון פתוח, כי הוא עלול להישאר תלוי על מקום שכבר סונן החוצה.
+  */
+  map.closePopup();
+  clusterGroup.clearLayers();
   markers = [];
 
   places.forEach(p => {
@@ -359,15 +409,53 @@ function renderMarkers(places) {
       .bindPopup(popup, { maxWidth: 260, className: 'custom-popup' });
 
     marker.placeData = p;
-    marker.addTo(map);
+    /*
+      מדידת פתיחת מקום. משתמשים באירוע הקיים kosher_place_open עם
+      פרמטר source, במקום ליצור אירוע נפרד למפה. popupopen נורה
+      פעם אחת לפתיחה, ולכן אין ספירה כפולה גם בלחיצה על ילד בתוך החלון.
+    */
+    marker.on('popupopen', function () {
+      if (window.glTrack) glTrack('kosher_place_open', {
+        place: p.name, place_id: p.id, category: p.category,
+        area: areaOf(p), source: 'map'
+      });
+    });
     markers.push(marker);
   });
 
+  clusterGroup.addLayers(markers);
   document.getElementById('visibleCount').textContent = places.length;
 }
 
+/* האזור נגזר מקידומת המיקוד, שהיא הדבר היחיד שקיים בנתונים */
+function areaOf(p) {
+  var m = String(p.postcode || '').match(/^[A-Z]+/);
+  return m ? m[0] : '';
+}
+
+/*
+  ניווט. מאזין אחד על המפה, ולא מאזין לכל חלון בנפרד, כדי שלא
+  ייווצרו מאזינים כפולים בכל פתיחה מחדש של חלון.
+*/
+document.getElementById('map').addEventListener('click', function (e) {
+  var a = e.target.closest ? e.target.closest('a.popup-waze') : null;
+  if (!a) return;
+  var pop = a.closest('.place-popup');
+  var nameEl = pop ? pop.querySelector('.popup-name') : null;
+  var name = nameEl ? nameEl.textContent.trim() : '';
+  var p = allPlaces.filter(function (x) { return x.name === name; })[0];
+  if (window.glTrack) glTrack('navigation_click', {
+    place: name,
+    place_id: p ? p.id : '',
+    area: p ? areaOf(p) : '',
+    navigation_provider: 'waze'
+  });
+});
+
 // ===== סינון =====
 function setFilter(filter, btn) {
+  /* לחיצה חוזרת על אותו פילטר אינה שינוי, ולכן לא נספרת */
+  var changed = currentFilter !== filter;
   currentFilter = filter;
   document.querySelectorAll('.toolbar > .filter-btn').forEach(b => {
     b.className = 'filter-btn';
@@ -379,6 +467,14 @@ function setFilter(filter, btn) {
   else if (filter === 'חנות ומעדנייה') btn.classList.add('active-shop');
 
   applyFilters();
+
+  if (changed && window.glTrack) {
+    glTrack('filter_used', {
+      filter_type: 'category',
+      filter_value: filter,
+      results_count: markers.length
+    });
+  }
 }
 
 // ===== מיקום המשתמש =====
@@ -404,6 +500,23 @@ function locateMe() {
   });
 }
 </script>
+<!--
+  חיבור המפה לשאר האתר. עד היום המפה הייתה מבוי סתום: אפס קישורים
+  ממנה לעשרת מדריכי הכשרות. הרכיב יושב אחרי המפה ולא כשכבה מעליה,
+  כדי לא להסתיר אותה במובייל.
+-->
+<section class="km-guides">
+  <h2>מתכננים את היום סביב אוכל כשר?</h2>
+  <p>המפה מראה איפה. המדריכים מסבירים מה שווה, מה פתוח מתי, ואיך בונים סביב זה יום.</p>
+  <div class="km-guides-grid">
+    <a href="guide-kosher-golders-green"><i class="fas fa-location-dot"></i> אוכל כשר בגולדרס גרין</a>
+    <a href="guide-kosher-hendon"><i class="fas fa-location-dot"></i> אוכל כשר בהנדון</a>
+    <a href="guide-kosher-meat"><i class="fas fa-drumstick-bite"></i> מסעדות בשריות</a>
+    <a href="guide-kosher-dairy"><i class="fas fa-mug-saucer"></i> מסעדות חלביות</a>
+  </div>
+  <a class="km-guides-all" href="guide-kosher">לכל מדריכי הכשרות <i class="fas fa-arrow-left"></i></a>
+</section>
+
 </main>
 <script src="accessibility-widget.js" defer></script>
 <script src="install-prompt.js" defer></script>
