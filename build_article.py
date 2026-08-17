@@ -77,6 +77,14 @@ BASE_CSS = """    *, *::before, *::after { box-sizing: border-box; margin: 0; pa
 """
 
 
+def canon_slug(slug):
+    """
+    הכתובת הקנונית של האתר היא ללא סיומת html, כי זו הגרסה שנטליפיי
+    מגישה בפועל ושאליה מפנות כל ההפניות. ראו build_redirects.py.
+    """
+    return slug[:-5] if slug.endswith('.html') else slug
+
+
 def make_article(a):
     """
     a: slug, title, desc, hero, tag, h1, sub, readtime, breadcrumb (list of (text,href|None)),
@@ -112,11 +120,11 @@ def make_article(a):
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{esc(a['title'])} | גו לונדון</title>
   <meta name="description" content="{esc(a['desc'])}" />
-  <link rel="canonical" href="{SITE}/{a['slug']}" />
+  <link rel="canonical" href="{SITE}/{canon_slug(a['slug'])}" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="{esc(a['title'])}" />
   <meta property="og:description" content="{esc(a['desc'])}" />
-  <meta property="og:url" content="{SITE}/{a['slug']}" />
+  <meta property="og:url" content="{SITE}/{canon_slug(a['slug'])}" />
   <meta property="og:image" content="{SITE}/images/{a['hero']}" />
   <meta property="og:locale" content="he_IL" />
   <meta property="og:site_name" content="גו לונדון" />
@@ -135,7 +143,7 @@ def make_article(a):
     "image": "{SITE}/images/{a['hero']}",
     "author": {{ "@type": "Organization", "name": "גו לונדון" }},
     "publisher": {{ "@type": "Organization", "name": "גו לונדון", "url": "{SITE}" }},
-    "mainEntityOfPage": "{SITE}/{a['slug']}"
+    "mainEntityOfPage": "{SITE}/{canon_slug(a['slug'])}"
   }}
   </script>
   <style>

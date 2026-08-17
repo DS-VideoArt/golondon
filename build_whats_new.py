@@ -34,6 +34,11 @@ CAT_ICON = {
 problems = []
 
 
+def canon(page):
+    """הכתובת הקנונית היא ללא סיומת html. ראו build_redirects.py."""
+    return page[:-5] if page.endswith('.html') else page
+
+
 def he_date(iso):
     y, m, d = (int(x) for x in iso.split('-'))
     return '%d ב%s %d' % (d, HE_MONTHS[m - 1], y)
@@ -208,7 +213,7 @@ def day_file(d):
 
 
 def build_day(d, items):
-    canonical = '%s/%s' % (SITE, day_file(d))
+    canonical = '%s/%s' % (SITE, canon(day_file(d)))
     first_img = next((i['image'] for i in items if i.get('image')), 'images/hero.jpg')
     titles = '; '.join(i['title'] for i in items)
     desc = ('מה חדש בלונדון ב%s: %s' % (he_date(d), titles))[:250]
@@ -229,7 +234,7 @@ def build_day(d, items):
                 "@type": "BreadcrumbList",
                 "itemListElement": [
                     {"@type": "ListItem", "position": 1, "name": "דף הבית", "item": SITE + "/"},
-                    {"@type": "ListItem", "position": 2, "name": "מה חדש בלונדון", "item": "%s/%s" % (SITE, ARCHIVE)},
+                    {"@type": "ListItem", "position": 2, "name": "מה חדש בלונדון", "item": "%s/%s" % (SITE, canon(ARCHIVE))},
                     {"@type": "ListItem", "position": 3, "name": he_date(d), "item": canonical},
                 ],
             },
@@ -255,7 +260,7 @@ def build_day(d, items):
 
 
 def build_archive(by_day):
-    canonical = '%s/%s' % (SITE, ARCHIVE)
+    canonical = '%s/%s' % (SITE, canon(ARCHIVE))
     total = sum(len(v) for v in by_day.values())
     desc = 'כל העדכונים של גו לונדון על מה שחדש בלונדון: אטרקציות, אירועים, תחבורה, תרבות וספורט, לפי סדר כרונולוגי.'
     first_img = 'images/hero.jpg'
@@ -350,6 +355,7 @@ def update_sitemap(pages):
     s = open(SITEMAP, encoding='utf-8').read()
     added = 0
     for p in pages:
+        p = canon(p)
         if '<loc>%s/%s</loc>' % (SITE, p) in s:
             continue
         entry = ('  <url>\n    <loc>%s/%s</loc>\n    <lastmod>%s</lastmod>\n'
