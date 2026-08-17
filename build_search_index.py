@@ -86,7 +86,8 @@ for f in sorted(glob.glob('*.html')):
             if k in f:
                 cat = v
                 break
-    elif f in ('planner.html', 'kosher-map.html', 'index.html', 'join.html', 'contact.html', 'about.html'):
+    elif f in ('planner.html', 'kosher-map.html', 'before-you-fly.html', 'index.html',
+               'join.html', 'contact.html', 'about.html'):
         typ, cat = 'tool', 'כלים'
     else:
         typ, cat = 'guide', 'מדריך'

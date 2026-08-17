@@ -1677,3 +1677,62 @@ a.fit:hover .fit-go i { transform: translateX(-3px); }
   }
   .ms-card { scroll-snap-align: start; padding: 13px 6px; }
 }
+
+/* ============================================================
+   לוח המחוונים "לפני שטסים"
+   ============================================================
+   העמוד הזה לא מוסיף שום תוכן חדש. הוא מרכז מדריכים שכבר קיימים
+   באתר ומסדר אותם לפי סדר הזמנים האמיתי של מי שסוגר טיול.
+   הצבעים כאן הם אותם טוקנים של כל האתר, בלי שום גוון חדש.
+*/
+.byf-num { color: var(--brand) !important; }
+.byf-grp h2 { color: var(--ink) !important; }
+.byf-sub { color: var(--ink-soft) !important; }
+
+.byf-card {
+  background: var(--surface) !important;
+  border-color: var(--line) !important;
+  box-shadow: var(--shadow-sm);
+}
+.byf-card:hover {
+  border-color: rgba(234,88,12,0.42) !important;
+  box-shadow: 0 12px 30px rgba(16,24,40,0.13);
+}
+.byf-ico {
+  background: linear-gradient(135deg, #DC2626, #EA580C);
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(220,38,38,0.24);
+}
+/* שלב שתיים הוא שלב המסמכים, ולכן כחול, ושלב שלוש הוא הנחיתה, ולכן ירוק */
+.byf-grp:nth-of-type(2) .byf-ico { background: linear-gradient(135deg, #1E3A8A, #2563EB); box-shadow: 0 4px 12px rgba(30,58,138,0.24); }
+.byf-grp:nth-of-type(3) .byf-ico { background: linear-gradient(135deg, #15803D, #22A055); box-shadow: 0 4px 12px rgba(21,128,61,0.24); }
+
+.byf-title { color: var(--ink) !important; }
+.byf-desc  { color: var(--ink-soft) !important; }
+.byf-flag {
+  background: rgba(220,38,38,0.11);
+  color: var(--brand) !important;
+}
+
+.byf-next { border-top-color: var(--line) !important; }
+.byf-next h2 { color: var(--ink) !important; }
+.byf-next-card {
+  background: var(--surface) !important;
+  border-color: var(--line) !important;
+  color: var(--ink) !important;
+  box-shadow: var(--shadow-sm);
+  transition: border-color .16s, transform .16s;
+}
+.byf-next-card:hover { border-color: rgba(30,58,138,0.4) !important; transform: translateY(-2px); }
+.byf-next-card i { color: var(--brand) !important; }
+
+/*
+  פירורי הלחם באתר מקבלים margin-top שלילי כדי להיתחב מתחת לכרטיס
+  התוכן המעוגל של עמודי המאמרים. בלוח המחוונים אין כרטיס כזה, ולכן
+  המשיכה כלפי מעלה הניחה אותם על גבי תצלום הכותרת ובלי קריאות.
+  ההחזרה מוגבלת לעמוד הזה בלבד ולא נוגעת באף עמוד אחר.
+*/
+.byf-page .breadcrumb {
+  margin-top: 0 !important;
+  padding-top: 18px !important;
+}
