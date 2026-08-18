@@ -14,6 +14,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>גו לונדון | קטגוריה</title>
   <meta name="description" content="מדריכים ופוסטים לפי קטגוריה על לונדון: תחבורה, אוכל, אטרקציות, תרבות, כדורגל ועוד, הכל בעברית למטיילים ישראלים." />
+  <!--
+    עמוד הקטגוריה הוא כלי ניווט וסינון, לא עמוד נחיתה מגוגל.
+    הוא בונה את התוכן בג'אווהסקריפט, ולכן ה-HTML הראשוני שלו מכיל
+    "טוען..." ככותרת ראשית ו"עדיין אין פוסטים" כטקסט. גוגל בכל זאת
+    הציגה אותו, ובנתוני Search Console הוא הופיע במקום 4.6 על לינה
+    ובמקום 3 על תחבורה, בזמן ש-guide-stay ו-guide-transport מתחרים
+    על אותה כוונה בדיוק. אפס קליקים בכל 21 החשיפות.
+    noindex מוציא אותו מהתחרות ומשאיר כוונה אחת לכל עמוד מרכזי.
+    follow נשמר, כדי שהקישורים לפוסטים ימשיכו להיסרק.
+  -->
+  <meta name="robots" content="noindex, follow" />
   <link rel="canonical" href="https://golondon.co.il/category" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="קטגוריות מידע על לונדון | גו לונדון" />
