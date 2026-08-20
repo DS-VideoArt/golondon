@@ -1012,10 +1012,20 @@
       return;
     }
 
-    /* קודם התאמה חזקה. רק אם אין אף אחת, נופלים לגוף הטקסט */
-    var strong = items.filter(function (el) { return el.__strong.indexOf(q) > -1; });
-    var use = strong.length ? strong
-                            : items.filter(function (el) { return el.__weak.indexOf(q) > -1; });
+    /*
+      התאמה בתחילת מילה בלבד. בעברית "סים" מוכל בתוך "כרטיסים",
+      ולכן חיפוש חופשי החזיר את הטעות הלא נכונה. אותיות השימוש
+      הנפוצות מותרות כקידומת, כדי ש"באויסטר" עדיין ימצא אויסטר.
+    */
+    var rx;
+    try {
+      rx = new RegExp('(^|[\\s,.;:"\u2019\u05F3()\\u2013\\u2014])[\u05D1\u05DC\u05D4\u05D5\u05DE\u05E9\u05DB]?' +
+                      q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    } catch (e) { rx = null; }
+    function hit(txt) { return rx ? rx.test(txt) : txt.indexOf(q) > -1; }
+
+    var strong = items.filter(function (el) { return hit(el.__strong); });
+    var use = strong.length ? strong : items.filter(function (el) { return hit(el.__weak); });
     var found = use.length;
     items.forEach(function (el) {
       var ok = use.indexOf(el) > -1;
