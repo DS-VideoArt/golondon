@@ -59,6 +59,14 @@ def body_text(html):
     return re.sub(r'\s+', ' ', chunk).strip()
 
 
+
+# כינויי חיפוש. נועד למקרה שהמשתמש מקליד באנגלית מונח שהעמוד מכסה
+# בעברית בלבד. בלי זה חיפוש "West End" נופל על עמודים אחרים שסתם
+# מזכירים את הצירוף בגוף הטקסט, במקום על העמוד שבאמת עוסק בו.
+ALIASES = {
+    'guide-attractions-westend.html': 'west end westend west-end theatre theater musical musicals show shows',
+}
+
 items = []
 
 # ---------- עמודי HTML ----------
@@ -98,6 +106,7 @@ for f in sorted(glob.glob('*.html')):
 
     items.append({
         'type': typ, 'title': t, 'cat': cat, 'url': f,
+        'alias': ALIASES.get(f, ''),
         'desc': meta(html, 'description'),
         'img': hero_img(html),
         'text': body_text(html)[:1400],

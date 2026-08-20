@@ -190,8 +190,15 @@ function scoreOf(item, q) {
   const cat = (item.cat || '').toLowerCase();
   const desc = (item.desc || '').toLowerCase();
   const text = (item.text || '').toLowerCase();
+  /*
+    כינויים. מדורג מעל התאמה חלקית בכותרת, כדי שחיפוש באנגלית של
+    מונח שהעמוד מכסה בעברית יעלה את העמוד הנכון ולא עמוד אקראי
+    שסתם מזכיר את הצירוף בגוף הטקסט.
+  */
+  const alias = (item.alias || '').toLowerCase();
 
   if (title === q) return 100;
+  if (alias.includes(q)) return 85;
   if (title.startsWith(q)) return 80;
   if (title.includes(q)) return 60;
   if (cat.includes(q)) return 40;
