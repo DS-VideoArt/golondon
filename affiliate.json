@@ -107,6 +107,8 @@
   },
   "slots": {
     "_הסבר": "אילו הצעות מוצגות בכל עמוד, ובאיזה סדר. השמות כאן חייבים להתאים לערך שמופיע בתכונת data-affiliate בעמוד עצמו.",
+    "mistakes-esim": ["esim"],
+    "mistakes-tickets": ["attractions_alt"],
     "oyster": [
       "attractions_alt",
       "esim"
