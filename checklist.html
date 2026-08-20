@@ -390,6 +390,40 @@ var CL_DATA = [
     }
   });
 
+  /*
+    סימון פריט מעדכן נקודתית ולא בונה מחדש את כל הרשימה. בנייה מחדש
+    הורסת את המיקוד של המקלדת, ומוחקת את תיבת הסימון שהמשתמש בדיוק
+    לחץ עליה, כך שלחיצה מהירה על שני פריטים ברצף איבדה את השנייה.
+  */
+  function refreshCounters(conf) {
+    var st = cat(conf.id);
+    var items = itemsOf(conf);
+    var done = items.filter(function (it) { return st.checkedItemIds.indexOf(it.id) > -1; }).length;
+    var pct = items.length ? Math.round(done / items.length * 100) : 0;
+
+    var box = document.querySelector('.cl-cat[data-cat="' + conf.id + '"]');
+    if (box) {
+      var sub = box.querySelector('.cl-cat-sub');
+      sub.textContent = done + ' מתוך ' + items.length + ' · ' + pct + '%';
+      sub.classList.toggle('done', pct === 100);
+      var mini = box.querySelector('.cl-minibar span');
+      mini.style.width = pct + '%';
+      mini.classList.toggle('done', pct === 100);
+    }
+
+    var allTotal = 0, allDone = 0;
+    CL_DATA.forEach(function (x) {
+      var s2 = cat(x.id), it2 = itemsOf(x);
+      allTotal += it2.length;
+      allDone += it2.filter(function (i) { return s2.checkedItemIds.indexOf(i.id) > -1; }).length;
+    });
+    document.getElementById('clTotal').textContent = allDone + ' מתוך ' + allTotal;
+    document.getElementById('clTotalBar').style.width =
+      (allTotal ? Math.round(allDone / allTotal * 100) : 0) + '%';
+
+    return pct;
+  }
+
   document.addEventListener('change', function (e) {
     var cb = e.target;
     if (!cb.matches || !cb.matches('input[data-item]')) return;
@@ -405,10 +439,11 @@ var CL_DATA = [
     }
     save();
 
-    var items = itemsOf(conf);
-    var wasComplete = items.length && st.checkedItemIds.length === items.length;
-    render(); restoreOpen();
-    if (wasComplete && cb.checked) trackDone(conf);
+    var row = cb.closest('.cl-item');
+    if (row) row.classList.toggle('checked', cb.checked);
+
+    var pct = refreshCounters(conf);
+    if (pct === 100 && cb.checked) trackDone(conf);
   });
 
   document.addEventListener('submit', function (e) {
