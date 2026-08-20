@@ -137,6 +137,13 @@
       return;
     }
 
+    /* הצ'קליסט הוא כלי שלישי לצד בונה המסלול ומפת הכשרות, ולכן הוא
+       מקבל אירוע משלו באותה תבנית ולא נספר כאשכול תוכן. */
+    if (/^checklist(\.html?)?$/i.test(file)) {
+      track('checklist_open', { link_text: (a.textContent || '').trim().slice(0, 60) });
+      return;
+    }
+
     var m = file.match(/^london-([a-z]+)(\.html?)?$/i);
     if (m && MONTHS[m[1].toLowerCase()]) {
       track('month_select', { month: m[1].toLowerCase(), month_he: MONTHS[m[1].toLowerCase()] });
