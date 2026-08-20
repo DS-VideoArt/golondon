@@ -148,6 +148,17 @@
       return;
     }
 
+    /*
+      חריג נקודתי אחד. עמוד הווסט אנד הוא תת עמוד לפי שם הקובץ, אבל
+      מבחינת הניווט הוא אשכול לכל דבר: הוא היעד של "הצגות ומופעים"
+      בכותרת התחתונה. בלי השורה הזאת הקטגוריה היחידה שהוספנו הייתה
+      גם היחידה שאי אפשר למדוד. הכלל הכללי שמתחת לא משתנה.
+    */
+    if (/^guide-attractions-westend(\.html?)?$/i.test(file)) {
+      track('category_open', { cluster: 'shows' });
+      return;
+    }
+
     /* עמוד ראשי של אשכול תוכן, לדוגמה guide-transport.html אבל לא guide-transport-tube.html */
     var g = file.match(/^guide-([a-z]+)(\.html?)?$/i);
     if (g) {
