@@ -61,7 +61,12 @@
   }
 
   function init() {
-    var scope = document.querySelector('.content') || document.querySelector('article') || document.body;
+    /*
+      main לפני article. נפילה ל-article בוחרת את הראשון בלבד, ובעמוד
+      שבו כל מקטע הוא article נפרד זה מוצא כותרת אחת במקום שתים עשרה,
+      והתפריט פשוט לא נבנה.
+    */
+    var scope = document.querySelector('.content') || document.querySelector('main') || document.body;
     var all = [].slice.call(scope.querySelectorAll('h2'));
 
     var sections = all.filter(function (h) {
@@ -113,11 +118,18 @@
     box.appendChild(head);
     box.appendChild(list);
 
-    /* התפריט נכנס בדיוק לפני המקטע הראשון, אחרי פסקאות הפתיחה */
+    /*
+      נקודת ההשתלה. הכותרת הראשונה עשויה לשבת עמוק בתוך כרטיס או
+      מאמר, ואז הכנסה לפניה הייתה דוחפת את התפריט לתוך הכרטיס.
+      לכן עולים במעלה העץ עד לילד הישיר של המיכל, ומשתילים לפניו.
+    */
     var first = sections[0];
     var anchor = first;
+    while (anchor.parentNode && anchor.parentNode !== scope) anchor = anchor.parentNode;
+    if (anchor.parentNode !== scope) anchor = first;
+
     /* אם יש שורת נתונים לפני הכותרת, התפריט ייכנס לפניה כדי לא לשבור אותה */
-    var prev = first.previousElementSibling;
+    var prev = anchor.previousElementSibling;
     if (prev && prev.classList && prev.classList.contains('stat-row')) anchor = prev;
     anchor.parentNode.insertBefore(box, anchor);
   }
