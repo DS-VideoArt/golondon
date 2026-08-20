@@ -58,7 +58,7 @@
       "desc": "השוואת מחירים בין חברות התעופה והסוכנויות, כולל טיסות עם עצירה שלרוב זולות יותר.",
       "cta": "השוואת מחירי טיסות",
       "icon": "fa-plane",
-      "url": "https://www.aviasales.com/",
+      "url": "https://www.aviasales.com/?origin_iata=TLV&destination_iata=LON",
       "brand": "Aviasales",
       "program_id": "4114",
       "campaign_id": "100"
@@ -78,7 +78,7 @@
       "desc": "נהג שממתין עם שלט בשם שלכם. שווה במיוחד בנחיתת לילה, עם ילדים או עם הרבה מזוודות.",
       "cta": "בדיקת מחיר הסעה",
       "icon": "fa-van-shuttle",
-      "url": "https://kiwitaxi.com/",
+      "url": "https://kiwitaxi.com/en/united-kingdom/london-airport-transfers",
       "brand": "Kiwitaxi",
       "program_id": "647",
       "campaign_id": "1"
@@ -88,7 +88,7 @@
       "desc": "רלוונטי בעיקר ליציאה מחוץ ללונדון. בתוך העיר עצמה הרכבת התחתית מהירה וזולה יותר.",
       "cta": "השוואת מחירי השכרה",
       "icon": "fa-car",
-      "url": "https://www.discovercars.com/",
+      "url": "https://www.discovercars.com/united-kingdom/london",
       "brand": "AutoEurope",
       "program_id": "",
       "campaign_id": "",
