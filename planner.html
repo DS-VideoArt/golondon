@@ -68,16 +68,22 @@
 
     /* כותרת עמוד בפריסה מלאה: תצלום אווירי ברקע, שכבת כהות מדורגת, וטקסט קריא לחלוטין */
     .page-hero { position: relative; background: #0a0a1a; padding: 104px 24px 86px; text-align: center; overflow: hidden; }
-    .page-hero::before { content: ""; position: absolute; inset: 0; background: url('images/planner-hero.jpg') center 45% / cover no-repeat; transform: scale(1.04); filter: brightness(1.32) saturate(1.08); z-index: 0; }
+    .page-hero::before { content: ""; position: absolute; inset: 0; background: url('images/planner-hero.jpg?v=2') center 45% / cover no-repeat; transform: scale(1.04); filter: saturate(1.04); z-index: 0; }
     .page-hero::after { content: ""; position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(180deg, rgba(10,10,26,0.18) 0%, rgba(10,10,26,0.4) 42%, rgba(10,10,26,0.97) 100%),
+      background: linear-gradient(180deg, rgba(10,10,26,0.30) 0%, rgba(10,10,26,0.46) 45%, rgba(10,10,26,0.92) 100%),
                   linear-gradient(100deg, rgba(220,38,38,0.26) 0%, rgba(234,88,12,0.08) 55%, rgba(10,10,26,0) 100%); }
     .page-hero > * { position: relative; z-index: 2; }
     .page-hero .tag { display: inline-block; background: rgba(255,255,255,0.14); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.18); padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 18px; }
     .page-hero h1 { font-size: 37px; font-weight: 900; color: #fff; margin-bottom: 12px; max-width: 720px; margin-inline: auto; text-shadow: 0 2px 24px rgba(0,0,0,0.7); line-height: 1.24; }
     .page-hero p { color: rgba(255,255,255,0.88); font-size: 16.5px; max-width: 580px; margin-inline: auto; text-shadow: 0 1px 14px rgba(0,0,0,0.6); }
 
-    .wrap { max-width: 860px; margin: 0 auto; padding: 44px 24px 50px; }
+    /*
+      עמוד כלי ולא מאמר. הפאנל הידני הוא שתי עמודות, ובמסך רחב
+      860 פיקסלים השאירו את הדף חצי ריק. 1180 ממלא בלי לפגוע בקריאות,
+      כי הטקסט הרץ יושב ממילא בתוך רכיבים צרים יותר.
+    */
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 44px 24px 50px; }
+    .manual-intro, .results-sub, .closing { max-width: 800px; }
 
     .builder {
       background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.1);
@@ -199,7 +205,7 @@
       font-size: 14.5px; color: var(--ink-soft); line-height: 1.75;
       margin: 0 0 18px;
     }
-    .manual-layout { display: grid; grid-template-columns: 330px 1fr; gap: 20px; align-items: start; }
+    .manual-layout { display: grid; grid-template-columns: 360px 1fr; gap: 24px; align-items: start; }
 
     .palette {
       background: rgba(32,31,43,0.035); border: 1px solid rgba(32,31,43,0.11);
