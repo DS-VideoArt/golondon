@@ -148,7 +148,12 @@
       .logo-slogan { display: none; }
       .back-btn { font-size: 12.5px; padding: 7px 12px; white-space: nowrap; }
       .navbar { padding: 0 14px; }
-      .quick-facts { grid-template-columns: 1fr; }
+      .quick-facts { grid-template-columns: 1fr 1fr; }
+      .qf { padding: 11px 12px; gap: 8px; }
+      .qf-e { font-size: 15px; }
+      .qf-k { font-size: 11px; }
+      .qf-v { font-size: 13.5px; }
+      .quick-facts .qf:last-child { grid-column: 1 / -1; }
       .sh-photo { aspect-ratio: 16/9; border-radius: 13px; }
       .sh-cta { flex-direction: column; align-items: stretch; padding: 16px 17px; }
       .sh-cta a { justify-content: center; }
@@ -198,9 +203,8 @@
     <div class="qf"><span class="qf-e">📍</span><span class="qf-t"><span class="qf-k">אזור</span><span class="qf-v">מזרח לונדון, אזור תחבורה 1</span></span></div>
     <div class="qf"><span class="qf-e">⏱️</span><span class="qf-t"><span class="qf-k">זמן מומלץ</span><span class="qf-v">חצי יום עד יום</span></span></div>
     <div class="qf"><span class="qf-e">👥</span><span class="qf-t"><span class="qf-k">מתאים ל</span><span class="qf-v">זוגות, משפחות וחובבי אוכל</span></span></div>
-    <div class="qf"><span class="qf-e">🚇</span><span class="qf-t"><span class="qf-k">הגעה</span><span class="qf-v">Shoreditch High Street, Liverpool Street</span></span></div>
+    <div class="qf"><span class="qf-e">🚇</span><span class="qf-t"><span class="qf-k">הגעה</span><span class="qf-v">Shoreditch High Street</span></span></div>
     <div class="qf"><span class="qf-e">⭐</span><span class="qf-t"><span class="qf-k">חזק במיוחד ב</span><span class="qf-v">אוכל, שווקים, אמנות רחוב</span></span></div>
-    <div class="qf"><span class="qf-e">💷</span><span class="qf-t"><span class="qf-k">עלות הביקור</span><span class="qf-v">חינם, חוץ מאוכל וקניות</span></span></div>
   </div>
 
   <h2>מה זה שורדיץ' ולמה האזור הזה נראה אחרת</h2>
