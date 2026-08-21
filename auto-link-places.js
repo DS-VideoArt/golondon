@@ -22,7 +22,13 @@
     { file: 'attractions-info.json', kind: 'place' },
     { file: 'football-info.json', kind: 'place' },
     { file: 'events-info.json', kind: 'place' },
-    { file: 'kosher-places.json', kind: 'kosher' }
+    { file: 'kosher-places.json', kind: 'kosher' },
+    /*
+      המאגר המרכזי של המתכנן. נטען אחרון בכוונה: מקום שקיים גם כאן וגם
+      ב-attractions-info יישאר עם התוכן העשיר משם, וזה ממלא רק את המקומות
+      שנוספו למאגר ואין להם עדיין רשומת תוכן מלאה.
+    */
+    { file: 'planner-data.json', kind: 'planner' }
   ];
 
   var MIN_LEN = 3; /* שמות קצרים מזה לא נכנסים למילון, כדי למנוע התאמות מקריות */
@@ -45,7 +51,20 @@
       var entries = [];
       results.forEach(function (r) {
         if (!r) return;
-        if (r.src.kind === 'kosher') {
+        if (r.src.kind === 'planner') {
+          /* המרה לצורה שחלונית המידע יודעת להציג */
+          (r.json && r.json.attractions ? r.json.attractions : []).forEach(function (p) {
+            if (!p.name || p.name.length < MIN_LEN) return;
+            var tags = [];
+            if (p.free) tags.push({ label: 'כניסה חינם', type: 'free' });
+            else if (p.priceBand) tags.push({ label: p.priceBand });
+            if (p.bookAhead) tags.push({ label: 'הזמנה מראש' });
+            entries.push({
+              name: p.name, kind: 'place', id: p.id,
+              item: { title: p.name, body: p.desc || '', tip: p.tip || '', tags: tags }
+            });
+          });
+        } else if (r.src.kind === 'kosher') {
           (r.json || []).forEach(function (p) {
             if (p.name && p.name.length >= MIN_LEN) entries.push({ name: p.name, kind: 'kosher', item: p });
           });

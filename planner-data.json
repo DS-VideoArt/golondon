@@ -1071,7 +1071,12 @@
       "kids": false,
       "anchor": true,
       "bookAhead": false,
-      "tip": "הציורים משתנים כל הזמן, ולכן מה שרואים היום כנראה לא יהיה שם בשנה הבאה."
+      "tip": "הציורים משתנים כל הזמן, ולכן מה שרואים היום כנראה לא יהיה שם בשנה הבאה.",
+      "lat": 51.5243,
+      "lng": -0.0767,
+      "precision": "approx",
+      "source": "https://www.towerhamlets.gov.uk",
+      "checked": "2026-08-21"
     },
     {
       "id": "brick-lane",
@@ -1115,7 +1120,12 @@
       "kids": false,
       "anchor": true,
       "bookAhead": false,
-      "tip": "השוק של יום ראשון הוא האירוע המרכזי שם. בשאר הימים זה בעיקר רחוב מסעדות."
+      "tip": "השוק של יום ראשון הוא האירוע המרכזי שם. בשאר הימים זה בעיקר רחוב מסעדות.",
+      "lat": 51.5225,
+      "lng": -0.0716,
+      "precision": "approx",
+      "source": "https://www.trumanbrewery.com/",
+      "checked": "2026-08-21"
     },
     {
       "id": "greenwich",
@@ -2744,7 +2754,12 @@
       "kids": true,
       "anchor": true,
       "bookAhead": false,
-      "tip": "הדוכנים משתנים לפי ימי השבוע, ולכן שווה לבדוק מה מתקיים ביום שאתם מגיעים."
+      "tip": "הדוכנים משתנים לפי ימי השבוע, ולכן שווה לבדוק מה מתקיים ביום שאתם מגיעים.",
+      "lat": 51.519,
+      "lng": -0.0787,
+      "precision": "exact",
+      "source": "https://oldspitalfieldsmarket.com/opening-times",
+      "checked": "2026-08-21"
     },
     {
       "id": "columbia-road",
@@ -2781,7 +2796,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "פועל רק בימי ראשון. מי שמגיע בבוקר רואה את השוק במלואו, ובסוף היום המחירים יורדים."
+      "tip": "פועל רק בימי ראשון. מי שמגיע בבוקר רואה את השוק במלואו, ובסוף היום המחירים יורדים.",
+      "lat": 51.5294,
+      "lng": -0.0694,
+      "precision": "approx",
+      "source": "https://columbiaroad.info/",
+      "checked": "2026-08-21"
     },
     {
       "id": "museum-of-home",
@@ -2818,7 +2838,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "הגנים שמאחורי המוזיאון מסודרים לפי תקופות, והכניסה אליהם חינמית גם היא."
+      "tip": "הגנים שמאחורי המוזיאון מסודרים לפי תקופות, והכניסה אליהם חינמית גם היא.",
+      "lat": 51.5315,
+      "lng": -0.0764,
+      "precision": "exact",
+      "source": "https://www.museumofthehome.org.uk/",
+      "checked": "2026-08-21"
     },
     {
       "id": "whitechapel-gallery",
@@ -2858,7 +2883,12 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "התערוכות מתחלפות, ולכן שווה לבדוק מה מוצג לפני שמתכננים אליה זמן.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.5162,
+      "lng": -0.0703,
+      "precision": "exact",
+      "source": "https://www.whitechapelgallery.org/",
+      "checked": "2026-08-21"
     },
     {
       "id": "dennis-severs",
@@ -2896,7 +2926,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": true,
-      "tip": "הכניסה מוגבלת מאוד במספר המבקרים ובשעות, ולכן חובה להזמין מקום מראש."
+      "tip": "הכניסה מוגבלת מאוד במספר המבקרים ובשעות, ולכן חובה להזמין מקום מראש.",
+      "lat": 51.5207,
+      "lng": -0.0756,
+      "precision": "approx",
+      "source": "https://www.dennissevershouse.co.uk/",
+      "checked": "2026-08-21"
     },
     {
       "id": "royal-observatory",
@@ -3340,6 +3375,1646 @@
       "anchor": true,
       "bookAhead": false,
       "tip": "חינמי לגמרי ואחד המקומות הפחות מוכרים שמצוינים לילדים, בעיקר בימי גשם."
+    },
+    {
+      "id": "rivington-street-art",
+      "name": "אמנות הרחוב ברחוב ריווינגטון",
+      "nameEn": "Rivington Street Shoreditch",
+      "desc": "רחוב צדדי שהפך לאחת הגלריות הפתוחות הצפופות בעיר, כולל המנהרה והחניון שבצידו. העבודות מתחלפות, ולכן מה שתראו לא יהיה מה שראיתם בתמונות ברשת.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "street"
+      ],
+      "categories": [
+        "street-art"
+      ],
+      "attrs": [
+        "free",
+        "photogenic"
+      ],
+      "audiences": [
+        "couples",
+        "young",
+        "returning"
+      ],
+      "lat": 51.526,
+      "lng": -0.0815,
+      "precision": "approx",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Old Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "בוקר מוקדם, לפני שהמכוניות חונות מול הקירות.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.hackney.gov.uk/street-art",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "hanbury-street-art",
+      "name": "אמנות הרחוב ברחוב האנברי",
+      "nameEn": "Hanbury Street",
+      "desc": "סמטה שקטה יחסית מרחוב בריק ליין, ובה כמה מהעבודות הגדולות ששרדו שנים. משם ממשיכים ברגל לספיטלפילדס.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "street"
+      ],
+      "categories": [
+        "street-art"
+      ],
+      "attrs": [
+        "free",
+        "photogenic"
+      ],
+      "audiences": [
+        "couples",
+        "young",
+        "returning"
+      ],
+      "lat": 51.5203,
+      "lng": -0.0738,
+      "precision": "approx",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Shoreditch High Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "עדשה רחבה או מצב פנורמה, הרחוב צר והקירות גדולים.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.towerhamlets.gov.uk",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "redchurch-street",
+      "name": "רחוב רדצ'רץ'",
+      "nameEn": "Redchurch Street",
+      "desc": "רחוב שמשלב קירות מצוירים עם חנויות עיצוב ובתי קפה עצמאיים, וזה אחד הרחובות שהכי מסכמים את מה ששורדיץ׳ הפך להיות.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "street"
+      ],
+      "categories": [
+        "street-art",
+        "walk",
+        "shop"
+      ],
+      "attrs": [
+        "free",
+        "photogenic"
+      ],
+      "audiences": [
+        "couples",
+        "young",
+        "returning"
+      ],
+      "lat": 51.5244,
+      "lng": -0.0746,
+      "precision": "approx",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Shoreditch High Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "שילוב טוב של הליכה, קפה וקניות במקום אחד.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.towerhamlets.gov.uk",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "brick-lane-mosque",
+      "name": "מסגד בריק ליין",
+      "nameEn": "Brick Lane Jamme Masjid",
+      "desc": "הבניין נבנה ב-1743 ככנסייה הוגנוטית, הפך לקפלה מתודיסטית ב-1809, לבית כנסת ב-1898, ולמסגד ב-1976. אותו מבנה, ארבע קהילות, כמעט שלוש מאות שנה.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "royal"
+      ],
+      "categories": [
+        "landmark"
+      ],
+      "subcategories": [
+        "religious"
+      ],
+      "attrs": [
+        "free",
+        "photogenic"
+      ],
+      "audiences": [
+        "first-time",
+        "returning"
+      ],
+      "lat": 51.5194,
+      "lng": -0.0721,
+      "precision": "exact",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Aldgate East",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "זהו הסיפור של האיסט אנד בבניין אחד. שימו לב לשעון השמש בחזית.",
+      "image": null,
+      "booking": null,
+      "source": "https://historicengland.org.uk/listing/the-list/list-entry/1240697",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "christ-church-spitalfields",
+      "name": "כנסיית כרייסט צ'רץ' ספיטלפילדס",
+      "nameEn": "Christ Church Spitalfields",
+      "desc": "כנסייה מרשימה של האדריכל ניקולס הוקסמור מהמאה השמונה עשרה, מול שוק ספיטלפילדס. הפנים מרווח ובהיר, והכניסה חופשית.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "royal"
+      ],
+      "categories": [
+        "landmark"
+      ],
+      "subcategories": [
+        "religious"
+      ],
+      "attrs": [
+        "free",
+        "indoor",
+        "photogenic"
+      ],
+      "audiences": [
+        "first-time",
+        "returning"
+      ],
+      "lat": 51.5189,
+      "lng": -0.0745,
+      "precision": "exact",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Liverpool Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "נקודת התמצאות טובה, רואים את המגדל שלה כמעט מכל האזור.",
+      "image": null,
+      "booking": null,
+      "source": "https://ccspitalfields.org/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "old-truman-brewery",
+      "name": "מבשלת טרומן הישנה",
+      "nameEn": "The Old Truman Brewery",
+      "desc": "מבשלת בירה היסטורית שהפסיקה לייצר בסוף שנות השמונים, והמחסנים שלה הפכו לשווקים, חנויות וחללי אירועים. הארובה היא נקודת הציון של בריק ליין.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "royal",
+        "food",
+        "street"
+      ],
+      "categories": [
+        "landmark",
+        "market",
+        "shop"
+      ],
+      "subcategories": [
+        "flea-market"
+      ],
+      "attrs": [
+        "free",
+        "photogenic"
+      ],
+      "audiences": [
+        "couples",
+        "young",
+        "returning"
+      ],
+      "lat": 51.5213,
+      "lng": -0.0703,
+      "precision": "exact",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 2,
+      "tube": "Shoreditch High Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "בסופי שבוע פועלים כאן כמה שווקים במקביל בתוך אותו מתחם.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.trumanbrewery.com/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "fournier-street",
+      "name": "רחוב פורנייה",
+      "nameEn": "Fournier Street",
+      "desc": "רחוב של בתי אורגים הוגנוטים מהמאה השמונה עשרה, עם חלונות עליית גג רחבים במיוחד שנבנו כדי להכניס אור לנול. אחד הרחובות השמורים בלונדון.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "street",
+        "royal"
+      ],
+      "categories": [
+        "walk",
+        "landmark"
+      ],
+      "attrs": [
+        "free",
+        "photogenic"
+      ],
+      "audiences": [
+        "couples",
+        "returning"
+      ],
+      "lat": 51.5193,
+      "lng": -0.074,
+      "precision": "approx",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Liverpool Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "רחוב מגורים. אפשר לצלם את הבתים, אבל לא את האנשים שגרים בהם.",
+      "image": null,
+      "booking": null,
+      "source": "https://historicengland.org.uk/listing/the-list/list-entry/1065280",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "arnold-circus",
+      "name": "ארנולד סירקוס",
+      "nameEn": "Arnold Circus",
+      "desc": "כיכר עגולה עם ביתן עץ במרכזה, לב שכונת באונדרי, אחד מפרויקטי הדיור הציבורי הראשונים בעולם מסוף המאה התשע עשרה.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "royal",
+        "parks"
+      ],
+      "categories": [
+        "landmark",
+        "park"
+      ],
+      "attrs": [
+        "free",
+        "photogenic"
+      ],
+      "audiences": [
+        "families",
+        "couples",
+        "returning"
+      ],
+      "lat": 51.5259,
+      "lng": -0.0753,
+      "precision": "exact",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Shoreditch High Street",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "מקום טוב לשבת רגע באמצע סיבוב באזור, ויש שם צל.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.arnoldcircus.info/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "st-leonards-shoreditch",
+      "name": "כנסיית סנט לאונרד",
+      "nameEn": "St Leonard's Shoreditch",
+      "desc": "הכנסייה שנקראת בשיר הילדים על פעמוני לונדון. בחצר שלה נקברו שחקנים מתיאטראות שורדיץ׳ האליזבתניים.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "royal"
+      ],
+      "categories": [
+        "landmark"
+      ],
+      "subcategories": [
+        "religious"
+      ],
+      "attrs": [
+        "free",
+        "indoor"
+      ],
+      "audiences": [
+        "returning"
+      ],
+      "lat": 51.5259,
+      "lng": -0.0779,
+      "precision": "exact",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Shoreditch High Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "עומדת בדיוק בצומת המרכזי, קשה לפספס.",
+      "image": null,
+      "booking": null,
+      "source": "https://shoreditchchurch.org.uk/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "bunhill-fields",
+      "name": "בית הקברות באנהיל פילדס",
+      "nameEn": "Bunhill Fields Burial Ground",
+      "desc": "בית קברות ותיק שבו קבורים ויליאם בלייק, דניאל דפו וג׳ון באניין. היום הוא גן ציבורי שקט בין משרדי הסיטי.",
+      "area": "city",
+      "hood": "the-city",
+      "interests": [
+        "parks",
+        "royal"
+      ],
+      "categories": [
+        "park",
+        "landmark"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "returning",
+        "solo"
+      ],
+      "lat": 51.5235,
+      "lng": -0.0873,
+      "precision": "exact",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Old Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "נקודת מנוחה אמיתית באמצע יום עמוס, ובחינם.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.cityoflondon.gov.uk/things-to-do/green-spaces/bunhill-fields",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "curtain-theatre",
+      "name": "שרידי תיאטרון הקרטן",
+      "nameEn": "The Curtain Playhouse remains",
+      "desc": "שרידי תיאטרון מ-1577 שבו הופיעה להקת שייקספיר, עשרות שנים לפני שהגלוב נבנה. נחשפו בחפירות בין 2011 ל-2016 והושארו במקומם.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "royal"
+      ],
+      "categories": [
+        "landmark"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "returning"
+      ],
+      "lat": 51.5231,
+      "lng": -0.08,
+      "precision": "approx",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Shoreditch High Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "זה אתר ארכיאולוגי ולא אטרקציה מסודרת. באים בשביל הידיעה שזה כאן.",
+      "image": null,
+      "booking": null,
+      "source": "https://historicengland.org.uk/listing/the-list/list-entry/1463328",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "beigel-bake",
+      "name": "בייגל בייק",
+      "nameEn": "Brick Lane Beigel Bake",
+      "desc": "פועל מאז 1974, פתוח עשרים וארבע שעות ביממה, והמנה שבגללה עומדים בתור היא בייגל עם סולט ביף, חרדל וחמוץ.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "food"
+      ],
+      "categories": [
+        "cafe",
+        "restaurant"
+      ],
+      "subcategories": [
+        "bakery"
+      ],
+      "attrs": [
+        "indoor",
+        "late"
+      ],
+      "audiences": [
+        "families",
+        "couples",
+        "solo",
+        "young"
+      ],
+      "lat": 51.5245,
+      "lng": -0.0718,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "זול",
+      "hours": 1,
+      "tube": "Shoreditch High Street",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "התור בסופי שבוע נראה מפחיד אבל זז מהר. לא כשר ואין תעודה.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.beigelbake.co.uk/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "beigel-shop",
+      "name": "חנות הבייגל",
+      "nameEn": "The Beigel Shop",
+      "desc": "חנות הבייגל בעלת החזית הצהובה, כמה בתים דרומה מהמתחרה שלה, וטוענת שהיא המקורית בבריק ליין. פתוחה מסביב לשעון.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "food"
+      ],
+      "categories": [
+        "cafe"
+      ],
+      "subcategories": [
+        "bakery"
+      ],
+      "attrs": [
+        "indoor",
+        "late"
+      ],
+      "audiences": [
+        "families",
+        "couples",
+        "solo"
+      ],
+      "lat": 51.5244,
+      "lng": -0.0717,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "זול",
+      "hours": 1,
+      "tube": "Shoreditch High Street",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "הוויכוח מי משתיהן טובה יותר נמשך עשרות שנים. אפשר פשוט לנסות את שתיהן.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.thebeigelshop.com/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "dishoom-shoreditch",
+      "name": "דישום שורדיץ'",
+      "nameEn": "Dishoom Shoreditch",
+      "desc": "הסניף השני של רשת שמדמה בתי קפה איראניים של בומביי, בבניין מחסן משופץ עם חצר. ארוחת הבוקר עם נאן בייקון היא מה שהפך אותו למוסד.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "food"
+      ],
+      "categories": [
+        "restaurant"
+      ],
+      "attrs": [
+        "indoor",
+        "book-ahead"
+      ],
+      "audiences": [
+        "families",
+        "couples",
+        "first-time"
+      ],
+      "lat": 51.5245,
+      "lng": -0.0768,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "טווח ביניים",
+      "hours": 2,
+      "tube": "Shoreditch High Street",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": true,
+      "tip": "אין הזמנות לקבוצות קטנות בשעות השיא, ולכן בוקר של אמצע שבוע הוא ההימור הבטוח.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.dishoom.com/shoreditch/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "gunpowder-spitalfields",
+      "name": "גאנפאודר ספיטלפילדס",
+      "nameEn": "Gunpowder Spitalfields",
+      "desc": "מסעדה הודית קטנה עם תפריט מנות לשיתוף, שהתפרסמה בזכות מנות ביתיות ולא בזכות גודל. המקום צפוף במכוון.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "food"
+      ],
+      "categories": [
+        "restaurant"
+      ],
+      "attrs": [
+        "indoor",
+        "book-ahead"
+      ],
+      "audiences": [
+        "couples",
+        "returning"
+      ],
+      "lat": 51.5183,
+      "lng": -0.0748,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "טווח ביניים",
+      "hours": 2,
+      "tube": "Liverpool Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": true,
+      "tip": "קטן מאוד. בלי הזמנה מראש בערב הסיכוי נמוך.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.gunpowderlondon.com/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "st-john-bread-wine",
+      "name": "סנט ג'ון ברד אנד ווין",
+      "nameEn": "St John Bread and Wine",
+      "desc": "המטבח הבריטי בגרסה שהחזירה אותו לאופנה, עם דגש על שימוש בכל חלקי החיה ועל לחם שנאפה במקום.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "food"
+      ],
+      "categories": [
+        "restaurant"
+      ],
+      "attrs": [
+        "indoor",
+        "book-ahead"
+      ],
+      "audiences": [
+        "couples",
+        "returning"
+      ],
+      "lat": 51.5198,
+      "lng": -0.0742,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "טווח ביניים",
+      "hours": 2,
+      "tube": "Liverpool Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": true,
+      "tip": "ארוחת בוקר שם שקטה בהרבה מארוחת הערב, ובמחיר נמוך יותר.",
+      "image": null,
+      "booking": null,
+      "source": "https://stjohnrestaurant.com/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "poppies-spitalfields",
+      "name": "פופיז פיש אנד צ'יפס",
+      "nameEn": "Poppies Fish and Chips Spitalfields",
+      "desc": "פיש אנד צ׳יפס בסגנון שנות החמישים, עם ג׳וקבוקס ומלצריות בתלבושת. אחד המקומות שכן עומדים מאחורי הנוסטלגיה שהם מוכרים.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "food"
+      ],
+      "categories": [
+        "restaurant"
+      ],
+      "attrs": [
+        "indoor"
+      ],
+      "audiences": [
+        "families",
+        "first-time"
+      ],
+      "lat": 51.5202,
+      "lng": -0.074,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "טווח ביניים",
+      "hours": 1,
+      "tube": "Shoreditch High Street",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "מנה קלאסית ראשונה בלונדון, וזה מקום סביר להתחיל בו.",
+      "image": null,
+      "booking": null,
+      "source": "https://poppiesfishandchips.co.uk/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "boiler-house-food-hall",
+      "name": "אולם האוכל בוילר האוס",
+      "nameEn": "Boiler House Food Hall",
+      "desc": "אולם אוכל מקורה בתוך מתחם מבשלת טרומן, עם דוכנים מכל העולם ומקום לשבת. פועל בעיקר בסופי שבוע.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "food"
+      ],
+      "categories": [
+        "restaurant",
+        "market"
+      ],
+      "subcategories": [
+        "street-food",
+        "food-market"
+      ],
+      "attrs": [
+        "indoor"
+      ],
+      "audiences": [
+        "families",
+        "couples",
+        "young"
+      ],
+      "lat": 51.5218,
+      "lng": -0.0715,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "זול",
+      "hours": 1,
+      "tube": "Shoreditch High Street",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "הפתרון ליום גשום בבריק ליין, וגם למי שרוצה שכל אחד יבחר משהו אחר.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.trumanbrewery.com/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "city-spice",
+      "name": "סיטי ספייס",
+      "nameEn": "City Spice Brick Lane",
+      "desc": "אחת ממסעדות הקארי הוותיקות של בריק ליין, שזכתה בפרסים בתחום ונחשבת לאיכותית מבין עשרות המסעדות ברחוב.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "food"
+      ],
+      "categories": [
+        "restaurant"
+      ],
+      "attrs": [
+        "indoor"
+      ],
+      "audiences": [
+        "families",
+        "couples"
+      ],
+      "lat": 51.5207,
+      "lng": -0.0717,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "טווח ביניים",
+      "hours": 2,
+      "tube": "Aldgate East",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "ברחוב הזה האיכות משתנה מאוד ממקום למקום. שווה לבחור מראש ולא להיכנס לראשון.",
+      "image": null,
+      "booking": null,
+      "source": "https://cityspicebricklane.co.uk/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "ottolenghi-spitalfields",
+      "name": "אוטולנגי ספיטלפילדס",
+      "nameEn": "Ottolenghi Spitalfields",
+      "desc": "הסניף המזרחי של יותם אוטולנגי, עם ויטרינת סלטים ומאפים שהפכה לסימן ההיכר של הרשת.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "food"
+      ],
+      "categories": [
+        "restaurant",
+        "cafe"
+      ],
+      "attrs": [
+        "indoor"
+      ],
+      "audiences": [
+        "couples",
+        "families"
+      ],
+      "lat": 51.5182,
+      "lng": -0.0773,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "טווח ביניים",
+      "hours": 1,
+      "tube": "Liverpool Street",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "שם ישראלי מוכר, אבל המקום אינו כשר ואינו מציג תעודה.",
+      "image": null,
+      "booking": null,
+      "source": "https://ottolenghi.co.uk/pages/spitalfields",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "smoking-goat",
+      "name": "סמוקינג גואט",
+      "nameEn": "Smoking Goat Shoreditch",
+      "desc": "מסעדת בר בהשראת דוכני האוכל של בנגקוק, עם תפריט קצר שמשתנה ועם רעש ומוזיקה. ערב ולא צהריים.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "food",
+        "street"
+      ],
+      "categories": [
+        "restaurant",
+        "bar"
+      ],
+      "attrs": [
+        "indoor",
+        "late"
+      ],
+      "audiences": [
+        "couples",
+        "young"
+      ],
+      "lat": 51.5242,
+      "lng": -0.0769,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "טווח ביניים",
+      "hours": 2,
+      "tube": "Shoreditch High Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "מתאים למי שבא לבלות ולא רק לאכול.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.smokinggoatbar.com/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "ozone-coffee",
+      "name": "אוזון קופי רוסטרס",
+      "nameEn": "Ozone Coffee Roasters Shoreditch",
+      "desc": "קלייה ובית קפה של ניו זילנדים שהגיעו ללונדון ב-2012 והשפיעו על כל סצנת הקפה בעיר. קולים במקום, ומגישים גם אוכל.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "food"
+      ],
+      "categories": [
+        "cafe"
+      ],
+      "attrs": [
+        "indoor"
+      ],
+      "audiences": [
+        "couples",
+        "solo",
+        "young"
+      ],
+      "lat": 51.5247,
+      "lng": -0.0867,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "זול",
+      "hours": 1,
+      "tube": "Old Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "מהמקומות הבודדים באזור שבהם גם הקפה וגם האוכל ברמה.",
+      "image": null,
+      "booking": null,
+      "source": "https://ozonecoffee.co.uk/pages/locations-shoreditch",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "allpress-espresso",
+      "name": "אולפרס אספרסו",
+      "nameEn": "Allpress Espresso Shoreditch",
+      "desc": "בר אספרסו קטן ברחוב רדצ׳רץ׳, בסגנון ניו זילנדי, עם קפה שנקלה במקום ובלי תפריט מסובך.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "food"
+      ],
+      "categories": [
+        "cafe"
+      ],
+      "attrs": [
+        "indoor"
+      ],
+      "audiences": [
+        "couples",
+        "solo"
+      ],
+      "lat": 51.5244,
+      "lng": -0.0742,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "זול",
+      "hours": 1,
+      "tube": "Shoreditch High Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "עצירה קצרה באמצע סיבוב הקירות, לא ישיבה ארוכה.",
+      "image": null,
+      "booking": null,
+      "source": "https://uk.allpressespresso.com/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "shoreditch-grind",
+      "name": "שורדיץ' גריינד",
+      "nameEn": "Shoreditch Grind",
+      "desc": "בית קפה בבניין עגול מול מחלף אולד סטריט, שהפך בערב לבר. אחד המקומות הראשונים שסימנו את האזור.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "food",
+        "street"
+      ],
+      "categories": [
+        "cafe",
+        "bar"
+      ],
+      "attrs": [
+        "indoor",
+        "late"
+      ],
+      "audiences": [
+        "couples",
+        "solo",
+        "young"
+      ],
+      "lat": 51.526,
+      "lng": -0.0882,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "זול",
+      "hours": 1,
+      "tube": "Old Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "פועל גם בשעות מאוחרות, וזה נדיר בקטגוריה הזו.",
+      "image": null,
+      "booking": null,
+      "source": "https://grind.co.uk/pages/shoreditch-grind",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "rough-trade-east",
+      "name": "ראף טרייד איסט",
+      "nameEn": "Rough Trade East",
+      "desc": "חנות התקליטים העצמאית הגדולה בלונדון, בתוך מתחם מבשלת טרומן, עם במה שמארחת הופעות כמעט כל יום.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "street"
+      ],
+      "categories": [
+        "shop"
+      ],
+      "subcategories": [
+        "books"
+      ],
+      "attrs": [
+        "free",
+        "indoor"
+      ],
+      "audiences": [
+        "couples",
+        "young",
+        "returning"
+      ],
+      "lat": 51.5212,
+      "lng": -0.0724,
+      "precision": "exact",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Shoreditch High Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "הכניסה חופשית, וגם מי שלא קונה תקליטים נהנה מהחלל.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.roughtrade.com/en-gb/stores/east-london",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "blitz-london",
+      "name": "בליץ לונדון וינטג'",
+      "nameEn": "Blitz London",
+      "desc": "חנות וינטג׳ גדולה בשני מפלסים, מסודרת לפי תקופה וסגנון ולא כערימה. אחת הסיבות שאנשים באים לאזור.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "street"
+      ],
+      "categories": [
+        "shop"
+      ],
+      "subcategories": [
+        "vintage"
+      ],
+      "attrs": [
+        "free",
+        "indoor"
+      ],
+      "audiences": [
+        "couples",
+        "young"
+      ],
+      "lat": 51.5203,
+      "lng": -0.0709,
+      "precision": "exact",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Shoreditch High Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "הסידור הופך חיפוש וינטג׳ למשהו שאפשר לעשות בשעה.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.blitzlondon.co.uk/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "labour-and-wait",
+      "name": "לייבור אנד וייט",
+      "nameEn": "Labour and Wait",
+      "desc": "חנות כלי בית ועבודה בעיצוב פשוט ועמיד, בחנות עם אריחים ירוקים היסטורית. יותר תערוכה מאשר חנות.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "street"
+      ],
+      "categories": [
+        "shop"
+      ],
+      "attrs": [
+        "free",
+        "indoor"
+      ],
+      "audiences": [
+        "couples",
+        "returning"
+      ],
+      "lat": 51.5247,
+      "lng": -0.0733,
+      "precision": "exact",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Shoreditch High Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "מקום טוב למזכרת שהיא לא מגנט מקרר.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.labourandwait.co.uk/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "beyond-retro",
+      "name": "ביונד רטרו",
+      "nameEn": "Beyond Retro Cheshire Street",
+      "desc": "מחסן וינטג׳ ענק ברחוב צ׳שייר, עם מבחר גדול במיוחד ובמחירים נמוכים יחסית לשאר האזור.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "street"
+      ],
+      "categories": [
+        "shop"
+      ],
+      "subcategories": [
+        "vintage"
+      ],
+      "attrs": [
+        "free",
+        "indoor"
+      ],
+      "audiences": [
+        "young",
+        "couples"
+      ],
+      "lat": 51.5239,
+      "lng": -0.0668,
+      "precision": "exact",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Shoreditch High Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "הגדול מבין חנויות הווינטג׳ באזור, וצריך זמן.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.beyondretro.com/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "village-underground",
+      "name": "וילג' אנדרגראונד",
+      "nameEn": "Village Underground",
+      "desc": "חלל הופעות בתוך קשת רכבת ומחסן, עם קרונות רכבת תחתית ישנים על הגג. אחד הסמלים הוויזואליים של האזור.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "street"
+      ],
+      "categories": [
+        "bar",
+        "show"
+      ],
+      "subcategories": [
+        "live-music"
+      ],
+      "attrs": [
+        "indoor",
+        "late",
+        "photogenic"
+      ],
+      "audiences": [
+        "young",
+        "couples"
+      ],
+      "lat": 51.5236,
+      "lng": -0.0787,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "טווח ביניים",
+      "hours": 3,
+      "tube": "Shoreditch High Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "גם מי שלא נכנס להופעה בא לצלם את הקרונות על הגג.",
+      "image": null,
+      "booking": null,
+      "source": "https://villageunderground.co.uk/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "xoyo",
+      "name": "XOYO",
+      "nameEn": "XOYO London",
+      "desc": "מועדון ותיק שנפתח מחדש בינואר 2026 אחרי שיפוץ, וחזר לפורמט של מוזיקה אלקטרונית ותוכניות אמנים לתקופה.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "street"
+      ],
+      "categories": [
+        "bar"
+      ],
+      "subcategories": [
+        "live-music"
+      ],
+      "attrs": [
+        "indoor",
+        "late"
+      ],
+      "audiences": [
+        "young"
+      ],
+      "lat": 51.5255,
+      "lng": -0.0858,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "טווח ביניים",
+      "hours": 3,
+      "tube": "Old Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "בדקו מראש מי מנגן, התוכנית משתנה לגמרי בין ערבים.",
+      "image": null,
+      "booking": null,
+      "source": "https://xoyo.co.uk/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "nightjar",
+      "name": "נייטג'אר",
+      "nameEn": "Nightjar Shoreditch",
+      "desc": "בר קוקטיילים מתחת לפני הקרקע בסגנון שנות העשרים, עם מוזיקה חיה וללא מסכים. מקום שמצריך הזמנה.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "street"
+      ],
+      "categories": [
+        "bar"
+      ],
+      "attrs": [
+        "indoor",
+        "late",
+        "book-ahead"
+      ],
+      "audiences": [
+        "couples"
+      ],
+      "lat": 51.5265,
+      "lng": -0.0878,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "יקר",
+      "hours": 2,
+      "tube": "Old Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": true,
+      "tip": "בלי הזמנה מראש כמעט בלתי אפשרי להיכנס בסוף שבוע.",
+      "image": null,
+      "booking": null,
+      "source": "https://barnightjar.com/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "old-blue-last",
+      "name": "האולד בלו לאסט",
+      "nameEn": "The Old Blue Last",
+      "desc": "פאב ותיק בקומה התחתונה ובמה קטנה למעלה, שדרכה עברו לא מעט להקות לפני שהתפרסמו.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "street"
+      ],
+      "categories": [
+        "bar"
+      ],
+      "subcategories": [
+        "pub",
+        "live-music"
+      ],
+      "attrs": [
+        "indoor",
+        "late"
+      ],
+      "audiences": [
+        "young"
+      ],
+      "lat": 51.5244,
+      "lng": -0.0801,
+      "precision": "exact",
+      "free": false,
+      "priceBand": "זול",
+      "hours": 2,
+      "tube": "Old Street",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "פאב אמיתי ולא מקום מעוצב, וזו בדיוק הנקודה.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.theoldbluelast.com/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "spitalfields-city-farm",
+      "name": "חוות ספיטלפילדס",
+      "nameEn": "Spitalfields City Farm",
+      "desc": "חווה עירונית קטנה עם חיות, גינות ואזור ישיבה, במרחק הליכה מבריק ליין. הכניסה חופשית.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "kids",
+        "parks"
+      ],
+      "categories": [
+        "attraction",
+        "park"
+      ],
+      "subcategories": [
+        "zoo"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "families",
+        "kids-young"
+      ],
+      "lat": 51.5216,
+      "lng": -0.0658,
+      "precision": "exact",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Whitechapel",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "פתוחה משלישי עד ראשון. הפסקה מושלמת באמצע יום עם ילדים.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.spitalfieldscityfarm.org/visit-us",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "young-va",
+      "name": "מוזיאון ויקטוריה ואלברט לילדים",
+      "nameEn": "Young V&A",
+      "desc": "הסניף של מוזיאוני ויקטוריה ואלברט שמיועד לילדים, עם אזורי משחק אמיתיים ולא רק ויטרינות. הכניסה חופשית.",
+      "area": "shoreditch",
+      "hood": "whitechapel",
+      "interests": [
+        "museums"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "free",
+        "indoor"
+      ],
+      "audiences": [
+        "families",
+        "kids-young",
+        "teens"
+      ],
+      "lat": 51.5284,
+      "lng": -0.0556,
+      "precision": "exact",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 2,
+      "tube": "Bethnal Green",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "ההצלה של יום גשום עם ילדים, במרחק שתי תחנות מהאזור.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.vam.ac.uk/young",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "hackney-city-farm",
+      "name": "חוות הקני",
+      "nameEn": "Hackney City Farm",
+      "desc": "חווה עירונית נוספת, צפונית יותר, עם חיות משק, בית קפה וגינה. גם כאן הכניסה חופשית.",
+      "area": "shoreditch",
+      "hood": "shoreditch",
+      "interests": [
+        "kids",
+        "parks"
+      ],
+      "categories": [
+        "attraction",
+        "park"
+      ],
+      "subcategories": [
+        "zoo"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "families",
+        "kids-young"
+      ],
+      "lat": 51.5317,
+      "lng": -0.0666,
+      "precision": "exact",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Hoxton",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "שקטה יותר מחוות ספיטלפילדס, ועם בית קפה טוב.",
+      "image": null,
+      "booking": null,
+      "source": "https://hackneycityfarm.co.uk/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "petticoat-lane",
+      "name": "שוק פטיקוט ליין",
+      "nameEn": "Petticoat Lane Market",
+      "desc": "שוק רחוב ותיק שפועל בעיקר בבגדים ובאביזרים, בגבול שבין הסיטי לוייטצ׳אפל. פחות מתויר משאר שווקי האזור.",
+      "area": "shoreditch",
+      "hood": "whitechapel",
+      "interests": [
+        "food",
+        "street"
+      ],
+      "categories": [
+        "market",
+        "shop"
+      ],
+      "subcategories": [
+        "flea-market"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "returning"
+      ],
+      "lat": 51.5178,
+      "lng": -0.0781,
+      "precision": "approx",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Aldgate East",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "שוק עממי ולא מעוצב. באים בשביל האווירה ולא בשביל הקניות.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.towerhamlets.gov.uk/lgnl/leisure_and_culture/markets/petticoat_lane_market.aspx",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "primrose-hill",
+      "name": "פרימרוז היל",
+      "nameEn": "Primrose Hill",
+      "desc": "גבעה נמוכה מצפון לריג׳נטס פארק, ובראשה אחד הנופים הפתוחים היפים ביותר על קו הרקיע של לונדון. אין כניסה, אין תור ואין כרטיס.",
+      "area": "camden",
+      "hood": "camden",
+      "interests": [
+        "views",
+        "parks"
+      ],
+      "categories": [
+        "viewpoint",
+        "park"
+      ],
+      "attrs": [
+        "free",
+        "photogenic"
+      ],
+      "audiences": [
+        "couples",
+        "families",
+        "returning"
+      ],
+      "lat": 51.539,
+      "lng": -0.1625,
+      "precision": "approx",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Chalk Farm",
+      "kids": true,
+      "anchor": false,
+      "bookAhead": false,
+      "tip": "השקיעה היא השעה שבה כולם מגיעים. באמצע היום זה פארק שקט.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.royalparks.org.uk/visit/parks/the-regents-park-primrose-hill",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
+    },
+    {
+      "id": "temple-of-mithras",
+      "name": "מקדש מיתרס הרומי",
+      "nameEn": "London Mithraeum",
+      "desc": "שרידי מקדש רומי מהמאה השלישית לספירה, שהתגלו בעבודות בנייה ושוחזרו במקומם המקורי, שבעה מטרים מתחת לפני הרחוב. התצוגה כוללת שחזור אור וקול.",
+      "area": "city",
+      "hood": "the-city",
+      "interests": [
+        "museums",
+        "royal"
+      ],
+      "categories": [
+        "museum",
+        "landmark"
+      ],
+      "attrs": [
+        "free",
+        "indoor",
+        "book-ahead"
+      ],
+      "audiences": [
+        "returning",
+        "teens"
+      ],
+      "lat": 51.5124,
+      "lng": -0.0907,
+      "precision": "exact",
+      "free": true,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Bank",
+      "kids": false,
+      "anchor": false,
+      "bookAhead": true,
+      "tip": "הכניסה חינם אבל צריך לשריין מקום מראש באתר, וזה נגמר.",
+      "image": null,
+      "booking": null,
+      "source": "https://www.londonmithraeum.com/",
+      "checked": "2026-08-21",
+      "_review": [
+        "image",
+        "step-free"
+      ]
     }
   ]
 }
