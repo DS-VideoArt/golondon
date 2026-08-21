@@ -4,8 +4,22 @@
     "slug": "kosher-bagels-bar",
     "name": "Bagels Bar",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "dairy"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -25,8 +39,22 @@
     "slug": "kosher-beit-caf",
     "name": "Beit Café",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "dairy"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -46,8 +74,22 @@
     "slug": "kosher-bread-hendon",
     "name": "Bread Hendon",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "dairy"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -67,8 +109,22 @@
     "slug": "kosher-bread-temple-fortune",
     "name": "Bread Temple Fortune",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "dairy"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -88,8 +144,22 @@
     "slug": "kosher-eli-s-pizza-edgware",
     "name": "Eli's Pizza Edgware",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "dairy"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "edgware",
@@ -109,8 +179,22 @@
     "slug": "kosher-eli-s-pizza-golders-green",
     "name": "Eli's Pizza Golders Green",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "dairy"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -130,8 +214,22 @@
     "slug": "kosher-mr-baker",
     "name": "Mr Baker",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "dairy"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -151,8 +249,22 @@
     "slug": "kosher-novellino",
     "name": "Novellino",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "dairy"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -172,8 +284,22 @@
     "slug": "kosher-portoberry",
     "name": "Portoberry",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "dairy"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -193,8 +319,22 @@
     "slug": "kosher-pumpernick-s",
     "name": "Pumpernick's",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "dairy"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "borehamwood",
@@ -214,8 +354,22 @@
     "slug": "kosher-sababa",
     "name": "Sababa",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "dairy"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "borehamwood",
@@ -235,8 +389,22 @@
     "slug": "kosher-slice",
     "name": "Slice",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "dairy"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -256,8 +424,22 @@
     "slug": "kosher-taboon",
     "name": "Taboon",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "dairy"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -277,8 +459,22 @@
     "slug": "kosher-tasti-pizza",
     "name": "Tasti Pizza",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "dairy"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "stamford-hill",
@@ -298,8 +494,22 @@
     "slug": "kosher-white-fish",
     "name": "White Fish",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "dairy"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -319,8 +529,22 @@
     "slug": "kosher-bagels-bar-grill-house",
     "name": "Bagels Bar Grill House",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -340,8 +564,22 @@
     "slug": "kosher-balagan",
     "name": "Balagan",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "borehamwood",
@@ -361,8 +599,22 @@
     "slug": "kosher-burger-bar",
     "name": "Burger Bar",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -382,8 +634,22 @@
     "slug": "kosher-habiba-s-smokehouse",
     "name": "Habiba's Smokehouse",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -403,8 +669,22 @@
     "slug": "kosher-hummus-bar-golders-green",
     "name": "Hummus Bar Golders Green",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -424,8 +704,22 @@
     "slug": "kosher-hummus-bar-hendon",
     "name": "Hummus Bar Hendon",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -445,8 +739,22 @@
     "slug": "kosher-kaifeng",
     "name": "Kaifeng",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -466,8 +774,22 @@
     "slug": "kosher-kasa-bar-grill",
     "name": "Kasa Bar & Grill",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -487,8 +809,22 @@
     "slug": "kosher-moss-maple",
     "name": "Moss & Maple",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "west-hampstead",
@@ -508,8 +844,22 @@
     "slug": "kosher-novellino-bistro",
     "name": "Novellino Bistro",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -529,8 +879,22 @@
     "slug": "kosher-rodo",
     "name": "Rodo",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "edgware",
@@ -550,8 +914,22 @@
     "slug": "kosher-sami-s-edgware",
     "name": "Sami's Edgware",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "edgware",
@@ -571,8 +949,22 @@
     "slug": "kosher-sami-s-hendon",
     "name": "Sami's Hendon",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -592,8 +984,22 @@
     "slug": "kosher-shnitzelhaus",
     "name": "Shnitzelhaus",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -613,8 +1019,22 @@
     "slug": "kosher-tish",
     "name": "Tish",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "camden",
     "hood": "hampstead",
@@ -634,8 +1054,22 @@
     "slug": "kosher-tony-page-marylebone",
     "name": "Tony Page Marylebone",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "westminster",
     "hood": "marylebone",
@@ -655,8 +1089,22 @@
     "slug": "kosher-tuk-tuk",
     "name": "Tuk Tuk",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -676,8 +1124,22 @@
     "slug": "kosher-white-house-express",
     "name": "White House Express",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -697,8 +1159,22 @@
     "slug": "kosher-surfin-poke",
     "name": "SurFin Poke",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -718,8 +1194,22 @@
     "slug": "kosher-sushi-haven-golders-green",
     "name": "Sushi Haven Golders Green",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -739,8 +1229,22 @@
     "slug": "kosher-sushi-haven-hendon",
     "name": "Sushi Haven Hendon",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -760,8 +1264,22 @@
     "slug": "kosher-sushi-hinoki",
     "name": "Sushi Hinoki",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -781,8 +1299,22 @@
     "slug": "kosher-bonjour",
     "name": "Bonjour",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -802,8 +1334,22 @@
     "slug": "kosher-carmelli",
     "name": "Carmelli",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -823,8 +1369,22 @@
     "slug": "kosher-coco-bakery",
     "name": "Coco Bakery",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -844,8 +1404,22 @@
     "slug": "kosher-creme-de-la-creme",
     "name": "Creme de la Creme",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -865,8 +1439,22 @@
     "slug": "kosher-daniels-bagel-bakery",
     "name": "Daniels Bagel Bakery",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -886,8 +1474,22 @@
     "slug": "kosher-grodz-edgware",
     "name": "Grodz Edgware",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "edgware",
@@ -907,8 +1509,22 @@
     "slug": "kosher-grodz-golders-green",
     "name": "Grodz Golders Green",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -928,8 +1544,22 @@
     "slug": "kosher-hendon-bagel-bakery",
     "name": "Hendon Bagel Bakery",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -949,8 +1579,22 @@
     "slug": "kosher-just-baked",
     "name": "Just Baked",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "borehamwood",
@@ -970,8 +1614,22 @@
     "slug": "kosher-la-brioche-hendon",
     "name": "La Brioche Hendon",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -991,8 +1649,22 @@
     "slug": "kosher-la-brioche-stanmore",
     "name": "La Brioche Stanmore",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "edgware",
@@ -1012,8 +1684,22 @@
     "slug": "kosher-munch-n-crunch",
     "name": "Munch 'N Crunch",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -1033,8 +1719,22 @@
     "slug": "kosher-parkway-patisserie-finchley",
     "name": "Parkway Patisserie Finchley",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "finchley",
@@ -1054,8 +1754,22 @@
     "slug": "kosher-parkway-patisserie-golders-green",
     "name": "Parkway Patisserie Golders Green",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -1075,8 +1789,22 @@
     "slug": "kosher-parkway-patisserie-wembley",
     "name": "Parkway Patisserie Wembley",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "wembley",
@@ -1096,8 +1824,22 @@
     "slug": "kosher-the-bagel-place",
     "name": "The Bagel Place",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "mill-hill",
@@ -1117,8 +1859,22 @@
     "slug": "kosher-yossi-s-bakery",
     "name": "Yossi's Bakery",
     "categories": [
+      "cafe"
+    ],
+    "subcategories": [
+      "bakery"
+    ],
+    "attrs": [
       "kosher",
-      "cafes"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "edgware",
@@ -1138,8 +1894,22 @@
     "slug": "kosher-kosher-wok",
     "name": "Kosher Wok",
     "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
       "kosher",
-      "restaurants"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "edgware",
@@ -1159,8 +1929,22 @@
     "slug": "kosher-1070-kitchen",
     "name": "1070 Kitchen",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "westminster",
     "hood": "marylebone",
@@ -1180,8 +1964,22 @@
     "slug": "kosher-allenby-market",
     "name": "Allenby Market",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -1201,8 +1999,22 @@
     "slug": "kosher-booya-gelato",
     "name": "Booya Gelato",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -1222,8 +2034,22 @@
     "slug": "kosher-chocolate-fantasies",
     "name": "Chocolate Fantasies",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "stamford-hill",
@@ -1243,8 +2069,22 @@
     "slug": "kosher-flax-s-foods",
     "name": "Flax's Foods",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "bushey",
@@ -1264,8 +2104,22 @@
     "slug": "kosher-just-kosher",
     "name": "Just Kosher",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "borehamwood",
@@ -1285,8 +2139,22 @@
     "slug": "kosher-kosher-deli-borehamwood",
     "name": "Kosher Deli Borehamwood",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "borehamwood",
@@ -1306,8 +2174,22 @@
     "slug": "kosher-kosher-deli-edgware",
     "name": "Kosher Deli Edgware",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "edgware",
@@ -1327,8 +2209,22 @@
     "slug": "kosher-kosher-deli-golders-green",
     "name": "Kosher Deli Golders Green",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -1348,8 +2244,22 @@
     "slug": "kosher-kosher-deli-hendon",
     "name": "Kosher Deli Hendon",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -1369,8 +2279,22 @@
     "slug": "kosher-kosher-deli-temple-fortune",
     "name": "Kosher Deli Temple Fortune",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -1390,8 +2314,22 @@
     "slug": "kosher-kosher-edge",
     "name": "Kosher Edge",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "edgware",
@@ -1411,8 +2349,22 @@
     "slug": "kosher-kosher-kingdom",
     "name": "Kosher Kingdom",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "edgware",
@@ -1432,8 +2384,22 @@
     "slug": "kosher-leon-s-fruit-shop",
     "name": "Leon's Fruit Shop",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -1453,8 +2419,22 @@
     "slug": "kosher-manna-deli",
     "name": "Manna Deli",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -1474,8 +2454,22 @@
     "slug": "kosher-menachem-s",
     "name": "Menachem's",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "golders-green",
@@ -1495,8 +2489,22 @@
     "slug": "kosher-piu-gusto",
     "name": "Piu Gusto",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "borehamwood",
@@ -1516,8 +2524,22 @@
     "slug": "kosher-sushi-haven-hadar",
     "name": "Sushi Haven Hadar",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "edgware",
@@ -1537,8 +2559,22 @@
     "slug": "kosher-tapuach",
     "name": "Tapuach",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "hendon",
@@ -1558,8 +2594,22 @@
     "slug": "kosher-the-kelman-deli",
     "name": "The Kelman Deli",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "bushey",
@@ -1579,8 +2629,22 @@
     "slug": "kosher-wrap-a-wish",
     "name": "Wrap a Wish",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "finchley",
@@ -1600,8 +2664,22 @@
     "slug": "kosher-so-real-cadoxton",
     "name": "So Real Cadoxton",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "stamford-hill",
@@ -1621,8 +2699,22 @@
     "slug": "kosher-so-real-oldhill",
     "name": "So Real Oldhill",
     "categories": [
+      "shop"
+    ],
+    "subcategories": [
+      "deli"
+    ],
+    "attrs": [
       "kosher",
-      "shopping"
+      "indoor"
+    ],
+    "audiences": [],
+    "_review": [
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
     ],
     "area": "outer",
     "hood": "stamford-hill",

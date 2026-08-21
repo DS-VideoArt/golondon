@@ -77,6 +77,24 @@
         "museums",
         "royal"
       ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid",
+        "anchor",
+        "indoor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 3,
@@ -96,6 +114,27 @@
       "hood": "westminster",
       "interests": [
         "museums"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "subcategories": [
+        "gallery"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid",
+        "anchor",
+        "indoor"
+      ],
+      "audiences": [
+        "teens",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -118,6 +157,25 @@
         "royal",
         "museums"
       ],
+      "categories": [
+        "landmark"
+      ],
+      "subcategories": [
+        "religious"
+      ],
+      "attrs": [
+        "book-ahead",
+        "anchor"
+      ],
+      "audiences": [
+        "teens",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 2,
@@ -138,6 +196,20 @@
         "royal",
         "views"
       ],
+      "categories": [
+        "landmark"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "צפייה מבחוץ חינם",
       "hours": 1,
@@ -156,6 +228,21 @@
       "hood": "westminster",
       "interests": [
         "royal"
+      ],
+      "categories": [
+        "palace"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "החילופים חינם, הארמון בתשלום",
@@ -178,6 +265,23 @@
         "museums",
         "royal"
       ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "book-ahead",
+        "anchor",
+        "indoor"
+      ],
+      "audiences": [
+        "teens",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 2,
@@ -196,6 +300,20 @@
       "hood": "westminster",
       "interests": [
         "parks"
+      ],
+      "categories": [
+        "park"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -217,6 +335,25 @@
         "food",
         "street"
       ],
+      "categories": [
+        "walk",
+        "market",
+        "shop"
+      ],
+      "subcategories": [
+        "arcade"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -236,6 +373,24 @@
       "interests": [
         "royal",
         "museums"
+      ],
+      "categories": [
+        "palace",
+        "museum"
+      ],
+      "attrs": [
+        "book-ahead",
+        "anchor",
+        "indoor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
@@ -257,6 +412,23 @@
         "views",
         "royal"
       ],
+      "categories": [
+        "landmark"
+      ],
+      "subcategories": [
+        "bridge"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "מעבר חינם, התערוכה בתשלום",
       "hours": 1,
@@ -277,6 +449,26 @@
         "royal",
         "views"
       ],
+      "categories": [
+        "landmark",
+        "viewpoint"
+      ],
+      "subcategories": [
+        "religious"
+      ],
+      "attrs": [
+        "book-ahead",
+        "anchor"
+      ],
+      "audiences": [
+        "teens",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 2,
@@ -296,6 +488,21 @@
       "interests": [
         "views"
       ],
+      "categories": [
+        "viewpoint"
+      ],
+      "attrs": [
+        "free",
+        "book-ahead"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם בהזמנה מראש",
       "hours": 1,
@@ -314,6 +521,23 @@
       "hood": "borough",
       "interests": [
         "food"
+      ],
+      "categories": [
+        "market"
+      ],
+      "subcategories": [
+        "food-market"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -336,6 +560,27 @@
         "street",
         "views"
       ],
+      "categories": [
+        "museum"
+      ],
+      "subcategories": [
+        "gallery"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid",
+        "anchor",
+        "indoor"
+      ],
+      "audiences": [
+        "teens",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -356,6 +601,24 @@
       "interests": [
         "views",
         "kids"
+      ],
+      "categories": [
+        "viewpoint",
+        "attraction"
+      ],
+      "subcategories": [
+        "ride"
+      ],
+      "attrs": [
+        "book-ahead"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
@@ -378,6 +641,24 @@
         "views",
         "parks"
       ],
+      "categories": [
+        "walk",
+        "park"
+      ],
+      "subcategories": [
+        "waterside"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -396,6 +677,20 @@
       "hood": "borough",
       "interests": [
         "views"
+      ],
+      "categories": [
+        "viewpoint"
+      ],
+      "attrs": [
+        "book-ahead"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
@@ -416,6 +711,24 @@
       "interests": [
         "museums",
         "kids"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid",
+        "anchor",
+        "indoor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -438,6 +751,24 @@
         "museums",
         "kids"
       ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid",
+        "anchor",
+        "indoor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -459,6 +790,24 @@
         "museums",
         "street"
       ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid",
+        "anchor",
+        "indoor"
+      ],
+      "audiences": [
+        "teens",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -479,6 +828,20 @@
       "interests": [
         "parks"
       ],
+      "categories": [
+        "park"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -497,6 +860,20 @@
       "hood": "kensington",
       "interests": [
         "royal"
+      ],
+      "categories": [
+        "palace"
+      ],
+      "attrs": [
+        "book-ahead"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
@@ -518,6 +895,26 @@
         "street",
         "food"
       ],
+      "categories": [
+        "market",
+        "walk",
+        "shop"
+      ],
+      "subcategories": [
+        "flea-market",
+        "vintage"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -538,6 +935,29 @@
         "food",
         "street"
       ],
+      "categories": [
+        "market",
+        "shop",
+        "restaurant"
+      ],
+      "subcategories": [
+        "food-market",
+        "flea-market",
+        "street-food"
+      ],
+      "attrs": [
+        "free",
+        "anchor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 3,
@@ -556,6 +976,20 @@
       "hood": "camden",
       "interests": [
         "parks"
+      ],
+      "categories": [
+        "park"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -576,6 +1010,25 @@
       "interests": [
         "kids"
       ],
+      "categories": [
+        "attraction"
+      ],
+      "subcategories": [
+        "zoo"
+      ],
+      "attrs": [
+        "book-ahead",
+        "anchor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 3,
@@ -594,6 +1047,22 @@
       "hood": "shoreditch",
       "interests": [
         "street"
+      ],
+      "categories": [
+        "street-art"
+      ],
+      "attrs": [
+        "free",
+        "anchor"
+      ],
+      "audiences": [
+        "teens",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -614,6 +1083,30 @@
       "interests": [
         "food",
         "street"
+      ],
+      "categories": [
+        "market",
+        "restaurant",
+        "shop",
+        "street-art"
+      ],
+      "subcategories": [
+        "flea-market",
+        "street-food",
+        "vintage"
+      ],
+      "attrs": [
+        "free",
+        "anchor"
+      ],
+      "audiences": [
+        "teens",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -636,6 +1129,24 @@
         "museums",
         "parks"
       ],
+      "categories": [
+        "park",
+        "viewpoint",
+        "walk"
+      ],
+      "attrs": [
+        "free",
+        "anchor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "הפארק חינם, המצפה בתשלום",
       "hours": 4,
@@ -655,6 +1166,22 @@
       "interests": [
         "museums",
         "kids"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid",
+        "indoor"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -676,6 +1203,25 @@
       "interests": [
         "parks"
       ],
+      "categories": [
+        "park"
+      ],
+      "subcategories": [
+        "garden"
+      ],
+      "attrs": [
+        "book-ahead",
+        "anchor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 4,
@@ -694,6 +1240,26 @@
       "hood": "watford",
       "interests": [
         "kids"
+      ],
+      "categories": [
+        "attraction",
+        "experience"
+      ],
+      "subcategories": [
+        "tour"
+      ],
+      "attrs": [
+        "book-ahead",
+        "anchor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
@@ -715,6 +1281,26 @@
         "royal",
         "parks"
       ],
+      "categories": [
+        "palace",
+        "park"
+      ],
+      "subcategories": [
+        "garden"
+      ],
+      "attrs": [
+        "book-ahead",
+        "anchor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 4,
@@ -735,6 +1321,27 @@
         "museums",
         "royal"
       ],
+      "categories": [
+        "museum"
+      ],
+      "subcategories": [
+        "gallery"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid",
+        "anchor",
+        "indoor"
+      ],
+      "audiences": [
+        "teens",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -754,6 +1361,27 @@
       "hood": "westminster",
       "interests": [
         "museums"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "subcategories": [
+        "gallery"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid",
+        "anchor",
+        "indoor"
+      ],
+      "audiences": [
+        "teens",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -776,6 +1404,25 @@
         "museums",
         "royal"
       ],
+      "categories": [
+        "museum"
+      ],
+      "subcategories": [
+        "gallery",
+        "historic-house"
+      ],
+      "attrs": [
+        "free",
+        "indoor"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -795,6 +1442,24 @@
       "interests": [
         "museums",
         "royal"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "subcategories": [
+        "historic-house"
+      ],
+      "attrs": [
+        "free",
+        "indoor"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -816,6 +1481,20 @@
         "museums",
         "kids"
       ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "indoor"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 2,
@@ -835,6 +1514,21 @@
       "interests": [
         "royal",
         "street"
+      ],
+      "categories": [
+        "landmark",
+        "walk"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -856,6 +1550,24 @@
         "food",
         "street"
       ],
+      "categories": [
+        "restaurant",
+        "walk"
+      ],
+      "subcategories": [
+        "street-food"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -875,6 +1587,21 @@
       "interests": [
         "street"
       ],
+      "categories": [
+        "landmark",
+        "walk"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -893,6 +1620,23 @@
       "hood": "bloomsbury",
       "interests": [
         "museums"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "subcategories": [
+        "historic-house"
+      ],
+      "attrs": [
+        "indoor"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
@@ -914,6 +1658,22 @@
         "street",
         "food"
       ],
+      "categories": [
+        "walk",
+        "cafe",
+        "shop"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -933,6 +1693,26 @@
       "interests": [
         "street",
         "food"
+      ],
+      "categories": [
+        "market",
+        "walk"
+      ],
+      "subcategories": [
+        "arcade"
+      ],
+      "attrs": [
+        "free",
+        "anchor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -954,6 +1734,19 @@
         "views",
         "royal"
       ],
+      "categories": [
+        "landmark",
+        "viewpoint"
+      ],
+      "attrs": [],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 1,
@@ -973,6 +1766,25 @@
       "interests": [
         "parks",
         "street"
+      ],
+      "categories": [
+        "landmark",
+        "park"
+      ],
+      "subcategories": [
+        "religious",
+        "garden"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -994,6 +1806,21 @@
         "museums",
         "kids"
       ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "free",
+        "indoor"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -1014,6 +1841,22 @@
         "museums",
         "royal"
       ],
+      "categories": [
+        "museum",
+        "landmark"
+      ],
+      "attrs": [
+        "free",
+        "indoor"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -1033,6 +1876,26 @@
       "interests": [
         "street",
         "museums"
+      ],
+      "categories": [
+        "landmark",
+        "show"
+      ],
+      "subcategories": [
+        "concert-hall"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid",
+        "indoor"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -1055,6 +1918,24 @@
         "food",
         "street"
       ],
+      "categories": [
+        "walk",
+        "restaurant"
+      ],
+      "subcategories": [
+        "waterside"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -1075,6 +1956,21 @@
         "museums",
         "kids"
       ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "book-ahead",
+        "indoor"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 2,
@@ -1094,6 +1990,24 @@
       "interests": [
         "museums",
         "royal"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid",
+        "anchor",
+        "indoor"
+      ],
+      "audiences": [
+        "teens",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -1116,6 +2030,20 @@
         "museums",
         "kids"
       ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "indoor"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 2,
@@ -1136,6 +2064,26 @@
         "royal",
         "museums"
       ],
+      "categories": [
+        "show",
+        "museum"
+      ],
+      "subcategories": [
+        "concert-hall"
+      ],
+      "attrs": [
+        "anchor",
+        "indoor"
+      ],
+      "audiences": [
+        "teens",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 2,
@@ -1154,6 +2102,23 @@
       "hood": "borough",
       "interests": [
         "royal"
+      ],
+      "categories": [
+        "landmark"
+      ],
+      "subcategories": [
+        "religious"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -1174,6 +2139,20 @@
       "interests": [
         "street"
       ],
+      "categories": [
+        "street-art"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -1192,6 +2171,23 @@
       "hood": "borough",
       "interests": [
         "museums"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "subcategories": [
+        "historic-house"
+      ],
+      "attrs": [
+        "indoor"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
@@ -1212,6 +2208,21 @@
       "interests": [
         "kids"
       ],
+      "categories": [
+        "attraction"
+      ],
+      "subcategories": [
+        "aquarium"
+      ],
+      "attrs": [],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 2,
@@ -1230,6 +2241,22 @@
       "hood": "kensington",
       "interests": [
         "museums"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid",
+        "indoor"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -1251,6 +2278,23 @@
       "interests": [
         "parks"
       ],
+      "categories": [
+        "park"
+      ],
+      "subcategories": [
+        "garden"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -1270,6 +2314,23 @@
       "interests": [
         "food",
         "street"
+      ],
+      "categories": [
+        "shop"
+      ],
+      "subcategories": [
+        "department"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -1291,6 +2352,23 @@
         "royal",
         "museums"
       ],
+      "categories": [
+        "show"
+      ],
+      "subcategories": [
+        "concert-hall"
+      ],
+      "attrs": [
+        "indoor"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 1,
@@ -1309,6 +2387,24 @@
       "hood": "kings-cross",
       "interests": [
         "museums"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid",
+        "anchor",
+        "indoor"
+      ],
+      "audiences": [
+        "teens",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -1330,6 +2426,21 @@
       "interests": [
         "museums"
       ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "free",
+        "indoor"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -1348,6 +2459,23 @@
       "hood": "marylebone",
       "interests": [
         "museums"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "subcategories": [
+        "historic-house"
+      ],
+      "attrs": [
+        "indoor"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
@@ -1368,6 +2496,20 @@
       "interests": [
         "kids"
       ],
+      "categories": [
+        "attraction"
+      ],
+      "attrs": [
+        "book-ahead"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 2,
@@ -1387,6 +2529,23 @@
       "interests": [
         "parks",
         "views"
+      ],
+      "categories": [
+        "park",
+        "viewpoint"
+      ],
+      "attrs": [
+        "free",
+        "anchor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -1409,6 +2568,25 @@
         "parks",
         "royal"
       ],
+      "categories": [
+        "museum",
+        "park"
+      ],
+      "subcategories": [
+        "historic-house",
+        "gallery"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -1428,6 +2606,21 @@
       "interests": [
         "royal",
         "parks"
+      ],
+      "categories": [
+        "landmark",
+        "park"
+      ],
+      "attrs": [
+        "book-ahead"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
@@ -1449,6 +2642,22 @@
         "food",
         "street"
       ],
+      "categories": [
+        "shop",
+        "restaurant",
+        "walk"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -1468,6 +2677,24 @@
       "interests": [
         "parks",
         "street"
+      ],
+      "categories": [
+        "park",
+        "walk"
+      ],
+      "subcategories": [
+        "waterside"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -1489,6 +2716,27 @@
         "food",
         "street"
       ],
+      "categories": [
+        "market",
+        "shop"
+      ],
+      "subcategories": [
+        "flea-market",
+        "street-food"
+      ],
+      "attrs": [
+        "free",
+        "anchor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -1509,6 +2757,23 @@
         "food",
         "street"
       ],
+      "categories": [
+        "market"
+      ],
+      "subcategories": [
+        "flower-market"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -1527,6 +2792,24 @@
       "hood": "shoreditch",
       "interests": [
         "museums"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "subcategories": [
+        "historic-house"
+      ],
+      "attrs": [
+        "free",
+        "indoor"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -1547,6 +2830,25 @@
       "interests": [
         "museums",
         "street"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "subcategories": [
+        "gallery"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid",
+        "indoor"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -1569,6 +2871,24 @@
         "museums",
         "royal"
       ],
+      "categories": [
+        "museum"
+      ],
+      "subcategories": [
+        "historic-house"
+      ],
+      "attrs": [
+        "book-ahead",
+        "indoor"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 1,
@@ -1588,6 +2908,23 @@
       "interests": [
         "museums",
         "views"
+      ],
+      "categories": [
+        "museum",
+        "viewpoint"
+      ],
+      "attrs": [
+        "book-ahead",
+        "anchor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
@@ -1609,6 +2946,20 @@
         "museums",
         "kids"
       ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "indoor"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 1,
@@ -1628,6 +2979,25 @@
       "interests": [
         "museums",
         "royal"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "subcategories": [
+        "historic-house",
+        "gallery"
+      ],
+      "attrs": [
+        "free",
+        "indoor"
+      ],
+      "audiences": [
+        "teens"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -1649,6 +3019,25 @@
         "food",
         "street"
       ],
+      "categories": [
+        "market",
+        "shop"
+      ],
+      "subcategories": [
+        "food-market",
+        "flea-market"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 1,
@@ -1668,6 +3057,21 @@
       "interests": [
         "street",
         "views"
+      ],
+      "categories": [
+        "landmark",
+        "walk"
+      ],
+      "attrs": [
+        "free"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -1689,6 +3093,23 @@
         "parks",
         "views"
       ],
+      "categories": [
+        "park",
+        "viewpoint"
+      ],
+      "attrs": [
+        "free",
+        "anchor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 3,
@@ -1709,6 +3130,22 @@
         "royal",
         "museums"
       ],
+      "categories": [
+        "palace"
+      ],
+      "attrs": [
+        "book-ahead",
+        "anchor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 4,
@@ -1727,6 +3164,25 @@
       "hood": "wembley",
       "interests": [
         "kids"
+      ],
+      "categories": [
+        "sport",
+        "experience"
+      ],
+      "subcategories": [
+        "stadium",
+        "stadium-tour"
+      ],
+      "attrs": [
+        "book-ahead"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
@@ -1748,6 +3204,22 @@
         "views",
         "kids"
       ],
+      "categories": [
+        "viewpoint",
+        "attraction"
+      ],
+      "subcategories": [
+        "ride"
+      ],
+      "attrs": [],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": false,
       "priceBand": "כרטיס בתשלום",
       "hours": 1,
@@ -1766,6 +3238,21 @@
       "hood": "docklands",
       "interests": [
         "museums"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "free",
+        "indoor"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
@@ -1787,6 +3274,26 @@
         "street",
         "food"
       ],
+      "categories": [
+        "landmark",
+        "shop",
+        "restaurant"
+      ],
+      "subcategories": [
+        "department"
+      ],
+      "attrs": [
+        "free",
+        "partly-paid"
+      ],
+      "audiences": [
+        "kids-young"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
+      ],
       "free": true,
       "priceBand": "כניסה חינם",
       "hours": 2,
@@ -1807,6 +3314,23 @@
       "interests": [
         "museums",
         "kids"
+      ],
+      "categories": [
+        "museum"
+      ],
+      "attrs": [
+        "free",
+        "anchor",
+        "indoor"
+      ],
+      "audiences": [
+        "kids-young",
+        "first-time"
+      ],
+      "_review": [
+        "photogenic",
+        "step-free",
+        "late"
       ],
       "free": true,
       "priceBand": "כניסה חינם",
