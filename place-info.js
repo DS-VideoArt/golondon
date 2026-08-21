@@ -226,6 +226,15 @@
     modal.classList.add('pi-open');
     document.body.style.overflow = 'hidden';
     closeBtn.focus();
+
+    /*
+      נקודת חיבור לשכבת "הוסף למסלול", ובכוונה בסוף הפונקציה. קודם לכן
+      ctaWrap עדיין נמחק ומאוכלס מחדש, וכל מה שהושתל בו היה נמחק.
+      trip-tray.js מחליט לבד אם למקום יש רשומה במאגר ולכן מגיע לו כפתור.
+    */
+    try {
+      document.dispatchEvent(new CustomEvent('gl:place-open', { detail: { id: id || '', item: item } }));
+    } catch (e) {}
   }
 
   function close() {

@@ -506,6 +506,27 @@
       .back-btn { font-size: 12.5px; padding: 7px 12px; white-space: nowrap; }
       .navbar { padding: 0 14px; }
     }
+    /* מקומות שנאספו בשאר האתר דרך trip-tray.js */
+    .tray-box{border:1px solid rgba(220,38,38,.24);background:rgba(220,38,38,.05);
+      border-radius:14px;padding:16px 18px;margin:0 0 18px;}
+    .tray-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+    .tray-title{font-size:15.5px;font-weight:900;color:#201f2b;}
+    .tray-clear{background:none;border:none;color:#6b7280;font-size:12.5px;font-weight:700;
+      cursor:pointer;text-decoration:underline;font-family:inherit;padding:0;}
+    .tray-clear:hover{color:#DC2626;}
+    .tray-sub{font-size:13.3px;color:#55596b;margin:5px 0 12px;line-height:1.55;}
+    .tray-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+    .tray-item{display:inline-flex;align-items:center;gap:8px;background:#fff;
+      border:1px solid rgba(32,31,43,.12);border-radius:10px;padding:8px 12px;font-size:13.5px;font-weight:700;}
+    .tray-item button{background:none;border:none;cursor:pointer;font-size:13px;padding:0;line-height:1;font-family:inherit;}
+    .tray-add{color:#15803D;font-weight:900;}
+    .tray-del{color:#b0b4c0;}
+    .tray-del:hover{color:#DC2626;}
+    .tray-all{background:#DC2626;border:1px solid #DC2626;color:#fff;font-family:inherit;
+      font-size:13.5px;font-weight:800;padding:10px 18px;border-radius:10px;cursor:pointer;}
+    .tray-all:hover{background:#B91C1C;}
+    @media (max-width:560px){ .tray-all{width:100%;} }
+
 </style>
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#DC2626" />
@@ -587,6 +608,16 @@
       בוחרים מהרשימה משמאל ומוסיפים לימים. אפשר לגרור קובייה אל היום, או פשוט ללחוץ עליה
       והיא תתווסף ליום המסומן. כל מה שתרכיבו נשמר בדפדפן, גם אם תסגרו את העמוד ותחזרו מחר.
     </p>
+
+    <div class="tray-box" id="tray-box" hidden>
+      <div class="tray-head">
+        <span class="tray-title">🧭 מקומות שאספתם באתר</span>
+        <button type="button" class="tray-clear" id="tray-clear">ניקוי הרשימה</button>
+      </div>
+      <p class="tray-sub">אלה המקומות שסימנתם תוך כדי גלישה. שבצו אותם ליום, או הוסיפו את כולם ליום המסומן.</p>
+      <div class="tray-list" id="tray-list"></div>
+      <button type="button" class="tray-all" id="tray-all">הוספת כל המקומות ליום המסומן</button>
+    </div>
 
     <div class="manual-layout">
       <aside class="palette" aria-label="מאגר האטרקציות">
@@ -1996,6 +2027,44 @@
       : 'היום המוכן נטען, אפשר לערוך אותו');
   }
 
+  /*
+    המקומות שנאספו בשאר האתר. trip-tray.js מחזיק אותם במפתח נפרד משלו,
+    ולכן שיבוץ ליום כאן לא נוגע ברשימה עד שהמשתמש מסיר אותה בעצמו.
+  */
+  function wireTray() {
+    var box = $('tray-box'), list = $('tray-list');
+    if (!box || !window.GoLondonTray) return;
+
+    function draw() {
+      var ids = GoLondonTray.list().filter(function (id) { return !!byId(id); });
+      box.hidden = !ids.length;
+      if (!ids.length) return;
+      list.innerHTML = '';
+      ids.forEach(function (id) {
+        var a = byId(id);
+        var chip = document.createElement('span');
+        chip.className = 'tray-item';
+        chip.appendChild(document.createTextNode(a.name));
+        var plus = document.createElement('button');
+        plus.type = 'button'; plus.className = 'tray-add'; plus.textContent = '\u002B';
+        plus.title = 'הוספה ליום המסומן';
+        plus.addEventListener('click', function () { addStop(id); });
+        var del = document.createElement('button');
+        del.type = 'button'; del.className = 'tray-del'; del.innerHTML = '&times;';
+        del.title = 'הסרה מהרשימה';
+        del.addEventListener('click', function () { GoLondonTray.remove(id); draw(); });
+        chip.appendChild(plus); chip.appendChild(del);
+        list.appendChild(chip);
+      });
+    }
+
+    $('tray-all').addEventListener('click', function () {
+      GoLondonTray.list().forEach(function (id) { if (byId(id)) addStop(id); });
+    });
+    $('tray-clear').addEventListener('click', function () { GoLondonTray.clear(); draw(); });
+    draw();
+  }
+
   fetch('planner-data.json', { cache: 'no-cache' })
     .then(function (r) { return r.json(); })
     .then(function (d) {
@@ -2004,6 +2073,7 @@
       wire();
       wireManual();
       applyPreset();
+      wireTray();
       hookAffiliate();
     })
     .catch(function (err) {
@@ -2017,6 +2087,7 @@
 <script src="install-prompt.js" defer></script>
 <script src="affiliate.js?v=2" defer></script>
 <script src="community-ask.js?v=2" defer></script>
+<script src="trip-tray.js?v=1" defer></script>
 <script src="analytics.js?v=4" defer></script>
 </body>
 </html>
