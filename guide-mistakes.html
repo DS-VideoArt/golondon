@@ -247,7 +247,9 @@
     .mk-wrap{max-width:780px;margin:0 auto;padding:0 20px 70px;}
     .mk-cat{margin-top:44px;scroll-margin-top:78px;}
     .mk-cat-photo{
-      width:100%;aspect-ratio:16/7;object-fit:cover;
+      /* height:auto חיוני. בלעדיו תכונת height בתגית התמונה גוברת על
+         aspect-ratio, והתמונה נמתחת לגובה 525 פיקסלים בכל רוחב מסך. */
+      width:100%;height:auto;aspect-ratio:16/7;object-fit:cover;
       border-radius:18px;display:block;background:#F1F0EB;
     }
     .mk-cat-head{display:flex;align-items:center;gap:12px;margin:18px 0 6px;}
