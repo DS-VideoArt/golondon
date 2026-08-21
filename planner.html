@@ -1975,14 +1975,22 @@
     saveManual();
     setMode('manual');
 
+    /*
+      analytics.js נטען עם defer, והפונקציה כאן עשויה לרוץ לפניו כשקובץ
+      הנתונים מגיע מהמטמון. לכן לא בודקים פעם אחת אלא ממתינים בקצרה.
+    */
     var f = /[?&]from=([a-z-]+)/.exec(location.search);
-    if (window.glTrack) {
-      glTrack('route_created', {
-        source: 'area_preset',
-        area: f ? f[1] : 'unknown',
-        stops: ids.length
-      });
-    }
+    var payload = {
+      source: 'area_preset',
+      area: f ? f[1] : 'unknown',
+      stops: ids.length
+    };
+    var tries = 0;
+    (function send() {
+      if (window.glTrack) { glTrack('route_created', payload); return; }
+      if (++tries > 40) return;
+      setTimeout(send, 50);
+    })();
     toast(hadContent
       ? 'היום המוכן נוסף כיום ' + manual.days.length + ', המסלול הקודם נשמר'
       : 'היום המוכן נטען, אפשר לערוך אותו');
