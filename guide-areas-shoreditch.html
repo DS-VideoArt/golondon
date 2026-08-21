@@ -141,6 +141,29 @@
       text-decoration: none !important; transition: background .16s, border-color .16s; }
     .sh-cta a:hover { background: #B91C1C; border-color: #B91C1C; }
 
+    /* יום מושלם, גשר בין המדריך למתכנן */
+    .pday { border: 1px solid rgba(220,38,38,0.22); border-radius: 16px;
+      background: rgba(220,38,38,0.045); padding: 20px 22px; margin: 26px 0; }
+    .pday-h { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap;
+      font-size: 16.5px; font-weight: 900; color: #201f2b; margin-bottom: 4px; }
+    .pday-h span { font-size: 13px; font-weight: 700; color: #55596b; }
+    .pday-sub { font-size: 13.8px; color: #55596b; line-height: 1.6; margin-bottom: 15px; }
+    .pday-list { list-style: none; margin: 0 0 17px; padding: 0; }
+    .pday-list li { display: grid; grid-template-columns: 54px 1fr; gap: 12px;
+      align-items: baseline; padding: 9px 0; border-top: 1px solid rgba(32,31,43,0.09); }
+    .pday-list li:first-child { border-top: none; }
+    .pday-t { font-size: 13.5px; font-weight: 800; color: #DC2626;
+      font-variant-numeric: tabular-nums; }
+    .pday-n { font-size: 14.8px; font-weight: 700; color: #201f2b; }
+    .pday-n em { display: block; font-style: normal; font-size: 13px;
+      font-weight: 500; color: #55596b; line-height: 1.55; margin-top: 1px; }
+    .pday-go { display: flex; align-items: center; justify-content: center; gap: 9px;
+      background: #DC2626; border: 1px solid #DC2626; color: #fff !important;
+      font-size: 14.5px; font-weight: 800; padding: 13px 22px; border-radius: 11px;
+      text-decoration: none !important; transition: background .16s, border-color .16s; }
+    .pday-go:hover { background: #B91C1C; border-color: #B91C1C; text-decoration: none !important; }
+    .pday-note { font-size: 12.5px; color: #858a9c; margin: 10px 2px 0; line-height: 1.55; }
+
     @media (max-width: 560px) {
       .page-hero h1 { font-size: 25px; }
       .content { padding: 24px 18px 34px; }
@@ -157,6 +180,8 @@
       .sh-photo { aspect-ratio: 16/9; border-radius: 13px; }
       .sh-cta { flex-direction: column; align-items: stretch; padding: 16px 17px; }
       .sh-cta a { justify-content: center; }
+      .pday { padding: 17px 16px; }
+      .pday-list li { grid-template-columns: 48px 1fr; gap: 10px; }
     }
   </style>
   <link rel="manifest" href="manifest.json" />
@@ -375,12 +400,20 @@
   </div>
   <p>מהנקודה האחרונה אפשר להמשיך דרומה עשרים דקות ברגל ולהגיע למצודת לונדון ולגשר המגדלים, וכך לחבר את הבוקר לאחר צהריים קלאסי לגמרי. זה אחד החיבורים הכי יעילים שיש בעיר, ורוב המטיילים לא עושים אותו כי הם מגיעים למצודה ברכבת ולא רואים את מה שנמצא צפונה ממנה.</p>
 
-  <div class="sh-cta">
-    <div>
-      <div class="sh-cta-t">🗓️ רוצים להכניס את המסלול הזה ליום אמיתי?</div>
-      <div class="sh-cta-s">מתכנן הטיול מסדר לכם את הימים לפי מספר הלילות, התקציב ומי נוסע איתכם, ושורדיץ' נכנס בדיוק במקום הנכון.</div>
-    </div>
-    <a href="planner.html">לבניית המסלול <i class="fas fa-arrow-left"></i></a>
+  <div class="pday">
+    <div class="pday-h">🗓️ יום מושלם בשורדיץ' <span>יום ראשון, חמש עצירות</span></div>
+    <p class="pday-sub">אותו יום שלמעלה, הפעם כרשימת עצירות שאפשר לפתוח במתכנן, לגרור, להחליף ולהוסיף עליה ימים נוספים.</p>
+    <ol class="pday-list">
+      <li><span class="pday-t">09:15</span><span class="pday-n">שוק הפרחים בקולומביה רוד<em>ימי ראשון בלבד, ולפני עשר זה עוד נעים</em></span></li>
+      <li><span class="pday-t">10:45</span><span class="pday-n">בריק ליין<em>השוק בשיאו, וגם הבייגל בקצה הצפוני</em></span></li>
+      <li><span class="pday-t">12:30</span><span class="pday-n">אמנות הרחוב של שורדיץ'<em>הסמטאות סביב האנברי ופאשן סטריט</em></span></li>
+      <li><span class="pday-t">13:15</span><span class="pday-n">שוק ספיטלפילדס<em>מקורה, מקום לשבת, וגם אם יורד גשם</em></span></li>
+      <li><span class="pday-t">15:00</span><span class="pday-n">גשר המגדלים<em>עשרים דקות הליכה דרומה, וסוגרים את היום על התמזה</em></span></li>
+    </ol>
+    <a class="pday-go" href="planner.html?day=columbia-road,brick-lane,shoreditch-art,spitalfields-market,tower-bridge&amp;from=shoreditch">
+      פתחו את היום הזה במתכנן <i class="fas fa-arrow-left"></i>
+    </a>
+    <p class="pday-note">היום ייפתח מוכן לעריכה. אם כבר בניתם מסלול קודם, הוא לא יימחק והיום הזה יתווסף אליו.</p>
   </div>
 
   <h2>🚇 איך מגיעים ואיך משלבים עם אזורים אחרים</h2>

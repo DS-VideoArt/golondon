@@ -1950,6 +1950,44 @@
     if (tries < 40) setTimeout(function () { hookAffiliate(tries + 1); }, 50);
   }
 
+  /*
+    פתיחת יום מוכן מתוך מדריך אזור, למשל:
+      /planner?day=columbia-road,brick-lane&from=shoreditch
+    מזהה שלא קיים בנתונים פשוט נופל, כדי ששינוי בקובץ לא ישבור קישור ישן.
+    אם למשתמש כבר יש מסלול שמור עם תוכן, היום המוכן נוסף כיום חדש ולא דורס אותו.
+  */
+  function applyPreset() {
+    var m = /[?&]day=([^&]+)/.exec(location.search);
+    if (!m) return;
+    var ids = decodeURIComponent(m[1]).split(',')
+      .map(function (x) { return x.trim(); })
+      .filter(function (x) { return x && byId(x); });
+    if (!ids.length) return;
+
+    var hadContent = manual.days.some(function (d) { return d.length; });
+    if (hadContent) {
+      manual.days.push(ids);
+      manual.active = manual.days.length - 1;
+    } else {
+      manual.days[0] = ids;
+      manual.active = 0;
+    }
+    saveManual();
+    setMode('manual');
+
+    var f = /[?&]from=([a-z-]+)/.exec(location.search);
+    if (window.glTrack) {
+      glTrack('route_created', {
+        source: 'area_preset',
+        area: f ? f[1] : 'unknown',
+        stops: ids.length
+      });
+    }
+    toast(hadContent
+      ? 'היום המוכן נוסף כיום ' + manual.days.length + ', המסלול הקודם נשמר'
+      : 'היום המוכן נטען, אפשר לערוך אותו');
+  }
+
   fetch('planner-data.json', { cache: 'no-cache' })
     .then(function (r) { return r.json(); })
     .then(function (d) {
@@ -1957,6 +1995,7 @@
       renderControls();
       wire();
       wireManual();
+      applyPreset();
       hookAffiliate();
     })
     .catch(function (err) {
