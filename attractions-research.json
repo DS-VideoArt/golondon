@@ -183,7 +183,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 29,
+   "price": 34.13,
    "currency": "GBP",
    "duration": "כשעה עד שעה ורבע",
    "source_url": "https://ticketing.londoneye.com/en/tickets/standard-london-eye-fast-track-tickets",
@@ -733,7 +733,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 18,
+   "price": 20,
    "currency": "GBP",
    "duration": "כשעה",
    "source_url": "https://www.royalalberthall.com/tickets/tours-and-exhibitions/royal-albert-hall-tour/",
@@ -818,7 +818,7 @@
   },
   "tour": {
    "applicable": true,
-   "price": 16.75,
+   "price": 8.75,
    "currency": "GBP",
    "duration": "כשעה ורבע",
    "source_url": "https://highgatecemetery.org/visit",
