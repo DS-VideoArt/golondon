@@ -570,7 +570,13 @@
     <button class="mode-tab" id="tab-manual" type="button" role="tab" aria-selected="false" aria-controls="panel-manual">
       <i class="fas fa-hand-pointer"></i> אני מרכיב לבד
     </button>
+    <button class="mode-tab" id="tab-nearby" type="button" role="tab" aria-selected="false" aria-controls="panel-nearby">
+      <i class="fas fa-location-crosshairs"></i> סביבי
+    </button>
   </div>
+
+  <!-- מצב סביבי. כל התוכן נבנה ב-planner-nearby.js, כולל טעינת המפה -->
+  <section class="builder" id="panel-nearby" role="tabpanel" aria-labelledby="tab-nearby" hidden></section>
 
   <section class="builder" id="panel-auto" role="tabpanel" aria-labelledby="tab-auto" aria-label="בניית מסלול">
     <div class="field">
@@ -2062,6 +2068,8 @@
       GoLondonTray.list().forEach(function (id) { if (byId(id)) addStop(id); });
     });
     $('tray-clear').addEventListener('click', function () { GoLondonTray.clear(); draw(); });
+    /* הוספה שהגיעה ממצב סביבי או מכל מקום אחר בעמוד */
+    document.addEventListener('gl:tray-change', draw);
     draw();
   }
 
@@ -2087,7 +2095,9 @@
 <script src="install-prompt.js" defer></script>
 <script src="affiliate.js?v=2" defer></script>
 <script src="community-ask.js?v=2" defer></script>
-<script src="trip-tray.js?v=1" defer></script>
+<script src="place-info.js?v=7" defer></script>
+<script src="trip-tray.js?v=2" defer></script>
+<script src="planner-nearby.js?v=1" defer></script>
 <script src="analytics.js?v=4" defer></script>
 </body>
 </html>

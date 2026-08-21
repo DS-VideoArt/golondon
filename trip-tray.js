@@ -159,6 +159,8 @@
     var all = document.querySelectorAll('[data-gl-add]');
     for (var i = 0; i < all.length; i++) paint(all[i]);
     refreshPill();
+    /* מי שמציג את הרשימה במקום אחר בעמוד, למשל תיבת המקומות במתכנן */
+    try { document.dispatchEvent(new CustomEvent('gl:tray-change', { detail: { ids: ids.slice() } })); } catch (e) {}
   }
 
   /* ---------- הגלולה הצפה ---------- */
