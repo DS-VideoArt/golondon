@@ -1076,7 +1076,9 @@
       "lng": -0.0767,
       "precision": "approx",
       "source": "https://www.towerhamlets.gov.uk",
-      "checked": "2026-08-21"
+      "checked": "2026-08-21",
+      "image": "images/places/shoreditch-street-art",
+      "imageAlt": "קיר אמנות רחוב צבעוני בשורדיץ'"
     },
     {
       "id": "brick-lane",
@@ -1125,7 +1127,9 @@
       "lng": -0.0716,
       "precision": "approx",
       "source": "https://www.trumanbrewery.com/",
-      "checked": "2026-08-21"
+      "checked": "2026-08-21",
+      "image": "images/places/brick-lane-market",
+      "imageAlt": "דוכני וינטג' ותקליטים בשוק בריק ליין"
     },
     {
       "id": "greenwich",
@@ -2759,7 +2763,9 @@
       "lng": -0.0787,
       "precision": "exact",
       "source": "https://oldspitalfieldsmarket.com/opening-times",
-      "checked": "2026-08-21"
+      "checked": "2026-08-21",
+      "image": "images/places/covered-market-hall",
+      "imageAlt": "שוק מקורה ויקטוריאני עם גג ברזל וזכוכית"
     },
     {
       "id": "columbia-road",
@@ -2801,7 +2807,9 @@
       "lng": -0.0694,
       "precision": "approx",
       "source": "https://columbiaroad.info/",
-      "checked": "2026-08-21"
+      "checked": "2026-08-21",
+      "image": "images/places/flower-market-street",
+      "imageAlt": "שוק פרחים ברחוב צר במזרח לונדון"
     },
     {
       "id": "museum-of-home",
@@ -2843,7 +2851,9 @@
       "lng": -0.0764,
       "precision": "exact",
       "source": "https://www.museumofthehome.org.uk/",
-      "checked": "2026-08-21"
+      "checked": "2026-08-21",
+      "image": "images/places/candlelit-house",
+      "imageAlt": "תצוגת חדרי מגורים היסטוריים במוזיאון"
     },
     {
       "id": "whitechapel-gallery",
@@ -2888,7 +2898,9 @@
       "lng": -0.0703,
       "precision": "exact",
       "source": "https://www.whitechapelgallery.org/",
-      "checked": "2026-08-21"
+      "checked": "2026-08-21",
+      "image": "images/places/gallery-white",
+      "imageAlt": "גלריה לאמנות עכשווית עם קירות לבנים גבוהים"
     },
     {
       "id": "dennis-severs",
@@ -2931,7 +2943,9 @@
       "lng": -0.0756,
       "precision": "approx",
       "source": "https://www.dennissevershouse.co.uk/",
-      "checked": "2026-08-21"
+      "checked": "2026-08-21",
+      "image": "images/places/candlelit-house",
+      "imageAlt": "פנים בית תקופתי מואר בנרות בלונדון"
     },
     {
       "id": "royal-observatory",
@@ -3409,14 +3423,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "בוקר מוקדם, לפני שהמכוניות חונות מול הקירות.",
-      "image": null,
+      "image": "images/places/shoreditch-mural",
       "booking": null,
       "source": "https://www.hackney.gov.uk/street-art",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "קיר מצויר גדול ברחוב ריווינגטון"
     },
     {
       "id": "hanbury-street-art",
@@ -3451,14 +3465,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "עדשה רחבה או מצב פנורמה, הרחוב צר והקירות גדולים.",
-      "image": null,
+      "image": "images/places/shoreditch-mural",
       "booking": null,
       "source": "https://www.towerhamlets.gov.uk",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "עבודת אמנות רחוב ברחוב האנברי"
     },
     {
       "id": "redchurch-street",
@@ -3495,14 +3509,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "שילוב טוב של הליכה, קפה וקניות במקום אחד.",
-      "image": null,
+      "image": "images/places/shoreditch-street",
       "booking": null,
       "source": "https://www.towerhamlets.gov.uk",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "רחוב רדצ'רץ' עם מחסני לבנים וחנויות"
     },
     {
       "id": "brick-lane-mosque",
@@ -3539,14 +3553,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "זהו הסיפור של האיסט אנד בבניין אחד. שימו לב לשעון השמש בחזית.",
-      "image": null,
+      "image": "images/places/weavers-houses",
       "booking": null,
       "source": "https://historicengland.org.uk/listing/the-list/list-entry/1240697",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "רחוב לבנים היסטורי באזור ספיטלפילדס"
     },
     {
       "id": "christ-church-spitalfields",
@@ -3584,14 +3598,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "נקודת התמצאות טובה, רואים את המגדל שלה כמעט מכל האזור.",
-      "image": null,
+      "image": "images/places/church-baroque-interior",
       "booking": null,
       "source": "https://ccspitalfields.org/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "פנים כנסייה בסגנון בארוק אנגלי מהמאה השמונה עשרה"
     },
     {
       "id": "old-truman-brewery",
@@ -3633,14 +3647,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "בסופי שבוע פועלים כאן כמה שווקים במקביל בתוך אותו מתחם.",
-      "image": null,
+      "image": "images/places/truman-brewery-chimney",
       "booking": null,
       "source": "https://www.trumanbrewery.com/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "ארובת מבשלה היסטורית מעל בריק ליין"
     },
     {
       "id": "fournier-street",
@@ -3676,14 +3690,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "רחוב מגורים. אפשר לצלם את הבתים, אבל לא את האנשים שגרים בהם.",
-      "image": null,
+      "image": "images/places/weavers-houses",
       "booking": null,
       "source": "https://historicengland.org.uk/listing/the-list/list-entry/1065280",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "שורת בתי אורגים הוגנוטים מהמאה השמונה עשרה"
     },
     {
       "id": "arnold-circus",
@@ -3720,14 +3734,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "מקום טוב לשבת רגע באמצע סיבוב באזור, ויש שם צל.",
-      "image": null,
+      "image": "images/places/bandstand-circus",
       "booking": null,
       "source": "https://www.arnoldcircus.info/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "כיכר עגולה עם ביתן עץ במרכזה, מוקפת בבנייני לבנים"
     },
     {
       "id": "st-leonards-shoreditch",
@@ -3763,14 +3777,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "עומדת בדיוק בצומת המרכזי, קשה לפספס.",
-      "image": null,
+      "image": "images/places/church-baroque-interior",
       "booking": null,
       "source": "https://shoreditchchurch.org.uk/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "פנים כנסייה היסטורית בשורדיץ'"
     },
     {
       "id": "bunhill-fields",
@@ -3805,14 +3819,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "נקודת מנוחה אמיתית באמצע יום עמוס, ובחינם.",
-      "image": null,
+      "image": "images/places/burial-ground-garden",
       "booking": null,
       "source": "https://www.cityoflondon.gov.uk/things-to-do/green-spaces/bunhill-fields",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "בית קברות ותיק שהפך לגן ציבורי בלונדון"
     },
     {
       "id": "curtain-theatre",
@@ -3844,14 +3858,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "זה אתר ארכיאולוגי ולא אטרקציה מסודרת. באים בשביל הידיעה שזה כאן.",
-      "image": null,
+      "image": "images/places/truman-brewery-chimney",
       "booking": null,
       "source": "https://historicengland.org.uk/listing/the-list/list-entry/1463328",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "רחוב במזרח לונדון עם מבני לבנים תעשייתיים"
     },
     {
       "id": "beigel-bake",
@@ -3891,14 +3905,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "התור בסופי שבוע נראה מפחיד אבל זז מהר. לא כשר ואין תעודה.",
-      "image": null,
+      "image": "images/places/bagel-salt-beef",
       "booking": null,
       "source": "https://www.beigelbake.co.uk/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "הכנת בייגל עם סולט ביף בדוכן בייגל במזרח לונדון"
     },
     {
       "id": "beigel-shop",
@@ -3936,14 +3950,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "הוויכוח מי משתיהן טובה יותר נמשך עשרות שנים. אפשר פשוט לנסות את שתיהן.",
-      "image": null,
+      "image": "images/places/bagel-salt-beef",
       "booking": null,
       "source": "https://www.thebeigelshop.com/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "בייגל טרי בחנות בייגל ותיקה במזרח לונדון"
     },
     {
       "id": "dishoom-shoreditch",
@@ -3978,14 +3992,14 @@
       "anchor": false,
       "bookAhead": true,
       "tip": "אין הזמנות לקבוצות קטנות בשעות השיא, ולכן בוקר של אמצע שבוע הוא ההימור הבטוח.",
-      "image": null,
+      "image": "images/places/restaurant-indian-warehouse",
       "booking": null,
       "source": "https://www.dishoom.com/shoreditch/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "פנים מסעדה הודית בבניין מחסן משופץ במזרח לונדון"
     },
     {
       "id": "gunpowder-spitalfields",
@@ -4019,14 +4033,14 @@
       "anchor": false,
       "bookAhead": true,
       "tip": "קטן מאוד. בלי הזמנה מראש בערב הסיכוי נמוך.",
-      "image": null,
+      "image": "images/places/curry-small-restaurant",
       "booking": null,
       "source": "https://www.gunpowderlondon.com/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "מסעדה הודית קטנה וצפופה עם מטבח פתוח"
     },
     {
       "id": "st-john-bread-wine",
@@ -4060,14 +4074,14 @@
       "anchor": false,
       "bookAhead": true,
       "tip": "ארוחת בוקר שם שקטה בהרבה מארוחת הערב, ובמחיר נמוך יותר.",
-      "image": null,
+      "image": "images/places/shoreditch-street-food",
       "booking": null,
       "source": "https://stjohnrestaurant.com/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "אוכל בריטי עכשווי במזרח לונדון"
     },
     {
       "id": "poppies-spitalfields",
@@ -4100,14 +4114,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "מנה קלאסית ראשונה בלונדון, וזה מקום סביר להתחיל בו.",
-      "image": null,
+      "image": "images/places/fish-and-chips",
       "booking": null,
       "source": "https://poppiesfishandchips.co.uk/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "מסעדת פיש אנד צ'יפס בסגנון שנות החמישים"
     },
     {
       "id": "boiler-house-food-hall",
@@ -4146,14 +4160,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "הפתרון ליום גשום בבריק ליין, וגם למי שרוצה שכל אחד יבחר משהו אחר.",
-      "image": null,
+      "image": "images/places/food-hall-brewery",
       "booking": null,
       "source": "https://www.trumanbrewery.com/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "אולם אוכל מקורה בתוך מבנה מבשלה משופץ"
     },
     {
       "id": "city-spice",
@@ -4186,14 +4200,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "ברחוב הזה האיכות משתנה מאוד ממקום למקום. שווה לבחור מראש ולא להיכנס לראשון.",
-      "image": null,
+      "image": "images/places/curry-small-restaurant",
       "booking": null,
       "source": "https://cityspicebricklane.co.uk/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "מסעדת קארי ברחוב בריק ליין"
     },
     {
       "id": "ottolenghi-spitalfields",
@@ -4227,14 +4241,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "שם ישראלי מוכר, אבל המקום אינו כשר ואינו מציג תעודה.",
-      "image": null,
+      "image": "images/places/deli-counter",
       "booking": null,
       "source": "https://ottolenghi.co.uk/pages/spitalfields",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "ויטרינת סלטים ומאפים במעדנייה בלונדון"
     },
     {
       "id": "smoking-goat",
@@ -4270,14 +4284,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "מתאים למי שבא לבלות ולא רק לאכול.",
-      "image": null,
+      "image": "images/places/shoreditch-street-food",
       "booking": null,
       "source": "https://www.smokinggoatbar.com/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "מסעדת בר בהשראת דוכני אוכל אסייתיים"
     },
     {
       "id": "ozone-coffee",
@@ -4311,14 +4325,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "מהמקומות הבודדים באזור שבהם גם הקפה וגם האוכל ברמה.",
-      "image": null,
+      "image": "images/places/coffee-bar-eastlondon",
       "booking": null,
       "source": "https://ozonecoffee.co.uk/pages/locations-shoreditch",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "בית קפה עם קלייה עצמית במזרח לונדון"
     },
     {
       "id": "allpress-espresso",
@@ -4351,14 +4365,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "עצירה קצרה באמצע סיבוב הקירות, לא ישיבה ארוכה.",
-      "image": null,
+      "image": "images/places/coffee-bar-eastlondon",
       "booking": null,
       "source": "https://uk.allpressespresso.com/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "בר אספרסו קטן ברחוב רדצ'רץ'"
     },
     {
       "id": "shoreditch-grind",
@@ -4395,14 +4409,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "פועל גם בשעות מאוחרות, וזה נדיר בקטגוריה הזו.",
-      "image": null,
+      "image": "images/places/coffee-bar-eastlondon",
       "booking": null,
       "source": "https://grind.co.uk/pages/shoreditch-grind",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "בית קפה שהופך לבר בערב באזור אולד סטריט"
     },
     {
       "id": "rough-trade-east",
@@ -4440,14 +4454,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "הכניסה חופשית, וגם מי שלא קונה תקליטים נהנה מהחלל.",
-      "image": null,
+      "image": "images/places/record-shop",
       "booking": null,
       "source": "https://www.roughtrade.com/en-gb/stores/east-london",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "חנות תקליטים עצמאית עם במה להופעות"
     },
     {
       "id": "blitz-london",
@@ -4484,14 +4498,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "הסידור הופך חיפוש וינטג׳ למשהו שאפשר לעשות בשעה.",
-      "image": null,
+      "image": "images/places/vintage-clothing-shop",
       "booking": null,
       "source": "https://www.blitzlondon.co.uk/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "חנות וינטג' עם מדפי בגדים משומרים"
     },
     {
       "id": "labour-and-wait",
@@ -4525,14 +4539,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "מקום טוב למזכרת שהיא לא מגנט מקרר.",
-      "image": null,
+      "image": "images/places/homeware-shop",
       "booking": null,
       "source": "https://www.labourandwait.co.uk/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "חנות כלי בית בעיצוב פשוט עם אריחים ירוקים"
     },
     {
       "id": "beyond-retro",
@@ -4569,14 +4583,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "הגדול מבין חנויות הווינטג׳ באזור, וצריך זמן.",
-      "image": null,
+      "image": "images/places/vintage-clothing-shop",
       "booking": null,
       "source": "https://www.beyondretro.com/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "מחסן וינטג' גדול במזרח לונדון"
     },
     {
       "id": "village-underground",
@@ -4615,14 +4629,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "גם מי שלא נכנס להופעה בא לצלם את הקרונות על הגג.",
-      "image": null,
+      "image": "images/places/music-venue-arch",
       "booking": null,
       "source": "https://villageunderground.co.uk/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "חלל הופעות בתוך קשת רכבת מלבנים"
     },
     {
       "id": "xoyo",
@@ -4658,14 +4672,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "בדקו מראש מי מנגן, התוכנית משתנה לגמרי בין ערבים.",
-      "image": null,
+      "image": "images/places/music-venue-arch",
       "booking": null,
       "source": "https://xoyo.co.uk/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "מועדון מוזיקה במזרח לונדון"
     },
     {
       "id": "nightjar",
@@ -4699,14 +4713,14 @@
       "anchor": false,
       "bookAhead": true,
       "tip": "בלי הזמנה מראש כמעט בלתי אפשרי להיכנס בסוף שבוע.",
-      "image": null,
+      "image": "images/places/cocktail-bar-basement",
       "booking": null,
       "source": "https://barnightjar.com/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "בר קוקטיילים מרתפי בסגנון שנות העשרים"
     },
     {
       "id": "old-blue-last",
@@ -4743,14 +4757,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "פאב אמיתי ולא מקום מעוצב, וזו בדיוק הנקודה.",
-      "image": null,
+      "image": "images/places/pub-evening",
       "booking": null,
       "source": "https://www.theoldbluelast.com/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "פאב פינתי ותיק במזרח לונדון בשעת ערב"
     },
     {
       "id": "spitalfields-city-farm",
@@ -4788,14 +4802,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "פתוחה משלישי עד ראשון. הפסקה מושלמת באמצע יום עם ילדים.",
-      "image": null,
+      "image": "images/places/city-farm",
       "booking": null,
       "source": "https://www.spitalfieldscityfarm.org/visit-us",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "חווה עירונית קטנה עם חיות משק במזרח לונדון"
     },
     {
       "id": "young-va",
@@ -4830,14 +4844,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "ההצלה של יום גשום עם ילדים, במרחק שתי תחנות מהאזור.",
-      "image": null,
+      "image": "images/places/kids-museum",
       "booking": null,
       "source": "https://www.vam.ac.uk/young",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "גלריית מוזיאון עם מתקנים אינטראקטיביים לילדים"
     },
     {
       "id": "hackney-city-farm",
@@ -4875,14 +4889,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "שקטה יותר מחוות ספיטלפילדס, ועם בית קפה טוב.",
-      "image": null,
+      "image": "images/places/city-farm",
       "booking": null,
       "source": "https://hackneycityfarm.co.uk/",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "חווה עירונית בהקני עם גינות וחיות"
     },
     {
       "id": "petticoat-lane",
@@ -4919,14 +4933,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "שוק עממי ולא מעוצב. באים בשביל האווירה ולא בשביל הקניות.",
-      "image": null,
+      "image": "images/places/brick-lane-market",
       "booking": null,
       "source": "https://www.towerhamlets.gov.uk/lgnl/leisure_and_culture/markets/petticoat_lane_market.aspx",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "שוק רחוב עממי במזרח לונדון"
     },
     {
       "id": "primrose-hill",

@@ -129,6 +129,14 @@
     return out;
   }
 
+  /* כל מה שבטווח מהנקודה, לפני סינון קטגוריות. בסיס לספירות השבבים */
+  function inRadius() {
+    if (!state.point) return [];
+    return placesInZone().filter(function (p) {
+      return haversine(state.point, [p.lat, p.lng]) <= state.radius;
+    });
+  }
+
   function results() {
     if (!state.point) return [];
     var wanted = catsOfSelectedGroups();
@@ -165,14 +173,31 @@
       '.nb-chip{font-family:inherit;font-size:13px;font-weight:700;padding:7px 13px;border-radius:50px;',
         'border:1px solid rgba(32,31,43,.14);background:#fff;color:#55596b;cursor:pointer;white-space:nowrap;}',
       '.nb-chip.is-on{background:#201f2b;border-color:#201f2b;color:#fff;}',
+      '.nb-chip.is-off{opacity:.38;cursor:not-allowed;}',
+      '.nb-tag{display:inline-block;font-size:10.5px;font-weight:800;padding:2px 8px;',
+        'border-radius:50px;background:rgba(220,38,38,.14);color:#B91C1C;margin-inline-start:5px;',
+        'vertical-align:middle;white-space:nowrap;}',
+      '.mode-tab.active .nb-tag{background:rgba(255,255,255,.24);color:#fff;}',
+      /*
+        שלושה מצבים במקום שניים. בעברית התוויות ארוכות, וב-375 פיקסלים
+        השורה חרגה מרוחב המסך. גלישה לשתי שורות פותרת בלי לקצר טקסט.
+      */
+      '@media (max-width:560px){',
+        '.mode-tabs{flex-wrap:wrap;}',
+        '.mode-tab{flex:1 1 auto;min-width:0;font-size:13px;padding-inline:10px;}',
+        '.nb-tag{font-size:9.5px;padding:2px 6px;}',
+      '}',
       '.nb-sep{width:1px;height:22px;background:rgba(32,31,43,.12);margin:0 2px;}',
       '#nearby-map{height:340px;border-radius:14px;overflow:hidden;margin-bottom:14px;display:none;',
         'border:1px solid rgba(32,31,43,.12);}',
       '#nearby-map.is-on{display:block;}',
       '.nb-count{font-size:15px;font-weight:900;color:#201f2b;margin:0 0 10px;}',
       '.nb-list{display:grid;gap:10px;}',
-      '.nb-card{border:1px solid rgba(32,31,43,.12);border-radius:13px;padding:14px 16px;background:#fff;',
+      '.nb-card{border:1px solid rgba(32,31,43,.12);border-radius:13px;background:#fff;overflow:hidden;',
         'box-shadow:0 1px 2px rgba(16,24,40,.04);transition:border-color .15s,box-shadow .15s;}',
+      '.nb-pic{aspect-ratio:16/9;background:#F1F0EB;overflow:hidden;}',
+      '.nb-pic img{width:100%;height:100%;object-fit:cover;display:block;}',
+      '.nb-body{padding:13px 16px 15px;}',
       '.nb-card.is-hi{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.12);}',
       '.nb-card-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;}',
       '.nb-name{font-size:16px;font-weight:800;color:#201f2b;cursor:pointer;}',
@@ -242,16 +267,22 @@
     var sep = document.createElement('span'); sep.className = 'nb-sep'; c.appendChild(sep);
 
     /* רק קבוצות שיש להן בפועל תוצאות באזור הכיסוי */
-    var pool = placesInZone();
+    /*
+      הספירות מחושבות מול הנקודה והרדיוס הנוכחיים, ולא מול כל אזור הכיסוי.
+      שבב שאין לו תוצאות במצב הזה מושבת, כדי שלחיצה לא תוביל למסך ריק.
+      הוא חוזר לפעולה מעצמו כשמגדילים רדיוס או מסירים סינון אחר.
+    */
+    var pool = state.point ? inRadius() : placesInZone();
     GROUPS.forEach(function (g) {
       var n = pool.filter(function (p) {
         return (p.categories || []).some(function (cat) { return g.cats.indexOf(cat) !== -1; });
       }).length;
-      if (!n) return;
+      var on = state.groups.indexOf(g.id) !== -1;
       var b = document.createElement('button');
       b.type = 'button';
-      b.className = 'nb-chip' + (state.groups.indexOf(g.id) !== -1 ? ' is-on' : '');
+      b.className = 'nb-chip' + (on ? ' is-on' : '') + (!n && !on ? ' is-off' : '');
       b.textContent = g.label + ' ' + n;
+      if (!n && !on) { b.disabled = true; b.title = 'אין תוצאות בטווח הנוכחי'; c.appendChild(b); return; }
       b.addEventListener('click', function () {
         var i = state.groups.indexOf(g.id);
         if (i === -1) state.groups.push(g.id); else state.groups.splice(i, 1);
@@ -264,9 +295,14 @@
     var sep2 = document.createElement('span'); sep2.className = 'nb-sep'; c.appendChild(sep2);
     [['free', '🪙 חינם'], ['kids', '👶 מתאים לילדים']].forEach(function (pair) {
       var key = pair[0];
+      var n = pool.filter(function (p) {
+        return key === 'free' ? !!p.free : (p.audiences || []).indexOf('kids-young') !== -1;
+      }).length;
       var b = document.createElement('button');
-      b.type = 'button'; b.className = 'nb-chip' + (state[key] ? ' is-on' : '');
-      b.textContent = pair[1];
+      b.type = 'button';
+      b.className = 'nb-chip' + (state[key] ? ' is-on' : '') + (!n && !state[key] ? ' is-off' : '');
+      b.textContent = pair[1] + ' ' + n;
+      if (!n && !state[key]) { b.disabled = true; b.title = 'אין תוצאות בטווח הנוכחי'; c.appendChild(b); return; }
       b.addEventListener('click', function () {
         state[key] = !state[key];
         buildControls(); render();
@@ -356,9 +392,13 @@
       cluster.clearLayers();
       if (ring) { map.removeLayer(ring); ring = null; }
       out.innerHTML = '<div class="nb-empty"><div class="nb-pin">🧭</div>' +
-        '<b>מצב סביבי זמין כרגע באזור ' + ZONE.label + ' בלבד.</b><br>' +
+        '<b>מצב סביבי זמין כרגע ב' + ZONE.label + ' בלבד.</b><br>' +
         'זה לא אומר שאין מה לעשות בנקודה שבחרתם, אלא שעוד לא הרחבנו לשם את המאגר. ' +
-        'אזורים נוספים בדרך.</div>';
+        'אזורים נוספים בדרך.' +
+        '<div style="margin-top:14px"><button type="button" class="nb-btn" id="nb-goto">' +
+        '<i class="fas fa-map-location-dot"></i> פתחו את שורדיץ׳ במפה</button></div></div>';
+      var go = $('nb-goto');
+      if (go) go.addEventListener('click', function () { setPoint(ZONE.center.slice(), 'zone_center'); });
       return;
     }
     var res = results();
@@ -389,13 +429,20 @@
       var p = r.p;
       var cats = (p.categories || []).slice(0, 2).map(function (c) { return CAT_HE[c] || c; }).join(' · ');
       var approx = p.precision === 'approx' ? ' <span style="color:#B45309">· נקודה מייצגת</span>' : '';
-      html += '<div class="nb-card" data-nb="' + p.id + '">' +
+      var pic = p.image
+        ? '<div class="nb-pic"><picture>' +
+            '<source srcset="' + p.image + '.webp" type="image/webp">' +
+            '<img src="' + p.image + '.jpg" alt="' + (p.imageAlt || p.name) + '" ' +
+            'loading="lazy" decoding="async" width="800" height="450"></picture></div>'
+        : '';
+      html += '<div class="nb-card" data-nb="' + p.id + '">' + pic +
+        '<div class="nb-body">' +
         '<div class="nb-card-top"><span class="nb-name" data-nb-open="' + p.id + '">' + p.name + '</span>' +
         '<span class="nb-dist">' + distText(r.d) + '</span></div>' +
         '<div class="nb-meta">' + cats + (p.free ? ' · חינם' : '') + approx + '</div>' +
-        '<p class="nb-desc">' + (p.desc || '').slice(0, 130) + '</p>' +
+        '<p class="nb-desc">' + (p.desc || '').slice(0, 95) + '…</p>' +
         '<div class="nb-acts" data-nb-acts="' + p.id + '"></div>' +
-        '</div>';
+        '</div></div>';
     });
     out.innerHTML = html + '</div>';
 
@@ -466,6 +513,14 @@
 
   /* ---------- הפעלה ---------- */
 
+  /* התווית אומרת מראש שזה פיילוט, כדי שלא ייווצר רושם של כיסוי כל לונדון */
+  function labelTab() {
+    var t = $('tab-nearby');
+    if (!t || !ZONE) return;
+    t.innerHTML = '<i class="fas fa-location-crosshairs"></i> סביבי ' +
+      '<span class="nb-tag">פיילוט בשורדיץ׳</span>';
+  }
+
   function open() {
     injectStyles();
     $('panel-auto').hidden = true;
@@ -512,6 +567,8 @@
       var zones = (TAX.coverage && TAX.coverage.zones) || [];
       ZONE = zones.filter(function (z) { return z.status === 'pilot'; })[0] || zones[0] || null;
       if (!ZONE) { $('tab-nearby').hidden = true; return; }
+      injectStyles();
+      labelTab();
       /* כניסה ישירה ממדריך אזור */
       if (/[?&]mode=nearby/.test(location.search)) open();
     }).catch(function () {

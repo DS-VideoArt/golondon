@@ -20,8 +20,18 @@
     affiliate_click   לחיצה על קישור הכנסה, כולל הספק והמיקום בעמוד
 
   מה נמדד בקריאה מפורשת מתוך העמודים:
-    planner_start, planner_complete, add_to_trip,
-    place_open, kosher_place_open, search_query
+      planner_start, planner_complete, planner_mode, route_created,
+      add_to_trip, place_open, kosher_place_open, search_query,
+      guide_search, checklist_open, checklist_category_done,
+      month_hub_open, whats_new_click, toc_jump
+
+    מפת הכשרות ומצב סביבי במתכנן:
+      map_open          פתיחת מפה, עם האזור ומספר המקומות בו
+      filter_used       שימוש בסינון, עם השדה, הערך ומספר התוצאות
+      navigation_click  לחיצה על ניווט למקום
+      location_selected בחירת נקודת עוגן במצב סביבי. אירוע שנוצר ב-21.8.2026.
+                        שולח את שיטת הבחירה, gps או tap, ואם היא בתוך אזור
+                        הכיסוי. לעולם אינו שולח קואורדינטות של המשתמש.
 */
 
 (function () {
