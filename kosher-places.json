@@ -1,860 +1,1640 @@
 [
   {
     "id": 1,
+    "slug": "kosher-bagels-bar",
     "name": "Bagels Bar",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.5848,
+    "lng": -0.2268,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה חלבית",
     "address": "84 Brent Street, Hendon",
     "postcode": "NW4 2ES",
     "phone": "020 8202 6540",
-    "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.5848,
-    "lng": -0.2268
+    "kashrus": "KLBD, חלב ישראל"
   },
   {
     "id": 2,
+    "slug": "kosher-beit-caf",
     "name": "Beit Café",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5734,
+    "lng": -0.1952,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה חלבית",
     "address": "119 Golders Green Road, Golders Green",
     "postcode": "NW11 8HR",
     "phone": "020 8209 3592",
-    "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.5734,
-    "lng": -0.1952
+    "kashrus": "KLBD, חלב ישראל"
   },
   {
     "id": 3,
+    "slug": "kosher-bread-hendon",
     "name": "Bread Hendon",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.5849,
+    "lng": -0.227,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה חלבית",
     "address": "96 Brent Street, Hendon",
     "postcode": "NW4 2HH",
     "phone": "",
-    "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.5849,
-    "lng": -0.227
+    "kashrus": "KLBD, חלב ישראל"
   },
   {
     "id": 4,
+    "slug": "kosher-bread-temple-fortune",
     "name": "Bread Temple Fortune",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5791,
+    "lng": -0.1963,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה חלבית",
     "address": "1 Bridge Lane, Temple Fortune",
     "postcode": "NW11 0EA",
     "phone": "020 8455 9340",
-    "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.5791,
-    "lng": -0.1963
+    "kashrus": "KLBD, חלב ישראל"
   },
   {
     "id": 5,
+    "slug": "kosher-eli-s-pizza-edgware",
     "name": "Eli's Pizza Edgware",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "edgware",
+    "lat": 51.6152,
+    "lng": -0.2735,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה חלבית",
     "address": "7 Edgwarebury Lane, Edgware",
     "postcode": "HA8 8LH",
     "phone": "020 3761 5151",
-    "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.6152,
-    "lng": -0.2735
+    "kashrus": "KLBD, חלב ישראל"
   },
   {
     "id": 6,
+    "slug": "kosher-eli-s-pizza-golders-green",
     "name": "Eli's Pizza Golders Green",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5713,
+    "lng": -0.194,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה חלבית",
     "address": "2a Hoop Lane, Golders Green",
     "postcode": "NW11 8JS",
     "phone": "020 3761 5151",
-    "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.5713,
-    "lng": -0.194
+    "kashrus": "KLBD, חלב ישראל"
   },
   {
     "id": 7,
+    "slug": "kosher-mr-baker",
     "name": "Mr Baker",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.5851,
+    "lng": -0.2272,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה חלבית",
     "address": "119-121 Brent Street, Hendon",
     "postcode": "NW4 2DX",
     "phone": "020 8202 6845",
-    "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.5851,
-    "lng": -0.2272
+    "kashrus": "KLBD, חלב ישראל"
   },
   {
     "id": 8,
+    "slug": "kosher-novellino",
     "name": "Novellino",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.573,
+    "lng": -0.1948,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה חלבית",
     "address": "103 Golders Green Road, Golders Green",
     "postcode": "NW11 8EN",
     "phone": "020 8458 7273",
-    "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.573,
-    "lng": -0.1948
+    "kashrus": "KLBD, חלב ישראל"
   },
   {
     "id": 9,
+    "slug": "kosher-portoberry",
     "name": "Portoberry",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.585,
+    "lng": -0.2271,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה חלבית",
     "address": "106 Brent Street, Hendon",
     "postcode": "NW4 2HH",
     "phone": "020 8191 1217",
-    "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.585,
-    "lng": -0.2271
+    "kashrus": "KLBD, חלב ישראל"
   },
   {
     "id": 10,
+    "slug": "kosher-pumpernick-s",
     "name": "Pumpernick's",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "borehamwood",
+    "lat": 51.6576,
+    "lng": -0.2718,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה חלבית",
     "address": "53 Shenley Road, Borehamwood",
     "postcode": "WD6 1AE",
     "phone": "020 8207 6203",
-    "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.6576,
-    "lng": -0.2718
+    "kashrus": "KLBD, חלב ישראל"
   },
   {
     "id": 11,
+    "slug": "kosher-sababa",
     "name": "Sababa",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "borehamwood",
+    "lat": 51.6573,
+    "lng": -0.2723,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה חלבית",
     "address": "33-35 Shenley Road, Borehamwood",
     "postcode": "WD6 1AE",
     "phone": "020 8191 0308",
-    "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.6573,
-    "lng": -0.2723
+    "kashrus": "KLBD, חלב ישראל"
   },
   {
     "id": 12,
+    "slug": "kosher-slice",
     "name": "Slice",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5726,
+    "lng": -0.1941,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה חלבית",
     "address": "6 Princes Parade, Golders Green Road, Golders Green",
     "postcode": "NW11 9PS",
     "phone": "020 3912 1100",
-    "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.5726,
-    "lng": -0.1941
+    "kashrus": "KLBD, חלב ישראל"
   },
   {
     "id": 13,
+    "slug": "kosher-taboon",
     "name": "Taboon",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5717,
+    "lng": -0.1936,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה חלבית",
     "address": "17 Russell Parade, Golders Green",
     "postcode": "NW11 9NN",
     "phone": "020 8455 7451",
-    "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.5717,
-    "lng": -0.1936
+    "kashrus": "KLBD, חלב ישראל"
   },
   {
     "id": 14,
+    "slug": "kosher-tasti-pizza",
     "name": "Tasti Pizza",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "stamford-hill",
+    "lat": 51.5637,
+    "lng": -0.0742,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה חלבית",
     "address": "23 Amhurst Parade, Amhurst Park",
     "postcode": "N16 5AA",
     "phone": "020 8802 0018",
-    "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.5637,
-    "lng": -0.0742
+    "kashrus": "KLBD, חלב ישראל"
   },
   {
     "id": 15,
+    "slug": "kosher-white-fish",
     "name": "White Fish",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.5856,
+    "lng": -0.2291,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה חלבית",
     "address": "10-12 Bell Lane, Hendon",
     "postcode": "NW4 2AD",
     "phone": "020 8202 8780",
-    "kashrus": "KLBD, חלב ישראל",
-    "lat": 51.5856,
-    "lng": -0.2291
+    "kashrus": "KLBD, חלב ישראל"
   },
   {
     "id": 16,
+    "slug": "kosher-bagels-bar-grill-house",
     "name": "Bagels Bar Grill House",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.5848,
+    "lng": -0.2269,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "86 Brent Street, Hendon",
     "postcode": "NW4 2ES",
     "phone": "020 8202 5575",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5848,
-    "lng": -0.2269
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 17,
+    "slug": "kosher-balagan",
     "name": "Balagan",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "borehamwood",
+    "lat": 51.6574,
+    "lng": -0.272,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "47 Shenley Road, Borehamwood",
     "postcode": "WD6 1AE",
     "phone": "020 7112 9253",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.6574,
-    "lng": -0.272
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 18,
+    "slug": "kosher-burger-bar",
     "name": "Burger Bar",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5791,
+    "lng": -0.1964,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "1 Bridge Lane, Temple Fortune",
     "postcode": "NW11 0EA",
     "phone": "020 8455 8080",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5791,
-    "lng": -0.1964
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 19,
+    "slug": "kosher-habiba-s-smokehouse",
     "name": "Habiba's Smokehouse",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5787,
+    "lng": -0.196,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "1179 Finchley Road, Temple Fortune",
     "postcode": "NW11 0AA",
     "phone": "020 7625 4504",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5787,
-    "lng": -0.196
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 20,
+    "slug": "kosher-hummus-bar-golders-green",
     "name": "Hummus Bar Golders Green",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5728,
+    "lng": -0.1945,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "82 Golders Green Road, Golders Green",
     "postcode": "NW11 8LN",
     "phone": "020 3872 3777",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5728,
-    "lng": -0.1945
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 21,
+    "slug": "kosher-hummus-bar-hendon",
     "name": "Hummus Bar Hendon",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.585,
+    "lng": -0.2272,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "105 Brent Street, Hendon",
     "postcode": "NW4 2DX",
     "phone": "020 3948 5005",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.585,
-    "lng": -0.2272
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 22,
+    "slug": "kosher-kaifeng",
     "name": "Kaifeng",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.5826,
+    "lng": -0.2218,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "51 Church Road, Hendon",
     "postcode": "NW4 4DU",
     "phone": "020 8203 7888",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5826,
-    "lng": -0.2218
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 23,
+    "slug": "kosher-kasa-bar-grill",
     "name": "Kasa Bar & Grill",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5763,
+    "lng": -0.186,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "30 The Market Place, Hampstead Garden Suburb",
     "postcode": "NW11 6JJ",
     "phone": "020 3441 3527",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5763,
-    "lng": -0.186
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 24,
+    "slug": "kosher-moss-maple",
     "name": "Moss & Maple",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "west-hampstead",
+    "lat": 51.5477,
+    "lng": -0.1925,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "51 Fairfax Road, West Hampstead",
     "postcode": "NW6 4WL",
     "phone": "020 3612 0641",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5477,
-    "lng": -0.1925
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 25,
+    "slug": "kosher-novellino-bistro",
     "name": "Novellino Bistro",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5733,
+    "lng": -0.1951,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "111a-113 Golders Green Road, Golders Green",
     "postcode": "NW11 8HR",
     "phone": "020 8248 5678",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5733,
-    "lng": -0.1951
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 26,
+    "slug": "kosher-rodo",
     "name": "Rodo",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "edgware",
+    "lat": 51.6195,
+    "lng": -0.2748,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "295 Hale Lane, Edgware",
     "postcode": "HA8 7AX",
     "phone": "020 3518 3065",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.6195,
-    "lng": -0.2748
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 27,
+    "slug": "kosher-sami-s-edgware",
     "name": "Sami's Edgware",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "edgware",
+    "lat": 51.6196,
+    "lng": -0.275,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "313 Hale Lane, Edgware",
     "postcode": "HA8 7AX",
     "phone": "020 8958 2288",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.6196,
-    "lng": -0.275
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 28,
+    "slug": "kosher-sami-s-hendon",
     "name": "Sami's Hendon",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.5863,
+    "lng": -0.2285,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "157 Brent Street, Hendon",
     "postcode": "NW4 4DJ",
     "phone": "020 8203 8088",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5863,
-    "lng": -0.2285
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 29,
+    "slug": "kosher-shnitzelhaus",
     "name": "Shnitzelhaus",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5783,
+    "lng": -0.1958,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "756 Finchley Road, Temple Fortune",
     "postcode": "NW11 7TH",
     "phone": "020 8016 2857",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5783,
-    "lng": -0.1958
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 30,
+    "slug": "kosher-tish",
     "name": "Tish",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "camden",
+    "hood": "hampstead",
+    "lat": 51.5503,
+    "lng": -0.1636,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "196 Haverstock Hill, Belsize Park",
     "postcode": "NW3 2AG",
     "phone": "020 7431 3828",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5503,
-    "lng": -0.1636
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 31,
+    "slug": "kosher-tony-page-marylebone",
     "name": "Tony Page Marylebone",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "westminster",
+    "hood": "marylebone",
+    "lat": 51.5194,
+    "lng": -0.1545,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "26 Paddington Street, Marylebone",
     "postcode": "W1U 5QY",
     "phone": "020 7139 8500",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5194,
-    "lng": -0.1545
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 32,
+    "slug": "kosher-tuk-tuk",
     "name": "Tuk Tuk",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5735,
+    "lng": -0.1953,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "115 Golders Green Road, Golders Green",
     "postcode": "NW11 8HR",
     "phone": "020 8191 0055",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5735,
-    "lng": -0.1953
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 33,
+    "slug": "kosher-white-house-express",
     "name": "White House Express",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.5843,
+    "lng": -0.2262,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "63 Brent Street, Hendon",
     "postcode": "NW4 2EA",
     "phone": "020 8203 2427",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5843,
-    "lng": -0.2262
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 34,
+    "slug": "kosher-surfin-poke",
     "name": "SurFin Poke",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5729,
+    "lng": -0.1946,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "98a Golders Green Road, Golders Green",
     "postcode": "NW11 8HB",
     "phone": "020 8922 1640",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5729,
-    "lng": -0.1946
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 35,
+    "slug": "kosher-sushi-haven-golders-green",
     "name": "Sushi Haven Golders Green",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5736,
+    "lng": -0.1954,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "114A Golders Green Road, Golders Green",
     "postcode": "NW11 8HB",
     "phone": "020 8123 0555",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5736,
-    "lng": -0.1954
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 36,
+    "slug": "kosher-sushi-haven-hendon",
     "name": "Sushi Haven Hendon",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.5844,
+    "lng": -0.2263,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "57a Brent Street, Hendon",
     "postcode": "NW4 2EA",
     "phone": "020 8123 0555",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5844,
-    "lng": -0.2263
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 37,
+    "slug": "kosher-sushi-hinoki",
     "name": "Sushi Hinoki",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5763,
+    "lng": -0.1861,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "31 The Market Place, Hampstead Garden Suburb",
     "postcode": "NW11 6JY",
     "phone": "020 3663 2975",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.5763,
-    "lng": -0.1861
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 38,
+    "slug": "kosher-bonjour",
     "name": "Bonjour",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.5847,
+    "lng": -0.2267,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "78-80 Brent Street, Hendon",
     "postcode": "NW4 2ES",
     "phone": "020 8203 8848",
-    "kashrus": "KLBD",
-    "lat": 51.5847,
-    "lng": -0.2267
+    "kashrus": "KLBD"
   },
   {
     "id": 39,
+    "slug": "kosher-carmelli",
     "name": "Carmelli",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5737,
+    "lng": -0.1955,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "126-128 Golders Green Road, Golders Green",
     "postcode": "NW11 8HB",
     "phone": "020 8455 2074",
-    "kashrus": "KLBD",
-    "lat": 51.5737,
-    "lng": -0.1955
+    "kashrus": "KLBD"
   },
   {
     "id": 40,
+    "slug": "kosher-coco-bakery",
     "name": "Coco Bakery",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5718,
+    "lng": -0.1937,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "20 Russell Parade, Golders Green",
     "postcode": "NW11 9NN",
     "phone": "020 8458 8984",
-    "kashrus": "KLBD",
-    "lat": 51.5718,
-    "lng": -0.1937
+    "kashrus": "KLBD"
   },
   {
     "id": 41,
+    "slug": "kosher-creme-de-la-creme",
     "name": "Creme de la Creme",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5793,
+    "lng": -0.1966,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "5 Temple Fortune Parade",
     "postcode": "NW11 0QN",
     "phone": "020 8458 9090",
-    "kashrus": "KLBD",
-    "lat": 51.5793,
-    "lng": -0.1966
+    "kashrus": "KLBD"
   },
   {
     "id": 42,
+    "slug": "kosher-daniels-bagel-bakery",
     "name": "Daniels Bagel Bakery",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5789,
+    "lng": -0.1961,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "12-14 Hallswelle Parade",
     "postcode": "NW11 0DL",
     "phone": "020 8455 5826",
-    "kashrus": "KLBD",
-    "lat": 51.5789,
-    "lng": -0.1961
+    "kashrus": "KLBD"
   },
   {
     "id": 43,
+    "slug": "kosher-grodz-edgware",
     "name": "Grodz Edgware",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "edgware",
+    "lat": 51.6183,
+    "lng": -0.2741,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "4-6 The Promenade, Edgware",
     "postcode": "HA8 7JZ",
     "phone": "020 8958 1205",
-    "kashrus": "KLBD",
-    "lat": 51.6183,
-    "lng": -0.2741
+    "kashrus": "KLBD"
   },
   {
     "id": 44,
+    "slug": "kosher-grodz-golders-green",
     "name": "Grodz Golders Green",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5705,
+    "lng": -0.1928,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "223 Golders Green Road, Golders Green",
     "postcode": "NW11 9ES",
     "phone": "020 8958 1205",
-    "kashrus": "KLBD",
-    "lat": 51.5705,
-    "lng": -0.1928
+    "kashrus": "KLBD"
   },
   {
     "id": 45,
+    "slug": "kosher-hendon-bagel-bakery",
     "name": "Hendon Bagel Bakery",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.5827,
+    "lng": -0.2219,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "55-57 Church Road, Hendon",
     "postcode": "NW4 4DU",
     "phone": "020 8203 6919",
-    "kashrus": "KLBD",
-    "lat": 51.5827,
-    "lng": -0.2219
+    "kashrus": "KLBD"
   },
   {
     "id": 46,
+    "slug": "kosher-just-baked",
     "name": "Just Baked",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "borehamwood",
+    "lat": 51.6568,
+    "lng": -0.2694,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "5-7 Croxdale Road, Borehamwood",
     "postcode": "WD6 4QD",
     "phone": "020 3007 4400",
-    "kashrus": "KLBD",
-    "lat": 51.6568,
-    "lng": -0.2694
+    "kashrus": "KLBD"
   },
   {
     "id": 47,
+    "slug": "kosher-la-brioche-hendon",
     "name": "La Brioche Hendon",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.5846,
+    "lng": -0.2266,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "81-83 Brent Street, Hendon",
     "postcode": "NW4 2DY",
     "phone": "020 4529 5040",
-    "kashrus": "KLBD",
-    "lat": 51.5846,
-    "lng": -0.2266
+    "kashrus": "KLBD"
   },
   {
     "id": 48,
+    "slug": "kosher-la-brioche-stanmore",
     "name": "La Brioche Stanmore",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "edgware",
+    "lat": 51.6197,
+    "lng": -0.3083,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "2 Canons Corner, Stanmore",
     "postcode": "HA8 8AE",
     "phone": "020 7998 0212",
-    "kashrus": "KLBD",
-    "lat": 51.6197,
-    "lng": -0.3083
+    "kashrus": "KLBD"
   },
   {
     "id": 49,
+    "slug": "kosher-munch-n-crunch",
     "name": "Munch 'N Crunch",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5718,
+    "lng": -0.1936,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "7 Russell Parade, Golders Green",
     "postcode": "NW11 9NN",
     "phone": "020 8458 6888",
-    "kashrus": "KLBD",
-    "lat": 51.5718,
-    "lng": -0.1936
+    "kashrus": "KLBD"
   },
   {
     "id": 50,
+    "slug": "kosher-parkway-patisserie-finchley",
     "name": "Parkway Patisserie Finchley",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "finchley",
+    "lat": 51.5975,
+    "lng": -0.1919,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "355 Regents Park Road, Finchley",
     "postcode": "N3 1DH",
     "phone": "020 8346 0344",
-    "kashrus": "KLBD",
-    "lat": 51.5975,
-    "lng": -0.1919
+    "kashrus": "KLBD"
   },
   {
     "id": 51,
+    "slug": "kosher-parkway-patisserie-golders-green",
     "name": "Parkway Patisserie Golders Green",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.5723,
+    "lng": -0.194,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "30a North End Road, Golders Green",
     "postcode": "NW11 7PT",
     "phone": "020 8455 5026",
-    "kashrus": "KLBD",
-    "lat": 51.5723,
-    "lng": -0.194
+    "kashrus": "KLBD"
   },
   {
     "id": 52,
+    "slug": "kosher-parkway-patisserie-wembley",
     "name": "Parkway Patisserie Wembley",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "wembley",
+    "lat": 51.5663,
+    "lng": -0.3017,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "204 Preston Road, Wembley",
     "postcode": "HA9 8PA",
     "phone": "020 8904 7736",
-    "kashrus": "KLBD",
-    "lat": 51.5663,
-    "lng": -0.3017
+    "kashrus": "KLBD"
   },
   {
     "id": 53,
+    "slug": "kosher-the-bagel-place",
     "name": "The Bagel Place",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "mill-hill",
+    "lat": 51.6143,
+    "lng": -0.2353,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "10 Thornfield Parade, Mill Hill",
     "postcode": "NW7 1LN",
     "phone": "020 8922 9454",
-    "kashrus": "KLBD",
-    "lat": 51.6143,
-    "lng": -0.2353
+    "kashrus": "KLBD"
   },
   {
     "id": 54,
+    "slug": "kosher-yossi-s-bakery",
     "name": "Yossi's Bakery",
+    "categories": [
+      "kosher",
+      "cafes"
+    ],
+    "area": "outer",
+    "hood": "edgware",
+    "lat": 51.6189,
+    "lng": -0.2743,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מאפייה",
     "address": "11 Glengall Road, Edgware",
     "postcode": "HA8 8TB",
     "phone": "020 8905 4548",
-    "kashrus": "KLBD",
-    "lat": 51.6189,
-    "lng": -0.2743
+    "kashrus": "KLBD"
   },
   {
     "id": 55,
+    "slug": "kosher-kosher-wok",
     "name": "Kosher Wok",
+    "categories": [
+      "kosher",
+      "restaurants"
+    ],
+    "area": "outer",
+    "hood": "edgware",
+    "lat": 51.615807,
+    "lng": -0.275175,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "מסעדה בשרית",
     "address": "313 Hale Lane, Edgware",
     "postcode": "HA8 7AX",
     "phone": "",
-    "kashrus": "KLBD, גלאט",
-    "lat": 51.615807,
-    "lng": -0.275175
+    "kashrus": "KLBD, גלאט"
   },
   {
     "id": 56,
+    "slug": "kosher-1070-kitchen",
     "name": "1070 Kitchen",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "westminster",
+    "hood": "marylebone",
+    "lat": 51.514828,
+    "lng": -0.153911,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "400 Oxford Street, London",
     "postcode": "W1A 1AB",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.514828,
-    "lng": -0.153911
+    "kashrus": "KLBD"
   },
   {
     "id": 57,
+    "slug": "kosher-allenby-market",
     "name": "Allenby Market",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.586262,
+    "lng": -0.220201,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "55 Brent Street, Hendon",
     "postcode": "NW4 2EA",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.586262,
-    "lng": -0.220201
+    "kashrus": "KLBD"
   },
   {
     "id": 58,
+    "slug": "kosher-booya-gelato",
     "name": "Booya Gelato",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.572581,
+    "lng": -0.198579,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "90 Golders Green Road, Golders Green",
     "postcode": "NW11 8LN",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.572581,
-    "lng": -0.198579
+    "kashrus": "KLBD"
   },
   {
     "id": 59,
+    "slug": "kosher-chocolate-fantasies",
     "name": "Chocolate Fantasies",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "stamford-hill",
+    "lat": 51.566415,
+    "lng": -0.072688,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "62 Stamford Hill, Stamford Hill",
     "postcode": "N16 6XS",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.566415,
-    "lng": -0.072688
+    "kashrus": "KLBD"
   },
   {
     "id": 60,
+    "slug": "kosher-flax-s-foods",
     "name": "Flax's Foods",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "bushey",
+    "lat": 51.634547,
+    "lng": -0.342548,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "43 High Road, Bushey",
     "postcode": "WD23 1EE",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.634547,
-    "lng": -0.342548
+    "kashrus": "KLBD"
   },
   {
     "id": 61,
+    "slug": "kosher-just-kosher",
     "name": "Just Kosher",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "borehamwood",
+    "lat": 51.661377,
+    "lng": -0.279873,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "5-7 Croxdale Road, Borehamwood",
     "postcode": "WD6 4QD",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.661377,
-    "lng": -0.279873
+    "kashrus": "KLBD"
   },
   {
     "id": 62,
+    "slug": "kosher-kosher-deli-borehamwood",
     "name": "Kosher Deli Borehamwood",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "borehamwood",
+    "lat": 51.655213,
+    "lng": -0.27732,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "51 Shenley Road, Borehamwood",
     "postcode": "WD6 1AE",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.655213,
-    "lng": -0.27732
+    "kashrus": "KLBD"
   },
   {
     "id": 63,
+    "slug": "kosher-kosher-deli-edgware",
     "name": "Kosher Deli Edgware",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "edgware",
+    "lat": 51.61599,
+    "lng": -0.27565,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "13 The Promenade, Hale Lane, Edgware",
     "postcode": "HA8 7JZ",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.61599,
-    "lng": -0.27565
+    "kashrus": "KLBD"
   },
   {
     "id": 64,
+    "slug": "kosher-kosher-deli-golders-green",
     "name": "Kosher Deli Golders Green",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.574128,
+    "lng": -0.200982,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "132 Golders Green Road, Golders Green",
     "postcode": "NW11 8HB",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.574128,
-    "lng": -0.200982
+    "kashrus": "KLBD"
   },
   {
     "id": 65,
+    "slug": "kosher-kosher-deli-hendon",
     "name": "Kosher Deli Hendon",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.585566,
+    "lng": -0.21992,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "43 Brent Street, Hendon",
     "postcode": "NW4 2EA",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.585566,
-    "lng": -0.21992
+    "kashrus": "KLBD"
   },
   {
     "id": 66,
+    "slug": "kosher-kosher-deli-temple-fortune",
     "name": "Kosher Deli Temple Fortune",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.583252,
+    "lng": -0.199846,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "9a Halleswelle Parade, Finchley Road, Temple Fortune",
     "postcode": "NW11 0QS",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.583252,
-    "lng": -0.199846
+    "kashrus": "KLBD"
   },
   {
     "id": 67,
+    "slug": "kosher-kosher-edge",
     "name": "Kosher Edge",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "edgware",
+    "lat": 51.615666,
+    "lng": -0.275754,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "15-19 Edgwarebury Lane, Edgware",
     "postcode": "HA8 8LH",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.615666,
-    "lng": -0.275754
+    "kashrus": "KLBD"
   },
   {
     "id": 68,
+    "slug": "kosher-kosher-kingdom",
     "name": "Kosher Kingdom",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "edgware",
+    "lat": 51.62648,
+    "lng": -0.26986,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "3 Broadfields Parade, Glengall Road, Edgware",
     "postcode": "HA8 8TD",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.62648,
-    "lng": -0.26986
+    "kashrus": "KLBD"
   },
   {
     "id": 69,
+    "slug": "kosher-leon-s-fruit-shop",
     "name": "Leon's Fruit Shop",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.577932,
+    "lng": -0.207056,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "5 Russell Parade, Golders Green",
     "postcode": "NW11 9NN",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.577932,
-    "lng": -0.207056
+    "kashrus": "KLBD"
   },
   {
     "id": 70,
+    "slug": "kosher-manna-deli",
     "name": "Manna Deli",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.588429,
+    "lng": -0.221318,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "146 Brent Street, Hendon",
     "postcode": "NW4 2DR",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.588429,
-    "lng": -0.221318
+    "kashrus": "KLBD"
   },
   {
     "id": 71,
+    "slug": "kosher-menachem-s",
     "name": "Menachem's",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "golders-green",
+    "lat": 51.578508,
+    "lng": -0.207622,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "15 Russell Parade, Golders Green",
     "postcode": "NW11 9NN",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.578508,
-    "lng": -0.207622
+    "kashrus": "KLBD"
   },
   {
     "id": 72,
+    "slug": "kosher-piu-gusto",
     "name": "Piu Gusto",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "borehamwood",
+    "lat": 51.654123,
+    "lng": -0.279857,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "31-33 Theobald Street, Borehamwood",
     "postcode": "WD6 4RN",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.654123,
-    "lng": -0.279857
+    "kashrus": "KLBD"
   },
   {
     "id": 73,
+    "slug": "kosher-sushi-haven-hadar",
     "name": "Sushi Haven Hadar",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "edgware",
+    "lat": 51.615739,
+    "lng": -0.275524,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "301-303 Hale Lane, Edgware",
     "postcode": "HA8 7AX",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.615739,
-    "lng": -0.275524
+    "kashrus": "KLBD"
   },
   {
     "id": 74,
+    "slug": "kosher-tapuach",
     "name": "Tapuach",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "hendon",
+    "lat": 51.585825,
+    "lng": -0.219853,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "108-110 Brent Street, Hendon",
     "postcode": "NW4 2HH",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.585825,
-    "lng": -0.219853
+    "kashrus": "KLBD"
   },
   {
     "id": 75,
+    "slug": "kosher-the-kelman-deli",
     "name": "The Kelman Deli",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "bushey",
+    "lat": 51.635142,
+    "lng": -0.342642,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "100 High Road, Bushey",
     "postcode": "WD23 1GE",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.635142,
-    "lng": -0.342642
+    "kashrus": "KLBD"
   },
   {
     "id": 76,
+    "slug": "kosher-wrap-a-wish",
     "name": "Wrap a Wish",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "finchley",
+    "lat": 51.590733,
+    "lng": -0.199759,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "106 Regents Park Road, Finchley",
     "postcode": "N3 3JG",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.590733,
-    "lng": -0.199759
+    "kashrus": "KLBD"
   },
   {
     "id": 77,
+    "slug": "kosher-so-real-cadoxton",
     "name": "So Real Cadoxton",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "stamford-hill",
+    "lat": 51.568023,
+    "lng": -0.067292,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "27 Cadoxton Avenue, Stamford Hill",
     "postcode": "N16 6LD",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.568023,
-    "lng": -0.067292
+    "kashrus": "KLBD"
   },
   {
     "id": 78,
+    "slug": "kosher-so-real-oldhill",
     "name": "So Real Oldhill",
+    "categories": [
+      "kosher",
+      "shopping"
+    ],
+    "area": "outer",
+    "hood": "stamford-hill",
+    "lat": 51.568198,
+    "lng": -0.066707,
+    "precision": "exact",
+    "source": null,
+    "checked": "2026-08",
     "category": "חנות ומעדנייה",
     "address": "43c Oldhill Street, Stamford Hill",
     "postcode": "N16 6LR",
     "phone": "",
-    "kashrus": "KLBD",
-    "lat": 51.568198,
-    "lng": -0.066707
+    "kashrus": "KLBD"
   }
 ]

@@ -1,0 +1,468 @@
+{
+  "_מה_זה_הקובץ_הזה": "מילון האזורים הרשמי של גו לונדון. אשכול הוא גאוגרפיה של תנועה ומשמש את מנוע המסלול. שכונה היא גאוגרפיה של זהות ומשמשת את מדריכי האזורים ואת המפה. כל שכונה שייכת לאשכול אחד בדיוק. אין לשנות מפתחות קיימים, רק להוסיף.",
+  "_schema": 1,
+  "_עודכן": "2026-08-21",
+  "precision": {
+    "_הסבר": "רמת הדיוק של הקואורדינטה של מקום. נדרש כדי שהמפה תדע להציג נקודה מייצגת אחרת מכתובת מדויקת.",
+    "exact": "כתובת מדויקת שאומתה",
+    "approx": "נקודה מייצגת, למשל אזור של אמנות רחוב או רחוב שלם",
+    "unset": "עדיין אין קואורדינטה"
+  },
+  "clusters": {
+    "westminster": {
+      "name": "וסטמינסטר ומרכז העיר",
+      "emoji": "🏛️",
+      "color": "#DC2626"
+    },
+    "city": {
+      "name": "הסיטי ומזרח",
+      "emoji": "🏙️",
+      "color": "#2563EB"
+    },
+    "southbank": {
+      "name": "הגדה הדרומית",
+      "emoji": "🌉",
+      "color": "#0891B2"
+    },
+    "kensington": {
+      "name": "קנזינגטון ומערב",
+      "emoji": "🎨",
+      "color": "#7C3AED"
+    },
+    "camden": {
+      "name": "קמדן וצפון",
+      "emoji": "🎸",
+      "color": "#DB2777"
+    },
+    "shoreditch": {
+      "name": "שורדיץ' ומזרח טרנדי",
+      "emoji": "🖌️",
+      "color": "#EA580C"
+    },
+    "greenwich": {
+      "name": "גריניץ'",
+      "emoji": "⏱️",
+      "color": "#059669"
+    },
+    "outer": {
+      "name": "מחוץ למרכז",
+      "emoji": "🚆",
+      "color": "#CA8A04"
+    }
+  },
+  "hoods": {
+    "westminster": {
+      "name": "וסטמינסטר",
+      "cluster": "westminster",
+      "center": [
+        51.4995,
+        -0.1248
+      ],
+      "zoom": 15
+    },
+    "covent-garden": {
+      "name": "קובנט גארדן",
+      "cluster": "westminster",
+      "center": [
+        51.5117,
+        -0.124
+      ],
+      "zoom": 16,
+      "guide": "guide-areas-covent-garden"
+    },
+    "soho": {
+      "name": "סוהו",
+      "cluster": "westminster",
+      "center": [
+        51.5138,
+        -0.1317
+      ],
+      "zoom": 16,
+      "guide": "guide-areas-soho"
+    },
+    "bloomsbury": {
+      "name": "בלומסברי",
+      "cluster": "westminster",
+      "center": [
+        51.5194,
+        -0.127
+      ],
+      "zoom": 15
+    },
+    "holborn": {
+      "name": "הולבורן",
+      "cluster": "westminster",
+      "center": [
+        51.5174,
+        -0.12
+      ],
+      "zoom": 16
+    },
+    "marylebone": {
+      "name": "מרילבון",
+      "cluster": "westminster",
+      "center": [
+        51.5185,
+        -0.15
+      ],
+      "zoom": 15
+    },
+    "the-city": {
+      "name": "הסיטי",
+      "cluster": "city",
+      "center": [
+        51.5145,
+        -0.092
+      ],
+      "zoom": 15
+    },
+    "tower": {
+      "name": "מצודת לונדון והגשר",
+      "cluster": "city",
+      "center": [
+        51.5081,
+        -0.0759
+      ],
+      "zoom": 16
+    },
+    "southbank": {
+      "name": "הגדה הדרומית",
+      "cluster": "southbank",
+      "center": [
+        51.5055,
+        -0.116
+      ],
+      "zoom": 15
+    },
+    "borough": {
+      "name": "בורו ולונדון ברידג'",
+      "cluster": "southbank",
+      "center": [
+        51.5055,
+        -0.09
+      ],
+      "zoom": 16
+    },
+    "south-kensington": {
+      "name": "דרום קנזינגטון",
+      "cluster": "kensington",
+      "center": [
+        51.4966,
+        -0.174
+      ],
+      "zoom": 16
+    },
+    "kensington": {
+      "name": "קנזינגטון",
+      "cluster": "kensington",
+      "center": [
+        51.501,
+        -0.19
+      ],
+      "zoom": 15
+    },
+    "notting-hill": {
+      "name": "נוטינג היל",
+      "cluster": "kensington",
+      "center": [
+        51.516,
+        -0.205
+      ],
+      "zoom": 15,
+      "guide": "guide-areas-notting-hill"
+    },
+    "knightsbridge": {
+      "name": "נייטסברידג'",
+      "cluster": "kensington",
+      "center": [
+        51.4995,
+        -0.163
+      ],
+      "zoom": 16,
+      "guide": "guide-areas-knightsbridge"
+    },
+    "chelsea": {
+      "name": "צ'לסי",
+      "cluster": "kensington",
+      "center": [
+        51.4875,
+        -0.1687
+      ],
+      "zoom": 15,
+      "guide": "guide-areas-chelsea"
+    },
+    "camden": {
+      "name": "קמדן",
+      "cluster": "camden",
+      "center": [
+        51.539,
+        -0.1426
+      ],
+      "zoom": 15,
+      "guide": "guide-areas-camden"
+    },
+    "kings-cross": {
+      "name": "קינגס קרוס",
+      "cluster": "camden",
+      "center": [
+        51.532,
+        -0.124
+      ],
+      "zoom": 16
+    },
+    "hampstead": {
+      "name": "המפסטד",
+      "cluster": "camden",
+      "center": [
+        51.556,
+        -0.178
+      ],
+      "zoom": 14
+    },
+    "highgate": {
+      "name": "הייגייט",
+      "cluster": "camden",
+      "center": [
+        51.567,
+        -0.147
+      ],
+      "zoom": 15
+    },
+    "little-venice": {
+      "name": "ונציה הקטנה",
+      "cluster": "camden",
+      "center": [
+        51.522,
+        -0.183
+      ],
+      "zoom": 16
+    },
+    "shoreditch": {
+      "name": "שורדיץ'",
+      "cluster": "shoreditch",
+      "center": [
+        51.5245,
+        -0.0755
+      ],
+      "zoom": 15,
+      "guide": "guide-areas-shoreditch"
+    },
+    "whitechapel": {
+      "name": "וייטצ'אפל",
+      "cluster": "shoreditch",
+      "center": [
+        51.5165,
+        -0.07
+      ],
+      "zoom": 16
+    },
+    "greenwich": {
+      "name": "גריניץ'",
+      "cluster": "greenwich",
+      "center": [
+        51.481,
+        -0.009
+      ],
+      "zoom": 15,
+      "guide": "guide-areas-greenwich"
+    },
+    "golders-green": {
+      "name": "גולדרס גרין",
+      "cluster": "outer",
+      "center": [
+        51.572,
+        -0.194
+      ],
+      "zoom": 15,
+      "guide": "guide-kosher-golders-green"
+    },
+    "hendon": {
+      "name": "הנדון",
+      "cluster": "outer",
+      "center": [
+        51.583,
+        -0.225
+      ],
+      "zoom": 15,
+      "guide": "guide-kosher-hendon"
+    },
+    "edgware": {
+      "name": "אדג'וור",
+      "cluster": "outer",
+      "center": [
+        51.613,
+        -0.275
+      ],
+      "zoom": 15,
+      "guide": "guide-kosher-edgware"
+    },
+    "stamford-hill": {
+      "name": "סטמפורד היל",
+      "cluster": "outer",
+      "center": [
+        51.568,
+        -0.073
+      ],
+      "zoom": 15
+    },
+    "borehamwood": {
+      "name": "בורהמווד",
+      "cluster": "outer",
+      "center": [
+        51.658,
+        -0.272
+      ],
+      "zoom": 14
+    },
+    "finchley": {
+      "name": "פינצ'לי",
+      "cluster": "outer",
+      "center": [
+        51.6,
+        -0.192
+      ],
+      "zoom": 15
+    },
+    "bushey": {
+      "name": "בושי",
+      "cluster": "outer",
+      "center": [
+        51.643,
+        -0.363
+      ],
+      "zoom": 14
+    },
+    "west-hampstead": {
+      "name": "ווסט המפסטד",
+      "cluster": "outer",
+      "center": [
+        51.547,
+        -0.191
+      ],
+      "zoom": 15
+    },
+    "mill-hill": {
+      "name": "מיל היל",
+      "cluster": "outer",
+      "center": [
+        51.614,
+        -0.24
+      ],
+      "zoom": 14
+    },
+    "kew": {
+      "name": "קיו",
+      "cluster": "outer",
+      "center": [
+        51.4787,
+        -0.2956
+      ],
+      "zoom": 15
+    },
+    "richmond": {
+      "name": "ריצ'מונד",
+      "cluster": "outer",
+      "center": [
+        51.448,
+        -0.276
+      ],
+      "zoom": 14
+    },
+    "windsor": {
+      "name": "ווינדזור",
+      "cluster": "outer",
+      "center": [
+        51.4839,
+        -0.6044
+      ],
+      "zoom": 15,
+      "daytrip": true
+    },
+    "watford": {
+      "name": "ווטפורד",
+      "cluster": "outer",
+      "center": [
+        51.69,
+        -0.418
+      ],
+      "zoom": 14
+    },
+    "hampton-court": {
+      "name": "המפטון קורט",
+      "cluster": "outer",
+      "center": [
+        51.4036,
+        -0.3379
+      ],
+      "zoom": 15
+    },
+    "wembley": {
+      "name": "ומבלי",
+      "cluster": "outer",
+      "center": [
+        51.556,
+        -0.2796
+      ],
+      "zoom": 15
+    },
+    "north-greenwich": {
+      "name": "צפון גריניץ'",
+      "cluster": "outer",
+      "center": [
+        51.503,
+        0.0032
+      ],
+      "zoom": 15
+    },
+    "docklands": {
+      "name": "דוקלנדס",
+      "cluster": "outer",
+      "center": [
+        51.507,
+        -0.0235
+      ],
+      "zoom": 15
+    },
+    "battersea": {
+      "name": "בטרסי",
+      "cluster": "outer",
+      "center": [
+        51.4816,
+        -0.144
+      ],
+      "zoom": 15
+    },
+    "colindale": {
+      "name": "קולינדייל",
+      "cluster": "outer",
+      "center": [
+        51.595,
+        -0.25
+      ],
+      "zoom": 15
+    }
+  },
+  "bounds": {
+    "_הסבר": "תיבות שפיות לבדיקת קואורדינטות. london היא לונדון הגדולה, daytrip מרחיבה ליעדי טיול יום כמו ווינדזור. קואורדינטה מחוץ ל-daytrip היא כמעט תמיד היפוך בין lat ל-lng.",
+    "london": {
+      "lat": [
+        51.28,
+        51.7
+      ],
+      "lng": [
+        -0.51,
+        0.33
+      ]
+    },
+    "daytrip": {
+      "lat": [
+        51.2,
+        51.8
+      ],
+      "lng": [
+        -0.8,
+        0.5
+      ]
+    }
+  }
+}

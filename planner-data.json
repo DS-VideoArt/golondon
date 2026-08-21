@@ -23,7 +23,7 @@
       "emoji": "🎸"
     },
     "shoreditch": {
-      "name": "שורדיטש ומזרח טרנדי",
+      "name": "שורדיץ' ומזרח טרנדי",
       "emoji": "🖌️"
     },
     "greenwich": {
@@ -72,6 +72,7 @@
       "nameEn": "The British Museum",
       "desc": "אוסף ענק של תרבויות העולם, ובו אבן רוזטה ופסלי הפרתנון. יושב בשכונת בלומסברי, שכונת הספריות והאוניברסיטאות, במרחק הליכה מקובנט גארדן ומסוהו.",
       "area": "westminster",
+      "hood": "bloomsbury",
       "interests": [
         "museums",
         "royal"
@@ -92,6 +93,7 @@
       "nameEn": "The National Gallery",
       "desc": "אוסף הציור האירופי הגדול של בריטניה, מטרנר ועד ואן גוך. ניצבת ממש על טרפלגר סקוור, הכיכר המרכזית של לונדון, כמה דקות הליכה מסוהו ומקובנט גארדן.",
       "area": "westminster",
+      "hood": "westminster",
       "interests": [
         "museums"
       ],
@@ -111,6 +113,7 @@
       "nameEn": "Westminster Abbey",
       "desc": "כנסיית ההכתרות של מלכי אנגליה כבר קרוב לאלף שנה, וגם מקום קבורתם של ניוטון ודארווין. עומד ממש מול בתי הפרלמנט, מעבר לכביש מביג בן.",
       "area": "westminster",
+      "hood": "westminster",
       "interests": [
         "royal",
         "museums"
@@ -130,6 +133,7 @@
       "nameEn": "Big Ben and Houses of Parliament",
       "desc": "מגדל השעון המזוהה ביותר עם לונדון, כשהשם ביג בן שייך במקור לפעמון שבתוכו ולא למגדל עצמו. נמצא בקצה גשר וסטמינסטר, והנוף המפורסם שלו נפתח דווקא מהגדה הנגדית של התמזה.",
       "area": "westminster",
+      "hood": "westminster",
       "interests": [
         "royal",
         "views"
@@ -149,6 +153,7 @@
       "nameEn": "Buckingham Palace",
       "desc": "מעון המלוכה הרשמי בלונדון, וטקס חילופי המשמר מתקיים בחזיתו בימים מסוימים. יושב בקצה השדרה המלכותית, בין פארק סנט ג׳יימס לגרין פארק.",
       "area": "westminster",
+      "hood": "westminster",
       "interests": [
         "royal"
       ],
@@ -168,6 +173,7 @@
       "nameEn": "Churchill War Rooms",
       "desc": "הבונקר התת קרקעי שממנו נוהלה בריטניה במלחמת העולם השנייה, ששוחזר כמעט בדיוק כפי שהיה. הכניסה מרחוב צדדי בוסטמינסטר, דקות הליכה מביג בן ומפארק סנט ג׳יימס.",
       "area": "westminster",
+      "hood": "westminster",
       "interests": [
         "museums",
         "royal"
@@ -187,6 +193,7 @@
       "nameEn": "St James's Park",
       "desc": "הפארק המלכותי הוותיק בלונדון, עם אגם, פליקנים וגשר שממנו נשקף ארמון בקינגהאם. משתרע בין הארמון לבין מתחם הורס גארדס, ומחבר ברגל כמעט את כל אתרי וסטמינסטר.",
       "area": "westminster",
+      "hood": "westminster",
       "interests": [
         "parks"
       ],
@@ -205,6 +212,7 @@
       "nameEn": "Covent Garden",
       "desc": "כיכר שוק מקורה עם חנויות, בתי קפה ואמני רחוב שמופיעים לאורך כל היום. נמצאת בלב הווסט אנד, במרחק הליכה מרחוב התיאטראות, מסוהו ומהגלריה הלאומית.",
       "area": "westminster",
+      "hood": "covent-garden",
       "interests": [
         "food",
         "street"
@@ -224,6 +232,7 @@
       "nameEn": "Tower of London",
       "desc": "מבצר בן קרוב לאלף שנה ששימש ארמון, כלא ובית מטבעה, וכיום שמורים בו תכשיטי הכתר. עומד על גדת התמזה בקצה המזרחי של הסיטי, ממש ליד גשר המגדלים.",
       "area": "city",
+      "hood": "tower",
       "interests": [
         "royal",
         "museums"
@@ -243,6 +252,7 @@
       "nameEn": "Tower Bridge",
       "desc": "גשר ההרמה הוויקטוריאני שרבים מבלבלים בינו לבין גשר לונדון הסמוך והאפור יותר. חוצה את התמזה בסמוך למצודת לונדון, ואפשר לעבור עליו ברגל בלי לשלם.",
       "area": "city",
+      "hood": "tower",
       "interests": [
         "views",
         "royal"
@@ -262,6 +272,7 @@
       "nameEn": "St Paul's Cathedral",
       "desc": "הכיפה של כריסטופר רן, ששרדה את הפצצות הבליץ והפכה לסמל של עמידות לונדונית. עומדת בלב הסיטי, וממנה נפתח מעבר להולכי רגל בגשר המילניום ישירות אל הטייט מודרן.",
       "area": "city",
+      "hood": "the-city",
       "interests": [
         "royal",
         "views"
@@ -281,6 +292,7 @@
       "nameEn": "Sky Garden",
       "desc": "תצפית עם גן טרופי בקומות העליונות של הבניין המכונה ווקי טוקי, והגבוהה מבין התצפיות שהכניסה אליהן אינה כרוכה בתשלום. נמצא בלב הסיטי, ליד תחנת מונומנט.",
       "area": "city",
+      "hood": "the-city",
       "interests": [
         "views"
       ],
@@ -299,6 +311,7 @@
       "nameEn": "Borough Market",
       "desc": "אחד משווקי המזון הוותיקים בלונדון, שמתמחה בחומרי גלם טריים ובדוכני אוכל מוכן. ממוקם מתחת לקשתות המסילה ליד גשר לונדון, בפתח הגדה הדרומית.",
       "area": "southbank",
+      "hood": "borough",
       "interests": [
         "food"
       ],
@@ -317,6 +330,7 @@
       "nameEn": "Tate Modern",
       "desc": "מוזיאון האמנות המודרנית של בריטניה, בתוך תחנת כוח לשעבר על גדת הנהר. מחובר לקתדרלת סנט פול שממול בגשר המילניום להולכי רגל.",
       "area": "southbank",
+      "hood": "southbank",
       "interests": [
         "museums",
         "street",
@@ -338,6 +352,7 @@
       "nameEn": "London Eye",
       "desc": "גלגל הענק שעל גדת התמזה, כשסיבוב שלם נמשך כחצי שעה. עומד בדיוק מול בתי הפרלמנט, בקצה הצפוני של הגדה הדרומית.",
       "area": "southbank",
+      "hood": "southbank",
       "interests": [
         "views",
         "kids"
@@ -357,6 +372,7 @@
       "nameEn": "South Bank",
       "desc": "טיילת רציפה לאורך הנהר, עם אמני רחוב, דוכנים ומרכזי תרבות. נמתחת מהלונדון איי ועד אזור גשר המגדלים, וזו הדרך הנעימה ביותר לעבור ברגל בין אתרי המרכז.",
       "area": "southbank",
+      "hood": "southbank",
       "interests": [
         "street",
         "views",
@@ -377,6 +393,7 @@
       "nameEn": "The Shard",
       "desc": "הבניין הגבוה בבריטניה, עם תצפית פתוחה בקומות העליונות שלו. ניצב ממש מעל תחנת גשר לונדון, במרחק דקות משוק בורו.",
       "area": "southbank",
+      "hood": "borough",
       "interests": [
         "views"
       ],
@@ -395,6 +412,7 @@
       "nameEn": "Natural History Museum",
       "desc": "מבנה ויקטוריאני מרשים בפני עצמו, ובתוכו שלדי דינוזאורים ואולם כניסה שנראה כמו קתדרלה. יושב באותו רחוב עם מוזיאון המדע ומוזיאון ויקטוריה ואלברט, בדרום קנזינגטון.",
       "area": "kensington",
+      "hood": "south-kensington",
       "interests": [
         "museums",
         "kids"
@@ -415,6 +433,7 @@
       "nameEn": "Science Museum",
       "desc": "מוזיאון עם תצוגות להפעלה, חלליות ומכונות קיטור, מהאהובים בעיר על ילדים. שכן קרוב של מוזיאון הטבע, דקות הליכה מתחנת סאות׳ קנזינגטון.",
       "area": "kensington",
+      "hood": "south-kensington",
       "interests": [
         "museums",
         "kids"
@@ -435,6 +454,7 @@
       "nameEn": "Victoria and Albert Museum",
       "desc": "מוזיאון העיצוב והאמנות השימושית הגדול בעולם, מאופנה ותכשיטים ועד רהיטים ופיסול. משלים את שלישיית המוזיאונים של דרום קנזינגטון, ויש בו חצר פנימית שקטה עם בריכה רדודה.",
       "area": "kensington",
+      "hood": "south-kensington",
       "interests": [
         "museums",
         "street"
@@ -455,6 +475,7 @@
       "nameEn": "Hyde Park",
       "desc": "הפארק הגדול במרכז לונדון, ובו אגם הסרפנטיין ופינת הנואמים. נמתח מקצה מייפייר ועד קנזינגטון, ומפריד בין מרכז העיר לשכונות המערב.",
       "area": "kensington",
+      "hood": "kensington",
       "interests": [
         "parks"
       ],
@@ -473,6 +494,7 @@
       "nameEn": "Kensington Palace",
       "desc": "ארמון מלכותי פעיל שבו נולדה המלכה ויקטוריה, ובו מוצגים חדרי המדינה ותצוגות אופנה מלכותית. עומד בתוך קנזינגטון גארדנס, בקצה המערבי של הייד פארק.",
       "area": "kensington",
+      "hood": "kensington",
       "interests": [
         "royal"
       ],
@@ -491,6 +513,7 @@
       "nameEn": "Notting Hill and Portobello Road",
       "desc": "שכונת בתים צבעוניים ורחוב פורטובלו, שהופך בשבתות לאחד משווקי העתיקות הגדולים באירופה. נמצאת ממערב להייד פארק, כמה תחנות בלבד מהמרכז.",
       "area": "kensington",
+      "hood": "notting-hill",
       "interests": [
         "street",
         "food"
@@ -510,6 +533,7 @@
       "nameEn": "Camden Market",
       "desc": "מתחם שווקים על גדת התעלה, עם דוכני אוכל מכל העולם, אופנה ומוזיקה. נמצא בצפון העיר, ואפשר להמשיך ממנו ברגל לאורך התעלה עד ריג׳נטס פארק.",
       "area": "camden",
+      "hood": "camden",
       "interests": [
         "food",
         "street"
@@ -529,6 +553,7 @@
       "nameEn": "Regent's Park",
       "desc": "פארק מלכותי עם גן ורדים מפורסם, ובקצהו הצפוני גבעת פרימרוז היל שממנה נשקף קו הרקיע של העיר. גובל בגן החיות ובשכונת קמדן.",
       "area": "camden",
+      "hood": "camden",
       "interests": [
         "parks"
       ],
@@ -547,6 +572,7 @@
       "nameEn": "ZSL London Zoo",
       "desc": "אחד מגני החיות המדעיים הוותיקים בעולם, שיושב בתוך ריג׳נטס פארק עצמו. הכניסה מצדו הצפוני של הפארק, במרחק הליכה משוק קמדן.",
       "area": "camden",
+      "hood": "camden",
       "interests": [
         "kids"
       ],
@@ -561,10 +587,11 @@
     },
     {
       "id": "shoreditch-art",
-      "name": "אמנות רחוב בשורדיטש",
+      "name": "אמנות רחוב בשורדיץ'",
       "nameEn": "Shoreditch Street Art",
       "desc": "רחובות שלמים שהפכו לגלריה פתוחה, והציורים שעליהם מתחלפים כל הזמן. מרוכזת סביב בריק ליין ורחוב רדצ׳רץ׳, במזרח העיר.",
       "area": "shoreditch",
+      "hood": "shoreditch",
       "interests": [
         "street"
       ],
@@ -581,8 +608,9 @@
       "id": "brick-lane",
       "name": "בריק ליין",
       "nameEn": "Brick Lane",
-      "desc": "רחוב שנושא היסטוריה של גלי הגירה, והיום מרכז של מסעדות, חנויות יד שנייה וכריכי בייגל. ממשיך ישירות משכונת שורדיטש, ובימי ראשון נפתחים בו שווקים לאורכו.",
+      "desc": "רחוב שנושא היסטוריה של גלי הגירה, והיום מרכז של מסעדות, חנויות יד שנייה וכריכי בייגל. ממשיך ישירות משכונת שורדיץ', ובימי ראשון נפתחים בו שווקים לאורכו.",
       "area": "shoreditch",
+      "hood": "shoreditch",
       "interests": [
         "food",
         "street"
@@ -602,6 +630,7 @@
       "nameEn": "Greenwich and the Prime Meridian",
       "desc": "קו האורך אפס, מצפה הכוכבים המלכותי והמוזיאונים סביבו, על גבעה שממנה נשקף מגדלי קנרי וורף. בדרום מזרח העיר, ואפשר להגיע אליו בשיט על התמזה במקום ברכבת.",
       "area": "greenwich",
+      "hood": "greenwich",
       "interests": [
         "views",
         "museums",
@@ -622,6 +651,7 @@
       "nameEn": "National Maritime Museum",
       "desc": "המוזיאון הימי הגדול בעולם, שמספר את סיפור הצי הבריטי ואת קרבות נלסון. נמצא בתוך מתחם גריניץ׳, כמה צעדים מקו האפס.",
       "area": "greenwich",
+      "hood": "greenwich",
       "interests": [
         "museums",
         "kids"
@@ -642,6 +672,7 @@
       "nameEn": "Kew Gardens",
       "desc": "גנים בוטניים ענקיים, עם חממות ויקטוריאניות ומסלול הליכה מוגבה בין צמרות העצים. בדרום מערב לונדון על גדת התמזה, ודורשים כמעט יום שלם.",
       "area": "outer",
+      "hood": "kew",
       "interests": [
         "parks"
       ],
@@ -660,6 +691,7 @@
       "nameEn": "Warner Bros Studio Tour",
       "desc": "הסטים, התלבושות והאביזרים המקוריים של סדרת הסרטים, באולפנים שבהם היא צולמה בפועל. נמצא מחוץ ללונדון באזור ווטפורד, והגעה אליו מצריכה רכבת והסעה משלימה.",
       "area": "outer",
+      "hood": "watford",
       "interests": [
         "kids"
       ],
@@ -678,6 +710,7 @@
       "nameEn": "Hampton Court Palace",
       "desc": "ארמונו של הנרי השמיני, עם מטבחי טיודור משוחזרים ומבוך גדרות חי בגנים. עומד על גדת התמזה בדרום מערב, כשעה נסיעה מהמרכז.",
       "area": "outer",
+      "hood": "hampton-court",
       "interests": [
         "royal",
         "parks"
@@ -697,6 +730,7 @@
       "nameEn": "National Portrait Gallery",
       "desc": "אוסף הדיוקנאות הלאומי של בריטניה, מהתקופה הטיודורית ועד דיוקנאות צילום של ימינו. נמצאת ממש מאחורי הגלריה הלאומית בטרפלגר סקוור, ונפתחה מחדש אחרי שיפוץ יסודי.",
       "area": "westminster",
+      "hood": "westminster",
       "interests": [
         "museums",
         "royal"
@@ -717,6 +751,7 @@
       "nameEn": "Tate Britain",
       "desc": "אוסף האמנות הבריטית הגדול בעולם, מהמאה השש עשרה ועד היום, כולל אולם שלם המוקדש לטרנר. יושב על גדת התמזה בפימליקו, דרומית לבתי הפרלמנט.",
       "area": "westminster",
+      "hood": "westminster",
       "interests": [
         "museums"
       ],
@@ -736,6 +771,7 @@
       "nameEn": "The Wallace Collection",
       "desc": "אוסף פרטי היסטורי של ציור, רהיטים ושריונים, בתוך אחוזה עירונית שנשמרה כפי שהייתה. נמצא ברחוב צדדי צפונית לאוקספורד סטריט, ורוב התיירים כלל לא יודעים עליו.",
       "area": "westminster",
+      "hood": "marylebone",
       "interests": [
         "museums",
         "royal"
@@ -755,6 +791,7 @@
       "nameEn": "Sir John Soane's Museum",
       "desc": "ביתו של אדריכל בן המאה התשע עשרה, שנשמר בדיוק כפי שהשאיר אותו, עמוס בעתיקות מהרצפה ועד התקרה. נמצא בכיכר שקטה בהולבורן, בין הסיטי לווסט אנד.",
       "area": "westminster",
+      "hood": "holborn",
       "interests": [
         "museums",
         "royal"
@@ -774,6 +811,7 @@
       "nameEn": "London Transport Museum",
       "desc": "הסיפור של הרכבת התחתית והאוטובוסים האדומים, עם קרונות ואוטובוסים היסטוריים שאפשר לעלות עליהם. יושב בתוך כיכר קובנט גארדן עצמה.",
       "area": "westminster",
+      "hood": "covent-garden",
       "interests": [
         "museums",
         "kids"
@@ -793,6 +831,7 @@
       "nameEn": "Trafalgar Square",
       "desc": "הכיכר המרכזית של לונדון, עם עמוד נלסון, האריות ומזרקות. מהווה צומת טבעי בין הגלריה הלאומית, סוהו ווסטמינסטר, ומרבית ההפגנות והחגיגות בעיר מתקיימות בה.",
       "area": "westminster",
+      "hood": "westminster",
       "interests": [
         "royal",
         "street"
@@ -812,6 +851,7 @@
       "nameEn": "Chinatown and Soho",
       "desc": "רחובות עמוסים בפנסים אדומים, מסעדות אסייתיות ובתי קפה, שממשיכים לשכונת הבילויים של לונדון. יושבים בין פיקדילי לקובנט גארדן, בלב הווסט אנד.",
       "area": "westminster",
+      "hood": "soho",
       "interests": [
         "food",
         "street"
@@ -831,6 +871,7 @@
       "nameEn": "Piccadilly Circus",
       "desc": "הצומת עם מסכי הענק והמזרקה, שנחשב לכיכר טיימס סקוור של לונדון. משמש נקודת מעבר בין ריג׳נט סטריט, סוהו וסנט ג׳יימס.",
       "area": "westminster",
+      "hood": "soho",
       "interests": [
         "street"
       ],
@@ -849,6 +890,7 @@
       "nameEn": "Charles Dickens Museum",
       "desc": "הבית שבו גר דיקנס וכתב חלק מיצירותיו המוקדמות, משוחזר כבית מגורים ויקטוריאני. נמצא בבלומסברי, במרחק הליכה מהמוזיאון הבריטי.",
       "area": "westminster",
+      "hood": "bloomsbury",
       "interests": [
         "museums"
       ],
@@ -867,6 +909,7 @@
       "nameEn": "Neal's Yard and Seven Dials",
       "desc": "חצר קטנה ומצוירת בצבעים עזים, ומסביבה רשת סמטאות עם חנויות עצמאיות ובתי קפה. מוסתרת בתוך קובנט גארדן, וקל לפספס את הכניסה אליה.",
       "area": "westminster",
+      "hood": "covent-garden",
       "interests": [
         "street",
         "food"
@@ -886,6 +929,7 @@
       "nameEn": "Leadenhall Market",
       "desc": "שוק מקורה ויקטוריאני עם תקרה מעוטרת וחזיתות ירוקות וזהובות, שמוקף היום במגדלי הסיטי. שימש כאתר צילום ללונדון הקסומה בסרטי הארי פוטר.",
       "area": "city",
+      "hood": "the-city",
       "interests": [
         "street",
         "food"
@@ -905,6 +949,7 @@
       "nameEn": "Monument to the Great Fire of London",
       "desc": "עמוד אבן שנבנה לזכר השריפה הגדולה של 1666, ובתוכו גרם מדרגות לולייני אל תצפית פתוחה. עומד ממש במקום שבו פרצה השריפה, בלב הסיטי.",
       "area": "city",
+      "hood": "the-city",
       "interests": [
         "views",
         "royal"
@@ -924,6 +969,7 @@
       "nameEn": "St Dunstan in the East",
       "desc": "חורבות כנסייה שנהרסה בהפצצות מלחמת העולם השנייה, שהוסבו לגן ציבורי קטן שבו צמחייה מטפסת על הקשתות. מוסתר בסמטה בין מגדלי הסיטי למצודת לונדון.",
       "area": "city",
+      "hood": "the-city",
       "interests": [
         "parks",
         "street"
@@ -943,6 +989,7 @@
       "nameEn": "Bank of England Museum",
       "desc": "מוזיאון שמסביר איך עובד הכסף בבריטניה, ומאפשר להרים מטיל זהב אמיתי. נמצא בתוך מתחם הבנק המרכזי, בצומת המרכזי של הסיטי.",
       "area": "city",
+      "hood": "the-city",
       "interests": [
         "museums",
         "kids"
@@ -962,6 +1009,7 @@
       "nameEn": "Guildhall and Roman Amphitheatre",
       "desc": "אולם העירייה ההיסטורי של הסיטי, ומתחתיו שרידי האמפיתאטרון הרומי של לונדיניום שהתגלו בחפירות. נמצא צפונית לקתדרלת סנט פול.",
       "area": "city",
+      "hood": "the-city",
       "interests": [
         "museums",
         "royal"
@@ -981,6 +1029,7 @@
       "nameEn": "Barbican Centre",
       "desc": "מתחם תרבות ומגורים ענק בסגנון ברוטליסטי, עם מסדרונות מוגבהים, בריכות מים וחממה טרופית. נחשב לאחד המבנים השנויים במחלוקת והמצולמים בלונדון.",
       "area": "city",
+      "hood": "the-city",
       "interests": [
         "street",
         "museums"
@@ -1001,6 +1050,7 @@
       "nameEn": "St Katharine Docks",
       "desc": "מרינה שקטה עם יאכטות, מסעדות ומחסנים היסטוריים שהוסבו, ממש ליד גשר המגדלים. מקום מנוחה טבעי אחרי ביקור במצודת לונדון.",
       "area": "city",
+      "hood": "tower",
       "interests": [
         "food",
         "street"
@@ -1020,6 +1070,7 @@
       "nameEn": "The Postal Museum and Mail Rail",
       "desc": "מוזיאון שמספר את סיפור הדואר הבריטי, ולצידו נסיעה ברכבת התת קרקעית הזעירה ששינעה מכתבים מתחת ללונדון. נמצא בקלרקנוול, צפונית לסיטי.",
       "area": "city",
+      "hood": "the-city",
       "interests": [
         "museums",
         "kids"
@@ -1039,6 +1090,7 @@
       "nameEn": "Imperial War Museum",
       "desc": "מוזיאון על מלחמות המאה העשרים והשפעתן על החברה, ובו תערוכת שואה קבועה ומקיפה. נמצא דרומית לנהר, באזור למבת׳, ובחזיתו שני תותחי ענק.",
       "area": "southbank",
+      "hood": "southbank",
       "interests": [
         "museums",
         "royal"
@@ -1059,6 +1111,7 @@
       "nameEn": "HMS Belfast",
       "desc": "סיירת מלחמה בריטית מתקופת מלחמת העולם השנייה, שעוגנת בתמזה ופתוחה לביקור על כל תשעת סיפוניה. עוגנת בין גשר לונדון לגשר המגדלים.",
       "area": "southbank",
+      "hood": "borough",
       "interests": [
         "museums",
         "kids"
@@ -1078,6 +1131,7 @@
       "nameEn": "Shakespeare's Globe",
       "desc": "שחזור מדויק של תיאטרון הגלוב מהמאה השש עשרה, בנוי מעץ ופתוח לשמיים. עומד על גדת התמזה, במרחק קצר מהטייט מודרן.",
       "area": "southbank",
+      "hood": "southbank",
       "interests": [
         "royal",
         "museums"
@@ -1097,6 +1151,7 @@
       "nameEn": "Southwark Cathedral",
       "desc": "אחת הכנסיות הוותיקות בלונדון, עם חלקים מהתקופה הגותית, שמוקפת היום בבנייני זכוכית. נמצאת ממש בכניסה לשוק בורו.",
       "area": "southbank",
+      "hood": "borough",
       "interests": [
         "royal"
       ],
@@ -1115,6 +1170,7 @@
       "nameEn": "Leake Street Arches",
       "desc": "מנהרה שבה ציור על הקירות מותר באופן חוקי, ולכן היצירות מתחלפות כמעט מדי יום. עוברת מתחת לתחנת ווטרלו, דקות הליכה מהלונדון איי.",
       "area": "southbank",
+      "hood": "southbank",
       "interests": [
         "street"
       ],
@@ -1133,6 +1189,7 @@
       "nameEn": "Old Operating Theatre Museum",
       "desc": "חדר ניתוחים מהמאה התשע עשרה, מלפני עידן ההרדמה, ששרד בעליית הגג של כנסייה. נמצא ממש ליד תחנת גשר לונדון.",
       "area": "southbank",
+      "hood": "borough",
       "interests": [
         "museums"
       ],
@@ -1151,6 +1208,7 @@
       "nameEn": "Sea Life London Aquarium",
       "desc": "אקווריום גדול עם מנהרת כרישים ומדור פינגווינים, בתוך מבנה העירייה הישן. נמצא ממש ליד הלונדון איי על גדת התמזה.",
       "area": "southbank",
+      "hood": "southbank",
       "interests": [
         "kids"
       ],
@@ -1169,6 +1227,7 @@
       "nameEn": "The Design Museum",
       "desc": "מוזיאון המוקדש לעיצוב תעשייתי, אופנה ואדריכלות, בתוך מבנה עם גג מעוגל דרמטי. יושב בקצה הולנד פארק, מערבית לקנזינגטון.",
       "area": "kensington",
+      "hood": "kensington",
       "interests": [
         "museums"
       ],
@@ -1188,6 +1247,7 @@
       "nameEn": "Holland Park and Kyoto Garden",
       "desc": "פארק שקט עם גן יפני ובו מפל ובריכת דגים, וטווסים שמסתובבים חופשי בשבילים. נמצא מערבית לקנזינגטון, הרחק ממסלולי התיירים.",
       "area": "kensington",
+      "hood": "kensington",
       "interests": [
         "parks"
       ],
@@ -1206,6 +1266,7 @@
       "nameEn": "Harrods",
       "desc": "חנות הכולבו המפורסמת בלונדון, עם אולמות מזון מעוטרים ותאורת לילה שהפכה לסמל. נמצאת בנייטסברידג׳, בין הייד פארק לדרום קנזינגטון.",
       "area": "kensington",
+      "hood": "knightsbridge",
       "interests": [
         "food",
         "street"
@@ -1225,6 +1286,7 @@
       "nameEn": "Royal Albert Hall",
       "desc": "אולם הקונצרטים המעגלי המפורסם של לונדון, שנבנה לזכר הנסיך אלברט. עומד מול אנדרטת אלברט בקצה הדרומי של הייד פארק, ליד מוזיאוני קנזינגטון.",
       "area": "kensington",
+      "hood": "south-kensington",
       "interests": [
         "royal",
         "museums"
@@ -1244,6 +1306,7 @@
       "nameEn": "The British Library",
       "desc": "הספרייה הלאומית של בריטניה, ובגלריה שלה מוצגים כתבי יד נדירים, מגילות עתיקות וטיוטות מקוריות. נמצאת ליד תחנת קינגס קרוס.",
       "area": "camden",
+      "hood": "kings-cross",
       "interests": [
         "museums"
       ],
@@ -1263,6 +1326,7 @@
       "nameEn": "Wellcome Collection",
       "desc": "מוזיאון שמחבר בין רפואה, מדע ואמנות, עם תצוגות על הגוף והנפש. נמצא ברחוב יוסטון, ליד תחנת יוסטון סקוור.",
       "area": "camden",
+      "hood": "kings-cross",
       "interests": [
         "museums"
       ],
@@ -1281,6 +1345,7 @@
       "nameEn": "The Sherlock Holmes Museum",
       "desc": "שחזור של דירת הבלש הבדיוני ברחוב בייקר 221ב, מסודרת כמו בסיפורים. נמצא ברחוב בייקר, ליד ריג׳נטס פארק.",
       "area": "camden",
+      "hood": "marylebone",
       "interests": [
         "museums"
       ],
@@ -1299,6 +1364,7 @@
       "nameEn": "Madame Tussauds London",
       "desc": "מוזיאון בובות השעווה הוותיק בעולם, עם דמויות מפורסמות מהיסטוריה, קולנוע וספורט. נמצא ברחוב בייקר, ליד מוזיאון שרלוק הולמס.",
       "area": "camden",
+      "hood": "marylebone",
       "interests": [
         "kids"
       ],
@@ -1317,6 +1383,7 @@
       "nameEn": "Hampstead Heath",
       "desc": "שטח פתוח וגדול בצפון לונדון, יותר טבע פראי מפארק מטופח, ובראשו נקודת תצפית על קו הרקיע של העיר. גובל בשכונת המפסטד.",
       "area": "camden",
+      "hood": "hampstead",
       "interests": [
         "parks",
         "views"
@@ -1336,6 +1403,7 @@
       "nameEn": "Kenwood House",
       "desc": "אחוזה לבנה מהמאה השמונה עשרה בקצה המפסטד הית׳, ובתוכה אוסף ציורים הכולל יצירות של רמברנדט ורנואר. הכניסה לבית ולגנים אינה כרוכה בתשלום.",
       "area": "camden",
+      "hood": "hampstead",
       "interests": [
         "museums",
         "parks",
@@ -1356,6 +1424,7 @@
       "nameEn": "Highgate Cemetery",
       "desc": "בית קברות ויקטוריאני שהצמחייה השתלטה עליו, עם מצבות מעוטרות וקבריהם של קרל מרקס ואישים נוספים. נמצא בצפון לונדון, ליד המפסטד הית׳.",
       "area": "camden",
+      "hood": "highgate",
       "interests": [
         "royal",
         "parks"
@@ -1375,6 +1444,7 @@
       "nameEn": "Coal Drops Yard",
       "desc": "מחסני פחם היסטוריים שהוסבו למתחם חנויות ומסעדות על גדת התעלה, עם מזרקות רחוב שילדים משחקים בהן. נמצא מאחורי תחנת קינגס קרוס.",
       "area": "camden",
+      "hood": "kings-cross",
       "interests": [
         "food",
         "street"
@@ -1394,6 +1464,7 @@
       "nameEn": "Little Venice",
       "desc": "מפגש תעלות עם סירות מגורים צבעוניות, בתי קפה צפים ושבילי גרירה שקטים. נמצאת מערבית לריג׳נטס פארק, באזור מיידה וייל.",
       "area": "camden",
+      "hood": "little-venice",
       "interests": [
         "parks",
         "street"
@@ -1411,8 +1482,9 @@
       "id": "spitalfields-market",
       "name": "שוק ספיטלפילדס",
       "nameEn": "Old Spitalfields Market",
-      "desc": "שוק מקורה היסטורי עם דוכני עיצוב, וינטג׳ ואוכל, מוקף במסעדות. נמצא בין הסיטי לשורדיטש, ליד תחנת ליברפול סטריט.",
+      "desc": "שוק מקורה היסטורי עם דוכני עיצוב, וינטג׳ ואוכל, מוקף במסעדות. נמצא בין הסיטי לשורדיץ', ליד תחנת ליברפול סטריט.",
       "area": "shoreditch",
+      "hood": "shoreditch",
       "interests": [
         "food",
         "street"
@@ -1430,8 +1502,9 @@
       "id": "columbia-road",
       "name": "שוק הפרחים קולומביה רוד",
       "nameEn": "Columbia Road Flower Market",
-      "desc": "רחוב שלם שמתמלא בדוכני פרחים וצמחים, עם חנויות קטנות ובתי קפה משני הצדדים. נמצא מצפון לשורדיטש, ופועל בימי ראשון בלבד.",
+      "desc": "רחוב שלם שמתמלא בדוכני פרחים וצמחים, עם חנויות קטנות ובתי קפה משני הצדדים. נמצא מצפון לשורדיץ', ופועל בימי ראשון בלבד.",
       "area": "shoreditch",
+      "hood": "shoreditch",
       "interests": [
         "food",
         "street"
@@ -1449,8 +1522,9 @@
       "id": "museum-of-home",
       "name": "מוזיאון הבית",
       "nameEn": "Museum of the Home",
-      "desc": "מוזיאון שמציג איך נראו בתים בבריטניה לאורך ארבע מאות שנה, חדר אחרי חדר. נמצא בהוקסטון, מצפון לשורדיטש.",
+      "desc": "מוזיאון שמציג איך נראו בתים בבריטניה לאורך ארבע מאות שנה, חדר אחרי חדר. נמצא בהוקסטון, מצפון לשורדיץ'.",
       "area": "shoreditch",
+      "hood": "shoreditch",
       "interests": [
         "museums"
       ],
@@ -1469,6 +1543,7 @@
       "nameEn": "Whitechapel Gallery",
       "desc": "גלריה היסטורית לאמנות עכשווית, שהציגה בעבר יוצרים גדולים לפני שהתפרסמו. נמצאת בוייטצ׳אפל, במרחק הליכה מבריק ליין.",
       "area": "shoreditch",
+      "hood": "whitechapel",
       "interests": [
         "museums",
         "street"
@@ -1489,6 +1564,7 @@
       "nameEn": "Dennis Severs' House",
       "desc": "בית מהמאה השמונה עשרה שמוצג כאילו המשפחה שגרה בו יצאה הרגע, עם אוכל על השולחן ונרות דולקים. הביקור נעשה בשקט מוחלט, וזו חוויה בפני עצמה.",
       "area": "shoreditch",
+      "hood": "shoreditch",
       "interests": [
         "museums",
         "royal"
@@ -1508,6 +1584,7 @@
       "nameEn": "Royal Observatory Greenwich",
       "desc": "המקום שבו נקבע קו האורך אפס ושעון גריניץ׳, עם תצוגות אסטרונומיה ופלנטריום. עומד על ראש הגבעה בפארק גריניץ׳, עם נוף לנהר ולמגדלי קנרי וורף.",
       "area": "greenwich",
+      "hood": "greenwich",
       "interests": [
         "museums",
         "views"
@@ -1527,6 +1604,7 @@
       "nameEn": "Cutty Sark",
       "desc": "ספינת מפרש מהמאה התשע עשרה ששימשה להובלת תה מסין, משומרת ומורמת כך שאפשר להלך גם מתחת לגוף שלה. עומדת ממש ליד תחנת הרכבת הקלה בגריניץ׳.",
       "area": "greenwich",
+      "hood": "greenwich",
       "interests": [
         "museums",
         "kids"
@@ -1546,6 +1624,7 @@
       "nameEn": "Queen's House",
       "desc": "בית מלכותי מהמאה השבע עשרה עם גרם מדרגות לולייני מפורסם, ובתוכו אוסף ציורים ימיים. נמצא בין המוזיאון הימי לפארק גריניץ׳.",
       "area": "greenwich",
+      "hood": "greenwich",
       "interests": [
         "museums",
         "royal"
@@ -1565,6 +1644,7 @@
       "nameEn": "Greenwich Market",
       "desc": "שוק מקורה עם דוכני אוכל, מלאכת יד ועתיקות, בלב המרכז ההיסטורי של גריניץ׳. נמצא דקות הליכה מהקאטי סארק ומהמוזיאון הימי.",
       "area": "greenwich",
+      "hood": "greenwich",
       "interests": [
         "food",
         "street"
@@ -1584,6 +1664,7 @@
       "nameEn": "Greenwich Foot Tunnel",
       "desc": "מנהרה להולכי רגל מתחילת המאה העשרים שעוברת מתחת לתמזה ומחברת את גריניץ׳ לגדה הצפונית. הכניסה אליה דרך ביתן כיפה מזכוכית ליד הקאטי סארק.",
       "area": "greenwich",
+      "hood": "greenwich",
       "interests": [
         "street",
         "views"
@@ -1603,6 +1684,7 @@
       "nameEn": "Richmond Park",
       "desc": "הפארק המלכותי הגדול בלונדון, שטח פתוח וענק שבו חיים עדרי אַיָּלִים חופשיים. נמצא בדרום מערב העיר, ונדרשת אליו נסיעה מהמרכז.",
       "area": "outer",
+      "hood": "richmond",
       "interests": [
         "parks",
         "views"
@@ -1622,6 +1704,7 @@
       "nameEn": "Windsor Castle",
       "desc": "הטירה המאוישת הוותיקה והגדולה בעולם, ומשמשת עד היום את בית המלוכה. נמצאת מחוץ ללונדון, ומגיעים אליה ברכבת מתחנת פדינגטון או ווטרלו.",
       "area": "outer",
+      "hood": "windsor",
       "interests": [
         "royal",
         "museums"
@@ -1641,6 +1724,7 @@
       "nameEn": "Wembley Stadium Tour",
       "desc": "סיור מאחורי הקלעים באצטדיון הלאומי של אנגליה, כולל חדרי ההלבשה, המנהרה והמדרגות אל הגביע. נמצא בצפון מערב לונדון.",
       "area": "outer",
+      "hood": "wembley",
       "interests": [
         "kids"
       ],
@@ -1659,6 +1743,7 @@
       "nameEn": "London Cable Car",
       "desc": "רכבל שחוצה את התמזה באוויר בין חצי האי גריניץ׳ לרויאל דוקס, עם נוף פתוח על מזרח לונדון. נקודת העלייה הנוחה היא ליד תחנת נורת׳ גריניץ׳.",
       "area": "outer",
+      "hood": "north-greenwich",
       "interests": [
         "views",
         "kids"
@@ -1678,6 +1763,7 @@
       "nameEn": "London Museum Docklands",
       "desc": "מוזיאון בתוך מחסן סחר היסטורי, שמספר את סיפור נמל לונדון ואת הקשר שלו לסחר העבדים. נמצא בקנרי וורף, במזרח העיר.",
       "area": "outer",
+      "hood": "docklands",
       "interests": [
         "museums"
       ],
@@ -1696,6 +1782,7 @@
       "nameEn": "Battersea Power Station",
       "desc": "תחנת כוח נטושה עם ארבע הארובות המפורסמות, שהוסבה למתחם חנויות, מסעדות ומשרדים. נמצאת על הגדה הדרומית של התמזה, עם תחנת רכבת תחתית משלה.",
       "area": "outer",
+      "hood": "battersea",
       "interests": [
         "street",
         "food"
@@ -1716,6 +1803,7 @@
       "nameEn": "Royal Air Force Museum London",
       "desc": "אוסף גדול של מטוסים היסטוריים בתוך האנגרים מקוריים, ממלחמת העולם הראשונה ועד ימינו. נמצא בקולינדייל, בצפון לונדון.",
       "area": "outer",
+      "hood": "colindale",
       "interests": [
         "museums",
         "kids"
