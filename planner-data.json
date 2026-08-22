@@ -969,7 +969,7 @@
       "lat": 51.54126,
       "lng": -0.14619,
       "precision": "exact",
-      "source": "nominatim/osm",
+      "source": "https://www.camdenmarket.com/visit",
       "checked": "2026-08"
     },
     {
@@ -5143,7 +5143,7 @@
       "tip": null,
       "image": null,
       "booking": null,
-      "source": "nominatim/osm",
+      "source": "https://www.camdenmarket.com/visit",
       "checked": "2026-08",
       "_review": [
         "audiences",
@@ -5206,7 +5206,9 @@
       "categories": [
         "show"
       ],
-      "attrs": [],
+      "attrs": [
+        "indoor"
+      ],
       "audiences": [],
       "lat": 51.54325,
       "lng": -0.15198,
@@ -5221,11 +5223,10 @@
       "tip": null,
       "image": null,
       "booking": null,
-      "source": "nominatim/osm",
+      "source": "https://www.roundhouse.org.uk/",
       "checked": "2026-08",
       "_review": [
         "audiences",
-        "attrs",
         "hours",
         "tube",
         "kids",
@@ -5326,7 +5327,9 @@
         "show",
         "bar"
       ],
-      "attrs": [],
+      "attrs": [
+        "indoor"
+      ],
       "audiences": [],
       "lat": 51.53475,
       "lng": -0.13816,
@@ -5341,11 +5344,10 @@
       "tip": null,
       "image": null,
       "booking": null,
-      "source": "nominatim/osm",
+      "source": "https://www.koko.co.uk/",
       "checked": "2026-08",
       "_review": [
         "audiences",
-        "attrs",
         "hours",
         "tube",
         "kids",
@@ -6072,7 +6074,10 @@
       "categories": [
         "restaurant"
       ],
-      "attrs": [],
+      "attrs": [
+        "indoor",
+        "step-free"
+      ],
       "audiences": [],
       "lat": 51.53612,
       "lng": -0.12552,
@@ -6083,11 +6088,51 @@
       "tube": null,
       "kids": null,
       "anchor": false,
+      "bookAhead": false,
+      "tip": null,
+      "image": null,
+      "booking": null,
+      "source": "https://www.dishoom.com/kings-cross/",
+      "checked": "2026-08",
+      "_review": [
+        "audiences",
+        "hours",
+        "tube",
+        "kids",
+        "priceBand",
+        "image",
+        "tip"
+      ]
+    },
+    {
+      "id": "boxpark-camden",
+      "name": "בוקספארק קמדן",
+      "nameEn": "BOXPARK Camden",
+      "desc": "מתחם אוכל ורטייל בשוק באק סטריט לשעבר, על קמדן היי סטריט. דוכני אוכל, חנויות ובר גג.",
+      "area": "camden",
+      "hood": "camden",
+      "interests": [],
+      "categories": [
+        "market",
+        "restaurant",
+        "shop"
+      ],
+      "attrs": [],
+      "audiences": [],
+      "lat": 51.53975,
+      "lng": -0.14301,
+      "precision": "approx",
+      "free": true,
+      "priceBand": null,
+      "hours": null,
+      "tube": null,
+      "kids": null,
+      "anchor": false,
       "bookAhead": null,
       "tip": null,
       "image": null,
       "booking": null,
-      "source": "nominatim/osm",
+      "source": "https://www.boxpark.co.uk/camden/",
       "checked": "2026-08",
       "_review": [
         "audiences",
