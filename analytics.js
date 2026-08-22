@@ -21,9 +21,10 @@
 
   מה נמדד בקריאה מפורשת מתוך העמודים:
       planner_start, planner_complete, planner_mode, route_created,
-      add_to_trip, place_open, kosher_place_open, search_query,
-      guide_search, checklist_open, checklist_category_done,
-      month_hub_open, whats_new_click, toc_jump
+      add_to_trip, add_day_to_trip, place_open, kosher_place_open,
+      search_query, guide_search, checklist_open, checklist_category_done,
+      month_hub_open, whats_new_click, toc_jump, navigation_click,
+      form_error
 
     מפת הכשרות ומצב סביבי במתכנן:
       map_open          פתיחת מפה, עם האזור ומספר המקומות בו
