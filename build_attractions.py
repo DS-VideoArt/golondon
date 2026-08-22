@@ -171,6 +171,7 @@ def main():
                     'price': tour.get('price'),
                     'currency': tour.get('currency'),
                     'duration': tour.get('duration'),
+                    'priceNote': tour.get('price_note'),
                 }
 
             entry = collections.OrderedDict([

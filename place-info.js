@@ -93,6 +93,7 @@
       '.pi-tour-price{display:flex;align-items:baseline;gap:8px;margin-bottom:8px;}',
       '.pi-tour-price .num{font-size:19px;font-weight:900;color:#201f2b!important;}',
       '.pi-tour-price .dur{font-size:12.5px;color:#858a9c!important;}',
+      '.pi-tour-note{font-size:12px;color:#858a9c!important;margin-bottom:10px;}',
       '.pi-tour-desc{font-size:13.5px;color:#55596b!important;line-height:1.7;}',
       '.pi-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#DC2626,#EA580C);color:#fff!important;font-weight:800;font-size:14px;padding:12px 20px;border-radius:11px;text-decoration:none!important;}',
       '.pi-cta:hover{opacity:.92;}',
@@ -202,6 +203,7 @@
         : '';
       tourEl.innerHTML =
         (priceHtml ? '<div class="pi-tour-price">' + priceHtml + '</div>' : '') +
+        (item.cta.priceNote ? '<div class="pi-tour-note">' + item.cta.priceNote + '</div>' : '') +
         '<div class="pi-tour-desc">' + (item.cta.desc || '') + '</div>';
     } else {
       tourEl.hidden = true;
