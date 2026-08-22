@@ -407,9 +407,9 @@
     <div class="area-video-h">🎥 רוצים לראות את האווירה?</div>
     <p class="area-video-s">חמש שניות מהרחובות של שורדיץ'. בלי קריינות, בלי מוזיקה.</p>
     <div class="area-video-frame">
-      <video src="images/posts/shoreditch-atmosphere.mp4"
+      <video data-src="images/posts/shoreditch-atmosphere.mp4"
              poster="images/posts/shoreditch-street-art.jpg"
-             muted playsinline loop autoplay preload="none"
+             muted playsinline loop preload="none"
              aria-label="סרטון אווירה קצר מרחובות שורדיץ'"></video>
     </div>
   </div>
@@ -688,5 +688,28 @@
 <script src="auto-link-places.js?v=3" defer></script>
 <script src="analytics.js?v=4" defer></script>
 <script src="toc.js?v=1" defer></script>
+<script>
+/*
+  סרטון האווירה נטען רק כשגוללים אליו.
+  בלי זה הדפדפן מוריד מגה וחצי בכל טעינת עמוד, גם למי שלא הגיע לשם,
+  וזה בדיוק סוג הדבר שמייקר עמוד במובייל בלי שאף אחד שם לב.
+  רכיב תבנית: כל עמוד אזור מקבל את זה כמו שהוא.
+*/
+(function () {
+  var v = document.querySelector('.area-video video[data-src]');
+  if (!v) return;
+  function load() {
+    if (v.src) return;
+    v.src = v.getAttribute('data-src');
+    var p = v.play();
+    if (p && p.catch) p.catch(function () { v.controls = true; });
+  }
+  if (!('IntersectionObserver' in window)) { load(); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { load(); io.disconnect(); } });
+  }, { rootMargin: '200px' });
+  io.observe(v);
+})();
+</script>
 </body>
 </html>
