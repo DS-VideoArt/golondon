@@ -373,6 +373,12 @@
     ensureMap();
     state.point = pt;
     state.method = method;
+    /*
+      כפתור האזור מבטיח "כל המקומות באזור". רדיוס ברירת המחדל צר מהאזור עצמו,
+      ולכן במיקוד אוטומטי פותחים בטווח שמכסה את כל האזור, אחרת המספר בכפתור
+      גדול מהמספר שמופיע בפועל.
+    */
+    if (method === 'area_default') state.radius = 2000;
     $('nb-controls').classList.add('is-on');
     if (anchorMarker) map.removeLayer(anchorMarker);
     /*
@@ -415,7 +421,14 @@
     var res = results();
 
     if (ring) map.removeLayer(ring);
-    ring = L.circle(state.point, { radius: state.radius, color: '#DC2626', weight: 1, opacity: .5, fillOpacity: .04 }).addTo(map);
+    /*
+      טבעת מרחק מסבירה "כל מה שקרוב אליכם". כשהעוגן הוא מרכז האזור ולא המשתמש,
+      והטווח מכסה ממילא את כל האזור, הטבעת רק מוסיפה רעש ורומזת על מיקום שאין.
+    */
+    var showRing = !(state.method === 'area_default' && ZONE && state.radius >= ZONE.radiusM);
+    ring = showRing
+      ? L.circle(state.point, { radius: state.radius, color: '#DC2626', weight: 1, opacity: .5, fillOpacity: .04 }).addTo(map)
+      : null;
 
     cluster.clearLayers(); markers = {};
     res.forEach(function (r) {
@@ -434,8 +447,17 @@
       return;
     }
 
-    var html = '<p class="nb-count">' + res.length + ' מקומות עד ' +
-      (state.radius < 1000 ? state.radius + ' מטר' : (state.radius / 1000) + ' ק״מ') + ' מכם</p><div class="nb-list">';
+    var radiusHe = state.radius < 1000 ? state.radius + ' מטר' : (state.radius / 1000) + ' ק״מ';
+    var countHe;
+    if (state.method === 'area_default') {
+      /* העוגן הוא מרכז האזור ולא המשתמש, ולכן אסור לכתוב כאן "מכם" */
+      countHe = (ZONE && state.radius >= ZONE.radiusM)
+        ? res.length + ' מקומות ב' + (ZONE.label || 'אזור')
+        : res.length + ' מקומות עד ' + radiusHe + ' ממרכז האזור';
+    } else {
+      countHe = res.length + ' מקומות עד ' + radiusHe + ' מכם';
+    }
+    var html = '<p class="nb-count">' + countHe + '</p><div class="nb-list">';
     res.forEach(function (r) {
       var p = r.p;
       var cats = (p.categories || []).slice(0, 2).map(function (c) { return CAT_HE[c] || c; }).join(' · ');
