@@ -142,3 +142,14 @@
 /utm.html                                      /utm                                       301!
 /whats-new-2026-08-17.html                     /whats-new-2026-08-17                      301!
 /whats-new.html                                /whats-new                                 301!
+
+# קבצים תפעוליים, חסומים מהגשה ציבורית
+/add_reel_text.py                              /404.html                                  404!
+/build_article.py                              /404.html                                  404!
+/build_attractions.py                          /404.html                                  404!
+/build_guides.py                               /404.html                                  404!
+/build_redirects.py                            /404.html                                  404!
+/build_search_index.py                         /404.html                                  404!
+/build_utm.py                                  /404.html                                  404!
+/build_whats_new.py                            /404.html                                  404!
+/whats_new_dedup.py                            /404.html                                  404!
