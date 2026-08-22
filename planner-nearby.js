@@ -397,6 +397,8 @@
       in_coverage: String(inZone(pt)),
       zone: ZONE ? ZONE.id : ''
     });
+    /* השבבים נבנו לפני שנקבעו הנקודה והטווח, ולכן הם נבנים מחדש כאן */
+    buildControls();
     render();
   }
 
