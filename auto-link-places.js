@@ -106,7 +106,21 @@
     }
   }
 
-  function processTextNode(node, matcher) {
+  /*
+    seen הוא מפת השמות שכבר קיבלו קישור בתוך אותו אזור סריקה.
+    ------------------------------------------------------------------
+    למה זה נדרש: במדריך שורדיץ' "בריק ליין" הופיע תשע עשרה פעמים,
+    וכל הופעה קיבלה קו מקווקו. קורא שרואה את אותו סימון חוזר שוב ושוב
+    מפסיק לראות אותו, וזה פוגע דווקא בקישורים שמופיעים פעם אחת.
+
+    ההיקף הוא לכל אזור סריקה בנפרד ולא לכל העמוד, וזה במכוון: בעמודי
+    קטגוריה כל כרטיס פוסט הוא .post-card-text נפרד, ושם קישור לאותו
+    מקום בשני כרטיסים שונים הוא התנהגות נכונה ולא כפילות.
+
+    הטקסט עצמו לא משתנה, רק העטיפה. לכן זה לא נוגע ב-SEO, והחלונית,
+    המדידה וההוספה למסלול ממשיכות לעבוד דרך ההופעה הראשונה.
+  */
+  function processTextNode(node, matcher, seen) {
     var text = node.nodeValue;
     matcher.re.lastIndex = 0;
     if (!matcher.re.test(text)) return;
@@ -115,28 +129,41 @@
     var frag = document.createDocumentFragment();
     var lastIndex = 0;
     var m;
+    var linked = false;
     while ((m = matcher.re.exec(text))) {
       if (m.index > lastIndex) frag.appendChild(document.createTextNode(text.slice(lastIndex, m.index)));
-      var entry = matcher.byName[m[0]];
-      var span = document.createElement('span');
-      span.className = 'gl-place-link';
-      span.setAttribute('role', 'button');
-      span.setAttribute('tabindex', '0');
-      span.textContent = m[0];
-      span.addEventListener('click', function () { openEntry(entry); });
-      span.addEventListener('keydown', function (ev) {
-        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openEntry(entry); }
-      });
-      frag.appendChild(span);
+      var name = m[0];
+      if (seen[name]) {
+        /* הופעה חוזרת, נשארת טקסט רגיל */
+        frag.appendChild(document.createTextNode(name));
+      } else {
+        seen[name] = 1;
+        linked = true;
+        frag.appendChild(makeLink(name, matcher.byName[name]));
+      }
       lastIndex = matcher.re.lastIndex;
     }
+    if (!linked && !lastIndex) return;   /* לא נוצר כלום, לא נוגעים בצומת */
     if (lastIndex < text.length) frag.appendChild(document.createTextNode(text.slice(lastIndex)));
     node.parentNode.replaceChild(frag, node);
   }
 
+  function makeLink(name, entry) {
+    var span = document.createElement('span');
+    span.className = 'gl-place-link';
+    span.setAttribute('role', 'button');
+    span.setAttribute('tabindex', '0');
+    span.textContent = name;
+    span.addEventListener('click', function () { openEntry(entry); });
+    span.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openEntry(entry); }
+    });
+    return span;
+  }
+
   var SKIP_TAGS = { SCRIPT: 1, STYLE: 1, A: 1, BUTTON: 1, TEXTAREA: 1, INPUT: 1, SELECT: 1 };
 
-  function walk(root, matcher) {
+  function walk(root, matcher, seen) {
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode: function (node) {
         var p = node.parentElement;
@@ -151,7 +178,7 @@
     var nodes = [];
     var n;
     while ((n = walker.nextNode())) nodes.push(n);
-    nodes.forEach(function (node) { processTextNode(node, matcher); });
+    nodes.forEach(function (node) { processTextNode(node, matcher, seen); });
   }
 
   var TARGET_SELECTOR = '.content, .post-card-text';
@@ -160,7 +187,7 @@
     document.querySelectorAll(TARGET_SELECTOR).forEach(function (el) {
       if (el.__glScanned) return;
       el.__glScanned = true;
-      walk(el, matcher);
+      walk(el, matcher, {});   /* מפה חדשה לכל אזור סריקה */
     });
   }
 

@@ -216,6 +216,60 @@
   }
 
   /*
+    "הוסיפו את היום המושלם", לחיצה אחת
+    ==================================
+    קודם המשתמש היה צריך ללחוץ פלוס על כל עצירה בנפרד, וזה הפך את
+    ההשראה למשימה. הכפתור הזה מוסיף את כל היום בבת אחת.
+
+    הכפתורים הבודדים נשארים במקומם בכוונה, למי שרוצה רק מקום אחד.
+    זה רכיב תבנית: כל עמוד אזור מקבל אותו על ידי הוספת data-pday-add
+    עם רשימת המזהים, בלי שורת קוד נוספת.
+  */
+  function wirePerfectDay() {
+    var els = document.querySelectorAll('[data-pday-add]');
+    for (var i = 0; i < els.length; i++) {
+      (function (btn) {
+        var raw = (btn.getAttribute('data-pday-add') || '').split(',');
+        var area = btn.getAttribute('data-pday-area') || '';
+        /* מזהה שאין לו רשומה במאגר לא ייכנס, כדי שהמונה לא ישקר */
+        var list = raw.map(function (x) { return x.trim(); })
+                      .filter(function (x) { return x && DATA[x]; });
+        if (!list.length) { btn.style.display = 'none'; return; }
+
+        var label = btn.textContent.trim();
+
+        function paint() {
+          var missing = list.filter(function (id) { return !has(id); });
+          if (missing.length) {
+            btn.textContent = label;
+            btn.classList.remove('is-done');
+            btn.disabled = false;
+          } else {
+            btn.textContent = '✓ כל היום נמצא במסלול שלכם';
+            btn.classList.add('is-done');
+            btn.disabled = true;
+          }
+        }
+
+        btn.addEventListener('click', function () {
+          var added = 0;
+          list.forEach(function (id) { if (add(id, 'perfect_day_all')) added++; });
+          if (window.glTrack) {
+            glTrack('add_day_to_trip', {
+              area: area, stops: list.length, added: added,
+              source_component: 'perfect_day_all'
+            });
+          }
+          paint();
+        });
+
+        document.addEventListener('gl:tray-change', paint);
+        paint();
+      })(els[i]);
+    }
+  }
+
+  /*
     חלונית המקום. place-info.js משדר אירוע בכל פתיחה, ואנחנו משתילים
     את הפעולה לצד כפתור ההזמנה הקיים. אם למקום אין רשומה במאגר המרכזי,
     לא מוצג כלום, וזה המצב אצל מקומות שמגיעים מקבצים אחרים.
@@ -248,6 +302,7 @@
         buildPill();
         wireDataPlace();
         wireExplicit();
+        wirePerfectDay();
         wireModal();
         refreshAll();
       })

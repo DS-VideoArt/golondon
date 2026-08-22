@@ -113,15 +113,49 @@
     .back-cta { text-align: center; margin-top: 34px; }
     .back-cta a { display: inline-flex; align-items: center; gap: 8px; border: 1px solid; padding: 12px 24px; border-radius: 10px; font-weight: 700; font-size: 14px; }
     /* עובדות מהירות, לפני תוכן העניינים */
-    .quick-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 1px;
-      border: 1px solid rgba(32,31,43,0.10); border-radius: 14px; overflow: hidden; margin: 24px 0 30px;
-      background: rgba(32,31,43,0.10); box-shadow: 0 1px 2px rgba(16,24,40,0.05), 0 4px 14px rgba(16,24,40,0.05); }
-    .qf { display: flex; align-items: flex-start; gap: 10px; padding: 14px 16px; background: #fff; }
-    .qf-e { font-size: 17px; line-height: 1.4; flex-shrink: 0; }
+    /*
+      הוקטן במכוון. קודם זה היה בלוק של חמישה כרטיסים גדולים שתפס כמעט
+      מסך שלם ודחף את התוכן למטה. זה מידע עזר, לא הכותרת של העמוד,
+      ולכן הוא יושב עכשיו בשורה אחת דקה עם הפרדה קלה בין הפריטים.
+    */
+    .quick-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr)); gap: 1px;
+      border: 1px solid rgba(32,31,43,0.10); border-radius: 11px; overflow: hidden; margin: 18px 0 24px;
+      background: rgba(32,31,43,0.09); box-shadow: 0 1px 2px rgba(16,24,40,0.04); }
+    .qf { display: flex; align-items: center; gap: 8px; padding: 9px 12px; background: #fff; }
+    .qf-e { font-size: 14px; line-height: 1.3; flex-shrink: 0; opacity: .85; }
     .qf-t { min-width: 0; display: block; }
-    .qf-k { display: block; font-size: 12px; font-weight: 700; letter-spacing: .02em;
-      margin-bottom: 1px; color: #55596b; }
-    .qf-v { display: block; font-size: 14.5px; font-weight: 800; line-height: 1.45; color: #201f2b; }
+    .qf-k { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: .02em;
+      margin-bottom: 0; color: #858a9c; }
+    .qf-v { display: block; font-size: 13px; font-weight: 800; line-height: 1.35; color: #201f2b; }
+
+    /*
+      תוכן עניינים דביק
+      =================
+      העמוד באורך 26 מסכים במובייל. תוכן עניינים שנגלל ונעלם אחרי מסך
+      אחד שווה לתוכן עניינים שאינו קיים. כאן הוא נדבק לראש המסך בגלילה,
+      אבל מתכווץ לשורה אחת עם גלילה אופקית פנימית, כדי שלא יגזול גובה.
+      toc.js לא שונה, רק העיצוב.
+    */
+    /*
+      toc.js מזריק את העיצוב שלו לתוך head בזמן ריצה, כלומר אחרי הבלוק
+      הזה. לכן הכללים כאן מקבלים סלקטור ספציפי יותר, .content .gl-toc,
+      אחרת הם יפסידו בקסקייד. שומר על הסגול של הרכיב ולא נלחם בו.
+    */
+    @media (max-width: 760px) {
+      .content nav.gl-toc { position: sticky; top: 0; z-index: 40;
+        margin: 14px -18px 20px; padding: 0; border-radius: 0;
+        border-inline: none; border-top: none;
+        background: rgba(255,255,255,0.96); backdrop-filter: blur(10px);
+        box-shadow: 0 1px 0 rgba(124,58,237,0.16), 0 4px 14px rgba(16,24,40,0.07); }
+      .content nav.gl-toc .gl-toc-h { display: none; }
+      .content nav.gl-toc .gl-toc-list { flex-wrap: nowrap; gap: 7px;
+        overflow-x: auto; scrollbar-width: none; padding: 9px 18px;
+        -webkit-overflow-scrolling: touch; }
+      .content nav.gl-toc .gl-toc-list::-webkit-scrollbar { display: none; }
+      .content nav.gl-toc .gl-toc-list li { flex: 0 0 auto; }
+      .content nav.gl-toc .gl-toc-list a { white-space: nowrap; font-size: 12.5px;
+        font-weight: 700; padding: 6px 13px; border-radius: 20px; }
+    }
 
     /* תמונות בגוף המדריך */
     .sh-fig { margin: 26px 0 8px; }
@@ -164,6 +198,94 @@
     .pday-go:hover { background: #B91C1C; border-color: #B91C1C; text-decoration: none !important; }
     .pday-note { font-size: 12.5px; color: #858a9c; margin: 10px 2px 0; line-height: 1.55; }
 
+    /*
+      פעולה בכותרת
+      ============
+      עד עכשיו הקריאה הראשונה לפעולה ישבה במסך 21 מתוך 26 במובייל, כלומר
+      מי שלא גלל את כל העמוד לא ידע בכלל שיש כאן כלי תכנון. שני הכפתורים
+      האלה מעבירים אותה למסך הראשון.
+
+      שניהם מצביעים על תשתית שכבר קיימת ולא על משהו חדש: הראשון על
+      אותה כתובת שהבלוק "יום מושלם" משתמש בה, והשני על מצב סביבי במתכנן.
+      זה רכיב תבנית, וכל אזור עתידי יקבל אותו עם המזהים שלו.
+    */
+    .hero-actions { display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 11px; margin-top: 22px; }
+    .hero-btn { display: inline-flex; align-items: center; justify-content: center;
+      gap: 9px; font-size: 15px; font-weight: 800; line-height: 1.2;
+      padding: 14px 24px; border-radius: 12px; text-decoration: none !important;
+      transition: background .16s, border-color .16s, transform .16s; }
+    .hero-btn.primary { background: #DC2626; border: 1px solid #DC2626; color: #fff !important;
+      box-shadow: 0 4px 16px rgba(220,38,38,0.34); }
+    .hero-btn.primary:hover { background: #B91C1C; border-color: #B91C1C; }
+    .hero-btn.ghost { background: rgba(255,255,255,0.15); color: #fff !important;
+      border: 1px solid rgba(255,255,255,0.42); backdrop-filter: blur(8px); }
+    .hero-btn.ghost:hover { background: rgba(255,255,255,0.26); border-color: rgba(255,255,255,0.6); }
+    .hero-btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+    /*
+      בחירת חוויה
+      ===========
+      השאלה הראשונה של מטייל היא לא "ספר לי על האזור" אלא "מה אני עושה בו".
+      שש הכניסות האלה עונות על זה מיד, וכל אחת פותחת יום מוכן במתכנן.
+
+      חשוב: אלה לא פילטרים חדשים. הקבוצות תואמות אחת לאחת את הקבוצות
+      שכבר קיימות ב-planner-nearby.js, וכל יום בנוי ממזהים שכבר יושבים
+      ב-planner-data.json. לא נבנתה כאן שום מערכת סיווג נוספת.
+    */
+    .exp { margin: 26px 0 30px; }
+    .exp-h { font-size: 17px; font-weight: 900; color: #201f2b; margin-bottom: 3px; }
+    .exp-s { font-size: 13.8px; color: #55596b; line-height: 1.6; margin-bottom: 15px; }
+    .exp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(158px, 1fr)); gap: 10px; }
+    .exp-c { display: flex; flex-direction: column; gap: 3px; text-align: right;
+      border: 1px solid rgba(32,31,43,0.11); border-radius: 13px; padding: 14px 15px;
+      background: #fff; text-decoration: none !important;
+      box-shadow: 0 1px 2px rgba(16,24,40,0.04);
+      transition: border-color .16s, box-shadow .16s, transform .16s; }
+    .exp-c:hover { border-color: rgba(220,38,38,0.4);
+      box-shadow: 0 4px 16px rgba(16,24,40,0.09); transform: translateY(-2px);
+      text-decoration: none !important; }
+    .exp-c:focus-visible { outline: 2px solid #DC2626; outline-offset: 2px; }
+    .exp-e { font-size: 21px; line-height: 1.2; }
+    .exp-t { font-size: 14.8px; font-weight: 800; color: #201f2b; }
+    .exp-d { font-size: 12.5px; font-weight: 500; color: #55596b; line-height: 1.5; }
+
+    /* נקודת פעולה בתוך גוף המדריך, כדי שהקריאה לא תישאר קריאה בלבד */
+    .inline-cta { display: flex; align-items: center; justify-content: space-between;
+      gap: 14px; flex-wrap: wrap; border: 1px dashed rgba(220,38,38,0.34);
+      border-radius: 13px; padding: 15px 18px; margin: 24px 0;
+      background: rgba(220,38,38,0.04); }
+    .inline-cta-t { font-size: 14.5px; font-weight: 800; color: #201f2b; }
+    .inline-cta-s { font-size: 13px; color: #55596b; line-height: 1.55; margin-top: 2px; }
+    .inline-cta a { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+      font-size: 13.5px; font-weight: 800; padding: 10px 18px; border-radius: 10px;
+      border: 1px solid #DC2626; background: #fff; color: #DC2626 !important;
+      text-decoration: none !important; transition: background .16s, color .16s; }
+    .inline-cta a:hover { background: #DC2626; color: #fff !important; }
+
+    /* הוספת כל היום בלחיצה אחת, במקום חמש הוספות נפרדות */
+    .pday-actions { display: flex; flex-direction: column; gap: 9px; }
+    .pday-all { display: flex; align-items: center; justify-content: center; gap: 9px;
+      background: #DC2626; border: 1px solid #DC2626; color: #fff !important;
+      font-size: 15px; font-weight: 800; padding: 14px 22px; border-radius: 11px;
+      cursor: pointer; font-family: inherit; line-height: 1.2;
+      transition: background .16s, border-color .16s; }
+    .pday-all:hover { background: #B91C1C; border-color: #B91C1C; }
+    .pday-all:focus-visible { outline: 2px solid #DC2626; outline-offset: 2px; }
+    .pday-all.is-done { background: #15803D; border-color: #15803D; }
+    .pday-go.secondary { background: #fff; border-color: rgba(32,31,43,0.16);
+      color: #201f2b !important; font-size: 13.8px; padding: 11px 20px; }
+    .pday-go.secondary:hover { background: #F4F2ED; border-color: rgba(32,31,43,0.26); }
+
+    /* סרטון אווירה, רכיב תבנית לכל אזור */
+    .area-video { margin: 28px 0 30px; }
+    .area-video-h { font-size: 16.5px; font-weight: 900; color: #201f2b; margin-bottom: 3px; }
+    .area-video-s { font-size: 13.5px; color: #55596b; line-height: 1.6; margin-bottom: 13px; }
+    .area-video-frame { position: relative; width: 100%; aspect-ratio: 16/9;
+      border-radius: 15px; overflow: hidden; background: #0b1220; }
+    .area-video-frame iframe, .area-video-frame video { position: absolute; inset: 0;
+      width: 100%; height: 100%; border: 0; display: block; object-fit: cover; }
+
     @media (max-width: 560px) {
       .page-hero h1 { font-size: 25px; }
       .content { padding: 24px 18px 34px; }
@@ -182,6 +304,17 @@
       .sh-cta a { justify-content: center; }
       .pday { padding: 17px 16px; }
       .pday-list li { grid-template-columns: 48px 1fr; gap: 10px; }
+
+      /* הכפתורים נפרסים לרוחב מלא, כי שני כפתורים זה לצד זה ב-375 יוצאים צרים */
+      .hero-actions { flex-direction: column; gap: 9px; margin-top: 18px; }
+      .hero-btn { width: 100%; font-size: 14.5px; padding: 13px 18px; }
+      .exp-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .exp-c { padding: 12px 12px; }
+      .exp-t { font-size: 13.8px; }
+      .exp-d { display: none; }        /* במובייל האמוג'י והכותרת מספיקים */
+      .inline-cta { flex-direction: column; align-items: stretch; padding: 14px 15px; }
+      .inline-cta a { justify-content: center; }
+      .area-video-frame { border-radius: 12px; }
     }
   </style>
   <link rel="manifest" href="manifest.json" />
@@ -215,6 +348,13 @@
   <span class="tag">📍 מזרח לונדון</span>
   <h1>שורדיץ' בלונדון, המדריך המלא לאזור הכי צבעוני בעיר</h1>
   <p>אמנות רחוב שמתחלפת כל חודש, שלושה שווקים גדולים ואוכל שאין כמותו במרכז</p>
+  <div class="hero-actions">
+    <a class="hero-btn primary"
+       href="planner.html?day=columbia-road,brick-lane,shoreditch-art,spitalfields-market,tower-bridge&amp;from=shoreditch_hero"
+       data-gl-cta="hero_primary">🗺️ תכננו יום מושלם בשורדיץ'</a>
+    <a class="hero-btn ghost" href="planner.html?mode=nearby&amp;from=shoreditch_hero"
+       data-gl-cta="hero_secondary">📍 גלו את כל המקומות באזור</a>
+  </div>
 </div>
 
 <div class="breadcrumb">
@@ -224,12 +364,54 @@
 <div class="content">
   <p class="lead">שורדיץ' הוא האזור שבו לונדון מפסיקה להצטלם ומתחילה לחיות. אין כאן ארמון, אין כאן משמר מלכותי, ואף אוטובוס תיירים לא עוצר בכיכר המרכזית, כי אין כיכר מרכזית. יש קירות מצוירים שמתחלפים, שווקים שפועלים בימים מסוימים בלבד, ורחוב אחד שבו אפשר לאכול בייגל בשלוש לפנות בוקר.</p>
 
+  <div class="exp">
+    <div class="exp-h">איך תרצו לחוות את שורדיץ'?</div>
+    <p class="exp-s">בחרו כיוון וקבלו יום מוכן במתכנן, שאפשר לגרור, להחליף ולהוסיף עליו.</p>
+    <div class="exp-grid">
+      <a class="exp-c" data-gl-cta="experience" data-exp="street-art"
+         href="planner.html?day=shoreditch-art,rivington-street-art,redchurch-street,hanbury-street-art&amp;from=shoreditch_exp_art">
+        <span class="exp-e">🎨</span><span class="exp-t">אמנות רחוב</span>
+        <span class="exp-d">הרחובות עם הריכוז הגבוה ביותר של קירות</span></a>
+      <a class="exp-c" data-gl-cta="experience" data-exp="food"
+         href="planner.html?day=beigel-bake,dishoom-shoreditch,brick-lane,ozone-coffee&amp;from=shoreditch_exp_food">
+        <span class="exp-e">🍴</span><span class="exp-t">אוכל וקפה</span>
+        <span class="exp-d">מבייגל בשלוש לפנות בוקר ועד קפה נחשב</span></a>
+      <a class="exp-c" data-gl-cta="experience" data-exp="markets"
+         href="planner.html?day=columbia-road,brick-lane,spitalfields-market,petticoat-lane&amp;from=shoreditch_exp_markets">
+        <span class="exp-e">🛍️</span><span class="exp-t">שווקים וקניות</span>
+        <span class="exp-d">שלושת השווקים הגדולים ביום אחד</span></a>
+      <a class="exp-c" data-gl-cta="experience" data-exp="photo"
+         href="planner.html?day=shoreditch-art,hanbury-street-art,fournier-street,old-truman-brewery&amp;from=shoreditch_exp_photo">
+        <span class="exp-e">📸</span><span class="exp-t">צילום</span>
+        <span class="exp-d">מסלול בוקר מוקדם, לפני שהרחוב מתמלא</span></a>
+      <a class="exp-c" data-gl-cta="experience" data-exp="families"
+         href="planner.html?day=young-va,spitalfields-city-farm,spitalfields-market&amp;from=shoreditch_exp_family">
+        <span class="exp-e">👨‍👩‍👧</span><span class="exp-t">משפחות</span>
+        <span class="exp-d">מוזיאון, חווה וסביבה מקורה לגיבוי</span></a>
+      <a class="exp-c" data-gl-cta="experience" data-exp="night"
+         href="planner.html?day=dishoom-shoreditch,nightjar,village-underground,old-blue-last&amp;from=shoreditch_exp_night">
+        <span class="exp-e">🌙</span><span class="exp-t">ערב וחיי לילה</span>
+        <span class="exp-d">האזור אחרי שהשווקים נסגרים</span></a>
+    </div>
+  </div>
+
   <div class="quick-facts">
     <div class="qf"><span class="qf-e">📍</span><span class="qf-t"><span class="qf-k">אזור</span><span class="qf-v">מזרח לונדון, אזור תחבורה 1</span></span></div>
     <div class="qf"><span class="qf-e">⏱️</span><span class="qf-t"><span class="qf-k">זמן מומלץ</span><span class="qf-v">חצי יום עד יום</span></span></div>
     <div class="qf"><span class="qf-e">👥</span><span class="qf-t"><span class="qf-k">מתאים ל</span><span class="qf-v">זוגות, משפחות וחובבי אוכל</span></span></div>
     <div class="qf"><span class="qf-e">🚇</span><span class="qf-t"><span class="qf-k">הגעה</span><span class="qf-v">Shoreditch High Street</span></span></div>
     <div class="qf"><span class="qf-e">⭐</span><span class="qf-t"><span class="qf-k">חזק במיוחד ב</span><span class="qf-v">אוכל, שווקים, אמנות רחוב</span></span></div>
+  </div>
+
+  <div class="area-video">
+    <div class="area-video-h">🎥 רוצים לראות את האווירה?</div>
+    <p class="area-video-s">חמש שניות מהרחובות של שורדיץ'. בלי קריינות, בלי מוזיקה.</p>
+    <div class="area-video-frame">
+      <video src="videos/areas/shoreditch-atmosphere.mp4"
+             poster="images/posts/shoreditch-street-art.jpg"
+             muted playsinline loop autoplay preload="none"
+             aria-label="סרטון אווירה קצר מרחובות שורדיץ'"></video>
+    </div>
   </div>
 
   <h2>מה זה שורדיץ' ולמה האזור הזה נראה אחרת</h2>
@@ -294,6 +476,12 @@
     <li><strong>מכוניות.</strong> ברחובות הצדדיים חונים רכבים ממש מול הקירות. בבוקר מוקדם יש פחות.</li>
   </ul>
   <div class="warning-box"><strong>שווה לדעת:</strong> חלק מהקירות נמצאים בשטח פרטי או בחצרות של עסקים. אם יש שער סגור, הוא סגור. ואל תצלמו אנשים מקומיים מקרוב בלי לשאול, במיוחד ברחובות המגורים סביב בריק ליין. וכן, כל זה בחינם, כמו עוד לא מעט דברים ב<a href="guide-attractions-free.html">מדריך האטרקציות ללא תשלום</a>.</div>
+  <div class="inline-cta">
+    <div><div class="inline-cta-t">אוהבים את מה שאתם קוראים?</div>
+      <div class="inline-cta-s">כל הקירות והרחובות שמופיעים כאן נמצאים במפה, עם מרחק מהמיקום שלכם.</div></div>
+    <a href="planner.html?mode=nearby&amp;from=shoreditch_art" data-gl-cta="inline_map">🗺️ פתחו את מפת שורדיץ'</a>
+  </div>
+
   <h2>🛍️ השווקים, ומתי כל אחד מהם באמת פתוח</h2>
   <figure class="sh-fig">
     <picture>
@@ -356,6 +544,12 @@
   <p>שורדיץ' הוא אחד המקומות שהובילו את תרבות הקפה של לונדון, ורמת הקפה כאן גבוהה. סביב רחוב Redchurch ורחוב Rivington יש ריכוז של בתי קפה עצמאיים קטנים שקולים אספרסו בעצמם. ארוחת בוקר במקומות האלה יוצאת בדרך כלל זולה יותר מבמלון, וטובה יותר.</p>
   <div class="warning-box"><strong>עדכון שחשוב לדעת:</strong> מתחם הקונטיינרים בוקספארק, שהופיע כמעט בכל מדריך ובכל סרטון על שורדיץ' מאז 2011, כבר לא פועל במיקום הזה. בעלי הקרקע לא חידשו את החוזה והמתחם פינה את השטח. אם ראיתם אותו ברשימה של אתר אחר, זה מידע ישן.</div>
 
+  <div class="inline-cta">
+    <div><div class="inline-cta-t">מצאתם מקום שאהבתם?</div>
+      <div class="inline-cta-s">לחיצה על שם מקום בטקסט פותחת אותו, ומשם אפשר להוסיף אותו למסלול ולהמשיך לקרוא.</div></div>
+    <a href="planner.html?from=shoreditch_food" data-gl-cta="inline_planner">➕ למסלול שלי</a>
+  </div>
+
   <h2>🍽️ סיורי אוכל באזור, והאם הם שווים את זה</h2>
   <p>שורדיץ' ובריק ליין הם אחד היעדים המבוקשים בלונדון לסיורי אוכל מודרכים, וזו הצעה שהגיונית יותר כאן מאשר ברוב האזורים האחרים בעיר. הסיבה פשוטה. באזור שבו האטרקציה היא רחובות ולא מבנים, מדריך שמכיר את המקום הוא ההבדל בין לראות דוכנים לבין להבין מה אתם אוכלים ולמה הוא נמצא כאן.</p>
   <p>סיור טיפוסי נמשך בין שעתיים וחצי לשלוש וחצי, כולל בין חמש לשמונה עצירות טעימה, ולרוב משלב את הסיפור ההיסטורי של הגירת הקהילות לאזור עם האוכל עצמו. המחירים בשוק נעים בדרך כלל בטווח רחב, ורוב הסיורים כוללים את כל הטעימות במחיר.</p>
@@ -410,10 +604,17 @@
       <li><span class="pday-t">13:15</span><span class="pday-n" data-trip-add="spitalfields-market" data-trip-src="perfect_day">שוק ספיטלפילדס<em>מקורה, מקום לשבת, וגם אם יורד גשם</em></span></li>
       <li><span class="pday-t">15:00</span><span class="pday-n" data-trip-add="tower-bridge" data-trip-src="perfect_day">גשר המגדלים<em>עשרים דקות הליכה דרומה, וסוגרים את היום על התמזה</em></span></li>
     </ol>
-    <a class="pday-go" href="planner.html?day=columbia-road,brick-lane,shoreditch-art,spitalfields-market,tower-bridge&amp;from=shoreditch">
-      פתחו את היום הזה במתכנן <i class="fas fa-arrow-left"></i>
-    </a>
-    <p class="pday-note">היום ייפתח מוכן לעריכה. אם כבר בניתם מסלול קודם, הוא לא יימחק והיום הזה יתווסף אליו.</p>
+    <div class="pday-actions">
+      <button type="button" class="pday-all"
+              data-pday-add="columbia-road,brick-lane,shoreditch-art,spitalfields-market,tower-bridge"
+              data-pday-area="shoreditch">
+        ⭐ הוסיפו את היום המושלם למסלול
+      </button>
+      <a class="pday-go secondary" href="planner.html?day=columbia-road,brick-lane,shoreditch-art,spitalfields-market,tower-bridge&amp;from=shoreditch">
+        או פתחו אותו ישירות במתכנן <i class="fas fa-arrow-left"></i>
+      </a>
+    </div>
+    <p class="pday-note">היום נוסף למסלול שלכם ואפשר להמשיך לגלוש. אם כבר בניתם מסלול קודם, הוא לא יימחק.</p>
   </div>
 
   <div class="highlight-box"><strong>🧭 כבר נמצאים באזור?</strong>
@@ -482,9 +683,9 @@
 <script src="install-prompt.js" defer></script>
 <script src="affiliate.js?v=2" defer></script>
 <script src="place-info.js?v=7" defer></script>
-<script src="trip-tray.js?v=2" defer></script>
+<script src="trip-tray.js?v=3" defer></script>
 <script src="kosher-places-modal.js?v=3" defer></script>
-<script src="auto-link-places.js?v=2" defer></script>
+<script src="auto-link-places.js?v=3" defer></script>
 <script src="analytics.js?v=4" defer></script>
 <script src="toc.js?v=1" defer></script>
 </body>
