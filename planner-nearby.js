@@ -230,11 +230,15 @@
 
   function buildShell() {
     var panel = $('panel-nearby');
+    /*
+      הניסוח שונה מאז שהמפה נפתחת ממורכזת. קודם הוא הסביר למה צריך
+      לבחור נקודה, ועכשיו המקומות כבר על המסך, אז הוא מסביר מה אפשר
+      לעשות איתם ומציע דיוק למי שנמצא שם בפועל.
+    */
     panel.innerHTML =
-      '<p class="nb-intro">מצב <b>סביבי</b> מיועד לרגע שבו אתם כבר בשטח. ' +
-        'בוחרים נקודה, ורואים מה יש סביבה בטווח הליכה, עם אפשרות להוסיף למסלול בלחיצה. ' +
-        '<b>הפיילוט פועל כרגע באזור ' + (ZONE ? ZONE.label : 'שורדיץ׳') + ' בלבד</b>, ' +
-        'האזור שבו המאגר שלנו כבר צפוף מספיק.</p>' +
+      '<p class="nb-intro">כל המקומות ש' + (ZONE ? ZONE.label : 'בשורדיץ׳') + ' שיש לנו במאגר, על המפה. ' +
+        'אפשר לסנן לפי סוג ומרחק, ולהוסיף כל מקום למסלול בלחיצה. ' +
+        '<b>נמצאים שם עכשיו?</b> בחרו את המיקום שלכם והמרחקים יחושבו ממנו.</p>' +
       '<div class="nb-start">' +
         '<button type="button" class="nb-btn" id="nb-geo"><i class="fas fa-location-arrow"></i> השתמשו במיקום שלי</button>' +
         '<button type="button" class="nb-btn" id="nb-pick"><i class="fas fa-map-pin"></i> בחרו נקודה על המפה</button>' +
@@ -371,8 +375,15 @@
     state.method = method;
     $('nb-controls').classList.add('is-on');
     if (anchorMarker) map.removeLayer(anchorMarker);
-    anchorMarker = L.circleMarker(pt, { radius: 8, color: '#DC2626', weight: 3, fillColor: '#fff', fillOpacity: 1 }).addTo(map);
-    map.setView(pt, 15);
+    /*
+      במיקוד אוטומטי אין "אתם כאן", יש מרכז אזור. סיכה אדומה במרכז
+      הייתה נקראת כמיקום של המשתמש, וזה שקר קטן שאין סיבה לספר.
+    */
+    if (method !== 'area_default') {
+      anchorMarker = L.circleMarker(pt, { radius: 8, color: '#DC2626', weight: 3, fillColor: '#fff', fillOpacity: 1 }).addTo(map);
+    }
+    /* מבט רחב יותר כשמציגים אזור שלם, וקרוב כשמדובר במיקום ממשי */
+    map.setView(pt, method === 'area_default' ? 14 : 15);
     setTimeout(function () { map.invalidateSize(); }, 60);
     track('location_selected', {
       source_component: 'nearby',
@@ -538,6 +549,24 @@
 
     loadVendor().then(function () {
       if (!built) buildShell();
+      /*
+        מיקוד אוטומטי על מרכז האזור
+        ===========================
+        קודם המשתמש שלחץ "גלו את כל המקומות באזור" נחת על מסך הסבר עם
+        שני כפתורים שדורשים ממנו מיקום, וראה אפס מקומות. הבטחנו גילוי
+        והגשנו טופס.
+
+        מרכז האזור והרדיוס כבר רשומים ב-places-taxonomy.json, כלומר
+        המערכת תמיד ידעה איפה זה. עכשיו היא פשוט מציגה את זה מיד.
+
+        "השתמשו במיקום שלי" נשאר בדיוק במקומו. ההבדל הוא שהוא הפך
+        מדרישה לאפשרות, ומי שבאמת עומד ברחוב עדיין מקבל את הדיוק המלא.
+
+        לא דורסים נקודה שהמשתמש כבר בחר.
+      */
+      if (!state.point && ZONE && ZONE.center) {
+        setPoint(ZONE.center.slice(), 'area_default');
+      }
       if (map) setTimeout(function () { map.invalidateSize(); }, 60);
     }).catch(function () {
       $('panel-nearby').innerHTML = '<div class="nb-empty">לא הצלחנו לטעון את המפה. נסו לרענן את העמוד.</div>';

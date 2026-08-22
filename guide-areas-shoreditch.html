@@ -249,6 +249,9 @@
     .exp-e { font-size: 21px; line-height: 1.2; }
     .exp-t { font-size: 14.8px; font-weight: 800; color: #201f2b; }
     .exp-d { font-size: 12.5px; font-weight: 500; color: #55596b; line-height: 1.5; }
+    /* מספר העצירות הופך הבטחה מעורפלת להתחייבות ברורה */
+    .exp-n { font-size: 11.5px; font-weight: 800; color: #DC2626; margin-top: 4px;
+      font-variant-numeric: tabular-nums; }
 
     /* נקודת פעולה בתוך גוף המדריך, כדי שהקריאה לא תישאר קריאה בלבד */
     .inline-cta { display: flex; align-items: center; justify-content: space-between;
@@ -276,6 +279,26 @@
     .pday-go.secondary { background: #fff; border-color: rgba(32,31,43,0.16);
       color: #201f2b !important; font-size: 13.8px; padding: 11px 20px; }
     .pday-go.secondary:hover { background: #F4F2ED; border-color: rgba(32,31,43,0.26); }
+
+    /*
+      הפירוט המלא, מקופל
+      ==================
+      קודם טבלת השעות ישבה מעל הבלוק והציגה מסלול אחר, שנגמר במקום אחר.
+      עכשיו היא מציגה בדיוק את אותו יום, ויושבת מתחת כפירוט למי שרוצה
+      את עמודת "מה עושים". המסר הראשון הוא היום המוכן, לא לוח הזמנים.
+    */
+    .pday-detail { margin-top: 16px; border-top: 1px solid rgba(32,31,43,0.10); padding-top: 4px; }
+    .pday-detail summary { cursor: pointer; font-size: 13.5px; font-weight: 800;
+      color: #55596b; padding: 10px 2px; list-style: none; display: flex;
+      align-items: center; gap: 8px; }
+    .pday-detail summary::-webkit-details-marker { display: none; }
+    .pday-detail summary::before { content: '▸'; font-size: 12px; transition: transform .18s; }
+    .pday-detail[open] summary::before { transform: rotate(-90deg); }
+    .pday-detail summary:hover { color: #DC2626; }
+    .pday-detail summary:focus-visible { outline: 2px solid #DC2626; outline-offset: 2px; border-radius: 5px; }
+    .pday-detail .table-wrap { margin-top: 6px; }
+    .pday-detail table { font-size: 13.8px; }
+    @media (prefers-reduced-motion: reduce) { .pday-detail summary::before { transition: none; } }
 
     /* סרטון אווירה, רכיב תבנית לכל אזור */
     .area-video { margin: 28px 0 30px; }
@@ -353,7 +376,7 @@
        href="planner.html?day=columbia-road,brick-lane,shoreditch-art,spitalfields-market,tower-bridge&amp;from=shoreditch_hero"
        data-gl-cta="hero_primary">🗺️ תכננו יום מושלם בשורדיץ'</a>
     <a class="hero-btn ghost" href="planner.html?mode=nearby&amp;from=shoreditch_hero"
-       data-gl-cta="hero_secondary">📍 גלו את כל המקומות באזור</a>
+       data-gl-cta="hero_secondary">📍 גלו את כל 42 המקומות באזור</a>
   </div>
 </div>
 
@@ -365,33 +388,33 @@
   <p class="lead">שורדיץ' הוא האזור שבו לונדון מפסיקה להצטלם ומתחילה לחיות. אין כאן ארמון, אין כאן משמר מלכותי, ואף אוטובוס תיירים לא עוצר בכיכר המרכזית, כי אין כיכר מרכזית. יש קירות מצוירים שמתחלפים, שווקים שפועלים בימים מסוימים בלבד, ורחוב אחד שבו אפשר לאכול בייגל בשלוש לפנות בוקר.</p>
 
   <div class="exp">
-    <div class="exp-h">איך תרצו לחוות את שורדיץ'?</div>
+    <div class="exp-h">מה בא לכם לעשות בשורדיץ'?</div>
     <p class="exp-s">בחרו כיוון וקבלו יום מוכן במתכנן, שאפשר לגרור, להחליף ולהוסיף עליו.</p>
     <div class="exp-grid">
       <a class="exp-c" data-gl-cta="experience" data-exp="street-art"
          href="planner.html?day=shoreditch-art,rivington-street-art,redchurch-street,hanbury-street-art&amp;from=shoreditch_exp_art">
         <span class="exp-e">🎨</span><span class="exp-t">אמנות רחוב</span>
-        <span class="exp-d">הרחובות עם הריכוז הגבוה ביותר של קירות</span></a>
+        <span class="exp-d">הרחובות עם הריכוז הגבוה ביותר של קירות</span><span class="exp-n">4 עצירות</span></a>
       <a class="exp-c" data-gl-cta="experience" data-exp="food"
          href="planner.html?day=beigel-bake,dishoom-shoreditch,brick-lane,ozone-coffee&amp;from=shoreditch_exp_food">
         <span class="exp-e">🍴</span><span class="exp-t">אוכל וקפה</span>
-        <span class="exp-d">מבייגל בשלוש לפנות בוקר ועד קפה נחשב</span></a>
+        <span class="exp-d">מבייגל בשלוש לפנות בוקר ועד קפה נחשב</span><span class="exp-n">4 עצירות</span></a>
       <a class="exp-c" data-gl-cta="experience" data-exp="markets"
          href="planner.html?day=columbia-road,brick-lane,spitalfields-market,petticoat-lane&amp;from=shoreditch_exp_markets">
         <span class="exp-e">🛍️</span><span class="exp-t">שווקים וקניות</span>
-        <span class="exp-d">שלושת השווקים הגדולים ביום אחד</span></a>
+        <span class="exp-d">שלושת השווקים הגדולים ביום אחד</span><span class="exp-n">4 עצירות</span></a>
       <a class="exp-c" data-gl-cta="experience" data-exp="photo"
          href="planner.html?day=shoreditch-art,hanbury-street-art,fournier-street,old-truman-brewery&amp;from=shoreditch_exp_photo">
-        <span class="exp-e">📸</span><span class="exp-t">צילום</span>
-        <span class="exp-d">מסלול בוקר מוקדם, לפני שהרחוב מתמלא</span></a>
+        <span class="exp-e">📸</span><span class="exp-t">מקומות צילום</span>
+        <span class="exp-d">מסלול בוקר מוקדם, לפני שהרחוב מתמלא</span><span class="exp-n">4 עצירות</span></a>
       <a class="exp-c" data-gl-cta="experience" data-exp="families"
          href="planner.html?day=young-va,spitalfields-city-farm,spitalfields-market&amp;from=shoreditch_exp_family">
         <span class="exp-e">👨‍👩‍👧</span><span class="exp-t">משפחות</span>
-        <span class="exp-d">מוזיאון, חווה וסביבה מקורה לגיבוי</span></a>
+        <span class="exp-d">מוזיאון, חווה וסביבה מקורה לגיבוי</span><span class="exp-n">3 עצירות</span></a>
       <a class="exp-c" data-gl-cta="experience" data-exp="night"
          href="planner.html?day=dishoom-shoreditch,nightjar,village-underground,old-blue-last&amp;from=shoreditch_exp_night">
-        <span class="exp-e">🌙</span><span class="exp-t">ערב וחיי לילה</span>
-        <span class="exp-d">האזור אחרי שהשווקים נסגרים</span></a>
+        <span class="exp-e">🌙</span><span class="exp-t">ערב</span>
+        <span class="exp-d">האזור אחרי שהשווקים נסגרים</span><span class="exp-n">4 עצירות</span></a>
     </div>
   </div>
 
@@ -449,6 +472,12 @@
   <p>האזור מתמלא במי שיוצא לבלות. ברים, מוזיקה חיה וקבוצות גדולות. אם באתם לצלם, זה הזמן ללכת. אם באתם לצאת, זה הזמן להגיע.</p>
   <div class="highlight-box"><strong>ההמלצה הפרקטית:</strong> אם יש לכם רק הזדמנות אחת, לכו ביום ראשון בבוקר, בסביבות תשע וחצי. תתפסו את שוק הפרחים לפני ההמון, תגיעו לבריק ליין כשהוא נפתח, ותסיימו בספיטלפילדס בצהריים. ואם התחזית גשומה, ספיטלפילדס מקורה ומציל את היום, יחד עם שאר <a href="guide-attractions-rainy.html">האפשרויות ליום גשום בלונדון</a>.</div>
 
+  <div class="inline-cta">
+    <div><div class="inline-cta-t">יודעים כבר מתי אתם מגיעים?</div>
+      <div class="inline-cta-s">אפשר להרכיב את היום עכשיו ולחזור לקרוא. המסלול נשמר בדפדפן.</div></div>
+    <a href="planner.html?day=columbia-road,brick-lane,beigel-bake,hanbury-street-art,spitalfields-market,redchurch-street,tower-bridge&amp;from=shoreditch_mid" data-gl-cta="inline_day">⭐ פתחו את היום המושלם</a>
+  </div>
+
   <h2>🎨 אמנות הרחוב, ואיפה היא באמת נמצאת</h2>
   <figure class="sh-fig">
     <picture>
@@ -477,8 +506,8 @@
   </ul>
   <div class="warning-box"><strong>שווה לדעת:</strong> חלק מהקירות נמצאים בשטח פרטי או בחצרות של עסקים. אם יש שער סגור, הוא סגור. ואל תצלמו אנשים מקומיים מקרוב בלי לשאול, במיוחד ברחובות המגורים סביב בריק ליין. וכן, כל זה בחינם, כמו עוד לא מעט דברים ב<a href="guide-attractions-free.html">מדריך האטרקציות ללא תשלום</a>.</div>
   <div class="inline-cta">
-    <div><div class="inline-cta-t">אוהבים את מה שאתם קוראים?</div>
-      <div class="inline-cta-s">כל הקירות והרחובות שמופיעים כאן נמצאים במפה, עם מרחק מהמיקום שלכם.</div></div>
+    <div><div class="inline-cta-t">ראיתם קיר שאתם רוצים למצוא?</div>
+      <div class="inline-cta-s">כל רחובות האמנות שמופיעים כאן נמצאים על המפה, עם מרחק ביניהם.</div></div>
     <a href="planner.html?mode=nearby&amp;from=shoreditch_art" data-gl-cta="inline_map">🗺️ פתחו את מפת שורדיץ'</a>
   </div>
 
@@ -519,6 +548,12 @@
   <p>המרחק מבריק ליין הוא כרבע שעה הליכה צפונה. הטיפ המרכזי כאן הוא להגיע לפני תשע וחצי, כי אחרי עשר הרחוב הופך לפקק אנושי שקשה לזוז בו.</p>
   <div class="highlight-box"><strong>איזה שוק מתאים למי:</strong> ספיטלפילדס למי שרוצה מקורה, נוח ובכל יום. בריק ליין למי שבא בשביל האוכל והאווירה. קולומביה רוד למי שרוצה תמונה אחת בלתי נשכחת ומוכן לקום מוקדם ביום ראשון. <a href="guide-attractions-markets.html">כל שווקי לונדון האחרים נמצאים במדריך השווקים</a>.</div>
 
+  <div class="inline-cta">
+    <div><div class="inline-cta-t">בונים כבר מסלול?</div>
+      <div class="inline-cta-s">לחיצה על שם של שוק בטקסט פותחת אותו, ומשם אפשר להוסיף אותו למסלול ולהמשיך לקרוא.</div></div>
+    <a href="planner.html?from=shoreditch_markets" data-gl-cta="inline_tray">➕ למסלול שלי</a>
+  </div>
+
   <h2>🍜 איפה אוכלים, ומה לא לפספס</h2>
   <figure class="sh-fig">
     <picture>
@@ -545,9 +580,9 @@
   <div class="warning-box"><strong>עדכון שחשוב לדעת:</strong> מתחם הקונטיינרים בוקספארק, שהופיע כמעט בכל מדריך ובכל סרטון על שורדיץ' מאז 2011, כבר לא פועל במיקום הזה. בעלי הקרקע לא חידשו את החוזה והמתחם פינה את השטח. אם ראיתם אותו ברשימה של אתר אחר, זה מידע ישן.</div>
 
   <div class="inline-cta">
-    <div><div class="inline-cta-t">מצאתם מקום שאהבתם?</div>
-      <div class="inline-cta-s">לחיצה על שם מקום בטקסט פותחת אותו, ומשם אפשר להוסיף אותו למסלול ולהמשיך לקרוא.</div></div>
-    <a href="planner.html?from=shoreditch_food" data-gl-cta="inline_planner">➕ למסלול שלי</a>
+    <div><div class="inline-cta-t">רעבים?</div>
+      <div class="inline-cta-s">במאגר יש 14 מקומות אוכל וקפה באזור, מסוננים לפי מרחק ופתוחים להוספה למסלול.</div></div>
+    <a href="planner.html?mode=nearby&amp;from=shoreditch_food" data-gl-cta="inline_food">🍴 גלו את כל מקומות האוכל</a>
   </div>
 
   <h2>🍽️ סיורי אוכל באזור, והאם הם שווים את זה</h2>
@@ -579,42 +614,49 @@
     </picture>
     <figcaption class="sh-cap">ארובת מבשלת טרומן, נקודת הציון שאי אפשר לפספס בבריק ליין. המבשלה הפסיקה לייצר בירה בסוף שנות השמונים, והמחסנים הפכו לשווקים ולחללי אירועים.</figcaption>
   </figure>
-  <p>המסלול הזה בנוי ליום ראשון, שהוא היום המלא ביותר, ולוקח בין שלוש לארבע שעות בקצב נוח. אפשר לעשות אותו גם בשבת עם שינוי קטן, וגם באמצע השבוע בלי שני השווקים.</p>
-  <div class="table-wrap">
-  <table>
-    <tr><th>שעה</th><th>איפה</th><th>מה עושים</th></tr>
-    <tr><td>09:15</td><td>שוק הפרחים בקולומביה רוד</td><td>מתחילים כאן דווקא, לפני ההמון. הליכה לאורך הרחוב, צילומים, קפה בחנות קטנה בצד.</td></tr>
-    <tr><td>10:15</td><td>הליכה דרומה דרך הסמטאות</td><td>עשר דקות הליכה שעוברות בכמה מהקירות היפים באזור.</td></tr>
-    <tr><td>10:45</td><td>בריק ליין</td><td>השוק בשיאו. סיבוב בין הדוכנים, מתחם מבשלת טרומן, וינטג'.</td></tr>
-    <tr><td>12:00</td><td>בייגל בייק</td><td>בייגל סולט ביף בקצה הצפוני של הרחוב. עצירה קצרה, אוכלים בעמידה.</td></tr>
-    <tr><td>12:30</td><td>Hanbury ו-Fashion Street</td><td>סיבוב הצילומים העיקרי, כולל העגור הגדולה.</td></tr>
-    <tr><td>13:15</td><td>שוק ספיטלפילדס</td><td>מקורה, ישיבה, קניות אחרונות ואוכל אם עוד נשאר מקום.</td></tr>
-    <tr><td>14:15</td><td>Rivington ו-Redchurch</td><td>הקטע האחרון, קפה טוב לסיום.</td></tr>
-  </table>
-  </div>
-  <p>מהנקודה האחרונה אפשר להמשיך דרומה עשרים דקות ברגל ולהגיע למצודת לונדון ולגשר המגדלים, וכך לחבר את הבוקר לאחר צהריים קלאסי לגמרי. זה אחד החיבורים הכי יעילים שיש בעיר, ורוב המטיילים לא עושים אותו כי הם מגיעים למצודה ברכבת ולא רואים את מה שנמצא צפונה ממנה.</p>
+  <p>המסלול הזה בנוי ליום ראשון, שהוא היום המלא ביותר, ולוקח בערך שש שעות בקצב נוח, כולל ההליכה לתמזה בסוף. אפשר לעשות אותו גם בשבת עם שינוי קטן, וגם באמצע השבוע בלי שני השווקים. מי שרוצה גרסה קצרה יכול לעצור אחרי ספיטלפילדס ולסיים בשעה שתיים.</p>
+  <p>העצירה האחרונה היא גשר המגדלים, עשרים דקות הליכה דרומה משורדיץ׳. זה אחד החיבורים הכי יעילים שיש בעיר, ורוב המטיילים לא עושים אותו כי הם מגיעים למצודה ברכבת ולא רואים את מה שנמצא צפונה ממנה. מי שנשאר לו כוח יכול להוסיף גם את מצודת לונדון, שנמצאת ממש לצד הגשר.</p>
 
   <div class="pday">
-    <div class="pday-h">🗓️ יום מושלם בשורדיץ' <span>יום ראשון, חמש עצירות</span></div>
-    <p class="pday-sub">אותו יום שלמעלה, הפעם כרשימת עצירות שאפשר לפתוח במתכנן, לגרור, להחליף ולהוסיף עליה ימים נוספים.</p>
+    <div class="pday-h">⭐ יום מושלם בשורדיץ' <span>יום ראשון, שבע עצירות, בערך שש שעות</span></div>
+    <p class="pday-sub">יום בנוי מראש שמתחיל בשוק הפרחים ונגמר על התמזה. לחיצה אחת מכניסה את כולו למסלול שלכם, ומשם אפשר לגרור, להחליף ולהוסיף ימים.</p>
     <ol class="pday-list">
       <li><span class="pday-t">09:15</span><span class="pday-n" data-trip-add="columbia-road" data-trip-src="perfect_day">שוק הפרחים בקולומביה רוד<em>ימי ראשון בלבד, ולפני עשר זה עוד נעים</em></span></li>
-      <li><span class="pday-t">10:45</span><span class="pday-n" data-trip-add="brick-lane" data-trip-src="perfect_day">בריק ליין<em>השוק בשיאו, וגם הבייגל בקצה הצפוני</em></span></li>
-      <li><span class="pday-t">12:30</span><span class="pday-n" data-trip-add="shoreditch-art" data-trip-src="perfect_day">אמנות הרחוב של שורדיץ'<em>הסמטאות סביב האנברי ופאשן סטריט</em></span></li>
+      <li><span class="pday-t">10:45</span><span class="pday-n" data-trip-add="brick-lane" data-trip-src="perfect_day">בריק ליין<em>השוק בשיאו, ומתחם מבשלת טרומן בדרך</em></span></li>
+      <li><span class="pday-t">12:00</span><span class="pday-n" data-trip-add="beigel-bake" data-trip-src="perfect_day">בייגל בייק<em>בייגל סולט ביף בקצה הצפוני, אוכלים בעמידה</em></span></li>
+      <li><span class="pday-t">12:30</span><span class="pday-n" data-trip-add="hanbury-street-art" data-trip-src="perfect_day">אמנות הרחוב ברחוב האנברי<em>סיבוב הצילומים העיקרי, כולל העגור הגדולה</em></span></li>
       <li><span class="pday-t">13:15</span><span class="pday-n" data-trip-add="spitalfields-market" data-trip-src="perfect_day">שוק ספיטלפילדס<em>מקורה, מקום לשבת, וגם אם יורד גשם</em></span></li>
-      <li><span class="pday-t">15:00</span><span class="pday-n" data-trip-add="tower-bridge" data-trip-src="perfect_day">גשר המגדלים<em>עשרים דקות הליכה דרומה, וסוגרים את היום על התמזה</em></span></li>
+      <li><span class="pday-t">14:15</span><span class="pday-n" data-trip-add="redchurch-street" data-trip-src="perfect_day">רחוב רדצ'רץ'<em>הקטע האחרון בשורדיץ', קפה טוב לסיום</em></span></li>
+      <li><span class="pday-t">15:00</span><span class="pday-n" data-trip-add="tower-bridge" data-trip-src="perfect_day">גשר המגדלים<em>עשרים דקות הליכה דרומה, וסוגרים על התמזה</em></span></li>
     </ol>
     <div class="pday-actions">
       <button type="button" class="pday-all"
-              data-pday-add="columbia-road,brick-lane,shoreditch-art,spitalfields-market,tower-bridge"
+              data-pday-add="columbia-road,brick-lane,beigel-bake,hanbury-street-art,spitalfields-market,redchurch-street,tower-bridge"
               data-pday-area="shoreditch">
         ⭐ הוסיפו את היום המושלם למסלול
       </button>
-      <a class="pday-go secondary" href="planner.html?day=columbia-road,brick-lane,shoreditch-art,spitalfields-market,tower-bridge&amp;from=shoreditch">
+      <a class="pday-go secondary" href="planner.html?day=columbia-road,brick-lane,beigel-bake,hanbury-street-art,spitalfields-market,redchurch-street,tower-bridge&amp;from=shoreditch">
         או פתחו אותו ישירות במתכנן <i class="fas fa-arrow-left"></i>
       </a>
     </div>
     <p class="pday-note">היום נוסף למסלול שלכם ואפשר להמשיך לגלוש. אם כבר בניתם מסלול קודם, הוא לא יימחק.</p>
+
+    <details class="pday-detail">
+      <summary>פירוט מלא של היום, שעה אחר שעה</summary>
+      <div class="table-wrap">
+      <table>
+        <tr><th>שעה</th><th>איפה</th><th>מה עושים</th></tr>
+        <tr><td>09:15</td><td>שוק הפרחים בקולומביה רוד</td><td>מתחילים כאן דווקא, לפני ההמון. הליכה לאורך הרחוב, צילומים, קפה בחנות קטנה בצד.</td></tr>
+        <tr><td>10:15</td><td>הליכה דרומה דרך הסמטאות</td><td>עשר דקות הליכה שעוברות בכמה מהקירות היפים באזור. זה מעבר ולא עצירה, ולכן הוא לא מופיע ברשימה למעלה.</td></tr>
+        <tr><td>10:45</td><td>בריק ליין</td><td>השוק בשיאו. סיבוב בין הדוכנים, מתחם מבשלת טרומן, וינטג'.</td></tr>
+        <tr><td>12:00</td><td>בייגל בייק</td><td>בייגל סולט ביף בקצה הצפוני של הרחוב. עצירה קצרה, אוכלים בעמידה.</td></tr>
+        <tr><td>12:30</td><td>אמנות הרחוב ברחוב האנברי</td><td>סיבוב הצילומים העיקרי, כולל העגור הגדולה של ROA, ומשם לפאשן סטריט.</td></tr>
+        <tr><td>13:15</td><td>שוק ספיטלפילדס</td><td>מקורה, ישיבה, קניות אחרונות ואוכל אם עוד נשאר מקום.</td></tr>
+        <tr><td>14:15</td><td>רחוב רדצ'רץ'</td><td>הקטע האחרון בשורדיץ', קירות גדולים לצד חנויות עיצוב, וקפה טוב לסיום.</td></tr>
+        <tr><td>15:00</td><td>גשר המגדלים</td><td>עשרים דקות הליכה דרומה. מסיימים את היום על התמזה, וזה אחד החיבורים היעילים בעיר.</td></tr>
+      </table>
+      </div>
+    </details>
   </div>
 
   <div class="highlight-box"><strong>🧭 כבר נמצאים באזור?</strong>
