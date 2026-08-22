@@ -174,9 +174,15 @@ def main():
                     'priceNote': tour.get('price_note'),
                 }
 
+            """
+            כשיש לפריט מחיר סיור אמיתי שנבדק, שדה updated הוא תאריך הבדיקה
+            עצמו ולא תאריך בנייה כללי, כי הוא זה שמוצג באתר כשורת "נבדק".
+            בלי תאריך בדיקה ספציפי חוזרים לתווית החודשית הכללית.
+            """
+            updated = (tour and tour.get('applicable') and tour.get('checked')) or 'אוגוסט 2026'
             entry = collections.OrderedDict([
                 ('title', name), ('tags', tags), ('body', desc), ('tip', tip),
-                ('updated', 'אוגוסט 2026'),
+                ('updated', updated),
                 ('cta', cta),
             ])
             if video and video.get('verified') and video.get('youtube_id'):
