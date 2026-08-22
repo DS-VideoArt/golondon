@@ -965,7 +965,12 @@
       "kids": true,
       "anchor": true,
       "bookAhead": false,
-      "tip": "אחד המקומות הכי טובים בעיר לאוכל רחוב מכל העולם, במחירים שפויים."
+      "tip": "אחד המקומות הכי טובים בעיר לאוכל רחוב מכל העולם, במחירים שפויים.",
+      "lat": 51.54126,
+      "lng": -0.14619,
+      "precision": "exact",
+      "source": "nominatim/osm",
+      "checked": "2026-08"
     },
     {
       "id": "regents-park",
@@ -998,7 +1003,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "גן הוורדים בקיץ הוא אחד המקומות היפים בלונדון, וכמעט אף תייר לא מגיע אליו."
+      "tip": "גן הוורדים בקיץ הוא אחד המקומות היפים בלונדון, וכמעט אף תייר לא מגיע אליו.",
+      "lat": 51.53013,
+      "lng": -0.15376,
+      "precision": "approx",
+      "source": "nominatim/osm",
+      "checked": "2026-08"
     },
     {
       "id": "london-zoo",
@@ -1036,7 +1046,12 @@
       "kids": true,
       "anchor": true,
       "bookAhead": true,
-      "tip": "נמצא בתוך ריג׳נטס פארק, אז אפשר לשלב יום שלם באותו אזור בלי נסיעות מיותרות."
+      "tip": "נמצא בתוך ריג׳נטס פארק, אז אפשר לשלב יום שלם באותו אזור בלי נסיעות מיותרות.",
+      "lat": 51.53481,
+      "lng": -0.15481,
+      "precision": "exact",
+      "source": "nominatim/osm",
+      "checked": "2026-08"
     },
     {
       "id": "shoreditch-art",
@@ -2428,7 +2443,12 @@
       "anchor": true,
       "bookAhead": false,
       "tip": "גלריית האוצרות היא החלק שכדאי לתייר, והכניסה אליה חינמית.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.52991,
+      "lng": -0.12769,
+      "precision": "exact",
+      "source": "nominatim/osm",
+      "checked": "2026-08"
     },
     {
       "id": "wellcome-collection",
@@ -2462,7 +2482,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "שקט, חינמי, ועם חדר קריאה נעים. אחד המקומות הטובים בעיר ליום גשום."
+      "tip": "שקט, חינמי, ועם חדר קריאה נעים. אחד המקומות הטובים בעיר ליום גשום.",
+      "lat": 51.52597,
+      "lng": -0.13402,
+      "precision": "exact",
+      "source": "nominatim/osm",
+      "checked": "2026-08"
     },
     {
       "id": "sherlock-museum",
@@ -2568,7 +2593,12 @@
       "kids": true,
       "anchor": true,
       "bookAhead": false,
-      "tip": "התצפית מפרלמנט היל היא אחת הטובות בלונדון, וההגעה אליה חינמית לגמרי."
+      "tip": "התצפית מפרלמנט היל היא אחת הטובות בלונדון, וההגעה אליה חינמית לגמרי.",
+      "lat": 51.56415,
+      "lng": -0.16714,
+      "precision": "approx",
+      "source": "nominatim/osm",
+      "checked": "2026-08"
     },
     {
       "id": "kenwood-house",
@@ -2608,7 +2638,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "משתלב באופן טבעי עם הליכה בהמפסטד הית׳, ורוב המבקרים בו הם מקומיים."
+      "tip": "משתלב באופן טבעי עם הליכה בהמפסטד הית׳, ורוב המבקרים בו הם מקומיים.",
+      "lat": 51.57155,
+      "lng": -0.16734,
+      "precision": "approx",
+      "source": "nominatim/osm",
+      "checked": "2026-08"
     },
     {
       "id": "highgate-cemetery",
@@ -2643,7 +2678,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": true,
-      "tip": "החלק המערבי נפתח רק בסיור מודרך ובשעות קבועות, ולכן חובה לבדוק מראש."
+      "tip": "החלק המערבי נפתח רק בסיור מודרך ובשעות קבועות, ולכן חובה לבדוק מראש.",
+      "lat": 51.56778,
+      "lng": -0.14859,
+      "precision": "approx",
+      "source": "nominatim/osm",
+      "checked": "2026-08"
     },
     {
       "id": "coal-drops-yard",
@@ -2679,7 +2719,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "אפשר להמשיך ממנו בהליכה לאורך התעלה עד קמדן, מסלול נעים של כשעה."
+      "tip": "אפשר להמשיך ממנו בהליכה לאורך התעלה עד קמדן, מסלול נעים של כשעה.",
+      "lat": 51.5358,
+      "lng": -0.12667,
+      "precision": "exact",
+      "source": "nominatim/osm",
+      "checked": "2026-08"
     },
     {
       "id": "little-venice",
@@ -4948,7 +4993,7 @@
       "nameEn": "Primrose Hill",
       "desc": "גבעה נמוכה מצפון לריג׳נטס פארק, ובראשה אחד הנופים הפתוחים היפים ביותר על קו הרקיע של לונדון. אין כניסה, אין תור ואין כרטיס.",
       "area": "camden",
-      "hood": "camden",
+      "hood": "primrose-hill",
       "interests": [
         "views",
         "parks"
@@ -4966,8 +5011,8 @@
         "families",
         "returning"
       ],
-      "lat": 51.539,
-      "lng": -0.1625,
+      "lat": 51.53905,
+      "lng": -0.16246,
       "precision": "approx",
       "free": true,
       "priceBand": "כניסה חינם",

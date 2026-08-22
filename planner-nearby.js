@@ -407,7 +407,7 @@
         'זה לא אומר שאין מה לעשות בנקודה שבחרתם, אלא שעוד לא הרחבנו לשם את המאגר. ' +
         'אזורים נוספים בדרך.' +
         '<div style="margin-top:14px"><button type="button" class="nb-btn" id="nb-goto">' +
-        '<i class="fas fa-map-location-dot"></i> פתחו את שורדיץ׳ במפה</button></div></div>';
+        '<i class="fas fa-map-location-dot"></i> פתחו את ' + ZONE.label + ' במפה</button></div></div>';
       var go = $('nb-goto');
       if (go) go.addEventListener('click', function () { setPoint(ZONE.center.slice(), 'zone_center'); });
       return;
@@ -528,8 +528,9 @@
   function labelTab() {
     var t = $('tab-nearby');
     if (!t || !ZONE) return;
+    /* שם האזור מגיע מהטקסונומיה, כדי שאזור חדש לא ידרוש נגיעה בקוד */
     t.innerHTML = '<i class="fas fa-location-crosshairs"></i> סביבי ' +
-      '<span class="nb-tag">פיילוט בשורדיץ׳</span>';
+      '<span class="nb-tag">פיילוט ב' + ZONE.label + '</span>';
   }
 
   function open() {
@@ -580,6 +581,53 @@
     if (t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); }
   }
 
+  /*
+    בחירת אזור הכיסוי
+    =================
+    עד עכשיו נבחר תמיד אזור הפיילוט הראשון ברשימה. זה עבד כל עוד היה
+    אזור אחד, והיה נשבר ברגע שיתווסף שני: משתמש שמגיע ממדריך קמדן היה
+    מקבל מפה של שורדיץ׳, חמישה וחצי קילומטרים משם.
+
+    הבחירה נעשית בשלוש דרגות, מהמפורש לכללי:
+
+      1. ?zone=camden          פרמטר מפורש, הדרך המומלצת לעתיד
+      2. ?from=camden_hero     נגזר מהתחילית של from, שכבר קיים בכל
+                               הקישורים ממדריכי האזורים. המשמעות היא
+                               שכל קישור קיים ממשיך לעבוד בלי שינוי,
+                               ומדריך אזור חדש עובד אוטומטית ברגע
+                               שהוא משתמש במוסכמה <zone>_<מיקום>.
+      3. אזור הפיילוט הראשון   ברירת המחדל, כניסה ישירה למתכנן
+
+    רק אזור פעיל נבחר. אזור שמוגדר בטקסונומיה אבל עדיין אין לו תוכן
+    מסומן ready, והוא לא ייבחר גם אם מבקשים אותו במפורש, כדי שלא
+    ייפתח מסך ריק שמבטיח מקומות שאינם.
+  */
+  function isLive(z) { return z && z.status === 'pilot'; }
+
+  function pickZone(zones) {
+    var live = zones.filter(isLive);
+    if (!live.length) return zones[0] || null;
+
+    function byId(id) {
+      if (!id) return null;
+      for (var i = 0; i < live.length; i++) if (live[i].id === id) return live[i];
+      return null;
+    }
+
+    var m = /[?&]zone=([a-z0-9-]+)/i.exec(location.search);
+    var z = byId(m && m[1].toLowerCase());
+    if (z) return z;
+
+    /* from נראה כמו shoreditch_hero או camden_exp_food. התחילית היא האזור */
+    var f = /[?&]from=([a-z0-9-]+)/i.exec(location.search);
+    if (f) {
+      var prefix = f[1].toLowerCase().split('_')[0];
+      z = byId(prefix);
+      if (z) return z;
+    }
+    return live[0];
+  }
+
   function init() {
     if (!$('tab-nearby') || !$('panel-nearby')) return;
     $('tab-nearby').addEventListener('click', open);
@@ -594,7 +642,7 @@
       DATA = both[0].attractions || [];
       TAX = both[1];
       var zones = (TAX.coverage && TAX.coverage.zones) || [];
-      ZONE = zones.filter(function (z) { return z.status === 'pilot'; })[0] || zones[0] || null;
+      ZONE = pickZone(zones);
       if (!ZONE) { $('tab-nearby').hidden = true; return; }
       injectStyles();
       labelTab();

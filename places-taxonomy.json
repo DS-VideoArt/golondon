@@ -201,6 +201,15 @@
       "zoom": 15,
       "guide": "guide-areas-camden"
     },
+    "primrose-hill": {
+      "name": "פריטרוז היל",
+      "cluster": "camden",
+      "center": [
+        51.53905,
+        -0.16246
+      ],
+      "zoom": 15
+    },
     "kings-cross": {
       "name": "קינגס קרוס",
       "cluster": "camden",
@@ -491,6 +500,22 @@
           "bethnal-green"
         ],
         "status": "pilot"
+      },
+      {
+        "id": "camden",
+        "label": "קמדן ופריטרוז היל",
+        "center": [
+          51.54,
+          -0.152
+        ],
+        "radiusM": 1600,
+        "hoods": [
+          "camden",
+          "primrose-hill"
+        ],
+        "defaultRadiusM": 500,
+        "status": "ready",
+        "_הערה": "מוגדר ומאומת גאוגרפית, לא פעיל. ההפעלה דורשת בחירת אזור לפי פרמטר ב-URL, ראו דוח ההכנה מ-22.8.2026."
       }
     ]
   }
