@@ -970,7 +970,9 @@
       "lng": -0.14619,
       "precision": "exact",
       "source": "https://www.camdenmarket.com/visit",
-      "checked": "2026-08"
+      "checked": "2026-08",
+      "image": "images/places/camden-market-arches",
+      "imageAlt": "קשתות לבנים ויקטוריאניות בשוק קמדן, דוכני אוכל וסירות על התעלה"
     },
     {
       "id": "regents-park",
@@ -1008,7 +1010,9 @@
       "lng": -0.15376,
       "precision": "approx",
       "source": "nominatim/osm",
-      "checked": "2026-08"
+      "checked": "2026-08",
+      "image": "images/places/regents-park-gardens",
+      "imageAlt": "גן ורדים פורח בפארק מלכותי בלונדון"
     },
     {
       "id": "london-zoo",
@@ -1051,7 +1055,9 @@
       "lng": -0.15481,
       "precision": "exact",
       "source": "nominatim/osm",
-      "checked": "2026-08"
+      "checked": "2026-08",
+      "image": "images/places/london-zoo-entrance",
+      "imageAlt": "רחבת הכניסה לגן חיות עירוני בתוך פארק"
     },
     {
       "id": "shoreditch-art",
@@ -5022,14 +5028,14 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "השקיעה היא השעה שבה כולם מגיעים. באמצע היום זה פארק שקט.",
-      "image": null,
+      "image": "images/places/primrose-hill-view",
       "booking": null,
       "source": "https://www.royalparks.org.uk/visit/parks/the-regents-park-primrose-hill",
       "checked": "2026-08-21",
       "_review": [
-        "image",
         "step-free"
-      ]
+      ],
+      "imageAlt": "נוף על קו הרקיע של לונדון מראש גבעה מדשיאה"
     },
     {
       "id": "temple-of-mithras",
@@ -5100,7 +5106,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/stables-market-tunnels",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5111,9 +5117,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "אורוות לבנים מקומרות שהוסבו לשוק, רצפת אבן ודוכנים"
     },
     {
       "id": "hawley-wharf",
@@ -5141,7 +5147,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/camden-street-food",
       "booking": null,
       "source": "https://www.camdenmarket.com/visit",
       "checked": "2026-08",
@@ -5152,9 +5158,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "חצר אוכל רחוב מקונטיינרים עם ספסלים ותאורת שרשרת"
     },
     {
       "id": "inverness-street-market",
@@ -5180,7 +5186,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/camden-street-food",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5191,9 +5197,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "חצר אוכל רחוב מקונטיינרים עם ספסלים ותאורת שרשרת"
     },
     {
       "id": "roundhouse",
@@ -5221,7 +5227,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/roundhouse-rotunda",
       "booking": null,
       "source": "https://www.roundhouse.org.uk/",
       "checked": "2026-08",
@@ -5231,9 +5237,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "מבנה לבנים עגול היסטורי שהוסב לאולם מופעים"
     },
     {
       "id": "electric-ballroom",
@@ -5260,7 +5266,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/camden-music-venue",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5271,9 +5277,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "אולם הופעות קטן עם במה ותאורה צבעונית"
     },
     {
       "id": "jazz-cafe",
@@ -5300,7 +5306,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/camden-music-venue",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5311,9 +5317,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "אולם הופעות קטן עם במה ותאורה צבעונית"
     },
     {
       "id": "koko-camden",
@@ -5342,7 +5348,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/camden-music-venue",
       "booking": null,
       "source": "https://www.koko.co.uk/",
       "checked": "2026-08",
@@ -5352,9 +5358,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "אולם הופעות קטן עם במה ותאורה צבעונית"
     },
     {
       "id": "dublin-castle",
@@ -5381,7 +5387,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/camden-pub-interior",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5392,9 +5398,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "פנים פאב לונדוני מסורתי עם עץ כהה ותאורה חמה"
     },
     {
       "id": "poppies-camden",
@@ -5420,7 +5426,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/fish-and-chips-shop",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5431,9 +5437,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "פנים חנות פיש אנד צ'יפס בריטית בסגנון שנות החמישים"
     },
     {
       "id": "chin-chin-labs",
@@ -5459,7 +5465,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/camden-cafe-small",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5470,9 +5476,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "פנים בית קפה עצמאי קטן עם מכונת אספרסו על דלפק עץ"
     },
     {
       "id": "the-lock-tavern",
@@ -5498,7 +5504,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/camden-pub-interior",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5509,9 +5515,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "פנים פאב לונדוני מסורתי עם עץ כהה ותאורה חמה"
     },
     {
       "id": "the-good-mixer",
@@ -5537,7 +5543,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/camden-pub-interior",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5548,9 +5554,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "פנים פאב לונדוני מסורתי עם עץ כהה ותאורה חמה"
     },
     {
       "id": "edinboro-castle",
@@ -5576,7 +5582,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/camden-pub-interior",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5587,9 +5593,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "פנים פאב לונדוני מסורתי עם עץ כהה ותאורה חמה"
     },
     {
       "id": "cyberdog",
@@ -5615,7 +5621,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/alt-fashion-shop",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5626,9 +5632,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "פנים חנות אופנה אלטרנטיבית עם תאורת ניאון"
     },
     {
       "id": "regents-canal-towpath",
@@ -5655,7 +5661,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/regents-canal-towpath",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5666,9 +5672,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "שביל התעלה עם סירות צרות צבעוניות ועצים מעל המים"
     },
     {
       "id": "camden-lock-bridge",
@@ -5694,7 +5700,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/camden-lock-bridge",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5705,9 +5711,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "גשר ברזל מעוטר מעל תעלה צרה בצפון לונדון"
     },
     {
       "id": "camden-high-street",
@@ -5734,7 +5740,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/camden-high-street-facades",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5745,9 +5751,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "רחוב ראשי בצפון לונדון עם חזיתות חנויות מפוסלות"
     },
     {
       "id": "amy-winehouse-statue",
@@ -5773,7 +5779,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/camden-market-arches",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5784,9 +5790,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "כיכר הסטייבלס בשוק קמדן"
     },
     {
       "id": "coffee-jar-camden",
@@ -5812,7 +5818,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/camden-cafe-small",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5823,9 +5829,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "פנים בית קפה עצמאי קטן עם מכונת אספרסו על דלפק עץ"
     },
     {
       "id": "greenberry-cafe",
@@ -5852,7 +5858,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/primrose-neighbourhood-dining",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5863,9 +5869,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "רחוב שכונתי שקט בלונדון עם בית קפה ושולחנות בחוץ"
     },
     {
       "id": "lemonia",
@@ -5891,7 +5897,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/primrose-neighbourhood-dining",
       "booking": null,
       "source": "nominatim/osm",
       "checked": "2026-08",
@@ -5902,9 +5908,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "רחוב שכונתי שקט בלונדון עם בית קפה ושולחנות בחוץ"
     },
     {
       "id": "granary-square",
@@ -6130,7 +6136,7 @@
       "anchor": false,
       "bookAhead": null,
       "tip": null,
-      "image": null,
+      "image": "images/places/camden-street-food",
       "booking": null,
       "source": "https://www.boxpark.co.uk/camden/",
       "checked": "2026-08",
@@ -6141,9 +6147,9 @@
         "tube",
         "kids",
         "priceBand",
-        "image",
         "tip"
-      ]
+      ],
+      "imageAlt": "חצר אוכל רחוב מקונטיינרים עם ספסלים ותאורת שרשרת"
     }
   ]
 }
