@@ -54,7 +54,7 @@
     sport: 'ספורט', experience: 'חוויה', attraction: 'אטרקציה', walk: 'רחוב לשיטוט'
   };
 
-  var DATA = null, TAX = null, ZONE = null;
+  var DATA = null, TAX = null, ZONE = null, INFO = null;
   var map = null, cluster = null, anchorMarker = null, ring = null;
   var loaded = false, built = false;
   var state = { point: null, radius: 1000, groups: [], free: false, kids: false, method: null };
@@ -516,9 +516,14 @@
     if (p.free) tags.push({ label: 'כניסה חינם', type: 'free' });
     else if (p.priceBand) tags.push({ label: p.priceBand });
     if (p.bookAhead) tags.push({ label: 'הזמנה מראש' });
+    var rich = (INFO && INFO[p.id]) || {};
     GoLondonPlaceInfo.openItem({
-      title: p.name, body: p.desc || '', tip: p.tip || '', tags: tags,
-      cta: (p.booking && p.booking.href) ? { label: 'בדקו כרטיסים', href: p.booking.href, custom: true } : null
+      title: p.name, body: p.desc || '', tip: p.tip || rich.tip || '', tags: tags,
+      /* ההמלצה הנלווית והווידאו קיימים רק במאגר התוכן העשיר */
+      extra: rich.extra || null,
+      video: rich.video || null,
+      cta: (p.booking && p.booking.href) ? { label: 'בדקו כרטיסים', href: p.booking.href, custom: true }
+           : (rich.cta || null)
     }, p.id);
   }
 
@@ -637,10 +642,18 @@
 
     Promise.all([
       fetch('planner-data.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }),
-      fetch('places-taxonomy.json', { cache: 'no-cache' }).then(function (r) { return r.json(); })
+      fetch('places-taxonomy.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }),
+      /*
+        התוכן העשיר. חלונית המקום מקבלת ממנו את ההמלצות הנלוות ואת
+        הווידאו, דברים שלא קיימים ב-planner-data. נכשל בשקט אם אינו
+        זמין, כי מצב סביבי חייב לעבוד גם בלעדיו.
+      */
+      fetch('attractions-info.json', { cache: 'no-cache' })
+        .then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })
     ]).then(function (both) {
       DATA = both[0].attractions || [];
       TAX = both[1];
+      INFO = both[2] || {};
       var zones = (TAX.coverage && TAX.coverage.zones) || [];
       ZONE = pickZone(zones);
       if (!ZONE) { $('tab-nearby').hidden = true; return; }
