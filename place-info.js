@@ -97,6 +97,21 @@
       '.pi-tour-desc{font-size:13.5px;color:#55596b!important;line-height:1.7;}',
       '.pi-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#DC2626,#EA580C);color:#fff!important;font-weight:800;font-size:14px;padding:12px 20px;border-radius:11px;text-decoration:none!important;}',
       '.pi-cta:hover{opacity:.92;}',
+      /*
+        המלצה נלווית. חוויה בתשלום שיוצאת מהמקום עצמו אבל אינה המקום,
+        למשל שיט בתעלה שמתחיל בקמדן לוק. מוצגת כהמלצה נפרדת ולא
+        כאילו היא המקום, כדי שלא ייווצר רושם שצריך לשלם על הכניסה.
+      */
+      '.pi-extra{border:1px dashed rgba(220,38,38,.34);background:rgba(220,38,38,.04);',
+        'border-radius:13px;padding:14px 16px;margin-bottom:16px;}',
+      '.pi-extra-h{font-size:12px;font-weight:800;color:#B91C1C!important;letter-spacing:.02em;margin-bottom:4px;}',
+      '.pi-extra-t{font-size:14.5px;font-weight:800;color:#201f2b!important;margin-bottom:3px;}',
+      '.pi-extra-d{font-size:13px;color:#55596b!important;line-height:1.6;margin-bottom:10px;}',
+      '.pi-extra-p{font-size:12.5px;color:#858a9c!important;margin-bottom:10px;font-variant-numeric:tabular-nums;}',
+      '.pi-extra a{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:800;',
+        'padding:9px 16px;border-radius:10px;border:1px solid #DC2626;background:#fff;',
+        'color:#DC2626!important;text-decoration:none!important;}',
+      '.pi-extra a:hover{background:#DC2626;color:#fff!important;}',
       '.pi-updated{font-size:11.5px;color:#858a9c;margin-top:16px;}',
       '[data-place]{cursor:pointer;}'
     ].join('');
@@ -123,6 +138,7 @@
         '<div class="pi-body"></div>' +
         '<div class="pi-tip" hidden></div>' +
         '<div class="pi-tour" hidden></div>' +
+        '<div class="pi-extra" hidden></div>' +
         '<div class="pi-cta-wrap"></div>' +
         '<div class="pi-updated" hidden></div>' +
       '</div>';
@@ -207,6 +223,22 @@
         '<div class="pi-tour-desc">' + (item.cta.desc || '') + '</div>';
     } else {
       tourEl.hidden = true;
+    }
+
+    /* המלצה נלווית, אופציונלית */
+    var extraEl = modal.querySelector('.pi-extra');
+    if (item.extra && item.extra.href) {
+      var e = item.extra;
+      extraEl.hidden = false;
+      extraEl.innerHTML =
+        '<div class="pi-extra-h">' + (e.kicker || 'המלצה מיוחדת') + '</div>' +
+        '<div class="pi-extra-t">' + (e.title || '') + '</div>' +
+        (e.desc ? '<div class="pi-extra-d">' + e.desc + '</div>' : '') +
+        (e.priceNote ? '<div class="pi-extra-p">' + e.priceNote + '</div>' : '') +
+        '<a href="' + ctaUrl(e, id + '__extra') + '" target="_blank" rel="sponsored noopener nofollow">' +
+        '<i class="fas fa-ship"></i> ' + (e.label || 'לפרטים ולהזמנה') + '</a>';
+    } else {
+      extraEl.hidden = true;
     }
 
     var ctaWrap = modal.querySelector('.pi-cta-wrap');

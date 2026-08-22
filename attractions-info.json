@@ -1253,6 +1253,15 @@
   "video": {
    "id": "DTxAUScs9pI",
    "title": "CAMDEN | The ultimate tour of Camden Town London (including Camden Market)"
+  },
+  "extra": {
+   "kicker": "המלצה מיוחדת",
+   "title": "שייט בתעלה מקמדן לוונציה הקטנה",
+   "desc": "סירה צרה יוצאת מקמדן לוק ועוברת דרך ריג'נטס פארק, לצד גן החיות ובתוך מנהרת מיידה היל. ארבעים וחמש דקות, ואפשר לעשות את זה גם בכיוון ההפוך.",
+   "priceNote": "17 ליש\"ט למבוגר, 14 לילד. מומלץ להזמין מראש, בסופי שבוע נמכר.",
+   "label": "בדיקת זמינות והזמנה",
+   "offer": "attractions_alt",
+   "href": "https://www.londonwaterbus.com/regents-canal-waterbus/"
   }
  },
  "spitalfields-market": {
@@ -2588,6 +2597,30 @@
   "video": {
    "id": "Oax39T5w3ws",
    "title": "Inside Harrods | London's Ultra Luxury Department Store Tour (July 2024)"
+  }
+ },
+ "hawley-wharf": {
+  "title": "הולי וורף",
+  "tags": [
+   {
+    "label": "כניסה חינם",
+    "type": "free"
+   },
+   {
+    "label": "קמדן וצפון"
+   }
+  ],
+  "body": "החלק החדש של שוק קמדן, שנפתח אחרי שריפה גדולה במתחם הישן. מקורה ברובו, עם אולמות אוכל וחנויות, ויושב ממש על גדת התעלה.",
+  "tip": "החלק המקורה היחיד בשוק, ולכן זו התשובה של קמדן ליום גשום.",
+  "updated": "אוגוסט 2026",
+  "extra": {
+   "kicker": "המלצה מיוחדת",
+   "title": "שייט בתעלה מקמדן לוונציה הקטנה",
+   "desc": "סירה צרה יוצאת מקמדן לוק ועוברת דרך ריג'נטס פארק, לצד גן החיות ובתוך מנהרת מיידה היל. ארבעים וחמש דקות, ואפשר לעשות את זה גם בכיוון ההפוך.",
+   "priceNote": "17 ליש\"ט למבוגר, 14 לילד. מומלץ להזמין מראש, בסופי שבוע נמכר.",
+   "label": "בדיקת זמינות והזמנה",
+   "offer": "attractions_alt",
+   "href": "https://www.londonwaterbus.com/regents-canal-waterbus/"
   }
  }
 }
