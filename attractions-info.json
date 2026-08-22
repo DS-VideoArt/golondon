@@ -1052,9 +1052,11 @@
   "tip": "התצפית החינמית הכי טובה בעיר, אבל המקומות נחטפים. להזמין ברגע שנפתח החלון, בערך שלושה שבועות מראש.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "תפיסת מקום מראש",
-   "offer": "attractions_alt",
-   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
+   "label": "הזמנת כרטיס חינם באתר הרשמי",
+   "href": "https://skygarden.london/",
+   "custom": true,
+   "desc": "הכניסה חינם לחלוטין. הכרטיס מוזמן בשעה קבועה דרך מערכת ההזמנות של סקיי גארדן עצמו, והחלון נפתח בערך שלושה שבועות מראש.",
+   "free": true
   },
   "video": {
    "id": "FdAGgTIUtpU",
@@ -2090,9 +2092,11 @@
   "tip": "הכניסה חינם אבל צריך לשריין מקום מראש באתר, וזה נגמר.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "תפיסת מקום מראש",
-   "offer": "attractions_alt",
-   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
+   "label": "הזמנת כרטיס חינם באתר הרשמי",
+   "href": "https://www.londonmithraeum.com/visit/",
+   "custom": true,
+   "desc": "הכניסה חינם לחלוטין. כרטיס בשעה קבועה מוזמן דרך האתר של המקדש עצמו, ומומלץ להזמין מראש כי מספר המקומות בכל סבב מוגבל.",
+   "free": true
   },
   "video": {
    "id": "Vm5MZ1mTFYc",

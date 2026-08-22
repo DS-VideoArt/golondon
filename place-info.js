@@ -248,8 +248,13 @@
       a.className = 'pi-cta';
       a.href = ctaUrl(item.cta, id);
       a.target = '_blank';
-      a.rel = 'sponsored noopener nofollow';
-      a.innerHTML = '<i class="fas fa-ticket"></i> ' + item.cta.label;
+      /*
+        קישור לא מסחרי לא מסומן sponsored. זה לא קוסמטי: התגית הזאת
+        מצהירה בפני מנועי חיפוש שיש מאחורי הקישור תמורה כספית, וזה
+        פשוט לא נכון בקישור להזמנת כרטיס חינם באתר רשמי.
+      */
+      a.rel = item.cta.free ? 'noopener' : 'sponsored noopener nofollow';
+      a.innerHTML = (item.cta.free ? '<i class="fas fa-calendar-check"></i> ' : '<i class="fas fa-ticket"></i> ') + item.cta.label;
       ctaWrap.appendChild(a);
     }
 
