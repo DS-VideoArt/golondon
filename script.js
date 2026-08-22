@@ -63,9 +63,26 @@ window.addEventListener('scroll', () => {
 // תפריט נייד
 const burger = document.getElementById('burger');
 const mobileMenu = document.getElementById('mobileMenu');
-burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+/*
+  קורא מסך צריך לדעת אם התפריט פתוח או סגור, ומשתמש מקלדת צריך
+  דרך לסגור אותו בלי לחפש את הכפתור. aria-expanded מסונכרן לכל
+  שינוי, ו-Escape סוגר ומחזיר את המיקוד לכפתור שפתח.
+*/
+function setMenu(open) {
+  mobileMenu.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', String(open));
+}
+burger.setAttribute('aria-expanded', 'false');
+burger.setAttribute('aria-controls', 'mobileMenu');
+burger.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
 mobileMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  link.addEventListener('click', () => setMenu(false));
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+    setMenu(false);
+    burger.focus();
+  }
 });
 
 // מונה מספרים סטטיסטיקה

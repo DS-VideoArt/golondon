@@ -14,7 +14,7 @@
      עמוד עצמו, ואם אין כזו מוצגת הודעת נתק ברורה.
 */
 
-const CACHE_NAME = 'golondon-v3';
+const CACHE_NAME = 'golondon-v4';
 
 const OFFLINE_ASSETS = [
   '/index.html',

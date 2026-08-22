@@ -135,7 +135,7 @@ for a in pd['attractions']:
         'url': 'planner.html',
         'desc': a.get('desc', '')[:180],
         'img': '',
-        'text': ' '.join([a.get('desc', ''), a.get('tip', ''), a.get('nameEn', ''), a.get('tube', ''), a.get('priceBand', '')]),
+        'text': ' '.join(filter(None, [a.get('desc'), a.get('tip'), a.get('nameEn'), a.get('tube'), a.get('priceBand')])),
     })
 
 # ---------- מקומות כשרים ----------

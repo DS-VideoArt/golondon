@@ -310,6 +310,9 @@
       </form>
     </div>
 
+    <div id="errorMsg" style="display:none;background:rgba(220,38,38,.12);border:1px solid rgba(220,38,38,.4);border-radius:12px;padding:16px 18px;margin-top:14px;color:#fecaca;font-size:15px;line-height:1.7" role="alert">
+      השליחה נכשלה, כנראה בעיית רשת רגעית. הפרטים לא נשמרו. אפשר לנסות שוב עכשיו, ואם זה חוזר, כתבו לנו למייל go.london.group@gmail.com
+    </div>
     <div class="success-msg" id="successMsg">
       <div class="success-icon">🎉</div>
       <h3>ברוך הבא למועדון!</h3>
@@ -341,20 +344,25 @@ function handleSubmit(e) {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams(data).toString()
   })
-  .then(() => {
+  .then((res) => {
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    document.getElementById('errorMsg').style.display = 'none';
     document.getElementById('formContent').style.display = 'none';
     document.getElementById('successMsg').style.display = 'block';
   })
   .catch(() => {
-    // fallback, גם אם יש שגיאת רשת, מציג הצלחה
-    document.getElementById('formContent').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
+    /*
+      כשל שליחה אמיתי מציג שגיאה אמיתית. הגרסה הקודמת הציגה כאן הצלחה,
+      והמשתמש היה בטוח שנרשם בזמן שהפרטים שלו לא הגיעו לשום מקום.
+    */
+    document.getElementById('errorMsg').style.display = 'block';
+    if (window.glTrack) glTrack('form_error', { form: 'join' });
   });
 }
 </script>
 
 </main>
-<script src="accessibility-widget.js" defer></script>
+<script src="accessibility-widget.js?v=2" defer></script>
 <script src="install-prompt.js" defer></script>
 <script src="trip-tray.js?v=3" defer></script>
 <script src="analytics.js?v=4" defer></script>

@@ -89,7 +89,7 @@
       "cta": "השוואת מחירי השכרה",
       "icon": "fa-car",
       "url": "https://www.discovercars.com/united-kingdom/london",
-      "brand": "AutoEurope",
+      "brand": "DiscoverCars",
       "program_id": "",
       "campaign_id": "",
       "direct_link": "https://autoeurope.tpx.li/EDKnEb3X"
@@ -107,8 +107,12 @@
   },
   "slots": {
     "_הסבר": "אילו הצעות מוצגות בכל עמוד, ובאיזה סדר. השמות כאן חייבים להתאים לערך שמופיע בתכונת data-affiliate בעמוד עצמו.",
-    "mistakes-esim": ["esim"],
-    "mistakes-tickets": ["attractions_alt"],
+    "mistakes-esim": [
+      "esim"
+    ],
+    "mistakes-tickets": [
+      "attractions_alt"
+    ],
     "oyster": [
       "attractions_alt",
       "esim"
@@ -150,6 +154,26 @@
       "transfer",
       "esim",
       "attractions_alt"
+    ],
+    "esim": [
+      "esim",
+      "insurance",
+      "transfer"
+    ],
+    "insurance": [
+      "insurance",
+      "esim",
+      "transfer"
+    ],
+    "hotels": [
+      "hotels",
+      "transfer",
+      "esim"
+    ],
+    "flights": [
+      "flights",
+      "hotels",
+      "esim"
     ]
   }
 }

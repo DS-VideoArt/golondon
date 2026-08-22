@@ -38,6 +38,8 @@
       '.ca-btn:hover{filter:brightness(1.07);}',
       '.ca-btn:disabled{opacity:.6;cursor:default;filter:none;}',
       '.ca-note{font-size:12.5px;color:#858a9c!important;line-height:1.6;}',
+      '.ca-club{margin-top:20px;padding-top:16px;border-top:1px solid rgba(32,31,43,.09);font-size:14px;color:#55596b!important;line-height:1.7;}',
+      '.ca-club a{font-weight:800;color:#DC2626!important;}',
       '.ca-ok{display:none;text-align:center;padding:20px 6px 6px;}',
       '.ca-ok-icon{font-size:42px;display:block;margin-bottom:10px;}',
       '.ca-ok h3{font-size:20px;font-weight:900;color:#201f2b!important;margin:0 0 8px;}',
@@ -88,6 +90,9 @@
             '</div>' +
             '<div class="ca-err" id="caErr" hidden></div>' +
           '</form>' +
+          /* עמוד המועדון היה קיים בלי אף קישור נכנס באתר, וזו נקודת הכניסה הרחבה ביותר בלי רכיב חדש */
+          '<div class="ca-club">רוצים לשמוע כשמתווסף מידע חדש? ' +
+            '<a href="join.html">הצטרפו למועדון גו לונדון</a>, בחינם ובלי ספאם.</div>' +
         '</div>' +
 
         '<div class="ca-ok" id="caOk">' +
@@ -118,27 +123,38 @@
       if (form.querySelector('[name="bot-field"]').value) return;
 
       err.hidden = true;
+      var originalBtnHtml = btn.innerHTML;
       btn.disabled = true;
       btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> שולח';
 
       var body = new URLSearchParams(new FormData(form)).toString();
 
-      /* הגיליון הוא היעד העיקרי, וטפסי נטליפיי הם גיבוי. אם אחד נכשל, השני עדיין קולט */
-      var toSheet = fetch(SHEET_URL, {
+      /*
+        הגיליון הוא היעד העיקרי אבל התשובה שלו אטומה (no-cors), ולכן אי אפשר
+        לדעת אם הצליח. טפסי נטליפיי הם הערוץ היחיד שמחזיר תשובה שאפשר לבדוק,
+        והוא זה שקובע אם מציגים הצלחה. כישלון מציג שגיאה אמיתית ומחזיר את
+        הכפתור לפעולה, במקום הצלחה כוזבת שההודעה שלה נעלמה לריק.
+      */
+      fetch(SHEET_URL, {
         method: 'POST', mode: 'no-cors',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: body
       }).catch(function () {});
 
-      var toNetlify = fetch('/', {
+      fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: body
-      }).catch(function () {});
-
-      Promise.all([toSheet, toNetlify]).then(function () {
+      }).then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
         root.querySelector('#caContent').style.display = 'none';
         root.querySelector('#caOk').style.display = 'block';
+      }).catch(function () {
+        btn.disabled = false;
+        btn.innerHTML = originalBtnHtml;
+        err.hidden = false;
+        err.textContent = 'השליחה נכשלה, כנראה בעיית רשת רגעית. ההצעה לא נשמרה, אפשר לנסות שוב.';
+        if (window.glTrack) glTrack('form_error', { form: 'community_ask' });
       });
     });
   }

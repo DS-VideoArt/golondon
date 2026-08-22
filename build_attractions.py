@@ -29,7 +29,7 @@ THEMES = collections.OrderedDict([
  ('המוזיאונים הגדולים, כניסה חינם', ['british-museum','national-gallery','natural-history','science-museum','va-museum','tate-modern','tate-britain','national-portrait-gallery','imperial-war-museum','maritime-museum','british-library','design-museum']),
  ('מוזיאונים קטנים שמעטים מכירים', ['wallace-collection','soane-museum','transport-museum','dickens-museum','bank-museum','postal-museum','wellcome-collection','sherlock-museum','museum-of-home','whitechapel-gallery','docklands-museum','raf-museum','old-operating-theatre','churchill-rooms','dennis-severs']),
  ('תצפיות ונקודות נוף', ['sky-garden','shard','royal-observatory','primrose-hill','monument','cable-car']),
- ('שווקים, אוכל וחיי רחוב', ['borough-market','camden-market','spitalfields-market','columbia-road','leadenhall-market','greenwich-market','brick-lane','chinatown-soho','coal-drops-yard','british-pub']),
+ ('שווקים, אוכל וחיי רחוב', ['borough-market','camden-market','spitalfields-market','columbia-road','leadenhall-market','greenwich-market','brick-lane','chinatown-soho','coal-drops-yard','horizon-22']),
  ('פארקים ושטחים פתוחים', ['hyde-park','st-james-park','regents-park','hampstead-heath','holland-park','richmond-park','kew-gardens','little-venice']),
  ('שכונות ורחובות לשיטוט', ['covent-garden','notting-hill','shoreditch-art','neals-yard','southbank-walk','greenwich','st-katharine-docks','battersea-power-station']),
  ('ארמונות ובתים היסטוריים', ['kensington-palace','hampton-court','windsor-castle','kenwood-house','queens-house']),
@@ -69,7 +69,7 @@ EXTRA = {
    'tip':'הכניסה חינם אבל מחייבת שריון חלון זמן מראש באתר הרשמי, והמקומות אוזלים בסופי שבוע.'},
  'west-end-theatre': {
    'name':'מחזמר בווסט אנד', 'area':'וסטמינסטר ומרכז העיר', 'free':False,
-   'short':'אזור התיאטראות הגדול באירופה, במרחק הליכה מקובנט גארדן.',
+   'short':'אחד מאזורי התיאטרון המפורסמים והחשובים בעולם, במרחק הליכה מקובנט גארדן.',
    'desc':'רובע התיאטראות של לונדון, המקבילה המקומית לברודוויי. עשרות אולמות פעילים בו זמנית, ממחזות זמר גדולים ועד הצגות קאמריות.',
    'tip':'דוכני הכרטיסים המוזלים בלב לסטר סקוור מוכרים מקומות לאותו יום. אין ערובה למופע מסוים, אבל ההנחה אמיתית.'},
 }
@@ -173,6 +173,16 @@ def main():
                     'duration': tour.get('duration'),
                     'priceNote': tour.get('price_note'),
                 }
+                """
+                מחיר יכול להיות נכון היום ולא נכון בעוד שבוע. מחיר שמשתנה לפי
+                תאריך ושעה לא מוצג כמספר בכלל, ומחיר קבוע שידוע מתי הוא נגמר
+                נושא מועד תפוגה, כדי שהוא לא יתיישן בשקט אחרי שהמבצע נסגר.
+                """
+                if tour.get('price_varies'):
+                    cta.pop('price', None)
+                    cta['priceVaries'] = True
+                if tour.get('price_until'):
+                    cta['priceUntil'] = tour['price_until']
 
             """
             כשיש לפריט מחיר סיור אמיתי שנבדק, שדה updated הוא תאריך הבדיקה
@@ -189,10 +199,15 @@ def main():
                 entry['video'] = {'id': video['youtube_id'], 'title': video.get('title', '')}
             info[pid] = entry
 
-            badge = '<span class="free-badge">חינם</span>' if free and not partly else ''
+            if free and not partly:
+                badge = ' <span class="free-badge">חינם</span>'
+            elif free and partly:
+                badge = ' <span class="free-badge is-partial">חינם חלקית</span>'
+            else:
+                badge = ''
             items.append(
                 '      <div class="num-item" data-place="%s"><div class="num">%d</div>'
-                '<div><h4>%s%s</h4><p>%s</p></div></div>'
+                '<div><h3>%s%s</h3><p>%s</p></div></div>'
                 % (esc(pid), n, esc(name), badge, esc(short))
             )
 

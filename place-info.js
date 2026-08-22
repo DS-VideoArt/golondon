@@ -234,14 +234,25 @@
       */
       var priceHtml = '';
       if (item.cta.price != null) {
+        /* 15.8 הוא סכום כסף ולא מספר. מחיר עם אגורות מוצג תמיד בשתי ספרות */
+        var pv = Number(item.cta.price);
+        var pvTxt = (pv % 1 === 0) ? String(pv) : pv.toFixed(2);
         priceHtml = '<span class="pi-price-lead">החל מ־</span>' +
-                    '<span class="num">' + sym + item.cta.price + '</span>' +
+                    '<span class="num">' + sym + pvTxt + '</span>' +
                     (item.cta.duration ? '<span class="dur">' + item.cta.duration + '</span>' : '');
       } else if (item.cta.priceVaries) {
         priceHtml = '<span class="num pi-price-varies">משתנה לפי תאריך ושעה</span>';
       }
-      var checkedHtml = (priceHtml && item.updated)
-        ? '<div class="pi-price-checked">נבדק: ' + item.updated + '</div>' : '';
+      /*
+        מחיר יכול להיות נכון היום ולא נכון בעוד שבוע, למשל מבצע קיץ או
+        תקופת מע"מ מוזל. במקרה כזה הרשומה נושאת priceUntil, ואנחנו אומרים
+        לקורא עד מתי המספר תקף במקום להשאיר אותו מתיישן בשקט.
+      */
+      var checkedHtml = '';
+      if (priceHtml && item.updated) {
+        checkedHtml = '<div class="pi-price-checked">נבדק: ' + item.updated +
+          (item.cta.priceUntil ? ' · תקף עד ' + item.cta.priceUntil : '') + '</div>';
+      }
       tourEl.innerHTML =
         (priceHtml ? '<div class="pi-tour-price">' + priceHtml + '</div>' : '') +
         checkedHtml +

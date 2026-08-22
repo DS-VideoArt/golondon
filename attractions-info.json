@@ -4,18 +4,18 @@
   "title": "ביג בן ובתי הפרלמנט",
   "tags": [
    {
-    "label": "כניסה חינם",
+    "label": "כניסה חינם, תערוכות בתשלום",
     "type": "free"
    },
    {
     "label": "וסטמינסטר ומרכז העיר"
    }
   ],
-  "body": "מגדל השעון המזוהה ביותר עם לונדון, כשהשם ביג בן שייך במקור לפעמון שבתוכו ולא למגדל עצמו. נמצא בקצה גשר וסטמינסטר, והנוף המפורסם שלו נפתח דווקא מהגדה הנגדית של התמזה.",
+  "body": "מגדל השעון המזוהה ביותר עם לונדון, והצפייה בו מבחוץ ומגשר וסטמינסטר אינה עולה דבר. השם ביג בן שייך במקור לפעמון שבתוך המגדל ולא למגדל עצמו. הכניסה לבתי הפרלמנט והסיור במגדל הם בתשלום ונרכשים מראש, והסיור המודרך שאינו בתשלום פתוח לתושבי בריטניה בלבד דרך חבר הפרלמנט שלהם.",
   "tip": "היציאה מתחנת וסטמינסטר נותנת את אחד הנופים הכי מרשימים בעיר, ממש ברגע שעולים במדרגות.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.parliament.uk/visiting/visiting-and-tours/big-ben-tour/",
    "custom": true,
@@ -34,18 +34,18 @@
   "title": "גשר המגדלים",
   "tags": [
    {
-    "label": "כניסה חינם",
+    "label": "כניסה חינם, תערוכות בתשלום",
     "type": "free"
    },
    {
     "label": "הסיטי ומזרח"
    }
   ],
-  "body": "גשר ההרמה הוויקטוריאני שרבים מבלבלים בינו לבין גשר לונדון הסמוך והאפור יותר. חוצה את התמזה בסמוך למצודת לונדון, ואפשר לעבור עליו ברגל בלי לשלם.",
+  "body": "גשר ההרמה הוויקטוריאני, והמעבר עליו ברגל או ברכב אינו עולה דבר. רבים מבלבלים בינו לבין גשר לונדון הסמוך והאפור יותר. התערוכה במעברים העליונים, רצפת הזכוכית וחדרי המכונות הוויקטוריאניים הם בתשלום.",
   "tip": "רצפת הזכוכית בתערוכה למעלה שווה למי שאוהב גבהים. לחצות את הגשר עצמו לא עולה כלום.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.towerbridge.org.uk/whats-on/entry-to-tower-bridge",
    "custom": true,
@@ -53,7 +53,8 @@
    "price": 15.8,
    "currency": "GBP",
    "duration": "כשעה עד שעה וחצי",
-   "priceNote": null
+   "priceNote": null,
+   "priceUntil": "1 בספטמבר 2026"
   },
   "video": {
    "id": "f4S-XJBqmTI",
@@ -77,7 +78,7 @@
   "tip": "הסיור עם שומרי המצודה כלול במחיר ושווה את זה. יוצא כל חצי שעה מהכניסה.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.hrp.org.uk/tower-of-london/visit/tickets-and-prices/",
    "custom": true,
@@ -103,11 +104,11 @@
     "label": "וסטמינסטר ומרכז העיר"
    }
   ],
-  "body": "מעון המלוכה הרשמי בלונדון, וטקס חילופי המשמר מתקיים בחזיתו בימים מסוימים. יושב בקצה השדרה המלכותית, בין פארק סנט ג׳יימס לגרין פארק.",
+  "body": "מעון המלוכה הרשמי בלונדון, וטקס חילופי המשמר מתקיים בחזיתו ללא עלות בימים מסוימים. הכניסה לחדרי המדינה היא בתשלום ורק בפתיחת הקיץ, שבשנת 2026 נמשכת מ־9 ביולי עד 27 בספטמבר.",
   "tip": "טקס החילופים לא מתקיים כל יום ומתבטל בגשם. להגיע 45 דקות מראש כדי לתפוס מקום טוב.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.rct.uk/visit/buckingham-palace",
    "custom": true,
@@ -141,9 +142,9 @@
   ],
   "body": "כנסיית ההכתרות של מלכי אנגליה כבר קרוב לאלף שנה, וגם מקום קבורתם של ניוטון ודארווין. עומד ממש מול בתי הפרלמנט, מעבר לכביש מביג בן.",
   "tip": "סגור למבקרים בזמן תפילות, ולכן שווה לבדוק את לוח הזמנים לפני שקובעים שעה.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.westminster-abbey.org/visit-us/prices-and-entry-times",
    "custom": true,
@@ -151,7 +152,8 @@
    "price": 27.13,
    "currency": "GBP",
    "duration": "כשעה עד שעה וחצי",
-   "priceNote": null
+   "priceNote": null,
+   "priceUntil": "1 בספטמבר 2026"
   },
   "video": {
    "id": "oNIcJFSd-g0",
@@ -179,7 +181,7 @@
   "tip": "העלייה לכיפה היא יותר מחמש מאות מדרגות, אבל הנוף מלמעלה הוא מהיפים בלונדון.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.stpauls.co.uk/ticket-types-and-prices",
    "custom": true,
@@ -209,17 +211,17 @@
   ],
   "body": "גלגל הענק שעל גדת התמזה, כשסיבוב שלם נמשך כחצי שעה. עומד בדיוק מול בתי הפרלמנט, בקצה הצפוני של הגדה הדרומית.",
   "tip": "הסיבוב אורך כחצי שעה. שקיעה היא הזמן היפה ביותר, וגם היקר והעמוס ביותר.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://ticketing.londoneye.com/en/tickets/standard-london-eye-fast-track-tickets",
    "custom": true,
    "desc": "סיבוב שלם באופנוע הענק לוקח חצי שעה, אבל עם ההמתנה והעלייה לתא כדאי לתכנן קרוב לשעה. כל תא זכוכית מכיל עד עשרים וחמישה אנשים ונשאר סגור לחלוטין תוך כדי הסיבוב, כך שרואים את כל לונדון מלמעלה כולל ביג בן וארמון וסטמינסטר בלי לזוז ממקום אחד. המחיר עולה ככל שמתקרבים לתאריך ההגעה, אז הזמנה מוקדמת חוסכת כסף.",
-   "price": 34.13,
    "currency": "GBP",
-   "duration": "כשעה עד שעה ורבע",
-   "priceNote": null
+   "duration": null,
+   "priceNote": null,
+   "priceVaries": true
   },
   "video": {
    "id": "h7gtgAcLZQc",
@@ -241,9 +243,9 @@
   "tip": "נקודת מפגש נוחה במיוחד, כי ממנה אפשר להגיע ברגל כמעט לכל אתר במרכז.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "עוד אטרקציות בחינם",
-   "href": "guide-attractions-free.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "yePLUEY3FFc",
@@ -265,9 +267,9 @@
   "tip": "שווה בעיקר כתחנת מעבר קצרה בדרך למקום אחר, לא כיעד בפני עצמו.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "עוד אטרקציות בחינם",
-   "href": "guide-attractions-free.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "BXtMf-i5-Js",
@@ -289,10 +291,9 @@
   "tip": "ענק מכדי לראות הכל. בחרו שלושה אגפים מראש ותצאו מרוצים במקום מותשים.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "תערוכות מתחלפות באתר המוזיאון",
-   "href": "https://www.britishmuseum.org/exhibitions",
-   "custom": true,
-   "free": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "q2fBWKJL7SQ",
@@ -318,10 +319,9 @@
   "tip": "יושבת בדיוק על כיכר טרפלגר, אז אפשר לשלב ביקור קצר בדרך למקום אחר.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "תערוכות מתחלפות באתר הגלריה",
-   "href": "https://www.nationalgallery.org.uk/exhibitions",
-   "custom": true,
-   "free": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "prgeZ13fDHA",
@@ -343,10 +343,9 @@
   "tip": "המוזיאון הכי טוב בלונדון לילדים. הבניין עצמו מרשים לא פחות מהתצוגות.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "תערוכות ואירועים באתר המוזיאון",
-   "href": "https://www.nhm.ac.uk/events.html",
-   "custom": true,
-   "free": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "aDwMrDGvLWk",
@@ -368,10 +367,9 @@
   "tip": "נמצא ממש ליד מוזיאון הטבע, אז אפשר לשלב את שניהם באותו יום בלי נסיעות.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "תערוכות וחוויות באתר המוזיאון",
-   "href": "https://www.sciencemuseum.org.uk/see-and-do",
-   "custom": true,
-   "free": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "8s8ZnZxByLQ",
@@ -397,10 +395,9 @@
   "tip": "עיצוב, אופנה ואמנות שימושית. החצר הפנימית היא אחת הפינות הנעימות בעיר לקפה.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "תערוכות מתחלפות באתר המוזיאון",
-   "href": "https://www.vam.ac.uk/exhibitions",
-   "custom": true,
-   "free": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "t46g387rqIo",
@@ -426,10 +423,9 @@
   "tip": "המרפסת בקומה העליונה פתוחה לכולם ונותנת נוף חינמי מצוין על התמזה ועל סנט פול.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "תערוכות מתחלפות באתר טייט",
-   "href": "https://www.tate.org.uk/visit/tate-modern",
-   "custom": true,
-   "free": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "py5tRGV_RpQ",
@@ -455,10 +451,9 @@
   "tip": "שקט בהרבה מהטייט מודרן, ובין שני המוזיאונים יש שירות סירה על התמזה.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "תערוכות מתחלפות באתר טייט",
-   "href": "https://www.tate.org.uk/visit/tate-britain",
-   "custom": true,
-   "free": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "jDx9dfsEMIA",
@@ -484,10 +479,9 @@
   "tip": "פחות עמוסה מהגלריה הלאומית שלידה, ולכן נעימה במיוחד בשעות הצהריים.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "תערוכות מתחלפות באתר הגלריה",
-   "href": "https://www.npg.org.uk/whatson/exhibitions",
-   "custom": true,
-   "free": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "z-H9X_JdAu4",
@@ -513,10 +507,9 @@
   "tip": "תערוכת השואה קשה מאוד רגשית ואינה מיועדת לילדים צעירים. שאר המוזיאון מתאים לכל הגילים.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "תערוכות ואירועים באתר המוזיאון",
-   "href": "https://www.iwm.org.uk/events",
-   "custom": true,
-   "free": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "IevuOKrp54k",
@@ -538,10 +531,9 @@
   "tip": "משתלב מצוין עם ביקור בגריניץ׳, כי הוא נמצא בדיוק בדרך מהמזח אל הגבעה.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "תערוכות מתחלפות באתר המוזיאון",
-   "href": "https://www.rmg.co.uk/national-maritime-museum",
-   "custom": true,
-   "free": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "GkTCpA9oufc",
@@ -567,10 +559,9 @@
   "tip": "גלריית האוצרות היא החלק שכדאי לתייר, והכניסה אליה חינמית.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "תערוכות ואירועים באתר הספרייה",
-   "href": "https://events.bl.uk/",
-   "custom": true,
-   "free": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "_1-0d_k7DEI",
@@ -592,14 +583,13 @@
     "type": "teen"
    }
   ],
-  "body": "מוזיאון המוקדש לעיצוב תעשייתי, אופנה ואדריכלות, בתוך מבנה עם גג מעוגל דרמטי. יושב בקצה הולנד פארק, מערבית לקנזינגטון.",
+  "body": "מוזיאון המוקדש לעיצוב תעשייתי, אופנה ואדריכלות, והתצוגה הקבועה בו פתוחה ללא עלות. המבנה עצמו, עם הגג המעוגל הדרמטי, שווה ביקור בפני עצמו. התערוכות המיוחדות הן בתשלום.",
   "tip": "התצוגה הקבועה חינמית, והתערוכות המתחלפות בתשלום. גם המבנה עצמו שווה ביקור.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "תערוכות מתחלפות באתר המוזיאון",
-   "href": "https://designmuseum.org/exhibitions",
-   "custom": true,
-   "free": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "y_zs23zelug",
@@ -625,9 +615,9 @@
   "tip": "אחת ההפתעות הגדולות של לונדון, חינם ובלי תורים, דקות הליכה מהקניות באוקספורד סטריט.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל המוזיאונים החינמיים",
-   "href": "guide-attractions-museums.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "st7aqBBnxKA",
@@ -653,9 +643,9 @@
   "tip": "הבית קטן ולכן נכנסים בקבוצות מוגבלות. שווה להגיע מוקדם או להזמין מקום מראש.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל המוזיאונים החינמיים",
-   "href": "guide-attractions-museums.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "lPvPjKsk39c",
@@ -674,9 +664,9 @@
   ],
   "body": "הסיפור של הרכבת התחתית והאוטובוסים האדומים, עם קרונות ואוטובוסים היסטוריים שאפשר לעלות עליהם. יושב בתוך כיכר קובנט גארדן עצמה.",
   "tip": "מהמקומות הטובים בלונדון לילדים, וחנות המזכרות שלו נחשבת לאחת הטובות בעיר.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.ltmuseum.co.uk/visit/tickets",
    "custom": true,
@@ -684,7 +674,8 @@
    "price": 23.62,
    "currency": "GBP",
    "duration": "כשעתיים עד שלוש",
-   "priceNote": null
+   "priceNote": null,
+   "priceUntil": "1 בספטמבר 2026"
   },
   "video": {
    "id": "YXv_Nmgdz5E",
@@ -707,9 +698,9 @@
   ],
   "body": "הבית שבו גר דיקנס וכתב חלק מיצירותיו המוקדמות, משוחזר כבית מגורים ויקטוריאני. נמצא בבלומסברי, במרחק הליכה מהמוזיאון הבריטי.",
   "tip": "משתלב היטב עם ביקור במוזיאון הבריטי, שנמצא באותה שכונה.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://dickensmuseum.com/pages/admissions",
    "custom": true,
@@ -717,7 +708,8 @@
    "price": 14.0,
    "currency": "GBP",
    "duration": "כשעה",
-   "priceNote": null
+   "priceNote": null,
+   "priceUntil": "1 בספטמבר 2026"
   },
   "video": {
    "id": "2htpOD8DI4M",
@@ -739,9 +731,9 @@
   "tip": "פתוח בעיקר בימי חול. הרמת מטיל הזהב היא הדבר שהילדים זוכרים ממנו.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל המוזיאונים החינמיים",
-   "href": "guide-attractions-museums.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "VozhNp789Jg",
@@ -765,7 +757,7 @@
   "tip": "הנסיעה ברכבת הדואר היא בקרונות צרים מאוד ובשעות מוגדרות, ולכן שווה להזמין מקום מראש.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.postalmuseum.org/visit-us/tickets/",
    "custom": true,
@@ -799,9 +791,9 @@
   "tip": "שקט, חינמי, ועם חדר קריאה נעים. אחד המקומות הטובים בעיר ליום גשום.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל המוזיאונים החינמיים",
-   "href": "guide-attractions-museums.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "3P84-aYTFJQ",
@@ -826,7 +818,7 @@
   "tip": "הבית קטן מאוד והתור בחוץ ארוך. מי שלא מעריץ מושבע, מספיק לו לצלם את החזית.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.sherlock-holmes.co.uk/plan-your-visit/access-information/",
    "custom": true,
@@ -856,9 +848,9 @@
   "tip": "הגנים שמאחורי המוזיאון מסודרים לפי תקופות, והכניסה אליהם חינמית גם היא.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל המוזיאונים החינמיים",
-   "href": "guide-attractions-museums.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "hMPbS20lEKM",
@@ -880,14 +872,13 @@
     "type": "teen"
    }
   ],
-  "body": "גלריה היסטורית לאמנות עכשווית, שהציגה בעבר יוצרים גדולים לפני שהתפרסמו. נמצאת בוייטצ׳אפל, במרחק הליכה מבריק ליין.",
+  "body": "גלריה היסטורית לאמנות עכשווית, ורוב התצוגות בה פתוחות ללא עלות. היא הציגה בעבר יוצרים גדולים לפני שהתפרסמו. בכל עונה מוצגת בה תערוכה אחת בתשלום.",
   "tip": "התערוכות מתחלפות, ולכן שווה לבדוק מה מוצג לפני שמתכננים אליה זמן.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "תערוכות מתחלפות באתר הגלריה",
-   "href": "https://www.whitechapelgallery.org/exhibitions/",
-   "custom": true,
-   "free": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "oXgIKNmqO1w",
@@ -895,7 +886,7 @@
   }
  },
  "docklands-museum": {
-  "title": "מוזיאון הדוקלנדס",
+  "title": "לונדון מיוזיאם דוקלנדס",
   "tags": [
    {
     "label": "כניסה חינם",
@@ -905,13 +896,13 @@
     "label": "מחוץ למרכז"
    }
   ],
-  "body": "מוזיאון בתוך מחסן סחר היסטורי, שמספר את סיפור נמל לונדון ואת הקשר שלו לסחר העבדים. נמצא בקנרי וורף, במזרח העיר.",
+  "body": "מוזיאון בתוך מחסן סחר היסטורי, שמספר את סיפור נמל לונדון ואת הקשר שלו לסחר העבדים. השם הרשמי עודכן ל־London Museum Docklands. הכניסה אינה עולה דבר.",
   "tip": "חינמי ולרוב ריק יחסית, והמחסן ההיסטורי עצמו מעניין לא פחות מהתצוגה.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל המוזיאונים החינמיים",
-   "href": "guide-attractions-museums.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "-TlCWHR0TUk",
@@ -933,9 +924,9 @@
   "tip": "חינמי לגמרי ואחד המקומות הפחות מוכרים שמצוינים לילדים, בעיקר בימי גשם.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל המוזיאונים החינמיים",
-   "href": "guide-attractions-museums.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "O4UqR7mfhMI",
@@ -956,11 +947,11 @@
     "type": "teen"
    }
   ],
-  "body": "חדר ניתוחים מהמאה התשע עשרה, מלפני עידן ההרדמה, ששרד בעליית הגג של כנסייה. נמצא ממש ליד תחנת גשר לונדון.",
+  "body": "חדר ניתוחים מהמאה התשע עשרה, מלפני עידן ההרדמה, ששרד בעליית הגג של כנסייה. הכניסה הרגילה עוברת ב־52 מדרגות לולייניות צרות שרוחבן מאפשר אדם אחד בכל פעם. אין גישה נגישה רגילה, אבל למי שזקוק לכך יש מעלית קטנה בתיאום מראש מול המוזיאון.",
   "tip": "העלייה אליו היא במדרגות לולייניות צרות ותלולות, ואין דרך אחרת להגיע.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://oldoperatingtheatre.com/book-tickets/",
    "custom": true,
@@ -994,9 +985,9 @@
   ],
   "body": "הבונקר התת קרקעי שממנו נוהלה בריטניה במלחמת העולם השנייה, ששוחזר כמעט בדיוק כפי שהיה. הכניסה מרחוב צדדי בוסטמינסטר, דקות הליכה מביג בן ומפארק סנט ג׳יימס.",
   "tip": "הבונקר התת קרקעי נשמר בדיוק כפי שהיה. אחת החוויות ההיסטוריות החזקות בעיר.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.iwm.org.uk/visits/churchill-war-rooms/booking",
    "custom": true,
@@ -1004,7 +995,8 @@
    "price": 29.75,
    "currency": "GBP",
    "duration": "כשעתיים",
-   "priceNote": null
+   "priceNote": null,
+   "priceUntil": "1 בספטמבר 2026"
   },
   "video": {
    "id": "c8DggKaPGQ0",
@@ -1032,7 +1024,7 @@
   "tip": "הכניסה מוגבלת מאוד במספר המבקרים ובשעות, ולכן חובה להזמין מקום מראש.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.dennissevershouse.co.uk/calendar",
    "custom": true,
@@ -1061,15 +1053,13 @@
     "label": "הסיטי ומזרח"
    }
   ],
-  "body": "אחת מתצפיות הנוף החינמיות המפורסמות בלונדון, בקומה 35 של הבניין ברחוב 20 Fenchurch Street, המכונה ווקי טוקי. גן טרופי מקורה תחת כיפת זכוכית, ומרפסת פתוחה שמשקיפה על התמזה ועל הסיטי.",
-  "tip": "הכניסה חינם אבל חייבים כרטיס מראש, והמקומות נחטפים. החלון נפתח בערך שלושה שבועות לפני, וכדאי להיכנס ברגע שהוא נפתח.",
+  "body": "תצפית עם גן טרופי בקומה 35 של הבניין המכונה ווקי טוקי, והכניסה אליה אינה עולה דבר. חובה להזמין מקום מראש דרך האתר הרשמי, והחלון נפתח כשלושה שבועות קדימה. יש שם מרפסת פתוחה ונוף רחב על התמזה ועל הסיטי.",
+  "tip": "התצפית החינמית הכי טובה בעיר, אבל המקומות נחטפים. להזמין ברגע שנפתח החלון, בערך שלושה שבועות מראש.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "הזמנת כרטיס חינם באתר הרשמי",
-   "href": "https://skygarden.london/",
-   "custom": true,
-   "desc": "הכניסה חינם לחלוטין. הכרטיס מוזמן בשעה קבועה דרך מערכת ההזמנות של סקיי גארדן עצמו, והחלון נפתח בערך שלושה שבועות מראש.",
-   "free": true
+   "label": "תפיסת מקום מראש",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "FdAGgTIUtpU",
@@ -1091,17 +1081,17 @@
   ],
   "body": "הבניין הגבוה בבריטניה, עם תצפית פתוחה בקומות העליונות שלו. ניצב ממש מעל תחנת גשר לונדון, במרחק דקות משוק בורו.",
   "tip": "הבניין הגבוה בבריטניה. אלטרנטיבה זולה יותר היא בר במלון גבוה, שם משלמים על משקה במקום על כרטיס.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://tickets.theviewfromtheshard.com/book-tickets/",
    "custom": true,
    "desc": "השארד הוא הבניין הגבוה ביותר במערב אירופה, ונקודת התצפית נמצאת בין קומה שישים ושמונה לשבעים ושתיים, גבוה בהרבה מהלונדון איי או מסקיי גארדן. אין הגבלת זמן ברגע שנכנסים, אז אפשר לשבת בבר בקומה שבעים ושתיים ולראות את השקיעה עד סגירה. ביום בהיר רואים עד שישים וארבעה קילומטר לכל הכיוונים, כולל את כל נהר התמזה מתפתל דרך העיר.",
-   "price": 28.0,
    "currency": "GBP",
-   "duration": "כשעה",
-   "priceNote": null
+   "duration": null,
+   "priceNote": null,
+   "priceVaries": true
   },
   "video": {
    "id": "4vuf15SzSfM",
@@ -1121,11 +1111,11 @@
     "label": "גריניץ׳"
    }
   ],
-  "body": "המקום שבו נקבע קו האורך אפס ושעון גריניץ׳, עם תצוגות אסטרונומיה ופלנטריום. עומד על ראש הגבעה בפארק גריניץ׳, עם נוף לנהר ולמגדלי קנרי וורף.",
+  "body": "המקום שבו נקבע קו האורך אפס ושעון גריניץ׳, על גבעה עם אחד הנופים היפים בלונדון. הגבעה, הפארק והנוף סביב המצפה פתוחים ללא עלות, והכניסה למצפה עצמו ולחצר שבה מסומן קו האפס היא בתשלום. הפלנטריום ע״ש פיטר הריסון סגור לשיפוץ, ושאר האתר פתוח כרגיל.",
   "tip": "העלייה לגבעה תלולה, אבל התצפית ממנה חינמית גם בלי כרטיס למצפה עצמו.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.rmg.co.uk/plan-your-visit/tickets-prices",
    "custom": true,
@@ -1133,7 +1123,8 @@
    "price": 18,
    "currency": "GBP",
    "duration": "כשעה וחצי עד שעתיים",
-   "priceNote": null
+   "priceNote": null,
+   "priceUntil": "2 בספטמבר 2026"
   },
   "video": {
    "id": "IPCp4c3tz3Y",
@@ -1155,9 +1146,9 @@
   "tip": "השקיעה היא השעה שבה כולם מגיעים. באמצע היום זה פארק שקט.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "עוד תצפיות על לונדון",
-   "href": "guide-attractions-views.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "KPlwbhhGED0",
@@ -1176,9 +1167,9 @@
   ],
   "body": "עמוד אבן שנבנה לזכר השריפה הגדולה של 1666, ובתוכו גרם מדרגות לולייני אל תצפית פתוחה. עומד ממש במקום שבו פרצה השריפה, בלב הסיטי.",
   "tip": "למעלה מ-300 מדרגות ואין מעלית, אבל התצפית זולה בהרבה מהתצפיות המסחריות.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.themonument.org.uk/plan/buy-tickets",
    "custom": true,
@@ -1186,7 +1177,8 @@
    "price": 7.0,
    "currency": "GBP",
    "duration": "כרבע שעה עד חצי שעה",
-   "priceNote": null
+   "priceNote": null,
+   "priceUntil": "1 בספטמבר 2026"
   },
   "video": {
    "id": "DEWlC-l1lpE",
@@ -1205,9 +1197,9 @@
   ],
   "body": "רכבל שחוצה את התמזה באוויר בין חצי האי גריניץ׳ לרויאל דוקס, עם נוף פתוח על מזרח לונדון. נקודת העלייה הנוחה היא ליד תחנת נורת׳ גריניץ׳.",
   "tip": "נסיעה קצרה אבל הנוף פתוח לכל הכיוונים, ובשעת השקיעה זה הזמן היפה ביותר.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.emiratesaircablecar.com/products/ifs-cloud-cable-car-ticket",
    "custom": true,
@@ -1237,9 +1229,9 @@
   "tip": "להגיע רעבים ובשעות הצהריים. עמוס מאוד בסופי שבוע, ורגוע הרבה יותר באמצע השבוע.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל שווקי לונדון",
-   "href": "guide-attractions-markets.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "8cqRbJlRR_o",
@@ -1261,22 +1253,13 @@
   "tip": "אחד המקומות הכי טובים בעיר לאוכל רחוב מכל העולם, במחירים שפויים.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל שווקי לונדון",
-   "href": "guide-attractions-markets.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "DTxAUScs9pI",
    "title": "CAMDEN | The ultimate tour of Camden Town London (including Camden Market)"
-  },
-  "extra": {
-   "kicker": "המלצה מיוחדת",
-   "title": "שייט בתעלה מקמדן לוונציה הקטנה",
-   "desc": "סירה צרה יוצאת מקמדן לוק ועוברת דרך ריג'נטס פארק, לצד גן החיות ובתוך מנהרת מיידה היל. ארבעים וחמש דקות, ואפשר לעשות את זה גם בכיוון ההפוך.",
-   "priceNote": "17 ליש\"ט למבוגר, 14 לילד. מומלץ להזמין מראש, בסופי שבוע נמכר.",
-   "label": "בדיקת זמינות והזמנה",
-   "offer": "attractions_alt",
-   "href": "https://www.londonwaterbus.com/regents-canal-waterbus/"
   }
  },
  "spitalfields-market": {
@@ -1294,9 +1277,9 @@
   "tip": "הדוכנים משתנים לפי ימי השבוע, ולכן שווה לבדוק מה מתקיים ביום שאתם מגיעים.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל שווקי לונדון",
-   "href": "guide-attractions-markets.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "Ms3Vxm-0zn8",
@@ -1318,13 +1301,13 @@
     "type": "teen"
    }
   ],
-  "body": "רחוב שלם שמתמלא בדוכני פרחים וצמחים, עם חנויות קטנות ובתי קפה משני הצדדים. נמצא מצפון לשורדיץ', ופועל בימי ראשון בלבד.",
+  "body": "רחוב שלם שמתמלא בדוכני פרחים וצמחים, עם חנויות קטנות ובתי קפה משני הצדדים. השוק מתקיים ביום ראשון בלבד, בערך משמונה בבוקר עד שלוש אחר הצהריים. חלק מהחנויות ברחוב פתוחות גם באמצע השבוע.",
   "tip": "פועל רק בימי ראשון. מי שמגיע בבוקר רואה את השוק במלואו, ובסוף היום המחירים יורדים.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל שווקי לונדון",
-   "href": "guide-attractions-markets.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "WQRrNF7WtZ8",
@@ -1346,9 +1329,9 @@
   "tip": "פעיל בעיקר בימי חול, כי הוא משרת את עובדי הסיטי. בסופי שבוע הוא כמעט ריק אבל יפה לצילום.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל שווקי לונדון",
-   "href": "guide-attractions-markets.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "_9TsLzfPgpg",
@@ -1366,13 +1349,13 @@
     "label": "גריניץ׳"
    }
   ],
-  "body": "שוק מקורה עם דוכני אוכל, מלאכת יד ועתיקות, בלב המרכז ההיסטורי של גריניץ׳. נמצא דקות הליכה מהקאטי סארק ומהמוזיאון הימי.",
+  "body": "שוק מקורה עם דוכני אוכל, מלאכת יד ועתיקות, בלב המרכז ההיסטורי של גריניץ׳. הוא פתוח כל ימות השבוע, בערך מעשר בבוקר עד חמש וחצי אחר הצהריים.",
   "tip": "נקודת עצירה טבעית לאוכל באמצע יום בגריניץ׳, בין המוזיאונים לפארק.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל שווקי לונדון",
-   "href": "guide-attractions-markets.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "5cxs1hYLn1Y",
@@ -1398,9 +1381,9 @@
   "tip": "השוק של יום ראשון הוא האירוע המרכזי שם. בשאר הימים זה בעיקר רחוב מסעדות.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "המדריך המלא לשורדיץ׳",
-   "href": "guide-areas-shoreditch.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "7E5RtFkxIC4",
@@ -1426,9 +1409,9 @@
   "tip": "הכי חי בערב, וזה גם האזור הנוח לאכול בו לפני הצגה בווסט אנד.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "מדריכי האזורים של לונדון",
-   "href": "guide-areas.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "luNHlfDlVAA",
@@ -1446,17 +1429,40 @@
     "label": "קמדן וצפון"
    }
   ],
-  "body": "מחסני פחם היסטוריים שהוסבו למתחם חנויות ומסעדות על גדת התעלה, עם מזרקות רחוב שילדים משחקים בהן. נמצא מאחורי תחנת קינגס קרוס.",
+  "body": "מחסני פחם היסטוריים שהוסבו למתחם חנויות ומסעדות על גדת התעלה. מזרקות הרחוב שילדים משחקים בהן נמצאות בכיכר גרנרי סקוור הסמוכה, כמה דקות הליכה משם.",
   "tip": "אפשר להמשיך ממנו בהליכה לאורך התעלה עד קמדן, מסלול נעים של כשעה.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "עוד פינות נסתרות",
-   "href": "guide-attractions-hidden.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "2m0GguFTMgE",
    "title": "Coal Drops Yard, King's Cross, London! FULL TOUR"
+  }
+ },
+ "horizon-22": {
+  "title": "הורייזן 22",
+  "tags": [
+   {
+    "label": "כניסה חינם",
+    "type": "free"
+   },
+   {
+    "label": "הזמנה מראש"
+   },
+   {
+    "label": "הסיטי ומזרח"
+   }
+  ],
+  "body": "תצפית ללא עלות בקומה 58 של 22 Bishopsgate, הבניין הגבוה בסיטי, עם נוף של שלוש מאות מעלות. היא גבוהה מהסקיי גארדן, ולפי מה שידוע לנו זו התצפית החינמית הגבוהה בעיר. נדרשת הזמנת מקום מראש דרך האתר הרשמי.",
+  "tip": null,
+  "updated": "אוגוסט 2026",
+  "cta": {
+   "label": "תפיסת מקום מראש",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   }
  },
  "hyde-park": {
@@ -1474,9 +1480,9 @@
   "tip": "אפשר לשכור סירה על האגם בקיץ. פינת הנואמים פעילה בעיקר בבקרי יום ראשון.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל הפארקים המלכותיים",
-   "href": "guide-attractions-parks.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "2jVUTpH9TWo",
@@ -1498,9 +1504,9 @@
   "tip": "הגשר במרכז הפארק נותן נוף יפהפה על הארמון מצד אחד ועל הלונדון איי מהצד השני.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל הפארקים המלכותיים",
-   "href": "guide-attractions-parks.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "erYHzMzZeEI",
@@ -1522,9 +1528,9 @@
   "tip": "גן הוורדים בקיץ הוא אחד המקומות היפים בלונדון, וכמעט אף תייר לא מגיע אליו.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל הפארקים המלכותיים",
-   "href": "guide-attractions-parks.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "d9pno9qRmCE",
@@ -1542,13 +1548,13 @@
     "label": "קמדן וצפון"
    }
   ],
-  "body": "שטח פתוח וגדול בצפון לונדון, יותר טבע פראי מפארק מטופח, ובראשו נקודת תצפית על קו הרקיע של העיר. גובל בשכונת המפסטד.",
+  "body": "שטח פתוח וגדול בצפון לונדון, יותר טבע פראי מפארק מטופח. התצפית המפורסמת על קו הרקיע של העיר היא מפרלמנט היל, בקצה הדרומי של השטח. יש שם גם בריכות שחייה פתוחות לאורך כל השנה.",
   "tip": "התצפית מפרלמנט היל היא אחת הטובות בלונדון, וההגעה אליה חינמית לגמרי.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל הפארקים המלכותיים",
-   "href": "guide-attractions-parks.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "ePJ4BN8bvjI",
@@ -1570,9 +1576,9 @@
   "tip": "הגן היפני קטן יחסית, ולכן הכי נעים בו בבוקר לפני שמתמלא.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל הפארקים המלכותיים",
-   "href": "guide-attractions-parks.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "I2RgVTSbPpU",
@@ -1590,13 +1596,13 @@
     "label": "מחוץ למרכז"
    }
   ],
-  "body": "הפארק המלכותי הגדול בלונדון, שטח פתוח וענק שבו חיים עדרי אַיָּלִים חופשיים. נמצא בדרום מערב העיר, ונדרשת אליו נסיעה מהמרכז.",
+  "body": "הפארק המלכותי הגדול בלונדון, שטח פתוח וענק שבו חיים עדרי אַיָּלִים חופשיים. האיילים הם חיות בר, וההנחיה הרשמית של הפארקים המלכותיים היא לשמור מרחק של חמישים מטר לפחות, לא להתקרב ולא לגעת. האכלת האיילים אסורה בחוק.",
   "tip": "האיילים הם חיות בר ולא חיות מחמד. שומרים מרחק, במיוחד בעונת הייחום בסתיו.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל הפארקים המלכותיים",
-   "href": "guide-attractions-parks.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "AAP_tqiYB8c",
@@ -1616,11 +1622,11 @@
     "label": "מחוץ למרכז"
    }
   ],
-  "body": "גנים בוטניים ענקיים, עם חממות ויקטוריאניות ומסלול הליכה מוגבה בין צמרות העצים. בדרום מערב לונדון על גדת התמזה, ודורשים כמעט יום שלם.",
+  "body": "גנים בוטניים ענקיים, עם חממות ויקטוריאניות ומסלול הליכה מוגבה בין צמרות העצים. חלק מהחממות והמסלולים נסגרים מדי פעם לתחזוקה, ולכן כדאי לבדוק סגירות זמניות באתר הרשמי לפני ההגעה.",
   "tip": "הגן הבוטני הגדול בעולם. דורש חצי יום שלם, ולכן מתאים בעיקר לטיולים של ארבעה ימים ומעלה.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.kew.org/kew-gardens/visit-kew-gardens/tickets",
    "custom": true,
@@ -1628,7 +1634,8 @@
    "price": 21.85,
    "currency": "GBP",
    "duration": "יום שלם",
-   "priceNote": null
+   "priceNote": null,
+   "priceUntil": "1 בספטמבר 2026"
   },
   "video": {
    "id": "HqMg_hP8d2Q",
@@ -1650,7 +1657,7 @@
   "tip": "אפשר ללכת משם לאורך התעלה דרך גן החיות ועד קמדן, אחת ההליכות היפות בלונדון.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.jasons.co.uk/",
    "custom": true,
@@ -1680,9 +1687,9 @@
   "tip": "אמני רחוב מופיעים שם כל היום, וזה אחד המקומות הכי נעימים בעיר לשבת ולנוח באמצע יום.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "מדריכי האזורים של לונדון",
-   "href": "guide-areas.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "8OmQRx5uykQ",
@@ -1708,9 +1715,9 @@
   "tip": "שוק העתיקות פועל בשיאו בימי שבת. בשאר השבוע השכונה שקטה ונעימה יותר לצילום.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "מדריכי האזורים של לונדון",
-   "href": "guide-areas.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "xI5qy4g6Mk0",
@@ -1736,7 +1743,7 @@
   "tip": "הציורים משתנים כל הזמן, ולכן מה שרואים היום כנראה לא יהיה שם בשנה הבאה.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://streetartlondon.co.uk/tours/booking/",
    "custom": true,
@@ -1770,9 +1777,9 @@
   "tip": "אחת הפינות המצולמות ביותר בלונדון, ולכן שווה להגיע בבוקר לפני שהיא מתמלאת.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "עוד פינות נסתרות",
-   "href": "guide-attractions-hidden.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "-fGe5DiRjHs",
@@ -1794,9 +1801,9 @@
   "tip": "ההליכה מהלונדון איי ועד גשר המגדלים היא אחד המסלולים היפים בעיר, וכולה לאורך המים.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "עוד לאורך התמזה",
-   "href": "guide-attractions-thames.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "PgUlXIQJiX8",
@@ -1807,20 +1814,20 @@
   "title": "גריניץ׳ וקו האפס",
   "tags": [
    {
-    "label": "כניסה חינם",
+    "label": "כניסה חינם, תערוכות בתשלום",
     "type": "free"
    },
    {
     "label": "גריניץ׳"
    }
   ],
-  "body": "קו האורך אפס, מצפה הכוכבים המלכותי והמוזיאונים סביבו, על גבעה שממנה נשקף מגדלי קנרי וורף. בדרום מזרח העיר, ואפשר להגיע אליו בשיט על התמזה במקום ברכבת.",
+  "body": "שכונה נהרית עם פארק, שווקים ומוזיאונים, על גבעה שממנה נשקפים מגדלי קנרי וורף. השיטוט באזור, הפארק, המוזיאון הימי ובית המלכה אינם עולים דבר. קו האפס עצמו נמצא בחצר מצפה הכוכבים שהכניסה אליה בתשלום, אבל קטע מהקו מסומן גם מחוץ לחצר ואפשר לעמוד עליו בלי כרטיס.",
   "tip": "להגיע בשיט על התמזה במקום ברכבת. הנסיעה עצמה היא חצי מהחוויה, והנוף מהגבעה מדהים.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "עוד לאורך התמזה",
-   "href": "guide-attractions-thames.html",
-   "internal": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "IPCp4c3tz3Y",
@@ -1842,9 +1849,9 @@
   "tip": "דקות הליכה ממצודת לונדון אבל כמעט בלי תיירים, וזה המקום הנוח לעצור בו לאכול באזור.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "עוד פינות נסתרות",
-   "href": "guide-attractions-hidden.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "m2Fu_XcfBFg",
@@ -1862,14 +1869,13 @@
     "label": "מחוץ למרכז"
    }
   ],
-  "body": "תחנת כוח נטושה עם ארבע הארובות המפורסמות, שהוסבה למתחם חנויות, מסעדות ומשרדים. נמצאת על הגדה הדרומית של התמזה, עם תחנת רכבת תחתית משלה.",
+  "body": "תחנת כוח היסטורית לשעבר עם ארבע הארובות המפורסמות, שעברה שיקום והפכה למתחם פעיל של חנויות, מסעדות, משרדים ומגורים. הכניסה למתחם אינה עולה דבר, והמעלית שעולה בתוך אחת הארובות היא בתשלום נפרד.",
   "tip": "הכניסה למתחם חינמית. יש גם מעלית זכוכית שעולה בתוך אחת הארובות, והיא בתשלום נפרד.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "המעלית והאירועים באתר הרשמי",
-   "href": "https://batterseapowerstation.co.uk/",
-   "custom": true,
-   "free": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "tw0CfebxEEs",
@@ -1893,11 +1899,11 @@
     "type": "teen"
    }
   ],
-  "body": "ארמון מלכותי פעיל שבו נולדה המלכה ויקטוריה, ובו מוצגים חדרי המדינה ותצוגות אופנה מלכותית. עומד בתוך קנזינגטון גארדנס, בקצה המערבי של הייד פארק.",
+  "body": "ארמון מלכותי פעיל שבו נולדה המלכה ויקטוריה. בדרך כלל פתוחים לקהל חדרי המדינה ותצוגות האופנה המלכותית, אבל זהו עדיין בית מגורים פעיל וחלקים ממנו נסגרים לפעמים בלי הודעה מוקדמת. כדאי לבדוק באתר הרשמי מה פתוח ביום הביקור.",
   "tip": "הגנים סביב הארמון פתוחים לכולם בחינם, גם למי שלא נכנס פנימה.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.hrp.org.uk/kensington-palace/visit/tickets-and-prices/",
    "custom": true,
@@ -1925,11 +1931,11 @@
     "label": "מחוץ למרכז"
    }
   ],
-  "body": "ארמונו של הנרי השמיני, עם מטבחי טיודור משוחזרים ומבוך גדרות חי בגנים. עומד על גדת התמזה בדרום מערב, כשעה נסיעה מהמרכז.",
+  "body": "ארמונו של הנרי השמיני, עם מטבחי טיודור משוחזרים ומבוך גדרות חי בגנים. הארמון נמצא מחוץ למרכז לונדון, בדרום מערב העיר, וזהו טיול יום ולא עצירה קצרה בתוך יום אחר.",
   "tip": "הארמון של הנרי השמיני, עם מבוך גדרות חיות שהילדים אוהבים. כשעה נסיעה מהמרכז.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.hrp.org.uk/hampton-court-palace/visit/tickets-and-prices/",
    "custom": true,
@@ -1957,11 +1963,11 @@
     "label": "מחוץ למרכז"
    }
   ],
-  "body": "הטירה המאוישת הוותיקה והגדולה בעולם, ומשמשת עד היום את בית המלוכה. נמצאת מחוץ ללונדון, ומגיעים אליה ברכבת מתחנת פדינגטון או ווטרלו.",
+  "body": "הטירה המאוישת הוותיקה והגדולה בעולם, ומשמשת עד היום את בית המלוכה. היא נמצאת מחוץ ללונדון, בברקשייר, וזהו טיול יום שלם שמגיעים אליו ברכבת.",
   "tip": "דורשת כמעט יום שלם כולל הנסיעה. הכרטיסים נמכרים לשעה קבועה ונגמרים בעונה.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.rct.uk/visit/windsor-castle",
    "custom": true,
@@ -1995,9 +2001,9 @@
   "tip": "משתלב באופן טבעי עם הליכה בהמפסטד הית׳, ורוב המבקרים בו הם מקומיים.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל המוזיאונים החינמיים",
-   "href": "guide-attractions-museums.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "V7mV-IY0vs0",
@@ -2023,9 +2029,9 @@
   "tip": "הכניסה חינמית, וגרם המדרגות המסתלסל הוא אחד המקומות המצולמים בגריניץ׳.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "כל המוזיאונים החינמיים",
-   "href": "guide-attractions-museums.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "VVgj4M5v7EU",
@@ -2051,9 +2057,9 @@
   "tip": "אחת הפינות השקטות והיפות בלונדון, וכמעט ריקה מתיירים בבוקר.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "עוד פינות נסתרות",
-   "href": "guide-attractions-hidden.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "HpFwZkpWjIQ",
@@ -2082,11 +2088,9 @@
   "tip": "הכניסה חינם אבל צריך לשריין מקום מראש באתר, וזה נגמר.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "הזמנת כרטיס חינם באתר הרשמי",
-   "href": "https://www.londonmithraeum.com/visit/",
-   "custom": true,
-   "desc": "הכניסה חינם לחלוטין. כרטיס בשעה קבועה מוזמן דרך האתר של המקדש עצמו, ומומלץ להזמין מראש כי מספר המקומות בכל סבב מוגבל.",
-   "free": true
+   "label": "תפיסת מקום מראש",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "Vm5MZ1mTFYc",
@@ -2094,7 +2098,7 @@
   }
  },
  "guildhall": {
-  "title": "גילדהול והאמפיתאטרון הרומי",
+  "title": "גלריית גילדהול והאמפיתאטרון הרומי",
   "tags": [
    {
     "label": "כניסה חינם",
@@ -2108,13 +2112,13 @@
     "type": "teen"
    }
   ],
-  "body": "אולם העירייה ההיסטורי של הסיטי, ומתחתיו שרידי האמפיתאטרון הרומי של לונדיניום שהתגלו בחפירות. נמצא צפונית לקתדרלת סנט פול.",
+  "body": "גלריית האמנות של הסיטי, ומתחתיה שרידי האמפיתאטרון הרומי של לונדיניום שהתגלו בחפירות. הכניסה לגלריה ולאמפיתאטרון אינה עולה דבר. האולם הגדול ההיסטורי הסמוך הוא מבנה עירוני פעיל, ונכנסים אליו רק בסיור מודרך בתשלום ובמועדים מוגבלים.",
   "tip": "השרידים הרומיים נמצאים מתחת לגלריית האמנות, וקל לפספס את הכניסה אליהם.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "עוד פינות נסתרות",
-   "href": "guide-attractions-hidden.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "PfF-NjxaEbY",
@@ -2140,9 +2144,9 @@
   "tip": "עצירה טבעית ושקטה של רבע שעה בדרך אל שוק בורו או ממנו.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "עוד פינות נסתרות",
-   "href": "guide-attractions-hidden.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "gpeSWr7xjgQ",
@@ -2164,9 +2168,9 @@
   "tip": "לרוב יש שם אמנים שמציירים בזמן אמת, וזה החלק המעניין באמת בביקור.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "עוד אטרקציות בחינם",
-   "href": "guide-attractions-free.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "Hc_bN9WOsO4",
@@ -2192,9 +2196,9 @@
   ],
   "body": "בית קברות ויקטוריאני שהצמחייה השתלטה עליו, עם מצבות מעוטרות וקבריהם של קרל מרקס ואישים נוספים. נמצא בצפון לונדון, ליד המפסטד הית׳.",
   "tip": "החלק המערבי נפתח רק בסיור מודרך ובשעות קבועות, ולכן חובה לבדוק מראש.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://highgatecemetery.org/visit",
    "custom": true,
@@ -2202,7 +2206,8 @@
    "price": 8.75,
    "currency": "GBP",
    "duration": "כשעה ורבע",
-   "priceNote": null
+   "priceNote": null,
+   "priceUntil": "1 בספטמבר 2026"
   },
   "video": {
    "id": "pybrnRZ_Ej4",
@@ -2224,9 +2229,9 @@
   "tip": "בצד השני נפתח הנוף הקלאסי על גריניץ׳ מעבר לנהר, וזו הדרך החינמית להגיע אליו.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "עוד פינות נסתרות",
-   "href": "guide-attractions-hidden.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "R6KT4lwkp1c",
@@ -2245,9 +2250,9 @@
   ],
   "body": "ספינת מפרש מהמאה התשע עשרה ששימשה להובלת תה מסין, משומרת ומורמת כך שאפשר להלך גם מתחת לגוף שלה. עומדת ממש ליד תחנת הרכבת הקלה בגריניץ׳.",
   "tip": "ההליכה מתחת לגוף הספינה היא החלק הייחודי, ואפשר לראות אותה מבחוץ גם בלי כרטיס.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.rmg.co.uk/plan-your-visit/tickets-prices",
    "custom": true,
@@ -2255,7 +2260,8 @@
    "price": 18,
    "currency": "GBP",
    "duration": "כשעה עד שעה וחצי",
-   "priceNote": null
+   "priceNote": null,
+   "priceUntil": "2 בספטמבר 2026"
   },
   "video": {
    "id": "TPOCofMzHhk",
@@ -2274,9 +2280,9 @@
   ],
   "body": "סיירת מלחמה בריטית מתקופת מלחמת העולם השנייה, שעוגנת בתמזה ופתוחה לביקור על כל תשעת סיפוניה. עוגנת בין גשר לונדון לגשר המגדלים.",
   "tip": "הרבה סולמות ומעברים צרים, חוויה מצוינת לילדים אבל פחות נוחה למי שמתקשה בתנועה.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.iwm.org.uk/visits/hms-belfast/booking",
    "custom": true,
@@ -2284,7 +2290,8 @@
    "price": 23.45,
    "currency": "GBP",
    "duration": "כשעתיים",
-   "priceNote": null
+   "priceNote": null,
+   "priceUntil": "1 בספטמבר 2026"
   },
   "video": {
    "id": "krSBjjqx2os",
@@ -2305,11 +2312,11 @@
     "type": "teen"
    }
   ],
-  "body": "שחזור מדויק של תיאטרון הגלוב מהמאה השש עשרה, בנוי מעץ ופתוח לשמיים. עומד על גדת התמזה, במרחק קצר מהטייט מודרן.",
+  "body": "שחזור נאמן של תיאטרון הגלוב מהמאה השש עשרה, בנוי מעץ ופתוח לשמיים. הוא נבנה כמאתיים מטר מהמקום המקורי, לפי המחקר הזמין ולא כהעתק מדויק, ונפתח בשנת 1997.",
   "tip": "אפשר לבחור בין סיור מודרך במבנה לבין צפייה בהצגה. הכרטיסים בעמידה הם הזולים ביותר.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לטיקטס ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.tiqets.com/en/london-attractions-c67458/tickets-for-shakespeares-globe-theatre-guided-tour-p1110014/",
    "custom": true,
@@ -2317,7 +2324,8 @@
    "price": 28.0,
    "currency": "GBP",
    "duration": "כשעה",
-   "priceNote": null
+   "priceNote": null,
+   "priceUntil": "1 בספטמבר 2026"
   },
   "video": {
    "id": "zWu1nqZlynw",
@@ -2339,14 +2347,13 @@
     "type": "teen"
    }
   ],
-  "body": "מתחם תרבות ומגורים ענק בסגנון ברוטליסטי, עם מסדרונות מוגבהים, בריכות מים וחממה טרופית. נחשב לאחד המבנים השנויים במחלוקת והמצולמים בלונדון.",
+  "body": "מתחם תרבות ומגורים ענק בסגנון ברוטליסטי, עם מסדרונות מוגבהים ובריכות מים, והשיטוט בו אינו עולה דבר. החממה הטרופית פתוחה לקהל במועדים נבחרים בלבד, והכניסה אליה דורשת כרטיס בשעה קבועה שמוזמן מראש. ההופעות והתערוכות הן בתשלום.",
   "tip": "ההסתובבות במתחם ובגנים חינמית. אפשר לעלות למפלסים המוגבהים ולראות את האדריכלות מלמעלה.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "הופעות ותערוכות באתר הברביקן",
-   "href": "https://www.barbican.org.uk/whats-on",
-   "custom": true,
-   "free": true
+   "label": "כרטיסים לחלקים שבתשלום",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "WzE0H3B4wEg",
@@ -2368,9 +2375,9 @@
   ],
   "body": "אחד מגני החיות המדעיים הוותיקים בעולם, שיושב בתוך ריג׳נטס פארק עצמו. הכניסה מצדו הצפוני של הפארק, במרחק הליכה משוק קמדן.",
   "tip": "נמצא בתוך ריג׳נטס פארק, אז אפשר לשלב יום שלם באותו אזור בלי נסיעות מיותרות.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.londonzoo.org/plan-your-visit/london-zoo-tickets",
    "custom": true,
@@ -2395,19 +2402,19 @@
     "label": "הגדה הדרומית"
    }
   ],
-  "body": "אקווריום גדול עם מנהרת כרישים ומדור פינגווינים, בתוך מבנה העירייה הישן. נמצא ממש ליד הלונדון איי על גדת התמזה.",
+  "body": "אקווריום גדול עם מנהרת כרישים ומדור פינגווינים, בתוך מבנה County Hall ההיסטורי על הגדה הדרומית של התמזה. הוא צמוד ללונדון איי, ולכן קל לשלב ביניהם.",
   "tip": "מהאטרקציות היקרות בלונדון. מי שנוסע עם ילדים ובודק גם את הלונדון איי, כדאי שיבדוק כרטיס משולב.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.visitsealife.com/london/tickets-prices/",
    "custom": true,
    "desc": "מדובר באחד האקווריומים הגדולים בבריטניה, על גדת הטיימס ליד הלונדון איי. הכרטיס נותן כניסה לכל האזורים כולל מנהרת הכרישים והתמנון, ולפי האתר הרשמי לוקח בממוצע שעה וחצי לעבור את כל המסלול. כדאי לקנות אונליין מראש כי המחיר בכניסה בשער גבוה יותר.",
-   "price": 27.13,
    "currency": "GBP",
-   "duration": "כשעה וחצי",
-   "priceNote": null
+   "duration": null,
+   "priceNote": null,
+   "priceVaries": true
   },
   "video": {
    "id": "lLNpLrpjz6I",
@@ -2429,17 +2436,17 @@
   ],
   "body": "מוזיאון בובות השעווה הוותיק בעולם, עם דמויות מפורסמות מהיסטוריה, קולנוע וספורט. נמצא ברחוב בייקר, ליד מוזיאון שרלוק הולמס.",
   "tip": "מהאטרקציות היקרות בעיר והתורים בכניסה ארוכים, ולכן כרטיס עם שעה קבועה מראש חוסך המתנה.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.madametussauds.com/london/tickets-prices/ways-to-visit/general-admission/",
    "custom": true,
    "desc": "מעל מאה וחמישים פסלי שעווה של סלבריטאים, מלוכה וספורטאים פזורים על כמה קומות, כולל אזור מלחמת הכוכבים וסימולטור הספיריט אוף לונדון שמעיף אתכם מעל גגות העיר. המחיר עולה משמעותית אם קונים בשער ביום ההגעה, אז הזמנה מראש באתר הרשמי חוסכת לא מעט.",
-   "price": 23.63,
    "currency": "GBP",
-   "duration": "כשעה וחצי",
-   "priceNote": null
+   "duration": null,
+   "priceNote": null,
+   "priceVaries": true
   },
   "video": {
    "id": "Dk2vN_f-Xes",
@@ -2459,19 +2466,19 @@
     "label": "מחוץ למרכז"
    }
   ],
-  "body": "הסטים, התלבושות והאביזרים המקוריים של סדרת הסרטים, באולפנים שבהם היא צולמה בפועל. נמצא מחוץ ללונדון באזור ווטפורד, והגעה אליו מצריכה רכבת והסעה משלימה.",
+  "body": "הסטים, התלבושות והאביזרים המקוריים של סדרת הסרטים, באולפנים שבהם היא צולמה בפועל. האתר אינו נמצא בלונדון עצמה אלא בליוונסדן שמצפון לעיר, וצריך להקצות זמן נסיעה לשני הכיוונים. חובה להזמין כרטיס מראש, ואין מכירה במקום.",
   "tip": "נמצא מחוץ ללונדון ותופס יום כמעט שלם. הכרטיסים נגמרים שבועות מראש, אז זה הדבר הראשון להזמין.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.wbstudiotour.co.uk/tickets/",
    "custom": true,
    "desc": "כרטיס לסיור באולפני וורנר ברדרס בווטפורד, שם צולמו כל שמונה סרטי הארי פוטר. הסיור עצמאי ובקצב אישי, וכולל את האולם הגדול המקורי, רחוב דיאגון, וקרון הקיטור האמיתי של הוגוורטס אקספרס. משך הביקור הממוצע כשלוש שעות וחצי עד ארבע, וכדאי להזמין מקום מראש כי אין מכירת כרטיסים במקום.",
-   "price": 51.19,
    "currency": "GBP",
-   "duration": "כשלוש שעות וחצי עד ארבע",
-   "priceNote": null
+   "duration": null,
+   "priceNote": null,
+   "priceVaries": true
   },
   "video": {
    "id": "uIEMjosSu-M",
@@ -2496,7 +2503,7 @@
   "tip": "אפשר גם סיור מודרך במבנה וגם הופעה בערב. הסיור זול בהרבה מכרטיס להופעה.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://www.royalalberthall.com/tickets/tours-and-exhibitions/royal-albert-hall-tour/",
    "custom": true,
@@ -2527,7 +2534,7 @@
   "cta": {
    "label": "כרטיסים ומחירים",
    "offer": "attractions_alt",
-   "href": "https://www.tiqets.com/en/london-attractions-c67458/"
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "tgyHAo2Ivxw",
@@ -2549,9 +2556,9 @@
   ],
   "body": "סיור מאחורי הקלעים באצטדיון הלאומי של אנגליה, כולל חדרי ההלבשה, המנהרה והמדרגות אל הגביע. נמצא בצפון מערב לונדון.",
   "tip": "הסיורים לא מתקיימים בימי משחק או אירוע, ולכן חובה לבדוק את התאריך מראש.",
-  "updated": "אוגוסט 2026",
+  "updated": "22 באוגוסט 2026",
   "cta": {
-   "label": "בדיקת מחיר וכרטיסים",
+   "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
    "href": "https://bookings.wembleytours.com/stadiumtours/booking/pricing.htm",
    "custom": true,
@@ -2559,7 +2566,8 @@
    "price": 28,
    "currency": "GBP",
    "duration": "כשעה וחצי",
-   "priceNote": null
+   "priceNote": null,
+   "priceUntil": "1 בספטמבר 2026"
   },
   "video": {
    "id": "Gbt5bYzXAyM",
@@ -2585,62 +2593,13 @@
   "tip": "הכניסה חינמית וגם מי שלא קונה שווה לו לעבור באולמות המזון ובחדר המדרגות המצרי.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "עוד אטרקציות בחינם",
-   "href": "guide-attractions-free.html",
-   "internal": true
+   "label": "סיורים וכרטיסים באזור",
+   "offer": "attractions_alt",
+   "href": "https://www.tiqets.com/en/london-attractions-c66342/"
   },
   "video": {
    "id": "Oax39T5w3ws",
    "title": "Inside Harrods | London's Ultra Luxury Department Store Tour (July 2024)"
-  }
- },
- "hawley-wharf": {
-  "title": "הולי וורף",
-  "tags": [
-   {
-    "label": "כניסה חינם",
-    "type": "free"
-   },
-   {
-    "label": "קמדן וצפון"
-   }
-  ],
-  "body": "החלק החדש של שוק קמדן, שנפתח אחרי שריפה גדולה במתחם הישן. מקורה ברובו, עם אולמות אוכל וחנויות, ויושב ממש על גדת התעלה.",
-  "tip": "החלק המקורה היחיד בשוק, ולכן זו התשובה של קמדן ליום גשום.",
-  "updated": "אוגוסט 2026",
-  "extra": {
-   "kicker": "המלצה מיוחדת",
-   "title": "שייט בתעלה מקמדן לוונציה הקטנה",
-   "desc": "סירה צרה יוצאת מקמדן לוק ועוברת דרך ריג'נטס פארק, לצד גן החיות ובתוך מנהרת מיידה היל. ארבעים וחמש דקות, ואפשר לעשות את זה גם בכיוון ההפוך.",
-   "priceNote": "17 ליש\"ט למבוגר, 14 לילד. מומלץ להזמין מראש, בסופי שבוע נמכר.",
-   "label": "בדיקת זמינות והזמנה",
-   "offer": "attractions_alt",
-   "href": "https://www.londonwaterbus.com/regents-canal-waterbus/"
-  }
- },
- "horizon-22": {
-  "title": "הורייזן 22",
-  "tags": [
-   {
-    "label": "כניסה חינם",
-    "type": "free"
-   },
-   {
-    "label": "הזמנה מראש"
-   },
-   {
-    "label": "הסיטי ומזרח"
-   }
-  ],
-  "body": "התצפית החינמית הגבוהה ביותר בלונדון, בקומה 58 של הבניין ברחוב 22 Bishopsgate. נוף של שלוש מאות מעלות על העיר, גבוה בהרבה מהתצפיות החינמיות האחרות.",
-  "tip": "הכניסה חינם וההזמנה נעשית באתר שלהם. סגור מוקדם יחסית, בשבת עד חמש ובראשון עד ארבע, אז שווה לבדוק את השעה לפני שמגיעים.",
-  "updated": "אוגוסט 2026",
-  "cta": {
-   "label": "הזמנת כרטיס חינם באתר הרשמי",
-   "href": "https://horizon22.co.uk/",
-   "custom": true,
-   "free": true,
-   "desc": "הכניסה חינם לחלוטין. הכרטיס מוזמן בשעה קבועה דרך מערכת ההזמנות של הורייזן 22 עצמו."
   }
  }
 }

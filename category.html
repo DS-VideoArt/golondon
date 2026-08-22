@@ -191,7 +191,7 @@
       text-align: center; padding: 80px 20px; color: rgba(255,255,255,0.25);
     }
     .empty-state .big { font-size: 64px; display: block; margin-bottom: 20px; }
-    .empty-state h3 { font-size: 22px; font-weight: 800; margin-bottom: 10px; color: rgba(255,255,255,0.4); }
+    .empty-state h2 { font-size: 22px; font-weight: 800; margin-bottom: 10px; color: rgba(255,255,255,0.4); }
     .empty-state p { font-size: 15px; }
 
     /* ===== פוטר קטן ===== */
@@ -312,7 +312,7 @@
     <div class="posts-grid" id="postsGrid"></div>
     <div class="empty-state" id="emptyState" style="display:none">
       <span class="big" id="emptyEmoji">🎉</span>
-      <h3>עדיין אין פוסטים בקטגוריה זו</h3>
+      <h2>עדיין אין פוסטים בקטגוריה זו</h2>
       <p>בקרוב יתווספו כאן עדכונים מהקהילה</p>
     </div>
   </div>
@@ -628,10 +628,10 @@ fetch('https://open.er-api.com/v6/latest/GBP')
     document.getElementById('gbp-rate').textContent = d.rates.ILS.toFixed(2);
   }).catch(() => {});
 </script>
-<script src="accessibility-widget.js" defer></script>
+<script src="accessibility-widget.js?v=2" defer></script>
 <script src="install-prompt.js" defer></script>
-<script src="community-ask.js?v=2" defer></script>
-<script src="place-info.js?v=10" defer></script>
+<script src="community-ask.js?v=4" defer></script>
+<script src="place-info.js?v=11" defer></script>
 <script src="trip-tray.js?v=3" defer></script>
 <script src="kosher-places-modal.js?v=3" defer></script>
 <script src="auto-link-places.js?v=3" defer></script>

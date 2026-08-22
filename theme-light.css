@@ -421,9 +421,10 @@ small { color: var(--ink-faint) !important; }
 
 /* ---------- כדורגל ואטרקציות ---------- */
 
-.club-item h4, .num-item h4 { color: var(--ink) !important; }
+.club-item h3, .club-item h4, .num-item h4, .num-item h3 { color: var(--ink) !important; }
 .club-item p, .num-item p { color: var(--ink-soft) !important; }
 .num-item .free-badge { background: rgba(21,128,61,0.12) !important; color: #15803D !important; }
+.num-item .free-badge.is-partial { background: rgba(180,83,9,0.14) !important; color: #B45309 !important; }
 
 /* ---------- הדפסה ---------- */
 

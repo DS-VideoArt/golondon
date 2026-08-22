@@ -55,6 +55,7 @@
   };
 
   var DATA = null, TAX = null, ZONE = null, INFO = null;
+  var ZONES = [], PICKED_BY_PARAM = false;
   var map = null, cluster = null, anchorMarker = null, ring = null;
   var loaded = false, built = false;
   var state = { point: null, radius: 1000, groups: [], free: false, kids: false, method: null };
@@ -557,9 +558,18 @@
   function labelTab() {
     var t = $('tab-nearby');
     if (!t || !ZONE) return;
-    /* שם האזור מגיע מהטקסונומיה, כדי שאזור חדש לא ידרוש נגיעה בקוד */
+    /*
+      שם האזור מגיע מהטקסונומיה, כדי שאזור חדש לא ידרוש נגיעה בקוד.
+      בכניסה ישירה למתכנן, בלי אזור נבחר, התווית ציינה רק את האזור הראשון
+      ברשימה, וכך אזורים חיים אחרים נעלמו ממי שלא הגיע דרך עמוד אזור.
+    */
+    var live = (ZONES || []).filter(isLive);
+    var HE_N = { 2: 'שני', 3: 'שלושה', 4: 'ארבעה', 5: 'חמישה' };
+    var tag = (!PICKED_BY_PARAM && live.length > 1)
+      ? 'פיילוט ב' + (HE_N[live.length] || live.length) + ' אזורים'
+      : 'פיילוט ב' + ZONE.label;
     t.innerHTML = '<i class="fas fa-location-crosshairs"></i> סביבי ' +
-      '<span class="nb-tag">פיילוט ב' + ZONE.label + '</span>';
+      '<span class="nb-tag">' + tag + '</span>';
   }
 
   function open() {
@@ -645,14 +655,14 @@
 
     var m = /[?&]zone=([a-z0-9-]+)/i.exec(location.search);
     var z = byId(m && m[1].toLowerCase());
-    if (z) return z;
+    if (z) { PICKED_BY_PARAM = true; return z; }
 
     /* from נראה כמו shoreditch_hero או camden_exp_food. התחילית היא האזור */
     var f = /[?&]from=([a-z0-9-]+)/i.exec(location.search);
     if (f) {
       var prefix = f[1].toLowerCase().split('_')[0];
       z = byId(prefix);
-      if (z) return z;
+      if (z) { PICKED_BY_PARAM = true; return z; }
     }
     return live[0];
   }
@@ -679,6 +689,7 @@
       TAX = both[1];
       INFO = both[2] || {};
       var zones = (TAX.coverage && TAX.coverage.zones) || [];
+      ZONES = zones;
       ZONE = pickZone(zones);
       if (!ZONE) { $('tab-nearby').hidden = true; return; }
       injectStyles();

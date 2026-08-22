@@ -135,7 +135,17 @@
   function renderInto(container, cfg) {
     var slotId = container.getAttribute('data-affiliate');
     var offerIds = (cfg.slots && cfg.slots[slotId]) || [];
-    if (!offerIds.length) return;
+    /*
+      מיקום שהוכרז בעמוד ולא הוגדר בקובץ ההגדרות השאיר עד היום בלוק ריק
+      בלי שום סימן, וכך אחד עשר עמודים איבדו את קישורי ההכנסה שלהם בשקט.
+      אזהרה בקונסול הופכת תקלה שקטה לתקלה שרואים.
+    */
+    if (!offerIds.length) {
+      if (window.console && console.warn) {
+        console.warn('[affiliate] מיקום לא מוכר או ריק: "' + slotId + '". יש להגדיר אותו ב-affiliate.json');
+      }
+      return;
+    }
 
     var block = document.createElement('div');
     block.className = 'aff-block';

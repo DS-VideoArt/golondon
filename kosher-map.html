@@ -314,6 +314,26 @@ fetch('kosher-places.json?v=2')
   .then(r => r.json())
   .then(data => {
     allPlaces = data;
+    /*
+      תאריך העדכון מחושב מתוך שדה checked של הרשומות עצמן, כדי שהוא
+      יתעדכן מעצמו בכל בדיקה של המאגר ולא יישאר תלוי בזיכרון של אף אחד.
+    */
+    (function () {
+      var mx = '';
+      data.forEach(function (x) { if (x.checked && x.checked > mx) mx = x.checked; });
+      if (mx) {
+        var he = ['', 'ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'];
+        var parts = mx.split('-');
+        var label = (he[parseInt(parts[1], 10)] || '') + ' ' + parts[0];
+        var h1 = document.querySelector('.toolbar h1, h1');
+        if (h1) {
+          var b = document.createElement('div');
+          b.style.cssText = 'font-size:11.5px;font-weight:400;color:#858a9c;margin-top:2px;';
+          b.textContent = 'הרשימה נבדקה לאחרונה ב' + label;
+          h1.appendChild(b);
+        }
+      }
+    })();
     buildKashrusFilters();
     applyFilters();
     /*
@@ -518,7 +538,7 @@ function locateMe() {
 </section>
 
 </main>
-<script src="accessibility-widget.js" defer></script>
+<script src="accessibility-widget.js?v=2" defer></script>
 <script src="install-prompt.js" defer></script>
 
 <div class="ki-overlay" id="kashrusInfo" role="dialog" aria-modal="true" aria-labelledby="kiTitle" hidden>

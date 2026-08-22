@@ -125,7 +125,35 @@
     });
   }
 
+  /*
+    קישור דילוג לתוכן. מוזרק מכאן כי הרכיב נטען בכל עמודי האתר,
+    וזה חוסך עריכה ידנית של 137 קבצים. הקישור הוא האלמנט הראשון
+    בעמוד, מוסתר עד שמקבל מיקוד מקלדת, ומדלג אל main.
+  */
+  function injectSkipLink() {
+    if (document.getElementById('gl-skip-link')) return;
+    const main = document.querySelector('main');
+    if (!main) return;
+    if (!main.id) main.id = 'main-content';
+    main.setAttribute('tabindex', '-1');
+    const a = document.createElement('a');
+    a.id = 'gl-skip-link';
+    a.href = '#' + main.id;
+    a.textContent = 'דלגו לתוכן הראשי';
+    a.style.cssText = 'position:fixed;top:-60px;right:12px;z-index:100000;background:#DC2626;color:#fff;' +
+      'padding:12px 22px;border-radius:0 0 12px 12px;font-weight:800;font-size:15px;text-decoration:none;transition:top .15s;';
+    a.addEventListener('focus', () => { a.style.top = '0'; });
+    a.addEventListener('blur', () => { a.style.top = '-60px'; });
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      main.focus();
+      main.scrollIntoView();
+    });
+    document.body.insertBefore(a, document.body.firstChild);
+  }
+
   function init() {
+    injectSkipLink();
     const { btn, panel, readingGuide } = buildWidget();
     refreshButtonStates(panel);
 

@@ -216,7 +216,9 @@ def build_day(d, items):
     canonical = '%s/%s' % (SITE, canon(day_file(d)))
     first_img = next((i['image'] for i in items if i.get('image')), 'images/hero.jpg')
     titles = '; '.join(i['title'] for i in items)
-    desc = ('מה חדש בלונדון ב%s: %s' % (he_date(d), titles))[:250]
+    desc = 'מה חדש בלונדון ב%s: %s' % (he_date(d), titles)
+    if len(desc) > 158:
+        desc = desc[:158].rsplit(' ', 1)[0].rstrip(',;') + '…'
 
     ld = {
         "@context": "https://schema.org",
@@ -283,7 +285,7 @@ def build_archive(by_day):
 
     body = head('מה חדש בלונדון עכשיו', desc, canonical, first_img, extra)
     body += f'''<div class="wn-hero hero-photo-lite">
-  <span class="tag">🗞️ מתעדכן כל יום</span>
+  <span class="tag">🗞️ מתעדכן בקביעות</span>
   <h1>מה חדש בלונדון עכשיו</h1>
   <p>אטרקציות שנפתחות, אירועים שמתקרבים, שינויים בתחבורה ומה שכדאי לדעת לפני שטסים. הכל נבדק מול מקורות רשמיים.</p>
 </div>
