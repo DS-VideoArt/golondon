@@ -33,7 +33,7 @@
     שהלחיצה תיספר ותישא עמלה. אם היא לא נטענה, מוחזרת הכתובת הישירה.
   */
   function ctaUrl(cta, placeId) {
-    if (cta.custom) return cta.href || '#';
+    if (cta.internal || cta.custom) return cta.href || '#';
     var offerId = cta.offer || 'attractions_alt';
     if (affCfg && window.GoLondonAffiliate && window.GoLondonAffiliate.linkFor) {
       var url = window.GoLondonAffiliate.linkFor(affCfg, offerId, 'placeinfo', placeId);
@@ -97,6 +97,8 @@
       '.pi-tour-desc{font-size:13.5px;color:#55596b!important;line-height:1.7;}',
       '.pi-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#DC2626,#EA580C);color:#fff!important;font-weight:800;font-size:14px;padding:12px 20px;border-radius:11px;text-decoration:none!important;}',
       '.pi-cta:hover{opacity:.92;}',
+      '.pi-cta.is-internal{background:#fff;border:1px solid rgba(32,31,43,.18);color:#201f2b!important;}',
+      '.pi-cta.is-internal:hover{background:#F4F2ED;opacity:1;}',
       /*
         המלצה נלווית. חוויה בתשלום שיוצאת מהמקום עצמו אבל אינה המקום,
         למשל שיט בתעלה שמתחיל בקמדן לוק. מוצגת כהמלצה נפרדת ולא
@@ -245,16 +247,26 @@
     ctaWrap.innerHTML = '';
     if (item.cta) {
       var a = document.createElement('a');
-      a.className = 'pi-cta';
+      a.className = 'pi-cta' + (item.cta.internal ? ' is-internal' : '');
       a.href = ctaUrl(item.cta, id);
-      a.target = '_blank';
       /*
-        קישור לא מסחרי לא מסומן sponsored. זה לא קוסמטי: התגית הזאת
-        מצהירה בפני מנועי חיפוש שיש מאחורי הקישור תמורה כספית, וזה
-        פשוט לא נכון בקישור להזמנת כרטיס חינם באתר רשמי.
+        שלושה סוגי קישור, ולכל אחד התנהגות אחרת:
+
+        internal  קישור פנימי לעמוד אחר באתר. נפתח באותה לשונית, בלי
+                  rel מיוחד. משמש מקומות שאין להם מוצר למכור, ובמקום
+                  כפתור הזמנה מיותר הם מפנים למדריך רלוונטי.
+        free      קישור לאתר רשמי להזמנה חינמית. לא sponsored, כי אין
+                  מאחוריו תמורה כספית והתגית הזאת מצהירה שיש.
+        אחרת      קישור מסחרי רגיל.
       */
-      a.rel = item.cta.free ? 'noopener' : 'sponsored noopener nofollow';
-      a.innerHTML = (item.cta.free ? '<i class="fas fa-calendar-check"></i> ' : '<i class="fas fa-ticket"></i> ') + item.cta.label;
+      if (item.cta.internal) {
+        a.rel = '';
+        a.innerHTML = '<i class="fas fa-book-open"></i> ' + item.cta.label;
+      } else {
+        a.target = '_blank';
+        a.rel = item.cta.free ? 'noopener' : 'sponsored noopener nofollow';
+        a.innerHTML = (item.cta.free ? '<i class="fas fa-calendar-check"></i> ' : '<i class="fas fa-ticket"></i> ') + item.cta.label;
+      }
       ctaWrap.appendChild(a);
     }
 
