@@ -182,7 +182,9 @@
       font-size: 16.5px; font-weight: 900; color: #201f2b; margin-bottom: 4px; }
     .pday-h span { font-size: 13px; font-weight: 700; color: #55596b; }
     .pday-sub { font-size: 13.8px; color: #55596b; line-height: 1.6; margin-bottom: 15px; }
-    .pday-list { list-style: none; margin: 0 0 17px; padding: 0; }
+    /* הכפתור הראשי יושב מעל הרשימה, ולכן הרשימה מקבלת הפרדה מלמעלה */
+    .pday-list { list-style: none; margin: 16px 0 0; padding: 14px 0 0;
+      border-top: 1px solid rgba(32,31,43,0.10); }
     .pday-list li { display: grid; grid-template-columns: 54px 1fr; gap: 12px;
       align-items: baseline; padding: 9px 0; border-top: 1px solid rgba(32,31,43,0.09); }
     .pday-list li:first-child { border-top: none; }
@@ -620,15 +622,6 @@
   <div class="pday">
     <div class="pday-h">⭐ יום מושלם בשורדיץ' <span>יום ראשון, שבע עצירות, בערך שש שעות</span></div>
     <p class="pday-sub">יום בנוי מראש שמתחיל בשוק הפרחים ונגמר על התמזה. לחיצה אחת מכניסה את כולו למסלול שלכם, ומשם אפשר לגרור, להחליף ולהוסיף ימים.</p>
-    <ol class="pday-list">
-      <li><span class="pday-t">09:15</span><span class="pday-n" data-trip-add="columbia-road" data-trip-src="perfect_day">שוק הפרחים בקולומביה רוד<em>ימי ראשון בלבד, ולפני עשר זה עוד נעים</em></span></li>
-      <li><span class="pday-t">10:45</span><span class="pday-n" data-trip-add="brick-lane" data-trip-src="perfect_day">בריק ליין<em>השוק בשיאו, ומתחם מבשלת טרומן בדרך</em></span></li>
-      <li><span class="pday-t">12:00</span><span class="pday-n" data-trip-add="beigel-bake" data-trip-src="perfect_day">בייגל בייק<em>בייגל סולט ביף בקצה הצפוני, אוכלים בעמידה</em></span></li>
-      <li><span class="pday-t">12:30</span><span class="pday-n" data-trip-add="hanbury-street-art" data-trip-src="perfect_day">אמנות הרחוב ברחוב האנברי<em>סיבוב הצילומים העיקרי, כולל העגור הגדולה</em></span></li>
-      <li><span class="pday-t">13:15</span><span class="pday-n" data-trip-add="spitalfields-market" data-trip-src="perfect_day">שוק ספיטלפילדס<em>מקורה, מקום לשבת, וגם אם יורד גשם</em></span></li>
-      <li><span class="pday-t">14:15</span><span class="pday-n" data-trip-add="redchurch-street" data-trip-src="perfect_day">רחוב רדצ'רץ'<em>הקטע האחרון בשורדיץ', קפה טוב לסיום</em></span></li>
-      <li><span class="pday-t">15:00</span><span class="pday-n" data-trip-add="tower-bridge" data-trip-src="perfect_day">גשר המגדלים<em>עשרים דקות הליכה דרומה, וסוגרים על התמזה</em></span></li>
-    </ol>
     <div class="pday-actions">
       <button type="button" class="pday-all"
               data-pday-add="columbia-road,brick-lane,beigel-bake,hanbury-street-art,spitalfields-market,redchurch-street,tower-bridge"
@@ -640,6 +633,15 @@
       </a>
     </div>
     <p class="pday-note">היום נוסף למסלול שלכם ואפשר להמשיך לגלוש. אם כבר בניתם מסלול קודם, הוא לא יימחק.</p>
+    <ol class="pday-list">
+      <li><span class="pday-t">09:15</span><span class="pday-n" data-trip-add="columbia-road" data-trip-src="perfect_day">שוק הפרחים בקולומביה רוד<em>ימי ראשון בלבד, ולפני עשר זה עוד נעים</em></span></li>
+      <li><span class="pday-t">10:45</span><span class="pday-n" data-trip-add="brick-lane" data-trip-src="perfect_day">בריק ליין<em>השוק בשיאו, ומתחם מבשלת טרומן בדרך</em></span></li>
+      <li><span class="pday-t">12:00</span><span class="pday-n" data-trip-add="beigel-bake" data-trip-src="perfect_day">בייגל בייק<em>בייגל סולט ביף בקצה הצפוני, אוכלים בעמידה</em></span></li>
+      <li><span class="pday-t">12:30</span><span class="pday-n" data-trip-add="hanbury-street-art" data-trip-src="perfect_day">אמנות הרחוב ברחוב האנברי<em>סיבוב הצילומים העיקרי, כולל העגור הגדולה</em></span></li>
+      <li><span class="pday-t">13:15</span><span class="pday-n" data-trip-add="spitalfields-market" data-trip-src="perfect_day">שוק ספיטלפילדס<em>מקורה, מקום לשבת, וגם אם יורד גשם</em></span></li>
+      <li><span class="pday-t">14:15</span><span class="pday-n" data-trip-add="redchurch-street" data-trip-src="perfect_day">רחוב רדצ'רץ'<em>הקטע האחרון בשורדיץ', קפה טוב לסיום</em></span></li>
+      <li><span class="pday-t">15:00</span><span class="pday-n" data-trip-add="tower-bridge" data-trip-src="perfect_day">גשר המגדלים<em>עשרים דקות הליכה דרומה, וסוגרים על התמזה</em></span></li>
+    </ol>
 
     <details class="pday-detail">
       <summary>פירוט מלא של היום, שעה אחר שעה</summary>
