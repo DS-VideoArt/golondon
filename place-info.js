@@ -94,6 +94,9 @@
       '.pi-tour-price .num{font-size:19px;font-weight:900;color:#201f2b!important;}',
       '.pi-tour-price .dur{font-size:12.5px;color:#858a9c!important;}',
       '.pi-tour-note{font-size:12px;color:#858a9c!important;margin-bottom:10px;}',
+      '.pi-price-lead{font-size:13px;font-weight:700;color:#55596b!important;}',
+      '.pi-price-varies{font-size:15px!important;}',
+      '.pi-price-checked{font-size:11.5px;color:#858a9c!important;margin:-4px 0 10px;}',
       '.pi-tour-desc{font-size:13.5px;color:#55596b!important;line-height:1.7;}',
       '.pi-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#DC2626,#EA580C);color:#fff!important;font-weight:800;font-size:14px;padding:12px 20px;border-radius:11px;text-decoration:none!important;}',
       '.pi-cta:hover{opacity:.92;}',
@@ -216,11 +219,32 @@
     if (item.cta && item.cta.custom) {
       tourEl.hidden = false;
       var sym = CURRENCY_SYMBOL[item.cta.currency] || (item.cta.currency || '');
-      var priceHtml = (item.cta.price != null)
-        ? '<span class="num">' + sym + item.cta.price + '</span>' + (item.cta.duration ? '<span class="dur">' + item.cta.duration + '</span>' : '')
-        : '';
+      /*
+        מחיר תמיד כטווח פתוח ותמיד עם תאריך בדיקה
+        =========================================
+        מחיר של אטרקציה אינו מספר אחד. הוא משתנה לפי תאריך, שעה, גיל,
+        והאם הוזמן מראש. הצגה של מספר יחיד בלי הסתייגות הופכת אותנו
+        לאחראים למחיר שאיננו שולטים בו, ומתיישנת בשקט.
+
+        לכן: "החל מ" ולא מספר סתם, ותאריך הבדיקה לצידו.
+
+        התאריך נלקח מהשדה updated של הרשומה ולא נכתב בתוך הטקסט,
+        כדי שעדכון עתידי יהיה שינוי בשדה אחד ולא חיפוש והחלפה במאה
+        מקומות. מקום בלי updated פשוט לא יציג תאריך.
+      */
+      var priceHtml = '';
+      if (item.cta.price != null) {
+        priceHtml = '<span class="pi-price-lead">החל מ־</span>' +
+                    '<span class="num">' + sym + item.cta.price + '</span>' +
+                    (item.cta.duration ? '<span class="dur">' + item.cta.duration + '</span>' : '');
+      } else if (item.cta.priceVaries) {
+        priceHtml = '<span class="num pi-price-varies">משתנה לפי תאריך ושעה</span>';
+      }
+      var checkedHtml = (priceHtml && item.updated)
+        ? '<div class="pi-price-checked">נבדק: ' + item.updated + '</div>' : '';
       tourEl.innerHTML =
         (priceHtml ? '<div class="pi-tour-price">' + priceHtml + '</div>' : '') +
+        checkedHtml +
         (item.cta.priceNote ? '<div class="pi-tour-note">' + item.cta.priceNote + '</div>' : '') +
         '<div class="pi-tour-desc">' + (item.cta.desc || '') + '</div>';
     } else {

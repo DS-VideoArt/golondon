@@ -6150,6 +6150,48 @@
         "tip"
       ],
       "imageAlt": "חצר אוכל רחוב מקונטיינרים עם ספסלים ותאורת שרשרת"
+    },
+    {
+      "id": "horizon-22",
+      "name": "הורייזן 22",
+      "nameEn": "Horizon 22",
+      "desc": "התצפית החינמית הגבוהה ביותר בלונדון, בקומה 58 של 22 Bishopsgate, עם נוף של שלוש מאות מעלות.",
+      "area": "city",
+      "hood": "the-city",
+      "interests": [],
+      "categories": [
+        "viewpoint"
+      ],
+      "attrs": [
+        "free",
+        "indoor",
+        "book-ahead"
+      ],
+      "audiences": [],
+      "lat": 51.51472,
+      "lng": -0.08288,
+      "precision": "approx",
+      "free": true,
+      "priceBand": null,
+      "hours": null,
+      "tube": null,
+      "kids": null,
+      "anchor": false,
+      "bookAhead": true,
+      "tip": null,
+      "image": null,
+      "booking": null,
+      "source": "https://horizon22.co.uk/visit/",
+      "checked": "2026-08",
+      "_review": [
+        "audiences",
+        "hours",
+        "tube",
+        "kids",
+        "priceBand",
+        "image",
+        "tip"
+      ]
     }
   ]
 }
