@@ -81,7 +81,10 @@ for f in sorted(glob.glob('*.html')):
     if not t:
         continue
 
-    if f.startswith('london-') and f != 'london-by-month.html':
+    if re.match(r'london-\d+-days', f):
+        # עמודי מסלול לפי ימים, לא עמודי חודש
+        typ, cat = 'guide', 'מסלולים'
+    elif f.startswith('london-') and f != 'london-by-month.html':
         typ, cat = 'month', 'לפי חודשים'
     elif f == 'london-by-month.html':
         typ, cat = 'month', 'לפי חודשים'
