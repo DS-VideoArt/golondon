@@ -685,6 +685,7 @@
   <section class="seo-text">
     <h2>איך בונים מסלול טוב ללונדון</h2>
     <p>הטעות הנפוצה ביותר של מטיילים בלונדון היא לתכנן לפי רשימת אטרקציות במקום לפי מפה. לונדון היא עיר ענקית, ומעבר מקצה לקצה יכול לקחת יותר משעה. מסלול שקופץ בין וסטמינסטר לגריניץ' ובחזרה לקנזינגטון באותו יום שורף שעות שלמות מתחת לאדמה.</p>
+  <p>מעדיפים נקודת פתיחה מוכנה? <a href="london-3-days.html">מסלול לונדון ב-3 ימים</a> בנוי לפי אזורים וכל יום ממנו נטען לכאן בלחיצה.</p>
     <p>הכלי הזה בונה כל יום סביב אזור אחד, כך שרוב המעברים בין האתרים הם הליכה קצרה ולא נסיעה ארוכה. זו הסיבה שבגללה אותו מספר אטרקציות מרגיש כמו יום נינוח במקום כמו מרוץ.</p>
 
     <h2>כמה ימים צריך בלונדון</h2>
@@ -2000,21 +2001,30 @@
     אם למשתמש כבר יש מסלול שמור עם תוכן, היום המוכן נוסף כיום חדש ולא דורס אותו.
   */
   function applyPreset() {
-    var m = /[?&]day=([^&]+)/.exec(location.search);
-    if (!m) return;
-    var ids = decodeURIComponent(m[1]).split(',')
-      .map(function (x) { return x.trim(); })
-      .filter(function (x) { return x && byId(x); });
-    if (!ids.length) return;
+    /*
+      תמיכה בכמה ימים בכתובת אחת: day=..&day=..&day=..
+      עמוד מסלול של שלושה ימים טוען כך את כולם בלחיצה אחת.
+      כתובת עם day יחיד מתנהגת בדיוק כמו קודם.
+    */
+    var days = [];
+    var re = /[?&]day=([^&]+)/g, m;
+    while ((m = re.exec(location.search))) {
+      var ids = decodeURIComponent(m[1]).split(',')
+        .map(function (x) { return x.trim(); })
+        .filter(function (x) { return x && byId(x); });
+      if (ids.length) days.push(ids);
+    }
+    if (!days.length) return;
 
     var hadContent = manual.days.some(function (d) { return d.length; });
     if (hadContent) {
-      manual.days.push(ids);
-      manual.active = manual.days.length - 1;
+      days.forEach(function (d) { manual.days.push(d); });
+      manual.active = manual.days.length - days.length;
     } else {
-      manual.days[0] = ids;
+      manual.days = days;
       manual.active = 0;
     }
+    var ids = days[0];
     saveManual();
     setMode('manual');
 
@@ -2026,7 +2036,8 @@
     var payload = {
       source: 'area_preset',
       area: f ? f[1] : 'unknown',
-      stops: ids.length
+      stops: days.reduce(function (n, d) { return n + d.length; }, 0),
+      days: days.length
     };
     var tries = 0;
     (function send() {

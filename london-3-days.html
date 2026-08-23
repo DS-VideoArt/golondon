@@ -33,6 +33,8 @@
  "@context": "https://schema.org",
  "@type": "Article",
  "headline": "מסלול בלונדון 3 ימים: תוכנית מלאה לפי אזורים",
+ "image": "https://golondon.co.il/images/hero.jpg",
+ "description": "מסלול מוכן ל-3 ימים בלונדון, בנוי לפי אזורים: וסטמינסטר וסאות'בנק, הסיטי ושורדיץ', המוזיאון הבריטי וקמדן. כולל התאמות למשפחות, לגשם ולשומרי כשרות.",
  "datePublished": "2026-08-23",
  "dateModified": "2026-08-23",
  "inLanguage": "he",
@@ -166,9 +168,9 @@
 <div class="page-hero hero-photo">
   <span class="tag">🧭 מסלול מוכן</span>
   <h1>לונדון ב-3 ימים, מסלול מלא לפי אזורים</h1>
-  <p>שלושה ימים, שלושה אזורים, 18 עצירות בסדר שהרגליים שלכם יגידו עליו תודה. כל יום נטען למתכנן בלחיצה, ומשם משנים אותו כרצונכם.</p>
+  <p>שלושה ימים, שלושה אזורים, <span id="sync-stops-hero">18</span> עצירות בסדר שהרגליים שלכם יגידו עליו תודה. כל יום נטען למתכנן בלחיצה, ומשם משנים אותו כרצונכם.</p>
   <div class="hero-actions">
-    <a class="hero-btn primary" href="planner.html?from=three-days" data-gl-cta="hero_primary">🗺️ התאימו את המסלול אליכם במתכנן</a>
+    <a class="hero-btn primary" href="planner.html?day=big-ben,westminster-abbey,st-james-park,buckingham,southbank-walk,tate-modern,borough-market&amp;day=tower-of-london,tower-bridge,leadenhall-market,sky-garden,spitalfields-market,brick-lane&amp;day=british-museum,camden-market,regents-canal-towpath,primrose-hill,chinatown-soho&amp;from=three-days" data-gl-cta="hero_primary">🗺️ טענו את שלושת הימים למתכנן</a>
     <a class="hero-btn ghost" href="#day-one" data-gl-cta="hero_secondary">⬇️ ישר לתוכנית</a>
   </div>
 </div>
@@ -180,31 +182,33 @@
 <div class="content">
   <p class="freshness"><i class="fas fa-circle-check"></i> עודכן לאחרונה באוגוסט 2026</p>
 
-  <p class="lead">שלושה ימים זה הביקור הישראלי הנפוץ בלונדון, וזה מספיק בדיוק לשלושה אזורים, לא לשלושים אטרקציות. המסלול הזה בנוי כך שכל יום נשאר באזור אחד, ההליכות קצרות, ואף נסיעה לא חוזרת על עצמה.</p>
+  <p class="lead">שלושה ימים זה הביקור הישראלי הנפוץ בלונדון, וזה מספיק בדיוק לשלושה אזורים, לא לשלושים אטרקציות. המסלול הזה בנוי כך שכל יום נשאר באשכול אחד של אזורים קרובים, ההליכות קצרות, ואף נסיעה לא חוזרת על עצמה.</p>
 
   <div class="stat-row">
-    <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">ימים, אזור ביום</div></div>
-    <div class="stat"><div class="stat-num">18</div><div class="stat-lbl">עצירות בסך הכל</div></div>
-    <div class="stat"><div class="stat-num">10</div><div class="stat-lbl">מהעצירות בלי דמי כניסה</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">ימים, אשכול אזורים ביום</div></div>
+    <div class="stat"><div class="stat-num" id="sync-stops">18</div><div class="stat-lbl">עצירות בסך הכל</div></div>
+    <div class="stat"><div class="stat-num" id="sync-free">16</div><div class="stat-lbl">מהעצירות בלי דמי כניסה</div></div>
   </div>
 
   <h2>למי מתאים מסלול של שלושה ימים</h2>
-  <p>למי שמגיע ללונדון בפעם הראשונה או השנייה ורוצה לצאת עם תחושה שראה את העיר, לא שרץ בה. שלושה ימים מספיקים לאייקונים הגדולים, לשני שווקים, לתצפית אחת מלמעלה, למוזיאון עולמי אחד ולערב תיאטרון, בתנאי אחד: שלא מנסים לדחוס הכל.</p>
+  <p>למי שמגיע ללונדון בפעם הראשונה או השנייה ורוצה לצאת עם תחושה שראה את העיר, לא שרץ בה. המסלול מיועד לשלושה ימי טיול מלאים, ימי הטיסה אינם נספרים בו. שלושה ימים מספיקים לאייקונים הגדולים, לשני שווקים, לתצפית אחת מלמעלה, למוזיאון עולמי אחד ולערב תיאטרון, בתנאי אחד: שלא מנסים לדחוס הכל.</p>
   <p>אם יש לכם ארבעה או חמישה ימים, המסלול הזה עדיין עובד, פשוט מרווחים אותו ומוסיפים יום רגוע יותר או <a href="guide-transport-daytrips.html">טיול יום מחוץ לעיר</a>.</p>
 
   <h2>למה לפי אזורים ולא לפי רשימת אטרקציות</h2>
   <p>הטעות הנפוצה ביותר בתכנון לונדון היא לבחור עשר אטרקציות מרשימה ואז לגלות שהן בארבעה קצוות של עיר ענקית. קפיצה מוסטמינסטר לקמדן ובחזרה לסאות'בנק שורפת שעה ביום רק על רכבות.</p>
-  <p>כשכל יום נשאר באזור אחד, המרחקים בין העצירות הם דקות הליכה. רואים יותר, נוסעים פחות, ונשאר זמן לשבת בבית קפה בלי להרגיש שמפסידים משהו. זו גם הסיבה שהמתכנן שלנו בנוי לפי אזורים, והמסלול הזה הוא בדיוק התוצר שלו.</p>
+  <p>כשכל יום נשאר באשכול אחד של אזורים שכנים, המרחקים בין העצירות הם דקות הליכה או נסיעה קצרה אחת. רואים יותר, נוסעים פחות, ונשאר זמן לשבת בבית קפה בלי להרגיש שמפסידים משהו. זו גם הסיבה שהמתכנן שלנו בנוי לפי אזורים, והמסלול הזה הוא בדיוק התוצר שלו.</p>
 
-  <h2 id="day-one">יום ראשון: וסטמינסטר וסאות'בנק, הלונדון הקלאסית</h2>
+  <h2 id="day-one">יום 1: וסטמינסטר וסאות'בנק, הלונדון הקלאסית</h2>
+  <p class="transfer"><i class="fas fa-train-subway"></i> מתחילים בתחנת Westminster, מסיימים בתחנת London Bridge</p>
   <p class="day-part">בוקר</p>
-  <p>מתחילים בתחנת Westminster, ויוצאים ישר אל התמונה המפורסמת בעיר: ביג בן ובתי הפרלמנט מולכם, גשר וסטמינסטר מימין. הצפייה מבחוץ אינה עולה דבר, וכדאי להגיע לפני תשע כשעדיין נעים ברחוב. משם חמש דקות הליכה אל וסטמינסטר אבי, מי שרוצה להיכנס צריך כרטיס מראש.</p>
+  <p>מתחילים בתחנת Westminster, ויוצאים ישר אל התמונה המפורסמת בעיר: ביג בן ובתי הפרלמנט מולכם, גשר וסטמינסטר מימין. הצפייה מבחוץ אינה עולה דבר, וכדאי להגיע לפני תשע כשעדיין נעים ברחוב. משם חמש דקות הליכה אל וסטמינסטר אבי.</p>
+  <p><strong>וכאן הבחירה של הבוקר, כי אי אפשר לספיק את שניהם באותו חלון:</strong> אפשרות א׳, מסתכלים על המנזר מבחוץ וממשיכים דרך הפארק אל חילופי המשמר. אפשרות ב׳, נכנסים למנזר עם כרטיס שהוזמן מראש, שעה וחצי לפחות, ומוותרים על הטקס. עם ילדים, אפשרות א׳ מנצחת כמעט תמיד.</p>
   <p class="transfer"><i class="fas fa-person-walking"></i> מעבר: הליכה של 10 דקות דרך סנט ג'יימס פארק</p>
   <p>ממשיכים דרך סנט ג'יימס פארק, הפארק היפה במרכז, עד ארמון בקינגהאם. אם זה יום של חילופי משמר, בשנת 2026 הטקס מתקיים בדרך כלל בימים שני, רביעי ושישי בשעה 11:00, מגיעים חצי שעה קודם לתפוס מקום ליד השער. אם לא, מציצים בחזית וממשיכים.</p>
   <p class="day-part">צהריים</p>
   <p>חוזרים לגדה וחוצים את הנהר אל הסאות'בנק. כאן אוכלים צהריים על הטיילת, יש דוכנים ומסעדות לכל כיוון, והנוף על הפרלמנט מהצד השני שווה את הישיבה בחוץ.</p>
   <p class="day-part">אחר הצהריים והערב</p>
-  <p>הולכים לאורך התמזה מזרחה, מהלונדון איי ועד טייט מודרן. ההליכה עצמה היא האטרקקציה, ובטייט מודרן, שהכניסה אליו חינם, מספיקה גם שעה כדי לראות את אולם הטורבינות ושתי קומות. מסיימים באזור בורו מרקט לארוחת ערב, ובדרך חזרה עוברים על גשר המילניום כשהעיר מוארת.</p>
+  <p>הולכים לאורך התמזה מזרחה, מהלונדון איי ועד טייט מודרן. ההליכה עצמה היא האטרקציה, ובטייט מודרן, שהכניסה אליו חינם, מספיקה גם שעה כדי לראות את אולם הטורבינות ושתי קומות. מסיימים באזור בורו מרקט. חשוב לדעת: דוכני השוק עצמם פעילים בעיקר בשעות היום, ובערב אוכלים באחת המסעדות והפאבים שסביב השוק, שדווקא מתעוררים בשעה הזו. בדרך חזרה עוברים על גשר המילניום כשהעיר מוארת.</p>
 
   <div class="pday">
     <div class="pday-h">⭐ יום 1 מוכן לטעינה <span>שבע עצירות, וסטמינסטר וסאות'בנק</span></div>
@@ -221,16 +225,17 @@
     </div>
     <ol class="pday-list">
       <li><span class="pday-t">09:00</span><span class="pday-n" data-trip-add="big-ben" data-trip-src="perfect_day">ביג בן ובתי הפרלמנט<em>התמונה הקלאסית, מבחוץ ובלי תור</em></span></li>
-      <li><span class="pday-t">09:45</span><span class="pday-n" data-trip-add="westminster-abbey" data-trip-src="perfect_day">וסטמינסטר אבי<em>מבחוץ, או בפנים עם כרטיס שהוזמן מראש</em></span></li>
+      <li><span class="pday-t">09:45</span><span class="pday-n" data-trip-add="westminster-abbey" data-trip-src="perfect_day">וסטמינסטר אבי<em>אפשרות ב׳: כניסה עם כרטיס מראש, במקום הטקס</em></span></li>
       <li><span class="pday-t">10:45</span><span class="pday-n" data-trip-add="st-james-park" data-trip-src="perfect_day">סנט ג'יימס פארק<em>ההליכה היפה בעיר אל הארמון</em></span></li>
-      <li><span class="pday-t">11:00</span><span class="pday-n" data-trip-add="buckingham" data-trip-src="perfect_day">ארמון בקינגהאם<em>חילופי המשמר בימים שיש, אחרת עצירה קצרה</em></span></li>
+      <li><span class="pday-t">11:00</span><span class="pday-n" data-trip-add="buckingham" data-trip-src="perfect_day">ארמון בקינגהאם<em>אפשרות א׳: חילופי המשמר בימים שבהם הוא מתקיים</em></span></li>
       <li><span class="pday-t">13:00</span><span class="pday-n" data-trip-add="southbank-walk" data-trip-src="perfect_day">טיילת הסאות'בנק<em>צהריים על הנהר והליכה מזרחה</em></span></li>
       <li><span class="pday-t">15:30</span><span class="pday-n" data-trip-add="tate-modern" data-trip-src="perfect_day">טייט מודרן<em>כניסה חינם, שעה עד שעתיים</em></span></li>
-      <li><span class="pday-t">18:00</span><span class="pday-n" data-trip-add="borough-market" data-trip-src="perfect_day">אזור בורו מרקט<em>ארוחת ערב וסיום על גשר המילניום המואר</em></span></li>
+      <li><span class="pday-t">18:00</span><span class="pday-n" data-trip-add="borough-market" data-trip-src="perfect_day">אזור בורו מרקט<em>בערב אוכלים במסעדות שסביב השוק, וסיום על גשר המילניום</em></span></li>
     </ol>
   </div>
 
-  <h2>יום שני: הסיטי, הגשרים ושורדיץ'</h2>
+  <h2>יום 2: הסיטי, הגשרים ושורדיץ'</h2>
+  <p class="transfer"><i class="fas fa-train-subway"></i> מתחילים בתחנת Tower Hill, מסיימים בתחנת Shoreditch High Street או Liverpool Street</p>
   <p class="day-part">בוקר</p>
   <p>מתחילים במצודת לונדון עם הפתיחה, זו הדרך היחידה לראות את יהלומי הכתר בלי תור ארוך, וכרטיס מראש חוסך את תור הקופה. שעתיים וחצי זה מינימום הוגן למקום הזה.</p>
   <p class="transfer"><i class="fas fa-person-walking"></i> מעבר: חמש דקות הליכה אל הגשר</p>
@@ -263,9 +268,10 @@
     </ol>
   </div>
 
-  <h2>יום שלישי: המוזיאון הגדול, קמדן וערב בווסט אנד</h2>
+  <h2>יום 3: המוזיאון הגדול, קמדן וערב בווסט אנד</h2>
+  <p class="transfer"><i class="fas fa-train-subway"></i> מתחילים בתחנת Tottenham Court Road, מסיימים בתחנת Leicester Square</p>
   <p class="day-part">בוקר</p>
-  <p>מתחילים במוזיאון הבריטי כשהוא נפתח. הכניסה חינם, ושלוש שעות מספיקות לאבן רוזטה, לפסלי הפרתנון ולאולם הגדול. עם ילדים, מחליפים אותו במוזיאון הטבע או המדע בסאות' קנזינגטון, שניהם חינם גם הם.</p>
+  <p>מתחילים במוזיאון הבריטי כשהוא נפתח בעשר. הכניסה חינם, ושלוש שעות מספיקות לאבן רוזטה, לפסלי הפרתנון ולאולם הגדול. עם ילדים, מחליפים אותו במוזיאון הטבע או המדע בסאות' קנזינגטון, שניהם חינם גם הם.</p>
   <p class="transfer"><i class="fas fa-train-subway"></i> מעבר: הקו הצפוני מיוסטון או נסיעה קצרה אל קמדן</p>
   <p class="day-part">צהריים ואחר הצהריים</p>
   <p>נוסעים צפונה אל קמדן. אוכלים צהריים בשוק, מסתובבים באורוות הוויקטוריאניות, וכשנמאס מהצפיפות עושים את התרגיל הכי טוב באזור: הליכה שקטה לאורך התעלה עד גבעת פרימרוז היל, עם הנוף הפתוח על קו הרקיע. גם כאן יש לנו <a class="area-link" data-area="camden" href="guide-areas-camden.html">מדריך מלא לקמדן</a> עם יום מושלם משלו, ומצב סביבי שמכסה את כל 26 המקומות שאספנו באזור.</p>
@@ -286,13 +292,22 @@
       </a>
     </div>
     <ol class="pday-list">
-      <li><span class="pday-t">09:30</span><span class="pday-n" data-trip-add="british-museum" data-trip-src="perfect_day">המוזיאון הבריטי<em>חינם, שלוש שעות לגדולות שבתצוגות</em></span></li>
+      <li><span class="pday-t">10:00</span><span class="pday-n" data-trip-add="british-museum" data-trip-src="perfect_day">המוזיאון הבריטי<em>נפתח בעשר. חינם, שלוש שעות לגדולות שבתצוגות</em></span></li>
       <li><span class="pday-t">13:00</span><span class="pday-n" data-trip-add="camden-market" data-trip-src="perfect_day">שוק קמדן<em>צהריים מדוכני האוכל והאורוות</em></span></li>
       <li><span class="pday-t">15:00</span><span class="pday-n" data-trip-add="regents-canal-towpath" data-trip-src="perfect_day">טיילת תעלת ריג'נטס<em>ההליכה השקטה שאף אחד לא מצפה לה בקמדן</em></span></li>
       <li><span class="pday-t">16:00</span><span class="pday-n" data-trip-add="primrose-hill" data-trip-src="perfect_day">פרימרוז היל<em>הנוף על קו הרקיע, בחינם</em></span></li>
       <li><span class="pday-t">18:30</span><span class="pday-n" data-trip-add="chinatown-soho" data-trip-src="perfect_day">צ'יינה טאון וסוהו<em>ארוחת ערב לפני המחזמר</em></span></li>
     </ol>
   </div>
+
+  <h2>התאמה לימי השבוע</h2>
+  <p>סדר הימים גמיש, וכמה עובדות קבועות שוות תכנון סביבן:</p>
+  <ul>
+    <li><strong>חילופי המשמר</strong> מתקיימים בדרך כלל בימים שני, רביעי ושישי. אם אף אחד מימי הטיול לא נופל עליהם, ותרו מראש ותרוויחו בוקר רגוע.</li>
+    <li><strong>יום ראשון</strong> הוא היום הגדול של בריק ליין, שווה לכוון אליו את יום 2. מנגד, דוכני בורו מרקט שקטים בו יותר.</li>
+    <li><strong>שבת</strong> היא היום של שוק פורטובלו בנוטינג היל, החלפה טבעית לבוקר של יום 3.</li>
+    <li><strong>שוקי קמדן וספיטלפילדס</strong> פועלים כל השבוע, ולכן הימים שלהם גמישים.</li>
+  </ul>
 
   <h2>מה לא נכנס למסלול, ולמה</h2>
   <ul>
@@ -319,7 +334,7 @@
     <li><strong>חילופי המשמר:</strong> לא מזמינים, אבל בודקים בלוח הרשמי שהטקס מתקיים ביום שבחרתם.</li>
   </ol>
 
-  <div class="highlight-box"><strong>הצעד הבא:</strong> טענתם את שלושת הימים? פתחו את <a href="planner.html?from=three-days">המתכנן</a>, גררו, החליפו והוסיפו מקומות מתוך יותר מ-150 שיש במאגר. המסלול נשמר בדפדפן שלכם ומחכה לכם גם מחר.</div>
+  <div class="highlight-box"><strong>הצעד הבא:</strong> לחצו על <a href="planner.html?day=big-ben,westminster-abbey,st-james-park,buckingham,southbank-walk,tate-modern,borough-market&amp;day=tower-of-london,tower-bridge,leadenhall-market,sky-garden,spitalfields-market,brick-lane&amp;day=british-museum,camden-market,regents-canal-towpath,primrose-hill,chinatown-soho&amp;from=three-days">טעינת שלושת הימים</a>, ובמתכנן גררו, החליפו והוסיפו מקומות מתוך יותר מ-150 שיש במאגר. המסלול נשמר בדפדפן שלכם ומחכה לכם גם מחר.</div>
 </div>
 
 <div class="further">
@@ -334,12 +349,41 @@
 </div>
 
 <div class="back-cta">
-  <a href="planner.html?from=three-days"><i class="fas fa-map"></i> התאימו את המסלול אליכם במתכנן</a>
+  <a href="planner.html?day=big-ben,westminster-abbey,st-james-park,buckingham,southbank-walk,tate-modern,borough-market&amp;day=tower-of-london,tower-bridge,leadenhall-market,sky-garden,spitalfields-market,brick-lane&amp;day=british-museum,camden-market,regents-canal-towpath,primrose-hill,chinatown-soho&amp;from=three-days"><i class="fas fa-map"></i> טענו את שלושת הימים למתכנן</a>
 </div>
 
 </main>
 
 <script>
+  /*
+    סנכרון מספרים מול מקור האמת של המתכנן
+    =====================================
+    מספרי העצירות, החינם ומרחקי ההליכה אינם מוקלדים ידנית לנצח: בכל
+    טעינה הם מחושבים מחדש מ-planner-data.json, אותו קובץ שמזין את
+    המתכנן. אם המסלול ישתנה או שמקום יפסיק להיות חינמי, העמוד יתעדכן
+    מעצמו. הערכים הכתובים ב-HTML הם רק ברירת מחדל עד שהחישוב רץ.
+  */
+  (function () {
+    var dayIds = Array.prototype.map.call(
+      document.querySelectorAll('[data-pday-add]'),
+      function (b) { return b.getAttribute('data-pday-add').split(','); });
+    if (!dayIds.length) return;
+    fetch('planner-data.json', { cache: 'no-cache' })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        var by = {};
+        (data.attractions || []).forEach(function (p) { by[p.id] = p; });
+        var all = [].concat.apply([], dayIds).filter(function (id) { return by[id]; });
+        var free = all.filter(function (id) { return by[id].free; }).length;
+        var el;
+        if ((el = document.getElementById('sync-stops'))) el.textContent = all.length;
+        if ((el = document.getElementById('sync-free'))) el.textContent = free;
+        if ((el = document.getElementById('sync-stops-hero'))) el.textContent = all.length;
+      })
+
+      .catch(function () {});
+  })();
+
   /*
     מדידת מעבר למדריכי האזורים מתוך המסלול, דרך מערכת האירועים הקיימת.
     glTrack נטען מ-analytics.js, ואם הוא איננו שום דבר לא נשבר.

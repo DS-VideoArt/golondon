@@ -214,7 +214,13 @@
     .cat-search-input:focus { outline: 2px solid rgba(234,88,12,0.55); outline-offset: 1px; }
     .cat-search-clear { position: absolute; inset-inline-end: 12px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 8px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 13px; }
     .cat-search-status { font-size: 13.5px; font-weight: 700; margin: -6px 0 14px; }
-  </style>
+    .pinned-guide { display:flex; align-items:center; gap:14px; background:rgba(220,38,38,.06);
+    border:1px solid rgba(220,38,38,.3); border-radius:14px; padding:16px 18px; margin:0 0 22px;
+    text-decoration:none; font-size:15px; line-height:1.5; }
+  .pinned-guide strong { font-size:15.5px; }
+  .pinned-guide .pg-desc { font-size:13px; opacity:.75; }
+  .pinned-guide .pg-icon { font-size:26px; }
+</style>
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#DC2626" />
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
@@ -309,6 +315,7 @@
       </button>
     </div>
     <div class="cat-search-status" id="catSearchStatus" hidden></div>
+    <div id="pinnedGuides" style="display:none"></div>
     <div class="posts-grid" id="postsGrid"></div>
     <div class="empty-state" id="emptyState" style="display:none">
       <span class="big" id="emptyEmoji">🎉</span>
@@ -495,6 +502,23 @@ async function loadPosts() {
   } catch {}
   if (!posts.length) {
     try { posts = JSON.parse(localStorage.getItem('golondon_posts') || '[]'); } catch {}
+  }
+
+  /* בקטגוריית מסלולים, עמוד המסלול המוכן מוצג ראשון כקישור קבוע */
+  const PINNED_GUIDES = {
+    'מסלולים': [{ url: 'london-3-days.html', icon: '🧭',
+      title: 'לונדון ב-3 ימים, מסלול מלא לפי אזורים',
+      desc: 'מסלול מוכן של שלושה ימים, כל יום נטען למתכנן בלחיצה.' }]
+  };
+  const pinnedBox = document.getElementById('pinnedGuides');
+  if (pinnedBox && PINNED_GUIDES[catKey]) {
+    pinnedBox.innerHTML = PINNED_GUIDES[catKey].map(g =>
+      `<a class="pinned-guide" href="${g.url}">
+         <span class="pg-icon">${g.icon}</span>
+         <span><strong>${g.title}</strong><br><span class="pg-desc">${g.desc}</span></span>
+         <i class="fas fa-arrow-left"></i>
+       </a>`).join('');
+    pinnedBox.style.display = 'block';
   }
 
   const filtered = posts.filter(p => p.category === catKey)
