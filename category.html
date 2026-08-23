@@ -508,7 +508,10 @@ async function loadPosts() {
   const PINNED_GUIDES = {
     'מסלולים': [{ url: 'london-3-days.html', icon: '🧭',
       title: 'לונדון ב-3 ימים, מסלול מלא לפי אזורים',
-      desc: 'מסלול מוכן של שלושה ימים, כל יום נטען למתכנן בלחיצה.' }]
+      desc: 'מסלול מוכן של שלושה ימים, כל יום נטען למתכנן בלחיצה.' },
+    { url: 'london-5-days.html', icon: '🗓️',
+      title: 'לונדון ב-5 ימים, מסלול מלא לפי אזורים',
+      desc: 'הליבה בקצב רגוע, ועוד רובע המוזיאונים, נוטינג היל וגריניץ.' }]
   };
   const pinnedBox = document.getElementById('pinnedGuides');
   if (pinnedBox && PINNED_GUIDES[catKey]) {
