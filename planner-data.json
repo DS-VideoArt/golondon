@@ -247,7 +247,7 @@
       ],
       "free": true,
       "priceBand": "החילופים חינם, הארמון בתשלום",
-      "hours": 2,
+      "hours": 1,
       "tube": "Green Park",
       "kids": true,
       "anchor": false,
@@ -962,7 +962,7 @@
       ],
       "free": true,
       "priceBand": "כניסה חינם",
-      "hours": 3,
+      "hours": 2,
       "tube": "Camden Town",
       "kids": true,
       "anchor": true,
@@ -5102,9 +5102,9 @@
       "lng": -0.14795,
       "precision": "approx",
       "free": true,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5116,10 +5116,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "אורוות לבנים מקומרות שהוסבו לשוק, רצפת אבן ודוכנים"
@@ -5143,9 +5140,9 @@
       "lng": -0.14425,
       "precision": "approx",
       "free": true,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5157,10 +5154,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "חצר אוכל רחוב מקונטיינרים עם ספסלים ותאורת שרשרת"
@@ -5182,9 +5176,9 @@
       "lng": -0.14407,
       "precision": "approx",
       "free": true,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כניסה חינם",
+      "hours": 0.5,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5196,10 +5190,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "חצר אוכל רחוב מקונטיינרים עם ספסלים ותאורת שרשרת"
@@ -5223,9 +5214,9 @@
       "lng": -0.15198,
       "precision": "exact",
       "free": false,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 2,
+      "tube": "Chalk Farm",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5236,10 +5227,7 @@
       "checked": "2026-08",
       "_review": [
         "audiences",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "מבנה לבנים עגול היסטורי שהוסב לאולם מופעים"
@@ -5262,9 +5250,9 @@
       "lng": -0.14294,
       "precision": "exact",
       "free": false,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 2,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5276,10 +5264,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "אולם הופעות קטן עם במה ותאורה צבעונית"
@@ -5302,9 +5287,9 @@
       "lng": -0.14303,
       "precision": "exact",
       "free": false,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 2,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5316,10 +5301,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "אולם הופעות קטן עם במה ותאורה צבעונית"
@@ -5344,9 +5326,9 @@
       "lng": -0.13816,
       "precision": "exact",
       "free": false,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כרטיס בתשלום",
+      "hours": 2,
+      "tube": "Mornington Crescent",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5357,10 +5339,7 @@
       "checked": "2026-08",
       "_review": [
         "audiences",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "אולם הופעות קטן עם במה ותאורה צבעונית"
@@ -5383,9 +5362,9 @@
       "lng": -0.1457,
       "precision": "exact",
       "free": false,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "זול",
+      "hours": 1.5,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5397,10 +5376,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "פנים פאב לונדוני מסורתי עם עץ כהה ותאורה חמה"
@@ -5422,9 +5398,9 @@
       "lng": -0.14391,
       "precision": "exact",
       "free": false,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "טווח ביניים",
+      "hours": 1,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5436,10 +5412,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "פנים חנות פיש אנד צ'יפס בריטית בסגנון שנות החמישים"
@@ -5461,9 +5434,9 @@
       "lng": -0.14631,
       "precision": "exact",
       "free": false,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "זול",
+      "hours": 0.5,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5475,10 +5448,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "פנים בית קפה עצמאי קטן עם מכונת אספרסו על דלפק עץ"
@@ -5500,9 +5470,9 @@
       "lng": -0.1477,
       "precision": "exact",
       "free": false,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "טווח ביניים",
+      "hours": 1.5,
+      "tube": "Chalk Farm",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5514,10 +5484,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "פנים פאב לונדוני מסורתי עם עץ כהה ותאורה חמה"
@@ -5539,9 +5506,9 @@
       "lng": -0.14461,
       "precision": "exact",
       "free": false,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "זול",
+      "hours": 1,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5553,10 +5520,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "פנים פאב לונדוני מסורתי עם עץ כהה ותאורה חמה"
@@ -5578,9 +5542,9 @@
       "lng": -0.14486,
       "precision": "exact",
       "free": false,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "טווח ביניים",
+      "hours": 1.5,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5592,10 +5556,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "פנים פאב לונדוני מסורתי עם עץ כהה ותאורה חמה"
@@ -5617,9 +5578,9 @@
       "lng": -0.14743,
       "precision": "exact",
       "free": true,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כניסה חינם",
+      "hours": 0.5,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5631,10 +5592,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "פנים חנות אופנה אלטרנטיבית עם תאורת ניאון"
@@ -5657,9 +5615,9 @@
       "lng": -0.1462,
       "precision": "approx",
       "free": true,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5671,10 +5629,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "שביל התעלה עם סירות צרות צבעוניות ועצים מעל המים"
@@ -5696,9 +5651,9 @@
       "lng": -0.14509,
       "precision": "exact",
       "free": true,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כניסה חינם",
+      "hours": 0.5,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5710,10 +5665,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "גשר ברזל מעוטר מעל תעלה צרה בצפון לונדון"
@@ -5736,9 +5688,9 @@
       "lng": -0.14141,
       "precision": "approx",
       "free": true,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5750,10 +5702,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "רחוב ראשי בצפון לונדון עם חזיתות חנויות מפוסלות"
@@ -5775,9 +5724,9 @@
       "lng": -0.14782,
       "precision": "exact",
       "free": true,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כניסה חינם",
+      "hours": 0.5,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5789,10 +5738,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "כיכר הסטייבלס בשוק קמדן"
@@ -5814,9 +5760,9 @@
       "lng": -0.14533,
       "precision": "exact",
       "free": false,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "זול",
+      "hours": 0.5,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5828,10 +5774,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "פנים בית קפה עצמאי קטן עם מכונת אספרסו על דלפק עץ"
@@ -5854,9 +5797,9 @@
       "lng": -0.15654,
       "precision": "exact",
       "free": false,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "טווח ביניים",
+      "hours": 1,
+      "tube": "Chalk Farm",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5868,10 +5811,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "רחוב שכונתי שקט בלונדון עם בית קפה ושולחנות בחוץ"
@@ -5893,9 +5833,9 @@
       "lng": -0.15701,
       "precision": "exact",
       "free": false,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "טווח ביניים",
+      "hours": 1.5,
+      "tube": "Chalk Farm",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5907,10 +5847,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "רחוב שכונתי שקט בלונדון עם בית קפה ושולחנות בחוץ"
@@ -5933,9 +5870,9 @@
       "lng": -0.1254,
       "precision": "exact",
       "free": true,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "King's Cross St Pancras",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5947,10 +5884,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "image",
         "tip"
       ]
@@ -5972,9 +5906,9 @@
       "lng": -0.12815,
       "precision": "approx",
       "free": true,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כניסה חינם",
+      "hours": 0.5,
+      "tube": "King's Cross St Pancras",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -5986,10 +5920,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "image",
         "tip"
       ]
@@ -6011,9 +5942,9 @@
       "lng": -0.12709,
       "precision": "approx",
       "free": true,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כניסה חינם",
+      "hours": 0.5,
+      "tube": "King's Cross St Pancras",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -6025,10 +5956,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "image",
         "tip"
       ]
@@ -6050,9 +5978,9 @@
       "lng": -0.12661,
       "precision": "exact",
       "free": true,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כניסה חינם",
+      "hours": 0.5,
+      "tube": "King's Cross St Pancras",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -6064,10 +5992,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "image",
         "tip"
       ]
@@ -6092,9 +6017,9 @@
       "lng": -0.12552,
       "precision": "exact",
       "free": false,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "טווח ביניים",
+      "hours": 1.5,
+      "tube": "King's Cross St Pancras",
       "kids": null,
       "anchor": false,
       "bookAhead": false,
@@ -6105,10 +6030,7 @@
       "checked": "2026-08",
       "_review": [
         "audiences",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "image",
         "tip"
       ]
@@ -6132,9 +6054,9 @@
       "lng": -0.14301,
       "precision": "approx",
       "free": true,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כניסה חינם",
+      "hours": 1,
+      "tube": "Camden Town",
       "kids": null,
       "anchor": false,
       "bookAhead": null,
@@ -6146,10 +6068,7 @@
       "_review": [
         "audiences",
         "attrs",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "tip"
       ],
       "imageAlt": "חצר אוכל רחוב מקונטיינרים עם ספסלים ותאורת שרשרת"
@@ -6175,9 +6094,9 @@
       "lng": -0.08288,
       "precision": "approx",
       "free": true,
-      "priceBand": null,
-      "hours": null,
-      "tube": null,
+      "priceBand": "כניסה חינם בהזמנה מראש",
+      "hours": 1,
+      "tube": "Liverpool Street",
       "kids": null,
       "anchor": false,
       "bookAhead": true,
@@ -6188,10 +6107,7 @@
       "checked": "2026-08",
       "_review": [
         "audiences",
-        "hours",
-        "tube",
         "kids",
-        "priceBand",
         "image",
         "tip"
       ]

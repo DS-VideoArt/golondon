@@ -1,0 +1,88 @@
+{
+  "_מה_זה_הקובץ_הזה": "מקור האמת של המסלולים המוכנים. כל עמוד מסלול, קיים או עתידי, נגזר מכאן: זהות המסלול, סדר הימים, עצירות החובה והחלופות, וטקסטי הכותרת והתיאור. build_routes.py מאמת שהעמודים באתר תואמים לקובץ הזה, ועמוד 7 ימים עתידי ייבנה ממנו ישירות.",
+  "_כללים": [
+    "route_id הוא הזהות בכתובת: planner.html?...&route=<route_id>&rv=<route_version>",
+    "day_position קובע את סדר הימים במתכנן, אחד עד N",
+    "stops הן עצירות חובה שנטענות אוטומטית, alternatives לא נטענות אוטומטית",
+    "כל מזהה חייב להתקיים ב-planner-data.json עם hours, tube ו-priceBand מלאים",
+    "אזור מטרייה (כמו greenwich) לא נכנס ל-stops, רק העצירות האמיתיות שבתוכו"
+  ],
+  "routes": [
+    {
+      "route_id": "three-days",
+      "route_version": 1,
+      "page": "london-3-days.html",
+      "url": "/london-3-days",
+      "name": "לונדון ב-3 ימים",
+      "title": "מסלול בלונדון 3 ימים: תוכנית מלאה לפי אזורים | גו לונדון",
+      "days": [
+        {
+          "day_id": "westminster-southbank",
+          "day_position": 1,
+          "title": "יום 1: וסטמינסטר וסאות'בנק, הלונדון הקלאסית",
+          "stops": ["big-ben", "st-james-park", "buckingham", "southbank-walk", "tate-modern", "borough-market"],
+          "alternatives": ["westminster-abbey"]
+        },
+        {
+          "day_id": "city-shoreditch",
+          "day_position": 2,
+          "title": "יום 2: הסיטי, הגשרים ושורדיץ'",
+          "stops": ["tower-of-london", "tower-bridge", "leadenhall-market", "sky-garden", "spitalfields-market", "brick-lane"],
+          "alternatives": []
+        },
+        {
+          "day_id": "bloomsbury-camden-westend",
+          "day_position": 3,
+          "title": "יום 3: המוזיאון הגדול, קמדן וערב בווסט אנד",
+          "stops": ["british-museum", "camden-market", "regents-canal-towpath", "primrose-hill", "chinatown-soho"],
+          "alternatives": []
+        }
+      ]
+    },
+    {
+      "route_id": "five-days",
+      "route_version": 1,
+      "page": "london-5-days.html",
+      "url": "/london-5-days",
+      "name": "לונדון ב-5 ימים",
+      "title": "מסלול בלונדון 5 ימים: תוכנית מלאה לפי אזורים | גו לונדון",
+      "days": [
+        {
+          "day_id": "westminster-southbank",
+          "day_position": 1,
+          "title": "יום 1: וסטמינסטר וסאות'בנק, הלונדון הקלאסית",
+          "stops": ["big-ben", "st-james-park", "buckingham", "southbank-walk", "tate-modern", "borough-market"],
+          "alternatives": ["westminster-abbey"]
+        },
+        {
+          "day_id": "city-shoreditch",
+          "day_position": 2,
+          "title": "יום 2: הסיטי, הגשרים ושורדיץ'",
+          "stops": ["tower-of-london", "tower-bridge", "leadenhall-market", "sky-garden", "spitalfields-market", "brick-lane"],
+          "alternatives": []
+        },
+        {
+          "day_id": "museums-nottinghill",
+          "day_position": 3,
+          "title": "יום 3: רובע המוזיאונים, הייד פארק ונוטינג היל",
+          "stops": ["natural-history", "hyde-park", "notting-hill"],
+          "alternatives": ["va-museum", "science-museum", "kensington-palace"]
+        },
+        {
+          "day_id": "bloomsbury-camden-westend",
+          "day_position": 4,
+          "title": "יום 4: המוזיאון הגדול, קמדן וערב בווסט אנד",
+          "stops": ["british-museum", "camden-market", "regents-canal-towpath", "primrose-hill", "chinatown-soho"],
+          "alternatives": []
+        },
+        {
+          "day_id": "greenwich",
+          "day_position": 5,
+          "title": "יום 5: גריניץ', היום הנהרי",
+          "stops": ["greenwich-market", "royal-observatory", "maritime-museum"],
+          "alternatives": ["cutty-sark"]
+        }
+      ]
+    }
+  ]
+}

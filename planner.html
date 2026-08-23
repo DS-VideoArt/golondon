@@ -685,7 +685,7 @@
   <section class="seo-text">
     <h2>איך בונים מסלול טוב ללונדון</h2>
     <p>הטעות הנפוצה ביותר של מטיילים בלונדון היא לתכנן לפי רשימת אטרקציות במקום לפי מפה. לונדון היא עיר ענקית, ומעבר מקצה לקצה יכול לקחת יותר משעה. מסלול שקופץ בין וסטמינסטר לגריניץ' ובחזרה לקנזינגטון באותו יום שורף שעות שלמות מתחת לאדמה.</p>
-  <p>מעדיפים נקודת פתיחה מוכנה? מסלולי <a href="london-3-days.html">לונדון ב-3 ימים</a> ו<a href="london-5-days.html">לונדון ב-5 ימים</a> בנויים לפי אזורים, וכל יום מהם נטען לכאן בלחיצה.</p>
+  <p>מעדיפים נקודת פתיחה מוכנה? מסלולי <a href="/london-3-days">לונדון ב-3 ימים</a> ו<a href="/london-5-days">לונדון ב-5 ימים</a> בנויים לפי אזורים, וכל יום מהם נטען לכאן בלחיצה.</p>
     <p>הכלי הזה בונה כל יום סביב אזור אחד, כך שרוב המעברים בין האתרים הם הליכה קצרה ולא נסיעה ארוכה. זו הסיבה שבגללה אותו מספר אטרקציות מרגיש כמו יום נינוח במקום כמו מרוץ.</p>
 
     <h2>כמה ימים צריך בלונדון</h2>
@@ -745,7 +745,15 @@
     5: 'כחמש שעות', 6: 'כשש שעות', 7: 'כשבע שעות', 8: 'כשמונה שעות'
   };
   function hoursText(n) {
-    return HOUR_WORDS[n] || (n + ' שעות בערך');
+    /* גם חצאי שעות, וגם הגנה מערך חסר: אף פעם לא מציגים null או NaN לקורא */
+    n = Math.round((Number(n) || 0) * 2) / 2;
+    if (!n) return 'זמן גמיש';
+    if (HOUR_WORDS[n]) return HOUR_WORDS[n];
+    if (n === 0.5) return 'כחצי שעה';
+    if (n === 1.5) return 'כשעה וחצי';
+    if (n === 2.5) return 'כשעתיים וחצי';
+    if (n % 1 === 0.5) return 'בערך ' + Math.floor(n) + ' וחצי שעות';
+    return n + ' שעות בערך';
   }
 
   function toast(msg) {
@@ -992,9 +1000,9 @@
     facts.className = 'stop-facts';
     facts.innerHTML =
       '<span class="fact ' + (it.free ? 'free' : 'paid') + '">' +
-        '<i class="fas ' + (it.free ? 'fa-check' : 'fa-tag') + '"></i>' + it.priceBand + '</span>' +
+        '<i class="fas ' + (it.free ? 'fa-check' : 'fa-tag') + '"></i>' + (it.priceBand || (it.free ? 'כניסה חינם' : 'בתשלום')) + '</span>' +
       '<span class="fact"><i class="far fa-clock"></i>' + hoursText(it.hours) + '</span>' +
-      '<span class="fact"><i class="fas fa-train-subway"></i>' + it.tube + '</span>' +
+      (it.tube ? '<span class="fact"><i class="fas fa-train-subway"></i>' + it.tube + '</span>' : '') +
       (it.bookAhead ? '<span class="fact book"><i class="far fa-calendar-check"></i>להזמין מראש</span>' : '');
 
     var desc = document.createElement('p');
@@ -1074,7 +1082,7 @@
       lines.push('יום ' + d.day + ', ' + area.name);
       d.items.forEach(function (it) {
         lines.push('  • ' + it.name + ' (' + it.nameEn + ')');
-        lines.push('    ' + it.priceBand + ', ' + hoursText(it.hours) + ', תחנה: ' + it.tube);
+        lines.push('    ' + (it.priceBand || 'ללא תשלום כניסה') + ', ' + hoursText(it.hours) + (it.tube ? ', תחנה: ' + it.tube : ''));
       });
       lines.push('');
     });
@@ -1362,7 +1370,7 @@
 
     infoEl.querySelector('.info-facts').innerHTML =
       '<span class="fact ' + (a.free ? 'free' : 'paid') + '">' +
-        '<i class="fas ' + (a.free ? 'fa-check' : 'fa-tag') + '"></i>' + a.priceBand + '</span>' +
+        '<i class="fas ' + (a.free ? 'fa-check' : 'fa-tag') + '"></i>' + (a.priceBand || (a.free ? 'כניסה חינם' : 'בתשלום')) + '</span>' +
       '<span class="fact"><i class="far fa-clock"></i>' + hoursText(a.hours) + '</span>' +
       '<span class="fact"><i class="fas fa-train-subway"></i>' + a.tube + '</span>' +
       (a.bookAhead ? '<span class="fact book"><i class="far fa-calendar-check"></i>להזמין מראש</span>' : '');
@@ -1434,6 +1442,8 @@
         return (Array.isArray(d) ? d : []).filter(function (id) { return !!byId(id); });
       });
       manual.active = Math.min(v.active || 0, manual.days.length - 1);
+      /* זהות המסלולים שנטענו נשמרת יחד עם הימים */
+      if (v.routes && typeof v.routes === 'object') manual.routes = v.routes;
     } catch (e) {}
   }
 
@@ -1578,7 +1588,7 @@
       var badges = document.createElement('span');
       badges.className = 'cube-badges';
       badges.innerHTML =
-        '<span class="cube-badge ' + (a.free ? 'is-free' : 'is-paid') + '">' + a.priceBand + '</span>' +
+        '<span class="cube-badge ' + (a.free ? 'is-free' : 'is-paid') + '">' + (a.priceBand || (a.free ? 'כניסה חינם' : 'בתשלום')) + '</span>' +
         (a.bookAhead ? '<span class="cube-badge">להזמין מראש</span>' : '') +
         (isUsed ? '<span class="cube-badge is-used">כבר במסלול</span>' : '');
 
@@ -1685,7 +1695,7 @@
     return manual.days.map(function (ids, i) {
       var items = ids.map(byId).filter(Boolean);
       var lbl = dayAreaLabel(ids);
-      var hours = items.reduce(function (s, it) { return s + it.hours; }, 0);
+      var hours = items.reduce(function (s, it) { return s + (it.hours || 0); }, 0);
       return { day: i + 1, area: null, areaLabel: lbl, items: items, hours: hours };
     }).filter(function (d) { return d.items.length; });
   }
@@ -1732,7 +1742,7 @@
       meta.className = 'day-meta';
       if (items.length) {
         var freeCount = items.filter(function (i) { return i.free; }).length;
-        var dayHours = items.reduce(function (s, it) { return s + it.hours; }, 0);
+        var dayHours = items.reduce(function (s, it) { return s + (it.hours || 0); }, 0);
         meta.textContent = items.length + ' עצירות, ' + hoursText(dayHours) + ', ' +
           (freeCount === items.length ? 'כולן אפשריות בלי תשלום כניסה' : freeCount + ' מהן בלי תשלום כניסה');
       } else {
@@ -2000,12 +2010,92 @@
     מזהה שלא קיים בנתונים פשוט נופל, כדי ששינוי בקובץ לא ישבור קישור ישן.
     אם למשתמש כבר יש מסלול שמור עם תוכן, היום המוכן נוסף כיום חדש ולא דורס אותו.
   */
+  /*
+    מודל מסלול
+    ==========
+    עמוד מסלול מזדהה בכתובת: route=three-days&rv=1, וכל פרמטר day
+    הוא יום במיקומו המקורי. כך המערכת יודעת "המשתמש טוען את מסלול
+    חמשת הימים", ולא רק "הגיעו כמה ימים".
+
+    מול תוכנית קיימת ההחלטה אצל המשתמש, בדיאלוג מפורש:
+    החלפה מלאה בסדר המקורי, הוספת הימים החסרים בלבד, או ביטול.
+    שום דבר לא נמחק בלי לחיצה מפורשת. טעינה של יום בודד מעמודי
+    האזורים, בלי route, מתנהגת בדיוק כמו קודם.
+  */
+  var ROUTE_NAMES = { 'three-days': 'לונדון ב-3 ימים', 'five-days': 'לונדון ב-5 ימים', 'seven-days': 'לונדון ב-7 ימים' };
+
+  function dayKey(d) { return d.slice().sort().join(','); }
+
+  function applyRoutePlan(days, routeId, routeVersion) {
+    manual.days = days.map(function (d) { return d.slice(); });
+    manual.active = 0;
+    manual.routes = {};
+    if (routeId) manual.routes[routeId] = { v: routeVersion || 1, days: days.map(dayKey) };
+    saveManual();
+  }
+
+  function addMissingDays(days, routeId, routeVersion) {
+    var existing = {};
+    manual.days.forEach(function (d) { if (d.length) existing[dayKey(d)] = true; });
+    var added = 0;
+    days.forEach(function (d) {
+      if (existing[dayKey(d)]) return;
+      existing[dayKey(d)] = true;
+      manual.days.push(d.slice());
+      added++;
+    });
+    if (added) manual.active = manual.days.length - added;
+    if (routeId) {
+      manual.routes = manual.routes || {};
+      manual.routes[routeId] = { v: routeVersion || 1, days: days.map(dayKey) };
+    }
+    saveManual();
+    return added;
+  }
+
+  function daysHe(n, added) {
+    if (n === 1) return added ? 'נוסף יום אחד' : 'יום אחד';
+    return (added ? 'נוספו ' : '') + n + ' ימים';
+  }
+
+  function routeDialog(routeName, dayCount, onReplace, onAdd) {
+    var wrap = document.createElement('div');
+    wrap.setAttribute('role', 'dialog');
+    wrap.setAttribute('aria-modal', 'true');
+    wrap.style.cssText = 'position:fixed;inset:0;z-index:9000;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(10,10,18,.62);';
+    var box = document.createElement('div');
+    box.style.cssText = 'max-width:430px;width:100%;background:#fff;color:#201f2b;border-radius:18px;padding:26px 24px;box-shadow:0 18px 50px rgba(0,0,0,.35);font-size:15px;line-height:1.7;direction:rtl;text-align:right;';
+    box.innerHTML =
+      '<div style="font-size:17px;font-weight:900;margin-bottom:6px">יש לכם כבר תוכנית במתכנן</div>' +
+      '<p style="color:#55596b;margin:0 0 18px">ביקשתם לטעון את המסלול "' + routeName + '" (' + dayCount + ' ימים). מה לעשות?</p>';
+    function btn(label, sub, style, mainColor, subColor) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.style.cssText = 'display:block;width:100%;text-align:right;font:inherit;cursor:pointer;border-radius:12px;padding:12px 16px;margin-bottom:10px;' + style;
+      /* גיליון העיצוב צובע strong ו-span עם important, לכן גם כאן important */
+      b.innerHTML = '<strong style="color:' + mainColor + ' !important">' + label + '</strong>' +
+        '<br><span style="font-size:13px;color:' + subColor + ' !important">' + sub + '</span>';
+      box.appendChild(b);
+      return b;
+    }
+    var b1 = btn('החלף למסלול המוכן', 'התוכנית הנוכחית תוחלף במסלול המלא, בסדר הימים המקורי שלו',
+      'background:#DC2626;border:1px solid #DC2626;color:#fff;', '#fff', 'rgba(255,255,255,.92)');
+    var b2 = btn('הוסף רק את הימים החסרים', 'התוכנית הקיימת נשארת כמו שהיא, וימים שכבר יש בה לא יוכפלו',
+      'background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.45);color:#B91C1C;', '#B91C1C', '#8f2f2f');
+    var b3 = btn('ביטול', 'שום דבר לא ישתנה',
+      'background:transparent;border:1px solid rgba(32,31,43,.18);color:#55596b;margin-bottom:0;', '#3d4152', '#55596b');
+    function close() { wrap.remove(); document.removeEventListener('keydown', esc, true); }
+    function esc(e) { if (e.key === 'Escape') { close(); } }
+    document.addEventListener('keydown', esc, true);
+    b1.addEventListener('click', function () { close(); onReplace(); });
+    b2.addEventListener('click', function () { close(); onAdd(); });
+    b3.addEventListener('click', close);
+    wrap.appendChild(box);
+    document.body.appendChild(wrap);
+    b1.focus();
+  }
+
   function applyPreset() {
-    /*
-      תמיכה בכמה ימים בכתובת אחת: day=..&day=..&day=..
-      עמוד מסלול של שלושה ימים טוען כך את כולם בלחיצה אחת.
-      כתובת עם day יחיד מתנהגת בדיוק כמו קודם.
-    */
     var days = [];
     var re = /[?&]day=([^&]+)/g, m;
     while ((m = re.exec(location.search))) {
@@ -2016,70 +2106,96 @@
     }
     if (!days.length) return;
 
-    /*
-      מניעת כפילויות: יום נכנס שמכיל בדיוק את אותם מקומות כמו יום
-      שכבר קיים בתוכנית לא נטען שוב. כך לחיצה חוזרת על "טענו את
-      המסלול" אינה מכפילה את התוכנית, ושום דבר של המשתמש לא נמחק.
-      ההודעה למטה אומרת בדיוק מה קרה.
-    */
-    function dayKey(d) { return d.slice().sort().join(','); }
-    var existing = {};
-    manual.days.forEach(function (d) { if (d.length) existing[dayKey(d)] = true; });
-    var skipped = 0;
-    days = days.filter(function (d) {
-      if (existing[dayKey(d)]) { skipped++; return false; }
-      existing[dayKey(d)] = true;
-      return true;
-    });
+    var rm = /[?&]route=([a-z0-9-]+)/.exec(location.search);
+    var routeId = rm ? rm[1] : null;
+    var rv = /[?&]rv=(\d+)/.exec(location.search);
+    var routeVersion = rv ? parseInt(rv[1], 10) : 1;
+    var routeName = ROUTE_NAMES[routeId] || routeId;
 
-    var hadContent = manual.days.some(function (d) { return d.length; });
-    if (days.length) {
-      if (hadContent) {
-        days.forEach(function (d) { manual.days.push(d); });
-        manual.active = manual.days.length - days.length;
-      } else {
-        manual.days = days;
-        manual.active = 0;
-      }
-    }
-    setTimeout(function () {
-      function daysHe(n, added) {
-        if (n === 1) return added ? 'נוסף יום אחד' : 'יום אחד';
-        return (added ? 'נוספו ' : '') + n + ' ימים';
-      }
-      if (!days.length) {
-        toast('המסלול הזה כבר נמצא בתוכנית שלכם');
-      } else if (skipped) {
-        toast(daysHe(days.length, true) + ', ו' + (skipped === 1 ? 'יום אחד שכבר היה בתוכנית לא הוכפל' : skipped + ' ימים שכבר היו בתוכנית לא הוכפלו'));
-      } else if (hadContent) {
-        toast(daysHe(days.length, true) + ' לצד התוכנית הקיימת שלכם');
-      }
-    }, 600);
-    if (!days.length) { setMode('manual'); return; }
-    var ids = days[0];
-    saveManual();
-    setMode('manual');
-
-    /*
-      analytics.js נטען עם defer, והפונקציה כאן עשויה לרוץ לפניו כשקובץ
-      הנתונים מגיע מהמטמון. לכן לא בודקים פעם אחת אלא ממתינים בקצרה.
-    */
     var f = /[?&]from=([a-z-]+)/.exec(location.search);
     var payload = {
-      source: 'area_preset',
+      source: routeId ? 'route' : 'area_preset',
+      route_id: routeId || '',
+      route_version: routeId ? routeVersion : undefined,
       area: f ? f[1] : 'unknown',
       stops: days.reduce(function (n, d) { return n + d.length; }, 0),
       days: days.length
     };
     var tries = 0;
-    (function send() {
-      if (window.glTrack) { glTrack('route_created', payload); return; }
+    function send(evt) {
+      if (window.glTrack) { glTrack(evt, payload); return; }
       if (++tries > 40) return;
-      setTimeout(send, 50);
-    })();
-    toast(hadContent
-      ? 'היום המוכן נוסף כיום ' + manual.days.length + ', המסלול הקודם נשמר'
-      : 'היום המוכן נטען, אפשר לערוך אותו');
+      setTimeout(function () { send(evt); }, 50);
+    }
+
+    var hadContent = manual.days.some(function (d) { return d.length; });
+
+    /* מצב ריק: טוענים כמו שהוא, בסדר המקורי */
+    if (!hadContent) {
+      applyRoutePlan(days, routeId, routeVersion);
+      setMode('manual');
+      send('route_created');
+      toast(routeId
+        ? 'המסלול "' + routeName + '" נטען, ' + daysHe(days.length, false) + '. אפשר לערוך הכל'
+        : (days.length === 1 ? 'היום המוכן נטען, אפשר לערוך אותו' : daysHe(days.length, false) + ' נטענו, אפשר לערוך הכל'));
+      return;
+    }
+
+    /* טעינת יום בודד מעמוד אזור, בלי זהות מסלול: התנהגות קיימת, בלי דיאלוג */
+    if (!routeId) {
+      var existing = {};
+      manual.days.forEach(function (d) { if (d.length) existing[dayKey(d)] = true; });
+      var skipped = 0;
+      var fresh = days.filter(function (d) {
+        if (existing[dayKey(d)]) { skipped++; return false; }
+        existing[dayKey(d)] = true;
+        return true;
+      });
+      if (fresh.length) {
+        fresh.forEach(function (d) { manual.days.push(d); });
+        manual.active = manual.days.length - fresh.length;
+        saveManual();
+        send('route_created');
+      }
+      setMode('manual');
+      setTimeout(function () {
+        if (!fresh.length) toast('המסלול הזה כבר נמצא בתוכנית שלכם');
+        else if (skipped) toast(daysHe(fresh.length, true) + ', ו' + (skipped === 1 ? 'יום אחד שכבר היה בתוכנית לא הוכפל' : skipped + ' ימים שכבר היו בתוכנית לא הוכפלו'));
+        else toast(daysHe(fresh.length, true) + ' לצד התוכנית הקיימת שלכם');
+      }, 600);
+      return;
+    }
+
+    /* מסלול מזוהה מול תוכנית קיימת */
+    var have = {};
+    var nonEmpty = 0;
+    manual.days.forEach(function (d) { if (d.length) { have[dayKey(d)] = true; nonEmpty++; } });
+    var allPresent = days.every(function (d) { return have[dayKey(d)]; });
+
+    /* התוכנית היא בדיוק המסלול הזה: אין מה לשאול, רק לוודא שהזהות רשומה */
+    if (allPresent && nonEmpty === days.length) {
+      manual.routes = manual.routes || {};
+      manual.routes[routeId] = { v: routeVersion, days: days.map(dayKey) };
+      saveManual();
+      setMode('manual');
+      setTimeout(function () { toast('המסלול "' + routeName + '" כבר נמצא בתוכנית שלכם'); }, 600);
+      return;
+    }
+
+    setMode('manual');
+    routeDialog(routeName, days.length, function onReplace() {
+      applyRoutePlan(days, routeId, routeVersion);
+      syncManual();
+      send('route_created');
+      toast('המסלול "' + routeName + '" נטען מחדש בסדר המקורי');
+    }, function onAdd() {
+      var added = addMissingDays(days, routeId, routeVersion);
+      syncManual();
+      if (added) send('route_created');
+      toast(added
+        ? daysHe(added, true) + ' מהמסלול, והסדר של התוכנית הקיימת נשמר'
+        : 'כל ימי המסלול כבר נמצאים בתוכנית שלכם');
+    });
   }
 
   /*
