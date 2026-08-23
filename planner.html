@@ -2016,14 +2016,46 @@
     }
     if (!days.length) return;
 
+    /*
+      מניעת כפילויות: יום נכנס שמכיל בדיוק את אותם מקומות כמו יום
+      שכבר קיים בתוכנית לא נטען שוב. כך לחיצה חוזרת על "טענו את
+      המסלול" אינה מכפילה את התוכנית, ושום דבר של המשתמש לא נמחק.
+      ההודעה למטה אומרת בדיוק מה קרה.
+    */
+    function dayKey(d) { return d.slice().sort().join(','); }
+    var existing = {};
+    manual.days.forEach(function (d) { if (d.length) existing[dayKey(d)] = true; });
+    var skipped = 0;
+    days = days.filter(function (d) {
+      if (existing[dayKey(d)]) { skipped++; return false; }
+      existing[dayKey(d)] = true;
+      return true;
+    });
+
     var hadContent = manual.days.some(function (d) { return d.length; });
-    if (hadContent) {
-      days.forEach(function (d) { manual.days.push(d); });
-      manual.active = manual.days.length - days.length;
-    } else {
-      manual.days = days;
-      manual.active = 0;
+    if (days.length) {
+      if (hadContent) {
+        days.forEach(function (d) { manual.days.push(d); });
+        manual.active = manual.days.length - days.length;
+      } else {
+        manual.days = days;
+        manual.active = 0;
+      }
     }
+    setTimeout(function () {
+      function daysHe(n, added) {
+        if (n === 1) return added ? 'נוסף יום אחד' : 'יום אחד';
+        return (added ? 'נוספו ' : '') + n + ' ימים';
+      }
+      if (!days.length) {
+        toast('המסלול הזה כבר נמצא בתוכנית שלכם');
+      } else if (skipped) {
+        toast(daysHe(days.length, true) + ', ו' + (skipped === 1 ? 'יום אחד שכבר היה בתוכנית לא הוכפל' : skipped + ' ימים שכבר היו בתוכנית לא הוכפלו'));
+      } else if (hadContent) {
+        toast(daysHe(days.length, true) + ' לצד התוכנית הקיימת שלכם');
+      }
+    }, 600);
+    if (!days.length) { setMode('manual'); return; }
     var ids = days[0];
     saveManual();
     setMode('manual');
