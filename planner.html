@@ -2022,12 +2022,22 @@
     שום דבר לא נמחק בלי לחיצה מפורשת. טעינה של יום בודד מעמודי
     האזורים, בלי route, מתנהגת בדיוק כמו קודם.
   */
-  var ROUTE_NAMES = { 'three-days': 'לונדון ב-3 ימים', 'five-days': 'לונדון ב-5 ימים', 'seven-days': 'לונדון ב-7 ימים' };
+  /* BUILD:ROUTE_NAMES start — נוצר אוטומטית מ-routes.json על ידי build_routes.py, לא לערוך ידנית */
+  var ROUTE_NAMES = { 'three-days': 'לונדון ב-3 ימים', 'five-days': 'לונדון ב-5 ימים' };
+  /* BUILD:ROUTE_NAMES end */
 
   function dayKey(d) { return d.slice().sort().join(','); }
 
   function applyRoutePlan(days, routeId, routeVersion) {
-    manual.days = days.map(function (d) { return d.slice(); });
+    /* גם בטעינה מלאה אף תחנה לא נכנסת פעמיים, אפילו מכתובת פגומה */
+    var placed = {};
+    manual.days = days.map(function (d) {
+      return d.filter(function (id) {
+        if (placed[id]) return false;
+        placed[id] = true;
+        return true;
+      });
+    });
     manual.active = 0;
     manual.routes = {};
     if (routeId) manual.routes[routeId] = { v: routeVersion || 1, days: days.map(dayKey) };
@@ -2035,13 +2045,23 @@
   }
 
   function addMissingDays(days, routeId, routeVersion) {
-    var existing = {};
-    manual.days.forEach(function (d) { if (d.length) existing[dayKey(d)] = true; });
-    var added = 0;
+    /*
+      הכלל: אף תחנה לא מופיעה פעמיים בתוכנית. יום נכנס רק עם התחנות
+      שעוד אין, יום שכולו כבר קיים מדולג, והמשתמש שומע על זה בטוסט.
+    */
+    var placed = {};
+    manual.days.forEach(function (d) { d.forEach(function (id) { placed[id] = true; }); });
+    var added = 0, dupStops = 0;
     days.forEach(function (d) {
-      if (existing[dayKey(d)]) return;
-      existing[dayKey(d)] = true;
-      manual.days.push(d.slice());
+      var fresh = d.filter(function (id) {
+        if (placed[id]) return false;
+        placed[id] = true;
+        return true;
+      });
+      /* יום שכולו כבר בתוכנית פשוט קיים, רק חפיפה חלקית נחשבת כפילות שנמנעה */
+      if (!fresh.length) return;
+      dupStops += d.length - fresh.length;
+      manual.days.push(fresh);
       added++;
     });
     if (added) manual.active = manual.days.length - added;
@@ -2050,12 +2070,17 @@
       manual.routes[routeId] = { v: routeVersion || 1, days: days.map(dayKey) };
     }
     saveManual();
-    return added;
+    return { days: added, dupStops: dupStops };
   }
 
   function daysHe(n, added) {
     if (n === 1) return added ? 'נוסף יום אחד' : 'יום אחד';
     return (added ? 'נוספו ' : '') + n + ' ימים';
+  }
+
+  function dupStopsHe(n) {
+    if (n === 1) return 'ועצירה אחת שכבר הייתה בתוכנית לא הוכפלה';
+    return 'ו-' + n + ' עצירות שכבר היו בתוכנית לא הוכפלו';
   }
 
   function routeDialog(routeName, dayCount, onReplace, onAdd) {
@@ -2141,27 +2166,15 @@
       return;
     }
 
-    /* טעינת יום בודד מעמוד אזור, בלי זהות מסלול: התנהגות קיימת, בלי דיאלוג */
+    /* טעינת יום בודד מעמוד אזור, בלי זהות מסלול: בלי דיאלוג, ואותו כלל, אף תחנה לא פעמיים */
     if (!routeId) {
-      var existing = {};
-      manual.days.forEach(function (d) { if (d.length) existing[dayKey(d)] = true; });
-      var skipped = 0;
-      var fresh = days.filter(function (d) {
-        if (existing[dayKey(d)]) { skipped++; return false; }
-        existing[dayKey(d)] = true;
-        return true;
-      });
-      if (fresh.length) {
-        fresh.forEach(function (d) { manual.days.push(d); });
-        manual.active = manual.days.length - fresh.length;
-        saveManual();
-        send('route_created');
-      }
+      var r = addMissingDays(days, null, null);
+      if (r.days) send('route_created');
       setMode('manual');
       setTimeout(function () {
-        if (!fresh.length) toast('המסלול הזה כבר נמצא בתוכנית שלכם');
-        else if (skipped) toast(daysHe(fresh.length, true) + ', ו' + (skipped === 1 ? 'יום אחד שכבר היה בתוכנית לא הוכפל' : skipped + ' ימים שכבר היו בתוכנית לא הוכפלו'));
-        else toast(daysHe(fresh.length, true) + ' לצד התוכנית הקיימת שלכם');
+        if (!r.days) toast('המסלול הזה כבר נמצא בתוכנית שלכם');
+        else if (r.dupStops) toast(daysHe(r.days, true) + ', ' + dupStopsHe(r.dupStops));
+        else toast(daysHe(r.days, true) + ' לצד התוכנית הקיימת שלכם');
       }, 600);
       return;
     }
@@ -2189,12 +2202,12 @@
       send('route_created');
       toast('המסלול "' + routeName + '" נטען מחדש בסדר המקורי');
     }, function onAdd() {
-      var added = addMissingDays(days, routeId, routeVersion);
+      var r = addMissingDays(days, routeId, routeVersion);
       syncManual();
-      if (added) send('route_created');
-      toast(added
-        ? daysHe(added, true) + ' מהמסלול, והסדר של התוכנית הקיימת נשמר'
-        : 'כל ימי המסלול כבר נמצאים בתוכנית שלכם');
+      if (r.days) send('route_created');
+      if (!r.days) toast('כל ימי המסלול כבר נמצאים בתוכנית שלכם');
+      else if (r.dupStops) toast(daysHe(r.days, true) + ' מהמסלול, ' + dupStopsHe(r.dupStops));
+      else toast(daysHe(r.days, true) + ' מהמסלול, והסדר של התוכנית הקיימת נשמר');
     });
   }
 
