@@ -26,7 +26,10 @@
   <meta name="twitter:title" content="מסלול בלונדון 7 ימים: תוכנית מלאה לפי אזורים" />
   <meta name="twitter:description" content="מסלול מוכן ל-7 ימים בלונדון, עם חמישה ימי ליבה, יום מקומי בהמפסטד ויום מלא בגני קיו או מחוץ למרכז. כולל התאמות למשפחות, לגשם ולכשרות." />
   <meta name="twitter:image" content="https://golondon.co.il/images/hero.jpg" />
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=optional" rel="stylesheet" />
+  <link rel="preload" as="image" href="images/hero.webp" type="image/webp" fetchpriority="high" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <script type="application/ld+json">
 {
@@ -64,7 +67,21 @@
   <link rel="stylesheet" href="theme-light.css?v=14" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Heebo', sans-serif; line-height: 1.75; }
+    /*
+      גופן חלופי מותאם מידות: עד ש-Heebo נטען, הטקסט מוצג ב-Arial
+      שמכויל לרוחב ולגבהים של Heebo (נמדדו מקובץ הגופן ומהטקסט
+      בעמוד עצמו). כך החלפת הגופן לא מזיזה את הפריסה, שגרמה כאן
+      לקפיצת CLS של 0.52 במחשב.
+    */
+    @font-face {
+      font-family: 'Heebo Fallback';
+      src: local('Arial');
+      size-adjust: 105.3%;
+      ascent-override: 104.8%;
+      descent-override: 42.1%;
+      line-gap-override: 0%;
+    }
+    body { font-family: 'Heebo', 'Heebo Fallback', sans-serif; line-height: 1.75; }
 
     .navbar { display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; position: sticky; top: 0; z-index: 100; }
     .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
