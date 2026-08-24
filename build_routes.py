@@ -48,8 +48,15 @@ def sorted_days(route):
 
 
 def multiday_url(route):
-    """הכתובת שטוענת את המסלול המלא, בקידוד &amp; של HTML."""
-    parts = ['day=' + ','.join(d['stops']) for d in sorted_days(route)]
+    """
+    הכתובת שטוענת את המסלול המלא, בקידוד &amp; של HTML.
+    כל יום נושא גם את הזהות שלו ב-did, כדי שהמתכנן יוכל למזג
+    יום שחוזר במסלול ארוך יותר במקום לפצל אותו לשני ימים.
+    """
+    parts = []
+    for d in sorted_days(route):
+        parts.append('day=' + ','.join(d['stops']))
+        parts.append('did=' + d['day_id'])
     parts.append('from=' + route['route_id'])
     parts.append('route=' + route['route_id'])
     parts.append('rv=' + str(route['route_version']))
@@ -57,7 +64,9 @@ def multiday_url(route):
 
 
 def singleday_url(route, day):
-    return 'planner.html?day=' + ','.join(day['stops']) + '&amp;from=' + route['route_id']
+    return ('planner.html?day=' + ','.join(day['stops']) +
+            '&amp;did=' + day['day_id'] +
+            '&amp;from=' + route['route_id'])
 
 
 def generate_page(route):
@@ -69,7 +78,7 @@ def generate_page(route):
     rid = route['route_id']
 
     # א. הכתובת המלאה: כל href עם שני day= ומעלה ששייך למסלול הזה
-    multi = re.compile(r'planner\.html\?day=[^"]*&amp;day=[^"]*from=' + re.escape(rid) + r'[^"]*')
+    multi = re.compile(r'planner\.html\?day=[^"]*day=[^"]*from=' + re.escape(rid) + r'[^"]*')
     n_multi = len(multi.findall(html))
     if n_multi == 0:
         err('%s: לא נמצאה אף כתובת טעינה מלאה בעמוד' % rid)
@@ -149,7 +158,19 @@ def validate(routes):
             if sid in seen:
                 err('%s: %s היא גם עצירת חובה וגם חלופה' % (rid, sid))
 
-        # 3. סדר הימים רציף ומתחיל מ-1
+        # 3. כל יום נושא זהות, והזהות ייחודית בתוך המסלול
+        ids_seen = {}
+        for day in route['days']:
+            did = day.get('day_id')
+            if not did:
+                err('%s: ליום במיקום %s אין day_id' % (rid, day.get('day_position')))
+                continue
+            if did in ids_seen:
+                err('%s: ה-day_id "%s" מופיע פעמיים, בימים %s ו-%s'
+                    % (rid, did, ids_seen[did], day['day_position']))
+            ids_seen[did] = day['day_position']
+
+        # 4. סדר הימים רציף ומתחיל מ-1
         positions = [d['day_position'] for d in days]
         if positions != list(range(1, len(positions) + 1)):
             err('%s: day_position לא רציף: %s' % (rid, positions))

@@ -1417,7 +1417,14 @@
   }
 
   var MANUAL_KEY = 'golondon_manual_v1';
-  var manual = { days: [[]], active: 0 };
+  /*
+    לוח הימים מחזיק שני מערכים מקבילים: days הן רשימות התחנות,
+    dayIds היא הזהות של כל יום כפי שהיא מוגדרת ב-routes.json.
+    יום שהמשתמש יצר בעצמו, או יום שהגיע מקישור ישן בלי זהות,
+    מקבל null, וזה תקין. הזהות היא מה שמאפשר למזג יום שחוזר
+    במסלול ארוך יותר במקום לפצל אותו לשני ימים.
+  */
+  var manual = { days: [[]], dayIds: [null], active: 0 };
   var palState = { area: 'all', q: '' };
 
   function byId(id) {
@@ -1427,7 +1434,21 @@
     return null;
   }
 
+  /*
+    days ו-dayIds הם שני מערכים מקבילים, והתאמה ביניהם היא תנאי
+    לנכונות המיזוג: אם יום שלישי בלוח מצביע על זהות של יום חמישי,
+    מסלול שנטען ימזג עצירות ליום הלא נכון. במקום לסמוך על כך
+    שכל נקודת שינוי זוכרת לעדכן את שניהם, מיישרים כאן, בשער
+    היחיד שכל שינוי עובר דרכו בדרך לאחסון.
+  */
+  function alignDayIds() {
+    if (!Array.isArray(manual.dayIds)) manual.dayIds = [];
+    while (manual.dayIds.length < manual.days.length) manual.dayIds.push(null);
+    if (manual.dayIds.length > manual.days.length) manual.dayIds.length = manual.days.length;
+  }
+
   function saveManual() {
+    alignDayIds();
     try { localStorage.setItem(MANUAL_KEY, JSON.stringify(manual)); } catch (e) {}
   }
 
@@ -1441,9 +1462,14 @@
       manual.days = v.days.map(function (d) {
         return (Array.isArray(d) ? d : []).filter(function (id) { return !!byId(id); });
       });
+      /* תוכנית שנשמרה לפני שהזהויות קיימות פשוט מקבלת null לכל יום */
+      manual.dayIds = manual.days.map(function (d, i) {
+        return (Array.isArray(v.dayIds) && v.dayIds[i]) ? v.dayIds[i] : null;
+      });
       manual.active = Math.min(v.active || 0, manual.days.length - 1);
       /* זהות המסלולים שנטענו נשמרת יחד עם הימים */
       if (v.routes && typeof v.routes === 'object') manual.routes = v.routes;
+      alignDayIds();
     } catch (e) {}
   }
 
@@ -1679,13 +1705,14 @@
 
   function addDay() {
     manual.days.push([]);
+    manual.dayIds.push(null);
     manual.active = manual.days.length - 1;
     syncManual();
   }
 
   function removeDay(idx) {
-    if (manual.days.length === 1) { manual.days[0] = []; }
-    else { manual.days.splice(idx, 1); }
+    if (manual.days.length === 1) { manual.days[0] = []; manual.dayIds[0] = null; }
+    else { manual.days.splice(idx, 1); manual.dayIds.splice(idx, 1); }
     manual.active = Math.min(manual.active, manual.days.length - 1);
     syncManual();
   }
@@ -1916,6 +1943,8 @@
     });
     $('m-clear').addEventListener('click', function () {
       manual.days = [[]];
+      manual.dayIds = [null];
+      manual.routes = {};
       manual.active = 0;
       syncManual();
       toast('הלוח נוקה');
@@ -2028,7 +2057,7 @@
 
   function dayKey(d) { return d.slice().sort().join(','); }
 
-  function applyRoutePlan(days, routeId, routeVersion) {
+  function applyRoutePlan(days, dayIds, routeId, routeVersion) {
     /* גם בטעינה מלאה אף תחנה לא נכנסת פעמיים, אפילו מכתובת פגומה */
     var placed = {};
     manual.days = days.map(function (d) {
@@ -2038,44 +2067,91 @@
         return true;
       });
     });
+    manual.dayIds = days.map(function (d, i) { return (dayIds && dayIds[i]) || null; });
     manual.active = 0;
     manual.routes = {};
     if (routeId) manual.routes[routeId] = { v: routeVersion || 1, days: days.map(dayKey) };
     saveManual();
   }
 
-  function addMissingDays(days, routeId, routeVersion) {
-    /*
-      הכלל: אף תחנה לא מופיעה פעמיים בתוכנית. יום נכנס רק עם התחנות
-      שעוד אין, יום שכולו כבר קיים מדולג, והמשתמש שומע על זה בטוסט.
-    */
-    var placed = {};
-    manual.days.forEach(function (d) { d.forEach(function (id) { placed[id] = true; }); });
-    var added = 0, dupStops = 0;
-    days.forEach(function (d) {
-      var fresh = d.filter(function (id) {
-        if (placed[id]) return false;
-        placed[id] = true;
+  /*
+    הוספת מסלול לתוכנית קיימת
+    =========================
+    שני כללים שעובדים יחד:
+
+    ראשון, אף תחנה לא מופיעה פעמיים בתוכנית כולה.
+
+    שני, יום מזוהה חוזר אל היום שלו ולא נפתח כיום נוסף. אם המסלול
+    הארוך מוסיף עצירה אחת ליום שכבר קיים אצל המשתמש, העצירה נכנסת
+    לתוך אותו יום. הסדר נבנה מחדש לפי הסדר הקנוני של היום הנכנס,
+    כי המסלול הוא מקור האמת לסדר, ותחנות שהמשתמש הוסיף בעצמו
+    לאותו יום נשמרות אחריו ולא נמחקות.
+
+    יום בלי זהות, למשל מקישור ישן של עמוד אזור, נופל חזרה לכלל
+    הראשון בלבד, בדיוק כפי שעבד קודם.
+  */
+  function addMissingDays(days, dayIds, routeId, routeVersion) {
+    var placedIn = {};
+    manual.days.forEach(function (d, i) {
+      d.forEach(function (id) { placedIn[id] = i; });
+    });
+
+    var addedDays = 0, mergedStops = 0, dupStops = 0;
+
+    days.forEach(function (incoming, i) {
+      var dayId = (dayIds && dayIds[i]) || null;
+      var at = dayId ? manual.dayIds.indexOf(dayId) : -1;
+      /* הגנה אחרונה: זהות בלי יום מאחוריה נחשבת כלא קיימת */
+      if (at !== -1 && !Array.isArray(manual.days[at])) at = -1;
+
+      /* היום הזה כבר קיים בתוכנית: ממזגים לתוכו במקום לפתוח יום חדש */
+      if (at !== -1) {
+        var existing = manual.days[at];
+        var merged = [];
+        incoming.forEach(function (id) {
+          /* תחנה שכבר יושבת ביום אחר נשארת שם, לא מוזזת ולא מוכפלת */
+          if (placedIn[id] !== undefined && placedIn[id] !== at) { dupStops++; return; }
+          if (merged.indexOf(id) !== -1) return;
+          if (existing.indexOf(id) === -1) mergedStops++;
+          merged.push(id);
+          placedIn[id] = at;
+        });
+        /* מה שהמשתמש הוסיף בעצמו ליום הזה נשאר, בסוף */
+        existing.forEach(function (id) {
+          if (merged.indexOf(id) === -1) merged.push(id);
+        });
+        manual.days[at] = merged;
+        return;
+      }
+
+      /* יום חדש: נכנס רק עם התחנות שעוד לא נמצאות בתוכנית */
+      var fresh = incoming.filter(function (id) {
+        if (placedIn[id] !== undefined) { dupStops++; return false; }
+        placedIn[id] = manual.days.length;
         return true;
       });
-      /* יום שכולו כבר בתוכנית פשוט קיים, רק חפיפה חלקית נחשבת כפילות שנמנעה */
       if (!fresh.length) return;
-      dupStops += d.length - fresh.length;
       manual.days.push(fresh);
-      added++;
+      manual.dayIds.push(dayId);
+      addedDays++;
     });
-    if (added) manual.active = manual.days.length - added;
+
+    if (addedDays) manual.active = manual.days.length - addedDays;
     if (routeId) {
       manual.routes = manual.routes || {};
       manual.routes[routeId] = { v: routeVersion || 1, days: days.map(dayKey) };
     }
     saveManual();
-    return { days: added, dupStops: dupStops };
+    return { days: addedDays, merged: mergedStops, dupStops: dupStops };
   }
 
   function daysHe(n, added) {
     if (n === 1) return added ? 'נוסף יום אחד' : 'יום אחד';
     return (added ? 'נוספו ' : '') + n + ' ימים';
+  }
+
+  function mergedStopsHe(n) {
+    return n === 1 ? 'ועצירה אחת נוספה ליום שכבר היה בתוכנית' : 'ו-' + n + ' עצירות נוספו לימים שכבר היו בתוכנית';
   }
 
   function dupStopsHe(n) {
@@ -2121,14 +2197,30 @@
   }
 
   function applyPreset() {
-    var days = [];
+    /*
+      day ו-did מגיעים כזוגות מיושרים לפי סדר ההופעה בכתובת: day
+      הוא רשימת התחנות ו-did הוא זהות היום מ-routes.json. קישור ישן
+      בלי did עדיין עובד, הימים שלו פשוט חסרי זהות.
+    */
+    var days = [], rawDayIds = [];
     var re = /[?&]day=([^&]+)/g, m;
     while ((m = re.exec(location.search))) {
       var ids = decodeURIComponent(m[1]).split(',')
         .map(function (x) { return x.trim(); })
         .filter(function (x) { return x && byId(x); });
-      if (ids.length) days.push(ids);
+      days.push(ids);
     }
+    var reId = /[?&]did=([^&]+)/g;
+    while ((m = reId.exec(location.search))) {
+      rawDayIds.push(decodeURIComponent(m[1]).trim());
+    }
+    /* מזהים לפני שמשליכים ימים ריקים, כדי שהיישור בין השניים יישמר */
+    var dayIds = [];
+    days.forEach(function (d, i) {
+      if (!d.length) return;
+      dayIds.push(rawDayIds[i] || null);
+    });
+    days = days.filter(function (d) { return d.length; });
     if (!days.length) return;
 
     var rm = /[?&]route=([a-z0-9-]+)/.exec(location.search);
@@ -2157,7 +2249,7 @@
 
     /* מצב ריק: טוענים כמו שהוא, בסדר המקורי */
     if (!hadContent) {
-      applyRoutePlan(days, routeId, routeVersion);
+      applyRoutePlan(days, dayIds, routeId, routeVersion);
       setMode('manual');
       send('route_created');
       toast(routeId
@@ -2168,11 +2260,12 @@
 
     /* טעינת יום בודד מעמוד אזור, בלי זהות מסלול: בלי דיאלוג, ואותו כלל, אף תחנה לא פעמיים */
     if (!routeId) {
-      var r = addMissingDays(days, null, null);
+      var r = addMissingDays(days, dayIds, null, null);
       if (r.days) send('route_created');
       setMode('manual');
       setTimeout(function () {
-        if (!r.days) toast('המסלול הזה כבר נמצא בתוכנית שלכם');
+        if (!r.days && !r.merged) toast('המסלול הזה כבר נמצא בתוכנית שלכם');
+        else if (!r.days) toast(mergedStopsHe(r.merged).replace(/^ו/, ''));
         else if (r.dupStops) toast(daysHe(r.days, true) + ', ' + dupStopsHe(r.dupStops));
         else toast(daysHe(r.days, true) + ' לצד התוכנית הקיימת שלכם');
       }, 600);
@@ -2197,15 +2290,17 @@
 
     setMode('manual');
     routeDialog(routeName, days.length, function onReplace() {
-      applyRoutePlan(days, routeId, routeVersion);
+      applyRoutePlan(days, dayIds, routeId, routeVersion);
       syncManual();
       send('route_created');
       toast('המסלול "' + routeName + '" נטען מחדש בסדר המקורי');
     }, function onAdd() {
-      var r = addMissingDays(days, routeId, routeVersion);
+      var r = addMissingDays(days, dayIds, routeId, routeVersion);
       syncManual();
-      if (r.days) send('route_created');
-      if (!r.days) toast('כל ימי המסלול כבר נמצאים בתוכנית שלכם');
+      if (r.days || r.merged) send('route_created');
+      if (!r.days && !r.merged) toast('כל ימי המסלול כבר נמצאים בתוכנית שלכם');
+      else if (!r.days) toast(mergedStopsHe(r.merged).replace(/^ו/, ''));
+      else if (r.merged) toast(daysHe(r.days, true) + ' מהמסלול, ' + mergedStopsHe(r.merged));
       else if (r.dupStops) toast(daysHe(r.days, true) + ' מהמסלול, ' + dupStopsHe(r.dupStops));
       else toast(daysHe(r.days, true) + ' מהמסלול, והסדר של התוכנית הקיימת נשמר');
     });
