@@ -850,9 +850,18 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
   width: 100%;
   flex: 0 0 auto;
   height: 158px;
-  background: var(--img) center 45% / cover no-repeat !important;
+  display: block !important;
+  overflow: hidden;
+  background: none !important;
   filter: saturate(1.06) brightness(1.03);
   z-index: 0 !important;
+}
+.cat-card-bg > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
 }
 .cat-card--large .cat-card-bg { height: 190px; }
 .cat-card--med .cat-card-bg   { height: 140px; }
@@ -1255,11 +1264,26 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
 
 .why-photo {
   position: relative; display: block; height: 168px;
-  background-size: cover; background-position: center;
+  overflow: hidden;
   transition: transform .35s ease;
+}
+.why-photo > picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.why-photo > picture > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .why-card:hover .why-photo { transform: scale(1.04); }
 .why-chip {
+  z-index: 1;
   position: absolute; top: 12px; inset-inline-start: 12px;
   background: rgba(255,255,255,0.94);
   color: var(--ink) !important;
