@@ -73,13 +73,13 @@
 
   function open(p) {
     if (!modal) { injectStyles(); buildModal(); }
-    /* אותו אירוע בדיוק כמו במפה, ונבדל ממנה רק בפרמטר source */
+    /* אותו אירוע בדיוק כמו במפה, ונבדל ממנה רק בפרמטר source_component */
     if (window.glTrack) glTrack('kosher_place_open', {
       place: p.name,
       place_id: p.id || '',
       category: p.category || '',
       area: (String(p.postcode || '').match(/^[A-Z]+/) || [''])[0],
-      source: 'article'
+      source_component: 'article'
     });
     modal.querySelector('.kp-badge').textContent = p.category || '';
     modal.querySelector('.kp-title').textContent = p.name;

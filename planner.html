@@ -2231,7 +2231,7 @@
 
     var f = /[?&]from=([a-z-]+)/.exec(location.search);
     var payload = {
-      source: routeId ? 'route' : 'area_preset',
+      source_component: routeId ? 'route' : 'area_preset',
       route_id: routeId || '',
       route_version: routeId ? routeVersion : undefined,
       area: f ? f[1] : 'unknown',

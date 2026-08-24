@@ -437,7 +437,7 @@ function renderMarkers(places) {
     marker.on('popupopen', function () {
       if (window.glTrack) glTrack('kosher_place_open', {
         place: p.name, place_id: p.id, category: p.category,
-        area: areaOf(p), source: 'map'
+        area: areaOf(p), source_component: 'map'
       });
     });
     markers.push(marker);

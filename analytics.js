@@ -53,6 +53,16 @@
   function track(name, params) {
     if (typeof window.gtag !== 'function') return;
     var payload = params ? Object.assign({}, params) : {};
+    /*
+      source הוא שם עמום: גוגל משתמשת בו גם למקור תנועה בהקשרי קמפיין,
+      ובדוחות הופיע בגללו מקור לא צפוי. ההקשר הפנימי של רכיב עובר
+      לשם source_component, וההגנה כאן מוודאת שהשם הגולמי לא יגיע
+      לגוגל גם משימוש עתידי בטעות.
+    */
+    if (Object.prototype.hasOwnProperty.call(payload, 'source')) {
+      if (!payload.source_component) payload.source_component = payload.source;
+      delete payload.source;
+    }
     /* מאיזה עמוד יצאה הפעולה. זה מה שיאפשר לדעת אילו עמודים מזינים את הכלים */
     if (!payload.source_page) payload.source_page = pageId();
     try {
