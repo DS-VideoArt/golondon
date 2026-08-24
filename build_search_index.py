@@ -68,6 +68,10 @@ ALIASES = {
         'west end westend west-end theatre theater musical musicals show shows '
         'הצגה הצגות מחזמר מחזות זמר מופע מופעים תיאטרון ווסט אנד'
     ),
+    'london-7-days.html': (
+        'שבוע בלונדון מסלול שבוע שבעה ימים 7 ימים '
+        'week in london seven days london itinerary'
+    ),
 }
 
 items = []

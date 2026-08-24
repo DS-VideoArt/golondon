@@ -83,6 +83,65 @@
           "alternatives": ["cutty-sark"]
         }
       ]
+    },
+    {
+      "route_id": "seven-days",
+      "route_version": 1,
+      "page": "london-7-days.html",
+      "url": "/london-7-days",
+      "name": "לונדון ב-7 ימים",
+      "title": "מסלול בלונדון 7 ימים: תוכנית מלאה לפי אזורים | גו לונדון",
+      "days": [
+        {
+          "day_id": "westminster-southbank",
+          "day_position": 1,
+          "title": "יום 1: וסטמינסטר וסאות'בנק, הלונדון הקלאסית",
+          "stops": ["big-ben", "st-james-park", "buckingham", "southbank-walk", "tate-modern", "borough-market"],
+          "alternatives": ["westminster-abbey"]
+        },
+        {
+          "day_id": "city-shoreditch",
+          "day_position": 2,
+          "title": "יום 2: הסיטי, הגשרים ושורדיץ'",
+          "stops": ["tower-of-london", "tower-bridge", "leadenhall-market", "sky-garden", "spitalfields-market", "brick-lane"],
+          "alternatives": []
+        },
+        {
+          "day_id": "museums-nottinghill",
+          "day_position": 3,
+          "title": "יום 3: רובע המוזיאונים, הייד פארק ונוטינג היל",
+          "stops": ["natural-history", "hyde-park", "notting-hill"],
+          "alternatives": ["va-museum", "science-museum", "kensington-palace"]
+        },
+        {
+          "day_id": "bloomsbury-camden-westend",
+          "day_position": 4,
+          "title": "יום 4: המוזיאון הגדול, קמדן וערב בווסט אנד",
+          "stops": ["british-museum", "camden-market", "regents-canal-towpath", "primrose-hill", "chinatown-soho"],
+          "alternatives": []
+        },
+        {
+          "day_id": "greenwich",
+          "day_position": 5,
+          "title": "יום 5: גריניץ', היום הנהרי",
+          "stops": ["greenwich-market", "royal-observatory", "maritime-museum"],
+          "alternatives": ["cutty-sark"]
+        },
+        {
+          "day_id": "hampstead-little-venice",
+          "day_position": 6,
+          "title": "יום 6: המפסטד, קנווד וונציה הקטנה",
+          "stops": ["hampstead-heath", "kenwood-house", "little-venice"],
+          "alternatives": []
+        },
+        {
+          "day_id": "kew-or-full-day",
+          "day_position": 7,
+          "title": "יום 7: גני קיו, או יום מלא מחוץ למרכז",
+          "stops": ["kew-gardens"],
+          "alternatives": ["windsor-castle", "harry-potter", "hampton-court"]
+        }
+      ]
     }
   ]
 }

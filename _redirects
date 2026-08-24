@@ -124,6 +124,7 @@
 /kosher-map.html                               /kosher-map                                301!
 /london-3-days.html                            /london-3-days                             301!
 /london-5-days.html                            /london-5-days                             301!
+/london-7-days.html                            /london-7-days                             301!
 /london-april.html                             /london-april                              301!
 /london-august.html                            /london-august                             301!
 /london-by-month.html                          /london-by-month                           301!
@@ -151,6 +152,7 @@
 /build_attractions.py                          /404.html                                  404!
 /build_guides.py                               /404.html                                  404!
 /build_redirects.py                            /404.html                                  404!
+/build_routes.py                               /404.html                                  404!
 /build_search_index.py                         /404.html                                  404!
 /build_utm.py                                  /404.html                                  404!
 /build_whats_new.py                            /404.html                                  404!
