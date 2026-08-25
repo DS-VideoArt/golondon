@@ -111,6 +111,9 @@
 
   function placesInZone() {
     if (!DATA || !ZONE) return [];
+    if (ZONE.areaFilter) {
+      return DATA.filter(function (p) { return p.lat && p.lng && p.area === ZONE.areaFilter; });
+    }
     return DATA.filter(function (p) {
       return p.lat && p.lng && haversine(ZONE.center, [p.lat, p.lng]) <= ZONE.radiusM;
     });
@@ -172,6 +175,7 @@
       '.nb-controls{display:none;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;}',
       '.nb-controls.is-on{display:flex;}',
       '.nb-zones{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px;}',
+      '.nb-more{width:100%;margin-top:12px;justify-content:center;display:flex;}',
       '.nb-zone-chip{font-size:12.5px;}',
       '.nb-chip{font-family:inherit;font-size:13px;font-weight:700;padding:7px 13px;border-radius:50px;',
         'border:1px solid rgba(32,31,43,.14);background:#fff;color:#55596b;cursor:pointer;white-space:nowrap;}',
@@ -288,6 +292,7 @@
   function switchZone(z) {
     if (!z || (ZONE && z.id === ZONE.id)) return;
     ZONE = z;
+    state.listCap = 0;
     /*
       איפוס מלא ובנייה מחדש. הפאנל, המפה והתוצאות כולם נגזרים מהאזור,
       ובנייה נקייה זולה ופשוטה יותר מעדכון חלקי של כל אחד מהם.
@@ -424,6 +429,7 @@
     ensureMap();
     state.point = pt;
     state.method = method;
+    state.listCap = 0;
     /*
       כפתור האזור מבטיח "כל המקומות באזור". רדיוס ברירת המחדל צר מהאזור עצמו,
       ולכן במיקוד אוטומטי פותחים בטווח שמכסה את כל האזור, אחרת המספר בכפתור
@@ -438,9 +444,23 @@
     */
     if (method !== 'area_default') {
       anchorMarker = L.circleMarker(pt, { radius: 8, color: '#DC2626', weight: 3, fillColor: '#fff', fillOpacity: 1 }).addTo(map);
+    } else if (state.stayAnchor && ZONE && ZONE.citywide && !ZONE.areaFilter) {
+      /* סימון אזור הלינה. תווית "בערך" כי זה מרכז אזור, לא כתובת מלון */
+      anchorMarker = L.marker(pt, {
+        icon: L.divIcon({ className: '', html: '<div style="background:#fff;border:3px solid #EA580C;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 2px 8px rgba(0,0,0,.35)">🏨</div>', iconSize: [34, 34] })
+      }).bindTooltip('אזור הלינה שלכם, בערך', { direction: 'top' }).addTo(map);
     }
     /* מבט רחב יותר כשמציגים אזור שלם, וקרוב כשמדובר במיקום ממשי */
-    map.setView(pt, method === 'area_default' ? ((ZONE && ZONE.citywide) ? 12 : 14) : 15);
+    if (method === 'area_default' && ZONE && ZONE.areaFilter) {
+      var pz = placesInZone();
+      if (pz.length) {
+        map.fitBounds(pz.map(function (p) { return [p.lat, p.lng]; }), { padding: [30, 30] });
+      } else {
+        map.setView(pt, 10);
+      }
+    } else {
+      map.setView(pt, method === 'area_default' ? ((ZONE && ZONE.citywide) ? 12 : 14) : 15);
+    }
     setTimeout(function () { map.invalidateSize(); }, 60);
     track('location_selected', {
       source_component: 'nearby',
@@ -504,14 +524,27 @@
     var countHe;
     if (state.method === 'area_default') {
       /* העוגן הוא מרכז האזור ולא המשתמש, ולכן אסור לכתוב כאן "מכם" */
-      countHe = (ZONE && state.radius >= ZONE.radiusM)
-        ? res.length + ' מקומות ב' + (ZONE.label || 'אזור')
-        : res.length + ' מקומות עד ' + radiusHe + ' ממרכז האזור';
+      if (state.stayAnchor && ZONE && ZONE.citywide && !ZONE.areaFilter) {
+        countHe = res.length + ' מקומות, ממוינים לפי קרבה לאזור הלינה שלכם ב' + state.stayAnchor.label;
+      } else {
+        countHe = (ZONE && state.radius >= ZONE.radiusM)
+          ? res.length + ' מקומות ב' + (ZONE.label || 'אזור')
+          : res.length + ' מקומות עד ' + radiusHe + ' ממרכז האזור';
+      }
     } else {
       countHe = res.length + ' מקומות עד ' + radiusHe + ' מכם';
     }
+    /*
+      טען עוד. במצב כל לונדון הרשימה היא 154 כרטיסים עם תמונות, וגלילה
+      כזאת מכבידה גם על הדפדפן וגם על הקורא. מציגים נתח, והשאר בלחיצה.
+      הסמנים על המפה תמיד מציגים את הכל, כי שם האשכולות פותרים את הצפיפות.
+    */
+    var LIST_CHUNK = 30;
+    if (!state.listCap) state.listCap = LIST_CHUNK;
+    var shown = res.slice(0, state.listCap);
+
     var html = '<p class="nb-count">' + countHe + '</p><div class="nb-list">';
-    res.forEach(function (r) {
+    shown.forEach(function (r) {
       var p = r.p;
       var cats = (p.categories || []).slice(0, 2).map(function (c) { return CAT_HE[c] || c; }).join(' · ');
       var approx = p.precision === 'approx' ? ' <span style="color:#B45309">· נקודה מייצגת</span>' : '';
@@ -530,10 +563,21 @@
         '<div class="nb-acts" data-nb-acts="' + p.id + '"></div>' +
         '</div></div>';
     });
-    out.innerHTML = html + '</div>';
+    html += '</div>';
+    if (res.length > shown.length) {
+      html += '<button type="button" class="nb-btn nb-more" id="nb-more">הצגת עוד ' +
+        Math.min(60, res.length - shown.length) + ' מתוך ' + (res.length - shown.length) + ' מקומות נוספים</button>';
+    }
+    out.innerHTML = html;
+    var moreBtn = $('nb-more');
+    if (moreBtn) moreBtn.addEventListener('click', function () {
+      state.listCap += 60;
+      track('list_expand', { source_component: 'nearby', zone: ZONE ? ZONE.id : '', shown: state.listCap });
+      render();
+    });
 
     /* פעולות. הוספה למסלול היא בדיוק אותו כפתור של trip-tray */
-    res.forEach(function (r) {
+    shown.forEach(function (r) {
       var host = out.querySelector('[data-nb-acts="' + r.p.id + '"]');
       if (!host) return;
       if (window.GoLondonTray && GoLondonTray.button) {
@@ -656,7 +700,27 @@
         לא דורסים נקודה שהמשתמש כבר בחר.
       */
       if (!state.point && ZONE && ZONE.center) {
-        setPoint(ZONE.center.slice(), 'area_default');
+        /*
+          עוגן לפי אזור הלינה. אם המשתמש סימן בטופס איפה הוא ישן,
+          מצב כל לונדון נפתח ממורכז על אזור הלינה שלו והמרחקים ברשימה
+          נמדדים ממנו, כך שהקרוב למלון מופיע ראשון. באזורים ממוקדים
+          העוגן נשאר מרכז האזור, כי שם זו המשמעות הנכונה.
+        */
+        var anchor = ZONE.center.slice();
+        if (ZONE.citywide && !ZONE.areaFilter && window.GoLondonStay) {
+          var stayId = GoLondonStay();
+          var stayZone = null;
+          for (var zi = 0; zi < ZONES.length; zi++) {
+            if (ZONES[zi].id === stayId) { stayZone = ZONES[zi]; break; }
+          }
+          if (stayZone && stayZone.center) {
+            anchor = stayZone.center.slice();
+            state.stayAnchor = stayZone;
+          } else {
+            state.stayAnchor = null;
+          }
+        }
+        setPoint(anchor, 'area_default');
       }
       if (map) setTimeout(function () { map.invalidateSize(); }, 60);
     }).catch(function () {
@@ -751,7 +815,16 @@
         id: 'all', label: 'כל לונדון', citywide: true,
         center: [51.5074, -0.1276], radiusM: 60000, status: 'pilot', hoods: []
       };
-      zones = [CITYWIDE].concat(zones);
+      /*
+        טיולי יום. עשרת המקומות של "מחוץ למרכז" פזורים מווינדזור ועד
+        קולינדייל, ולכן הם מסוננים לפי אזור הנתונים ולא לפי רדיוס,
+        והמפה מתכווננת לגבולות שלהם במקום לזום קבוע.
+      */
+      var DAYTRIPS = {
+        id: 'outer', label: 'טיולי יום מחוץ למרכז', citywide: true, areaFilter: 'outer',
+        center: [51.5074, -0.1276], radiusM: 60000, status: 'pilot', hoods: []
+      };
+      zones = [CITYWIDE].concat(zones).concat([DAYTRIPS]);
       ZONES = zones;
       ZONE = pickZone(zones);
       if (!ZONE) { $('tab-nearby').hidden = true; return; }

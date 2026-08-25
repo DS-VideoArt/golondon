@@ -853,6 +853,9 @@
       }));
     });
 
+    /* אזור הלינה גלוי גם למצב המפה, שמעגן את המרחקים סביבו */
+    window.GoLondonStay = function () { return state.stay || ''; };
+
     /*
       אזור הלינה. רק אזורים שאנשים באמת ישנים בהם מוצעים כאן, ולכן
       גריניץ׳ ומחוץ למרכז אינם ברשימה גם כשיש בהם ימי טיול.
@@ -2584,7 +2587,7 @@
 <script src="community-ask.js?v=4" defer></script>
 <script src="place-info.js?v=11" defer></script>
 <script src="trip-tray.js?v=3" defer></script>
-<script src="planner-nearby.js?v=10" defer></script>
+<script src="planner-nearby.js?v=11" defer></script>
 <script src="analytics.js?v=4" defer></script>
 </body>
 </html>
