@@ -43,7 +43,7 @@
   <link rel="preload" as="image" href="images/hero.webp" type="image/webp" fetchpriority="high" />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css?v=7" />
+  <link rel="stylesheet" href="style.css?v=8" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -152,11 +152,13 @@
       }
 
       /*
-        שש עשיריות שנייה. האנימציה כולה כבר הושלמה בנקודה הזאת,
-        והדעיכה מוסיפה עוד רבע שנייה. העמוד עצמו נטען מאחורי הפתיח
-        כל הזמן הזה, ולכן הקיצור לא דוחה שום משאב.
+        שנייה ושש עשיריות, ואז דעיכה של עוד רבע שנייה. הוארך מ-600
+        לבקשת בעל האתר: בשש עשיריות הפתיח הרגיש כהבהוב מפריע ולא
+        כקבלת פנים, וההחזקה הנוספת נותנת לזום ולפעימת הזוהר של הרקע
+        (2.2 שניות) מקום לנשום. העמוד נטען מאחורי הפתיח כל הזמן הזה,
+        ולחיצה או Escape עדיין מדלגות מיד.
       */
-      var timer = setTimeout(hideSplash, 600);
+      var timer = setTimeout(hideSplash, 1600);
       splash.addEventListener('click', function () { clearTimeout(timer); hideSplash(); });
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') { clearTimeout(timer); hideSplash(); }
@@ -250,7 +252,7 @@
       </p>
 
       <div class="hero-actions">
-        <a href="planner.html" class="btn btn-red btn-glow">
+        <a href="planner.html" class="btn btn-red btn-glow btn-hero-main">
           <i class="fas fa-wand-magic-sparkles"></i> בנו לי מסלול
         </a>
         <a href="kosher-map.html" class="btn btn-outline btn-hero-sm btn-outline--green">

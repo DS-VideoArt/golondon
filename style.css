@@ -135,6 +135,8 @@ a { text-decoration: none; color: inherit; }
 .btn-red:hover { background: #B91C1C; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(220,38,38,0.25); }
 .btn-glow { box-shadow: 0 4px 14px rgba(220,38,38,0.25); }
 .btn-glow:hover { box-shadow: 0 8px 22px rgba(220,38,38,0.35); }
+/* הכפתור הראשי בהירו של דף הבית, גדול מעט מכפתור רגיל כדי לבלוט כפעולה המרכזית */
+.btn-hero-main { padding: 15px 34px; font-size: 17.5px; gap: 10px; }
 .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); }
 .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
 .btn-outline-navy {
