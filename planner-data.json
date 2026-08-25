@@ -703,7 +703,7 @@
       "lat": 51.50330,
       "lng": -0.11950,
       "precision": "exact",
-      "source": "https://www.londoneye.com/visiting/",
+      "source": "https://www.londoneye.com/plan-your-visit/",
       "checked": "2026-08"
     },
     {
@@ -747,7 +747,7 @@
       "lat": 51.50560,
       "lng": -0.11400,
       "precision": "approx",
-      "source": "https://www.southbanklondon.com/",
+      "source": "https://www.southbankcentre.co.uk/visit/",
       "checked": "2026-08"
     },
     {
@@ -917,7 +917,7 @@
       "lat": 51.49660,
       "lng": -0.17220,
       "precision": "exact",
-      "source": "https://www.vam.ac.uk/info/visit",
+      "source": "https://www.vam.ac.uk/visit",
       "checked": "2026-08"
     },
     {
@@ -1867,7 +1867,7 @@
       "lat": 51.52350,
       "lng": -0.11670,
       "precision": "exact",
-      "source": "https://dickensmuseum.com/pages/plan-your-visit",
+      "source": "https://dickensmuseum.com/",
       "checked": "2026-08"
     },
     {
@@ -1908,7 +1908,7 @@
       "lat": 51.51443,
       "lng": -0.12639,
       "precision": "approx",
-      "source": "https://www.coventgarden.london/neals-yard/",
+      "source": "https://www.coventgarden.london/",
       "checked": "2026-08"
     },
     {
@@ -1991,7 +1991,7 @@
       "lat": 51.51014,
       "lng": -0.08595,
       "precision": "exact",
-      "source": "https://www.cityoflondon.gov.uk/things-to-do/attractions-museums-entertainment/monument",
+      "source": "https://www.themonument.org.uk/",
       "checked": "2026-08"
     },
     {
@@ -2035,7 +2035,7 @@
       "lat": 51.50950,
       "lng": -0.08260,
       "precision": "exact",
-      "source": "https://www.cityoflondon.gov.uk/services/parks-and-gardens/st-dunstan-in-the-east",
+      "source": "https://www.cityoflondon.gov.uk/things-to-do/city-gardens/find-a-garden/st-dunstan-in-the-east-church-garden",
       "checked": "2026-08"
     },
     {
@@ -2162,7 +2162,7 @@
       "lat": 51.52020,
       "lng": -0.09380,
       "precision": "exact",
-      "source": "https://www.barbican.org.uk/visit",
+      "source": "https://www.barbican.org.uk/your-visit",
       "checked": "2026-08"
     },
     {
@@ -3507,7 +3507,7 @@
       "lat": 51.48470,
       "lng": -0.01030,
       "precision": "exact",
-      "source": "https://www.royalgreenwich.gov.uk/directory-record/62/greenwich-foot-tunnel",
+      "source": "https://www.royalgreenwich.gov.uk/greenwich-and-woolwich-foot-tunnels",
       "checked": "2026-08"
     },
     {
@@ -3801,7 +3801,7 @@
       "lat": 51.59680,
       "lng": -0.24160,
       "precision": "exact",
-      "source": "https://www.rafmuseum.org.uk/london/plan-your-visit/",
+      "source": "https://www.rafmuseum.org.uk/london/plan-your-day/",
       "checked": "2026-08"
     },
     {
