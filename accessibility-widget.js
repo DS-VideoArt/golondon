@@ -129,9 +129,12 @@
     קישור דילוג לתוכן. מוזרק מכאן כי הרכיב נטען בכל עמודי האתר,
     וזה חוסך עריכה ידנית של 137 קבצים. הקישור הוא האלמנט הראשון
     בעמוד, מוסתר עד שמקבל מיקוד מקלדת, ומדלג אל main.
+    עמוד שכבר מכיל קישור דילוג סטטי משלו (a.skip-link, כיום דף
+    הבית) לא מקבל הזרקה, אחרת מקלדת פוגשת שני קישורי דילוג ברצף.
+    הסטטי עדיף כשהוא קיים, כי הוא עובד גם בלי JavaScript.
   */
   function injectSkipLink() {
-    if (document.getElementById('gl-skip-link')) return;
+    if (document.getElementById('gl-skip-link') || document.querySelector('a.skip-link')) return;
     const main = document.querySelector('main');
     if (!main) return;
     if (!main.id) main.id = 'main-content';
