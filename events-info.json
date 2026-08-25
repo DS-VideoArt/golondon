@@ -43,9 +43,10 @@
   "tip": "האזור צפוף מאוד, ומגיעים מוקדם אם רוצים מקום טוב לאורך מסלול התהלוכה.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "סיורים וכרטיסים באזור",
-   "offer": "attractions_alt",
-   "href": "https://www.tiqets.com/en/london-attractions-c67458/"
+   "label": "האתר הרשמי של הקרנבל",
+   "href": "https://nhcarnival.org/",
+   "custom": true,
+   "free": true
   },
   "video": {
    "id": "WsH9QLep38E",
@@ -95,9 +96,10 @@
   "tip": "האזורים ליד גשר טאואר וליד הסיום במול הם המרוכזים ביותר, אך גם הכי צפופים.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "סיורים וכרטיסים באזור",
-   "offer": "attractions_alt",
-   "href": "https://www.tiqets.com/en/london-attractions-c67458/"
+   "label": "האתר הרשמי של המרתון",
+   "href": "https://www.londonmarathonevents.co.uk/london-marathon",
+   "custom": true,
+   "free": true
   },
   "video": {
    "id": "JPZRiXWm67g",
@@ -119,9 +121,9 @@
   "tip": "תאריכי החגיגות משתנים משנה לשנה לפי הלוח העברי, ההינדי או הסיני, כדאי לבדוק תאריך מדויק סמוך לטיול.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "סיורים וכרטיסים באזור",
-   "offer": "attractions_alt",
-   "href": "https://www.tiqets.com/en/london-attractions-c67458/"
+   "label": "מה קורה בלונדון לפי חודשים",
+   "href": "london-by-month.html",
+   "internal": true
   },
   "video": {
    "id": "_MmGrfjUE3o",
@@ -171,9 +173,10 @@
   "tip": "האזור סביב פיקדילי וריג׳נט סטריט הומה במיוחד, כדאי להגיע מוקדם.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "סיורים וכרטיסים באזור",
-   "offer": "attractions_alt",
-   "href": "https://www.tiqets.com/en/london-attractions-c67458/"
+   "label": "האתר הרשמי של המצעד",
+   "href": "https://prideinlondon.org/",
+   "custom": true,
+   "free": true
   },
   "video": {
    "id": "YBoqvFBH3d8",
@@ -235,5 +238,6 @@
    "id": "sapOO54GvIA",
    "title": "Complete Guide to the Queue - Wimbledon"
   }
- }
+ },
+ "_עדכון_2026_08_25": "ארבעה אירועים חינמיים (carnival, marathon, pride, multicultural) קיבלו במקור קישור מסחרי כללי לקטגוריית טיקטס, בניגוד לכלל שאין קישור מסחרי למקום חינמי ללא מוצר מאומת. הוחלפו בקישורים רשמיים שאומתו חיים ב-25.8.2026: nhcarnival.org (200), londonmarathonevents.co.uk/london-marathon (היעד הסופי של tcslondonmarathon.com, 200), prideinlondon.org (200). לחגיגות הקהילות אין אתר רשמי אחד ולכן קישור פנימי ללוח החודשים, שעונה בדיוק על הטיפ שבכרטיס."
 }
