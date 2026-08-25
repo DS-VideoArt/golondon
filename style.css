@@ -830,3 +830,24 @@ a { text-decoration: none; color: inherit; }
 .community-btns {
   display: flex; gap: 12px; flex-wrap: wrap;
 }
+
+/* קישור הדילוג לתוכן: מוסתר עד מיקוד מקלדת, ואז בולט מעל הכל */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  inset-inline-start: 12px;
+  z-index: 3000;
+  background: #201f2b;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 12px 22px;
+  border-radius: 0 0 12px 12px;
+  text-decoration: none;
+  transition: top .15s ease;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #DC2626;
+  outline-offset: 2px;
+}

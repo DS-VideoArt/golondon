@@ -115,7 +115,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 // כרטיסים
-document.querySelectorAll('.cat-card, .article-card, .route-card, .why-item').forEach((el, i) => {
+document.querySelectorAll('.article-card, .route-card, .why-item').forEach((el, i) => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(28px)';
   el.style.transition = `opacity 0.5s ease ${i * 0.06}s, transform 0.5s ease ${i * 0.06}s`;

@@ -43,7 +43,7 @@
   <link rel="preload" as="image" href="images/hero.webp" type="image/webp" fetchpriority="high" />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css?v=6" />
+  <link rel="stylesheet" href="style.css?v=7" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -88,6 +88,7 @@
   <link rel="stylesheet" href="theme-light.css?v=12" />
 </head>
 <body>
+  <a class="skip-link" href="#main-content">דילוג לתוכן הראשי</a>
 
   <!-- מסך פתיחה -->
   <div id="splash-screen" role="dialog" aria-label="ברוכים הבאים לגו לונדון">
@@ -227,7 +228,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
   <!-- גיבור -->
   <section class="hero">
     <div class="hero-bg">
@@ -781,18 +782,49 @@
     </a>
   </div>
 
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=4"></script>
   <script>
-    // באנר מפת כשרות, מופיע בכל רענון
-    setTimeout(function() {
-      document.getElementById('kosherFloat').classList.add('kosher-float--visible');
-    }, 2000);
-    function closeKosherBanner() {
-      document.getElementById('kosherFloat').classList.remove('kosher-float--visible');
-      setTimeout(function() {
-        document.getElementById('kosherFloat').style.display = 'none';
-      }, 400);
-    }
+    /*
+      באנר מפת הכשרות. לא קופץ על מי שרק הגיע: מופיע פעם אחת אחרי
+      שהגולש עבר 60 אחוזים מהעמוד, וסגירה מכבדת אותו לשבעה ימים.
+      כשהאחסון חסום הסגירה עדיין תופסת לאותה צפייה, בלי שגיאות.
+    */
+    (function () {
+      var KEY = 'golondon_kosher_float_closed_at';
+      var WEEK = 7 * 24 * 60 * 60 * 1000;
+      var shown = false;
+
+      function closedRecently() {
+        try {
+          var t = parseInt(localStorage.getItem(KEY) || '0', 10);
+          return t && (Date.now() - t) < WEEK;
+        } catch (e) { return false; }
+      }
+
+      function maybeShow() {
+        if (shown) return;
+        var doc = document.documentElement;
+        var scrollable = doc.scrollHeight - window.innerHeight;
+        if (scrollable <= 0) return;
+        if ((window.scrollY / scrollable) < 0.6) return;
+        shown = true;
+        window.removeEventListener('scroll', maybeShow);
+        document.getElementById('kosherFloat').classList.add('kosher-float--visible');
+      }
+
+      if (!closedRecently()) {
+        window.addEventListener('scroll', maybeShow, { passive: true });
+      }
+
+      window.closeKosherBanner = function () {
+        try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+        shown = true;
+        window.removeEventListener('scroll', maybeShow);
+        var el = document.getElementById('kosherFloat');
+        el.classList.remove('kosher-float--visible');
+        setTimeout(function () { el.style.display = 'none'; }, 400);
+      };
+    })();
   </script>
 <script src="accessibility-widget.js?v=2" defer></script>
 <script src="install-prompt.js" defer></script>
