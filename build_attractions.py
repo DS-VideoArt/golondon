@@ -350,7 +350,9 @@ def main():
             elif free and partly:
                 badge = ' <span class="free-badge is-partial">חינם חלקית</span>'
             else:
-                badge = ''
+                # בלי תג, פריט בתשלום נראה ברשימה כלא מסומן לצד
+                # החינמיים המסומנים, והקורא לא יודע אם השמטה או מידע
+                badge = ' <span class="paid-badge">בתשלום</span>'
             items.append(
                 '      <div class="num-item" data-place="%s"><div class="num">%d</div>'
                 '<div><h3>%s%s</h3><p>%s</p></div></div>'

@@ -425,6 +425,7 @@ small { color: var(--ink-faint) !important; }
 .club-item p, .num-item p { color: var(--ink-soft) !important; }
 .num-item .free-badge { background: rgba(21,128,61,0.12) !important; color: #15803D !important; }
 .num-item .free-badge.is-partial { background: rgba(180,83,9,0.14) !important; color: #B45309 !important; }
+.num-item .paid-badge { background: rgba(29,78,216,0.1) !important; color: #1D4ED8 !important; }
 
 /* ---------- הדפסה ---------- */
 
