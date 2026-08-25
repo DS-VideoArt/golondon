@@ -103,7 +103,12 @@
       "anchor": true,
       "bookAhead": false,
       "tip": "ענק מכדי לראות הכל. בחרו שלושה אגפים מראש ותצאו מרוצים במקום מותשים.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.51940,
+      "lng": -0.12690,
+      "precision": "exact",
+      "source": "https://www.britishmuseum.org/visit",
+      "checked": "2026-08"
     },
     {
       "id": "national-gallery",
@@ -144,7 +149,12 @@
       "anchor": true,
       "bookAhead": false,
       "tip": "יושבת בדיוק על כיכר טרפלגר, אז אפשר לשלב ביקור קצר בדרך למקום אחר.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.50890,
+      "lng": -0.12830,
+      "precision": "exact",
+      "source": "https://www.nationalgallery.org.uk/visiting",
+      "checked": "2026-08"
     },
     {
       "id": "westminster-abbey",
@@ -183,7 +193,12 @@
       "kids": false,
       "anchor": true,
       "bookAhead": true,
-      "tip": "סגור למבקרים בזמן תפילות, ולכן שווה לבדוק את לוח הזמנים לפני שקובעים שעה."
+      "tip": "סגור למבקרים בזמן תפילות, ולכן שווה לבדוק את לוח הזמנים לפני שקובעים שעה.",
+      "lat": 51.49930,
+      "lng": -0.12730,
+      "precision": "exact",
+      "source": "https://www.westminster-abbey.org/visit-us",
+      "checked": "2026-08"
     },
     {
       "id": "big-ben",
@@ -218,7 +233,12 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "היציאה מתחנת וסטמינסטר נותנת את אחד הנופים הכי מרשימים בעיר, ממש ברגע שעולים במדרגות.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.50072,
+      "lng": -0.12462,
+      "precision": "exact",
+      "source": "https://www.parliament.uk/visiting",
+      "checked": "2026-08"
     },
     {
       "id": "buckingham",
@@ -253,7 +273,12 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "טקס החילופים לא מתקיים כל יום ומתבטל בגשם. להגיע 45 דקות מראש כדי לתפוס מקום טוב.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.50140,
+      "lng": -0.14190,
+      "precision": "exact",
+      "source": "https://www.rct.uk/visit/buckingham-palace",
+      "checked": "2026-08"
     },
     {
       "id": "churchill-rooms",
@@ -290,7 +315,12 @@
       "kids": false,
       "anchor": true,
       "bookAhead": true,
-      "tip": "הבונקר התת קרקעי נשמר בדיוק כפי שהיה. אחת החוויות ההיסטוריות החזקות בעיר."
+      "tip": "הבונקר התת קרקעי נשמר בדיוק כפי שהיה. אחת החוויות ההיסטוריות החזקות בעיר.",
+      "lat": 51.50220,
+      "lng": -0.12910,
+      "precision": "exact",
+      "source": "https://www.iwm.org.uk/visits/churchill-war-rooms",
+      "checked": "2026-08"
     },
     {
       "id": "st-james-park",
@@ -323,7 +353,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "הגשר במרכז הפארק נותן נוף יפהפה על הארמון מצד אחד ועל הלונדון איי מהצד השני."
+      "tip": "הגשר במרכז הפארק נותן נוף יפהפה על הארמון מצד אחד ועל הלונדון איי מהצד השני.",
+      "lat": 51.50260,
+      "lng": -0.13440,
+      "precision": "approx",
+      "source": "https://www.royalparks.org.uk/visit/parks/st-jamess-park",
+      "checked": "2026-08"
     },
     {
       "id": "covent-garden",
@@ -362,7 +397,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "אמני רחוב מופיעים שם כל היום, וזה אחד המקומות הכי נעימים בעיר לשבת ולנוח באמצע יום."
+      "tip": "אמני רחוב מופיעים שם כל היום, וזה אחד המקומות הכי נעימים בעיר לשבת ולנוח באמצע יום.",
+      "lat": 51.51200,
+      "lng": -0.12260,
+      "precision": "exact",
+      "source": "https://www.coventgarden.london/",
+      "checked": "2026-08"
     },
     {
       "id": "tower-of-london",
@@ -400,7 +440,12 @@
       "kids": true,
       "anchor": true,
       "bookAhead": true,
-      "tip": "הסיור עם שומרי המצודה כלול במחיר ושווה את זה. יוצא כל חצי שעה מהכניסה."
+      "tip": "הסיור עם שומרי המצודה כלול במחיר ושווה את זה. יוצא כל חצי שעה מהכניסה.",
+      "lat": 51.50810,
+      "lng": -0.07590,
+      "precision": "exact",
+      "source": "https://www.hrp.org.uk/tower-of-london/visit/",
+      "checked": "2026-08"
     },
     {
       "id": "tower-bridge",
@@ -438,7 +483,12 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "רצפת הזכוכית בתערוכה למעלה שווה למי שאוהב גבהים. לחצות את הגשר עצמו לא עולה כלום.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.50550,
+      "lng": -0.07540,
+      "precision": "exact",
+      "source": "https://www.towerbridge.org.uk/your-visit",
+      "checked": "2026-08"
     },
     {
       "id": "st-pauls",
@@ -478,7 +528,12 @@
       "kids": false,
       "anchor": true,
       "bookAhead": true,
-      "tip": "העלייה לכיפה היא יותר מחמש מאות מדרגות, אבל הנוף מלמעלה הוא מהיפים בלונדון."
+      "tip": "העלייה לכיפה היא יותר מחמש מאות מדרגות, אבל הנוף מלמעלה הוא מהיפים בלונדון.",
+      "lat": 51.51380,
+      "lng": -0.09840,
+      "precision": "exact",
+      "source": "https://www.stpauls.co.uk/visit-us",
+      "checked": "2026-08"
     },
     {
       "id": "sky-garden",
@@ -512,7 +567,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": true,
-      "tip": "התצפית החינמית הכי טובה בעיר, אבל המקומות נחטפים. להזמין ברגע שנפתח החלון, בערך שלושה שבועות מראש."
+      "tip": "התצפית החינמית הכי טובה בעיר, אבל המקומות נחטפים. להזמין ברגע שנפתח החלון, בערך שלושה שבועות מראש.",
+      "lat": 51.51120,
+      "lng": -0.08360,
+      "precision": "exact",
+      "source": "https://skygarden.london/plan-your-visit/",
+      "checked": "2026-08"
     },
     {
       "id": "borough-market",
@@ -548,7 +608,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "להגיע רעבים ובשעות הצהריים. עמוס מאוד בסופי שבוע, ורגוע הרבה יותר באמצע השבוע."
+      "tip": "להגיע רעבים ובשעות הצהריים. עמוס מאוד בסופי שבוע, ורגוע הרבה יותר באמצע השבוע.",
+      "lat": 51.50540,
+      "lng": -0.09100,
+      "precision": "exact",
+      "source": "https://boroughmarket.org.uk/visit-us/",
+      "checked": "2026-08"
     },
     {
       "id": "tate-modern",
@@ -591,7 +656,12 @@
       "anchor": true,
       "bookAhead": false,
       "tip": "המרפסת בקומה העליונה פתוחה לכולם ונותנת נוף חינמי מצוין על התמזה ועל סנט פול.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.50760,
+      "lng": -0.09930,
+      "precision": "exact",
+      "source": "https://www.tate.org.uk/visit/tate-modern",
+      "checked": "2026-08"
     },
     {
       "id": "london-eye",
@@ -629,7 +699,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": true,
-      "tip": "הסיבוב אורך כחצי שעה. שקיעה היא הזמן היפה ביותר, וגם היקר והעמוס ביותר."
+      "tip": "הסיבוב אורך כחצי שעה. שקיעה היא הזמן היפה ביותר, וגם היקר והעמוס ביותר.",
+      "lat": 51.50330,
+      "lng": -0.11950,
+      "precision": "exact",
+      "source": "https://www.londoneye.com/visiting/",
+      "checked": "2026-08"
     },
     {
       "id": "southbank-walk",
@@ -668,7 +743,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "ההליכה מהלונדון איי ועד גשר המגדלים היא אחד המסלולים היפים בעיר, וכולה לאורך המים."
+      "tip": "ההליכה מהלונדון איי ועד גשר המגדלים היא אחד המסלולים היפים בעיר, וכולה לאורך המים.",
+      "lat": 51.50560,
+      "lng": -0.11400,
+      "precision": "approx",
+      "source": "https://www.southbanklondon.com/",
+      "checked": "2026-08"
     },
     {
       "id": "shard",
@@ -701,7 +781,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": true,
-      "tip": "הבניין הגבוה בבריטניה. אלטרנטיבה זולה יותר היא בר במלון גבוה, שם משלמים על משקה במקום על כרטיס."
+      "tip": "הבניין הגבוה בבריטניה. אלטרנטיבה זולה יותר היא בר במלון גבוה, שם משלמים על משקה במקום על כרטיס.",
+      "lat": 51.50450,
+      "lng": -0.08650,
+      "precision": "exact",
+      "source": "https://www.theviewfromtheshard.com/plan-your-visit/",
+      "checked": "2026-08"
     },
     {
       "id": "natural-history",
@@ -740,7 +825,12 @@
       "anchor": true,
       "bookAhead": false,
       "tip": "המוזיאון הכי טוב בלונדון לילדים. הבניין עצמו מרשים לא פחות מהתצוגות.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.49670,
+      "lng": -0.17640,
+      "precision": "exact",
+      "source": "https://www.nhm.ac.uk/visit.html",
+      "checked": "2026-08"
     },
     {
       "id": "science-museum",
@@ -779,7 +869,12 @@
       "anchor": true,
       "bookAhead": false,
       "tip": "נמצא ממש ליד מוזיאון הטבע, אז אפשר לשלב את שניהם באותו יום בלי נסיעות.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.49740,
+      "lng": -0.17467,
+      "precision": "exact",
+      "source": "https://www.sciencemuseum.org.uk/visit",
+      "checked": "2026-08"
     },
     {
       "id": "va-museum",
@@ -818,7 +913,12 @@
       "anchor": true,
       "bookAhead": false,
       "tip": "עיצוב, אופנה ואמנות שימושית. החצר הפנימית היא אחת הפינות הנעימות בעיר לקפה.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.49660,
+      "lng": -0.17220,
+      "precision": "exact",
+      "source": "https://www.vam.ac.uk/info/visit",
+      "checked": "2026-08"
     },
     {
       "id": "hyde-park",
@@ -851,7 +951,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "אפשר לשכור סירה על האגם בקיץ. פינת הנואמים פעילה בעיקר בבקרי יום ראשון."
+      "tip": "אפשר לשכור סירה על האגם בקיץ. פינת הנואמים פעילה בעיקר בבקרי יום ראשון.",
+      "lat": 51.50730,
+      "lng": -0.16570,
+      "precision": "approx",
+      "source": "https://www.royalparks.org.uk/visit/parks/hyde-park",
+      "checked": "2026-08"
     },
     {
       "id": "kensington-palace",
@@ -884,7 +989,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": true,
-      "tip": "הגנים סביב הארמון פתוחים לכולם בחינם, גם למי שלא נכנס פנימה."
+      "tip": "הגנים סביב הארמון פתוחים לכולם בחינם, גם למי שלא נכנס פנימה.",
+      "lat": 51.50500,
+      "lng": -0.18770,
+      "precision": "exact",
+      "source": "https://www.hrp.org.uk/kensington-palace/visit/",
+      "checked": "2026-08"
     },
     {
       "id": "notting-hill",
@@ -924,7 +1034,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "שוק העתיקות פועל בשיאו בימי שבת. בשאר השבוע השכונה שקטה ונעימה יותר לצילום."
+      "tip": "שוק העתיקות פועל בשיאו בימי שבת. בשאר השבוע השכונה שקטה ונעימה יותר לצילום.",
+      "lat": 51.51590,
+      "lng": -0.20520,
+      "precision": "approx",
+      "source": "https://portobelloroad.co.uk/",
+      "checked": "2026-08"
     },
     {
       "id": "camden-market",
@@ -1192,7 +1307,12 @@
       "anchor": true,
       "bookAhead": false,
       "tip": "להגיע בשיט על התמזה במקום ברכבת. הנסיעה עצמה היא חצי מהחוויה, והנוף מהגבעה מדהים.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.47690,
+      "lng": -0.00050,
+      "precision": "approx",
+      "source": "https://www.royalparks.org.uk/visit/parks/greenwich-park",
+      "checked": "2026-08"
     },
     {
       "id": "maritime-museum",
@@ -1229,7 +1349,12 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "משתלב מצוין עם ביקור בגריניץ׳, כי הוא נמצא בדיוק בדרך מהמזח אל הגבעה.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.48100,
+      "lng": -0.00550,
+      "precision": "exact",
+      "source": "https://www.rmg.co.uk/national-maritime-museum/plan-your-visit",
+      "checked": "2026-08"
     },
     {
       "id": "kew-gardens",
@@ -1267,7 +1392,12 @@
       "kids": true,
       "anchor": true,
       "bookAhead": true,
-      "tip": "הגן הבוטני הגדול בעולם. דורש חצי יום שלם, ולכן מתאים בעיקר לטיולים של ארבעה ימים ומעלה."
+      "tip": "הגן הבוטני הגדול בעולם. דורש חצי יום שלם, ולכן מתאים בעיקר לטיולים של ארבעה ימים ומעלה.",
+      "lat": 51.47880,
+      "lng": -0.29560,
+      "precision": "exact",
+      "source": "https://www.kew.org/kew-gardens/visit-kew-gardens",
+      "checked": "2026-08"
     },
     {
       "id": "harry-potter",
@@ -1306,7 +1436,12 @@
       "kids": true,
       "anchor": true,
       "bookAhead": true,
-      "tip": "נמצא מחוץ ללונדון ותופס יום כמעט שלם. הכרטיסים נגמרים שבועות מראש, אז זה הדבר הראשון להזמין."
+      "tip": "נמצא מחוץ ללונדון ותופס יום כמעט שלם. הכרטיסים נגמרים שבועות מראש, אז זה הדבר הראשון להזמין.",
+      "lat": 51.69080,
+      "lng": -0.41810,
+      "precision": "exact",
+      "source": "https://www.wbstudiotour.co.uk/plan-your-visit/",
+      "checked": "2026-08"
     },
     {
       "id": "hampton-court",
@@ -1346,7 +1481,12 @@
       "kids": true,
       "anchor": true,
       "bookAhead": true,
-      "tip": "הארמון של הנרי השמיני, עם מבוך גדרות חיות שהילדים אוהבים. כשעה נסיעה מהמרכז."
+      "tip": "הארמון של הנרי השמיני, עם מבוך גדרות חיות שהילדים אוהבים. כשעה נסיעה מהמרכז.",
+      "lat": 51.40360,
+      "lng": -0.33780,
+      "precision": "exact",
+      "source": "https://www.hrp.org.uk/hampton-court-palace/visit/",
+      "checked": "2026-08"
     },
     {
       "id": "national-portrait-gallery",
@@ -1388,7 +1528,12 @@
       "anchor": true,
       "bookAhead": false,
       "tip": "פחות עמוסה מהגלריה הלאומית שלידה, ולכן נעימה במיוחד בשעות הצהריים.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.50940,
+      "lng": -0.12800,
+      "precision": "exact",
+      "source": "https://www.npg.org.uk/visit",
+      "checked": "2026-08"
     },
     {
       "id": "tate-britain",
@@ -1429,7 +1574,12 @@
       "anchor": true,
       "bookAhead": false,
       "tip": "שקט בהרבה מהטייט מודרן, ובין שני המוזיאונים יש שירות סירה על התמזה.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.49110,
+      "lng": -0.12770,
+      "precision": "exact",
+      "source": "https://www.tate.org.uk/visit/tate-britain",
+      "checked": "2026-08"
     },
     {
       "id": "wallace-collection",
@@ -1468,7 +1618,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "אחת ההפתעות הגדולות של לונדון, חינם ובלי תורים, דקות הליכה מהקניות באוקספורד סטריט."
+      "tip": "אחת ההפתעות הגדולות של לונדון, חינם ובלי תורים, דקות הליכה מהקניות באוקספורד סטריט.",
+      "lat": 51.51710,
+      "lng": -0.15320,
+      "precision": "exact",
+      "source": "https://www.wallacecollection.org/visit/",
+      "checked": "2026-08"
     },
     {
       "id": "soane-museum",
@@ -1506,7 +1661,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "הבית קטן ולכן נכנסים בקבוצות מוגבלות. שווה להגיע מוקדם או להזמין מקום מראש."
+      "tip": "הבית קטן ולכן נכנסים בקבוצות מוגבלות. שווה להגיע מוקדם או להזמין מקום מראש.",
+      "lat": 51.51700,
+      "lng": -0.11740,
+      "precision": "exact",
+      "source": "https://www.soane.org/visit",
+      "checked": "2026-08"
     },
     {
       "id": "transport-museum",
@@ -1540,7 +1700,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "מהמקומות הטובים בלונדון לילדים, וחנות המזכרות שלו נחשבת לאחת הטובות בעיר."
+      "tip": "מהמקומות הטובים בלונדון לילדים, וחנות המזכרות שלו נחשבת לאחת הטובות בעיר.",
+      "lat": 51.51190,
+      "lng": -0.12140,
+      "precision": "exact",
+      "source": "https://www.ltmuseum.co.uk/visit",
+      "checked": "2026-08"
     },
     {
       "id": "trafalgar-square",
@@ -1575,7 +1740,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "נקודת מפגש נוחה במיוחד, כי ממנה אפשר להגיע ברגל כמעט לכל אתר במרכז."
+      "tip": "נקודת מפגש נוחה במיוחד, כי ממנה אפשר להגיע ברגל כמעט לכל אתר במרכז.",
+      "lat": 51.50800,
+      "lng": -0.12800,
+      "precision": "approx",
+      "source": "https://www.london.gov.uk/programmes-strategies/arts-and-culture/trafalgar-square",
+      "checked": "2026-08"
     },
     {
       "id": "chinatown-soho",
@@ -1613,7 +1783,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "הכי חי בערב, וזה גם האזור הנוח לאכול בו לפני הצגה בווסט אנד."
+      "tip": "הכי חי בערב, וזה גם האזור הנוח לאכול בו לפני הצגה בווסט אנד.",
+      "lat": 51.51120,
+      "lng": -0.13140,
+      "precision": "approx",
+      "source": "https://chinatown.co.uk/",
+      "checked": "2026-08"
     },
     {
       "id": "piccadilly-circus",
@@ -1647,7 +1822,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "שווה בעיקר כתחנת מעבר קצרה בדרך למקום אחר, לא כיעד בפני עצמו."
+      "tip": "שווה בעיקר כתחנת מעבר קצרה בדרך למקום אחר, לא כיעד בפני עצמו.",
+      "lat": 51.51000,
+      "lng": -0.13440,
+      "precision": "approx",
+      "source": "https://www.visitlondon.com/things-to-do/place/295283-piccadilly-circus",
+      "checked": "2026-08"
     },
     {
       "id": "dickens-museum",
@@ -1683,7 +1863,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "משתלב היטב עם ביקור במוזיאון הבריטי, שנמצא באותה שכונה."
+      "tip": "משתלב היטב עם ביקור במוזיאון הבריטי, שנמצא באותה שכונה.",
+      "lat": 51.52350,
+      "lng": -0.11670,
+      "precision": "exact",
+      "source": "https://dickensmuseum.com/pages/plan-your-visit",
+      "checked": "2026-08"
     },
     {
       "id": "neals-yard",
@@ -1719,7 +1904,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "אחת הפינות המצולמות ביותר בלונדון, ולכן שווה להגיע בבוקר לפני שהיא מתמלאת."
+      "tip": "אחת הפינות המצולמות ביותר בלונדון, ולכן שווה להגיע בבוקר לפני שהיא מתמלאת.",
+      "lat": 51.51443,
+      "lng": -0.12639,
+      "precision": "approx",
+      "source": "https://www.coventgarden.london/neals-yard/",
+      "checked": "2026-08"
     },
     {
       "id": "leadenhall-market",
@@ -1759,7 +1949,12 @@
       "kids": true,
       "anchor": true,
       "bookAhead": false,
-      "tip": "פעיל בעיקר בימי חול, כי הוא משרת את עובדי הסיטי. בסופי שבוע הוא כמעט ריק אבל יפה לצילום."
+      "tip": "פעיל בעיקר בימי חול, כי הוא משרת את עובדי הסיטי. בסופי שבוע הוא כמעט ריק אבל יפה לצילום.",
+      "lat": 51.51280,
+      "lng": -0.08340,
+      "precision": "exact",
+      "source": "https://leadenhallmarket.co.uk/",
+      "checked": "2026-08"
     },
     {
       "id": "monument",
@@ -1792,7 +1987,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "למעלה מ-300 מדרגות ואין מעלית, אבל התצפית זולה בהרבה מהתצפיות המסחריות."
+      "tip": "למעלה מ-300 מדרגות ואין מעלית, אבל התצפית זולה בהרבה מהתצפיות המסחריות.",
+      "lat": 51.51014,
+      "lng": -0.08595,
+      "precision": "exact",
+      "source": "https://www.cityoflondon.gov.uk/things-to-do/attractions-museums-entertainment/monument",
+      "checked": "2026-08"
     },
     {
       "id": "st-dunstan",
@@ -1831,7 +2031,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "אחת הפינות השקטות והיפות בלונדון, וכמעט ריקה מתיירים בבוקר."
+      "tip": "אחת הפינות השקטות והיפות בלונדון, וכמעט ריקה מתיירים בבוקר.",
+      "lat": 51.50950,
+      "lng": -0.08260,
+      "precision": "exact",
+      "source": "https://www.cityoflondon.gov.uk/services/parks-and-gardens/st-dunstan-in-the-east",
+      "checked": "2026-08"
     },
     {
       "id": "bank-museum",
@@ -1866,7 +2071,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "פתוח בעיקר בימי חול. הרמת מטיל הזהב היא הדבר שהילדים זוכרים ממנו."
+      "tip": "פתוח בעיקר בימי חול. הרמת מטיל הזהב היא הדבר שהילדים זוכרים ממנו.",
+      "lat": 51.51410,
+      "lng": -0.08780,
+      "precision": "exact",
+      "source": "https://www.bankofengland.co.uk/museum/plan-your-visit",
+      "checked": "2026-08"
     },
     {
       "id": "guildhall",
@@ -1902,7 +2112,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "השרידים הרומיים נמצאים מתחת לגלריית האמנות, וקל לפספס את הכניסה אליהם."
+      "tip": "השרידים הרומיים נמצאים מתחת לגלריית האמנות, וקל לפספס את הכניסה אליהם.",
+      "lat": 51.51560,
+      "lng": -0.09170,
+      "precision": "exact",
+      "source": "https://www.thecityofldn.com/directory/guildhall-art-gallery/",
+      "checked": "2026-08"
     },
     {
       "id": "barbican",
@@ -1943,7 +2158,12 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "ההסתובבות במתחם ובגנים חינמית. אפשר לעלות למפלסים המוגבהים ולראות את האדריכלות מלמעלה.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.52020,
+      "lng": -0.09380,
+      "precision": "exact",
+      "source": "https://www.barbican.org.uk/visit",
+      "checked": "2026-08"
     },
     {
       "id": "st-katharine-docks",
@@ -1981,7 +2201,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "דקות הליכה ממצודת לונדון אבל כמעט בלי תיירים, וזה המקום הנוח לעצור בו לאכול באזור."
+      "tip": "דקות הליכה ממצודת לונדון אבל כמעט בלי תיירים, וזה המקום הנוח לעצור בו לאכול באזור.",
+      "lat": 51.50710,
+      "lng": -0.07120,
+      "precision": "approx",
+      "source": "https://www.skdocks.co.uk/",
+      "checked": "2026-08"
     },
     {
       "id": "postal-museum",
@@ -2016,7 +2241,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": true,
-      "tip": "הנסיעה ברכבת הדואר היא בקרונות צרים מאוד ובשעות מוגדרות, ולכן שווה להזמין מקום מראש."
+      "tip": "הנסיעה ברכבת הדואר היא בקרונות צרים מאוד ובשעות מוגדרות, ולכן שווה להזמין מקום מראש.",
+      "lat": 51.52500,
+      "lng": -0.11190,
+      "precision": "exact",
+      "source": "https://www.postalmuseum.org/visit-us/",
+      "checked": "2026-08"
     },
     {
       "id": "imperial-war-museum",
@@ -2055,7 +2285,12 @@
       "anchor": true,
       "bookAhead": false,
       "tip": "תערוכת השואה קשה מאוד רגשית ואינה מיועדת לילדים צעירים. שאר המוזיאון מתאים לכל הגילים.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.49580,
+      "lng": -0.10870,
+      "precision": "exact",
+      "source": "https://www.iwm.org.uk/visits/iwm-london",
+      "checked": "2026-08"
     },
     {
       "id": "hms-belfast",
@@ -2089,7 +2324,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "הרבה סולמות ומעברים צרים, חוויה מצוינת לילדים אבל פחות נוחה למי שמתקשה בתנועה."
+      "tip": "הרבה סולמות ומעברים צרים, חוויה מצוינת לילדים אבל פחות נוחה למי שמתקשה בתנועה.",
+      "lat": 51.50660,
+      "lng": -0.08140,
+      "precision": "exact",
+      "source": "https://www.iwm.org.uk/visits/hms-belfast",
+      "checked": "2026-08"
     },
     {
       "id": "globe-theatre",
@@ -2129,7 +2369,12 @@
       "kids": false,
       "anchor": true,
       "bookAhead": false,
-      "tip": "אפשר לבחור בין סיור מודרך במבנה לבין צפייה בהצגה. הכרטיסים בעמידה הם הזולים ביותר."
+      "tip": "אפשר לבחור בין סיור מודרך במבנה לבין צפייה בהצגה. הכרטיסים בעמידה הם הזולים ביותר.",
+      "lat": 51.50820,
+      "lng": -0.09720,
+      "precision": "exact",
+      "source": "https://www.shakespearesglobe.com/visit/",
+      "checked": "2026-08"
     },
     {
       "id": "southwark-cathedral",
@@ -2165,7 +2410,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "עצירה טבעית ושקטה של רבע שעה בדרך אל שוק בורו או ממנו."
+      "tip": "עצירה טבעית ושקטה של רבע שעה בדרך אל שוק בורו או ממנו.",
+      "lat": 51.50620,
+      "lng": -0.08920,
+      "precision": "exact",
+      "source": "https://cathedral.southwark.anglican.org/visiting/",
+      "checked": "2026-08"
     },
     {
       "id": "leake-street",
@@ -2198,7 +2448,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "לרוב יש שם אמנים שמציירים בזמן אמת, וזה החלק המעניין באמת בביקור."
+      "tip": "לרוב יש שם אמנים שמציירים בזמן אמת, וזה החלק המעניין באמת בביקור.",
+      "lat": 51.50135,
+      "lng": -0.11474,
+      "precision": "approx",
+      "source": "https://leakestreetarches.london/",
+      "checked": "2026-08"
     },
     {
       "id": "old-operating-theatre",
@@ -2234,7 +2489,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "העלייה אליו היא במדרגות לולייניות צרות ותלולות, ואין דרך אחרת להגיע."
+      "tip": "העלייה אליו היא במדרגות לולייניות צרות ותלולות, ואין דרך אחרת להגיע.",
+      "lat": 51.50430,
+      "lng": -0.08770,
+      "precision": "exact",
+      "source": "https://oldoperatingtheatre.com/visit/",
+      "checked": "2026-08"
     },
     {
       "id": "sea-life",
@@ -2268,7 +2528,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "מהאטרקציות היקרות בלונדון. מי שנוסע עם ילדים ובודק גם את הלונדון איי, כדאי שיבדוק כרטיס משולב."
+      "tip": "מהאטרקציות היקרות בלונדון. מי שנוסע עם ילדים ובודק גם את הלונדון איי, כדאי שיבדוק כרטיס משולב.",
+      "lat": 51.50190,
+      "lng": -0.11960,
+      "precision": "exact",
+      "source": "https://www.visitsealife.com/london/plan-your-visit/",
+      "checked": "2026-08"
     },
     {
       "id": "design-museum",
@@ -2304,7 +2569,12 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "התצוגה הקבועה חינמית, והתערוכות המתחלפות בתשלום. גם המבנה עצמו שווה ביקור.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.49970,
+      "lng": -0.19990,
+      "precision": "exact",
+      "source": "https://designmuseum.org/plan-your-visit",
+      "checked": "2026-08"
     },
     {
       "id": "holland-park",
@@ -2340,7 +2610,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "הגן היפני קטן יחסית, ולכן הכי נעים בו בבוקר לפני שמתמלא."
+      "tip": "הגן היפני קטן יחסית, ולכן הכי נעים בו בבוקר לפני שמתמלא.",
+      "lat": 51.50250,
+      "lng": -0.20290,
+      "precision": "approx",
+      "source": "https://www.rbkc.gov.uk/leisure-and-culture/parks/holland-park",
+      "checked": "2026-08"
     },
     {
       "id": "harrods",
@@ -2377,7 +2652,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "הכניסה חינמית וגם מי שלא קונה שווה לו לעבור באולמות המזון ובחדר המדרגות המצרי."
+      "tip": "הכניסה חינמית וגם מי שלא קונה שווה לו לעבור באולמות המזון ובחדר המדרגות המצרי.",
+      "lat": 51.49940,
+      "lng": -0.16330,
+      "precision": "exact",
+      "source": "https://www.harrods.com/en-gb/store-guide",
+      "checked": "2026-08"
     },
     {
       "id": "royal-albert-hall",
@@ -2414,7 +2694,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "אפשר גם סיור מודרך במבנה וגם הופעה בערב. הסיור זול בהרבה מכרטיס להופעה."
+      "tip": "אפשר גם סיור מודרך במבנה וגם הופעה בערב. הסיור זול בהרבה מכרטיס להופעה.",
+      "lat": 51.50100,
+      "lng": -0.17740,
+      "precision": "exact",
+      "source": "https://www.royalalberthall.com/visit/",
+      "checked": "2026-08"
     },
     {
       "id": "british-library",
@@ -2532,7 +2817,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "הבית קטן מאוד והתור בחוץ ארוך. מי שלא מעריץ מושבע, מספיק לו לצלם את החזית."
+      "tip": "הבית קטן מאוד והתור בחוץ ארוך. מי שלא מעריץ מושבע, מספיק לו לצלם את החזית.",
+      "lat": 51.52380,
+      "lng": -0.15850,
+      "precision": "exact",
+      "source": "https://www.sherlock-holmes.co.uk/",
+      "checked": "2026-08"
     },
     {
       "id": "madame-tussauds",
@@ -2565,7 +2855,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": true,
-      "tip": "מהאטרקציות היקרות בעיר והתורים בכניסה ארוכים, ולכן כרטיס עם שעה קבועה מראש חוסך המתנה."
+      "tip": "מהאטרקציות היקרות בעיר והתורים בכניסה ארוכים, ולכן כרטיס עם שעה קבועה מראש חוסך המתנה.",
+      "lat": 51.52280,
+      "lng": -0.15480,
+      "precision": "exact",
+      "source": "https://www.madametussauds.com/london/plan-your-visit/",
+      "checked": "2026-08"
     },
     {
       "id": "hampstead-heath",
@@ -2771,7 +3066,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "אפשר ללכת משם לאורך התעלה דרך גן החיות ועד קמדן, אחת ההליכות היפות בלונדון."
+      "tip": "אפשר ללכת משם לאורך התעלה דרך גן החיות ועד קמדן, אחת ההליכות היפות בלונדון.",
+      "lat": 51.52310,
+      "lng": -0.18350,
+      "precision": "approx",
+      "source": "https://canalrivertrust.org.uk/enjoy-the-waterways/canal-and-river-network/regents-canal",
+      "checked": "2026-08"
     },
     {
       "id": "spitalfields-market",
@@ -3036,7 +3336,12 @@
       "kids": true,
       "anchor": true,
       "bookAhead": true,
-      "tip": "העלייה לגבעה תלולה, אבל התצפית ממנה חינמית גם בלי כרטיס למצפה עצמו."
+      "tip": "העלייה לגבעה תלולה, אבל התצפית ממנה חינמית גם בלי כרטיס למצפה עצמו.",
+      "lat": 51.47690,
+      "lng": -0.00050,
+      "precision": "exact",
+      "source": "https://www.rmg.co.uk/royal-observatory/plan-your-visit",
+      "checked": "2026-08"
     },
     {
       "id": "cutty-sark",
@@ -3070,7 +3375,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "ההליכה מתחת לגוף הספינה היא החלק הייחודי, ואפשר לראות אותה מבחוץ גם בלי כרטיס."
+      "tip": "ההליכה מתחת לגוף הספינה היא החלק הייחודי, ואפשר לראות אותה מבחוץ גם בלי כרטיס.",
+      "lat": 51.48280,
+      "lng": -0.00960,
+      "precision": "exact",
+      "source": "https://www.rmg.co.uk/cutty-sark/plan-your-visit",
+      "checked": "2026-08"
     },
     {
       "id": "queens-house",
@@ -3109,7 +3419,12 @@
       "kids": false,
       "anchor": false,
       "bookAhead": false,
-      "tip": "הכניסה חינמית, וגרם המדרגות המסתלסל הוא אחד המקומות המצולמים בגריניץ׳."
+      "tip": "הכניסה חינמית, וגרם המדרגות המסתלסל הוא אחד המקומות המצולמים בגריניץ׳.",
+      "lat": 51.48120,
+      "lng": -0.00370,
+      "precision": "exact",
+      "source": "https://www.rmg.co.uk/queens-house/plan-your-visit",
+      "checked": "2026-08"
     },
     {
       "id": "greenwich-market",
@@ -3148,7 +3463,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "נקודת עצירה טבעית לאוכל באמצע יום בגריניץ׳, בין המוזיאונים לפארק."
+      "tip": "נקודת עצירה טבעית לאוכל באמצע יום בגריניץ׳, בין המוזיאונים לפארק.",
+      "lat": 51.48160,
+      "lng": -0.00900,
+      "precision": "exact",
+      "source": "https://www.greenwichmarket.london/",
+      "checked": "2026-08"
     },
     {
       "id": "greenwich-foot-tunnel",
@@ -3183,7 +3503,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "בצד השני נפתח הנוף הקלאסי על גריניץ׳ מעבר לנהר, וזו הדרך החינמית להגיע אליו."
+      "tip": "בצד השני נפתח הנוף הקלאסי על גריניץ׳ מעבר לנהר, וזו הדרך החינמית להגיע אליו.",
+      "lat": 51.48470,
+      "lng": -0.01030,
+      "precision": "exact",
+      "source": "https://www.royalgreenwich.gov.uk/directory-record/62/greenwich-foot-tunnel",
+      "checked": "2026-08"
     },
     {
       "id": "richmond-park",
@@ -3220,7 +3545,12 @@
       "kids": true,
       "anchor": true,
       "bookAhead": false,
-      "tip": "האיילים הם חיות בר ולא חיות מחמד. שומרים מרחק, במיוחד בעונת הייחום בסתיו."
+      "tip": "האיילים הם חיות בר ולא חיות מחמד. שומרים מרחק, במיוחד בעונת הייחום בסתיו.",
+      "lat": 51.43851,
+      "lng": -0.27474,
+      "precision": "approx",
+      "source": "https://www.royalparks.org.uk/visit/parks/richmond-park",
+      "checked": "2026-08"
     },
     {
       "id": "windsor-castle",
@@ -3256,7 +3586,12 @@
       "kids": true,
       "anchor": true,
       "bookAhead": true,
-      "tip": "דורשת כמעט יום שלם כולל הנסיעה. הכרטיסים נמכרים לשעה קבועה ונגמרים בעונה."
+      "tip": "דורשת כמעט יום שלם כולל הנסיעה. הכרטיסים נמכרים לשעה קבועה ונגמרים בעונה.",
+      "lat": 51.48379,
+      "lng": -0.60404,
+      "precision": "exact",
+      "source": "https://www.rct.uk/visit/windsor-castle",
+      "checked": "2026-08"
     },
     {
       "id": "wembley-tour",
@@ -3294,7 +3629,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": true,
-      "tip": "הסיורים לא מתקיימים בימי משחק או אירוע, ולכן חובה לבדוק את התאריך מראש."
+      "tip": "הסיורים לא מתקיימים בימי משחק או אירוע, ולכן חובה לבדוק את התאריך מראש.",
+      "lat": 51.55600,
+      "lng": -0.27960,
+      "precision": "exact",
+      "source": "https://www.wembleystadium.com/tours",
+      "checked": "2026-08"
     },
     {
       "id": "cable-car",
@@ -3330,7 +3670,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "נסיעה קצרה אבל הנוף פתוח לכל הכיוונים, ובשעת השקיעה זה הזמן היפה ביותר."
+      "tip": "נסיעה קצרה אבל הנוף פתוח לכל הכיוונים, ובשעת השקיעה זה הזמן היפה ביותר.",
+      "lat": 51.49991,
+      "lng": 0.00557,
+      "precision": "approx",
+      "source": "https://tfl.gov.uk/modes/london-cable-car/",
+      "checked": "2026-08"
     },
     {
       "id": "docklands-museum",
@@ -3364,7 +3709,12 @@
       "kids": true,
       "anchor": false,
       "bookAhead": false,
-      "tip": "חינמי ולרוב ריק יחסית, והמחסן ההיסטורי עצמו מעניין לא פחות מהתצוגה."
+      "tip": "חינמי ולרוב ריק יחסית, והמחסן ההיסטורי עצמו מעניין לא פחות מהתצוגה.",
+      "lat": 51.50763,
+      "lng": -0.02387,
+      "precision": "exact",
+      "source": "https://www.museumoflondon.org.uk/museum-london-docklands/plan-your-visit",
+      "checked": "2026-08"
     },
     {
       "id": "battersea-power-station",
@@ -3405,7 +3755,12 @@
       "anchor": false,
       "bookAhead": false,
       "tip": "הכניסה למתחם חינמית. יש גם מעלית זכוכית שעולה בתוך אחת הארובות, והיא בתשלום נפרד.",
-      "partlyPaid": true
+      "partlyPaid": true,
+      "lat": 51.48180,
+      "lng": -0.14450,
+      "precision": "exact",
+      "source": "https://batterseapowerstation.co.uk/plan-your-visit/",
+      "checked": "2026-08"
     },
     {
       "id": "raf-museum",
@@ -3442,7 +3797,12 @@
       "kids": true,
       "anchor": true,
       "bookAhead": false,
-      "tip": "חינמי לגמרי ואחד המקומות הפחות מוכרים שמצוינים לילדים, בעיקר בימי גשם."
+      "tip": "חינמי לגמרי ואחד המקומות הפחות מוכרים שמצוינים לילדים, בעיקר בימי גשם.",
+      "lat": 51.59680,
+      "lng": -0.24160,
+      "precision": "exact",
+      "source": "https://www.rafmuseum.org.uk/london/plan-your-visit/",
+      "checked": "2026-08"
     },
     {
       "id": "rivington-street-art",

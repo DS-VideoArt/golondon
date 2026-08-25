@@ -171,6 +171,8 @@
       '.nb-note{font-size:12.5px;color:#858a9c;margin:0 0 12px;line-height:1.55;}',
       '.nb-controls{display:none;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;}',
       '.nb-controls.is-on{display:flex;}',
+      '.nb-zones{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px;}',
+      '.nb-zone-chip{font-size:12.5px;}',
       '.nb-chip{font-family:inherit;font-size:13px;font-weight:700;padding:7px 13px;border-radius:50px;',
         'border:1px solid rgba(32,31,43,.14);background:#fff;color:#55596b;cursor:pointer;white-space:nowrap;}',
       '.nb-chip.is-on{background:#201f2b;border-color:#201f2b;color:#fff;}',
@@ -237,6 +239,7 @@
       לעשות איתם ומציע דיוק למי שנמצא שם בפועל.
     */
     panel.innerHTML =
+      '<div class="nb-zones" id="nb-zones"></div>' +
       '<p class="nb-intro">כל המקומות שיש לנו במאגר ב' + (ZONE ? ZONE.label : 'שורדיץ׳') + ', על המפה. ' +
         'אפשר לסנן לפי סוג ומרחק, ולהוסיף כל מקום למסלול בלחיצה. ' +
         '<b>נמצאים שם עכשיו?</b> בחרו את המיקום שלכם והמרחקים יחושבו ממנו.</p>' +
@@ -251,8 +254,50 @@
 
     $('nb-geo').addEventListener('click', useGeolocation);
     $('nb-pick').addEventListener('click', startPicking);
+    buildZoneBar();
     buildControls();
     built = true;
+  }
+
+  /*
+    בורר האזורים
+    ============
+    כשהיה אזור פיילוט אחד, הבחירה בכתובת הספיקה. עם שמונה אזורים חיים,
+    מי שנכנס ישירות למתכנן היה כלוא באזור הראשון ברשימה בלי לדעת
+    שיש עוד שבעה. השורה הזאת מציגה את כולם ומאפשרת מעבר בלחיצה.
+  */
+  function buildZoneBar() {
+    var bar = $('nb-zones');
+    if (!bar) return;
+    var live = (ZONES || []).filter(isLive);
+    if (live.length < 2) { bar.hidden = true; return; }
+    bar.innerHTML = '';
+    live.forEach(function (z) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'nb-chip nb-zone-chip' + (ZONE && z.id === ZONE.id ? ' is-on' : '');
+      b.textContent = z.label;
+      b.addEventListener('click', function () { switchZone(z); });
+      bar.appendChild(b);
+    });
+  }
+
+  function switchZone(z) {
+    if (!z || (ZONE && z.id === ZONE.id)) return;
+    ZONE = z;
+    /*
+      איפוס מלא ובנייה מחדש. הפאנל, המפה והתוצאות כולם נגזרים מהאזור,
+      ובנייה נקייה זולה ופשוטה יותר מעדכון חלקי של כל אחד מהם.
+    */
+    if (map) { map.remove(); map = null; cluster = null; anchorMarker = null; ring = null; }
+    state.point = null;
+    state.method = null;
+    built = false;
+    buildShell();
+    labelTab();
+    track('map_zone_switch', { source_component: 'nearby', zone: z.id });
+    if (ZONE.center) setPoint(ZONE.center.slice(), 'area_default');
+    if (map) setTimeout(function () { map.invalidateSize(); }, 60);
   }
 
   function buildControls() {
