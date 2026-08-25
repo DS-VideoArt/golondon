@@ -238,11 +238,14 @@
       לבחור נקודה, ועכשיו המקומות כבר על המסך, אז הוא מסביר מה אפשר
       לעשות איתם ומציע דיוק למי שנמצא שם בפועל.
     */
+    var introTxt = (ZONE && ZONE.citywide)
+      ? 'כל המקומות שבמאגר, על מפה אחת של לונדון. מתקרבים לאזור שמעניין אתכם, לוחצים על מקום ומוסיפים למסלול. אפשר גם לבחור אזור ממוקד בשורה למעלה.'
+      : 'כל המקומות שיש לנו במאגר ב' + (ZONE ? ZONE.label : 'שורדיץ׳') + ', על המפה. ' +
+        'אפשר לסנן לפי סוג ומרחק, ולהוסיף כל מקום למסלול בלחיצה. ' +
+        '<b>נמצאים שם עכשיו?</b> בחרו את המיקום שלכם והמרחקים יחושבו ממנו.';
     panel.innerHTML =
       '<div class="nb-zones" id="nb-zones"></div>' +
-      '<p class="nb-intro">כל המקומות שיש לנו במאגר ב' + (ZONE ? ZONE.label : 'שורדיץ׳') + ', על המפה. ' +
-        'אפשר לסנן לפי סוג ומרחק, ולהוסיף כל מקום למסלול בלחיצה. ' +
-        '<b>נמצאים שם עכשיו?</b> בחרו את המיקום שלכם והמרחקים יחושבו ממנו.</p>' +
+      '<p class="nb-intro">' + introTxt + '</p>' +
       '<div class="nb-start">' +
         '<button type="button" class="nb-btn" id="nb-geo"><i class="fas fa-location-arrow"></i> השתמשו במיקום שלי</button>' +
         '<button type="button" class="nb-btn" id="nb-pick"><i class="fas fa-map-pin"></i> בחרו נקודה על המפה</button>' +
@@ -303,10 +306,12 @@
   function buildControls() {
     var c = $('nb-controls');
     c.innerHTML = '';
-    RADII.forEach(function (r) {
+    var radii = RADII;
+    if (ZONE && ZONE.citywide) radii = RADII.concat([ZONE.radiusM]);
+    radii.forEach(function (r) {
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'nb-chip' + (r === state.radius ? ' is-on' : '');
-      b.textContent = r < 1000 ? r + ' מ׳' : (r / 1000) + ' ק״מ';
+      b.textContent = r >= 50000 ? 'כל העיר' : (r < 1000 ? r + ' מ׳' : (r / 1000) + ' ק״מ');
       b.addEventListener('click', function () {
         state.radius = r;
         buildControls(); render();
@@ -424,7 +429,7 @@
       ולכן במיקוד אוטומטי פותחים בטווח שמכסה את כל האזור, אחרת המספר בכפתור
       גדול מהמספר שמופיע בפועל.
     */
-    if (method === 'area_default') state.radius = 2000;
+    if (method === 'area_default') state.radius = (ZONE && ZONE.citywide) ? ZONE.radiusM : 2000;
     $('nb-controls').classList.add('is-on');
     if (anchorMarker) map.removeLayer(anchorMarker);
     /*
@@ -435,7 +440,7 @@
       anchorMarker = L.circleMarker(pt, { radius: 8, color: '#DC2626', weight: 3, fillColor: '#fff', fillOpacity: 1 }).addTo(map);
     }
     /* מבט רחב יותר כשמציגים אזור שלם, וקרוב כשמדובר במיקום ממשי */
-    map.setView(pt, method === 'area_default' ? 14 : 15);
+    map.setView(pt, method === 'area_default' ? ((ZONE && ZONE.citywide) ? 12 : 14) : 15);
     setTimeout(function () { map.invalidateSize(); }, 60);
     track('location_selected', {
       source_component: 'nearby',
@@ -610,9 +615,10 @@
     */
     var live = (ZONES || []).filter(isLive);
     var HE_N = { 2: 'שני', 3: 'שלושה', 4: 'ארבעה', 5: 'חמישה' };
-    var tag = (!PICKED_BY_PARAM && live.length > 1)
-      ? 'פיילוט ב' + (HE_N[live.length] || live.length) + ' אזורים'
-      : 'פיילוט ב' + ZONE.label;
+    var tag;
+    if (ZONE.citywide) tag = 'כל לונדון על המפה';
+    else if (!PICKED_BY_PARAM && live.length > 1) tag = ZONE.label + ' ועוד ' + (live.length - 1) + ' אזורים';
+    else tag = 'פיילוט ב' + ZONE.label;
     t.innerHTML = '<i class="fas fa-location-crosshairs"></i> סביבי ' +
       '<span class="nb-tag">' + tag + '</span>';
   }
@@ -734,6 +740,18 @@
       TAX = both[1];
       INFO = both[2] || {};
       var zones = (TAX.coverage && TAX.coverage.zones) || [];
+      /*
+        מצב תכנון מלא: אזור וירטואלי שמכסה את כל לונדון רבתי.
+        הוא לא יושב בטקסונומיה כי אין לו משמעות של "כיסוי שכונתי",
+        הוא פשוט כל מקום שיש לו קואורדינטה. citywide משנה שלוש
+        התנהגויות בהמשך: רדיוס פתיחה, זום, ותווית. השאר זהה למצב
+        סביבי הרגיל, בכוונה, כדי שכל תיקון עתידי ישרת את שניהם.
+      */
+      var CITYWIDE = {
+        id: 'all', label: 'כל לונדון', citywide: true,
+        center: [51.5074, -0.1276], radiusM: 60000, status: 'pilot', hoods: []
+      };
+      zones = [CITYWIDE].concat(zones);
       ZONES = zones;
       ZONE = pickZone(zones);
       if (!ZONE) { $('tab-nearby').hidden = true; return; }
