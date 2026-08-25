@@ -181,7 +181,7 @@
     nodes.forEach(function (node) { processTextNode(node, matcher, seen); });
   }
 
-  var TARGET_SELECTOR = '.content, .post-card-text';
+  var TARGET_SELECTOR = '.content, .post-card-text, .wn-item-in, .mk-item';
 
   function scan(matcher) {
     document.querySelectorAll(TARGET_SELECTOR).forEach(function (el) {
