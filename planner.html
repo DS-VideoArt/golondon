@@ -122,6 +122,21 @@
     .results-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 8px; }
     .results-head h2 { font-size: 23px; font-weight: 900; color: #fff; }
     .results-sub { font-size: 13.5px; color: rgba(255,255,255,0.5); margin-bottom: 22px; }
+    .stay-tip { max-width: 800px; margin: -8px 0 24px; padding: 13px 17px; border-radius: 13px; font-size: 14px; line-height: 1.65;
+      background: rgba(59,130,246,0.11); border: 1px solid rgba(59,130,246,0.3); color: rgba(255,255,255,0.86); }
+    .stay-tip i { color: #93c5fd; margin-inline-end: 5px; }
+    .stay-tip strong { color: #fff; }
+    .stay-tip a { color: #93c5fd; font-weight: 700; }
+    .stay-tip--suggest { background: rgba(234,88,12,0.12); border-color: rgba(234,88,12,0.32); }
+    .stay-tip--suggest i { color: #fdba74; }
+    .stay-tip--suggest a { color: #fdba74; }
+    .travel-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 700;
+      padding: 4px 12px; border-radius: 999px; margin-bottom: 10px; }
+    .travel-badge i { font-size: 11.5px; }
+    .travel--home { background: rgba(21,128,61,0.22); color: #86efac; }
+    .travel--near { background: rgba(21,128,61,0.16); color: #a7f3d0; }
+    .travel--mid { background: rgba(59,130,246,0.18); color: #93c5fd; }
+    .travel--far { background: rgba(234,88,12,0.2); color: #fdba74; }
     .results-actions { display: flex; flex-wrap: wrap; gap: 8px; }
     .mini-btn {
       background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
@@ -611,6 +626,12 @@
     </div>
 
     <div class="field">
+      <label class="field-label" id="lbl-stay">איפה אתם ישנים?</label>
+      <span class="field-hint">לא חובה, אבל זה משנה את הסדר. היום הראשון יתחיל קרוב למלון, ולכל יום נסמן כמה נסיעה הוא דורש. עוד לא הזמנתם? נמליץ לכם על אזור בסוף</span>
+      <div class="chips" id="stay" role="group" aria-labelledby="lbl-stay"></div>
+    </div>
+
+    <div class="field">
       <label class="field-label" id="lbl-budget">מה גישת התקציב שלכם?</label>
       <span class="field-hint">בלונדון יש המון אטרקציות חינמיות ברמה גבוהה, כולל רוב המוזיאונים הגדולים</span>
       <div class="chips" id="budget" role="group" aria-labelledby="lbl-budget"></div>
@@ -675,6 +696,7 @@
       </div>
     </div>
     <p class="results-sub" id="results-sub"></p>
+    <div class="stay-tip" id="stay-tip" hidden></div>
 
     <div class="versions" id="versions" hidden></div>
     <div class="compare" id="compare" hidden></div>
@@ -725,7 +747,7 @@
   var LAST = null;
 
   /* childAges ריק פירושו מבוגרים בלבד. אחרת, מערך מטווחי הגיל שנבחרו */
-  var state = { days: 4, interests: [], childAges: [], budget: 'balanced' };
+  var state = { days: 4, interests: [], childAges: [], budget: 'balanced', stay: '' };
 
   var BUDGETS = [
     { id: 'free', label: 'לחסוך כמה שאפשר', emoji: '🪙' },
@@ -830,6 +852,28 @@
         renderControls();
       }));
     });
+
+    /*
+      אזור הלינה. רק אזורים שאנשים באמת ישנים בהם מוצעים כאן, ולכן
+      גריניץ׳ ומחוץ למרכז אינם ברשימה גם כשיש בהם ימי טיול.
+      ברירת המחדל היא "עוד לא יודעים", והיא מזכה בהמלצה בסוף.
+    */
+    var sBox = $('stay');
+    if (sBox) {
+      sBox.innerHTML = '';
+      sBox.appendChild(makeChip('עוד לא יודעים', '🤔', state.stay === '', function () {
+        state.stay = '';
+        renderControls();
+      }));
+      STAY_CANDIDATES.forEach(function (id) {
+        var a = DATA.areas[id];
+        if (!a) return;
+        sBox.appendChild(makeChip(a.name, a.emoji, state.stay === id, function () {
+          state.stay = id;
+          renderControls();
+        }));
+      });
+    }
   }
 
   /*
@@ -838,6 +882,57 @@
     קודם נבחר עוגן ליום, אתר מרכזי שמצדיק את הנסיעה לאזור, ואז ממלאים סביבו
     אטרקציות נוספות מאותו אזור עד שהיום מלא.
   */
+  /*
+    כמה רחוק אזור אחד מהשני, בסולם של ארבע דרגות: 0 אותו אזור,
+    1 קרוב מאוד (הליכה או תחנה אחת), 2 נסיעה בינונית, 3 נסיעה ארוכה.
+    אין קואורדינטות בנתונים, ולכן זו טבלה ידנית שנבנתה לפי המפה
+    האמיתית של לונדון ולפי זמני הנסיעה בפועל ברכבת התחתית.
+    מוצג רק כשהמשתמש אמר לנו איפה הוא ישן.
+  */
+  var AREA_NEAR = {
+    westminster: { westminster: 0, southbank: 1, city: 2, camden: 2, kensington: 2, shoreditch: 2, greenwich: 3, outer: 3 },
+    southbank:   { southbank: 0, westminster: 1, city: 1, shoreditch: 2, camden: 2, kensington: 2, greenwich: 2, outer: 3 },
+    city:        { city: 0, shoreditch: 1, southbank: 1, westminster: 2, camden: 2, greenwich: 2, kensington: 2, outer: 3 },
+    shoreditch:  { shoreditch: 0, city: 1, camden: 2, southbank: 2, westminster: 2, greenwich: 3, kensington: 3, outer: 3 },
+    camden:      { camden: 0, westminster: 2, shoreditch: 2, city: 2, southbank: 2, kensington: 2, greenwich: 3, outer: 3 },
+    kensington:  { kensington: 0, westminster: 2, southbank: 2, camden: 2, city: 2, shoreditch: 3, greenwich: 3, outer: 3 },
+    greenwich:   { greenwich: 0, southbank: 2, city: 2, westminster: 3, shoreditch: 3, camden: 3, kensington: 3, outer: 3 },
+    outer:       { outer: 0, westminster: 3, southbank: 3, city: 3, camden: 3, kensington: 3, shoreditch: 3, greenwich: 3 }
+  };
+
+  var TRAVEL_LABEL = [
+    { txt: 'האזור שבו אתם ישנים', cls: 'travel--home', icon: 'fa-house' },
+    { txt: 'נסיעה קצרה מהמלון', cls: 'travel--near', icon: 'fa-person-walking' },
+    { txt: 'נסיעה בינונית מהמלון', cls: 'travel--mid', icon: 'fa-train-subway' },
+    { txt: 'נסיעה ארוכה, שווה לצאת מוקדם', cls: 'travel--far', icon: 'fa-clock' }
+  ];
+
+  function travelFromStay(area) {
+    if (!state.stay || !AREA_NEAR[state.stay]) return null;
+    var d = AREA_NEAR[state.stay][area];
+    return typeof d === 'number' ? d : null;
+  }
+
+  /*
+    למי שעדיין לא הזמין לינה: איזה אזור היה חוסך הכי הרבה נסיעות
+    למסלול שהרגע נבנה. סוכמים את מרחקי הנסיעה מכל אזור מועמד אל
+    כל יום במסלול, והזול ביותר מנצח. אזורים שאינם מציאותיים ללינה
+    (מחוץ למרכז, גריניץ׳) אינם מועמדים.
+  */
+  var STAY_CANDIDATES = ['westminster', 'southbank', 'city', 'camden', 'shoreditch', 'kensington'];
+
+  function suggestStay(plan) {
+    var best = null;
+    STAY_CANDIDATES.forEach(function (cand) {
+      var cost = plan.reduce(function (sum, d) {
+        var v = AREA_NEAR[cand] && AREA_NEAR[cand][d.area];
+        return sum + (typeof v === 'number' ? v : 3);
+      }, 0);
+      if (!best || cost < best.cost) best = { area: cand, cost: cost };
+    });
+    return best;
+  }
+
   function build() {
     var days = state.days;
     /* סינון קשיח רק כשיש בפועל תינוק, פעוט או ילד צעיר. נוער לבדו לא מסנן
@@ -916,7 +1011,20 @@
       }
 
       return { day: idx + 1, area: anchor.area, items: items, hours: hours };
-    });
+    })
+    /*
+      כשידוע לנו איפה ישנים, היום הראשון הוא הקרוב ביותר למלון.
+      הסיבה מעשית: היום הראשון הוא בדרך כלל היום העייף, אחרי טיסה
+      ואחרי צ'ק אין, ולא הגיוני לפתוח אותו בנסיעה של ארבעים דקות.
+      הימים הרחוקים נדחפים לאמצע ולסוף, כשכבר מכירים את התחבורה.
+      בלי מלון הסדר נשאר כפי שהאלגוריתם בנה אותו.
+    */
+    .sort(function (a, b) {
+      var da = travelFromStay(a.area), db = travelFromStay(b.area);
+      if (da === null || db === null) return 0;
+      return da - db;
+    })
+    .map(function (d, i) { return { day: i + 1, area: d.area, items: d.items, hours: d.hours }; });
   }
 
   /*
@@ -1021,6 +1129,15 @@
     var area = DATA.areas[d.area] || { name: '', emoji: '📍' };
     var card = document.createElement('article');
     card.className = 'day-card';
+
+    var dist = travelFromStay(d.area);
+    if (dist !== null) {
+      var t = TRAVEL_LABEL[dist];
+      var badge = document.createElement('div');
+      badge.className = 'travel-badge ' + t.cls;
+      badge.innerHTML = '<i class="fas ' + t.icon + '"></i> ' + t.txt;
+      card.appendChild(badge);
+    }
 
     var head = document.createElement('div');
     head.className = 'day-head';
@@ -1135,6 +1252,32 @@
     }, 0);
     $('results-title').textContent = 'המסלול שלכם, ' + plan.length + (plan.length === 1 ? ' יום' : ' ימים');
     $('results-sub').textContent = total + ' עצירות בסך הכל, ' + freeTotal + ' מהן בלי תשלום כניסה. כל יום מרוכז באזור אחד כדי לחסוך נסיעות.';
+
+    /*
+      שתי הודעות שונות, ושתיהן על אותה תיבה. מי שאמר לנו איפה הוא ישן
+      מקבל אישור שהסדר הותאם, ומי שעדיין לא הזמין מקבל המלצה מחושבת
+      על האזור שיחסוך לו הכי הרבה נסיעות דווקא במסלול שלו.
+    */
+    var tip = $('stay-tip');
+    if (state.stay && DATA.areas[state.stay]) {
+      var far = plan.filter(function (d) { return travelFromStay(d.area) === 3; }).length;
+      tip.hidden = false;
+      tip.className = 'stay-tip';
+      tip.innerHTML = '<i class="fas fa-house"></i> <strong>סודר לפי המלון שלכם ב' + DATA.areas[state.stay].name + '.</strong> ' +
+        'היום הראשון הוא הקרוב ביותר, ולכל יום כתוב כמה נסיעה הוא דורש.' +
+        (far ? ' שימו לב שיש ' + (far === 1 ? 'יום אחד רחוק' : far + ' ימים רחוקים') + ', שווה לצאת בהם מוקדם.' : '');
+    } else {
+      var best = suggestStay(plan);
+      if (best && DATA.areas[best.area]) {
+        tip.hidden = false;
+        tip.className = 'stay-tip stay-tip--suggest';
+        tip.innerHTML = '<i class="fas fa-lightbulb"></i> <strong>עוד לא הזמנתם לינה?</strong> ' +
+          'למסלול הזה, האזור שיחסוך לכם הכי הרבה נסיעות הוא <strong>' + DATA.areas[best.area].name + '</strong>. ' +
+          '<a href="guide-areas.html">השוואת אזורי הלינה בלונדון</a>';
+      } else {
+        tip.hidden = true;
+      }
+    }
   }
 
   function asText(plan) {
