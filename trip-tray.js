@@ -192,16 +192,14 @@
 
   /* ---------- חיבור לעמוד ---------- */
 
-  /* כרטיסי מקום קיימים, guide-attractions ו guide-football */
+  /*
+    כרטיסי data-place אינם מקבלים עוד כפתור הוספה ישיר. הכרטיס
+    עצמו פותח את חלון המקום, ושם הקורא רואה קודם את המידע ואת
+    המחיר ורק אחר כך את פעולות ההוספה וההזמנה. ההוספה הישירה
+    נשארת רק ברשימות ידניות עם data-trip-add ובכפתורי יום מלא.
+  */
   function wireDataPlace() {
-    var els = document.querySelectorAll('[data-place]');
-    for (var i = 0; i < els.length; i++) {
-      var el = els[i];
-      var id = el.getAttribute('data-place');
-      if (!DATA[id] || el.querySelector('[data-gl-add]')) continue;
-      var host = el.querySelector('div:last-child') || el;
-      host.appendChild(makeButton(id, 'place_card', 'gl-add-row'));
-    }
+    /* בכוונה ריק. ההוספה מכרטיס עוברת דרך חלון המקום בלבד. */
   }
 
   /* סימון ידני בעמוד, למשל ברשימת "יום מושלם" במדריכי האזורים */

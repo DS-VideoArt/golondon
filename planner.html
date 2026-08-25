@@ -179,6 +179,8 @@
     .stop-btn:hover { background: rgba(255,255,255,0.14); color: #fff; text-decoration: none; }
     .stop-btn--book { background: rgba(59,130,246,0.16); border-color: rgba(59,130,246,0.4); color: #93c5fd; }
     .stop-btn--book:hover { background: rgba(59,130,246,0.26); color: #bfdbfe; }
+    .stop-btn--official { background: rgba(16,185,129,0.12); border-color: rgba(16,185,129,0.35); color: #6ee7b7; }
+    .stop-btn--official:hover { background: rgba(16,185,129,0.2); color: #a7f3d0; }
 
     /* מעבר בין בנייה אוטומטית להרכבה ידנית */
     .sr-only {
@@ -272,6 +274,8 @@
     .cube-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 7px; margin-top: 11px; }
     .cube-btn--book { background: rgba(30,58,138,0.14); border-color: rgba(30,58,138,0.34); color: #1e40af; text-decoration: none; }
     .cube-btn--book:hover { background: rgba(30,58,138,0.22); color: #1e3a8a; text-decoration: none; }
+    .cube-btn--official { background: rgba(5,150,105,0.1); border-color: rgba(5,150,105,0.3); color: #047857; text-decoration: none; }
+    .cube-btn--official:hover { background: rgba(5,150,105,0.18); color: #065f46; text-decoration: none; }
     .cube-btn {
       font: inherit; font-size: 12.5px; font-weight: 800; cursor: pointer;
       display: inline-flex; align-items: center; justify-content: center; gap: 6px;
@@ -349,6 +353,8 @@
     .info-btn--primary { flex: 1; background: linear-gradient(135deg,#DC2626,#EA580C); border-color: transparent; color: #fff; }
     .info-btn--book { background: rgba(59,130,246,0.16); border-color: rgba(59,130,246,0.4); color: #93c5fd; }
     .info-btn--book:hover { background: rgba(59,130,246,0.26); color: #bfdbfe; }
+    .info-btn--official { background: rgba(16,185,129,0.12); border-color: rgba(16,185,129,0.35); color: #6ee7b7; }
+    .info-btn--official:hover { background: rgba(16,185,129,0.2); color: #a7f3d0; }
 
     /* חיווי תוצאות החיפוש */
     .pal-status {
@@ -715,6 +721,7 @@
 
   var DATA = null;
   var AFF_CFG = null;
+  var CTA_MAP = null;
   var LAST = null;
 
   /* childAges ריק פירושו מבוגרים בלבד. אחרת, מערך מטווחי הגיל שנבחרו */
@@ -935,17 +942,79 @@
   }
 
   /*
-    לכל מקום יש כפתור הזמנה, גם לאלה שהכניסה הבסיסית אליהם חינם.
-    הסיבה: כמעט בכל אתר חינמי גדול יש חלק שכן עולה כסף, תערוכה מתחלפת,
-    חדרי מדינה בארמון או סיור מודרך, ואנחנו לא רוצים שהמבקר יצא לחפש
-    את זה לבד במקום אחר. הניסוח משתנה לפי סוג המקום, כדי לא להבטיח
-    כרטיס במקום שבו אין כזה.
+    ניסוח הכפתור למקום בתשלום שאין לו סיווג פעולה משלו. בעבר כל מקום
+    קיבל כאן כפתור הזמנה, גם החינמיים. היום ההכרעה נמצאת ב-placeCta:
+    מקום שסווג במחקר האטרקציות מקבל את הפעולה שנקבעה לו שם, ומקום
+    חינמי בלי סיווג לא מקבל קישור מסחרי בכלל.
   */
   function bookingLabel(a) {
     if (!a.free) return 'כרטיסים ומחירים';
     if (a.bookAhead) return 'תפיסת מקום מראש';
     if (a.partlyPaid) return 'כרטיסים לחלקים שבתשלום';
     return 'סיורים וכרטיסים באזור';
+  }
+
+  /*
+    הכרעת הפעולה של מקום, אחת לכל שלושת המשטחים: כרטיס עצירה, חלון
+    מידע ולוח המקומות. הסיווג מגיע מ-attractions-info.json, אותו מקור
+    שמזין את עמוד האטרקציות ואת חלון המקום בשאר האתר, כך שאותו מקום
+    מקבל את אותה פעולה בכל מקום.
+
+    internal    קישור פנימי למדריך באתר, נפתח באותה לשונית, בלי rel.
+    official    הזמנה חינמית באתר רשמי, noopener בלבד, כי sponsored
+                מצהיר על תמורה כספית שאין כאן.
+    commercial  קישור בתשלום. כתובת מותאמת שנמצאה במחקר נשארת כמות
+                שהיא, ומקום עם הצעה כללית עובר דרך שכבת הקישורים כדי
+                שהלחיצה תיספר. תמיד sponsored noopener nofollow.
+
+    מקום שאין לו סיווג: אם הוא חינמי, אין קישור מסחרי. אם הוא בתשלום,
+    נשאר הקישור הכללי הקיים. כשל בטעינת המפה מחזיר אותנו לכלל הזה.
+  */
+  function placeCta(a) {
+    var cta = CTA_MAP && CTA_MAP[a.id];
+    if (cta) {
+      if (cta.internal) {
+        return { kind: 'internal', href: cta.href || '#', label: cta.label, icon: 'fa-book-open' };
+      }
+      if (cta.custom && cta.free) {
+        return { kind: 'official', href: cta.href || '#', label: cta.label, icon: 'fa-calendar-check' };
+      }
+      if (cta.custom) {
+        return { kind: 'commercial', href: cta.href || '#', label: cta.label, icon: 'fa-ticket' };
+      }
+      var viaAff = null;
+      if (AFF_CFG && window.GoLondonAffiliate) {
+        viaAff = window.GoLondonAffiliate.linkFor(AFF_CFG, cta.offer || 'attractions_alt', 'planner', a.id);
+      }
+      return { kind: 'commercial', href: viaAff || cta.href || '#', label: cta.label, icon: 'fa-ticket' };
+    }
+    if (a.free) return null;
+    var url = ticketLink(a);
+    if (!url) return null;
+    return { kind: 'commercial', href: url, label: bookingLabel(a), icon: 'fa-ticket' };
+  }
+
+  /*
+    בניית עוגן הפעולה מתוך ההכרעה. baseClass הוא מחלקת הכפתור של
+    המשטח (stop-btn, info-btn, cube-btn), וההתנהגות נגזרת מהסוג.
+  */
+  function ctaAnchor(c, baseClass, shortLabel) {
+    var a = document.createElement('a');
+    a.href = c.href;
+    if (c.kind === 'internal') {
+      a.className = baseClass;
+    } else if (c.kind === 'official') {
+      a.className = baseClass + ' ' + baseClass + '--official';
+      a.target = '_blank';
+      a.rel = 'noopener';
+    } else {
+      a.className = baseClass + ' ' + baseClass + '--book';
+      a.target = '_blank';
+      a.rel = 'sponsored noopener nofollow';
+    }
+    a.innerHTML = '<i class="fas ' + c.icon + '"></i> ' + (shortLabel || c.label);
+    if (shortLabel) a.title = c.label;
+    return a;
   }
 
   function renderDay(d) {
@@ -1034,16 +1103,8 @@
     infoBtn.addEventListener('click', function () { openInfo(it); });
     acts.appendChild(infoBtn);
 
-    var url = ticketLink(it);
-    if (url) {
-      var a = document.createElement('a');
-      a.className = 'stop-btn stop-btn--book';
-      a.href = url;
-      a.target = '_blank';
-      a.rel = 'sponsored noopener nofollow';
-      a.innerHTML = '<i class="fas fa-ticket"></i> ' + bookingLabel(it);
-      acts.appendChild(a);
-    }
+    var cta = placeCta(it);
+    if (cta) acts.appendChild(ctaAnchor(cta, 'stop-btn'));
 
     body.appendChild(acts);
 
@@ -1394,16 +1455,8 @@
     add.addEventListener('click', function () { addStop(a.id); closeInfo(); });
     actions.appendChild(add);
 
-    var url = ticketLink(a);
-    if (url) {
-      var book = document.createElement('a');
-      book.className = 'info-btn info-btn--book';
-      book.href = url;
-      book.target = '_blank';
-      book.rel = 'sponsored noopener nofollow';
-      book.innerHTML = '<i class="fas fa-ticket"></i> ' + bookingLabel(a);
-      actions.appendChild(book);
-    }
+    var cta = placeCta(a);
+    if (cta) actions.appendChild(ctaAnchor(cta, 'info-btn'));
 
     infoEl.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -1637,16 +1690,11 @@
       actions.appendChild(addBtn);
       actions.appendChild(infoBtn);
 
-      var bookUrl = ticketLink(a);
-      if (bookUrl) {
-        var bookBtn = document.createElement('a');
-        bookBtn.className = 'cube-btn cube-btn--book';
-        bookBtn.href = bookUrl;
-        bookBtn.target = '_blank';
-        bookBtn.rel = 'sponsored noopener nofollow';
-        bookBtn.title = bookingLabel(a);
-        bookBtn.innerHTML = '<i class="fas fa-ticket"></i> הזמנה';
-        actions.appendChild(bookBtn);
+      var cubeCta = placeCta(a);
+      if (cubeCta) {
+        var shortLabel = cubeCta.kind === 'internal' ? 'מדריך'
+          : cubeCta.kind === 'official' ? 'אתר רשמי' : 'הזמנה';
+        actions.appendChild(ctaAnchor(cubeCta, 'cube-btn', shortLabel));
       }
 
       cube.appendChild(emoji);
@@ -2347,9 +2395,31 @@
     draw();
   }
 
-  fetch('planner-data.json', { cache: 'no-cache' })
-    .then(function (r) { return r.json(); })
-    .then(function (d) {
+  /*
+    מפת הפעולות של 92 האטרקציות העשירות. אותו סיווג שמזין את עמוד
+    האטרקציות מזין גם את המתכנן, כדי שמקום חינמי לא יקבל כאן קישור
+    מסחרי שהוא לא מקבל שם. כשל בטעינה אינו שובר את הכלי, פשוט
+    חוזרים לכלל הבסיסי: בתשלום מקבל את הקישור הכללי, חינמי לא.
+  */
+  var ctaMapPromise = fetch('attractions-info.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) {
+      if (!j) return null;
+      var map = {};
+      Object.keys(j).forEach(function (k) {
+        if (k.charAt(0) !== '_' && j[k] && j[k].cta) map[k] = j[k].cta;
+      });
+      return map;
+    })
+    .catch(function () { return null; });
+
+  Promise.all([
+    fetch('planner-data.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }),
+    ctaMapPromise
+  ])
+    .then(function (loaded) {
+      var d = loaded[0];
+      CTA_MAP = loaded[1];
       DATA = d;
       renderControls();
       wire();
