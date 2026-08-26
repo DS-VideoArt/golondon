@@ -1,1130 +1,1130 @@
 {
- "_מה_זה_הקובץ_הזה": "העשרה חיצונית לכל אטרקציה: וידאו יוטיוב אמיתי ומאומת, ותוכן סיור מקורי בעברית עם מחיר אמיתי שנאסף בפועל מהרשת. נבנה על ידי מחקר בתאריך 2026-08-13. נטען אוטומטית בתוך build_attractions.py. אין צורך לערוך את attractions-info.json ישירות.",
- "british-museum": {
-  "video": {
-   "youtube_id": "q2fBWKJL7SQ",
-   "title": "British Museum Tour | A Virtual Walk Inside a London Institution",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
+  "_מה_זה_הקובץ_הזה": "העשרה חיצונית לכל אטרקציה: וידאו יוטיוב אמיתי ומאומת, ותוכן סיור מקורי בעברית עם מחיר אמיתי שנאסף בפועל מהרשת. נבנה על ידי מחקר בתאריך 2026-08-13. נטען אוטומטית בתוך build_attractions.py. אין צורך לערוך את attractions-info.json ישירות.",
+  "british-museum": {
+    "video": {
+      "youtube_id": "q2fBWKJL7SQ",
+      "title": "British Museum Tour | A Virtual Walk Inside a London Institution",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "national-gallery": {
+    "video": {
+      "youtube_id": "prgeZ13fDHA",
+      "title": "The Top Ten Paintings in The National Gallery - An In-Depth Guided Tour",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "westminster-abbey": {
+    "video": {
+      "youtube_id": "oNIcJFSd-g0",
+      "title": "Visit Westminster Abbey: London's royal church | Visit London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 27.13,
+      "currency": "GBP",
+      "duration": "כשעה עד שעה וחצי",
+      "source_url": "https://www.westminster-abbey.org/visit-us/prices-and-entry-times",
+      "desc_he": "הכניסה למנזר וסטמינסטר כוללת אודיו גייד בשלוש עשרה שפות, שמסביר על יותר משלושת אלפים קברים ואנדרטאות בפנים, כולל של ניוטון, דרווין וצ'רצ'יל. זה מקום שבו הכתירו כל מלך אנגלי כמעט מאז שנת 1066, וגם המקום שבו התחתנו וויליאם וקייט. שווה להגיע מוקדם כי התורים בכניסה יכולים להיות ארוכים במיוחד בבוקר.",
+      "price_until": "1 בספטמבר 2026",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "big-ben": {
+    "video": {
+      "youtube_id": "DEGU5SC5tF4",
+      "title": "POV: you're on a tour of Big Ben",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 55,
+      "currency": "GBP",
+      "duration": "כשעה וחצי",
+      "source_url": "https://www.parliament.uk/visiting/visiting-and-tours/big-ben-tour/",
+      "desc_he": "לעלות בפועל לתוך ביג בן זה חוויה נדירה, כי הכרטיסים משוחררים רק שלושה חודשים מראש ונחטפים מהר. הסיור עולה שלוש מאות שלושים וארבע מדרגות בגרם מדרגות צר וספירלי עד לפעמון הגדול עצמו, ומתאים רק לגילאי אחת עשרה ומעלה שמסוגלים להתמודד עם טיפוס כזה. מי שלא רוצה לטפס יכול פשוט להסתכל מבחוץ, זה חינם ורואים אותו מכל מקום לאורך התמזה.",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "buckingham": {
+    "video": {
+      "youtube_id": "z1L0elob3eA",
+      "title": "Buckingham Palace - Changing of the Guard in 4K",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 33,
+      "currency": "GBP",
+      "duration": "כשעתיים",
+      "source_url": "https://www.rct.uk/visit/buckingham-palace",
+      "desc_he": "חילופי המשמר בחוץ אמנם חינם, אבל הכניסה לחדרי המדינה עצמם בפנים הארמון פתוחה רק בקיץ, בדרך כלל מיולי עד ספטמבר. הכרטיס כולל מדריך מולטימדיה במספר שפות ומעביר דרך חדרי הטרון, גלריית התמונות ואולם הנשפים שבו מתקיימות קבלות הפנים הרשמיות. כדאי לדעת שהמחיר עולה במעט לרכישה במקום ביום ההגעה, אז עדיף להזמין מראש.",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "churchill-rooms": {
+    "video": {
+      "youtube_id": "c8DggKaPGQ0",
+      "title": "Visit the Churchill War Rooms | Virtual Tour of the Cabinet War Rooms",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 29.75,
+      "currency": "GBP",
+      "duration": "כשעתיים",
+      "source_url": "https://www.iwm.org.uk/visits/churchill-war-rooms/booking",
+      "desc_he": "זה בונקר תת קרקעי אמיתי ליד וייטהול, שם צ'רצ'יל וההנהגה הבריטית ניהלו את מלחמת העולם השנייה ממש מתחת לרחוב. החדרים נשארו כמעט בדיוק כפי שהיו ביום שהאורות כובו בשנת 1945, כולל מפות עם סיכות ומשרד השינה של צ'רצ'יל עצמו. שעתיים מספיקות בערך כדי לעבור את החדרים ואת מוזיאון צ'רצ'יל הצמוד עם כל הפרטים ההיסטוריים.",
+      "price_until": "1 בספטמבר 2026",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "st-james-park": {
+    "video": {
+      "youtube_id": "erYHzMzZeEI",
+      "title": "Discover St. James's Park, one of London's Royal Parks",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "covent-garden": {
+    "video": {
+      "youtube_id": "8OmQRx5uykQ",
+      "title": "Covent Garden, London | London Neighbourhood Tours",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "tower-of-london": {
+    "video": {
+      "youtube_id": "JbK3-hEP0DA",
+      "title": "Tower of London Tour | A Virtual Walk through the Inside of the Tower",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 37.0,
+      "currency": "GBP",
+      "duration": "כשלוש שעות",
+      "source_url": "https://www.hrp.org.uk/tower-of-london/visit/tickets-and-prices/",
+      "desc_he": "אוצרות הכתר האמיתיים נמצאים כאן, כולל היהלום הגדול בעולם, ושומרי הטאואר בבגדי הטקס עדיין גרים בתוך המצודה עם המשפחות שלהם. הכרטיס כולל את מגדל הלבן, כלי הנשק ההיסטוריים והסיור החינמי עם אחד משומרי הטאואר שמספר סיפורים על עינויים והוצאות להורג שקרו ממש באותם חצרות. שווה להשקיע שלוש שעות טובות כי יש הרבה מה לראות בין החומות העתיקות.",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "tower-bridge": {
+    "video": {
+      "youtube_id": "f4S-XJBqmTI",
+      "title": "Tower Bridge Glass Floor | MUST DO IN LONDON",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 15.8,
+      "currency": "GBP",
+      "duration": "כשעה עד שעה וחצי",
+      "source_url": "https://www.towerbridge.org.uk/whats-on/entry-to-tower-bridge",
+      "desc_he": "העלייה לגשר מגיעה עד לרצפת הזכוכית שנמצאת ארבעים ושניים מטר מעל התמזה, ומשם רואים אוטובוסים אדומים וסירות עוברים ממש מתחת לרגליים. הכרטיס כולל גם ירידה לחדרי המכונות הוויקטוריאניים המקוריים למטה, שם המנועים העצומים עדיין נראים כפי שהרימו את הגשר לפני יותר ממאה שנה. זה אחד המקומות הבודדים בלונדון שבהם רואים איך גשר תנועה ענק כזה בכלל עובד מבפנים.",
+      "price_until": "1 בספטמבר 2026",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "st-pauls": {
+    "video": {
+      "youtube_id": "A9mZ4EWbl3o",
+      "title": "St Paul's Cathedral Tour, London | FULL TOUR + TIPS",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 24,
+      "currency": "GBP",
+      "duration": "כשעה וחצי עד שעתיים",
+      "source_url": "https://www.stpauls.co.uk/ticket-types-and-prices",
+      "desc_he": "הכיפה של סנט פול היא אחת הגדולות בעולם, ומי שמטפס את כל חמש מאות עשרים ושמונה המדרגות מגיע לגלריית הזהב עם נוף פתוח על כל לונדון. הכרטיס כולל גם ירידה לקריפטה, שם קבור נלסון וגם האדריכל כריסטופר רן שתכנן את כל הקתדרלה אחרי השריפה הגדולה של שנת 1666. יש גם מדריך מולטימדיה בכניסה שמסביר את ההיסטוריה תוך כדי הסיור בקומת הכניסה עצמה.",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "sky-garden": {
+    "video": {
+      "youtube_id": "FdAGgTIUtpU",
+      "title": "The View from The Sky Garden: London's Free Observation Deck",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "borough-market": {
+    "video": {
+      "youtube_id": "8cqRbJlRR_o",
+      "title": "Borough Market London | London Walking Tour | Best of Borough Market | London Street Food [4k HDR]",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "tate-modern": {
+    "video": {
+      "youtube_id": "py5tRGV_RpQ",
+      "title": "Tate Modern Art Gallery LONDON Highlights 2024",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "london-eye": {
+    "video": {
+      "youtube_id": "h7gtgAcLZQc",
+      "title": "Ride The London Eye | Full Tour With Amazing Views Across London (Nov 2024) [4K]",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "currency": "GBP",
+      "source_url": "https://ticketing.londoneye.com/en/tickets/standard-london-eye-fast-track-tickets",
+      "desc_he": "סיבוב שלם באופנוע הענק לוקח חצי שעה, אבל עם ההמתנה והעלייה לתא כדאי לתכנן קרוב לשעה. כל תא זכוכית מכיל עד עשרים וחמישה אנשים ונשאר סגור לחלוטין תוך כדי הסיבוב, כך שרואים את כל לונדון מלמעלה כולל ביג בן וארמון וסטמינסטר בלי לזוז ממקום אחד. המחיר עולה ככל שמתקרבים לתאריך ההגעה, אז הזמנה מוקדמת חוסכת כסף.",
+      "price_varies": true,
+      "checked": "26 באוגוסט 2026",
+      "price": 25.38
+    }
+  },
+  "southbank-walk": {
+    "video": {
+      "youtube_id": "PgUlXIQJiX8",
+      "title": "South Bank, London | London Neighbourhood (Area) Tours",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "shard": {
+    "video": {
+      "youtube_id": "4vuf15SzSfM",
+      "title": "London's Highest and Best View - The View from The Shard",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "currency": "GBP",
+      "source_url": "https://tickets.theviewfromtheshard.com/book-tickets/",
+      "desc_he": "השארד הוא הבניין הגבוה ביותר במערב אירופה, ונקודת התצפית נמצאת בין קומה שישים ושמונה לשבעים ושתיים, גבוה בהרבה מהלונדון איי או מסקיי גארדן. אין הגבלת זמן ברגע שנכנסים, אז אפשר לשבת בבר בקומה שבעים ושתיים ולראות את השקיעה עד סגירה. ביום בהיר רואים עד שישים וארבעה קילומטר לכל הכיוונים, כולל את כל נהר התמזה מתפתל דרך העיר.",
+      "price_varies": true,
+      "checked": "26 באוגוסט 2026",
+      "price": 28
+    }
+  },
+  "natural-history": {
+    "video": {
+      "youtube_id": "aDwMrDGvLWk",
+      "title": "The Wonders of London's Natural History Museum - An In-Depth Guided Tour",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "science-museum": {
+    "video": {
+      "youtube_id": "8s8ZnZxByLQ",
+      "title": "Science Museum LONDON 2024 Highlights",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "va-museum": {
+    "video": {
+      "youtube_id": "t46g387rqIo",
+      "title": "The Victoria and Albert Museum Tour | A London Treasure",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "hyde-park": {
+    "video": {
+      "youtube_id": "2jVUTpH9TWo",
+      "title": "Kensington Gardens in London spring walkthrough | The Royal Parks",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "kensington-palace": {
+    "video": {
+      "youtube_id": "27HYTAgzEjo",
+      "title": "Kensington Palace Tour | 300 Years a Royal Residences in the Heart of London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 24.7,
+      "currency": "GBP",
+      "duration": "כשעה וחצי עד שעתיים",
+      "source_url": "https://www.hrp.org.uk/kensington-palace/visit/tickets-and-prices/",
+      "desc_he": "זה עדיין בית מגורים מלכותי פעיל, שם גרים היום הנסיך וויליאם וקייט, אבל חלק מהחדרים פתוחים לציבור עם כרטיס. הכניסה כוללת מדריך קולי ומציגה את הגנים השקועים המפורסמים, יחד עם תערוכות מתחלפות על בני המשפחה המלכותית שגרו שם לאורך הדורות, כולל הנסיכה דיאנה. כדאי לדעת שההזמנה היא לחלון כניסה של חצי שעה בלבד, אז לא ניתן להגיע בלי הזמנה מראש.",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "notting-hill": {
+    "video": {
+      "youtube_id": "xI5qy4g6Mk0",
+      "title": "Notting Hill and Portobello Road Market Walking Tour [4K HDR]",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "camden-market": {
+    "video": {
+      "youtube_id": "DTxAUScs9pI",
+      "title": "CAMDEN | The ultimate tour of Camden Town London (including Camden Market)",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "regents-park": {
+    "video": {
+      "youtube_id": "d9pno9qRmCE",
+      "title": "Discover The Regent's Park and Primrose Hill, one of London's Royal Parks",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "london-zoo": {
+    "video": {
+      "youtube_id": "-OkyAEqdWso",
+      "title": "Visit ZSL London Zoo",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 30.5,
+      "currency": "GBP",
+      "duration": "יום שלם",
+      "source_url": "https://www.londonzoo.org/plan-your-visit/london-zoo-tickets",
+      "desc_he": "כרטיס כניסה יומי לגן החיות של לונדון, שנמצא בתוך ריג'נטס פארק ומשמש בית לכ-15,000 בעלי חיים מ-750 מינים. יש שם את האריות האסייתים באזור Land of the Lions, בריכת פינגווינים עם חלון צפייה מתחת למים, וגם גורילות ונמרים סומטרים. השטח פרוס ומפוזר על שטח גדול, אז שווה להקדיש לביקור יום שלם.",
+      "price_note": "המחיר עשוי להשתנות בהתאם לתאריך ולשעה שתבחרו באתר.",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "shoreditch-art": {
+    "video": {
+      "youtube_id": "xKHWIStlMEY",
+      "title": "LONDON STREET ART TOUR | Brick Lane | Shoreditch | Spitalfields | East London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 15,
+      "currency": "GBP",
+      "duration": "כשעתיים",
+      "source_url": "https://streetartlondon.co.uk/tours/booking/",
+      "desc_he": "סיור מודרך של כשעתיים ברחובות שורדיץ', יוצא שלוש פעמים בשבוע בבוקר מתחנת הרכבת התחתית Old Street. זו החברה שהתחילה את כל תעשיית סיורי אמנות הרחוב בלונדון, והמדריכים מסבירים על עבודות של באנקסי, סטיק ואמנים בינלאומיים נוספים. הציורים על הקירות מתחלפים כל הזמן, אז כל סיור בפועל שונה מקודמו.",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "brick-lane": {
+    "video": {
+      "youtube_id": "7E5RtFkxIC4",
+      "title": "A Short Guide to Brick Lane Market in London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "greenwich": {
+    "video": {
+      "youtube_id": "QLmKZ-BJs-g",
+      "title": "The Ultimate Travel Guide to Greenwich London for 2026",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "maritime-museum": {
+    "video": {
+      "youtube_id": "GkTCpA9oufc",
+      "title": "Exploring the National Maritime Museum in Greenwich",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "kew-gardens": {
+    "video": {
+      "youtube_id": "HqMg_hP8d2Q",
+      "title": "Kew Gardens, London | Tour + Top Tips",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 21.85,
+      "currency": "GBP",
+      "duration": "יום שלם",
+      "source_url": "https://www.kew.org/kew-gardens/visit-kew-gardens/tickets",
+      "desc_he": "כרטיס כניסה לגני קיו, אתר מורשת עולמית של אונסקו ואוסף הצמחים הגדול בעולם עם יותר מחמישים אלף מיני צמחים. בתוך השטח יש חממות ויקטוריאניות ענקיות כמו Palm House והחממה הממוזגת Temperate House, ומעבר צמרות עצים בגובה שמונה עשרה מטר. השטח משתרע על פני מאה ושלושים הקטר, אז ביקור שלם בקלות ממלא יום שלם.",
+      "price_until": "1 בספטמבר 2026",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "harry-potter": {
+    "video": {
+      "youtube_id": "uIEMjosSu-M",
+      "title": "Step Back Into The World Of Harry Potter | Warner Bros. Studio Tour London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "currency": "GBP",
+      "source_url": "https://www.wbstudiotour.co.uk/tickets/",
+      "desc_he": "כרטיס לסיור באולפני וורנר ברדרס בווטפורד, שם צולמו כל שמונה סרטי הארי פוטר. הסיור עצמאי ובקצב אישי, וכולל את האולם הגדול המקורי, רחוב דיאגון, וקרון הקיטור האמיתי של הוגוורטס אקספרס. משך הביקור הממוצע כשלוש שעות וחצי עד ארבע, וכדאי להזמין מקום מראש כי אין מכירת כרטיסים במקום.",
+      "price_varies": true,
+      "checked": "26 באוגוסט 2026",
+      "price": 51.19
+    }
+  },
+  "hampton-court": {
+    "video": {
+      "youtube_id": "Bh60caXu5k4",
+      "title": "Hampton Court Palace | Tour + Top Tips",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 29.0,
+      "currency": "GBP",
+      "duration": "יום שלם",
+      "source_url": "https://www.hrp.org.uk/hampton-court-palace/visit/tickets-and-prices/",
+      "desc_he": "כרטיס כניסה לארמון המפטון קורט, המקום שבו גר הנרי השמיני עם שש נשותיו. בפנים אפשר לראות את המטבחים הענקיים ששירתו כשש מאות איש בכל ארוחה, את חדרי המדינה המפוארים, ואת המבוך המפורסם בגנים. ביקור מלא בארמון ובגנים בקלות ממלא יום שלם.",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "national-portrait-gallery": {
+    "video": {
+      "youtube_id": "z-H9X_JdAu4",
+      "title": "My Highlights at The National Portrait Gallery, London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "tate-britain": {
+    "video": {
+      "youtube_id": "jDx9dfsEMIA",
+      "title": "A tour of Tate Britain",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "wallace-collection": {
+    "video": {
+      "youtube_id": "st7aqBBnxKA",
+      "title": "London: The Wallace Collection - 2 minute Guide",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "soane-museum": {
+    "video": {
+      "youtube_id": "lPvPjKsk39c",
+      "title": "Sir John Soane's Museum: A Quick Tour",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "transport-museum": {
+    "video": {
+      "youtube_id": "YXv_Nmgdz5E",
+      "title": "London Transport Museum Tour | Covent Garden | 4K",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 23.62,
+      "currency": "GBP",
+      "duration": "כשעתיים עד שלוש",
+      "source_url": "https://www.ltmuseum.co.uk/visit/tickets",
+      "desc_he": "כרטיס כניסה למוזיאון התחבורה של לונדון בקובנט גארדן, עם קרונות רכבת תחתית עתיקים, אוטובוסים דו קומתיים מכל הדורות, ופוסטרים היסטוריים מקוריים. הכרטיס בתוקף לשנה שלמה מיום הרכישה, אז אפשר לחזור כמה פעמים באותה עלות. ביקור רגיל אורך כשעתיים עד שלוש שעות.",
+      "price_until": "1 בספטמבר 2026",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "trafalgar-square": {
+    "video": {
+      "youtube_id": "yePLUEY3FFc",
+      "title": "Trafalgar Square, London Walking Tour",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "chinatown-soho": {
+    "video": {
+      "youtube_id": "luNHlfDlVAA",
+      "title": "London Chinatown walk and SOHO | London city walking tour",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "piccadilly-circus": {
+    "video": {
+      "youtube_id": "BXtMf-i5-Js",
+      "title": "Piccadilly Circus London Walking Tour 4K",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "dickens-museum": {
+    "video": {
+      "youtube_id": "2htpOD8DI4M",
+      "title": "Charles Dickens Home - [Room by Room Tour] of Dickens Museum London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 14.0,
+      "currency": "GBP",
+      "duration": "כשעה",
+      "source_url": "https://dickensmuseum.com/pages/admissions",
+      "desc_he": "כרטיס כניסה לביתו של צ'ארלס דיקנס ברחוב דוטי 48, המקום היחיד מבין כל בתי המגורים שלו בלונדון ששרד עד היום. שם הוא כתב את אוליבר טוויסט ואת פיקוויק פייפרס, והבית משוחזר עם רהיטים וחפצים אישיים מהתקופה. ביקור טיפוסי אורך כשעה.",
+      "price_until": "1 בספטמבר 2026",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "neals-yard": {
+    "video": {
+      "youtube_id": "-fGe5DiRjHs",
+      "title": "COVENT GARDEN WALK | Covent Garden London | Covent Garden Piazza | Neal's Yard | Seven Dials",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "leadenhall-market": {
+    "video": {
+      "youtube_id": "_9TsLzfPgpg",
+      "title": "Leadenhall Market London Walking Tour",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "monument": {
+    "video": {
+      "youtube_id": "DEWlC-l1lpE",
+      "title": "The Monument To The Great Fire Of London and Views From The Top",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 7.0,
+      "currency": "GBP",
+      "duration": "כרבע שעה עד חצי שעה",
+      "source_url": "https://www.themonument.org.uk/plan/buy-tickets",
+      "desc_he": "כרטיס לטיפוס על המונומנט לשריפה הגדולה של לונדון, עמוד אבן בגובה שישים ואחד מטר שנבנה בשנת 1677 לזכר השריפה שהשמידה כמעט את כל העיר בשנת 1666. צריך לטפס שלוש מאות ואחת עשרה מדרגות במדרגת אבן צרה כדי להגיע לפלטפורמת התצפית למעלה, שמשם רואים את הסיטי ואת נהר התמזה. הטיפוס עצמו לוקח כרבע שעה עד חצי שעה.",
+      "price_until": "1 בספטמבר 2026",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "st-dunstan": {
+    "video": {
+      "youtube_id": "HpFwZkpWjIQ",
+      "title": "St Dunstan in the East London, Medieval Church Ruins Turned Garden Near the Tower of London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "bank-museum": {
+    "video": {
+      "youtube_id": "VozhNp789Jg",
+      "title": "Discover the Bank of England Museum",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "guildhall": {
+    "video": {
+      "youtube_id": "PfF-NjxaEbY",
+      "title": "London's Roman Amphitheatre: Discovery, Conservation and Form",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "barbican": {
+    "video": {
+      "youtube_id": "WzE0H3B4wEg",
+      "title": "A Short Guide to the Barbican Centre in London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "st-katharine-docks": {
+    "video": {
+      "youtube_id": "m2Fu_XcfBFg",
+      "title": "London's Luxury Marina St Katharine Docks | Walking Tour (4K)",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "postal-museum": {
+    "video": {
+      "youtube_id": "qvpCTZx_wc4",
+      "title": "The Surprisingly Fascinating London Postal Museum (and a Ride on Mail Rail)",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 18.0,
+      "currency": "GBP",
+      "duration": "כשעתיים",
+      "source_url": "https://www.postalmuseum.org/visit-us/tickets/",
+      "desc_he": "הכרטיס פותח לכם את כל המוזיאון ובנוסף כולל נסיעה ברכבת הדואר, מסילה תת קרקעית קטנטנה שהובילה מכתבים מתחת לרחובות לונדון במשך 76 שנה. הנסיעה עצמה נמשכת כרבע שעה בתוך המנהרות המקוריות, ומי שבא בשביל זה לבד כדאי שיתכנן ביקור של שעתיים כדי גם לראות את התערוכות למעלה.",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "imperial-war-museum": {
+    "video": {
+      "youtube_id": "IevuOKrp54k",
+      "title": "Highlights of London's Imperial War Museum | Virtual Tour",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "hms-belfast": {
+    "video": {
+      "youtube_id": "krSBjjqx2os",
+      "title": "HMS Belfast | Imperial War Museum London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 23.45,
+      "currency": "GBP",
+      "duration": "כשעתיים",
+      "source_url": "https://www.iwm.org.uk/visits/hms-belfast/booking",
+      "desc_he": "הכרטיס נותן גישה לכל תשעת הסיפונים של הספינה, מחדרי המכונות למטה ועד תותחי הנ״מ למעלה, כולל אודיו גייד באנגלית שמסביר איך היא פעלה בקרבות מלחמת העולם השנייה ובנחיתת נורמנדי. יש המון מדרגות תלולות ומסדרונות צרים אז זה דורש קצת כושר, אבל זו חוויה שונה לגמרי מביקור מוזיאון רגיל.",
+      "price_until": "1 בספטמבר 2026",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "globe-theatre": {
+    "video": {
+      "youtube_id": "zWu1nqZlynw",
+      "title": "Shakespeare's Globe: Tour and Exhibition | Visit London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 28.0,
+      "currency": "GBP",
+      "duration": "כשעה",
+      "source_url": "https://www.tiqets.com/en/london-attractions-c67458/tickets-for-shakespeares-globe-theatre-guided-tour-p1110014/",
+      "desc_he": "מדריך לוקח אתכם לתוך התיאטרון העגול המשוחזר, אותו שחזרו לפי התכנון המקורי מ־1599, ומספר איך הוא שרד מגפה, שריפה ומשברים פוליטיים לפני שנבנה מחדש בשנות התשעים. הסיור נמשך כשעה וכולל גם את תערוכת הגלריה שמציגה איך בנו תפאורות ותלבושות בלי חשמל.",
+      "price_until": "1 בספטמבר 2026",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "southwark-cathedral": {
+    "video": {
+      "youtube_id": "gpeSWr7xjgQ",
+      "title": "Southwark Cathedral",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "leake-street": {
+    "video": {
+      "youtube_id": "Hc_bN9WOsO4",
+      "title": "GRAFFITI TUNNEL Tour - Leake Street Arches - London [4k]",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "old-operating-theatre": {
+    "video": {
+      "youtube_id": "u8jr45MB8cw",
+      "title": "London: A Guide To Exploring The Old Operating Theatre Museum",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 10,
+      "currency": "GBP",
+      "duration": "כחצי שעה עד שעה",
+      "source_url": "https://oldoperatingtheatre.com/book-tickets/",
+      "desc_he": "המקום מסתתר בעליית גג של כנסייה משנת 1822, ומגיעים אליו רק דרך מדרגות לוליניות צרות. זה חדר הניתוחים הכירורגי המקורי היחיד שנשאר מהתקופה שלפני ההרדמה והחיטוי, לצד גינת עשבי מרפא היסטורית. הכרטיס תקף לכל שעות הפתיחה ביום הרכישה, אז אפשר להגיע מתי שנוח.",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "sea-life": {
+    "video": {
+      "youtube_id": "lLNpLrpjz6I",
+      "title": "Explore Sea Life London Aquarium | Complete Walkthrough Tour (Nov 2024) [4K]",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "currency": "GBP",
+      "source_url": "https://www.visitsealife.com/london/tickets-prices/",
+      "desc_he": "מדובר באחד האקווריומים הגדולים בבריטניה, על גדת הטיימס ליד הלונדון איי. הכרטיס נותן כניסה לכל האזורים כולל מנהרת הכרישים והתמנון, ולפי האתר הרשמי לוקח בממוצע שעה וחצי לעבור את כל המסלול. כדאי לקנות אונליין מראש כי המחיר בכניסה בשער גבוה יותר.",
+      "price_varies": true,
+      "checked": "26 באוגוסט 2026",
+      "price": 27.13
+    }
+  },
+  "design-museum": {
+    "video": {
+      "youtube_id": "y_zs23zelug",
+      "title": "Inside The Design Museum in London - Virtual Walk Tour 4K HD | Summer Exhibition 2022",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "holland-park": {
+    "video": {
+      "youtube_id": "I2RgVTSbPpU",
+      "title": "Amazing Kyoto Garden and Holland Park Views in London [4K]",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "harrods": {
+    "video": {
+      "youtube_id": "Oax39T5w3ws",
+      "title": "Inside Harrods | London's Ultra Luxury Department Store Tour (July 2024)",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "royal-albert-hall": {
+    "video": {
+      "youtube_id": "YRik1Gjl5vY",
+      "title": "London Royal Albert Hall: Behind the scenes at the home of the Royal Variety Performance",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 20,
+      "currency": "GBP",
+      "duration": "כשעה",
+      "source_url": "https://www.royalalberthall.com/tickets/tours-and-exhibitions/royal-albert-hall-tour/",
+      "desc_he": "הסיור המודרך של שעה לוקח אתכם לאולם הראשי, התא המלכותי, הסוויטה הפרטית שהוקדשה למלכה ויקטוריה, ואזורים מאחורי הקלעים שסגורים בזמן הופעות. מספרים גם סיפורים על הופעות אגדיות שהתקיימו שם מאז 1871. ביום הסיור מקבלים גם הנחה של עשרה אחוזים בבתי הקפה של האולם."
+    }
+  },
+  "british-library": {
+    "video": {
+      "youtube_id": "_1-0d_k7DEI",
+      "title": "London, England: Treasures of the British Library - Rick Steves' Europe Travel Guide - Travel Bite",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "wellcome-collection": {
+    "video": {
+      "youtube_id": "3P84-aYTFJQ",
+      "title": "Wellcome Collection | Free London Museum and Library",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "sherlock-museum": {
+    "video": {
+      "youtube_id": "YKKkXP0CuI0",
+      "title": "Sherlock Holmes Museum -221B Baker Street, London walk-through tour",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 19,
+      "currency": "GBP",
+      "duration": "כחצי שעה",
+      "source_url": "https://www.sherlock-holmes.co.uk/plan-your-visit/access-information/",
+      "desc_he": "הכתובת המפורסמת 221B בייקר סטריט בכלל לא הייתה קיימת כשקונן דויל כתב את הסיפורים, המספור נעצר קודם לכן. הבית שוחזר עם חדרי מגורים ויקטוריאניים מלאים בפרטים מהסיפורים, כולל הכובע והמקטרת המוכרים. זה בית צר בן כמה קומות אז הביקור קצר יחסית, בסביבות חצי שעה.",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "madame-tussauds": {
+    "video": {
+      "youtube_id": "Dk2vN_f-Xes",
+      "title": "Madame Tussauds London Full Walkthrough (Nov 2024) [4K]",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "currency": "GBP",
+      "source_url": "https://www.madametussauds.com/london/tickets-prices/ways-to-visit/general-admission/",
+      "desc_he": "מעל מאה וחמישים פסלי שעווה של סלבריטאים, מלוכה וספורטאים פזורים על כמה קומות, כולל אזור מלחמת הכוכבים וסימולטור הספיריט אוף לונדון שמעיף אתכם מעל גגות העיר. המחיר עולה משמעותית אם קונים בשער ביום ההגעה, אז הזמנה מראש באתר הרשמי חוסכת לא מעט.",
+      "price_varies": true,
+      "checked": "26 באוגוסט 2026",
+      "price": 23.63
+    }
+  },
+  "hampstead-heath": {
+    "video": {
+      "youtube_id": "ePJ4BN8bvjI",
+      "title": "HAMPSTEAD HEATH WALK | Parliament Hill | Kenwood House | Hampsetad Heath Ponds | Pergola Garden",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "kenwood-house": {
+    "video": {
+      "youtube_id": "V7mV-IY0vs0",
+      "title": "Kenwood House - Hampstead London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "highgate-cemetery": {
+    "video": {
+      "youtube_id": "pybrnRZ_Ej4",
+      "title": "A tour of HighGate Cemetery, London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 8.75,
+      "currency": "GBP",
+      "duration": "כשעה ורבע",
+      "source_url": "https://highgatecemetery.org/visit",
+      "desc_he": "רק דרך סיור מודרך אפשר להיכנס לחלק המערבי של בית הקברות, שם נמצאים שדרת מצרים ומעגל הלבנון עם הקברים המרשימים ביותר. הסיור נמשך כשעה ורבע, ומי שקנה כרטיס לסיור מקבל בנוסף כניסה חופשית לכל שאר בית הקברות לאותו יום כדי לשוטט לבד.",
+      "price_until": "1 בספטמבר 2026",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "coal-drops-yard": {
+    "video": {
+      "youtube_id": "2m0GguFTMgE",
+      "title": "Coal Drops Yard, King's Cross, London! FULL TOUR",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "little-venice": {
+    "video": {
+      "youtube_id": "8NzZ-tWUrts",
+      "title": "Little Venice London Walking Tour: A London Hidden Gem",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 19,
+      "currency": "GBP",
+      "duration": "כארבעים וחמש דקות",
+      "source_url": "https://www.jasons.co.uk/",
+      "desc_he": "מליטל ונציה אפשר לעלות על סירת התעלה ההיסטורית של ג'ייסונס, שפועלת כבר משנות החמישים, ולשוט על תעלת ריג'נטס עד שוק קמדן. השיט עובר מתחת לגשרים נמוכים ולצד גינות בתים יפות לאורך התעלה, עם קפטן שמספר על ההיסטוריה של התעלות בלונדון. נסיעה חד כיוונית נמשכת כארבעים וחמש דקות, ויש גם כרטיס הלוך ושוב למי שרוצה לחזור באותה דרך.",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "spitalfields-market": {
+    "video": {
+      "youtube_id": "Ms3Vxm-0zn8",
+      "title": "London Walking Tour | Old Spitalfields Market, London - August 2021 [4K]",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "columbia-road": {
+    "video": {
+      "youtube_id": "WQRrNF7WtZ8",
+      "title": "A local's Guide to Columbia Road Flower Market, London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "museum-of-home": {
+    "video": {
+      "youtube_id": "hMPbS20lEKM",
+      "title": "Museum Of The Home Walking Tour 2022 | Virtual Tour Of A London Museum",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "whitechapel-gallery": {
+    "video": {
+      "youtube_id": "oXgIKNmqO1w",
+      "title": "Introducing Whitechapel Gallery, London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "dennis-severs": {
+    "video": {
+      "youtube_id": "eKZ0EVexivs",
+      "title": "Step Back in Time: Inside Dennis Severs' House in London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 16,
+      "currency": "GBP",
+      "duration": "כארבעים וחמש עד שישים דקות",
+      "source_url": "https://www.dennissevershouse.co.uk/calendar",
+      "desc_he": "הבית ברחוב פולגייט 18 בספיטלפילדס משוחזר כאילו משפחת אורגים הוגנוטית בדיונית עדיין גרה שם, כל חדר קפוא ברגע אחר מהמאה השמונה עשרה ועד תחילת המאה העשרים, עם נרות דולקים וריחות בישול באוויר. הביקור עצמו שקט לגמרי, בלי הסברים בקול, פשוט מסתובבים לבד בין החדרים ומרגישים כמו רוח רפאים שמציצה בחיי המשפחה. משך הביקור כארבעים וחמש עד שישים דקות, וכדאי להזמין מקום מראש כי כל סבב מוגבל במספר המבקרים.",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "royal-observatory": {
+    "video": {
+      "youtube_id": "IPCp4c3tz3Y",
+      "title": "Take A Tour Of The Historic Royal Observatory In Greenwich London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 18,
+      "currency": "GBP",
+      "duration": "כשעה וחצי עד שעתיים",
+      "source_url": "https://www.rmg.co.uk/plan-your-visit/tickets-prices",
+      "desc_he": "הכרטיס לאובזרווטוריה המלכותית בגריניץ' נותן כניסה לקו האורך אפס של העולם, שם אפשר לעמוד עם רגל אחת במזרח ורגל אחת במערב, וגם לתערוכות על ההיסטוריה של מדידת הזמן והכוכבים. המקום יושב על גבעה עם אחד הנופים היפים בלונדון, כל העיר ובית המלכה נראים למטה. כדאי להקדיש כשעה וחצי עד שעתיים כדי לראות גם את קו האורך וגם את התערוכות הפנימיות.",
+      "price_until": "2 בספטמבר 2026",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "cutty-sark": {
+    "video": {
+      "youtube_id": "TPOCofMzHhk",
+      "title": "Visit Cutty Sark to learn about its unique past | Visit London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 18,
+      "currency": "GBP",
+      "duration": "כשעה עד שעה וחצי",
+      "source_url": "https://www.rmg.co.uk/plan-your-visit/tickets-prices",
+      "desc_he": "קאטי סארק היא ספינת התה המהירה ביותר ששרדה מהמאה התשע עשרה, ואפשר לעלות על הסיפון ולרדת עד מחסן המטען וחדר המכונות מתחת לקו המים. הכרטיס כולל גם תצוגה על המסעות בין סין לבריטניה ואת האוסף הגדול בעולם של פסלי גלם של ספינות. ביקור מלא לוקח כשעה עד שעה וחצי, ומתחת לגוף הספינה יש בית קפה נחמד לעצירה.",
+      "price_until": "2 בספטמבר 2026",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "queens-house": {
+    "video": {
+      "youtube_id": "VVgj4M5v7EU",
+      "title": "The Queen's House in Greenwich",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "greenwich-market": {
+    "video": {
+      "youtube_id": "5cxs1hYLn1Y",
+      "title": "Greenwich Market Walk: London's Historic Arts and Street Food Market | London, UK |4K",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "greenwich-foot-tunnel": {
+    "video": {
+      "youtube_id": "R6KT4lwkp1c",
+      "title": "London's Underwater 1,217 Feet Tunnel: Walking The Greenwich Foot Tunnel in 4K",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "richmond-park": {
+    "video": {
+      "youtube_id": "AAP_tqiYB8c",
+      "title": "Wildlife of Richmond Park | Wild London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "windsor-castle": {
+    "video": {
+      "youtube_id": "fUDDsZ2I_gk",
+      "title": "Visit Windsor Castle: Official Video",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 32,
+      "currency": "GBP",
+      "duration": "יום שלם, כולל נסיעה מלונדון",
+      "source_url": "https://www.rct.uk/visit/windsor-castle",
+      "desc_he": "כרטיס הכניסה לטירת ווינדזור פותח את דירות המדינה, קפלת סנט ג'ורג' שבה קבורים מלכים כולל אליזבת השנייה, ואת בית הבובות המפורסם של המלכה מרי שבו יש חשמל וברזים שעובדים באמת. הטירה עדיין משמשת מגורים מלכותיים פעילים, הכי ותיקה ומאוכלסת בעולם, ולכן לפעמים חלקים ממנה נסגרים בלי הודעה מוקדמת בגלל אירועים רשמיים. עם הנסיעה מלונדון והזמן בפנים כדאי לתכנן על יום שלם.",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "wembley-tour": {
+    "video": {
+      "youtube_id": "Gbt5bYzXAyM",
+      "title": "Wembley Stadium Tours Official Video | The School Trip",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 28,
+      "currency": "GBP",
+      "duration": "כשעה וחצי",
+      "source_url": "https://bookings.wembleytours.com/stadiumtours/booking/pricing.htm",
+      "desc_he": "הסיור באצטדיון ומבלי עובר דרך מנהרת השחקנים, חדרי ההלבשה ואזור העיתונאים, ומסתיים ביציאה אל שפת המגרש בדיוק במקום שבו הקבוצות יוצאות לפני משחק. האצטדיון מחזיק כתשעים אלף מקומות ונחשב לאחד הגדולים באירופה, ובסיור מספרים גם על גמרי גביע היסטוריים וקונצרטים ענקיים שהתקיימו שם. הסיור המודרך נמשך כשעה וחצי.",
+      "price_until": "1 בספטמבר 2026",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "cable-car": {
+    "video": {
+      "youtube_id": "XTbhbp3LQ6k",
+      "title": "London Cable Car Tour: Check out the IFS Cloud Cable Car",
+      "verified": true
+    },
+    "tour": {
+      "applicable": true,
+      "price": 41.79,
+      "currency": "ILS",
+      "duration": "כעשר דקות",
+      "source_url": "https://www.emiratesaircablecar.com/products/ifs-cloud-cable-car-ticket",
+      "desc_he": "הרכבל של לונדון, שנקרא היום IFS Cloud Cable Car, חוצה את נהר התמזה בין חצי האי גריניץ' לרויאל דוקס ומתרומם לגובה תשעים מטר מעל המים. הנסיעה קצרה, כעשר דקות בכל כיוון, אבל הנוף על כיפת אצטדיון או טו, קנרי וורף ומזרח לונדון שווה את זה. משלמים עם כרטיס בנק או אוייסטר בדיוק כמו באוטובוס או ברכבת התחתית.",
+      "checked": "26 באוגוסט 2026"
+    }
+  },
+  "docklands-museum": {
+    "video": {
+      "youtube_id": "-TlCWHR0TUk",
+      "title": "Museum of London Docklands - Full Tour",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "battersea-power-station": {
+    "video": {
+      "youtube_id": "tw0CfebxEEs",
+      "title": "London Walk Tour Inside Battersea Power Station",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "raf-museum": {
+    "video": {
+      "youtube_id": "O4UqR7mfhMI",
+      "title": "Introducing the Royal Air Force Museum London",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "primrose-hill": {
+    "video": {
+      "youtube_id": "KPlwbhhGED0",
+      "title": "5 REASONS TO LOVE PRIMROSE HILL, LONDON | Parks | Pubs | Views | Squares | Regent's Park Road",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "temple-of-mithras": {
+    "video": {
+      "youtube_id": "Vm5MZ1mTFYc",
+      "title": "A look at the ruins of London's Roman Temple of Mithras",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
+  },
+  "west-end-theatre": {
+    "video": {
+      "youtube_id": "tgyHAo2Ivxw",
+      "title": "The West End - Attractions and History of London's Theater District",
+      "verified": true
+    },
+    "tour": {
+      "applicable": false
+    }
   }
- },
- "national-gallery": {
-  "video": {
-   "youtube_id": "prgeZ13fDHA",
-   "title": "The Top Ten Paintings in The National Gallery - An In-Depth Guided Tour",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "westminster-abbey": {
-  "video": {
-   "youtube_id": "oNIcJFSd-g0",
-   "title": "Visit Westminster Abbey: London's royal church | Visit London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 27.13,
-   "currency": "GBP",
-   "duration": "כשעה עד שעה וחצי",
-   "source_url": "https://www.westminster-abbey.org/visit-us/prices-and-entry-times",
-   "desc_he": "הכניסה למנזר וסטמינסטר כוללת אודיו גייד בשלוש עשרה שפות, שמסביר על יותר משלושת אלפים קברים ואנדרטאות בפנים, כולל של ניוטון, דרווין וצ'רצ'יל. זה מקום שבו הכתירו כל מלך אנגלי כמעט מאז שנת 1066, וגם המקום שבו התחתנו וויליאם וקייט. שווה להגיע מוקדם כי התורים בכניסה יכולים להיות ארוכים במיוחד בבוקר.",
-   "price_until": "1 בספטמבר 2026",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "big-ben": {
-  "video": {
-   "youtube_id": "DEGU5SC5tF4",
-   "title": "POV: you're on a tour of Big Ben",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 55,
-   "currency": "GBP",
-   "duration": "כשעה וחצי",
-   "source_url": "https://www.parliament.uk/visiting/visiting-and-tours/big-ben-tour/",
-   "desc_he": "לעלות בפועל לתוך ביג בן זה חוויה נדירה, כי הכרטיסים משוחררים רק שלושה חודשים מראש ונחטפים מהר. הסיור עולה שלוש מאות שלושים וארבע מדרגות בגרם מדרגות צר וספירלי עד לפעמון הגדול עצמו, ומתאים רק לגילאי אחת עשרה ומעלה שמסוגלים להתמודד עם טיפוס כזה. מי שלא רוצה לטפס יכול פשוט להסתכל מבחוץ, זה חינם ורואים אותו מכל מקום לאורך התמזה.",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "buckingham": {
-  "video": {
-   "youtube_id": "z1L0elob3eA",
-   "title": "Buckingham Palace - Changing of the Guard in 4K",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 33,
-   "currency": "GBP",
-   "duration": "כשעתיים",
-   "source_url": "https://www.rct.uk/visit/buckingham-palace",
-   "desc_he": "חילופי המשמר בחוץ אמנם חינם, אבל הכניסה לחדרי המדינה עצמם בפנים הארמון פתוחה רק בקיץ, בדרך כלל מיולי עד ספטמבר. הכרטיס כולל מדריך מולטימדיה במספר שפות ומעביר דרך חדרי הטרון, גלריית התמונות ואולם הנשפים שבו מתקיימות קבלות הפנים הרשמיות. כדאי לדעת שהמחיר עולה במעט לרכישה במקום ביום ההגעה, אז עדיף להזמין מראש.",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "churchill-rooms": {
-  "video": {
-   "youtube_id": "c8DggKaPGQ0",
-   "title": "Visit the Churchill War Rooms | Virtual Tour of the Cabinet War Rooms",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 29.75,
-   "currency": "GBP",
-   "duration": "כשעתיים",
-   "source_url": "https://www.iwm.org.uk/visits/churchill-war-rooms/booking",
-   "desc_he": "זה בונקר תת קרקעי אמיתי ליד וייטהול, שם צ'רצ'יל וההנהגה הבריטית ניהלו את מלחמת העולם השנייה ממש מתחת לרחוב. החדרים נשארו כמעט בדיוק כפי שהיו ביום שהאורות כובו בשנת 1945, כולל מפות עם סיכות ומשרד השינה של צ'רצ'יל עצמו. שעתיים מספיקות בערך כדי לעבור את החדרים ואת מוזיאון צ'רצ'יל הצמוד עם כל הפרטים ההיסטוריים.",
-   "price_until": "1 בספטמבר 2026",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "st-james-park": {
-  "video": {
-   "youtube_id": "erYHzMzZeEI",
-   "title": "Discover St. James's Park, one of London's Royal Parks",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "covent-garden": {
-  "video": {
-   "youtube_id": "8OmQRx5uykQ",
-   "title": "Covent Garden, London | London Neighbourhood Tours",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "tower-of-london": {
-  "video": {
-   "youtube_id": "JbK3-hEP0DA",
-   "title": "Tower of London Tour | A Virtual Walk through the Inside of the Tower",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 37.0,
-   "currency": "GBP",
-   "duration": "כשלוש שעות",
-   "source_url": "https://www.hrp.org.uk/tower-of-london/visit/tickets-and-prices/",
-   "desc_he": "אוצרות הכתר האמיתיים נמצאים כאן, כולל היהלום הגדול בעולם, ושומרי הטאואר בבגדי הטקס עדיין גרים בתוך המצודה עם המשפחות שלהם. הכרטיס כולל את מגדל הלבן, כלי הנשק ההיסטוריים והסיור החינמי עם אחד משומרי הטאואר שמספר סיפורים על עינויים והוצאות להורג שקרו ממש באותם חצרות. שווה להשקיע שלוש שעות טובות כי יש הרבה מה לראות בין החומות העתיקות.",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "tower-bridge": {
-  "video": {
-   "youtube_id": "f4S-XJBqmTI",
-   "title": "Tower Bridge Glass Floor | MUST DO IN LONDON",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 15.8,
-   "currency": "GBP",
-   "duration": "כשעה עד שעה וחצי",
-   "source_url": "https://www.towerbridge.org.uk/whats-on/entry-to-tower-bridge",
-   "desc_he": "העלייה לגשר מגיעה עד לרצפת הזכוכית שנמצאת ארבעים ושניים מטר מעל התמזה, ומשם רואים אוטובוסים אדומים וסירות עוברים ממש מתחת לרגליים. הכרטיס כולל גם ירידה לחדרי המכונות הוויקטוריאניים המקוריים למטה, שם המנועים העצומים עדיין נראים כפי שהרימו את הגשר לפני יותר ממאה שנה. זה אחד המקומות הבודדים בלונדון שבהם רואים איך גשר תנועה ענק כזה בכלל עובד מבפנים.",
-   "price_until": "1 בספטמבר 2026",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "st-pauls": {
-  "video": {
-   "youtube_id": "A9mZ4EWbl3o",
-   "title": "St Paul's Cathedral Tour, London | FULL TOUR + TIPS",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 24,
-   "currency": "GBP",
-   "duration": "כשעה וחצי עד שעתיים",
-   "source_url": "https://www.stpauls.co.uk/ticket-types-and-prices",
-   "desc_he": "הכיפה של סנט פול היא אחת הגדולות בעולם, ומי שמטפס את כל חמש מאות עשרים ושמונה המדרגות מגיע לגלריית הזהב עם נוף פתוח על כל לונדון. הכרטיס כולל גם ירידה לקריפטה, שם קבור נלסון וגם האדריכל כריסטופר רן שתכנן את כל הקתדרלה אחרי השריפה הגדולה של שנת 1666. יש גם מדריך מולטימדיה בכניסה שמסביר את ההיסטוריה תוך כדי הסיור בקומת הכניסה עצמה.",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "sky-garden": {
-  "video": {
-   "youtube_id": "FdAGgTIUtpU",
-   "title": "The View from The Sky Garden: London's Free Observation Deck",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "borough-market": {
-  "video": {
-   "youtube_id": "8cqRbJlRR_o",
-   "title": "Borough Market London | London Walking Tour | Best of Borough Market | London Street Food [4k HDR]",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "tate-modern": {
-  "video": {
-   "youtube_id": "py5tRGV_RpQ",
-   "title": "Tate Modern Art Gallery LONDON Highlights 2024",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "london-eye": {
-  "video": {
-   "youtube_id": "h7gtgAcLZQc",
-   "title": "Ride The London Eye | Full Tour With Amazing Views Across London (Nov 2024) [4K]",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "currency": "GBP",
-   "source_url": "https://ticketing.londoneye.com/en/tickets/standard-london-eye-fast-track-tickets",
-   "desc_he": "סיבוב שלם באופנוע הענק לוקח חצי שעה, אבל עם ההמתנה והעלייה לתא כדאי לתכנן קרוב לשעה. כל תא זכוכית מכיל עד עשרים וחמישה אנשים ונשאר סגור לחלוטין תוך כדי הסיבוב, כך שרואים את כל לונדון מלמעלה כולל ביג בן וארמון וסטמינסטר בלי לזוז ממקום אחד. המחיר עולה ככל שמתקרבים לתאריך ההגעה, אז הזמנה מוקדמת חוסכת כסף.",
-   "price_varies": true,
-   "checked": "25 באוגוסט 2026",
-   "price": 25.38
-  }
- },
- "southbank-walk": {
-  "video": {
-   "youtube_id": "PgUlXIQJiX8",
-   "title": "South Bank, London | London Neighbourhood (Area) Tours",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "shard": {
-  "video": {
-   "youtube_id": "4vuf15SzSfM",
-   "title": "London's Highest and Best View - The View from The Shard",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "currency": "GBP",
-   "source_url": "https://tickets.theviewfromtheshard.com/book-tickets/",
-   "desc_he": "השארד הוא הבניין הגבוה ביותר במערב אירופה, ונקודת התצפית נמצאת בין קומה שישים ושמונה לשבעים ושתיים, גבוה בהרבה מהלונדון איי או מסקיי גארדן. אין הגבלת זמן ברגע שנכנסים, אז אפשר לשבת בבר בקומה שבעים ושתיים ולראות את השקיעה עד סגירה. ביום בהיר רואים עד שישים וארבעה קילומטר לכל הכיוונים, כולל את כל נהר התמזה מתפתל דרך העיר.",
-   "price_varies": true,
-   "checked": "25 באוגוסט 2026",
-   "price": 28
-  }
- },
- "natural-history": {
-  "video": {
-   "youtube_id": "aDwMrDGvLWk",
-   "title": "The Wonders of London's Natural History Museum - An In-Depth Guided Tour",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "science-museum": {
-  "video": {
-   "youtube_id": "8s8ZnZxByLQ",
-   "title": "Science Museum LONDON 2024 Highlights",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "va-museum": {
-  "video": {
-   "youtube_id": "t46g387rqIo",
-   "title": "The Victoria and Albert Museum Tour | A London Treasure",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "hyde-park": {
-  "video": {
-   "youtube_id": "2jVUTpH9TWo",
-   "title": "Kensington Gardens in London spring walkthrough | The Royal Parks",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "kensington-palace": {
-  "video": {
-   "youtube_id": "27HYTAgzEjo",
-   "title": "Kensington Palace Tour | 300 Years a Royal Residences in the Heart of London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 24.7,
-   "currency": "GBP",
-   "duration": "כשעה וחצי עד שעתיים",
-   "source_url": "https://www.hrp.org.uk/kensington-palace/visit/tickets-and-prices/",
-   "desc_he": "זה עדיין בית מגורים מלכותי פעיל, שם גרים היום הנסיך וויליאם וקייט, אבל חלק מהחדרים פתוחים לציבור עם כרטיס. הכניסה כוללת מדריך קולי ומציגה את הגנים השקועים המפורסמים, יחד עם תערוכות מתחלפות על בני המשפחה המלכותית שגרו שם לאורך הדורות, כולל הנסיכה דיאנה. כדאי לדעת שההזמנה היא לחלון כניסה של חצי שעה בלבד, אז לא ניתן להגיע בלי הזמנה מראש.",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "notting-hill": {
-  "video": {
-   "youtube_id": "xI5qy4g6Mk0",
-   "title": "Notting Hill and Portobello Road Market Walking Tour [4K HDR]",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "camden-market": {
-  "video": {
-   "youtube_id": "DTxAUScs9pI",
-   "title": "CAMDEN | The ultimate tour of Camden Town London (including Camden Market)",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "regents-park": {
-  "video": {
-   "youtube_id": "d9pno9qRmCE",
-   "title": "Discover The Regent's Park and Primrose Hill, one of London's Royal Parks",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "london-zoo": {
-  "video": {
-   "youtube_id": "-OkyAEqdWso",
-   "title": "Visit ZSL London Zoo",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 30.5,
-   "currency": "GBP",
-   "duration": "יום שלם",
-   "source_url": "https://www.londonzoo.org/plan-your-visit/london-zoo-tickets",
-   "desc_he": "כרטיס כניסה יומי לגן החיות של לונדון, שנמצא בתוך ריג'נטס פארק ומשמש בית לכ-15,000 בעלי חיים מ-750 מינים. יש שם את האריות האסייתים באזור Land of the Lions, בריכת פינגווינים עם חלון צפייה מתחת למים, וגם גורילות ונמרים סומטרים. השטח פרוס ומפוזר על שטח גדול, אז שווה להקדיש לביקור יום שלם.",
-   "price_note": "המחיר עשוי להשתנות בהתאם לתאריך ולשעה שתבחרו באתר.",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "shoreditch-art": {
-  "video": {
-   "youtube_id": "xKHWIStlMEY",
-   "title": "LONDON STREET ART TOUR | Brick Lane | Shoreditch | Spitalfields | East London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 15,
-   "currency": "GBP",
-   "duration": "כשעתיים",
-   "source_url": "https://streetartlondon.co.uk/tours/booking/",
-   "desc_he": "סיור מודרך של כשעתיים ברחובות שורדיץ', יוצא שלוש פעמים בשבוע בבוקר מתחנת הרכבת התחתית Old Street. זו החברה שהתחילה את כל תעשיית סיורי אמנות הרחוב בלונדון, והמדריכים מסבירים על עבודות של באנקסי, סטיק ואמנים בינלאומיים נוספים. הציורים על הקירות מתחלפים כל הזמן, אז כל סיור בפועל שונה מקודמו.",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "brick-lane": {
-  "video": {
-   "youtube_id": "7E5RtFkxIC4",
-   "title": "A Short Guide to Brick Lane Market in London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "greenwich": {
-  "video": {
-   "youtube_id": "QLmKZ-BJs-g",
-   "title": "The Ultimate Travel Guide to Greenwich London for 2026",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "maritime-museum": {
-  "video": {
-   "youtube_id": "GkTCpA9oufc",
-   "title": "Exploring the National Maritime Museum in Greenwich",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "kew-gardens": {
-  "video": {
-   "youtube_id": "HqMg_hP8d2Q",
-   "title": "Kew Gardens, London | Tour + Top Tips",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 21.85,
-   "currency": "GBP",
-   "duration": "יום שלם",
-   "source_url": "https://www.kew.org/kew-gardens/visit-kew-gardens/tickets",
-   "desc_he": "כרטיס כניסה לגני קיו, אתר מורשת עולמית של אונסקו ואוסף הצמחים הגדול בעולם עם יותר מחמישים אלף מיני צמחים. בתוך השטח יש חממות ויקטוריאניות ענקיות כמו Palm House והחממה הממוזגת Temperate House, ומעבר צמרות עצים בגובה שמונה עשרה מטר. השטח משתרע על פני מאה ושלושים הקטר, אז ביקור שלם בקלות ממלא יום שלם.",
-   "price_until": "1 בספטמבר 2026",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "harry-potter": {
-  "video": {
-   "youtube_id": "uIEMjosSu-M",
-   "title": "Step Back Into The World Of Harry Potter | Warner Bros. Studio Tour London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "currency": "GBP",
-   "source_url": "https://www.wbstudiotour.co.uk/tickets/",
-   "desc_he": "כרטיס לסיור באולפני וורנר ברדרס בווטפורד, שם צולמו כל שמונה סרטי הארי פוטר. הסיור עצמאי ובקצב אישי, וכולל את האולם הגדול המקורי, רחוב דיאגון, וקרון הקיטור האמיתי של הוגוורטס אקספרס. משך הביקור הממוצע כשלוש שעות וחצי עד ארבע, וכדאי להזמין מקום מראש כי אין מכירת כרטיסים במקום.",
-   "price_varies": true,
-   "checked": "25 באוגוסט 2026",
-   "price": 51.19
-  }
- },
- "hampton-court": {
-  "video": {
-   "youtube_id": "Bh60caXu5k4",
-   "title": "Hampton Court Palace | Tour + Top Tips",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 29.0,
-   "currency": "GBP",
-   "duration": "יום שלם",
-   "source_url": "https://www.hrp.org.uk/hampton-court-palace/visit/tickets-and-prices/",
-   "desc_he": "כרטיס כניסה לארמון המפטון קורט, המקום שבו גר הנרי השמיני עם שש נשותיו. בפנים אפשר לראות את המטבחים הענקיים ששירתו כשש מאות איש בכל ארוחה, את חדרי המדינה המפוארים, ואת המבוך המפורסם בגנים. ביקור מלא בארמון ובגנים בקלות ממלא יום שלם.",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "national-portrait-gallery": {
-  "video": {
-   "youtube_id": "z-H9X_JdAu4",
-   "title": "My Highlights at The National Portrait Gallery, London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "tate-britain": {
-  "video": {
-   "youtube_id": "jDx9dfsEMIA",
-   "title": "A tour of Tate Britain",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "wallace-collection": {
-  "video": {
-   "youtube_id": "st7aqBBnxKA",
-   "title": "London: The Wallace Collection - 2 minute Guide",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "soane-museum": {
-  "video": {
-   "youtube_id": "lPvPjKsk39c",
-   "title": "Sir John Soane's Museum: A Quick Tour",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "transport-museum": {
-  "video": {
-   "youtube_id": "YXv_Nmgdz5E",
-   "title": "London Transport Museum Tour | Covent Garden | 4K",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 23.62,
-   "currency": "GBP",
-   "duration": "כשעתיים עד שלוש",
-   "source_url": "https://www.ltmuseum.co.uk/visit/tickets",
-   "desc_he": "כרטיס כניסה למוזיאון התחבורה של לונדון בקובנט גארדן, עם קרונות רכבת תחתית עתיקים, אוטובוסים דו קומתיים מכל הדורות, ופוסטרים היסטוריים מקוריים. הכרטיס בתוקף לשנה שלמה מיום הרכישה, אז אפשר לחזור כמה פעמים באותה עלות. ביקור רגיל אורך כשעתיים עד שלוש שעות.",
-   "price_until": "1 בספטמבר 2026",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "trafalgar-square": {
-  "video": {
-   "youtube_id": "yePLUEY3FFc",
-   "title": "Trafalgar Square, London Walking Tour",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "chinatown-soho": {
-  "video": {
-   "youtube_id": "luNHlfDlVAA",
-   "title": "London Chinatown walk and SOHO | London city walking tour",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "piccadilly-circus": {
-  "video": {
-   "youtube_id": "BXtMf-i5-Js",
-   "title": "Piccadilly Circus London Walking Tour 4K",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "dickens-museum": {
-  "video": {
-   "youtube_id": "2htpOD8DI4M",
-   "title": "Charles Dickens Home - [Room by Room Tour] of Dickens Museum London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 14.0,
-   "currency": "GBP",
-   "duration": "כשעה",
-   "source_url": "https://dickensmuseum.com/pages/admissions",
-   "desc_he": "כרטיס כניסה לביתו של צ'ארלס דיקנס ברחוב דוטי 48, המקום היחיד מבין כל בתי המגורים שלו בלונדון ששרד עד היום. שם הוא כתב את אוליבר טוויסט ואת פיקוויק פייפרס, והבית משוחזר עם רהיטים וחפצים אישיים מהתקופה. ביקור טיפוסי אורך כשעה.",
-   "price_until": "1 בספטמבר 2026",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "neals-yard": {
-  "video": {
-   "youtube_id": "-fGe5DiRjHs",
-   "title": "COVENT GARDEN WALK | Covent Garden London | Covent Garden Piazza | Neal's Yard | Seven Dials",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "leadenhall-market": {
-  "video": {
-   "youtube_id": "_9TsLzfPgpg",
-   "title": "Leadenhall Market London Walking Tour",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "monument": {
-  "video": {
-   "youtube_id": "DEWlC-l1lpE",
-   "title": "The Monument To The Great Fire Of London and Views From The Top",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 7.0,
-   "currency": "GBP",
-   "duration": "כרבע שעה עד חצי שעה",
-   "source_url": "https://www.themonument.org.uk/plan/buy-tickets",
-   "desc_he": "כרטיס לטיפוס על המונומנט לשריפה הגדולה של לונדון, עמוד אבן בגובה שישים ואחד מטר שנבנה בשנת 1677 לזכר השריפה שהשמידה כמעט את כל העיר בשנת 1666. צריך לטפס שלוש מאות ואחת עשרה מדרגות במדרגת אבן צרה כדי להגיע לפלטפורמת התצפית למעלה, שמשם רואים את הסיטי ואת נהר התמזה. הטיפוס עצמו לוקח כרבע שעה עד חצי שעה.",
-   "price_until": "1 בספטמבר 2026",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "st-dunstan": {
-  "video": {
-   "youtube_id": "HpFwZkpWjIQ",
-   "title": "St Dunstan in the East London, Medieval Church Ruins Turned Garden Near the Tower of London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "bank-museum": {
-  "video": {
-   "youtube_id": "VozhNp789Jg",
-   "title": "Discover the Bank of England Museum",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "guildhall": {
-  "video": {
-   "youtube_id": "PfF-NjxaEbY",
-   "title": "London's Roman Amphitheatre: Discovery, Conservation and Form",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "barbican": {
-  "video": {
-   "youtube_id": "WzE0H3B4wEg",
-   "title": "A Short Guide to the Barbican Centre in London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "st-katharine-docks": {
-  "video": {
-   "youtube_id": "m2Fu_XcfBFg",
-   "title": "London's Luxury Marina St Katharine Docks | Walking Tour (4K)",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "postal-museum": {
-  "video": {
-   "youtube_id": "qvpCTZx_wc4",
-   "title": "The Surprisingly Fascinating London Postal Museum (and a Ride on Mail Rail)",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 18.0,
-   "currency": "GBP",
-   "duration": "כשעתיים",
-   "source_url": "https://www.postalmuseum.org/visit-us/tickets/",
-   "desc_he": "הכרטיס פותח לכם את כל המוזיאון ובנוסף כולל נסיעה ברכבת הדואר, מסילה תת קרקעית קטנטנה שהובילה מכתבים מתחת לרחובות לונדון במשך 76 שנה. הנסיעה עצמה נמשכת כרבע שעה בתוך המנהרות המקוריות, ומי שבא בשביל זה לבד כדאי שיתכנן ביקור של שעתיים כדי גם לראות את התערוכות למעלה.",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "imperial-war-museum": {
-  "video": {
-   "youtube_id": "IevuOKrp54k",
-   "title": "Highlights of London's Imperial War Museum | Virtual Tour",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "hms-belfast": {
-  "video": {
-   "youtube_id": "krSBjjqx2os",
-   "title": "HMS Belfast | Imperial War Museum London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 23.45,
-   "currency": "GBP",
-   "duration": "כשעתיים",
-   "source_url": "https://www.iwm.org.uk/visits/hms-belfast/booking",
-   "desc_he": "הכרטיס נותן גישה לכל תשעת הסיפונים של הספינה, מחדרי המכונות למטה ועד תותחי הנ״מ למעלה, כולל אודיו גייד באנגלית שמסביר איך היא פעלה בקרבות מלחמת העולם השנייה ובנחיתת נורמנדי. יש המון מדרגות תלולות ומסדרונות צרים אז זה דורש קצת כושר, אבל זו חוויה שונה לגמרי מביקור מוזיאון רגיל.",
-   "price_until": "1 בספטמבר 2026",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "globe-theatre": {
-  "video": {
-   "youtube_id": "zWu1nqZlynw",
-   "title": "Shakespeare's Globe: Tour and Exhibition | Visit London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 28.0,
-   "currency": "GBP",
-   "duration": "כשעה",
-   "source_url": "https://www.tiqets.com/en/london-attractions-c67458/tickets-for-shakespeares-globe-theatre-guided-tour-p1110014/",
-   "desc_he": "מדריך לוקח אתכם לתוך התיאטרון העגול המשוחזר, אותו שחזרו לפי התכנון המקורי מ־1599, ומספר איך הוא שרד מגפה, שריפה ומשברים פוליטיים לפני שנבנה מחדש בשנות התשעים. הסיור נמשך כשעה וכולל גם את תערוכת הגלריה שמציגה איך בנו תפאורות ותלבושות בלי חשמל.",
-   "price_until": "1 בספטמבר 2026",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "southwark-cathedral": {
-  "video": {
-   "youtube_id": "gpeSWr7xjgQ",
-   "title": "Southwark Cathedral",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "leake-street": {
-  "video": {
-   "youtube_id": "Hc_bN9WOsO4",
-   "title": "GRAFFITI TUNNEL Tour - Leake Street Arches - London [4k]",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "old-operating-theatre": {
-  "video": {
-   "youtube_id": "u8jr45MB8cw",
-   "title": "London: A Guide To Exploring The Old Operating Theatre Museum",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 10,
-   "currency": "GBP",
-   "duration": "כחצי שעה עד שעה",
-   "source_url": "https://oldoperatingtheatre.com/book-tickets/",
-   "desc_he": "המקום מסתתר בעליית גג של כנסייה משנת 1822, ומגיעים אליו רק דרך מדרגות לוליניות צרות. זה חדר הניתוחים הכירורגי המקורי היחיד שנשאר מהתקופה שלפני ההרדמה והחיטוי, לצד גינת עשבי מרפא היסטורית. הכרטיס תקף לכל שעות הפתיחה ביום הרכישה, אז אפשר להגיע מתי שנוח.",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "sea-life": {
-  "video": {
-   "youtube_id": "lLNpLrpjz6I",
-   "title": "Explore Sea Life London Aquarium | Complete Walkthrough Tour (Nov 2024) [4K]",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "currency": "GBP",
-   "source_url": "https://www.visitsealife.com/london/tickets-prices/",
-   "desc_he": "מדובר באחד האקווריומים הגדולים בבריטניה, על גדת הטיימס ליד הלונדון איי. הכרטיס נותן כניסה לכל האזורים כולל מנהרת הכרישים והתמנון, ולפי האתר הרשמי לוקח בממוצע שעה וחצי לעבור את כל המסלול. כדאי לקנות אונליין מראש כי המחיר בכניסה בשער גבוה יותר.",
-   "price_varies": true,
-   "checked": "25 באוגוסט 2026",
-   "price": 27.13
-  }
- },
- "design-museum": {
-  "video": {
-   "youtube_id": "y_zs23zelug",
-   "title": "Inside The Design Museum in London - Virtual Walk Tour 4K HD | Summer Exhibition 2022",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "holland-park": {
-  "video": {
-   "youtube_id": "I2RgVTSbPpU",
-   "title": "Amazing Kyoto Garden and Holland Park Views in London [4K]",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "harrods": {
-  "video": {
-   "youtube_id": "Oax39T5w3ws",
-   "title": "Inside Harrods | London's Ultra Luxury Department Store Tour (July 2024)",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "royal-albert-hall": {
-  "video": {
-   "youtube_id": "YRik1Gjl5vY",
-   "title": "London Royal Albert Hall: Behind the scenes at the home of the Royal Variety Performance",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 20,
-   "currency": "GBP",
-   "duration": "כשעה",
-   "source_url": "https://www.royalalberthall.com/tickets/tours-and-exhibitions/royal-albert-hall-tour/",
-   "desc_he": "הסיור המודרך של שעה לוקח אתכם לאולם הראשי, התא המלכותי, הסוויטה הפרטית שהוקדשה למלכה ויקטוריה, ואזורים מאחורי הקלעים שסגורים בזמן הופעות. מספרים גם סיפורים על הופעות אגדיות שהתקיימו שם מאז 1871. ביום הסיור מקבלים גם הנחה של עשרה אחוזים בבתי הקפה של האולם."
-  }
- },
- "british-library": {
-  "video": {
-   "youtube_id": "_1-0d_k7DEI",
-   "title": "London, England: Treasures of the British Library - Rick Steves' Europe Travel Guide - Travel Bite",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "wellcome-collection": {
-  "video": {
-   "youtube_id": "3P84-aYTFJQ",
-   "title": "Wellcome Collection | Free London Museum and Library",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "sherlock-museum": {
-  "video": {
-   "youtube_id": "YKKkXP0CuI0",
-   "title": "Sherlock Holmes Museum -221B Baker Street, London walk-through tour",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 19,
-   "currency": "GBP",
-   "duration": "כחצי שעה",
-   "source_url": "https://www.sherlock-holmes.co.uk/plan-your-visit/access-information/",
-   "desc_he": "הכתובת המפורסמת 221B בייקר סטריט בכלל לא הייתה קיימת כשקונן דויל כתב את הסיפורים, המספור נעצר קודם לכן. הבית שוחזר עם חדרי מגורים ויקטוריאניים מלאים בפרטים מהסיפורים, כולל הכובע והמקטרת המוכרים. זה בית צר בן כמה קומות אז הביקור קצר יחסית, בסביבות חצי שעה.",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "madame-tussauds": {
-  "video": {
-   "youtube_id": "Dk2vN_f-Xes",
-   "title": "Madame Tussauds London Full Walkthrough (Nov 2024) [4K]",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "currency": "GBP",
-   "source_url": "https://www.madametussauds.com/london/tickets-prices/ways-to-visit/general-admission/",
-   "desc_he": "מעל מאה וחמישים פסלי שעווה של סלבריטאים, מלוכה וספורטאים פזורים על כמה קומות, כולל אזור מלחמת הכוכבים וסימולטור הספיריט אוף לונדון שמעיף אתכם מעל גגות העיר. המחיר עולה משמעותית אם קונים בשער ביום ההגעה, אז הזמנה מראש באתר הרשמי חוסכת לא מעט.",
-   "price_varies": true,
-   "checked": "25 באוגוסט 2026",
-   "price": 23.63
-  }
- },
- "hampstead-heath": {
-  "video": {
-   "youtube_id": "ePJ4BN8bvjI",
-   "title": "HAMPSTEAD HEATH WALK | Parliament Hill | Kenwood House | Hampsetad Heath Ponds | Pergola Garden",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "kenwood-house": {
-  "video": {
-   "youtube_id": "V7mV-IY0vs0",
-   "title": "Kenwood House - Hampstead London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "highgate-cemetery": {
-  "video": {
-   "youtube_id": "pybrnRZ_Ej4",
-   "title": "A tour of HighGate Cemetery, London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 8.75,
-   "currency": "GBP",
-   "duration": "כשעה ורבע",
-   "source_url": "https://highgatecemetery.org/visit",
-   "desc_he": "רק דרך סיור מודרך אפשר להיכנס לחלק המערבי של בית הקברות, שם נמצאים שדרת מצרים ומעגל הלבנון עם הקברים המרשימים ביותר. הסיור נמשך כשעה ורבע, ומי שקנה כרטיס לסיור מקבל בנוסף כניסה חופשית לכל שאר בית הקברות לאותו יום כדי לשוטט לבד.",
-   "price_until": "1 בספטמבר 2026",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "coal-drops-yard": {
-  "video": {
-   "youtube_id": "2m0GguFTMgE",
-   "title": "Coal Drops Yard, King's Cross, London! FULL TOUR",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "little-venice": {
-  "video": {
-   "youtube_id": "8NzZ-tWUrts",
-   "title": "Little Venice London Walking Tour: A London Hidden Gem",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 19,
-   "currency": "GBP",
-   "duration": "כארבעים וחמש דקות",
-   "source_url": "https://www.jasons.co.uk/",
-   "desc_he": "מליטל ונציה אפשר לעלות על סירת התעלה ההיסטורית של ג'ייסונס, שפועלת כבר משנות החמישים, ולשוט על תעלת ריג'נטס עד שוק קמדן. השיט עובר מתחת לגשרים נמוכים ולצד גינות בתים יפות לאורך התעלה, עם קפטן שמספר על ההיסטוריה של התעלות בלונדון. נסיעה חד כיוונית נמשכת כארבעים וחמש דקות, ויש גם כרטיס הלוך ושוב למי שרוצה לחזור באותה דרך.",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "spitalfields-market": {
-  "video": {
-   "youtube_id": "Ms3Vxm-0zn8",
-   "title": "London Walking Tour | Old Spitalfields Market, London - August 2021 [4K]",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "columbia-road": {
-  "video": {
-   "youtube_id": "WQRrNF7WtZ8",
-   "title": "A local's Guide to Columbia Road Flower Market, London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "museum-of-home": {
-  "video": {
-   "youtube_id": "hMPbS20lEKM",
-   "title": "Museum Of The Home Walking Tour 2022 | Virtual Tour Of A London Museum",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "whitechapel-gallery": {
-  "video": {
-   "youtube_id": "oXgIKNmqO1w",
-   "title": "Introducing Whitechapel Gallery, London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "dennis-severs": {
-  "video": {
-   "youtube_id": "eKZ0EVexivs",
-   "title": "Step Back in Time: Inside Dennis Severs' House in London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 16,
-   "currency": "GBP",
-   "duration": "כארבעים וחמש עד שישים דקות",
-   "source_url": "https://www.dennissevershouse.co.uk/calendar",
-   "desc_he": "הבית ברחוב פולגייט 18 בספיטלפילדס משוחזר כאילו משפחת אורגים הוגנוטית בדיונית עדיין גרה שם, כל חדר קפוא ברגע אחר מהמאה השמונה עשרה ועד תחילת המאה העשרים, עם נרות דולקים וריחות בישול באוויר. הביקור עצמו שקט לגמרי, בלי הסברים בקול, פשוט מסתובבים לבד בין החדרים ומרגישים כמו רוח רפאים שמציצה בחיי המשפחה. משך הביקור כארבעים וחמש עד שישים דקות, וכדאי להזמין מקום מראש כי כל סבב מוגבל במספר המבקרים.",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "royal-observatory": {
-  "video": {
-   "youtube_id": "IPCp4c3tz3Y",
-   "title": "Take A Tour Of The Historic Royal Observatory In Greenwich London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 18,
-   "currency": "GBP",
-   "duration": "כשעה וחצי עד שעתיים",
-   "source_url": "https://www.rmg.co.uk/plan-your-visit/tickets-prices",
-   "desc_he": "הכרטיס לאובזרווטוריה המלכותית בגריניץ' נותן כניסה לקו האורך אפס של העולם, שם אפשר לעמוד עם רגל אחת במזרח ורגל אחת במערב, וגם לתערוכות על ההיסטוריה של מדידת הזמן והכוכבים. המקום יושב על גבעה עם אחד הנופים היפים בלונדון, כל העיר ובית המלכה נראים למטה. כדאי להקדיש כשעה וחצי עד שעתיים כדי לראות גם את קו האורך וגם את התערוכות הפנימיות.",
-   "price_until": "2 בספטמבר 2026",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "cutty-sark": {
-  "video": {
-   "youtube_id": "TPOCofMzHhk",
-   "title": "Visit Cutty Sark to learn about its unique past | Visit London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 18,
-   "currency": "GBP",
-   "duration": "כשעה עד שעה וחצי",
-   "source_url": "https://www.rmg.co.uk/plan-your-visit/tickets-prices",
-   "desc_he": "קאטי סארק היא ספינת התה המהירה ביותר ששרדה מהמאה התשע עשרה, ואפשר לעלות על הסיפון ולרדת עד מחסן המטען וחדר המכונות מתחת לקו המים. הכרטיס כולל גם תצוגה על המסעות בין סין לבריטניה ואת האוסף הגדול בעולם של פסלי גלם של ספינות. ביקור מלא לוקח כשעה עד שעה וחצי, ומתחת לגוף הספינה יש בית קפה נחמד לעצירה.",
-   "price_until": "2 בספטמבר 2026",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "queens-house": {
-  "video": {
-   "youtube_id": "VVgj4M5v7EU",
-   "title": "The Queen's House in Greenwich",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "greenwich-market": {
-  "video": {
-   "youtube_id": "5cxs1hYLn1Y",
-   "title": "Greenwich Market Walk: London's Historic Arts and Street Food Market | London, UK |4K",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "greenwich-foot-tunnel": {
-  "video": {
-   "youtube_id": "R6KT4lwkp1c",
-   "title": "London's Underwater 1,217 Feet Tunnel: Walking The Greenwich Foot Tunnel in 4K",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "richmond-park": {
-  "video": {
-   "youtube_id": "AAP_tqiYB8c",
-   "title": "Wildlife of Richmond Park | Wild London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "windsor-castle": {
-  "video": {
-   "youtube_id": "fUDDsZ2I_gk",
-   "title": "Visit Windsor Castle: Official Video",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 32,
-   "currency": "GBP",
-   "duration": "יום שלם, כולל נסיעה מלונדון",
-   "source_url": "https://www.rct.uk/visit/windsor-castle",
-   "desc_he": "כרטיס הכניסה לטירת ווינדזור פותח את דירות המדינה, קפלת סנט ג'ורג' שבה קבורים מלכים כולל אליזבת השנייה, ואת בית הבובות המפורסם של המלכה מרי שבו יש חשמל וברזים שעובדים באמת. הטירה עדיין משמשת מגורים מלכותיים פעילים, הכי ותיקה ומאוכלסת בעולם, ולכן לפעמים חלקים ממנה נסגרים בלי הודעה מוקדמת בגלל אירועים רשמיים. עם הנסיעה מלונדון והזמן בפנים כדאי לתכנן על יום שלם.",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "wembley-tour": {
-  "video": {
-   "youtube_id": "Gbt5bYzXAyM",
-   "title": "Wembley Stadium Tours Official Video | The School Trip",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 28,
-   "currency": "GBP",
-   "duration": "כשעה וחצי",
-   "source_url": "https://bookings.wembleytours.com/stadiumtours/booking/pricing.htm",
-   "desc_he": "הסיור באצטדיון ומבלי עובר דרך מנהרת השחקנים, חדרי ההלבשה ואזור העיתונאים, ומסתיים ביציאה אל שפת המגרש בדיוק במקום שבו הקבוצות יוצאות לפני משחק. האצטדיון מחזיק כתשעים אלף מקומות ונחשב לאחד הגדולים באירופה, ובסיור מספרים גם על גמרי גביע היסטוריים וקונצרטים ענקיים שהתקיימו שם. הסיור המודרך נמשך כשעה וחצי.",
-   "price_until": "1 בספטמבר 2026",
-   "checked": "25 באוגוסט 2026"
-  }
- },
- "cable-car": {
-  "video": {
-   "youtube_id": "XTbhbp3LQ6k",
-   "title": "London Cable Car Tour: Check out the IFS Cloud Cable Car",
-   "verified": true
-  },
-  "tour": {
-   "applicable": true,
-   "price": 41.88,
-   "currency": "ILS",
-   "duration": "כעשר דקות",
-   "source_url": "https://www.emiratesaircablecar.com/products/ifs-cloud-cable-car-ticket",
-   "desc_he": "הרכבל של לונדון, שנקרא היום IFS Cloud Cable Car, חוצה את נהר התמזה בין חצי האי גריניץ' לרויאל דוקס ומתרומם לגובה תשעים מטר מעל המים. הנסיעה קצרה, כעשר דקות בכל כיוון, אבל הנוף על כיפת אצטדיון או טו, קנרי וורף ומזרח לונדון שווה את זה. משלמים עם כרטיס בנק או אוייסטר בדיוק כמו באוטובוס או ברכבת התחתית.",
-   "checked": "23 באוגוסט 2026"
-  }
- },
- "docklands-museum": {
-  "video": {
-   "youtube_id": "-TlCWHR0TUk",
-   "title": "Museum of London Docklands - Full Tour",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "battersea-power-station": {
-  "video": {
-   "youtube_id": "tw0CfebxEEs",
-   "title": "London Walk Tour Inside Battersea Power Station",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "raf-museum": {
-  "video": {
-   "youtube_id": "O4UqR7mfhMI",
-   "title": "Introducing the Royal Air Force Museum London",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "primrose-hill": {
-  "video": {
-   "youtube_id": "KPlwbhhGED0",
-   "title": "5 REASONS TO LOVE PRIMROSE HILL, LONDON | Parks | Pubs | Views | Squares | Regent's Park Road",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "temple-of-mithras": {
-  "video": {
-   "youtube_id": "Vm5MZ1mTFYc",
-   "title": "A look at the ruins of London's Roman Temple of Mithras",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- },
- "west-end-theatre": {
-  "video": {
-   "youtube_id": "tgyHAo2Ivxw",
-   "title": "The West End - Attractions and History of London's Theater District",
-   "verified": true
-  },
-  "tour": {
-   "applicable": false
-  }
- }
 }
