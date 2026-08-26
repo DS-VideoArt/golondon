@@ -586,7 +586,7 @@
 <div class="page-hero hero-photo">
   <span class="tag">🗺️ כלי חינמי</span>
   <h1>בונה מסלול טיול בלונדון לפי ימים</h1>
-  <p>עונים על שלוש שאלות, ומקבלים מסלול יומי מסודר לפי אזורים, כדי לא לבזבז חצי טיול בנסיעות ברכבת התחתית.</p>
+  <p>בוחרים ימים, תחומי עניין, הרכב נוסעים, אזור לינה ותקציב, ומקבלים מסלול יומי מסודר לפי אזורים כדי לא לבזבז חצי טיול בנסיעות ברכבת התחתית.</p>
 </div>
 
 <div class="wrap">
@@ -1109,6 +1109,32 @@
     בניית עוגן הפעולה מתוך ההכרעה. baseClass הוא מחלקת הכפתור של
     המשטח (stop-btn, info-btn, cube-btn), וההתנהגות נגזרת מהסוג.
   */
+  /*
+    כפתור "הראו לי על המפה"
+    =======================
+    עזר יחיד לשלושת משטחי המקום. הוא לא מוסיף למסלול, לא משנה את
+    הכתובת ולא נוגע בבחירות המשתמש, רק קורא ל-GoLondonNearby.focusPlace.
+    מצב בטוח כפול: בלי ממשק מפה זמין או בלי שתי קואורדינטות מספריות
+    לא נוצר כפתור כלל, בשקט, בלי שבר בעמוד ובלי שגיאה בקונסול.
+  */
+  function mapPlaceButton(place, source, className) {
+    if (!place || typeof place.lat !== 'number' || typeof place.lng !== 'number') return null;
+    if (!window.GoLondonNearby || typeof GoLondonNearby.focusPlace !== 'function') return null;
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = className;
+    b.setAttribute('aria-label', 'הראו את ' + place.name + ' על המפה');
+    var ic = document.createElement('i');
+    ic.className = 'fas fa-map-location-dot';
+    ic.setAttribute('aria-hidden', 'true');
+    b.appendChild(ic);
+    b.appendChild(document.createTextNode(' הראו לי על המפה'));
+    b.addEventListener('click', function () {
+      GoLondonNearby.focusPlace(place.id, source);
+    });
+    return b;
+  }
+
   function ctaAnchor(c, baseClass, shortLabel) {
     var a = document.createElement('a');
     a.href = c.href;
@@ -1222,6 +1248,9 @@
     infoBtn.innerHTML = '<i class="fas fa-circle-info"></i> מידע על המקום';
     infoBtn.addEventListener('click', function () { openInfo(it); });
     acts.appendChild(infoBtn);
+
+    var mapBtn = mapPlaceButton(it, 'stop', 'stop-btn');
+    if (mapBtn) acts.appendChild(mapBtn);
 
     var cta = placeCta(it);
     if (cta) acts.appendChild(ctaAnchor(cta, 'stop-btn'));
@@ -1601,6 +1630,12 @@
     add.addEventListener('click', function () { addStop(a.id); closeInfo(); });
     actions.appendChild(add);
 
+    var mapBtn = mapPlaceButton(a, 'info', 'info-btn');
+    if (mapBtn) {
+      mapBtn.addEventListener('click', function () { closeInfo(); });
+      actions.appendChild(mapBtn);
+    }
+
     var cta = placeCta(a);
     if (cta) actions.appendChild(ctaAnchor(cta, 'info-btn'));
 
@@ -1835,6 +1870,9 @@
 
       actions.appendChild(addBtn);
       actions.appendChild(infoBtn);
+
+      var cubeMapBtn = mapPlaceButton(a, 'cube', 'cube-btn');
+      if (cubeMapBtn) actions.appendChild(cubeMapBtn);
 
       var cubeCta = placeCta(a);
       if (cubeCta) {
@@ -2586,8 +2624,8 @@
 <script src="affiliate.js?v=3" defer></script>
 <script src="community-ask.js?v=4" defer></script>
 <script src="place-info.js?v=11" defer></script>
-<script src="trip-tray.js?v=3" defer></script>
-<script src="planner-nearby.js?v=11" defer></script>
+<script src="trip-tray.js?v=5" defer></script>
+<script src="planner-nearby.js?v=12" defer></script>
 <script src="analytics.js?v=4" defer></script>
 </body>
 </html>

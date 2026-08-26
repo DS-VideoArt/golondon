@@ -66,6 +66,8 @@
       '.gl-add-row{margin-top:9px;}',
       /* כפתור בתוך חלונית המידע */
       '.gl-add-modal{font-size:14px;padding:12px 18px;border-radius:11px;}',
+      '.gl-map-modal{font-size:14px;padding:12px 18px;border-radius:11px;text-decoration:none;}',
+      '.gl-map-modal:hover{text-decoration:none;}',
 
       '.gl-tray-pill{position:fixed;z-index:9500;display:inline-flex;align-items:center;gap:9px;',
         'bottom:18px;inset-inline-start:18px;background:#201f2b;color:#fff;',
@@ -272,15 +274,56 @@
     את הפעולה לצד כפתור ההזמנה הקיים. אם למקום אין רשומה במאגר המרכזי,
     לא מוצג כלום, וזה המצב אצל מקומות שמגיעים מקבצים אחרים.
   */
+  /*
+    פעולות חלון המידע
+    =================
+    שתי פעולות מוזרקות לחלון של מקום שממופה במאגר: הוספה למסלול
+    וקישור אל מפת המתכנן. שתיהן נבנות ב-DOM APIs בלבד, בלי HTML
+    ממחרוזות, כדי ששם מקום לעולם לא יתפרש כתגית.
+
+    עמידות למרוץ טעינה: האזנה ל-gl:place-open נרשמת מיד עם טעינת
+    הסקריפט, לפני ש-planner-data.json הגיע. אם חלון נפתח לפני
+    שהמאגר מוכן, המזהה נשמר, וכשהמאגר נטען הפעולות מוזרקות לחלון
+    שעדיין פתוח. מזהה שאינו במאגר, למשל מקום כשר או אירוע, אינו
+    מקבל פעולות ואינו מדווח שגיאה.
+  */
+  var lastOpenId = null;
+
+  function makeMapLink(id, name) {
+    var a = document.createElement('a');
+    a.className = 'gl-add gl-map-modal';
+    a.setAttribute('data-gl-map', id);
+    a.href = '/planner?mode=nearby&place=' + encodeURIComponent(id) + '&from=place_info';
+    a.setAttribute('aria-label', 'הראו את ' + name + ' על המפה');
+    var ic = document.createElement('i');
+    ic.className = 'fas fa-map-location-dot';
+    ic.setAttribute('aria-hidden', 'true');
+    a.appendChild(ic);
+    a.appendChild(document.createTextNode(' הראו לי על המפה'));
+    return a;
+  }
+
+  function renderModalActions(id) {
+    if (!id || !DATA) return;
+    var wrap = document.querySelector('.pi-cta-wrap');
+    if (!wrap) return;
+    /* מסירים רק את הפעולות שלנו. CTA של מידע, אתר רשמי או הזמנה נשאר */
+    var mine = wrap.querySelectorAll('[data-gl-add], [data-gl-map]');
+    for (var i = 0; i < mine.length; i++) mine[i].parentNode.removeChild(mine[i]);
+    var p = DATA[id];
+    if (!p) return;
+    var frag = document.createDocumentFragment();
+    frag.appendChild(makeButton(id, 'place_modal', 'gl-add-modal'));
+    if (typeof p.lat === 'number' && typeof p.lng === 'number') {
+      frag.appendChild(makeMapLink(id, p.name || id));
+    }
+    wrap.insertBefore(frag, wrap.firstChild);
+  }
+
   function wireModal() {
     document.addEventListener('gl:place-open', function (e) {
-      var id = e.detail && e.detail.id;
-      if (!id || !DATA || !DATA[id]) return;
-      var wrap = document.querySelector('.pi-cta-wrap');
-      if (!wrap) return;
-      var old = wrap.querySelector('[data-gl-add]');
-      if (old) old.parentNode.removeChild(old);
-      wrap.insertBefore(makeButton(id, 'place_modal', 'gl-add-modal'), wrap.firstChild);
+      lastOpenId = (e.detail && e.detail.id) || null;
+      renderModalActions(lastOpenId);
     });
   }
 
@@ -288,6 +331,7 @@
 
   function init() {
     load();
+    wireModal();
     fetch('planner-data.json', { cache: 'no-cache' })
       .then(function (r) { if (!r.ok) throw new Error('planner-data'); return r.json(); })
       .then(function (json) {
@@ -301,7 +345,10 @@
         wireDataPlace();
         wireExplicit();
         wirePerfectDay();
-        wireModal();
+        /* חלון שנפתח לפני שהמאגר הגיע מקבל את הפעולות עכשיו */
+        if (lastOpenId && document.querySelector('.pi-overlay.pi-open')) {
+          renderModalActions(lastOpenId);
+        }
         refreshAll();
       })
       .catch(function () { /* בלי נתונים אין כפתורים, וזה עדיף על כפתור שבור */ });

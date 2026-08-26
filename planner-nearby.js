@@ -55,10 +55,17 @@
   };
 
   var DATA = null, TAX = null, ZONE = null, INFO = null;
+  /*
+    בחירת מקום. state.selectedId מחזיק את המקום המסומן במפה, והוא
+    שורד רינדור מחדש של הרשימה והסמנים. dataReady נפתרת אחרי טעינת
+    planner-data.json, כדי ש-focusPlace שנקרא מוקדם ימתין ולא ייכשל.
+  */
+  var dataReadyResolve = null;
+  var dataReady = new Promise(function (res) { dataReadyResolve = res; });
   var ZONES = [], PICKED_BY_PARAM = false;
   var map = null, cluster = null, anchorMarker = null, ring = null;
   var loaded = false, built = false;
-  var state = { point: null, radius: 1000, groups: [], free: false, kids: false, method: null };
+  var state = { point: null, radius: 1000, groups: [], free: false, kids: false, method: null, selectedId: null };
   var markers = {};   /* id -> marker */
 
   /* ---------- עזר ---------- */
@@ -83,9 +90,17 @@
     if (window.glTrack) glTrack(name, params || {});
   }
 
+  /*
+    טעינת ספריות המפה. ההבטחה נשמרת במשתנה כדי ששתי קריאות מקבילות,
+    למשל open ו-focusPlace באותו רגע, ימתינו לאותה טעינה. בלי זה
+    הקריאה השנייה רואה שתגיות הסקריפט כבר קיימות ב-DOM וממשיכה לפני
+    שהן סיימו להיטען, ו-L עדיין לא מוגדר.
+  */
+  var vendorPromise = null;
   function loadVendor() {
     if (loaded) return Promise.resolve();
-    return new Promise(function (resolve, reject) {
+    if (vendorPromise) return vendorPromise;
+    vendorPromise = new Promise(function (resolve, reject) {
       VENDOR.filter(function (v) { return v.css; }).forEach(function (v) {
         if (document.querySelector('link[href="' + v.css + '"]')) return;
         var l = document.createElement('link');
@@ -101,10 +116,11 @@
         var s = document.createElement('script');
         s.src = src;
         s.onload = next;
-        s.onerror = function () { reject(new Error(src)); };
+        s.onerror = function () { vendorPromise = null; reject(new Error(src)); };
         document.body.appendChild(s);
       })();
     });
+    return vendorPromise;
   }
 
   /* ---------- נתונים ---------- */
@@ -176,6 +192,8 @@
       '.nb-controls.is-on{display:flex;}',
       '.nb-zones{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px;}',
       '.nb-more{width:100%;margin-top:12px;justify-content:center;display:flex;}',
+      '.nb-live{font-size:13.5px;font-weight:700;color:#15803D;margin:0 0 8px;min-height:0;}',
+      '.nb-live:focus{outline:none;}',
       '.nb-zone-chip{font-size:12.5px;}',
       '.nb-chip{font-family:inherit;font-size:13px;font-weight:700;padding:7px 13px;border-radius:50px;',
         'border:1px solid rgba(32,31,43,.14);background:#fff;color:#55596b;cursor:pointer;white-space:nowrap;}',
@@ -256,6 +274,7 @@
       '</div>' +
       '<p class="nb-note" id="nb-note">המיקום נשאר במכשיר שלכם, לא נשמר ולא נשלח לשום מקום.</p>' +
       '<div class="nb-controls" id="nb-controls"></div>' +
+      '<p id="nb-live" role="status" aria-live="polite" tabindex="-1" class="nb-live"></p>' +
       '<div id="nearby-map"></div>' +
       '<div id="nb-out"></div>';
 
@@ -451,15 +470,20 @@
       }).bindTooltip('אזור הלינה שלכם, בערך', { direction: 'top' }).addTo(map);
     }
     /* מבט רחב יותר כשמציגים אזור שלם, וקרוב כשמדובר במיקום ממשי */
+    /*
+      כל המרכוזים כאן בלי אנימציה. אנימציית זום שנקטעת באמצע, למשל
+      על ידי focusPlace שרץ מיד אחרי הפתיחה, משחזרת את היעד שלה בסוף
+      המעבר ודורסת את המיקוד שהתבקש. מעבר מיידי מבטל את המרוץ כולו.
+    */
     if (method === 'area_default' && ZONE && ZONE.areaFilter) {
       var pz = placesInZone();
       if (pz.length) {
-        map.fitBounds(pz.map(function (p) { return [p.lat, p.lng]; }), { padding: [30, 30] });
+        map.fitBounds(pz.map(function (p) { return [p.lat, p.lng]; }), { padding: [30, 30], animate: false });
       } else {
-        map.setView(pt, 10);
+        map.setView(pt, 10, { animate: false });
       }
     } else {
-      map.setView(pt, method === 'area_default' ? ((ZONE && ZONE.citywide) ? 12 : 14) : 15);
+      map.setView(pt, method === 'area_default' ? ((ZONE && ZONE.citywide) ? 12 : 14) : 15, { animate: false });
     }
     setTimeout(function () { map.invalidateSize(); }, 60);
     track('location_selected', {
@@ -504,15 +528,31 @@
       : null;
 
     cluster.clearLayers(); markers = {};
+    if (extraSelMarker) { map.removeLayer(extraSelMarker); extraSelMarker = null; }
     res.forEach(function (r) {
-      var m = L.marker([r.p.lat, r.p.lng], {
-        icon: L.divIcon({ className: '', html: '<div style="background:#DC2626;color:#fff;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 1px 4px rgba(0,0,0,.3)">📍</div>', iconSize: [26, 26] })
-      });
+      var m = L.marker([r.p.lat, r.p.lng], { icon: markerIcon(r.p.id === state.selectedId) });
       m.bindTooltip(r.p.name, { direction: 'top' });
-      m.on('click', function () { highlight(r.p.id); });
+      m.on('click', function () { selectPlace(r.p.id, 'pin'); });
       markers[r.p.id] = m;
       cluster.addLayer(m);
     });
+
+    /*
+      סיכה נבחרת שמסנן פעיל מסתיר. המסנן נשאר בתוקף והספירה שלמטה
+      אינה כוללת אותה, אבל המקום שהמשתמש ביקש לראות מוצג בכל זאת,
+      ישירות על המפה ולא דרך האשכולות.
+    */
+    if (state.selectedId && !markers[state.selectedId]) {
+      var selP = byIdInData(state.selectedId);
+      if (selP) {
+        var sm = L.marker([selP.lat, selP.lng], { icon: markerIcon(true), zIndexOffset: 900 });
+        sm.bindTooltip(selP.name, { direction: 'top' });
+        sm.on('click', function () { selectPlace(selP.id, 'pin'); });
+        sm.addTo(map);
+        markers[state.selectedId] = sm;
+        extraSelMarker = sm;
+      }
+    }
 
     if (!res.length) {
       out.innerHTML = '<div class="nb-empty">לא נמצאו מקומות בטווח הזה עם הסינון הנוכחי.<br>' +
@@ -626,6 +666,61 @@
     if (!card) return;
     card.classList.add('is-hi');
     card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  /*
+    בחירת מקום, הצד המשותף
+    ======================
+    גם לחיצה על סיכה וגם מיקוד מבחוץ עוברות כאן, כדי שהמפה, הרשימה
+    והסמן המודגש יספרו תמיד את אותו סיפור. הסמן הנבחר כהה ומוגדל,
+    בכוונה לא אדום כמו סמן רגיל, לא לבן כמו נקודת המשתמש ולא כחול
+    כמו קישור מסחרי. הבחירה אינה מוסיפה למסלול, אינה פותחת חלון
+    ואינה גוללת את המפה אל מחוץ למסך.
+  */
+  var extraSelMarker = null;
+
+  function markerIcon(selected) {
+    if (selected) {
+      return L.divIcon({ className: '', html: '<div style="background:#201f2b;color:#fff;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 2px 10px rgba(0,0,0,.5),0 0 0 4px #fff,0 0 0 6px #201f2b">📍</div>', iconSize: [36, 36] });
+    }
+    return L.divIcon({ className: '', html: '<div style="background:#DC2626;color:#fff;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 1px 4px rgba(0,0,0,.3)">📍</div>', iconSize: [26, 26] });
+  }
+
+  function byIdInData(id) {
+    if (!DATA) return null;
+    for (var i = 0; i < DATA.length; i++) {
+      var p = DATA[i];
+      if (p.id === id && typeof p.lat === 'number' && typeof p.lng === 'number') return p;
+    }
+    return null;
+  }
+
+  function liveStatus(text) {
+    var el = $('nb-live');
+    if (el) el.textContent = text;
+  }
+
+  function selectPlace(id, source) {
+    var p = byIdInData(id);
+    if (!p) return false;
+    if (extraSelMarker) { map && map.removeLayer(extraSelMarker); extraSelMarker = null; }
+    state.selectedId = id;
+    /*
+      אם הכרטיס נמצא מעבר לגבול "טען עוד", מרחיבים את הרשימה בדיוק
+      עד אליו, לא עד 154. כך ההדגשה קיימת ב-DOM בלי לפוצץ את הרשימה.
+    */
+    var res = results();
+    for (var i = 0; i < res.length; i++) {
+      if (res[i].p.id === id && i >= (state.listCap || 0)) { state.listCap = i + 1; break; }
+    }
+    render();
+    var card = document.querySelector('.nb-card[data-nb="' + id + '"]');
+    if (card) {
+      var all = document.querySelectorAll('.nb-card.is-hi');
+      for (var k = 0; k < all.length; k++) all[k].classList.remove('is-hi');
+      card.classList.add('is-hi');
+    }
+    return true;
   }
 
   /* משתמשים בחלונית הקיימת ולא בונים חדשה */
@@ -803,6 +898,7 @@
       DATA = both[0].attractions || [];
       TAX = both[1];
       INFO = both[2] || {};
+      if (dataReadyResolve) dataReadyResolve(true);
       var zones = (TAX.coverage && TAX.coverage.zones) || [];
       /*
         מצב תכנון מלא: אזור וירטואלי שמכסה את כל לונדון רבתי.
@@ -831,7 +927,15 @@
       injectStyles();
       labelTab();
       /* כניסה ישירה ממדריך אזור */
-      if (/[?&]mode=nearby/.test(location.search)) open();
+      if (/[?&]mode=nearby/.test(location.search)) {
+        open();
+        /*
+          קישור ישיר מחלון מידע: place= ממקד את המקום. מזהה לא מוכר
+          משאיר את מצב המפה הרגיל, בלי שגיאה ובלי טקסט מטעה.
+        */
+        var pm = /[?&]place=([a-z0-9-]+)/i.exec(location.search);
+        if (pm) focusPlace(pm[1].toLowerCase(), 'url');
+      }
     }).catch(function () {
       var t = $('tab-nearby'); if (t) t.hidden = true;
     });
@@ -841,8 +945,80 @@
     document.addEventListener('DOMContentLoaded', init);
   } else { init(); }
 
+  /*
+    מיקוד מקום במפה, הממשק הציבורי
+    ==============================
+    focusPlace(id, source) מחזירה Promise<boolean>. true רק כשמזהה
+    חוקי וממופה הוצג בפועל על המפה. כל מצב אחר, מזהה זר, קואורדינטה
+    חסרה או כשל טעינה, מחזיר false בשקט, בלי חריגה לקונסול, כי
+    הקוראים הם כפתורים בממשק ואסור שהם ישברו את העמוד.
+
+    הפעולה צופה בלבד: לא כותבת ל-localStorage, לא נוגעת במסלול,
+    באזור הלינה או במסננים, ולא מבקשת מיקום מכשיר.
+  */
+  function focusPlace(id, source) {
+    return dataReady.then(function () {
+      var p = byIdInData(id);
+      if (!p) return false;
+      open();
+      return loadVendor().then(function () {
+        if (!state.point && ZONE && ZONE.center) setPoint(ZONE.center.slice(), 'area_default');
+        /*
+          מקום מחוץ לאזור הנוכחי: מעבר לאזור הווירטואלי "כל לונדון".
+          נקודה שהמשתמש בחר בעצמו נשמרת ומוחזרת אחרי ההחלפה, כדי
+          שהמרחקים ברשימה ימשיכו להימדד ממנה.
+        */
+        var visible = placesInZone().some(function (z) { return z.id === id; });
+        if (!visible) {
+          var keepPoint = (state.method && state.method !== 'area_default')
+            ? { pt: state.point.slice(), method: state.method, radius: state.radius } : null;
+          var allZone = null;
+          for (var i = 0; i < ZONES.length; i++) {
+            if (ZONES[i].citywide && !ZONES[i].areaFilter) { allZone = ZONES[i]; break; }
+          }
+          if (allZone) switchZone(allZone);
+          if (keepPoint) {
+            setPoint(keepPoint.pt, keepPoint.method);
+            state.radius = keepPoint.radius;
+          }
+        }
+        /*
+          סדר הפעולות קריטי: קודם מייצבים את המצלמה על המקום, בלי
+          אנימציה, ורק אחרי שהזום הסופי חל בונים את הסמנים והבחירה.
+          בנייה באמצע אנימציית זום משאירה את עץ האשכולות על זום ישן,
+          והסיכה הנבחרת נשארת בלועה באשכול.
+        */
+        if (typeof map.stop === 'function') map.stop();
+        map.setView([p.lat, p.lng], 16, { animate: false });
+        map.invalidateSize();
+        function reveal() {
+          var m = markers[id];
+          if (m && !m._icon) {
+            /* שכנה צמודה עדיין מקבצת: קפיצה אחת עמוקה יותר */
+            map.setView([p.lat, p.lng], 18, { animate: false });
+          }
+          m = markers[id];
+          if (m && m.openTooltip) m.openTooltip();
+          liveStatus(p.name + ' מוצג במפה');
+          /* מיקוד עובר להודעה רק כשנלחץ מתוך המתכנן, לא בטעינת כתובת */
+          if (source === 'stop' || source === 'cube' || source === 'info') {
+            var lv = $('nb-live');
+            if (lv) lv.focus();
+          }
+        }
+        return new Promise(function (resolve) {
+          setTimeout(function () {
+            if (!selectPlace(id, source)) { resolve(false); return; }
+            setTimeout(function () { reveal(); resolve(true); }, 120);
+          }, 60);
+        });
+      });
+    }).catch(function () { return false; });
+  }
+
   window.GoLondonNearby = {
     open: open,
+    focusPlace: focusPlace,
     /* נקודת כניסה ציבורית. משמשת לבדיקות, ותאפשר בעתיד קישור ישיר לנקודה */
     setPoint: function (lat, lng, method) { setPoint([lat, lng], method || 'api'); },
     results: function () { return results().map(function (r) { return { id: r.p.id, m: Math.round(r.d) }; }); },
