@@ -1215,11 +1215,11 @@
   "cta": {
    "label": "מעבר לאתר הרשמי ותשלום",
    "offer": "attractions_alt",
-   "href": "https://www.emiratesaircablecar.com/products/ifs-cloud-cable-car-ticket",
+   "href": "https://londoncablecar.ventrata.com/en/one-way",
    "custom": true,
    "desc": "הרכבל של לונדון, שנקרא היום IFS Cloud Cable Car, חוצה את נהר התמזה בין חצי האי גריניץ' לרויאל דוקס ומתרומם לגובה תשעים מטר מעל המים. הנסיעה קצרה, כעשר דקות בכל כיוון, אבל הנוף על כיפת אצטדיון או טו, קנרי וורף ומזרח לונדון שווה את זה. משלמים עם כרטיס בנק או אוייסטר בדיוק כמו באוטובוס או ברכבת התחתית.",
-   "price": 41.64,
-   "currency": "ILS",
+   "price": 7,
+   "currency": "GBP",
    "duration": "כעשר דקות",
    "priceNote": null
   },
