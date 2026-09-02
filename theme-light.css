@@ -399,6 +399,16 @@ small { color: var(--ink-faint) !important; }
   box-shadow: var(--shadow-sm);
 }
 .mini-btn:hover { background: #fff !important; color: var(--ink) !important; box-shadow: var(--shadow-md); }
+
+/* שליחה בוואטסאפ היא הפעולה שהכי רוצים שתקרה בסוף הבנייה, ולכן היא
+   הכפתור היחיד בסרגל שנשאר צבוע גם בערכת האור. הירוק הוא הירוק
+   המזוהה של וואטסאפ, והטקסט הכהה עליו עומד ביחס ניגודיות של 8.7 ל 1. */
+.mini-btn--wa {
+  background: #25D366 !important;
+  border-color: #1fbb59 !important;
+  color: #06210f !important;
+}
+.mini-btn--wa:hover { background: #1fbb59 !important; color: #04170a !important; }
 .day-title, .stop-name { color: var(--ink) !important; }
 .day-meta { color: var(--ink-faint) !important; }
 .stop { border-top-color: var(--line-soft) !important; }

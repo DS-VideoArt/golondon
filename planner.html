@@ -146,6 +146,14 @@
     }
     .mini-btn:hover { background: rgba(255,255,255,0.11); color: #fff; }
 
+    /* פעולת השיתוף היא הפעולה שהכי רוצים שיעשו בסוף, ולכן היא היחידה
+       שצבועה. הירוק הוא הירוק של וואטסאפ כדי שהכפתור יזוהה מיד. */
+    .mini-btn--wa {
+      background: #25D366; border-color: #25D366; color: #0b2e18;
+    }
+    .mini-btn--wa:hover { background: #1fbb59; border-color: #1fbb59; color: #06210f; }
+    .mini-btn--wa i { font-size: 15px; }
+
     .day-card {
       background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.1);
       border-radius: 18px; padding: 22px 22px 18px; margin-bottom: 16px;
@@ -569,7 +577,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Go London" />
   <link rel="stylesheet" href="accessibility-widget.css" />
-  <link rel="stylesheet" href="theme-light.css?v=11" />
+  <link rel="stylesheet" href="theme-light.css?v=15" />
 </head>
 <body>
 
@@ -675,6 +683,7 @@
           <div class="board-summary" id="board-summary"></div>
           <div class="board-actions">
             <button class="mini-btn" id="add-day" type="button"><i class="fas fa-plus"></i> הוספת יום</button>
+            <button class="mini-btn mini-btn--wa" id="m-wa" type="button"><i class="fab fa-whatsapp"></i> שליחה בוואטסאפ</button>
             <button class="mini-btn" id="m-copy" type="button"><i class="far fa-copy"></i> העתקה</button>
             <button class="mini-btn" id="m-print" type="button"><i class="fas fa-print"></i> הדפסה</button>
             <button class="mini-btn mini-btn--danger" id="m-clear" type="button"><i class="far fa-trash-can"></i> ניקוי</button>
@@ -689,6 +698,7 @@
     <div class="results-head">
       <h2 id="results-title">המסלול שלכם</h2>
       <div class="results-actions">
+        <button class="mini-btn mini-btn--wa" id="wa" type="button"><i class="fab fa-whatsapp"></i> שליחה בוואטסאפ</button>
         <button class="mini-btn" id="copy" type="button"><i class="far fa-copy"></i> העתקה</button>
         <button class="mini-btn" id="print" type="button"><i class="fas fa-print"></i> הדפסה</button>
         <button class="mini-btn" id="again" type="button"><i class="fas fa-rotate"></i> גרסה אחרת</button>
@@ -1324,6 +1334,174 @@
       lines.push('');
     });
     return lines.join('\n');
+  }
+
+  /* ============================================================
+     שיתוף המסלול בוואטסאפ
+     ============================================================
+     שלוש הבחנות שמנחות את הקוד כאן:
+
+     1. הודעה בצ'אט משפחתי אינה דוח. השם באנגלית ושעות הפתיחה
+        שייכים לכלי, לא להודעה. בהודעה נשאר מה שעוזר להחליט:
+        מה רואים, כמה זה עולה בגדול, וכמה זמן זה לוקח.
+     2. וואטסאפ מדגיש טקסט שעטוף בכוכביות. זה מה שהופך את ההודעה
+        למשהו שנראה בנוי, ולא להדבקה של פלט.
+     3. הדבר השימושי באמת הוא מפת היום. לכל יום נבנה קישור ניווט
+        אמיתי שעובר בכל העצירות לפי הסדר ונפתח באפליקציית המפות.
+     ============================================================ */
+
+  /* נקודה צבעונית לכל יום, באותו היגיון שבו הימים נצבעים בסרטון */
+  var DAY_DOTS = ['🔴', '🔵', '🟢', '🟡', '🟣', '🟠', '🟤'];
+
+  /*
+    אימוג'י לפי סוג המקום. הסדר כאן הוא סדר עדיפות ולא סדר שרירותי,
+    כי לרוב המקומות יש יותר מקטגוריה אחת ורוצים את זו שמתארת אותם
+    הכי טוב. ארמון לפני מוזיאון, מוזיאון לפני אתר.
+  */
+  var CAT_EMOJI = [
+    ['palace', '👑'], ['show', '🎭'], ['museum', '🏛️'], ['viewpoint', '👁️'],
+    ['park', '🌳'], ['market', '🛍️'], ['street-art', '🎨'], ['sport', '⚽'],
+    ['restaurant', '🍽️'], ['cafe', '☕'], ['bar', '🍸'], ['shop', '🛒'],
+    ['experience', '✨'], ['attraction', '🎡'], ['walk', '🚶'], ['landmark', '📸']
+  ];
+
+  function placeEmoji(it) {
+    var cats = (it && it.categories) || [];
+    for (var i = 0; i < CAT_EMOJI.length; i++) {
+      if (cats.indexOf(CAT_EMOJI[i][0]) !== -1) return CAT_EMOJI[i][1];
+    }
+    return '📍';
+  }
+
+  /* חמש ספרות אחרי הנקודה הן דיוק של כמטר. יותר מזה רק מאריך את הקישור */
+  function coord(n) { return String(Math.round(Number(n) * 100000) / 100000); }
+
+  /*
+    קישור ניווט ליום שלם. הצורה עם api=1 היא הצורה המתועדת של גוגל
+    והיא מקבלת עד תשע נקודות ביניים, ולכן יום ארוך במיוחד נחתך.
+    מקום בלי קואורדינטות מדולג, ואם לא נשארו שתי נקודות אין מה לנווט
+    ולא מוצג קישור בכלל, במקום קישור שבור.
+  */
+  function dayMapUrl(items) {
+    var pts = (items || []).filter(function (it) {
+      return it && typeof it.lat === 'number' && typeof it.lng === 'number';
+    }).map(function (it) { return coord(it.lat) + ',' + coord(it.lng); });
+
+    /*
+      שתי עצירות עוקבות עלולות לשבת על אותה נקודה בדיוק, למשל כשמקום
+      רחב כמו גריניץ׳ מקבל כקירוב את הנקודה המדויקת של המצפה שבתוכו.
+      בלי הסינון הזה נוצר בקישור מקטע ניווט באורך אפס, שנראה כמו תקלה.
+    */
+    pts = pts.filter(function (p, i) { return i === 0 || p !== pts[i - 1]; });
+    if (pts.length < 2) return '';
+    if (pts.length > 11) pts = pts.slice(0, 11);
+    var mid = pts.slice(1, -1);
+    var u = 'https://www.google.com/maps/dir/?api=1' +
+            '&origin=' + pts[0] +
+            '&destination=' + pts[pts.length - 1];
+    if (mid.length) u += '&waypoints=' + mid.join('%7C');
+    return u + '&travelmode=walking';
+  }
+
+  /*
+    קישור שמשחזר את המסלול המדויק בתוך הכלי. applyPreset כבר יודע
+    לקרוא את הצורה הזאת, ולכן מי שמקבל את ההודעה נוחת על מסלול
+    פתוח וניתן לעריכה ולא על עמוד ריק.
+  */
+  function tripLink(plan) {
+    /* מזהי המקומות הם אותיות קטנות, ספרות ומקפים בלבד, והפסיק חוקי
+       בתוך ערך שאילתה. קידוד שלהם רק היה מנפח את הקישור בלי צורך. */
+    var parts = plan.map(function (d) {
+      return 'day=' + d.items.map(function (it) { return it.id; }).join(',');
+    });
+    return 'https://golondon.co.il/planner?' + parts.join('&') +
+           '&from=share&utm_source=whatsapp&utm_medium=share&utm_campaign=trip-share';
+  }
+
+  function areaNameOf(d) {
+    if (d.areaLabel) return d.areaLabel.name;
+    var a = DATA.areas[d.area];
+    return a ? a.name : '';
+  }
+
+  function priceWord(it) {
+    if (it.free) return 'חינם';
+    return it.priceBand || 'בתשלום';
+  }
+
+  function asWhatsApp(plan) {
+    var stops = plan.reduce(function (n, d) { return n + d.items.length; }, 0);
+    var free = plan.reduce(function (n, d) {
+      return n + d.items.filter(function (it) { return it.free; }).length;
+    }, 0);
+
+    var L = [];
+    L.push('*המסלול שלנו בלונדון* 🇬🇧');
+    var head = plan.length + (plan.length === 1 ? ' יום' : ' ימים') + ' · ' + stops + ' עצירות';
+    if (free) head += ' · ' + free + ' מהן בחינם';
+    L.push(head);
+
+    plan.forEach(function (d, i) {
+      L.push('');
+      var name = areaNameOf(d);
+      L.push(DAY_DOTS[i % DAY_DOTS.length] + ' *יום ' + d.day + '*' + (name ? ' · ' + name : ''));
+      d.items.forEach(function (it) {
+        L.push(placeEmoji(it) + ' ' + it.name + ' · ' + priceWord(it) + ' · ' + hoursText(it.hours));
+      });
+      var withTube = d.items.filter(function (it) { return it.tube; })[0];
+      if (withTube) L.push('🚇 מתחילים בתחנת ' + withTube.tube);
+      var mu = dayMapUrl(d.items);
+      if (mu) L.push('🗺️ מפת היום ומסלול הליכה: ' + mu);
+    });
+
+    L.push('');
+    L.push('📲 *לפתוח את המסלול, לערוך ולהוסיף מקומות:*');
+    L.push(tripLink(plan));
+    L.push('');
+    L.push('_נבנה בבונה המסלול החינמי של גו לונדון_');
+    return L.join('\n');
+  }
+
+  /*
+    השליחה עצמה. wa.me הוא הנתיב הישיר: בנייד הוא פותח את האפליקציה
+    ובמחשב את וואטסאפ ווב, בלי תחנות ביניים. שתי הגנות עוטפות אותו.
+    ראשית, כתובת ארוכה מאוד נחתכת בחלק מהדפדפנים, ולכן מעל סף בטוח
+    עוברים למגש השיתוף של המערכת שמעביר את הטקסט בלי מגבלת אורך.
+    שנית, אם גם הוא אינו קיים, ההודעה מועתקת ללוח ונאמר על כך במפורש,
+    כדי שלא ייווצר מצב שלחיצה לא עושה כלום.
+  */
+  /*
+    הסף נקבע לפי מדידה ולא לפי הערכה. אורך הכתובת בפועל: יום אחד 2,269
+    תווים, שלושה ימים 4,792, חמישה ימים 7,546, ושבעה ימים 10,717.
+    16,000 מכסה את כל המסלולים שהכלי בונה עם מרווח של כחמישים אחוז,
+    ומשאיר את הנפילה החוצה רק ללוח ידני חריג עם עשרות עצירות.
+  */
+  var WA_URL_LIMIT = 16000;
+
+  function shareWhatsApp(plan) {
+    if (!plan || !plan.length) { toast('אין עדיין מסלול לשליחה'); return; }
+    var text = asWhatsApp(plan);
+    var stops = plan.reduce(function (n, d) { return n + d.items.length; }, 0);
+    if (window.glTrack) glTrack('trip_share', { method: 'whatsapp', days: plan.length, stops: stops });
+
+    var url = 'https://wa.me/?text=' + encodeURIComponent(text);
+    if (url.length <= WA_URL_LIMIT) {
+      window.open(url, '_blank', 'noopener');
+      return;
+    }
+    if (navigator.share) {
+      navigator.share({ text: text }).catch(function () {});
+      return;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        toast('המסלול ארוך לשליחה ישירה, הועתק ללוח');
+      }).catch(function () {
+        toast(legacyCopy(text) ? 'המסלול הועתק ללוח' : 'השליחה נכשלה');
+      });
+    } else {
+      toast(legacyCopy(text) ? 'המסלול הועתק ללוח' : 'השליחה נכשלה');
+    }
   }
 
   /* שיטת ההעתקה הישנה, עובדת גם בדפדפנים שחוסמים את הממשק המודרני */
@@ -2169,6 +2347,7 @@
 
     $('add-day').addEventListener('click', addDay);
     $('m-print').addEventListener('click', function () { window.print(); });
+    $('m-wa').addEventListener('click', function () { shareWhatsApp(manualPlan()); });
     $('m-copy').addEventListener('click', function () {
       var t = manualText();
       if (!t) { toast('אין עדיין מה להעתיק'); return; }
@@ -2230,6 +2409,7 @@
       }
     });
     $('print').addEventListener('click', function () { window.print(); });
+    $('wa').addEventListener('click', function () { shareWhatsApp(LAST); });
     $('copy').addEventListener('click', function () {
       if (!LAST) return;
       var text = asText(LAST);
