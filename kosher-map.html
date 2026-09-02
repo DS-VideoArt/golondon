@@ -174,6 +174,14 @@
       background: #06ADEF; color: #fff; text-align: center;
       text-decoration: none; font-size: 13px; font-weight: 700;
     }
+    /* הליכה. ווייז אינו יודע הליכה, ובמרחקים של השכונות האלה רוב
+       האנשים הולכים ברגל, ולכן שתי האפשרויות מוצגות זו מתחת לזו. */
+    .place-popup .popup-walk {
+      display: block; margin-top: 6px; padding: 7px 14px; border-radius: 8px;
+      background: rgba(37,99,235,0.08); color: #1d4ed8; text-align: center;
+      text-decoration: none; font-size: 13px; font-weight: 700;
+      border: 1px solid rgba(37,99,235,0.28);
+    }
 
     /* ===== מונה ===== */
     .count-badge {
@@ -414,6 +422,7 @@ function renderMarkers(places) {
     const catClass = isDairy ? 'dairy' : isBakery ? 'bakery' : isShop ? 'shop' : '';
 
     const wazeUrl = `https://waze.com/ul?ll=${p.lat},${p.lng}&navigate=yes`;
+    const walkUrl = `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}&travelmode=walking`;
 
     const popup = `
       <div class="place-popup">
@@ -422,7 +431,8 @@ function renderMarkers(places) {
         <div class="popup-row"><i class="fas fa-map-marker-alt"></i> ${p.address}, ${p.postcode}</div>
         ${p.phone ? `<div class="popup-row popup-phone"><i class="fas fa-phone"></i> <a href="tel:${p.phone}">${p.phone}</a></div>` : ''}
         <div class="popup-kashrus"><i class="fas fa-star-of-david"></i> ${p.kashrus}</div>
-        <a class="popup-waze" href="${wazeUrl}" target="_blank">🚗 נווט בוויז</a>
+        <a class="popup-waze" href="${wazeUrl}" target="_blank" rel="noopener">🚗 נווט בוויז</a>
+        <a class="popup-walk" href="${walkUrl}" target="_blank" rel="noopener">🚶 ניווט בהליכה</a>
       </div>`;
 
     const marker = L.marker([p.lat, p.lng], { icon: makeIcon(p.category) })
@@ -458,7 +468,7 @@ function areaOf(p) {
   ייווצרו מאזינים כפולים בכל פתיחה מחדש של חלון.
 */
 document.getElementById('map').addEventListener('click', function (e) {
-  var a = e.target.closest ? e.target.closest('a.popup-waze') : null;
+  var a = e.target.closest ? e.target.closest('a.popup-waze, a.popup-walk') : null;
   if (!a) return;
   var pop = a.closest('.place-popup');
   var nameEl = pop ? pop.querySelector('.popup-name') : null;
@@ -468,7 +478,8 @@ document.getElementById('map').addEventListener('click', function (e) {
     place: name,
     place_id: p ? p.id : '',
     area: p ? areaOf(p) : '',
-    navigation_provider: 'waze'
+    navigation_provider: a.classList.contains('popup-walk') ? 'google_walking' : 'waze',
+    source_component: 'kosher_map'
   });
 });
 
@@ -597,7 +608,7 @@ document.addEventListener('click', function (e) {
   if (m && e.target === m) closeKashrusInfo();
 });
 </script>
-<script src="trip-tray.js?v=3" defer></script>
+<script src="trip-tray.js?v=6" defer></script>
 <script src="analytics.js?v=4" defer></script>
 </body>
 </html>

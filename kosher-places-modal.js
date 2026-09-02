@@ -41,7 +41,11 @@
       '.kp-btn-waze{background:linear-gradient(135deg,#DC2626,#EA580C);color:#fff!important;}',
       '.kp-btn-waze:hover{opacity:.92;}',
       '.kp-btn-call{background:rgba(32,31,43,.06);color:#201f2b!important;border:1px solid rgba(32,31,43,.12);}',
-      '.kp-btn-call:hover{background:rgba(32,31,43,.1);}'
+      '.kp-btn-call:hover{background:rgba(32,31,43,.1);}',
+      /* הליכה. במרחקים של גולדרס גרין והנדון רוב האנשים הולכים ברגל,
+         וווייז אינו יודע הליכה, ולכן שתי האפשרויות זו לצד זו. */
+      '.kp-btn-walk{background:rgba(37,99,235,.08);color:#1d4ed8!important;border:1px solid rgba(37,99,235,.28);}',
+      '.kp-btn-walk:hover{background:rgba(37,99,235,.14);}'
     ].join('');
     var el = document.createElement('style');
     el.id = 'kp-modal-styles';
@@ -92,9 +96,26 @@
 
     var actions = modal.querySelector('.kp-actions');
     var wazeUrl = 'https://waze.com/ul?ll=' + p.lat + ',' + p.lng + '&navigate=yes';
+    var walkUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng + '&travelmode=walking';
     actions.innerHTML =
-      '<a class="kp-btn kp-btn-waze" href="' + wazeUrl + '" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> ניווט בוויז</a>' +
+      '<a class="kp-btn kp-btn-waze" data-nav="waze" href="' + wazeUrl + '" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> ניווט בוויז</a>' +
+      '<a class="kp-btn kp-btn-walk" data-nav="walk" href="' + walkUrl + '" target="_blank" rel="noopener"><i class="fas fa-person-walking"></i> ניווט בהליכה</a>' +
       (p.phone ? '<a class="kp-btn kp-btn-call" href="tel:' + p.phone + '"><i class="fas fa-phone"></i> התקשרות</a>' : '');
+
+    /* מדידה זהה לזו שבמפת הכשרות, כדי ששני המסכים ידווחו אותו דבר */
+    var navLinks = actions.querySelectorAll('[data-nav]');
+    for (var n = 0; n < navLinks.length; n++) {
+      (function (el) {
+        el.addEventListener('click', function () {
+          if (window.glTrack) glTrack('navigation_click', {
+            place: p.name || '',
+            place_id: p.id || '',
+            navigation_provider: el.getAttribute('data-nav') === 'waze' ? 'waze' : 'google_walking',
+            source_component: 'kosher_modal'
+          });
+        });
+      })(navLinks[n]);
+    }
 
     modal.classList.add('kp-open');
     document.body.style.overflow = 'hidden';

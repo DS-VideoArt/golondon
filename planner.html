@@ -1544,6 +1544,41 @@
   }
 
   /*
+    ניווט אל מקום בודד, בשני ספקים. גוגל מפות עונה על הליכה ותחבורה
+    ציבורית, וווייז על נהיגה. אותה בחירה בדיוק קיימת בחלון המידע
+    האחיד ובמפת הכשרות, כדי שהאתר יתנהג אותו דבר בכל מקום שיש בו
+    נקודה על המפה.
+  */
+  function navUrlFor(kind, a) {
+    if (kind === 'waze') return 'https://waze.com/ul?ll=' + a.lat + ',' + a.lng + '&navigate=yes';
+    return 'https://www.google.com/maps/dir/?api=1&destination=' + a.lat + ',' + a.lng + '&travelmode=walking';
+  }
+
+  function navButton(kind, a, cls) {
+    if (typeof a.lat !== 'number' || typeof a.lng !== 'number') return null;
+    var label = kind === 'waze' ? 'ניווט בווייז' : 'ניווט בהליכה';
+    var el = document.createElement('a');
+    el.className = cls + ' nav-btn';
+    el.href = navUrlFor(kind, a);
+    el.target = '_blank';
+    el.rel = 'noopener';
+    el.setAttribute('aria-label', label + ' אל ' + a.name + ', נפתח בלשונית חדשה');
+    var ic = document.createElement('i');
+    ic.className = kind === 'waze' ? 'fas fa-diamond-turn-right' : 'fas fa-person-walking';
+    ic.setAttribute('aria-hidden', 'true');
+    el.appendChild(ic);
+    el.appendChild(document.createTextNode(' ' + label));
+    el.addEventListener('click', function () {
+      if (window.glTrack) glTrack('navigation_click', {
+        place_id: a.id,
+        navigation_provider: kind === 'waze' ? 'waze' : 'google_walking',
+        source_component: 'planner_info'
+      });
+    });
+    return el;
+  }
+
+  /*
     כפתור מפת היום בתוך כרטיס היום. הוא יושב כאן ולא בהודעה כי קישור
     ניווט מלא ארוך מדי לצ'אט, וכאן הוא ממילא במרחק הקשה אחת.
   */
@@ -1556,6 +1591,7 @@
     a.target = '_blank';
     a.rel = 'noopener';
     a.setAttribute('aria-label', 'פתיחת מפת היום ומסלול ההליכה במפות גוגל, נפתח בלשונית חדשה');
+    a.setAttribute('title', 'מסלול הליכה שעובר בכל עצירות היום לפי הסדר. נפתח במפות גוגל, כי ווייז מקבל יעד אחד בלבד ואינו יודע הליכה.');
     var ico = document.createElement('i');
     ico.className = 'fas fa-map-location-dot';
     a.appendChild(ico);
@@ -1953,6 +1989,11 @@
       mapBtn.addEventListener('click', function () { closeInfo(); });
       actions.appendChild(mapBtn);
     }
+
+    ['walk', 'waze'].forEach(function (kind) {
+      var nb = navButton(kind, a, 'info-btn');
+      if (nb) actions.appendChild(nb);
+    });
 
     var cta = placeCta(a);
     if (cta) actions.appendChild(ctaAnchor(cta, 'info-btn'));
@@ -2974,7 +3015,7 @@
 <script src="affiliate.js?v=3" defer></script>
 <script src="community-ask.js?v=4" defer></script>
 <script src="place-info.js?v=11" defer></script>
-<script src="trip-tray.js?v=5" defer></script>
+<script src="trip-tray.js?v=6" defer></script>
 <script src="planner-nearby.js?v=12" defer></script>
 <script src="analytics.js?v=4" defer></script>
 </body>

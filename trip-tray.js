@@ -68,6 +68,10 @@
       '.gl-add-modal{font-size:14px;padding:12px 18px;border-radius:11px;}',
       '.gl-map-modal{font-size:14px;padding:12px 18px;border-radius:11px;text-decoration:none;}',
       '.gl-map-modal:hover{text-decoration:none;}',
+      /* ניווט. משני לעומת ההוספה וההצגה על המפה, ולכן קטן יותר. */
+      '.gl-nav-modal{font-size:12.8px;padding:9px 13px;border-radius:10px;text-decoration:none;}',
+      '.gl-nav-modal:hover{text-decoration:none;}',
+      '.gl-nav-modal i{font-size:11px;}',
 
       '.gl-tray-pill{position:fixed;z-index:9500;display:inline-flex;align-items:center;gap:9px;',
         'bottom:18px;inset-inline-start:18px;background:#201f2b;color:#fff;',
@@ -303,12 +307,51 @@
     return a;
   }
 
+  /*
+    ניווט אל מקום בודד. שני ספקים בכוונה, כי הם עונים על שתי שאלות
+    שונות: גוגל מפות יודע הליכה ותחבורה ציבורית, וזה מה שתייר במרכז
+    לונדון צריך, וווייז יודע נהיגה, וזה מה שצריך מי שנוסע ברכב.
+    אותה בחירה בדיוק קיימת במפת הכשרות, כדי שהאתר יתנהג אותו דבר
+    בכל מקום שבו יש נקודה על המפה.
+  */
+  function navUrl(kind, p) {
+    if (kind === 'waze') {
+      return 'https://waze.com/ul?ll=' + p.lat + ',' + p.lng + '&navigate=yes';
+    }
+    return 'https://www.google.com/maps/dir/?api=1&destination=' +
+           p.lat + ',' + p.lng + '&travelmode=walking';
+  }
+
+  function makeNavLink(kind, id, p) {
+    var a = document.createElement('a');
+    a.className = 'gl-add gl-nav-modal';
+    a.setAttribute('data-gl-nav', kind);
+    a.href = navUrl(kind, p);
+    a.target = '_blank';
+    a.rel = 'noopener';
+    var label = kind === 'waze' ? 'ניווט בווייז' : 'ניווט בהליכה';
+    a.setAttribute('aria-label', label + ' אל ' + (p.name || id) + ', נפתח בלשונית חדשה');
+    var ic = document.createElement('i');
+    ic.className = kind === 'waze' ? 'fas fa-diamond-turn-right' : 'fas fa-person-walking';
+    ic.setAttribute('aria-hidden', 'true');
+    a.appendChild(ic);
+    a.appendChild(document.createTextNode(' ' + label));
+    a.addEventListener('click', function () {
+      if (window.glTrack) glTrack('navigation_click', {
+        place_id: id,
+        navigation_provider: kind === 'waze' ? 'waze' : 'google_walking',
+        source_component: 'place_modal'
+      });
+    });
+    return a;
+  }
+
   function renderModalActions(id) {
     if (!id || !DATA) return;
     var wrap = document.querySelector('.pi-cta-wrap');
     if (!wrap) return;
     /* מסירים רק את הפעולות שלנו. CTA של מידע, אתר רשמי או הזמנה נשאר */
-    var mine = wrap.querySelectorAll('[data-gl-add], [data-gl-map]');
+    var mine = wrap.querySelectorAll('[data-gl-add], [data-gl-map], [data-gl-nav]');
     for (var i = 0; i < mine.length; i++) mine[i].parentNode.removeChild(mine[i]);
     var p = DATA[id];
     if (!p) return;
@@ -316,6 +359,8 @@
     frag.appendChild(makeButton(id, 'place_modal', 'gl-add-modal'));
     if (typeof p.lat === 'number' && typeof p.lng === 'number') {
       frag.appendChild(makeMapLink(id, p.name || id));
+      frag.appendChild(makeNavLink('walk', id, p));
+      frag.appendChild(makeNavLink('waze', id, p));
     }
     wrap.insertBefore(frag, wrap.firstChild);
   }
