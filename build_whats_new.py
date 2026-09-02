@@ -26,7 +26,7 @@ HE_MONTHS = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'י
              'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר']
 
 CAT_ICON = {
-    'אטרקציות': 'fa-ticket', 'אירועים': 'fa-calendar-star', 'תחבורה': 'fa-train-subway',
+    'אטרקציות': 'fa-ticket', 'אירועים': 'fa-calendar-check', 'תחבורה': 'fa-train-subway',
     'אוכל': 'fa-utensils', 'משפחות': 'fa-children', 'תרבות': 'fa-masks-theater',
     'כדורגל': 'fa-futbol', 'מידע למטייל': 'fa-circle-info', 'שופינג': 'fa-bag-shopping',
 }
@@ -133,7 +133,7 @@ def head(title, desc, canonical, image, extra_ld=''):
   <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
   <link rel="stylesheet" href="accessibility-widget.css" />
-  <link rel="stylesheet" href="theme-light.css?v=8" />
+  <link rel="stylesheet" href="theme-light.css?v=16" />
 {extra_ld}</head>
 <body class="wn-page">
 

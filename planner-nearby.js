@@ -398,8 +398,15 @@
     var el = $('nearby-map');
     el.classList.add('is-on');
     map = L.map(el, { center: ZONE.center, zoom: 15, zoomControl: true });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: '© OpenStreetMap © CARTO', maxZoom: 19
+    /*
+      אריחי OpenStreetMap הרשמיים. CARTO הפסיקה להגיש אריחים ללא מפתח
+      והחלה להטביע "API KEY REQUIRED" על פני המפה. המקור הזה אינו דורש
+      מפתח כלל, ולכן אין שום סוד שצריך לחשוף בקוד הצד לקוח.
+      השימוש כאן נמוך בהרבה מהמגבלות של מדיניות האריחים שלהם.
+    */
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+      maxZoom: 19
     }).addTo(map);
     cluster = L.markerClusterGroup({ maxClusterRadius: 45 });
     map.addLayer(cluster);

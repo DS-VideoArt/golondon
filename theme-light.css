@@ -231,11 +231,15 @@ small { color: var(--ink-faint) !important; }
   הרצועה התחתונה של הכותרת. כשהרצועה הזאת הפכה כהה, טקסט כהה עליה
   נעשה בלתי קריא. לכן בעמודים עם תצלום הם מקבלים צבע בהיר.
 */
-.page-hero.hero-photo + .breadcrumb {
-  color: rgba(255,255,255,0.92) !important;
-  text-shadow: 0 1px 8px rgba(6,10,20,0.6);
-}
-.page-hero.hero-photo + .breadcrumb a { color: #fff !important; }
+/*
+  הכלל הזה נמחק ולא הוחלף.
+
+  הוא נכתב כשפירורי הלחם באמת ישבו על הרצועה הכהה של הכותרת, ומאז
+  הפריסה השתנתה. מדידת פיקסלים בפועל בארבעה עמודים עם תצלום הראתה
+  שהרקע מאחורי הטקסט הוא 234 עד 255, כלומר בהיר לחלוטין, ולכן טקסט
+  לבן נתן יחס ניגודיות של 1.05 לאחד. הצבעים הכהים שמוגדרים בהמשך
+  הקובץ נותנים 5.7 עד 6.9 לאחד על אותו רקע בדיוק.
+*/
 
 /* ---------- טיפוגרפיה של גוף העמוד ---------- */
 
@@ -251,8 +255,15 @@ small { color: var(--ink-faint) !important; }
   border-right-color: var(--brand) !important;
 }
 
-.breadcrumb { color: var(--ink-faint) !important; }
-.breadcrumb a { color: var(--ink-soft) !important; }
+/*
+  שם העמוד הנוכחי ומפרידי החץ קיבלו קודם ink-faint, שנותן 3.26 לאחד
+  ואינו עומד בסף. שניהם עוברים ל-ink-soft. הקישורים מקבלים את הצבע
+  הכהה המלא, גם כדי לעבור את הסף וגם כדי שיהיה הבדל נראה בין קישור
+  לבין שם העמוד שאינו לחיץ.
+*/
+.breadcrumb { color: var(--ink-soft) !important; }
+.breadcrumb a { color: var(--ink) !important; }
+.breadcrumb a:hover { text-decoration: underline; }
 
 /* ---------- טבלאות ---------- */
 
@@ -280,6 +291,20 @@ small { color: var(--ink-faint) !important; }
   border-color: var(--line) !important;
   box-shadow: var(--shadow-sm);
 }
+/*
+  B10. ל-.stat-row לא היה כלל פריסה בשום קובץ שנטען בעמוד האטרקציות,
+  ולכן שלושת הכרטיסים נערמו אנכית במקום לשבת זה לצד זה. הכלל מוגדר
+  כאן ולא בעמוד עצמו, כדי שכל עמוד שמשתמש ברכיב יקבל אותה פריסה.
+*/
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+@media (max-width: 640px) {
+  .stat-row { grid-template-columns: 1fr; }
+}
+
 .stat-num { color: var(--green) !important; }
 /*
   התווית שמתחת למספר היתה בגוון החיוור ביותר, בגודל 12.5 ובמשקל רגיל,
@@ -330,6 +355,30 @@ small { color: var(--ink-faint) !important; }
 
 .siblings { border-top-color: var(--line) !important; }
 .siblings h3 { color: var(--ink-faint) !important; }
+
+/*
+  B6. לרכיב היו כאן צבעים בלבד, והפריסה עצמה מעולם לא הוגדרה בקובץ
+  שנטען בכל העמודים. התוצאה היתה קישורים כ-display:inline בלי ריווח,
+  שנקראו כשורת טקסט אחת ארוכה בארבעת עמודי האב. הפריסה מוגדרת כאן
+  פעם אחת, והמדיה קווירי בהמשך הקובץ ממשיך לדרוס את מספר העמודות.
+*/
+.sibling-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+.sibling {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1.35;
+}
 .sibling { color: var(--ink-soft) !important; }
 .sibling:hover {
   background: #fff !important;
@@ -522,7 +571,21 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
   color: var(--ink-soft) !important;
   box-shadow: var(--shadow-sm);
 }
-.filter-btn.active { color: #fff !important; }
+/*
+  B3. לכפתור הפעיל הוגדר טקסט לבן בלבד, בלי רקע, והוא ירש את הרקע
+  הבהיר של .filter-btn שמעליו. התוצאה לבן על לבן: המשתמש ראה רק את
+  האימוג'י בלי המילה, וזה בדיוק המצב בטעינה הראשונה עם המסנן "הכל".
+  שני הווריאנטים הנוספים חסרו רקע מאותה סיבה.
+*/
+.filter-btn.active {
+  background: var(--brand) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+}
+.filter-btn.active-shop    { background: #6D28D9 !important; border-color: transparent !important; }
+.filter-btn.active-kashrus { background: #15803D !important; border-color: transparent !important; }
+.filter-btn.active-shop, .filter-btn.active-shop *,
+.filter-btn.active-kashrus, .filter-btn.active-kashrus * { color: #fff !important; }
 .filter-btn.active-meat   { background: var(--brand) !important; border-color: transparent !important; }
 .filter-btn.active-dairy  { background: var(--navy) !important;  border-color: transparent !important; }
 .filter-btn.active-bakery { background: #92610a !important;      border-color: transparent !important; }
@@ -559,7 +622,15 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
 .download-btn, .download-btn *,
 .logout-btn, .logout-btn *,
 .chip[aria-pressed="true"], .chip[aria-pressed="true"] *,
+/* B9. הכלל הגורף על span בשורה 113 צבע גם את המונה שבתוך המגש
+   הכהה, ונתן 2.34 לאחד. הוספת המגש לרשימה הזאת מחזירה אותו ללבן. */
+.gl-tray-pill, .gl-tray-pill *,
 .filter-btn.active, .filter-btn.active *,
+/* שלושת הווריאנטים האלה קיבלו רקע צבעוני אבל ירשו טקסט כהה,
+   כלומר 1.3 עד 1.5 לאחד אחרי החלפת מסנן. */
+.filter-btn.active-meat, .filter-btn.active-meat *,
+.filter-btn.active-dairy, .filter-btn.active-dairy *,
+.filter-btn.active-bakery, .filter-btn.active-bakery *,
 .day-num, .num, .aff-card-icon,
 .map-cta a, .map-cta a *,
 .toast, .toast *,
@@ -1216,6 +1287,21 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
 .m-list li::before { color: #15803D !important; }
 .m-nav a { background: #fff !important; border-color: var(--line) !important; color: var(--ink-soft) !important; }
 .m-nav a:hover { background: rgba(32,31,43,0.05) !important; color: var(--ink) !important; }
+/*
+  B4. אותו דפוס כמו B3: טקסט לבן בלי רקע, והכפתור ירש את הרקע הלבן
+  של .m-nav a. בכל שנים עשר עמודי החודשים שם החודש הנוכחי נעלם.
+  הגרדיאנט זהה לזה שכבר מוגדר בעמודים עצמם.
+*/
+.m-nav a.is-on {
+  /*
+    צבע מלא ולא גרדיאנט. הגרדיאנט האדום לכתום נותן 4.83 בקצה האדום
+    אבל רק 3.56 בקצה הכתום, ושם הטקסט יושב בפועל. הצבע המלא נותן
+    4.83 לכל אורך הצ'יפ, והוא אותו צבע שמקבל המסנן הפעיל במפת
+    הכשרות, כך ששני מצבי הפעיל באתר נראים עכשיו זהים.
+  */
+  background: var(--brand) !important;
+  border-color: transparent !important;
+}
 .m-nav a.is-on, .m-nav a.is-on * { color: #fff !important; }
 .m-prevnext a { background: #fff !important; border-color: var(--line) !important; color: var(--ink-soft) !important; }
 .m-prevnext a:hover { background: rgba(32,31,43,0.05) !important; color: var(--ink) !important; }

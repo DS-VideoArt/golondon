@@ -210,7 +210,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Go London" />
   <link rel="stylesheet" href="accessibility-widget.css" />
-  <link rel="stylesheet" href="theme-light.css?v=11" />
+  <link rel="stylesheet" href="theme-light.css?v=16" />
 </head>
 <body>
 
@@ -261,8 +261,13 @@ const map = L.map('map', {
   zoomControl: true
 });
 
-L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-  attribution: '© OpenStreetMap © CARTO',
+/*
+  אריחי OpenStreetMap הרשמיים. CARTO הפסיקה להגיש אריחים ללא מפתח
+  והחלה להטביע "API KEY REQUIRED" על פני המפה. המקור הזה אינו דורש
+  מפתח כלל, ולכן אין סוד שצריך לחשוף בקוד הצד לקוח.
+*/
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
   maxZoom: 19
 }).addTo(map);
 
