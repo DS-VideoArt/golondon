@@ -1480,6 +1480,34 @@
    "free": true
   }
  },
+ "harrods": {
+  "title": "הרודס",
+  "tags": [
+   {
+    "label": "כניסה חינם",
+    "type": "free"
+   },
+   {
+    "label": "קנזינגטון ומערב"
+   },
+   {
+    "label": "פחות מתאים לילדים קטנים",
+    "type": "teen"
+   }
+  ],
+  "body": "חנות הכולבו המפורסמת בלונדון, עם אולמות מזון מעוטרים ותאורת לילה שהפכה לסמל. נמצאת בנייטסברידג׳, בין הייד פארק לדרום קנזינגטון.",
+  "tip": "הכניסה חינמית וגם מי שלא קונה שווה לו לעבור באולמות המזון ובחדר המדרגות המצרי.",
+  "updated": "אוגוסט 2026",
+  "cta": {
+   "label": "עוד אטרקציות בחינם",
+   "href": "guide-attractions-free.html",
+   "internal": true
+  },
+  "video": {
+   "id": "Oax39T5w3ws",
+   "title": "Inside Harrods | London's Ultra Luxury Department Store Tour (July 2024)"
+  }
+ },
  "hyde-park": {
   "title": "הייד פארק וקנזינגטון גארדנס",
   "tags": [
@@ -2590,34 +2618,6 @@
   "video": {
    "id": "Gbt5bYzXAyM",
    "title": "Wembley Stadium Tours Official Video | The School Trip"
-  }
- },
- "harrods": {
-  "title": "הרודס",
-  "tags": [
-   {
-    "label": "כניסה חינם",
-    "type": "free"
-   },
-   {
-    "label": "קנזינגטון ומערב"
-   },
-   {
-    "label": "פחות מתאים לילדים קטנים",
-    "type": "teen"
-   }
-  ],
-  "body": "חנות הכולבו המפורסמת בלונדון, עם אולמות מזון מעוטרים ותאורת לילה שהפכה לסמל. נמצאת בנייטסברידג׳, בין הייד פארק לדרום קנזינגטון.",
-  "tip": "הכניסה חינמית וגם מי שלא קונה שווה לו לעבור באולמות המזון ובחדר המדרגות המצרי.",
-  "updated": "אוגוסט 2026",
-  "cta": {
-   "label": "עוד אטרקציות בחינם",
-   "href": "guide-attractions-free.html",
-   "internal": true
-  },
-  "video": {
-   "id": "Oax39T5w3ws",
-   "title": "Inside Harrods | London's Ultra Luxury Department Store Tour (July 2024)"
   }
  }
 }
