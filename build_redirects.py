@@ -41,6 +41,14 @@ HEAD = """# נוצר אוטומטית על ידי build_redirects.py. אין ל�
 
 /t/*    /planner?p=:splat&from=share&utm_source=whatsapp&utm_medium=share&utm_campaign=trip-share    301!
 
+# קישורי קמפיין קצרים. הכתובת שמתפרסמת נשארת קצרה ונקייה, וההפניה
+# היא שמוסיפה את תיוג המדידה, כך שאף מקור לא הולך לאיבוד.
+# להוסיף כאן שורה לכל קמפיין חדש, ולא לפרסם כתובת עם UTM גלוי.
+
+/fb     /planner?utm_source=facebook&utm_medium=page&utm_campaign=planner-launch      301!
+/gr     /planner?utm_source=facebook&utm_medium=group&utm_campaign=planner-launch     301!
+/ig     /planner?utm_source=instagram&utm_medium=bio&utm_campaign=planner-launch      301!
+
 """
 
 
