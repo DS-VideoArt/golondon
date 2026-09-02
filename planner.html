@@ -2812,14 +2812,32 @@
 
     var hadContent = manual.days.some(function (d) { return d.length; });
 
+    var isShare = f && f[1] === 'share';
+
+    /*
+      מי שהגיע מקישור ששיתפו איתו צריך לראות את המסלול מיד. בלי הגלילה
+      הזאת הוא נוחת בראש העמוד, רואה את מסך הפתיחה של הכלי, ולא ברור לו
+      בכלל שהמסלול כבר נטען וממתין לו למטה.
+    */
+    function revealShared() {
+      if (!isShare) return;
+      setTimeout(function () {
+        var el = $('panel-manual');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 400);
+    }
+
     /* מצב ריק: טוענים כמו שהוא, בסדר המקורי */
     if (!hadContent) {
       applyRoutePlan(days, dayIds, routeId, routeVersion);
       setMode('manual');
       send('route_created');
-      toast(routeId
-        ? 'המסלול "' + routeName + '" נטען, ' + daysHe(days.length, false) + '. אפשר לערוך הכל'
-        : (days.length === 1 ? 'היום המוכן נטען, אפשר לערוך אותו' : daysHe(days.length, false) + ' נטענו, אפשר לערוך הכל'));
+      revealShared();
+      toast(isShare
+        ? 'המסלול ששיתפו איתכם נטען. אפשר לערוך, להוסיף ולשלוח הלאה'
+        : (routeId
+          ? 'המסלול "' + routeName + '" נטען, ' + daysHe(days.length, false) + '. אפשר לערוך הכל'
+          : (days.length === 1 ? 'היום המוכן נטען, אפשר לערוך אותו' : daysHe(days.length, false) + ' נטענו, אפשר לערוך הכל')));
       return;
     }
 
