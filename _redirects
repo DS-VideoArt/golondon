@@ -6,6 +6,13 @@
 #
 # סימן הקריאה מכריח את ההפניה גם כשקיים קובץ בנתיב המקור. בלעדיו
 # נטליפיי הייתה מגישה את הקובץ ומתעלמת מההפניה.
+#
+# הכלל הראשון הוא הקישור הקצר לשיתוף מסלול. הוא חייב להופיע לפני
+# כל השאר כי נטליפיי בוחרת את ההתאמה הראשונה. הקוד שאחרי ‎/t/‎ הוא
+# רצף של שני תווים לכל מקום, ונקודה מפרידה בין ימים. ההפניה היא
+# שמוסיפה את תיוג המדידה, ולכן הקישור שנשלח בוואטסאפ נשאר קצר.
+
+/t/*    /planner?p=:splat&from=share&utm_source=whatsapp&utm_medium=share&utm_campaign=trip-share    301!
 
 /index.html    /    301!
 /about.html                                    /about                                     301!
@@ -151,6 +158,7 @@
 /build_article.py                              /404.html                                  404!
 /build_attractions.py                          /404.html                                  404!
 /build_guides.py                               /404.html                                  404!
+/build_plan_codes.py                           /404.html                                  404!
 /build_redirects.py                            /404.html                                  404!
 /build_routes.py                               /404.html                                  404!
 /build_search_index.py                         /404.html                                  404!

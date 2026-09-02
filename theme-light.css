@@ -409,6 +409,14 @@ small { color: var(--ink-faint) !important; }
   color: #06210f !important;
 }
 .mini-btn--wa:hover { background: #1fbb59 !important; color: #04170a !important; }
+
+/* מפת היום בכרטיס. כחול ניווט, נפרד מהירוק של השיתוף ומהאדום של המותג. */
+.day-map {
+  background: rgba(37,99,235,0.07) !important;
+  border-color: rgba(37,99,235,0.28) !important;
+  color: #1d4ed8 !important;
+}
+.day-map:hover { background: rgba(37,99,235,0.13) !important; color: #1e40af !important; }
 .day-title, .stop-name { color: var(--ink) !important; }
 .day-meta { color: var(--ink-faint) !important; }
 .stop { border-top-color: var(--line-soft) !important; }
