@@ -28,8 +28,15 @@
     'background:#201f2b;color:#fff;padding:16px 18px;border-radius:14px;font-family:Heebo,system-ui,sans-serif;',
     'font-size:13.5px;line-height:1.7;box-shadow:0 12px 30px rgba(0,0,0,0.3);display:none;direction:rtl;text-align:right;}',
     '#install-ios-tip strong{color:#f97316;}',
-    '@media (max-width:640px){#install-app-btn{left:12px;bottom:auto;top:120px;width:50px;height:50px;font-size:20px;}',
-    '#install-ios-tip{bottom:auto;top:178px;left:12px;max-width:calc(100vw - 24px);}}'
+    /*
+      במובייל הכפתור היה מוצמד ל-top:120px, כלומר צף מעל התוכן בדיוק
+      בגובה שבו יושבות כותרות וכפתורי פעולה, והסתיר אותם. נמדד ב-320,
+      375 ו-414: ריבוע 50 על 50 בפינה השמאלית העליונה של התוכן.
+      עכשיו הוא נערם מעל כפתור הנגישות בפינה השמאלית התחתונה, נשאר
+      גלוי ולחיץ בדיוק כמו קודם, ולא מכסה שום פקד בתוכן.
+    */
+    '@media (max-width:640px){#install-app-btn{left:12px;top:auto;bottom:72px;width:50px;height:50px;font-size:20px;}',
+    '#install-ios-tip{top:auto;bottom:132px;left:12px;max-width:calc(100vw - 24px);}}'
   ].join('');
   document.head.appendChild(style);
 
