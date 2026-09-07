@@ -2827,7 +2827,20 @@
         dayIds = days.map(function () { return null; });
       }
     }
-    if (!days.length) return;
+    /*
+      מצב אפס תוצאות. כל 12 כפתורי הקטגוריה בעמודי האזורים מצביעים היום
+      על מזהים קיימים, אבל אם מזהה יוצא משימוש בעתיד הוא מסונן בשקט
+      למעלה, והגולש היה נוחת על מתכנן ריק בלי הסבר. כאן הוא לפחות מקבל
+      תשובה ברורה במקום מסך שנראה כאילו הבחירה שלו נעלמה.
+    */
+    if (!days.length) {
+      if (/[?&](day|p|route)=/.test(location.search)) {
+        setTimeout(function () {
+          toast('המקומות שבקישור הזה כבר לא זמינים. אפשר לבחור מהרשימה ולבנות יום משלכם');
+        }, 600);
+      }
+      return;
+    }
 
     var rm = /[?&]route=([a-z0-9-]+)/.exec(location.search);
     var routeId = rm ? rm[1] : null;
@@ -2835,12 +2848,22 @@
     var routeVersion = rv ? parseInt(rv[1], 10) : 1;
     var routeName = ROUTE_NAMES[routeId] || routeId;
 
-    var f = /[?&]from=([a-z-]+)/.exec(location.search);
+    /*
+      from מגיע מעמודי האזורים בצורה area_exp_category, לדוגמה
+      shoreditch_exp_markets. הביטוי הקודם לא כלל קו תחתון, ולכן קטע
+      את הערך אחרי שם האזור והקטגוריה שנבחרה לא הגיעה למדידה בכלל.
+      area נשאר שם האזור בלבד, כדי שההשוואה לדוחות קודמים תישמר,
+      והקטגוריה נוספת כפרמטר לצד האירוע הקיים.
+    */
+    var f = /[?&]from=([a-z0-9_-]+)/.exec(location.search);
+    var fromRaw = f ? f[1] : '';
+    var fromParts = fromRaw.split('_exp_');
     var payload = {
       source_component: routeId ? 'route' : 'area_preset',
       route_id: routeId || '',
       route_version: routeId ? routeVersion : undefined,
-      area: f ? f[1] : 'unknown',
+      area: fromParts[0] || 'unknown',
+      category: fromParts[1] || '',
       stops: days.reduce(function (n, d) { return n + d.length; }, 0),
       days: days.length
     };
@@ -2853,18 +2876,39 @@
 
     var hadContent = manual.days.some(function (d) { return d.length; });
 
-    var isShare = f && f[1] === 'share';
+    var isShare = fromRaw === 'share';
 
     /*
-      מי שהגיע מקישור ששיתפו איתו צריך לראות את המסלול מיד. בלי הגלילה
-      הזאת הוא נוחת בראש העמוד, רואה את מסך הפתיחה של הכלי, ולא ברור לו
-      בכלל שהמסלול כבר נטען וממתין לו למטה.
+      מי שהגיע עם מסלול מוכן צריך לראות אותו מיד. בלי הגלילה הזאת הוא
+      נוחת בראש העמוד, רואה את מסך הפתיחה של הכלי, ולא ברור לו בכלל
+      שהמסלול כבר נטען וממתין לו למטה.
+
+      עד כאן הגלילה הופעלה רק לקישורי שיתוף. מדידה בפועל הראתה שהיום
+      שנטען מעמוד אזור יושב 1299 עד 1861 פיקסלים מתחת לקפל בכל רוחב
+      נייד וטאבלט, כלומר אפס אחוז ממנו נראה, ובדסקטופ נראים 14 אחוז.
+      זו הסיבה שבחירת קטגוריה בעמוד אזור הרגישה כאילו היא זורקת את
+      הגולש למתכנן ריק. הגלילה חלה עכשיו על כל הגעה עם מסלול מוכן.
     */
-    function revealShared() {
-      if (!isShare) return;
+    function revealPlan(which) {
       setTimeout(function () {
-        var el = $('panel-manual');
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        /*
+          המטרה היא היום עצמו ולא ראש הפאנל. גלילה לראש הפאנל מציבה
+          למעלה את טקסט ההסבר ואת שורת הכפתורים, והיום עדיין נשאר מתחת
+          לקפל בכל רוחב נייד. נמדד: אפס אחוז ממנו נראה.
+          מי שהגיע בלי תוכנית קיימת רואה את היום הראשון, ומי שהוסיף יום
+          לתוכנית שכבר יש לו רואה את היום החדש שנוסף בסוף.
+        */
+        var cards = document.querySelectorAll('.board-day');
+        var el = cards.length
+          ? cards[which === 'last' ? cards.length - 1 : 0]
+          : $('panel-manual');
+        if (!el) return;
+        /* הניווט דביק בראש החלון, ובלי הקיזוז הזה הכותרת נחתכת מתחתיו */
+        var nav = document.querySelector('.navbar');
+        var off = (nav ? nav.getBoundingClientRect().height : 0) + 12;
+        var y = el.getBoundingClientRect().top + window.pageYOffset - off;
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
       }, 400);
     }
 
@@ -2873,7 +2917,7 @@
       applyRoutePlan(days, dayIds, routeId, routeVersion);
       setMode('manual');
       send('route_created');
-      revealShared();
+      revealPlan('first');
       toast(isShare
         ? 'המסלול ששיתפו איתכם נטען. אפשר לערוך, להוסיף ולשלוח הלאה'
         : (routeId
@@ -2887,6 +2931,7 @@
       var r = addMissingDays(days, dayIds, null, null);
       if (r.days) send('route_created');
       setMode('manual');
+      revealPlan('last');
       setTimeout(function () {
         if (!r.days && !r.merged) toast('המסלול הזה כבר נמצא בתוכנית שלכם');
         else if (!r.days) toast(mergedStopsHe(r.merged).replace(/^ו/, ''));
