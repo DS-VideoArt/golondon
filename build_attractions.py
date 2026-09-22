@@ -94,7 +94,7 @@ INTERNAL_LINKS = collections.OrderedDict([
    ['trafalgar-square', 'piccadilly-circus', 'leake-street', 'harrods'])),
  ('guide-attractions-museums.html', ('כל המוזיאונים החינמיים',
    ['wallace-collection', 'soane-museum', 'bank-museum', 'wellcome-collection',
-    'museum-of-home', 'docklands-museum', 'raf-museum', 'kenwood-house'])),
+    'museum-of-home', 'docklands-museum', 'raf-museum', 'kenwood-house', 'queens-house'])),
  ('guide-attractions-views.html', ('עוד תצפיות על לונדון',
    ['primrose-hill'])),
  ('guide-attractions-markets.html', ('כל שווקי לונדון',
@@ -103,17 +103,17 @@ INTERNAL_LINKS = collections.OrderedDict([
  ('guide-areas-shoreditch.html', ('המדריך המלא לשורדיץ׳',
    ['brick-lane'])),
  ('guide-areas-greenwich.html', ('המדריך המלא לגריניץ׳',
-   ['greenwich', 'queens-house', 'greenwich-market', 'greenwich-foot-tunnel'])),
+   ['greenwich-market'])),
  ('guide-areas.html', ('מדריכי האזורים של לונדון',
    ['chinatown-soho', 'covent-garden', 'notting-hill'])),
  ('guide-attractions-hidden.html', ('עוד פינות נסתרות',
    ['coal-drops-yard', 'neals-yard', 'st-katharine-docks', 'st-dunstan',
-    'guildhall', 'southwark-cathedral'])),
+    'guildhall', 'southwark-cathedral', 'greenwich-foot-tunnel'])),
  ('guide-attractions-parks.html', ('כל הפארקים המלכותיים',
    ['hyde-park', 'st-james-park', 'regents-park', 'hampstead-heath',
     'holland-park', 'richmond-park'])),
  ('guide-attractions-thames.html', ('עוד לאורך התמזה',
-   ['southbank-walk'])),
+   ['southbank-walk', 'greenwich'])),
 ])
 
 OFFICIAL_FREE = collections.OrderedDict([
@@ -147,6 +147,41 @@ INTERNAL_BY_ID = {}
 for _page, (_label, _ids) in INTERNAL_LINKS.items():
     for _pid in _ids:
         INTERNAL_BY_ID[_pid] = (_label, _page)
+
+"""
+קישור מדריך אזור, שדה נפרד ואופציונלי
+======================================
+ה-cta הוא חריץ אחד: הזמנה, אתר רשמי או מדריך נושאי, לפי סדר עדיפות
+קבוע. מדריך אזור גיאוגרפי לא מתחרה עליו, אלא מקבל שדה משלו, areaGuide,
+שהחלון מציג כקישור משני מתחת לכפתור הראשי.
+
+המקור הוא places-taxonomy.json בלבד: שכונה שנושאת guide מקבלת אותו
+ישירות, ושכונה בלי guide יורשת מאזור הכיסוי שהיא שייכת אליו (לדוגמה
+בת'נל גרין נופלת לאזור שורדיץ'). מדריך שהקובץ שלו עדיין לא קיים בריפו
+אינו מקושר, כדי שאזור עתידי בטקסונומיה לא ייצור קישור שבור.
+"""
+TAXONOMY = {}
+if os.path.exists('places-taxonomy.json'):
+    TAXONOMY = json.load(open('places-taxonomy.json', encoding='utf-8'))
+_HOODS = TAXONOMY.get('hoods', {}) or {}
+_ZONE_OF_HOOD = {}
+for _z in ((TAXONOMY.get('coverage') or {}).get('zones') or []):
+    for _h in _z.get('hoods', []):
+        _ZONE_OF_HOOD.setdefault(_h, _z['id'])
+
+def area_guide(hood, cta_href):
+    """מחזיר {'label','href'} או None. לעולם לא מכפיל את הקישור הראשי."""
+    if not hood:
+        return None
+    guide_hood = hood if _HOODS.get(hood, {}).get('guide') else _ZONE_OF_HOOD.get(hood)
+    entry = _HOODS.get(guide_hood or '', {})
+    guide = entry.get('guide')
+    if not guide or not os.path.exists(guide + '.html'):
+        return None
+    href = guide + '.html'
+    if href == cta_href:
+        return None
+    return {'label': 'המדריך המלא ל' + entry.get('name', ''), 'href': href}
 
 
 # שלושת הפריטים הפעילים שאינם בבונה המסלול. התוכן נשמר כאן כדי שלא יאבד בבנייה מחדש.
@@ -342,6 +377,9 @@ def main():
                 ('updated', updated),
                 ('cta', cta),
             ])
+            ag = area_guide(by[pid].get('hood') if pid in by else None, cta.get('href'))
+            if ag:
+                entry['areaGuide'] = ag
             if video and video.get('verified') and video.get('youtube_id'):
                 entry['video'] = {'id': video['youtube_id'], 'title': video.get('title', '')}
             info[pid] = entry

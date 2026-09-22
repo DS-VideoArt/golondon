@@ -32,6 +32,16 @@
     בכל שאר המקרים, אם שכבת קישורי ההכנסה נטענה, הקישור נבנה דרכה כדי
     שהלחיצה תיספר ותישא עמלה. אם היא לא נטענה, מוחזרת הכתובת הישירה.
   */
+  /* שם עמוד מנורמל: בלי נתיב, בלי .html, בלי שאילתה או עוגן */
+  function pageKey(href) {
+    return String(href || '').split('#')[0].split('?')[0].replace(/\/+$/, '')
+      .split('/').pop().replace(/\.html?$/i, '').toLowerCase();
+  }
+  function samePage(href) {
+    var here = pageKey(location.pathname) || 'index';
+    return pageKey(href) === here;
+  }
+
   function ctaUrl(cta, placeId) {
     if (cta.internal || cta.custom) return cta.href || '#';
     var offerId = cta.offer || 'attractions_alt';
@@ -103,6 +113,16 @@
       '.pi-cta.is-internal{background:#fff;border:1px solid rgba(32,31,43,.18);color:#201f2b!important;}',
       '.pi-cta.is-internal:hover{background:#F4F2ED;opacity:1;}',
       /*
+        קישור מדריך אזור, משני במכוון: בלי רקע ובלי מסגרת, מתחת לכפתור
+        הראשי, כדי שהזמנה או מדריך נושאי יישארו הפעולה הבולטת.
+      */
+      '.pi-area-wrap{margin-top:12px;padding-top:12px;border-top:1px solid rgba(32,31,43,.08);}',
+      '.pi-area{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700;',
+        'color:#3d4152!important;text-decoration:none!important;padding:4px 2px;border-radius:6px;}',
+      '.pi-area i{color:#DC2626;}',
+      '.pi-area:hover{color:#DC2626!important;text-decoration:underline!important;}',
+      '.pi-area:focus-visible{outline:2px solid #DC2626;outline-offset:2px;}',
+      /*
         המלצה נלווית. חוויה בתשלום שיוצאת מהמקום עצמו אבל אינה המקום,
         למשל שיט בתעלה שמתחיל בקמדן לוק. מוצגת כהמלצה נפרדת ולא
         כאילו היא המקום, כדי שלא ייווצר רושם שצריך לשלם על הכניסה.
@@ -145,6 +165,7 @@
         '<div class="pi-tour" hidden></div>' +
         '<div class="pi-extra" hidden></div>' +
         '<div class="pi-cta-wrap"></div>' +
+        '<div class="pi-area-wrap" hidden></div>' +
         '<div class="pi-updated" hidden></div>' +
       '</div>';
     document.body.appendChild(modal);
@@ -303,6 +324,32 @@
         a.innerHTML = (item.cta.free ? '<i class="fas fa-calendar-check"></i> ' : '<i class="fas fa-ticket"></i> ') + item.cta.label;
       }
       ctaWrap.appendChild(a);
+    }
+
+    /*
+      מדריך האזור של המקום, קישור משני. לא מוצג כשהמשתמש כבר נמצא
+      באותו מדריך, ולא כשהוא זהה לקישור הראשי. ההשוואה על שם העמוד
+      בלבד, כי נטליפיי מגישה את האתר בלי סיומת ואילו הנתונים נושאים
+      .html. אין rel מיוחד: זה ניווט פנימי רגיל.
+    */
+    var areaWrap = modal.querySelector('.pi-area-wrap');
+    areaWrap.innerHTML = '';
+    areaWrap.hidden = true;
+    var ag = item.areaGuide;
+    if (ag && ag.href && !samePage(ag.href) && !(item.cta && pageKey(item.cta.href) === pageKey(ag.href))) {
+      var g = document.createElement('a');
+      g.className = 'pi-area';
+      g.href = ag.href;
+      g.innerHTML = '<i class="fas fa-map-location-dot" aria-hidden="true"></i> ' + ag.label;
+      g.addEventListener('click', function () {
+        /* אותו אירוע שמודד כניסה לאשכול תוכן, עם האזור כפרמטר קיים */
+        if (window.glTrack) glTrack('category_open', {
+          cluster: 'areas', area: pageKey(ag.href).replace(/^guide-areas-/, ''),
+          source_component: 'place_info', place_id: id || ''
+        });
+      });
+      areaWrap.appendChild(g);
+      areaWrap.hidden = false;
     }
 
     var upd = modal.querySelector('.pi-updated');

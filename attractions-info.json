@@ -543,6 +543,10 @@
    "custom": true,
    "free": true
   },
+  "areaGuide": {
+   "label": "המדריך המלא לגריניץ'",
+   "href": "guide-areas-greenwich.html"
+  },
   "video": {
    "id": "GkTCpA9oufc",
    "title": "Exploring the National Maritime Museum in Greenwich"
@@ -860,6 +864,10 @@
    "href": "guide-attractions-museums.html",
    "internal": true
   },
+  "areaGuide": {
+   "label": "המדריך המלא לשורדיץ'",
+   "href": "guide-areas-shoreditch.html"
+  },
   "video": {
    "id": "hMPbS20lEKM",
    "title": "Museum Of The Home Walking Tour 2022 | Virtual Tour Of A London Museum"
@@ -888,6 +896,10 @@
    "href": "https://www.whitechapelgallery.org/exhibitions/",
    "custom": true,
    "free": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לשורדיץ'",
+   "href": "guide-areas-shoreditch.html"
   },
   "video": {
    "id": "oXgIKNmqO1w",
@@ -1042,6 +1054,10 @@
    "duration": "כארבעים וחמש עד שישים דקות",
    "priceNote": null
   },
+  "areaGuide": {
+   "label": "המדריך המלא לשורדיץ'",
+   "href": "guide-areas-shoreditch.html"
+  },
   "video": {
    "id": "eKZ0EVexivs",
    "title": "Step Back in Time: Inside Dennis Severs' House in London"
@@ -1134,6 +1150,10 @@
    "duration": "כשעה וחצי עד שעתיים",
    "priceNote": null
   },
+  "areaGuide": {
+   "label": "המדריך המלא לגריניץ'",
+   "href": "guide-areas-greenwich.html"
+  },
   "video": {
    "id": "IPCp4c3tz3Y",
    "title": "Take A Tour Of The Historic Royal Observatory In Greenwich London"
@@ -1157,6 +1177,10 @@
    "label": "עוד תצפיות על לונדון",
    "href": "guide-attractions-views.html",
    "internal": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לקמדן",
+   "href": "guide-areas-camden.html"
   },
   "video": {
    "id": "KPlwbhhGED0",
@@ -1264,6 +1288,10 @@
    "href": "guide-attractions-markets.html",
    "internal": true
   },
+  "areaGuide": {
+   "label": "המדריך המלא לקמדן",
+   "href": "guide-areas-camden.html"
+  },
   "video": {
    "id": "DTxAUScs9pI",
    "title": "CAMDEN | The ultimate tour of Camden Town London (including Camden Market)"
@@ -1287,6 +1315,10 @@
    "label": "כל שווקי לונדון",
    "href": "guide-attractions-markets.html",
    "internal": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לשורדיץ'",
+   "href": "guide-areas-shoreditch.html"
   },
   "video": {
    "id": "Ms3Vxm-0zn8",
@@ -1315,6 +1347,10 @@
    "label": "כל שווקי לונדון",
    "href": "guide-attractions-markets.html",
    "internal": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לשורדיץ'",
+   "href": "guide-areas-shoreditch.html"
   },
   "video": {
    "id": "_6WrayDj-6o",
@@ -1568,6 +1604,10 @@
    "href": "guide-attractions-parks.html",
    "internal": true
   },
+  "areaGuide": {
+   "label": "המדריך המלא לקמדן",
+   "href": "guide-areas-camden.html"
+  },
   "video": {
    "id": "d9pno9qRmCE",
    "title": "Discover The Regent's Park and Primrose Hill, one of London's Royal Parks"
@@ -1788,6 +1828,10 @@
    "duration": "כשעתיים",
    "priceNote": null
   },
+  "areaGuide": {
+   "label": "המדריך המלא לשורדיץ'",
+   "href": "guide-areas-shoreditch.html"
+  },
   "video": {
    "id": "xKHWIStlMEY",
    "title": "LONDON STREET ART TOUR | Brick Lane | Shoreditch | Spitalfields | East London"
@@ -1860,9 +1904,13 @@
   "tip": "להגיע בשיט על התמזה במקום ברכבת. הנסיעה עצמה היא חצי מהחוויה, והנוף מהגבעה מדהים.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "המדריך המלא לגריניץ׳",
-   "href": "guide-areas-greenwich.html",
+   "label": "עוד לאורך התמזה",
+   "href": "guide-attractions-thames.html",
    "internal": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לגריניץ'",
+   "href": "guide-areas-greenwich.html"
   },
   "video": {
    "id": "QLmKZ-BJs-g",
@@ -2065,9 +2113,13 @@
   "tip": "הכניסה חינמית, וגרם המדרגות המסתלסל הוא אחד המקומות המצולמים בגריניץ׳.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "המדריך המלא לגריניץ׳",
-   "href": "guide-areas-greenwich.html",
+   "label": "כל המוזיאונים החינמיים",
+   "href": "guide-attractions-museums.html",
    "internal": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לגריניץ'",
+   "href": "guide-areas-greenwich.html"
   },
   "video": {
    "id": "VVgj4M5v7EU",
@@ -2265,9 +2317,13 @@
   "tip": "בצד השני נפתח הנוף הקלאסי על גריניץ׳ מעבר לנהר, וזו הדרך החינמית להגיע אליו.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "המדריך המלא לגריניץ׳",
-   "href": "guide-areas-greenwich.html",
+   "label": "עוד פינות נסתרות",
+   "href": "guide-attractions-hidden.html",
    "internal": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לגריניץ'",
+   "href": "guide-areas-greenwich.html"
   },
   "video": {
    "id": "R6KT4lwkp1c",
@@ -2297,6 +2353,10 @@
    "currency": "GBP",
    "duration": "כשעה עד שעה וחצי",
    "priceNote": null
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לגריניץ'",
+   "href": "guide-areas-greenwich.html"
   },
   "video": {
    "id": "TPOCofMzHhk",
@@ -2420,6 +2480,10 @@
    "currency": "GBP",
    "duration": "יום שלם",
    "priceNote": "המחיר עשוי להשתנות בהתאם לתאריך ולשעה שתבחרו באתר."
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לקמדן",
+   "href": "guide-areas-camden.html"
   },
   "video": {
    "id": "-OkyAEqdWso",
