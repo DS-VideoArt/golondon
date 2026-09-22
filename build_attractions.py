@@ -156,9 +156,14 @@ for _page, (_label, _ids) in INTERNAL_LINKS.items():
 שהחלון מציג כקישור משני מתחת לכפתור הראשי.
 
 המקור הוא places-taxonomy.json בלבד: שכונה שנושאת guide מקבלת אותו
-ישירות, ושכונה בלי guide יורשת מאזור הכיסוי שהיא שייכת אליו (לדוגמה
+ישירות, ושכונה בלי guide יורשת מאזור הכיסוי שהיא שייכת אליה (לדוגמה
 בת'נל גרין נופלת לאזור שורדיץ'). מדריך שהקובץ שלו עדיין לא קיים בריפו
 אינו מקושר, כדי שאזור עתידי בטקסונומיה לא ייצור קישור שבור.
+
+התווית נגזרת מהמדריך ולא מהשכונה: כמה שכונות יכולות להצביע על אותו
+מדריך (נייטסברידג', דרום קנזינגטון וקנזינגטון על guide-areas-kensington),
+ואז השם שבתווית הוא של השכונה שהמזהה שלה זהה לסיומת המדריך, קנזינגטון.
+אם אין שכונה כזאת, התווית נופלת לשם השכונה שנשאה את ה-guide.
 """
 TAXONOMY = {}
 if os.path.exists('places-taxonomy.json'):
@@ -181,7 +186,18 @@ def area_guide(hood, cta_href):
     href = guide + '.html'
     if href == cta_href:
         return None
-    return {'label': 'המדריך המלא ל' + entry.get('name', ''), 'href': href}
+    return {'label': 'המדריך המלא ל' + guide_label_name(guide, entry), 'href': href}
+
+
+AREA_GUIDE_PREFIX = 'guide-areas-'
+
+def guide_label_name(guide, origin_entry):
+    """שם התווית לפי המדריך: השכונה שמזהה שלה הוא סיומת המדריך, אחרת השכונה המקורית."""
+    if guide.startswith(AREA_GUIDE_PREFIX):
+        owner = _HOODS.get(guide[len(AREA_GUIDE_PREFIX):], {})
+        if owner.get('name'):
+            return owner['name']
+    return origin_entry.get('name', '')
 
 
 # שלושת הפריטים הפעילים שאינם בבונה המסלול. התוכן נשמר כאן כדי שלא יאבד בבנייה מחדש.

@@ -348,6 +348,10 @@
    "custom": true,
    "free": true
   },
+  "areaGuide": {
+   "label": "המדריך המלא לקנזינגטון",
+   "href": "guide-areas-kensington.html"
+  },
   "video": {
    "id": "aDwMrDGvLWk",
    "title": "The Wonders of London's Natural History Museum - An In-Depth Guided Tour"
@@ -372,6 +376,10 @@
    "href": "https://www.sciencemuseum.org.uk/see-and-do",
    "custom": true,
    "free": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לקנזינגטון",
+   "href": "guide-areas-kensington.html"
   },
   "video": {
    "id": "8s8ZnZxByLQ",
@@ -401,6 +409,10 @@
    "href": "https://www.vam.ac.uk/exhibitions",
    "custom": true,
    "free": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לקנזינגטון",
+   "href": "guide-areas-kensington.html"
   },
   "video": {
    "id": "t46g387rqIo",
@@ -604,6 +616,10 @@
    "href": "https://designmuseum.org/exhibitions",
    "custom": true,
    "free": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לקנזינגטון",
+   "href": "guide-areas-kensington.html"
   },
   "video": {
    "id": "y_zs23zelug",
@@ -1532,6 +1548,10 @@
    "href": "guide-attractions-free.html",
    "internal": true
   },
+  "areaGuide": {
+   "label": "המדריך המלא לקנזינגטון",
+   "href": "guide-areas-kensington.html"
+  },
   "video": {
    "id": "Oax39T5w3ws",
    "title": "Inside Harrods | London's Ultra Luxury Department Store Tour (July 2024)"
@@ -1555,6 +1575,10 @@
    "label": "כל הפארקים המלכותיים",
    "href": "guide-attractions-parks.html",
    "internal": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לקנזינגטון",
+   "href": "guide-areas-kensington.html"
   },
   "video": {
    "id": "2jVUTpH9TWo",
@@ -1655,6 +1679,10 @@
    "label": "כל הפארקים המלכותיים",
    "href": "guide-attractions-parks.html",
    "internal": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לקנזינגטון",
+   "href": "guide-areas-kensington.html"
   },
   "video": {
    "id": "I2RgVTSbPpU",
@@ -1996,6 +2024,10 @@
    "currency": "GBP",
    "duration": "כשעה וחצי עד שעתיים",
    "priceNote": null
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לקנזינגטון",
+   "href": "guide-areas-kensington.html"
   },
   "video": {
    "id": "27HYTAgzEjo",
@@ -2610,6 +2642,10 @@
    "currency": "GBP",
    "duration": "כשעה",
    "priceNote": null
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לקנזינגטון",
+   "href": "guide-areas-kensington.html"
   },
   "video": {
    "id": "YRik1Gjl5vY",
