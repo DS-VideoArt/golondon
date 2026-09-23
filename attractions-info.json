@@ -739,6 +739,10 @@
    "duration": "כשעה עד שעה וחצי",
    "priceNote": null
   },
+  "areaGuide": {
+   "label": "המדריך המלא לנוטינג היל",
+   "href": "guide-areas-notting-hill.html"
+  },
   "video": {
    "id": "5y6ByYF6opc",
    "title": "Museum of Brands: Ladbroke Grove's treasure trove of everyday items from the past"
@@ -1847,8 +1851,8 @@
   "tip": "עתיקות רק בשבת, ומי שרוצה לראות אותן בלי קהל מגיע לפני עשר. בחמישי השוק נסגר באחת. יורדים בתחנת Notting Hill Gate והולכים צפונה בפורטובלו רואד, כך שהשוק מתגלה בהדרגה, ולא בתחנת Ladbroke Grove. בשבת הרחוב צפוף מאוד לעגלה.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "מדריכי האזורים של לונדון",
-   "href": "guide-areas.html",
+   "label": "המדריך המלא לנוטינג היל",
+   "href": "guide-areas-notting-hill.html",
    "internal": true
   },
   "video": {
@@ -1871,8 +1875,8 @@
   "tip": "הבתים הם בתים פרטיים: מצלמים מהמדרכה, לא נכנסים לחצרות ולא יושבים על המדרגות, ולא מצלמים אנשים בחלונות. בבוקר יום חול הרחובות ריקים והאור הכי טוב, בשבת בצהריים עומדים בתור לצילום.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "מדריכי האזורים של לונדון",
-   "href": "guide-areas.html",
+   "label": "המדריך המלא לנוטינג היל",
+   "href": "guide-areas-notting-hill.html",
    "internal": true
   },
   "video": {
@@ -1902,6 +1906,10 @@
    "label": "כל שווקי לונדון",
    "href": "guide-attractions-markets.html",
    "internal": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לנוטינג היל",
+   "href": "guide-areas-notting-hill.html"
   },
   "video": {
    "id": "hNXGgQ0Phi8",
@@ -2858,6 +2866,10 @@
    "currency": "GBP",
    "duration": "אורך הסרט",
    "priceNote": null
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לנוטינג היל",
+   "href": "guide-areas-notting-hill.html"
   },
   "video": {
    "id": "I_pDbxyAUk0",
