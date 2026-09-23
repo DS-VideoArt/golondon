@@ -48,6 +48,7 @@ HEAD = """# נוצר אוטומטית על ידי build_redirects.py. אין ל�
 /fb     /planner?utm_source=facebook&utm_medium=page&utm_campaign=planner-launch      301!
 /gr     /planner?utm_source=facebook&utm_medium=group&utm_campaign=planner-launch     301!
 /ig     /planner?utm_source=instagram&utm_medium=bio&utm_campaign=planner-launch      301!
+/planner-reel    /planner?utm_source=facebook&utm_medium=organic_social&utm_campaign=planner_auto_reel_01    301!
 
 """
 
