@@ -32,10 +32,10 @@ THEMES = collections.OrderedDict([
  ('שווקים, אוכל וקניות', ['borough-market','camden-market','spitalfields-market','columbia-road','leadenhall-market','greenwich-market','brick-lane','chinatown-soho','coal-drops-yard','horizon-22','harrods']),
  ('פארקים ושטחים פתוחים', ['hyde-park','st-james-park','regents-park','hampstead-heath','holland-park','richmond-park','kew-gardens','little-venice']),
  ('שכונות ורחובות לשיטוט', ['covent-garden','notting-hill','shoreditch-art','neals-yard','southbank-walk','greenwich','st-katharine-docks','battersea-power-station']),
- ('ארמונות ובתים היסטוריים', ['kensington-palace','hampton-court','windsor-castle','kenwood-house','queens-house']),
- ('פינות נסתרות והיסטוריה', ['st-dunstan','temple-of-mithras','guildhall','southwark-cathedral','leake-street','highgate-cemetery','greenwich-foot-tunnel','cutty-sark','hms-belfast','globe-theatre','barbican']),
+ ('ארמונות ובתים היסטוריים', ['kensington-palace','hampton-court','windsor-castle','kenwood-house','queens-house','somerset-house']),
+ ('פינות נסתרות והיסטוריה', ['st-dunstan','temple-of-mithras','guildhall','southwark-cathedral','leake-street','highgate-cemetery','greenwich-foot-tunnel','cutty-sark','hms-belfast','globe-theatre','barbican','st-pauls-church']),
  ('אטרקציות שילדים אוהבים', ['london-zoo','sea-life','madame-tussauds','harry-potter']),
- ('מוזיקה, תיאטרון וספורט', ['royal-albert-hall','west-end-theatre','wembley-tour']),
+ ('מוזיקה, תיאטרון וספורט', ['royal-albert-hall','royal-opera-house','west-end-theatre','wembley-tour']),
 ])
 
 THEME_ICON = {
@@ -129,6 +129,9 @@ OFFICIAL_FREE = collections.OrderedDict([
  ('maritime-museum', ('תערוכות מתחלפות באתר המוזיאון', 'https://www.rmg.co.uk/national-maritime-museum')),
  ('british-library', ('תערוכות ואירועים באתר הספרייה', 'https://events.bl.uk/')),
  ('design-museum', ('תערוכות מתחלפות באתר המוזיאון', 'https://designmuseum.org/exhibitions')),
+ ('royal-opera-house', ('מופעים, סיורים ומה פתוח היום באתר הרשמי', 'https://www.rbo.org.uk/visit/visitor-information')),
+ ('somerset-house', ('תערוכות ואירועים באתר סומרסט האוס', 'https://www.somersethouse.org.uk/whats-on')),
+ ('st-pauls-church', ('שעות פתיחה ואירועים באתר הכנסייה', 'https://actorschurch.org/visit/')),
  ('whitechapel-gallery', ('תערוכות מתחלפות באתר הגלריה', 'https://www.whitechapelgallery.org/exhibitions/')),
  ('sky-garden', ('הזמנת כרטיס חינם באתר הרשמי', 'https://skygarden.london/')),
  ('battersea-power-station', ('המעלית והאירועים באתר הרשמי', 'https://batterseapowerstation.co.uk/')),
