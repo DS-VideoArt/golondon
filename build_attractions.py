@@ -27,15 +27,15 @@ if os.path.exists('attractions-research.json'):
 THEMES = collections.OrderedDict([
  ('אייקונים שאי אפשר לפספס', ['big-ben','tower-bridge','tower-of-london','buckingham','westminster-abbey','st-pauls','london-eye','trafalgar-square','piccadilly-circus']),
  ('המוזיאונים הגדולים, כניסה חינם', ['british-museum','national-gallery','natural-history','science-museum','va-museum','tate-modern','tate-britain','national-portrait-gallery','imperial-war-museum','maritime-museum','british-library','design-museum']),
- ('מוזיאונים קטנים שמעטים מכירים', ['wallace-collection','soane-museum','transport-museum','dickens-museum','bank-museum','postal-museum','wellcome-collection','sherlock-museum','museum-of-home','whitechapel-gallery','docklands-museum','raf-museum','old-operating-theatre','churchill-rooms','dennis-severs']),
+ ('מוזיאונים קטנים שמעטים מכירים', ['wallace-collection','soane-museum','transport-museum','museum-of-brands','dickens-museum','bank-museum','postal-museum','wellcome-collection','sherlock-museum','museum-of-home','whitechapel-gallery','docklands-museum','raf-museum','old-operating-theatre','churchill-rooms','dennis-severs']),
  ('תצפיות ונקודות נוף', ['sky-garden','shard','royal-observatory','primrose-hill','monument','cable-car']),
  ('שווקים, אוכל וקניות', ['borough-market','camden-market','spitalfields-market','columbia-road','leadenhall-market','greenwich-market','brick-lane','chinatown-soho','coal-drops-yard','horizon-22','harrods']),
  ('פארקים ושטחים פתוחים', ['hyde-park','st-james-park','regents-park','hampstead-heath','holland-park','richmond-park','kew-gardens','little-venice']),
- ('שכונות ורחובות לשיטוט', ['covent-garden','notting-hill','shoreditch-art','neals-yard','southbank-walk','greenwich','st-katharine-docks','battersea-power-station']),
+ ('שכונות ורחובות לשיטוט', ['covent-garden','notting-hill','notting-hill-pastel-streets','golborne-road','shoreditch-art','neals-yard','southbank-walk','greenwich','st-katharine-docks','battersea-power-station']),
  ('ארמונות ובתים היסטוריים', ['kensington-palace','hampton-court','windsor-castle','kenwood-house','queens-house','somerset-house']),
  ('פינות נסתרות והיסטוריה', ['st-dunstan','temple-of-mithras','guildhall','southwark-cathedral','leake-street','highgate-cemetery','greenwich-foot-tunnel','cutty-sark','hms-belfast','globe-theatre','barbican','st-pauls-church']),
  ('אטרקציות שילדים אוהבים', ['london-zoo','sea-life','madame-tussauds','harry-potter']),
- ('מוזיקה, תיאטרון וספורט', ['royal-albert-hall','royal-opera-house','west-end-theatre','wembley-tour']),
+ ('מוזיקה, תיאטרון וספורט', ['royal-albert-hall','royal-opera-house','electric-cinema','west-end-theatre','wembley-tour']),
 ])
 
 THEME_ICON = {
@@ -99,7 +99,7 @@ INTERNAL_LINKS = collections.OrderedDict([
    ['primrose-hill'])),
  ('guide-attractions-markets.html', ('כל שווקי לונדון',
    ['borough-market', 'camden-market', 'spitalfields-market', 'columbia-road',
-    'leadenhall-market'])),
+    'leadenhall-market', 'golborne-road'])),
  ('guide-areas-shoreditch.html', ('המדריך המלא לשורדיץ׳',
    ['brick-lane'])),
  ('guide-areas-greenwich.html', ('המדריך המלא לגריניץ׳',
@@ -107,7 +107,7 @@ INTERNAL_LINKS = collections.OrderedDict([
  ('guide-areas-covent-garden.html', ('המדריך המלא לקובנט גארדן',
    ['covent-garden'])),
  ('guide-areas.html', ('מדריכי האזורים של לונדון',
-   ['chinatown-soho', 'notting-hill'])),
+   ['chinatown-soho', 'notting-hill', 'notting-hill-pastel-streets'])),
  ('guide-attractions-hidden.html', ('עוד פינות נסתרות',
    ['coal-drops-yard', 'neals-yard', 'st-katharine-docks', 'st-dunstan',
     'guildhall', 'southwark-cathedral', 'greenwich-foot-tunnel'])),
