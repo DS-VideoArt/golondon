@@ -706,6 +706,10 @@
    "duration": "כשעתיים עד שלוש",
    "priceNote": null
   },
+  "areaGuide": {
+   "label": "המדריך המלא לקובנט גארדן",
+   "href": "guide-areas-covent-garden.html"
+  },
   "video": {
    "id": "YXv_Nmgdz5E",
    "title": "London Transport Museum Tour | Covent Garden | 4K"
@@ -1790,8 +1794,8 @@
   "tip": "כל מופע רחוב נמשך כחצי שעה, והמקום הטוב לצפייה הוא מדרגות האכסדרה של הכנסייה. שוק אפל ושוק יובלי הם המקום למזכרת בעבודת יד.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "מדריכי האזורים של לונדון",
-   "href": "guide-areas.html",
+   "label": "המדריך המלא לקובנט גארדן",
+   "href": "guide-areas-covent-garden.html",
    "internal": true
   },
   "video": {
@@ -1887,6 +1891,10 @@
    "label": "עוד פינות נסתרות",
    "href": "guide-attractions-hidden.html",
    "internal": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לקובנט גארדן",
+   "href": "guide-areas-covent-garden.html"
   },
   "video": {
    "id": "-fGe5DiRjHs",
@@ -2177,6 +2185,10 @@
    "href": "https://www.somersethouse.org.uk/whats-on",
    "custom": true,
    "free": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לקובנט גארדן",
+   "href": "guide-areas-covent-garden.html"
   },
   "video": {
    "id": "TjYBM3L437U",
@@ -2535,6 +2547,10 @@
    "custom": true,
    "free": true
   },
+  "areaGuide": {
+   "label": "המדריך המלא לקובנט גארדן",
+   "href": "guide-areas-covent-garden.html"
+  },
   "video": {
    "id": "g0GZPGRqzmw",
    "title": "St Pauls Church | Covent Garden | The Actors Church"
@@ -2729,6 +2745,10 @@
    "href": "https://www.rbo.org.uk/visit/visitor-information",
    "custom": true,
    "free": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לקובנט גארדן",
+   "href": "guide-areas-covent-garden.html"
   },
   "video": {
    "id": "t3E5Do76GR0",
