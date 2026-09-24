@@ -33,7 +33,7 @@ THEMES = collections.OrderedDict([
  ('פארקים ושטחים פתוחים', ['hyde-park','st-james-park','regents-park','hampstead-heath','holland-park','richmond-park','kew-gardens','little-venice']),
  ('שכונות ורחובות לשיטוט', ['covent-garden','notting-hill','notting-hill-pastel-streets','golborne-road','shoreditch-art','neals-yard','southbank-walk','greenwich','st-katharine-docks','battersea-power-station']),
  ('ארמונות ובתים היסטוריים', ['kensington-palace','hampton-court','windsor-castle','kenwood-house','queens-house','somerset-house']),
- ('פינות נסתרות והיסטוריה', ['st-dunstan','temple-of-mithras','guildhall','southwark-cathedral','leake-street','highgate-cemetery','greenwich-foot-tunnel','cutty-sark','hms-belfast','globe-theatre','barbican','st-pauls-church']),
+ ('פינות נסתרות והיסטוריה', ['st-dunstan','temple-of-mithras','guildhall','bunhill-fields','southwark-cathedral','leake-street','highgate-cemetery','greenwich-foot-tunnel','cutty-sark','hms-belfast','globe-theatre','barbican','st-pauls-church']),
  ('אטרקציות שילדים אוהבים', ['london-zoo','sea-life','madame-tussauds','harry-potter']),
  ('מוזיקה, תיאטרון וספורט', ['royal-albert-hall','royal-opera-house','electric-cinema','west-end-theatre','wembley-tour']),
 ])
@@ -112,11 +112,11 @@ INTERNAL_LINKS = collections.OrderedDict([
    ['chinatown-soho'])),
  ('guide-attractions-hidden.html', ('עוד פינות נסתרות',
    ['coal-drops-yard', 'neals-yard', 'st-katharine-docks', 'st-dunstan',
-    'guildhall', 'southwark-cathedral', 'greenwich-foot-tunnel'])),
+    'guildhall', 'bunhill-fields', 'southwark-cathedral', 'greenwich-foot-tunnel'])),
  ('guide-attractions-parks.html', ('כל הפארקים המלכותיים',
    ['hyde-park', 'st-james-park', 'regents-park', 'hampstead-heath',
     'holland-park', 'richmond-park'])),
- ('guide-areas-southbank.html', ('המדריך המלא להגדה הדרומית',
+ ('guide-areas-southbank.html', ('המדריך המלא לגדה הדרומית',
    ['southbank-walk'])),
  ('guide-attractions-thames.html', ('עוד לאורך התמזה',
    ['greenwich'])),
@@ -205,8 +205,13 @@ def guide_label_name(guide, origin_entry):
     if guide.startswith(AREA_GUIDE_PREFIX):
         owner = _HOODS.get(guide[len(AREA_GUIDE_PREFIX):], {})
         if owner.get('name'):
-            return owner['name']
-    return origin_entry.get('name', '')
+            return strip_article(owner['name'])
+    return strip_article(origin_entry.get('name', ''))
+
+
+def strip_article(name):
+    """'המדריך המלא ל' + 'הסיטי' חייב לתת 'לסיטי' ולא 'להסיטי': ה' הידיעה נבלעת אחרי ל'."""
+    return name[1:] if len(name) > 2 and name.startswith('ה') and not name.startswith('הי') else name
 
 
 # שלושת הפריטים הפעילים שאינם בבונה המסלול. התוכן נשמר כאן כדי שלא יאבד בבנייה מחדש.

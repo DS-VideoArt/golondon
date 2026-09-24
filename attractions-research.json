@@ -1197,5 +1197,25 @@
    "desc_he": "כרטיס לסרט בקולנוע האלקטריק בפורטובלו רואד, בכורסת עור עם שרפרף ושמיכה. נכון לספטמבר 2026 כורסה ביום חול לפני חמש מ-15 ליש״ט, בערב ובסופי שבוע 20 עד 25, ספה או מיטה זוגית בשורה הראשונה 30 עד 50 לשניים, וילדים עד גיל 14 ב-10. מזמינים מראש באתר.",
    "checked": "24 בספטמבר 2026"
   }
+ },
+ "horizon-22": {
+  "video": {
+   "youtube_id": "pxLKY-lew90",
+   "title": "Highest viewing gallery in London - Horizon 22",
+   "verified": true
+  },
+  "tour": {
+   "applicable": false
+  }
+ },
+ "bunhill-fields": {
+  "video": {
+   "youtube_id": "A3sFFaP-DbA",
+   "title": "Bunhill Fields with Alice Ford-Smith | Medical London",
+   "verified": true
+  },
+  "tour": {
+   "applicable": false
+  }
  }
 }

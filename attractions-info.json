@@ -55,6 +55,10 @@
    "duration": "כשעה עד שעה וחצי",
    "priceNote": null
   },
+  "areaGuide": {
+   "label": "המדריך המלא לסיטי",
+   "href": "guide-areas-the-city.html"
+  },
   "video": {
    "id": "f4S-XJBqmTI",
    "title": "Tower Bridge Glass Floor | MUST DO IN LONDON"
@@ -86,6 +90,10 @@
    "currency": "GBP",
    "duration": "כשלוש שעות",
    "priceNote": null
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לסיטי",
+   "href": "guide-areas-the-city.html"
   },
   "video": {
    "id": "JbK3-hEP0DA",
@@ -189,6 +197,10 @@
    "duration": "כשעה וחצי עד שעתיים",
    "priceNote": null
   },
+  "areaGuide": {
+   "label": "המדריך המלא לסיטי",
+   "href": "guide-areas-the-city.html"
+  },
   "video": {
    "id": "A9mZ4EWbl3o",
    "title": "St Paul's Cathedral Tour, London | FULL TOUR + TIPS"
@@ -222,7 +234,7 @@
    "priceVaries": true
   },
   "areaGuide": {
-   "label": "המדריך המלא להגדה הדרומית",
+   "label": "המדריך המלא לגדה הדרומית",
    "href": "guide-areas-southbank.html"
   },
   "video": {
@@ -448,7 +460,7 @@
    "free": true
   },
   "areaGuide": {
-   "label": "המדריך המלא להגדה הדרומית",
+   "label": "המדריך המלא לגדה הדרומית",
    "href": "guide-areas-southbank.html"
   },
   "video": {
@@ -539,7 +551,7 @@
    "free": true
   },
   "areaGuide": {
-   "label": "המדריך המלא להגדה הדרומית",
+   "label": "המדריך המלא לגדה הדרומית",
    "href": "guide-areas-southbank.html"
   },
   "video": {
@@ -812,6 +824,10 @@
    "href": "guide-attractions-museums.html",
    "internal": true
   },
+  "areaGuide": {
+   "label": "המדריך המלא לסיטי",
+   "href": "guide-areas-the-city.html"
+  },
   "video": {
    "id": "VozhNp789Jg",
    "title": "Discover the Bank of England Museum"
@@ -843,6 +859,10 @@
    "currency": "GBP",
    "duration": "כשעתיים",
    "priceNote": null
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לסיטי",
+   "href": "guide-areas-the-city.html"
   },
   "video": {
    "id": "qvpCTZx_wc4",
@@ -1048,7 +1068,7 @@
    "priceNote": null
   },
   "areaGuide": {
-   "label": "המדריך המלא להגדה הדרומית",
+   "label": "המדריך המלא לגדה הדרומית",
    "href": "guide-areas-southbank.html"
   },
   "video": {
@@ -1155,6 +1175,10 @@
    "custom": true,
    "free": true
   },
+  "areaGuide": {
+   "label": "המדריך המלא לסיטי",
+   "href": "guide-areas-the-city.html"
+  },
   "video": {
    "id": "FdAGgTIUtpU",
    "title": "The View from The Sky Garden: London's Free Observation Deck"
@@ -1188,7 +1212,7 @@
    "priceVaries": true
   },
   "areaGuide": {
-   "label": "המדריך המלא להגדה הדרומית",
+   "label": "המדריך המלא לגדה הדרומית",
    "href": "guide-areas-southbank.html"
   },
   "video": {
@@ -1284,6 +1308,10 @@
    "duration": "כרבע שעה עד חצי שעה",
    "priceNote": null
   },
+  "areaGuide": {
+   "label": "המדריך המלא לסיטי",
+   "href": "guide-areas-the-city.html"
+  },
   "video": {
    "id": "DEWlC-l1lpE",
    "title": "The Monument To The Great Fire Of London and Views From The Top"
@@ -1338,7 +1366,7 @@
    "internal": true
   },
   "areaGuide": {
-   "label": "המדריך המלא להגדה הדרומית",
+   "label": "המדריך המלא לגדה הדרומית",
    "href": "guide-areas-southbank.html"
   },
   "video": {
@@ -1452,6 +1480,10 @@
    "label": "כל שווקי לונדון",
    "href": "guide-attractions-markets.html",
    "internal": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לסיטי",
+   "href": "guide-areas-the-city.html"
   },
   "video": {
    "id": "_9TsLzfPgpg",
@@ -1584,6 +1616,14 @@
    "href": "https://horizon22.co.uk/",
    "custom": true,
    "free": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לסיטי",
+   "href": "guide-areas-the-city.html"
+  },
+  "video": {
+   "id": "pxLKY-lew90",
+   "title": "Highest viewing gallery in London - Horizon 22"
   }
  },
  "harrods": {
@@ -2025,7 +2065,7 @@
   "tip": "ההליכה מהלונדון איי ועד גשר המגדלים היא אחד המסלולים היפים בעיר, וכולה לאורך המים.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "המדריך המלא להגדה הדרומית",
+   "label": "המדריך המלא לגדה הדרומית",
    "href": "guide-areas-southbank.html",
    "internal": true
   },
@@ -2080,6 +2120,10 @@
    "label": "עוד פינות נסתרות",
    "href": "guide-attractions-hidden.html",
    "internal": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לסיטי",
+   "href": "guide-areas-the-city.html"
   },
   "video": {
    "id": "m2Fu_XcfBFg",
@@ -2327,6 +2371,10 @@
    "href": "guide-attractions-hidden.html",
    "internal": true
   },
+  "areaGuide": {
+   "label": "המדריך המלא לסיטי",
+   "href": "guide-areas-the-city.html"
+  },
   "video": {
    "id": "HpFwZkpWjIQ",
    "title": "St Dunstan in the East London, Medieval Church Ruins Turned Garden Near the Tower of London"
@@ -2359,6 +2407,10 @@
    "custom": true,
    "free": true
   },
+  "areaGuide": {
+   "label": "המדריך המלא לסיטי",
+   "href": "guide-areas-the-city.html"
+  },
   "video": {
    "id": "Vm5MZ1mTFYc",
    "title": "A look at the ruins of London's Roman Temple of Mithras"
@@ -2387,9 +2439,45 @@
    "href": "guide-attractions-hidden.html",
    "internal": true
   },
+  "areaGuide": {
+   "label": "המדריך המלא לסיטי",
+   "href": "guide-areas-the-city.html"
+  },
   "video": {
    "id": "PfF-NjxaEbY",
    "title": "London's Roman Amphitheatre: Discovery, Conservation and Form"
+  }
+ },
+ "bunhill-fields": {
+  "title": "בית הקברות באנהיל פילדס",
+  "tags": [
+   {
+    "label": "כניסה חינם",
+    "type": "free"
+   },
+   {
+    "label": "הסיטי ומזרח"
+   },
+   {
+    "label": "פחות מתאים לילדים קטנים",
+    "type": "teen"
+   }
+  ],
+  "body": "בית הקברות של הנונקונפורמיסטים, מי שסירבו להיכנע לכנסייה האנגליקנית, ששימש מ-1665 עד 1854 וקבורים בו כמאה ועשרים אלף איש. שלושה מהם מושכים מבקרים עד היום: ויליאם בלייק, דניאל דפו, מחבר רובינזון קרוזו, וג׳ון באניין. היום זה גן ציבורי שקט ומוגן בין משרדי הסיטי, עם ספסלים בצל עצי הדולב, והכניסה חינם.",
+  "tip": "עצירה של רבע שעה, לא יעד בפני עצמו: מצבת בלייק עומדת ליד השביל המרכזי ומסומנת, ולידה משאירים מטבעות ופרחים. פתוח בימי חול משמונה בבוקר ובסופי שבוע מתשע וחצי, בקיץ עד שבע בערב ובחורף עד ארבע או עד החשכה.",
+  "updated": "אוגוסט 2026",
+  "cta": {
+   "label": "עוד פינות נסתרות",
+   "href": "guide-attractions-hidden.html",
+   "internal": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לסיטי",
+   "href": "guide-areas-the-city.html"
+  },
+  "video": {
+   "id": "A3sFFaP-DbA",
+   "title": "Bunhill Fields with Alice Ford-Smith | Medical London"
   }
  },
  "southwark-cathedral": {
@@ -2416,7 +2504,7 @@
    "internal": true
   },
   "areaGuide": {
-   "label": "המדריך המלא להגדה הדרומית",
+   "label": "המדריך המלא לגדה הדרומית",
    "href": "guide-areas-southbank.html"
   },
   "video": {
@@ -2444,7 +2532,7 @@
    "internal": true
   },
   "areaGuide": {
-   "label": "המדריך המלא להגדה הדרומית",
+   "label": "המדריך המלא לגדה הדרומית",
    "href": "guide-areas-southbank.html"
   },
   "video": {
@@ -2574,7 +2662,7 @@
    "priceNote": null
   },
   "areaGuide": {
-   "label": "המדריך המלא להגדה הדרומית",
+   "label": "המדריך המלא לגדה הדרומית",
    "href": "guide-areas-southbank.html"
   },
   "video": {
@@ -2611,7 +2699,7 @@
    "priceNote": null
   },
   "areaGuide": {
-   "label": "המדריך המלא להגדה הדרומית",
+   "label": "המדריך המלא לגדה הדרומית",
    "href": "guide-areas-southbank.html"
   },
   "video": {
@@ -2642,6 +2730,10 @@
    "href": "https://www.barbican.org.uk/whats-on",
    "custom": true,
    "free": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא לסיטי",
+   "href": "guide-areas-the-city.html"
   },
   "video": {
    "id": "WzE0H3B4wEg",
@@ -2742,7 +2834,7 @@
    "priceVaries": true
   },
   "areaGuide": {
-   "label": "המדריך המלא להגדה הדרומית",
+   "label": "המדריך המלא לגדה הדרומית",
    "href": "guide-areas-southbank.html"
   },
   "video": {
