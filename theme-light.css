@@ -1782,6 +1782,8 @@ a.fit:hover .fit-go i { transform: translateX(-3px); }
   color: var(--brand) !important;
 }
 .ms-all:hover { color: var(--brand-warm) !important; }
+.ms-season { margin-right: 18px; }
+@media (max-width: 560px) { .ms-season { margin-right: 0; display: flex; margin-top: 10px; } }
 
 @media (max-width: 900px) {
   .ms-grid { grid-template-columns: repeat(4, 1fr); }
