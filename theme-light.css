@@ -1783,6 +1783,8 @@ a.fit:hover .fit-go i { transform: translateX(-3px); }
 }
 .ms-all:hover { color: var(--brand-warm) !important; }
 .ms-season { margin-right: 18px; }
+.ms-now { margin-top: 10px; font-size: 15px; font-weight: 700; }
+.ms-now a { font-weight: 900; color: var(--brand) !important; text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 560px) { .ms-season { margin-right: 0; display: flex; margin-top: 10px; } }
 
 @media (max-width: 900px) {

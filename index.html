@@ -473,11 +473,13 @@
       <div class="section-header">
         <h2>מתי אתם טסים?</h2>
         <p>בוחרים חודש ומקבלים מזג אוויר, שעות אור, עומס, מה קורה בעיר ומה כדאי להזמין מראש</p>
+        <!-- לונדון החודש: ברירת מחדל סטטית שמתעדכנת פעם בחודש, והסקריפט למטה מתקן לפי תאריך הגולש -->
+        <p class="ms-now">📅 לונדון החודש: <a href="london-september.html" data-now="cur"><span data-now-name>ספטמבר 2026</span></a>, והחודש הבא: <a href="london-october.html" data-now="next"><span data-now-name>אוקטובר 2026</span></a></p>
       </div>
       <div class="ms-scroll">
         <div class="ms-grid">
-          <a href="london-january.html" class="ms-card"><span class="ms-emoji">❄️</span><span class="ms-name">ינואר</span><span class="ms-temp">2 עד 7°</span></a>
-          <a href="london-february.html" class="ms-card"><span class="ms-emoji">🌂</span><span class="ms-name">פברואר</span><span class="ms-temp">2 עד 7°</span></a>
+          <a href="london-january.html" class="ms-card"><span class="ms-emoji">❄️</span><span class="ms-name">ינואר</span><span class="ms-temp">3 עד 8°</span></a>
+          <a href="london-february.html" class="ms-card"><span class="ms-emoji">🌂</span><span class="ms-name">פברואר</span><span class="ms-temp">3 עד 9°</span></a>
           <a href="london-march.html" class="ms-card"><span class="ms-emoji">🌼</span><span class="ms-name">מרץ</span><span class="ms-temp">3 עד 10°</span></a>
           <a href="london-april.html" class="ms-card"><span class="ms-emoji">🌸</span><span class="ms-name">אפריל</span><span class="ms-temp">5 עד 13°</span></a>
           <a href="london-may.html" class="ms-card"><span class="ms-emoji">🌳</span><span class="ms-name">מאי</span><span class="ms-temp">8 עד 17°</span></a>
@@ -485,8 +487,8 @@
           <a href="london-july.html" class="ms-card"><span class="ms-emoji">🎾</span><span class="ms-name">יולי</span><span class="ms-temp">13 עד 22°</span></a>
           <a href="london-august.html" class="ms-card"><span class="ms-emoji">🎭</span><span class="ms-name">אוגוסט</span><span class="ms-temp">13 עד 22°</span></a>
           <a href="london-september.html" class="ms-card"><span class="ms-emoji">🍂</span><span class="ms-name">ספטמבר</span><span class="ms-temp">11 עד 19°</span></a>
-          <a href="london-october.html" class="ms-card"><span class="ms-emoji">🍁</span><span class="ms-name">אוקטובר</span><span class="ms-temp">8 עד 15°</span></a>
-          <a href="london-november.html" class="ms-card"><span class="ms-emoji">🎆</span><span class="ms-name">נובמבר</span><span class="ms-temp">4 עד 10°</span></a>
+          <a href="london-october.html" class="ms-card"><span class="ms-emoji">🍁</span><span class="ms-name">אוקטובר</span><span class="ms-temp">9 עד 16°</span></a>
+          <a href="london-november.html" class="ms-card"><span class="ms-emoji">🎆</span><span class="ms-name">נובמבר</span><span class="ms-temp">5 עד 11°</span></a>
           <a href="london-december.html" class="ms-card"><span class="ms-emoji">🎄</span><span class="ms-name">דצמבר</span><span class="ms-temp">2 עד 8°</span></a>
         </div>
       </div>
@@ -822,6 +824,15 @@
   <input type="text" name="bot-field" />
 </form>
 <script src="trip-tray.js?v=6" defer></script>
+<script>
+  /* מעדכן את כרטיסי "לונדון החודש" ו"החודש הבא" לפי תאריך הגולש, כדי שה-HTML הסטטי לא יתיישן */
+  (function () {
+    var M = [['january','ינואר','❄️'],['february','פברואר','🌂'],['march','מרץ','🌼'],['april','אפריל','🌸'],['may','מאי','🌳'],['june','יוני','☀️'],['july','יולי','🎾'],['august','אוגוסט','🎭'],['september','ספטמבר','🍂'],['october','אוקטובר','🍁'],['november','נובמבר','🎆'],['december','דצמבר','🎄']];
+    var d = new Date(), c = d.getMonth(), y = d.getFullYear(), n = (c + 1) % 12, ny = n === 0 ? y + 1 : y;
+    function set(el, i, yr) { if (!el) return; el.setAttribute('href', 'london-' + M[i][0] + '.html'); var t = el.querySelector('[data-now-name]') || el.querySelector('.m-now-name') || el; t.textContent = (el.classList.contains('m-now-card') ? M[i][2] + ' ' : '') + M[i][1] + ' ' + yr; }
+    set(document.querySelector('[data-now="cur"]'), c, y); set(document.querySelector('[data-now="next"]'), n, ny);
+  })();
+</script>
 <script src="analytics.js?v=4" defer></script>
 </body>
 </html>
