@@ -221,6 +221,10 @@
    "priceNote": null,
    "priceVaries": true
   },
+  "areaGuide": {
+   "label": "המדריך המלא להגדה הדרומית",
+   "href": "guide-areas-southbank.html"
+  },
   "video": {
    "id": "h7gtgAcLZQc",
    "title": "Ride The London Eye | Full Tour With Amazing Views Across London (Nov 2024) [4K]"
@@ -443,6 +447,10 @@
    "custom": true,
    "free": true
   },
+  "areaGuide": {
+   "label": "המדריך המלא להגדה הדרומית",
+   "href": "guide-areas-southbank.html"
+  },
   "video": {
    "id": "py5tRGV_RpQ",
    "title": "Tate Modern Art Gallery LONDON Highlights 2024"
@@ -529,6 +537,10 @@
    "href": "https://www.iwm.org.uk/events",
    "custom": true,
    "free": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא להגדה הדרומית",
+   "href": "guide-areas-southbank.html"
   },
   "video": {
    "id": "IevuOKrp54k",
@@ -1035,6 +1047,10 @@
    "duration": "כחצי שעה עד שעה",
    "priceNote": null
   },
+  "areaGuide": {
+   "label": "המדריך המלא להגדה הדרומית",
+   "href": "guide-areas-southbank.html"
+  },
   "video": {
    "id": "u8jr45MB8cw",
    "title": "London: A Guide To Exploring The Old Operating Theatre Museum"
@@ -1170,6 +1186,10 @@
    "duration": null,
    "priceNote": null,
    "priceVaries": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא להגדה הדרומית",
+   "href": "guide-areas-southbank.html"
   },
   "video": {
    "id": "4vuf15SzSfM",
@@ -1316,6 +1336,10 @@
    "label": "כל שווקי לונדון",
    "href": "guide-attractions-markets.html",
    "internal": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא להגדה הדרומית",
+   "href": "guide-areas-southbank.html"
   },
   "video": {
    "id": "8cqRbJlRR_o",
@@ -2001,8 +2025,8 @@
   "tip": "ההליכה מהלונדון איי ועד גשר המגדלים היא אחד המסלולים היפים בעיר, וכולה לאורך המים.",
   "updated": "אוגוסט 2026",
   "cta": {
-   "label": "עוד לאורך התמזה",
-   "href": "guide-attractions-thames.html",
+   "label": "המדריך המלא להגדה הדרומית",
+   "href": "guide-areas-southbank.html",
    "internal": true
   },
   "video": {
@@ -2391,6 +2415,10 @@
    "href": "guide-attractions-hidden.html",
    "internal": true
   },
+  "areaGuide": {
+   "label": "המדריך המלא להגדה הדרומית",
+   "href": "guide-areas-southbank.html"
+  },
   "video": {
    "id": "gpeSWr7xjgQ",
    "title": "Southwark Cathedral"
@@ -2414,6 +2442,10 @@
    "label": "עוד אטרקציות בחינם",
    "href": "guide-attractions-free.html",
    "internal": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא להגדה הדרומית",
+   "href": "guide-areas-southbank.html"
   },
   "video": {
    "id": "Hc_bN9WOsO4",
@@ -2541,6 +2573,10 @@
    "duration": "כשעתיים",
    "priceNote": null
   },
+  "areaGuide": {
+   "label": "המדריך המלא להגדה הדרומית",
+   "href": "guide-areas-southbank.html"
+  },
   "video": {
    "id": "krSBjjqx2os",
    "title": "HMS Belfast | Imperial War Museum London"
@@ -2573,6 +2609,10 @@
    "currency": "GBP",
    "duration": "כשעה",
    "priceNote": null
+  },
+  "areaGuide": {
+   "label": "המדריך המלא להגדה הדרומית",
+   "href": "guide-areas-southbank.html"
   },
   "video": {
    "id": "zWu1nqZlynw",
@@ -2700,6 +2740,10 @@
    "duration": null,
    "priceNote": null,
    "priceVaries": true
+  },
+  "areaGuide": {
+   "label": "המדריך המלא להגדה הדרומית",
+   "href": "guide-areas-southbank.html"
   },
   "video": {
    "id": "lLNpLrpjz6I",

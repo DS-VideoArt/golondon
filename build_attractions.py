@@ -116,8 +116,10 @@ INTERNAL_LINKS = collections.OrderedDict([
  ('guide-attractions-parks.html', ('כל הפארקים המלכותיים',
    ['hyde-park', 'st-james-park', 'regents-park', 'hampstead-heath',
     'holland-park', 'richmond-park'])),
+ ('guide-areas-southbank.html', ('המדריך המלא להגדה הדרומית',
+   ['southbank-walk'])),
  ('guide-attractions-thames.html', ('עוד לאורך התמזה',
-   ['southbank-walk', 'greenwich'])),
+   ['greenwich'])),
 ])
 
 OFFICIAL_FREE = collections.OrderedDict([
