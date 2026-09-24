@@ -372,17 +372,20 @@
       "shabbat-friendly"
     ],
     "area": "outer",
-    "hood": "borehamwood",
-    "lat": 51.6573,
-    "lng": -0.2723,
+    "hood": "edgware",
+    "lat": 51.6195,
+    "lng": -0.2748,
     "precision": "exact",
-    "source": null,
-    "checked": "2026-08",
+    "source": "https://www.kosher.org.uk/restaurants",
+    "checked": "2026-09",
     "category": "מסעדה חלבית",
-    "address": "33-35 Shenley Road, Borehamwood",
-    "postcode": "WD6 1AE",
-    "phone": "020 8191 0308",
-    "kashrus": "KLBD, חלב ישראל"
+    "address": "295 Hale Lane, Edgware",
+    "postcode": "HA8 7AX",
+    "phone": "020 3518 3065",
+    "kashrus": "KLBD, חלב ישראל",
+    "previous_address": "33-35 Shenley Road, Borehamwood WD6 1AE",
+    "status": "opening-soon",
+    "note": "עובר מבורהמווד לאדג׳וור. הסניף בבורהמווד נסגר, והסניף החדש מופיע ב-KLBD ובאתר המסעדה כנפתח בקרוב, ופתיחתו טרם אומתה"
   },
   {
     "id": 12,
@@ -901,13 +904,16 @@
     "lat": 51.6195,
     "lng": -0.2748,
     "precision": "exact",
-    "source": null,
-    "checked": "2026-08",
+    "source": "https://kosher.org.uk/?s=Rodo",
+    "checked": "2026-09",
     "category": "מסעדה בשרית",
     "address": "295 Hale Lane, Edgware",
     "postcode": "HA8 7AX",
     "phone": "020 3518 3065",
-    "kashrus": "KLBD, גלאט"
+    "kashrus": "לא מאומת",
+    "status": "inactive",
+    "kashrus_previous": "KLBD, גלאט",
+    "note": "לא מופיע ברשימות KLBD מספטמבר 2026, והכשרות אינה מאומתת. הרשומה נשמרת כהיסטוריה בלבד"
   },
   {
     "id": 27,
@@ -1286,13 +1292,14 @@
     "lat": 51.5763,
     "lng": -0.1861,
     "precision": "exact",
-    "source": null,
-    "checked": "2026-08",
+    "source": "https://www.kosher.org.uk/restaurants",
+    "checked": "2026-09",
     "category": "מסעדה בשרית",
     "address": "31 The Market Place, Hampstead Garden Suburb",
     "postcode": "NW11 6JY",
     "phone": "020 3663 2975",
-    "kashrus": "KLBD, גלאט"
+    "kashrus": "KLBD, גלאט",
+    "note": "טייקאוויי בלבד"
   },
   {
     "id": 38,
@@ -1916,13 +1923,14 @@
     "lat": 51.615807,
     "lng": -0.275175,
     "precision": "exact",
-    "source": null,
-    "checked": "2026-08",
+    "source": "https://www.kosher.org.uk/restaurants",
+    "checked": "2026-09",
     "category": "מסעדה בשרית",
     "address": "313 Hale Lane, Edgware",
     "postcode": "HA8 7AX",
     "phone": "",
-    "kashrus": "KLBD, גלאט"
+    "kashrus": "KLBD, גלאט",
+    "note": "טייקאוויי בלבד, פועל מהמתחם של Sami's"
   },
   {
     "id": 56,
@@ -1951,13 +1959,14 @@
     "lat": 51.514828,
     "lng": -0.153911,
     "precision": "exact",
-    "source": null,
-    "checked": "2026-08",
+    "source": "https://kosher.org.uk/kosher-places/delis-shops-pop-ups/",
+    "checked": "2026-09",
     "category": "חנות ומעדנייה",
-    "address": "400 Oxford Street, London",
+    "address": "Selfridges Food Hall, 400 Oxford Street, London",
     "postcode": "W1A 1AB",
     "phone": "",
-    "kashrus": "KLBD"
+    "kashrus": "KLBD",
+    "note": "מקרר כשר בתוך אולם המזון של סלפרידג׳ס, לא חנות עצמאית"
   },
   {
     "id": 57,
@@ -2511,13 +2520,14 @@
     "lat": 51.654123,
     "lng": -0.279857,
     "precision": "exact",
-    "source": null,
-    "checked": "2026-08",
+    "source": "https://kosher.org.uk/kosher-places/delis-shops-pop-ups/",
+    "checked": "2026-09",
     "category": "חנות ומעדנייה",
-    "address": "31-33 Theobald Street, Borehamwood",
+    "address": "Theobald Street, Borehamwood",
     "postcode": "WD6 4RN",
     "phone": "",
-    "kashrus": "KLBD"
+    "kashrus": "KLBD",
+    "note": "משאית פיצה ניידת בתיאובלד סטריט, לא חנות קבועה"
   },
   {
     "id": 73,

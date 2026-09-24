@@ -92,7 +92,8 @@
     body.innerHTML =
       '<div class="kp-row"><i class="fas fa-location-dot"></i><span>' + p.address + ', ' + p.postcode + '</span></div>' +
       (p.phone ? '<div class="kp-row"><i class="fas fa-phone"></i><a href="tel:' + p.phone + '">' + p.phone + '</a></div>' : '') +
-      '<div class="kp-row"><i class="fas fa-star-of-david"></i><span>' + p.kashrus + '</span></div>';
+      '<div class="kp-row"><i class="fas fa-star-of-david"></i><span>' + p.kashrus + '</span></div>' +
+      (p.note ? '<div class="kp-row"><i class="fas fa-circle-info"></i><span>' + p.note + '</span></div>' : '');
 
     var actions = modal.querySelector('.kp-actions');
     var wazeUrl = 'https://waze.com/ul?ll=' + p.lat + ',' + p.lng + '&navigate=yes';

@@ -155,6 +155,9 @@ if os.path.exists('kosher-places.json'):
         name = k.get('name') or k.get('title')
         if not name:
             continue
+        # רשומה לא פעילה נשמרת בקובץ אבל לא נכנסת לחיפוש
+        if k.get('status') and k.get('status') != 'active':
+            continue
         # הכתובות בקובץ באנגלית, ולכן חיפוש בעברית לא היה מוצא אותן.
         # כאן מתווספים שמות השכונות בעברית לטקסט שעליו רץ החיפוש.
         AREA_HE = {
@@ -171,7 +174,7 @@ if os.path.exists('kosher-places.json'):
             'url': 'kosher-map.html',
             'desc': ((cat_he + ', ' + addr) if addr else cat_he)[:180],
             'img': '',
-            'text': ' '.join([name, cat_he, addr, k.get('kashrus') or '', 'כשר כשרות',
+            'text': ' '.join([name, cat_he, addr, k.get('kashrus') or '', k.get('note') or '', 'כשר כשרות',
                               ' '.join(he_areas)])[:800],
         })
 

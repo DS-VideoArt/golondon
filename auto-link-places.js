@@ -66,6 +66,8 @@
           });
         } else if (r.src.kind === 'kosher') {
           (r.json || []).forEach(function (p) {
+            /* רשומה לא פעילה נשמרת בנתונים אבל לא מקושרת מהטקסט */
+            if (p.status && p.status !== 'active') return;
             if (p.name && p.name.length >= MIN_LEN) entries.push({ name: p.name, kind: 'kosher', item: p });
           });
         } else {

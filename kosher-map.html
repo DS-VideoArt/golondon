@@ -238,7 +238,7 @@
   <span class="filter-sep" id="kashrusSep" hidden></span>
   <span id="kashrusFilters"></span>
 
-  <span class="count-badge"><strong id="visibleCount">78</strong> מקומות</span>
+  <span class="count-badge"><strong id="visibleCount">76</strong> מקומות</span>
   <button type="button" class="kashrus-note" onclick="openKashrusInfo()">
     <i class="fas fa-circle-info"></i> על הכשרות במפה
   </button>
@@ -326,7 +326,8 @@ let currentKashrus = 'הכל';
 fetch('kosher-places.json?v=2')
   .then(r => r.json())
   .then(data => {
-    allPlaces = data;
+    /* רשומות לא פעילות (סגור, כשרות לא מאומתת, פתיחה בקרוב שטרם אומתה) נשמרות בנתונים אבל אינן מוצגות */
+    allPlaces = data.filter(p => !p.status || p.status === 'active');
     /*
       תאריך העדכון מחושב מתוך שדה checked של הרשומות עצמן, כדי שהוא
       יתעדכן מעצמו בכל בדיקה של המאגר ולא יישאר תלוי בזיכרון של אף אחד.
@@ -436,6 +437,7 @@ function renderMarkers(places) {
         <div class="popup-row"><i class="fas fa-map-marker-alt"></i> ${p.address}, ${p.postcode}</div>
         ${p.phone ? `<div class="popup-row popup-phone"><i class="fas fa-phone"></i> <a href="tel:${p.phone}">${p.phone}</a></div>` : ''}
         <div class="popup-kashrus"><i class="fas fa-star-of-david"></i> ${p.kashrus}</div>
+        ${p.note ? `<div class="popup-row popup-note"><i class="fas fa-circle-info"></i> ${p.note}</div>` : ''}
         <a class="popup-waze" href="${wazeUrl}" target="_blank" rel="noopener">🚗 נווט בוויז</a>
         <a class="popup-walk" href="${walkUrl}" target="_blank" rel="noopener">🚶 ניווט בהליכה</a>
       </div>`;
@@ -562,7 +564,7 @@ function locateMe() {
     <button type="button" class="ki-close" onclick="closeKashrusInfo()" aria-label="סגירה">✕</button>
     <h2 class="ki-title" id="kiTitle">על הכשרות שבמפה</h2>
 
-    <p class="ki-lead">כל 78 המקומות במפה נמצאים בהשגחת <strong>KLBD</strong>, מחלקת הכשרות של בית הדין של לונדון, הגוף המרכזי בבריטניה. הרשימה נבנתה מול הרשימות הרשמיות שלהם.</p>
+    <p class="ki-lead">כל 76 המקומות במפה נמצאים בהשגחת <strong>KLBD</strong>, מחלקת הכשרות של בית הדין של לונדון, הגוף המרכזי בבריטניה. הרשימה נבנתה מול הרשימות הרשמיות שלהם.</p>
 
     <h3 class="ki-h3">מה מצוין ומה לא</h3>
     <ul class="ki-list">
