@@ -385,7 +385,7 @@
     "kashrus": "KLBD, חלב ישראל",
     "previous_address": "33-35 Shenley Road, Borehamwood WD6 1AE",
     "status": "opening-soon",
-    "note": "עובר מבורהמווד לאדג׳וור. הסניף בבורהמווד נסגר, והסניף החדש מופיע ב-KLBD ובאתר המסעדה כנפתח בקרוב, ופתיחתו טרם אומתה"
+    "note": "עובר מבורהמווד לאדג׳וור. הסניף בבורהמווד נסגר, והסניף החדש מופיע ברשימת KLBD כנפתח בקרוב, ופתיחתו טרם אומתה"
   },
   {
     "id": 12,
@@ -831,14 +831,14 @@
     ],
     "area": "outer",
     "hood": "west-hampstead",
-    "lat": 51.5477,
-    "lng": -0.1925,
+    "lat": 51.54304,
+    "lng": -0.17932,
     "precision": "exact",
-    "source": null,
-    "checked": "2026-08",
+    "source": "https://www.kosher.org.uk/restaurants",
+    "checked": "2026-09",
     "category": "מסעדה בשרית",
     "address": "51 Fairfax Road, West Hampstead",
-    "postcode": "NW6 4WL",
+    "postcode": "NW6 4EL",
     "phone": "020 3612 0641",
     "kashrus": "KLBD, גלאט"
   },
@@ -2737,6 +2737,41 @@
     "address": "43c Oldhill Street, Stamford Hill",
     "postcode": "N16 6LR",
     "phone": "",
+    "kashrus": "KLBD"
+  },
+  {
+    "id": 79,
+    "slug": "kosher-yakovs-kitchen",
+    "name": "Yakov's Kitchen",
+    "categories": [
+      "restaurant"
+    ],
+    "subcategories": [
+      "meat"
+    ],
+    "attrs": [
+      "kosher"
+    ],
+    "audiences": [],
+    "_review": [
+      "indoor",
+      "audiences",
+      "photogenic",
+      "step-free",
+      "late",
+      "shabbat-friendly"
+    ],
+    "area": "outer",
+    "hood": "edgware",
+    "lat": 51.62647,
+    "lng": -0.26951,
+    "precision": "exact",
+    "source": "https://www.kosher.org.uk/restaurants",
+    "checked": "2026-09",
+    "category": "מסעדה בשרית",
+    "address": "9 Glengall Road, Edgware",
+    "postcode": "HA8 8TB",
+    "phone": "020 8958 4444",
     "kashrus": "KLBD"
   }
 ]
