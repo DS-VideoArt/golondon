@@ -55,6 +55,8 @@ HEAD = """# נוצר אוטומטית על ידי build_redirects.py. אין ל�
 /areas-ig        /planner?utm_source=instagram&utm_medium=bio&utm_campaign=planner_areas_01    301!
 /eta             /guide-flight-eta?utm_source=facebook&utm_medium=organic_social&utm_campaign=eta_2026    301!
 /eta-ig          /guide-flight-eta?utm_source=instagram&utm_medium=bio&utm_campaign=eta_2026    301!
+/planner-areas       /planner?utm_source=facebook&utm_medium=organic_social&utm_campaign=planner_areas_distance_01    301!
+/planner-areas-ig    /planner?utm_source=instagram&utm_medium=bio&utm_campaign=planner_areas_distance_01    301!
 
 """
 
