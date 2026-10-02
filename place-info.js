@@ -106,7 +106,7 @@
       '.pi-tour-note{font-size:12px;color:#858a9c!important;margin-bottom:10px;}',
       '.pi-price-lead{font-size:13px;font-weight:700;color:#55596b!important;}',
       '.pi-price-varies{font-size:15px!important;}',
-      '.pi-price-checked{font-size:11.5px;color:#858a9c!important;margin:-4px 0 10px;}',
+      '.pi-price-checked{font-size:12px;color:#5f6b7a!important;margin:-4px 0 10px;}',
       '.pi-tour-desc{font-size:13.5px;color:#55596b!important;line-height:1.7;}',
       '.pi-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#DC2626,#EA580C);color:#fff!important;font-weight:800;font-size:14px;padding:12px 20px;border-radius:11px;text-decoration:none!important;}',
       '.pi-cta:hover{opacity:.92;}',
@@ -271,7 +271,7 @@
       */
       var checkedHtml = '';
       if (priceHtml && item.updated) {
-        checkedHtml = '<div class="pi-price-checked">נבדק: ' + item.updated +
+        checkedHtml = '<div class="pi-price-checked">✓ מחיר מעודכן ל־' + item.updated +
           (item.cta.priceUntil ? ' · תקף עד ' + item.cta.priceUntil : '') + '</div>';
       }
       tourEl.innerHTML =
