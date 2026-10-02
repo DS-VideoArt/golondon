@@ -98,6 +98,18 @@
   "video": {
    "id": "JbK3-hEP0DA",
    "title": "Tower of London Tour | A Virtual Walk through the Inside of the Tower"
+  },
+  "extra": {
+   "kicker": "כרטיסים ב־Tiqets",
+   "title": "אותו כרטיס, גם דרך Tiqets",
+   "desc": "כרטיס כניסה למצודה ולתערוכת תכשיטי הכתר, אותו מוצר שנמכר באתר הרשמי. ביטול חינם עד 24 שעות לפני הביקור.",
+   "label": "בדיקת מחיר וזמינות ב־Tiqets",
+   "icon": "fa-ticket",
+   "offer": "attractions_alt",
+   "deep": "https://www.tiqets.com/en/london-attractions-c67458/tickets-for-tower-of-london-p974054/",
+   "href": "https://www.tiqets.com/en/london-attractions-c67458/tickets-for-tower-of-london-p974054/",
+   "note": "קישור שותפים ל־Tiqets. לפני התשלום בדקו שהמוצר, השעה והמחיר מתאימים לתאריך שלכם.",
+   "checked": "2 באוקטובר 2026"
   }
  },
  "buckingham": {
@@ -204,6 +216,18 @@
   "video": {
    "id": "A9mZ4EWbl3o",
    "title": "St Paul's Cathedral Tour, London | FULL TOUR + TIPS"
+  },
+  "extra": {
+   "kicker": "כרטיסים ב־Tiqets",
+   "title": "אותו כרטיס, גם דרך Tiqets",
+   "desc": "כרטיס כניסה לקתדרלה, כולל הכיפה והקריפטה, אותו מוצר שנמכר באתר הרשמי. ביטול חינם עד 72 שעות לפני הביקור.",
+   "label": "בדיקת מחיר וזמינות ב־Tiqets",
+   "icon": "fa-ticket",
+   "offer": "attractions_alt",
+   "deep": "https://www.tiqets.com/en/london-attractions-c67458/tickets-for-st-pauls-cathedral-p975047/",
+   "href": "https://www.tiqets.com/en/london-attractions-c67458/tickets-for-st-pauls-cathedral-p975047/",
+   "note": "קישור שותפים ל־Tiqets. לפני התשלום בדקו שהמוצר, השעה והמחיר מתאימים לתאריך שלכם.",
+   "checked": "2 באוקטובר 2026"
   }
  },
  "london-eye": {
@@ -2193,6 +2217,18 @@
   "video": {
    "id": "27HYTAgzEjo",
    "title": "Kensington Palace Tour | 300 Years a Royal Residences in the Heart of London"
+  },
+  "extra": {
+   "kicker": "כרטיסים ב־Tiqets",
+   "title": "אותו כרטיס, גם דרך Tiqets",
+   "desc": "כרטיס כניסה לארמון, אותו מוצר שנמכר באתר הרשמי. ביטול חינם עד 24 שעות לפני הביקור.",
+   "label": "בדיקת מחיר וזמינות ב־Tiqets",
+   "icon": "fa-ticket",
+   "offer": "attractions_alt",
+   "deep": "https://www.tiqets.com/en/london-attractions-c67458/tickets-for-kensington-palace-p974059/",
+   "href": "https://www.tiqets.com/en/london-attractions-c67458/tickets-for-kensington-palace-p974059/",
+   "note": "קישור שותפים ל־Tiqets. לפני התשלום בדקו שהמוצר, השעה והמחיר מתאימים לתאריך שלכם.",
+   "checked": "2 באוקטובר 2026"
   }
  },
  "hampton-court": {
@@ -2840,6 +2876,18 @@
   "video": {
    "id": "lLNpLrpjz6I",
    "title": "Explore Sea Life London Aquarium | Complete Walkthrough Tour (Nov 2024) [4K]"
+  },
+  "extra": {
+   "kicker": "כרטיסים ב־Tiqets",
+   "title": "אותו כרטיס, גם דרך Tiqets",
+   "desc": "כרטיס כניסה סטנדרטי לאקווריום, אותו מוצר שנמכר באתר הרשמי. ביטול חינם עד 24 שעות לפני הביקור.",
+   "label": "בדיקת מחיר וזמינות ב־Tiqets",
+   "icon": "fa-ticket",
+   "offer": "attractions_alt",
+   "deep": "https://www.tiqets.com/en/london-attractions-c67458/tickets-for-sea-life-london-p975678/",
+   "href": "https://www.tiqets.com/en/london-attractions-c67458/tickets-for-sea-life-london-p975678/",
+   "note": "קישור שותפים ל־Tiqets. לפני התשלום בדקו שהמוצר, השעה והמחיר מתאימים לתאריך שלכם.",
+   "checked": "2 באוקטובר 2026"
   }
  },
  "madame-tussauds": {

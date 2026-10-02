@@ -55,23 +55,25 @@
     var offer = generic && affCfg && affCfg.offers ? affCfg.offers[offerId] : null;
     A.reportClick({
       offer: offerId,
-      slot: 'placeinfo',
+      slot: cta.slot || 'placeinfo',
       brand: offer ? offer.brand : '',
       clicked_url: anchor.href,
-      destination_url: offer ? offer.url : (cta.href || ''),
+      /* קישור עמוק: היעד הוא עמוד המוצר הספציפי, לא עמוד הקטגוריה של ההצעה */
+      destination_url: cta.deep || (offer ? offer.url : (cta.href || '')),
       link_text: anchor.textContent,
       product_slug: placeId
     });
   }
 
-  function ctaUrl(cta, placeId) {
+  function ctaUrl(cta, placeId, slot) {
     if (cta.internal || cta.custom) return cta.href || '#';
     var offerId = cta.offer || 'attractions_alt';
     if (affCfg && window.GoLondonAffiliate && window.GoLondonAffiliate.linkFor) {
-      var url = window.GoLondonAffiliate.linkFor(affCfg, offerId, 'placeinfo', placeId);
+      /* cta.deep: עמוד מוצר ספציפי אצל אותו ספק (פיילוט טיקטס). עובר דרך אותה שכבת קישורים ואותו sub_id */
+      var url = window.GoLondonAffiliate.linkFor(affCfg, offerId, slot || 'placeinfo', placeId, cta.deep || null);
       if (url) return url;
     }
-    return cta.href || '#';
+    return cta.deep || cta.href || '#';
   }
 
   function hookAffiliate(tries) {
@@ -159,6 +161,19 @@
         'padding:9px 16px;border-radius:10px;border:1px solid #DC2626;background:#fff;',
         'color:#DC2626!important;text-decoration:none!important;}',
       '.pi-extra a:hover{background:#DC2626;color:#fff!important;}',
+      '.pi-extra-n{font-size:12px;color:#858a9c!important;line-height:1.55;margin-top:9px;}',
+      /* בלוק כרטיסים בתוך עמוד תוכן (פיילוט טיקטס) */
+      '.pi-inline{border:1px dashed rgba(220,38,38,.34);background:rgba(220,38,38,.04);border-radius:12px;padding:14px 16px;margin:14px 0 18px;}',
+      '.pi-inline-h{font-size:14px;font-weight:800;color:#B91C1C!important;margin-bottom:4px;display:flex;align-items:center;gap:7px;}',
+      '.pi-inline-d{font-size:13.5px;color:#55596b!important;line-height:1.6;margin-bottom:10px;}',
+      '.pi-inline-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}',
+      '.pi-inline a{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:800;padding:9px 14px;border-radius:9px;text-decoration:none!important;line-height:1.3;}',
+      '.pi-inline-tq{background:linear-gradient(135deg,#DC2626,#EA580C);color:#fff!important;}',
+      '.pi-inline-tq:hover{opacity:.92;}',
+      '.pi-inline-of{background:#fff;border:1px solid rgba(32,31,43,.18);color:#201f2b!important;}',
+      '.pi-inline-of:hover{background:#F4F2ED;}',
+      '.pi-inline-n{font-size:12px;color:#858a9c!important;line-height:1.55;margin-top:9px;}',
+      '@media(max-width:520px){.pi-inline a{width:100%;justify-content:center;}}',
       '.pi-updated{font-size:11.5px;color:#858a9c;margin-top:16px;}',
       '[data-place]{cursor:pointer;}'
     ].join('');
@@ -316,9 +331,12 @@
         (e.desc ? '<div class="pi-extra-d">' + e.desc + '</div>' : '') +
         (e.priceNote ? '<div class="pi-extra-p">' + e.priceNote + '</div>' : '') +
         '<a href="' + ctaUrl(e, id + '__extra') + '" target="_blank" rel="sponsored noopener nofollow">' +
-        '<i class="fas fa-ship"></i> ' + (e.label || 'לפרטים ולהזמנה') + '</a>';
+        '<i class="fas ' + (e.icon || 'fa-ship') + '"></i> ' + (e.label || 'לפרטים ולהזמנה') + '</a>' +
+        /* גילוי נאות קצר צמוד לקישור המסחרי, כשהרשומה מבקשת זאת (פיילוט טיקטס) */
+        (e.note ? '<div class="pi-extra-n">' + e.note + '</div>' : '');
       var extraLink = extraEl.querySelector('a');
-      if (extraLink) extraLink.addEventListener('click', function () { reportCta(e, id + '__extra', extraLink); });
+      /* product_slug הוא מזהה המקום עצמו; ההבחנה מהכפתור הרשמי היא לפי הכתובת, הספק והסיווג */
+      if (extraLink) extraLink.addEventListener('click', function () { reportCta(e, id, extraLink); });
     } else {
       extraEl.hidden = true;
     }
@@ -414,6 +432,60 @@
     });
   }
 
+  /*
+    כרטיסי Tiqets בתוך עמודי תוכן (פיילוט)
+    ======================================
+    עמוד מסמן מקום אחד: <div data-tiqets-cta="tower-of-london"></div>
+    הבלוק נבנה מאותה רשומה ב-attractions-info.json שמזינה את חלון המקום
+    (השדה extra עם deep), כך שקישור המוצר, הכיתוב והגילוי הנאות נמצאים
+    במקום אחד בלבד. לצד הקישור המסחרי מוצג תמיד גם האתר הרשמי של המקום.
+    מקום בלי extra.deep לא מציג כלום, ולכן הסרת מוצר מהפיילוט היא מחיקת
+    שדה אחד ולא עריכה של עמודים.
+  */
+  function escapeHtml(s) {
+    return String(s || '').replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  function renderInlineCtas() {
+    if (!data) return;
+    document.querySelectorAll('[data-tiqets-cta]').forEach(function (host) {
+      if (host.__piDone) return;
+      var id = host.getAttribute('data-tiqets-cta');
+      var item = data[id];
+      var e = item && item.extra;
+      if (!e || !e.deep) { host.hidden = true; return; }
+      host.__piDone = true;
+      host.className = (host.className ? host.className + ' ' : '') + 'pi-inline';
+      host.setAttribute('dir', 'rtl');
+
+      var official = item.cta && item.cta.custom && !item.cta.internal ? item.cta : null;
+      host.innerHTML =
+        '<div class="pi-inline-h"><i class="fas ' + escapeHtml(e.icon || 'fa-ticket') + '"></i> ' + escapeHtml(e.kicker || 'כרטיסים ב־Tiqets') + '</div>' +
+        (e.desc ? '<div class="pi-inline-d">' + escapeHtml(e.desc) + '</div>' : '') +
+        '<div class="pi-inline-row">' +
+          '<a class="pi-inline-tq" href="' + escapeHtml(ctaUrl(e, id, 'inline')) + '" target="_blank" rel="sponsored noopener nofollow">' +
+            '<i class="fas fa-arrow-left"></i> ' + escapeHtml(e.label || 'כרטיסים ב־Tiqets') + '</a>' +
+          (official ? '<a class="pi-inline-of" href="' + escapeHtml(official.href) + '" target="_blank" rel="noopener">' +
+            '<i class="fas fa-up-right-from-square"></i> ' + escapeHtml(e.officialLabel || 'האתר הרשמי') + '</a>' : '') +
+        '</div>' +
+        (e.note ? '<div class="pi-inline-n">' + escapeHtml(e.note) + '</div>' : '');
+
+      var tq = host.querySelector('.pi-inline-tq');
+      var of = host.querySelector('.pi-inline-of');
+      /* אותה סכימת מדידה של חלון המקום. הקישור הרשמי מדווח כקישור רשמי, לא כשותפים */
+      var eInline = {};
+      for (var k in e) if (Object.prototype.hasOwnProperty.call(e, k)) eInline[k] = e[k];
+      eInline.slot = 'inline';
+      if (tq) tq.addEventListener('click', function () { reportCta(eInline, id, tq); });
+      if (of && official) {
+        var oInline = { custom: true, href: official.href, slot: 'inline' };
+        of.addEventListener('click', function () { reportCta(oInline, id, of); });
+      }
+    });
+  }
+
   function init() {
     var script = thisScript || document.querySelector('script[data-source]');
     var src = script && script.getAttribute('data-source');
@@ -428,6 +500,14 @@
       .then(function (json) {
         data = json;
         wireTriggers();
+        renderInlineCtas();
+        /* שכבת הקישורים עשויה להיטען אחרי הנתונים: אז הבלוק נבנה שוב עם קישור המעקב */
+        if (window.GoLondonAffiliate && window.GoLondonAffiliate.whenReady) {
+          window.GoLondonAffiliate.whenReady(function () {
+            document.querySelectorAll('[data-tiqets-cta]').forEach(function (h) { h.__piDone = false; });
+            renderInlineCtas();
+          });
+        }
         var mo = new MutationObserver(wireTriggers);
         mo.observe(document.body, { childList: true, subtree: true });
       })

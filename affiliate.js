@@ -146,19 +146,26 @@
     כל עוד אין מזהה חשבון ברשת השותפים, או שההצעה הספציפית עדיין לא הוגדרה בה,
     מוחזר הקישור הישיר לספק. העמוד עובד ומועיל לגולש בכל מקרה.
   */
-  function buildUrl(cfg, offer, slotId, offerId, extra) {
+  function buildUrl(cfg, offer, slotId, offerId, extra, deepUrl) {
     /* חלק מהספקים ב-Travelpayouts לא עובדים עם פורמט ה-marker/program_id הרגיל
        ומספקים במקום זה קישור מעקב קבוע משלהם. אם קיים כזה, משתמשים בו ישירות. */
     if (offer.direct_link) return offer.direct_link;
 
+    /*
+      deepUrl: עמוד מוצר ספציפי אצל אותו ספק (למשל עמוד הכרטיס למצודת לונדון בטיקטס)
+      במקום עמוד הקטגוריה הכללי של ההצעה. אותו marker, אותה תוכנית, אותו sub_id,
+      רק היעד שונה. בלי מזהה חשבון מוחזר עמוד המוצר עצמו, בלי מעקב.
+    */
+    var target = deepUrl || offer.url;
+
     var net = cfg.network || {};
     var ready = net.marker && offer.program_id;
-    if (!ready) return offer.url;
+    if (!ready) return target;
 
     var params = [
       'marker=' + encodeURIComponent(net.marker),
       'p=' + encodeURIComponent(offer.program_id),
-      'u=' + encodeURIComponent(offer.url),
+      'u=' + encodeURIComponent(target),
       'sub_id=' + encodeURIComponent(buildSubId(cfg, slotId, offerId, extra))
     ];
     if (offer.campaign_id) params.push('campaign_id=' + encodeURIComponent(offer.campaign_id));
@@ -417,11 +424,12 @@
     whenReady: function (cb) {
       if (loaded) loaded.then(cb).catch(function () {});
     },
-    /* extra מאפשר לפצל את המדידה גם ברמת הפריט הבודד בתוך העמוד */
-    linkFor: function (cfg, offerId, slotId, extra) {
+    /* extra מאפשר לפצל את המדידה גם ברמת הפריט הבודד בתוך העמוד.
+       deepUrl (אופציונלי) מפנה לעמוד מוצר ספציפי אצל אותו ספק במקום לעמוד הכללי של ההצעה */
+    linkFor: function (cfg, offerId, slotId, extra, deepUrl) {
       var offer = cfg && cfg.offers && cfg.offers[offerId];
       if (!offer || !offer.url) return null;
-      return buildUrl(cfg, offer, slotId, offerId, extra);
+      return buildUrl(cfg, offer, slotId, offerId, extra, deepUrl);
     },
     /* דיווח קליק מסחרי מכל רכיב באתר, באותה סכימה של הכרטיסים */
     reportClick: reportClick,

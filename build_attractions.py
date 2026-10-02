@@ -412,6 +412,28 @@ def main():
                 entry['areaGuide'] = ag
             if video and video.get('verified') and video.get('youtube_id'):
                 entry['video'] = {'id': video['youtube_id'], 'title': video.get('title', '')}
+            """
+            פיילוט טיקטס (Exact Match): מקום שבמחקר אומת שהמוצר בטיקטס זהה
+            למוצר באתר הרשמי (אותו כרטיס, אותו מחיר, אותם תנאים) נושא בלוק
+            tiqets עם קישור עמוק לעמוד המוצר. הוא הופך כאן ל-extra: ההמלצה
+            הנלווית בחלון המקום, ואותה רשומה מזינה גם את בלוק הכרטיסים
+            בעמוד התוכן. הקישור הרשמי (cta) נשאר כפי שהוא, לצידו.
+            הסרת מוצר מהפיילוט היא מחיקת הבלוק מהמחקר ובנייה מחדש.
+            """
+            tq = research.get('tiqets')
+            if tq and tq.get('product_url') and tq.get('exact_match') is True:
+                entry['extra'] = collections.OrderedDict([
+                    ('kicker', 'כרטיסים ב־Tiqets'),
+                    ('title', tq.get('title') or 'אותו כרטיס, גם דרך Tiqets'),
+                    ('desc', tq.get('desc_he', '')),
+                    ('label', 'בדיקת מחיר וזמינות ב־Tiqets'),
+                    ('icon', 'fa-ticket'),
+                    ('offer', 'attractions_alt'),
+                    ('deep', tq['product_url']),
+                    ('href', tq['product_url']),
+                    ('note', 'קישור שותפים ל־Tiqets. לפני התשלום בדקו שהמוצר, השעה והמחיר מתאימים לתאריך שלכם.'),
+                    ('checked', tq.get('checked', '')),
+                ])
             info[pid] = entry
 
             if free and not partly:
