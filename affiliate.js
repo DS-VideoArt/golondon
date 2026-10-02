@@ -35,7 +35,22 @@
     '.aff-card,.aff-card:hover{text-decoration:none;}',
     '.aff-note{margin-top:12px;font-size:12px;color:rgba(255,255,255,.38);line-height:1.6;}',
     '.aff-note a{color:rgba(147,197,253,.75);}',
-    '@media(max-width:520px){.aff-grid{grid-template-columns:1fr;}}'
+    '@media(max-width:520px){.aff-grid{grid-template-columns:1fr;}}',
+    /* קבוצת מוצרים (למשל ביטוח): כותרת אחת, ובתוכה סעיפים נפרדים לכל סוג מוצר */
+    '.aff-group{border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px;margin-bottom:14px;background:rgba(255,255,255,.03);}',
+    '.aff-group-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;}',
+    '.aff-group-title{font-size:17px;font-weight:900;color:#fff;line-height:1.3;}',
+    '.aff-group-section+.aff-group-section{margin-top:16px;padding-top:16px;border-top:1px dashed rgba(255,255,255,.14);}',
+    '.aff-group-section-title{font-size:14.5px;font-weight:800;color:#fff;margin-bottom:4px;line-height:1.4;}',
+    '.aff-group-section-desc{font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;margin:0 0 10px;}',
+    '.aff-group-section-note{font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.65;margin:10px 0 0;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);}',
+    '.aff-card--toggle{width:100%;text-align:right;font:inherit;color:inherit;cursor:pointer;-webkit-appearance:none;appearance:none;direction:rtl;}',
+    '.aff-card--toggle .aff-card-cta i{transition:transform .2s;}',
+    '.aff-card--toggle[aria-expanded="true"] .aff-card-cta i{transform:rotate(-90deg);}',
+    '.aff-group-panel{margin-top:12px;}',
+    '.aff-group-panel[hidden]{display:none;}',
+    '.aff-group-panel .aff-group{margin-bottom:0;}',
+    '.aff-group-title:focus:not(:focus-visible){outline:none;}'
   ].join('');
 
   function injectStyles() {
@@ -86,7 +101,8 @@
     return net.redirect_base + '?' + params.join('&');
   }
 
-  function buildCard(cfg, offer, slotId, offerId) {
+  function buildCard(cfg, offer, slotId, offerId, opts) {
+    opts = opts || {};
     var a = document.createElement('a');
     a.className = 'aff-card';
     a.href = buildUrl(cfg, offer, slotId, offerId);
@@ -105,7 +121,8 @@
 
     var title = document.createElement('span');
     title.className = 'aff-card-title';
-    title.textContent = offer.title;
+    /* בתוך קבוצה הכותרת היא שם הספק, כי סוג המוצר כבר כתוב בכותרת הסעיף */
+    title.textContent = opts.title || offer.title;
 
     head.appendChild(icon);
     head.appendChild(title);
@@ -130,6 +147,118 @@
     });
 
     return a;
+  }
+
+  /*
+    קבוצת מוצרים: למשל "ביטוח", שבתוכה סעיף "ביטוח נסיעות" עם שני ספקים
+    וסעיף נפרד "ביטוח ביטול מכל סיבה". כל כרטיס בתוכה נבנה ונמדד בדיוק
+    כמו כרטיס רגיל (אותו buildCard, אותו אירוע affiliate_click).
+  */
+  function buildGroup(cfg, group, slotId, groupId) {
+    var wrap = document.createElement('div');
+    wrap.className = 'aff-group';
+    wrap.setAttribute('data-group', groupId);
+
+    var head = document.createElement('div');
+    head.className = 'aff-group-head';
+    var icon = document.createElement('span');
+    icon.className = 'aff-card-icon';
+    icon.innerHTML = '<i class="fas ' + (group.icon || 'fa-layer-group') + '"></i>';
+    var title = document.createElement('span');
+    title.className = 'aff-group-title';
+    title.setAttribute('role', 'heading');
+    title.setAttribute('aria-level', '3');
+    title.tabIndex = -1;
+    title.textContent = group.title || '';
+    head.appendChild(icon);
+    head.appendChild(title);
+    wrap.appendChild(head);
+
+    var count = 0;
+    (group.sections || []).forEach(function (section) {
+      var cards = [];
+      (section.offers || []).forEach(function (offerId) {
+        var offer = cfg.offers && cfg.offers[offerId];
+        if (!offer || !offer.url) return;
+        cards.push(buildCard(cfg, offer, slotId, offerId, { title: offer.brand || offer.title }));
+      });
+      if (!cards.length) return;
+
+      var sec = document.createElement('div');
+      sec.className = 'aff-group-section';
+      sec.setAttribute('data-section', section.id || '');
+      var st = document.createElement('div');
+      st.className = 'aff-group-section-title';
+      st.textContent = section.title || '';
+      sec.appendChild(st);
+      if (section.desc) {
+        var sd = document.createElement('p');
+        sd.className = 'aff-group-section-desc';
+        sd.textContent = section.desc;
+        sec.appendChild(sd);
+      }
+      var grid = document.createElement('div');
+      grid.className = 'aff-grid';
+      cards.forEach(function (c) { grid.appendChild(c); });
+      sec.appendChild(grid);
+      /* הערה ניטרלית מתחת לכרטיסי הסעיף, למשל הסבר למה מחירים בין ספקים אינם ברי השוואה ישירה */
+      if (section.note) {
+        var sn = document.createElement('p');
+        sn.className = 'aff-group-section-note';
+        sn.textContent = section.note;
+        sec.appendChild(sn);
+      }
+      wrap.appendChild(sec);
+      count += cards.length;
+    });
+
+    return count ? wrap : null;
+  }
+
+  /* כרטיס מסכם אחד שפותח את הקבוצה בלחיצה, לעמודים שבהם הקבוצה המלאה תעמיס */
+  function buildGroupToggle(group, panel) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'aff-card aff-card--toggle';
+    b.setAttribute('aria-expanded', 'false');
+    b.setAttribute('aria-controls', panel.id);
+
+    var head = document.createElement('div');
+    head.className = 'aff-card-head';
+    var icon = document.createElement('span');
+    icon.className = 'aff-card-icon';
+    icon.innerHTML = '<i class="fas ' + (group.icon || 'fa-layer-group') + '"></i>';
+    var title = document.createElement('span');
+    title.className = 'aff-card-title';
+    title.textContent = group.summary_title || group.title || '';
+    head.appendChild(icon);
+    head.appendChild(title);
+
+    var desc = document.createElement('p');
+    desc.className = 'aff-card-desc';
+    desc.textContent = group.summary_desc || '';
+
+    var cta = document.createElement('span');
+    cta.className = 'aff-card-cta';
+    cta.innerHTML = '<i class="fas fa-arrow-left"></i> ' + (group.summary_cta || 'הצגת האפשרויות');
+
+    b.appendChild(head);
+    b.appendChild(desc);
+    b.appendChild(cta);
+
+    b.addEventListener('click', function () {
+      var open = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', open ? 'false' : 'true');
+      if (open) {
+        panel.hidden = true;
+      } else {
+        panel.hidden = false;
+        var h = panel.querySelector('.aff-group-title');
+        if (h && h.focus) h.focus({ preventScroll: false });
+      }
+    });
+
+    return b;
   }
 
   function renderInto(container, cfg) {
@@ -159,19 +288,51 @@
     var grid = document.createElement('div');
     grid.className = 'aff-grid';
 
+    /* קבוצות שנפתחות מראש מוצגות מעל הרשת, קבוצות מכווצות מקבלות כרטיס ברשת ופאנל מתחתיה */
+    var expandedGroups = [];
+    var panels = [];
+    var groupNote = '';
+    var cardCount = 0;
+
     offerIds.forEach(function (offerId) {
+      var group = cfg.groups && cfg.groups[offerId];
+      if (group && group.sections) {
+        var el = buildGroup(cfg, group, slotId, offerId);
+        if (!el) return;
+        if (group.note && !groupNote) groupNote = group.note;
+        cardCount += el.querySelectorAll('.aff-card').length;
+        var expanded = (group.expanded_in_slots || []).indexOf(slotId) !== -1;
+        if (expanded) {
+          expandedGroups.push(el);
+        } else {
+          var panel = document.createElement('div');
+          panel.className = 'aff-group-panel';
+          panel.id = 'aff-group-' + offerId + '-' + slotId;
+          panel.hidden = true;
+          panel.appendChild(el);
+          panels.push(panel);
+          grid.appendChild(buildGroupToggle(group, panel));
+        }
+        return;
+      }
       var offer = cfg.offers && cfg.offers[offerId];
       if (!offer || !offer.url) return;
       grid.appendChild(buildCard(cfg, offer, slotId, offerId));
+      cardCount += 1;
     });
 
-    if (!grid.children.length) return;
-    block.appendChild(grid);
+    if (!cardCount) return;
+    expandedGroups.forEach(function (g) { block.appendChild(g); });
+    if (grid.children.length) block.appendChild(grid);
+    panels.forEach(function (p) { block.appendChild(p); });
 
     var note = document.createElement('p');
     note.className = 'aff-note';
-    note.innerHTML = 'חלק מהקישורים כאן הם קישורי שותפים. אם תזמינו דרכם, גו לונדון עשוי לקבל עמלה מהספק, ' +
-      'בלי שתשלמו שקל נוסף. אנחנו ממליצים רק על שירותים שהיינו ממליצים עליהם גם בלי זה. ' +
+    /* בבלוק שמכיל קישורים המשויכים לסוכן (ולא רק קישורי שותפים) הניסוח מגיע מהקבוצה עצמה,
+       בלי טענה על מחיר זהה לרכישה ישירה */
+    note.innerHTML = (groupNote
+      ? groupNote.replace(/</g, '&lt;') + ' אנחנו ממליצים רק על שירותים שהיינו ממליצים עליהם גם בלי זה. '
+      : 'חלק מהקישורים כאן הם קישורי שותפים. אם תזמינו דרכם, גו לונדון עשוי לקבל עמלה מהספק. ') +
       '<a href="' + DISCLOSURE_URL + '">גילוי נאות מלא</a>';
     block.appendChild(note);
 
