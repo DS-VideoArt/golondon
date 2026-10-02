@@ -42,6 +42,28 @@
     return pageKey(href) === here;
   }
 
+  /*
+    דיווח קליק על כפתור הזמנה בחלון המידע, באותה סכימה של כרטיסי ההכנסה.
+    קישור כללי (טיקטס) מדווח עם הספק מההגדרות; קישור רשמי של המקום
+    מדווח עם שם האתר, והסיווג נקבע לפי הכתובת שנלחצת בפועל.
+  */
+  function reportCta(cta, placeId, anchor) {
+    var A = window.GoLondonAffiliate;
+    if (!A || !A.reportClick || !cta || cta.internal) return;
+    var generic = !cta.custom;
+    var offerId = generic ? (cta.offer || 'attractions_alt') : '';
+    var offer = generic && affCfg && affCfg.offers ? affCfg.offers[offerId] : null;
+    A.reportClick({
+      offer: offerId,
+      slot: 'placeinfo',
+      brand: offer ? offer.brand : '',
+      clicked_url: anchor.href,
+      destination_url: offer ? offer.url : (cta.href || ''),
+      link_text: anchor.textContent,
+      product_slug: placeId
+    });
+  }
+
   function ctaUrl(cta, placeId) {
     if (cta.internal || cta.custom) return cta.href || '#';
     var offerId = cta.offer || 'attractions_alt';
@@ -295,6 +317,8 @@
         (e.priceNote ? '<div class="pi-extra-p">' + e.priceNote + '</div>' : '') +
         '<a href="' + ctaUrl(e, id + '__extra') + '" target="_blank" rel="sponsored noopener nofollow">' +
         '<i class="fas fa-ship"></i> ' + (e.label || 'לפרטים ולהזמנה') + '</a>';
+      var extraLink = extraEl.querySelector('a');
+      if (extraLink) extraLink.addEventListener('click', function () { reportCta(e, id + '__extra', extraLink); });
     } else {
       extraEl.hidden = true;
     }
@@ -322,6 +346,7 @@
         a.target = '_blank';
         a.rel = item.cta.free ? 'noopener' : 'sponsored noopener nofollow';
         a.innerHTML = (item.cta.free ? '<i class="fas fa-calendar-check"></i> ' : '<i class="fas fa-ticket"></i> ') + item.cta.label;
+        a.addEventListener('click', function () { reportCta(item.cta, id, a); });
       }
       ctaWrap.appendChild(a);
     }

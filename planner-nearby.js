@@ -652,7 +652,16 @@
         bk.href = r.p.booking.href;
         bk.innerHTML = '<i class="fas fa-ticket"></i> בדקו כרטיסים';
         bk.addEventListener('click', function () {
-          track('affiliate_click', { place_id: r.p.id, source_component: 'nearby' });
+          /* אותה סכימה של שאר הקליקים המסחריים, עם place_id ו-source_component שנשמרים לאחור */
+          if (window.GoLondonAffiliate && GoLondonAffiliate.reportClick) {
+            GoLondonAffiliate.reportClick({
+              offer: '', slot: 'nearby', brand: '',
+              clicked_url: bk.href, destination_url: bk.href, link_text: 'בדקו כרטיסים',
+              product_slug: r.p.id, place_id: r.p.id, source_component: 'nearby'
+            });
+          } else {
+            track('affiliate_click', { place_id: r.p.id, source_component: 'nearby' });
+          }
         });
         host.appendChild(bk);
       }

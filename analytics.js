@@ -206,11 +206,20 @@
   */
   document.addEventListener('golondon:affiliate-click', function (e) {
     var d = (e && e.detail) || {};
-    track('affiliate_click', {
+    /* ארבעת השדות הראשונים קיימים מההתחלה ואסור לשנות את שמם. השאר נוספו ב-2.10.2026 */
+    var payload = {
       offer: d.offer || '',
       slot: d.slot || '',
       brand: d.brand || '',
-      source_page: d.page || pageId()
-    });
+      source_page: d.page || pageId(),
+      affiliate_status: d.affiliate_status || ''
+    };
+    if (d.clicked_url) payload.clicked_url = String(d.clicked_url).slice(0, 100);
+    if (d.destination_url) payload.destination_url = String(d.destination_url).slice(0, 100);
+    if (d.link_text) payload.link_text = String(d.link_text).slice(0, 60);
+    if (d.product_slug) payload.product_slug = String(d.product_slug).slice(0, 60);
+    if (d.source_component) payload.source_component = d.source_component;
+    if (d.place_id) payload.place_id = d.place_id;
+    track('affiliate_click', payload);
   });
 })();

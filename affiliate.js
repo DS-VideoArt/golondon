@@ -75,6 +75,72 @@
     return parts.join(sep).slice(0, max);
   }
 
+  /* ============================================================
+     מדידה אחידה של קליקים מסחריים
+     ============================================================
+     כל קליק מסחרי באתר, מכרטיס, מחלון מידע, מהמתכנן או ממצב סביבי,
+     עובר דרך reportClick ומגיע לאותו אירוע affiliate_click באותה סכימה.
+     הסיווג נעשה לפי הכתובת שנלחצת בפועל, ולא לפי מי שבנה את הקישור:
+       affiliate          הכתובת נושאת מעקב של רשת השותפים (tp.media, tpx.li)
+       commercial_direct  מוכר מסחרי צד שלישי בלי מעקב, למשל Booking או Tiqets
+                          כשהשכבה לא נטענה. לא מייצר עמלה.
+       official_direct    האתר הרשמי של המקום או של הספק. לא מייצר עמלה.
+     הערכים נחתכים ל-100 תווים, המגבלה של גוגל לערך פרמטר, ובלי שאילתה
+     או עוגן, כדי שלא ייסחב לשם מידע אישי.
+  */
+  var MARKETPLACES = /(^|\.)(tiqets\.com|getyourguide\.com|booking\.com|viator\.com|klook\.com|airalo\.com|aviasales\.com|kiwitaxi\.com|discovercars\.com|ektatraveling\.com)$/i;
+  /* קישורי סוכן (referral) שאינם רשת שותפים: הקישורים האישיים של הסוכן ל-PassportCard ול-Trip Guaranty,
+     כולל כתובות ה-redirect שלהם. bit.ly משמש באתר רק לקישורי הסוכן האלה. */
+  var AGENT_HOSTS = /(^|\.)(bit\.ly|passportcard\.co\.il|tripguaranty\.co\.il)$/i;
+
+  function cleanUrl(u) {
+    return String(u || '').split('#')[0].split('?')[0].slice(0, 100);
+  }
+
+  function hostOf(u) {
+    try { return new URL(String(u || ''), location.href).hostname.replace(/^www\./, ''); } catch (e) { return ''; }
+  }
+
+  /* שם הספק לפי הכתובת, לקישורים שלא הגיעו מהצעה בהגדרות (כתובת רשמית או קישור עמוק) */
+  var BRANDS = [
+    [/(^|\.)tiqets\.com$/i, 'Tiqets'], [/(^|\.)getyourguide\.com$/i, 'GetYourGuide'], [/(^|\.)booking\.com$/i, 'Booking'],
+    [/(^|\.)airalo\.com$/i, 'Airalo'], [/(^|\.)aviasales\.com$/i, 'Aviasales'], [/(^|\.)kiwitaxi\.com$/i, 'Kiwitaxi'],
+    [/(^|\.)discovercars\.com$|(^|\.)autoeurope\./i, 'DiscoverCars'], [/(^|\.)ektatraveling\.(com|tpx\.li)$/i, 'EKTA'],
+    [/(^|\.)passportcard\.co\.il$/i, 'PassportCard'], [/(^|\.)tripguaranty\.co\.il$/i, 'Trip Guaranty']
+  ];
+  function brandFor(url) {
+    var h = hostOf(url);
+    for (var i = 0; i < BRANDS.length; i++) { if (BRANDS[i][0].test(h)) return BRANDS[i][1]; }
+    return h;
+  }
+
+  function statusFor(url) {
+    var h = hostOf(url);
+    if (/(^|\.)tp\.media$|(^|\.)tpx\.li$/i.test(h)) return 'affiliate';
+    if (AGENT_HOSTS.test(h)) return 'agent_referral';
+    if (MARKETPLACES.test(h)) return 'commercial_direct';
+    return 'official_direct';
+  }
+
+  function reportClick(d) {
+    d = d || {};
+    var clicked = cleanUrl(d.clicked_url);
+    var detail = {
+      offer: d.offer || '',
+      slot: d.slot || '',
+      page: d.page || currentPageId(),
+      brand: d.brand || brandFor(d.destination_url || d.clicked_url),
+      clicked_url: clicked,
+      destination_url: cleanUrl(d.destination_url || d.clicked_url),
+      link_text: String(d.link_text || '').replace(/\s+/g, ' ').trim().slice(0, 60),
+      affiliate_status: d.affiliate_status || statusFor(d.clicked_url),
+      product_slug: String(d.product_slug || '').slice(0, 60)
+    };
+    if (d.source_component) detail.source_component = d.source_component;
+    if (d.place_id) detail.place_id = d.place_id;
+    document.dispatchEvent(new CustomEvent('golondon:affiliate-click', { detail: detail }));
+  }
+
   /*
     בונה את כתובת היעד הסופית.
     כל עוד אין מזהה חשבון ברשת השותפים, או שההצעה הספציפית עדיין לא הוגדרה בה,
@@ -141,9 +207,10 @@
 
     a.addEventListener('click', function () {
       /* אירוע פתוח שכל שכבת מדידה עתידית יכולה להאזין לו, בלי לשנות את הקובץ הזה */
-      document.dispatchEvent(new CustomEvent('golondon:affiliate-click', {
-        detail: { offer: offerId, slot: slotId, page: currentPageId(), brand: offer.brand }
-      }));
+      reportClick({
+        offer: offerId, slot: slotId, page: currentPageId(), brand: offer.brand,
+        clicked_url: a.href, destination_url: offer.url, link_text: offer.cta || ''
+      });
     });
 
     return a;
@@ -355,7 +422,12 @@
       var offer = cfg && cfg.offers && cfg.offers[offerId];
       if (!offer || !offer.url) return null;
       return buildUrl(cfg, offer, slotId, offerId, extra);
-    }
+    },
+    /* דיווח קליק מסחרי מכל רכיב באתר, באותה סכימה של הכרטיסים */
+    reportClick: reportClick,
+    statusFor: statusFor,
+    brandFor: brandFor,
+    hostOf: hostOf
   };
 
   function init() {

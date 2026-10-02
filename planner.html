@@ -1185,26 +1185,33 @@
   */
   function placeCta(a) {
     var cta = CTA_MAP && CTA_MAP[a.id];
+    /* offer, brand ו-destination משמשים רק למדידה (ctaAnchor), לא לבניית הקישור */
     if (cta) {
       if (cta.internal) {
-        return { kind: 'internal', href: cta.href || '#', label: cta.label, icon: 'fa-book-open' };
+        return { kind: 'internal', href: cta.href || '#', label: cta.label, icon: 'fa-book-open', placeId: a.id };
       }
       if (cta.custom && cta.free) {
-        return { kind: 'official', href: cta.href || '#', label: cta.label, icon: 'fa-calendar-check' };
+        return { kind: 'official', href: cta.href || '#', label: cta.label, icon: 'fa-calendar-check', placeId: a.id, destination: cta.href || '' };
       }
       if (cta.custom) {
-        return { kind: 'commercial', href: cta.href || '#', label: cta.label, icon: 'fa-ticket' };
+        return { kind: 'commercial', href: cta.href || '#', label: cta.label, icon: 'fa-ticket', placeId: a.id, destination: cta.href || '' };
       }
       var viaAff = null;
+      var offerId = cta.offer || 'attractions_alt';
+      var offerCfg = AFF_CFG && AFF_CFG.offers ? AFF_CFG.offers[offerId] : null;
       if (AFF_CFG && window.GoLondonAffiliate) {
-        viaAff = window.GoLondonAffiliate.linkFor(AFF_CFG, cta.offer || 'attractions_alt', 'planner', a.id);
+        viaAff = window.GoLondonAffiliate.linkFor(AFF_CFG, offerId, 'planner', a.id);
       }
-      return { kind: 'commercial', href: viaAff || cta.href || '#', label: cta.label, icon: 'fa-ticket' };
+      return { kind: 'commercial', href: viaAff || cta.href || '#', label: cta.label, icon: 'fa-ticket', placeId: a.id,
+        offer: offerId, brand: offerCfg ? offerCfg.brand : '', destination: offerCfg ? offerCfg.url : (cta.href || '') };
     }
     if (a.free) return null;
     var url = ticketLink(a);
     if (!url) return null;
-    return { kind: 'commercial', href: url, label: bookingLabel(a), icon: 'fa-ticket' };
+    var tid = ticketOfferId();
+    var tcfg = AFF_CFG && AFF_CFG.offers ? AFF_CFG.offers[tid] : null;
+    return { kind: 'commercial', href: url, label: bookingLabel(a), icon: 'fa-ticket', placeId: a.id,
+      offer: tid, brand: tcfg ? tcfg.brand : '', destination: tcfg ? tcfg.url : '' };
   }
 
   /*
@@ -1253,6 +1260,17 @@
     }
     a.innerHTML = '<i class="fas ' + c.icon + '"></i> ' + (shortLabel || c.label);
     if (shortLabel) a.title = c.label;
+    /* קליק מסחרי מהמתכנן נמדד באותה סכימה של כרטיסי ההכנסה. קישור פנימי לא נמדד כאן */
+    if (c.kind !== 'internal' && window.GoLondonAffiliate && GoLondonAffiliate.reportClick) {
+      a.addEventListener('click', function () {
+        /* הספק והיעד נפתרים בזמן הלחיצה, כי ההגדרות עשויות להיטען אחרי שהכרטיס כבר צויר */
+        var oc = c.offer && AFF_CFG && AFF_CFG.offers ? AFF_CFG.offers[c.offer] : null;
+        GoLondonAffiliate.reportClick({
+          offer: c.offer || '', slot: 'planner', brand: (oc && oc.brand) || c.brand || '',
+          clicked_url: a.href, destination_url: (oc && oc.url) || c.destination || a.href, link_text: c.label, product_slug: c.placeId || ''
+        });
+      });
+    }
     return a;
   }
 
