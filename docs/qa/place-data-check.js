@@ -10,6 +10,7 @@
     writing     no long dash or spaced hyphen, no filler or brochure words, no product words,
                 no dated or "currently" wording (years, month names, השנה, כרגע ...)
     source      absent or an http(s) URL; coordinate provenance lives in coordSource
+    closed      true on permanently closed places, which are never offered for a new route
     access      free | paid | partly_paid when present; partly_paid exactly where the price text says
                 part is paid
     spend       low | mid | high, only on food, drink, nightlife and shop places, and only with access free
@@ -26,14 +27,9 @@ const base = JSON.parse(basePath ? fs.readFileSync(basePath, 'utf8')
   : execFileSync('git', ['-C', ROOT, 'show', 'origin/main:planner-data.json'], { encoding: 'utf8', maxBuffer: 1 << 26 })).attractions;
 
 const NO_TIP = {};   // id: reason, for a place where no honest practical tip exists
-/* Confirmed permanently closed on 4 Oct 2026 (official sites / listings). Left untouched until the
-   editorial decision (remove, hide or replace); every other check still applies to them except content. */
-const CLOSED_PENDING = {
-  'boiler-house-food-hall': 'food hall no longer operates; the Boiler House is an events space (trumanbrewery.com)',
-  'blitz-london': 'vintage department store closed (Yelp, Foursquare listings)',
-  'beyond-retro': 'Cheshire Street store closed; not in the official UK store list (beyondretro.com/pages/uk-stores)',
-  'chin-chin-labs': 'Camden shop closed; official site lists Seven Dials and Soho only (chinchinicecream.com)'
-};
+/* Permanently closed places carry "closed": true. They stay in the data (ids and codes are permanent, old
+   /t/ links keep them) but are never offered for a new route: not in routes.json, not in a guide page's
+   ?day= link, not in a data-trip-add / data-pday-add / data-place list. Their content is not re-checked. */
 const FILLER = ['כמובן', 'בהחלט', 'ודאי', 'מרתק', 'מדהים', 'מרהיב', 'קסום', 'פנינה', 'ללא ספק', 'חוויה בלתי נשכחת', 'מומלץ בחום',
   'מקום שכדאי לבקר', 'אטרקציה פופולרית', 'חובה לכל'];
 const PRODUCT = ['בחוברת', 'ביום שלכם', 'לחצו', 'במסלול שלכם', 'בבונה המסלול'];
@@ -48,7 +44,8 @@ cur.forEach(a => {
   const b = bById[a.id];
   if (!b) return bad(a.id, 'not in baseline');
   for (const k of ['code', 'name', 'nameEn', 'lat', 'lng', 'area']) if (a[k] !== b[k]) bad(a.id, k + ' changed: ' + b[k] + ' -> ' + a[k]);
-  if (CLOSED_PENDING[a.id]) return;
+  if ('closed' in a && a.closed !== true) bad(a.id, 'closed must be true when present');
+  if (a.closed) return;
   const desc = a.desc || '', tip = a.tip || '';
   const sentences = desc.split(/[.!?](?:\s|$)/).filter(s => s.trim()).length;
   if (!desc) bad(a.id, 'no description');
@@ -80,6 +77,15 @@ for (let i = 0; i < cur.length; i++) for (let j = i + 1; j < cur.length; j++) {
 const counts = { source_url: cur.filter(a => /^https?:/.test(a.source || '')).length, no_source: cur.filter(a => !a.source).length,
   partly_paid: cur.filter(a => a.access === 'partly_paid').length, spend: cur.filter(a => a.spend).length };
 console.log(cur.length + ' places ' + JSON.stringify(counts));
-console.log('closed, decision pending: ' + Object.keys(CLOSED_PENDING).join(', '));
+const closed = cur.filter(a => a.closed).map(a => a.id);
+const routes = JSON.parse(fs.readFileSync(path.join(ROOT, 'routes.json'), 'utf8')).routes;
+routes.forEach(r => r.days.forEach(d => d.stops.concat(d.alternatives || []).forEach(id => { if (closed.indexOf(id) !== -1) bad(id, 'closed place in routes.json ' + r.route_id); })));
+fs.readdirSync(ROOT).filter(f => f.endsWith('.html')).forEach(f => {
+  const html = fs.readFileSync(path.join(ROOT, f), 'utf8');
+  const lists = [...html.matchAll(/[?&](?:amp;)?day=([^&"']+)/g)].map(m => m[1]).concat(
+    [...html.matchAll(/data-(?:trip-add|pday-add|place)="([^"]+)"/g)].map(m => m[1]));
+  lists.forEach(l => decodeURIComponent(l).split(',').forEach(id => { if (closed.indexOf(id.trim()) !== -1) bad(id.trim(), 'closed place offered in ' + f); }));
+});
+console.log('closed (kept for old links, never offered): ' + closed.join(', '));
 console.log(fail ? fail + ' FAILED' : 'ALL PASS');
 process.exit(fail ? 1 : 0);

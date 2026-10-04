@@ -345,6 +345,9 @@ def main():
         items = []
         for pid in ids:
             n += 1
+            if pid in by and by[pid].get('closed'):
+                problems.append(pid + ': נסגר לצמיתות ולא יכול להופיע ברשימת האטרקציות')
+                continue
             if pid in by:
                 a = by[pid]
                 name, area = a['name'], areas.get(a['area'], '')

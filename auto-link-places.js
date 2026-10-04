@@ -55,6 +55,7 @@
           /* המרה לצורה שחלונית המידע יודעת להציג */
           (r.json && r.json.attractions ? r.json.attractions : []).forEach(function (p) {
             if (!p.name || p.name.length < MIN_LEN) return;
+            if (p.closed) return;   /* מקום שנסגר לצמיתות לא מקושר מהטקסט */
             var tags = [];
             if (p.free) tags.push({ label: 'כניסה חינם', type: 'free' });
             else if (p.priceBand) tags.push({ label: p.priceBand });

@@ -103,6 +103,7 @@
 
   function add(id, component) {
     if (!DATA || !DATA[id]) return false;   /* אין רשומה במאגר, לא מוסיפים */
+    if (DATA[id].closed) return false;      /* מקום שנסגר לצמיתות לא נכנס לרשימה חדשה */
     if (has(id)) return false;              /* כפילות, לא מוסיפים פעמיים */
     ids.push(id);
     save();
@@ -217,7 +218,7 @@
     for (var i = 0; i < els.length; i++) {
       var el = els[i];
       var id = el.getAttribute('data-trip-add');
-      if (!DATA[id] || el.querySelector('[data-gl-add]')) continue;
+      if (!DATA[id] || DATA[id].closed || el.querySelector('[data-gl-add]')) continue;
       el.appendChild(makeButton(id, el.getAttribute('data-trip-src') || 'list', 'gl-add-row'));
     }
   }
@@ -240,7 +241,7 @@
         var area = btn.getAttribute('data-pday-area') || '';
         /* מזהה שאין לו רשומה במאגר לא ייכנס, כדי שהמונה לא ישקר */
         var list = raw.map(function (x) { return x.trim(); })
-                      .filter(function (x) { return x && DATA[x]; });
+                      .filter(function (x) { return x && DATA[x] && !DATA[x].closed; });
         if (!list.length) { btn.style.display = 'none'; return; }
 
         var label = btn.textContent.trim();
@@ -357,7 +358,8 @@
     var mine = wrap.querySelectorAll('[data-gl-add], [data-gl-map], [data-gl-nav]');
     for (var i = 0; i < mine.length; i++) mine[i].parentNode.removeChild(mine[i]);
     var p = DATA[id];
-    if (!p) return;
+    /* מקום שנסגר לצמיתות: בלי הוספה, מפה וניווט */
+    if (!p || p.closed) return;
     var frag = document.createDocumentFragment();
     frag.appendChild(makeButton(id, 'place_modal', 'gl-add-modal'));
     if (typeof p.lat === 'number' && typeof p.lng === 'number') {

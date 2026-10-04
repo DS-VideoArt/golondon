@@ -138,6 +138,8 @@ for p in json.load(open('posts.json', encoding='utf-8')):
 pd = json.load(open('planner-data.json', encoding='utf-8'))
 areas = pd.get('areas', {})
 for a in pd['attractions']:
+    if a.get('closed'):
+        continue   # נסגר לצמיתות: נשאר בנתונים בשביל קישורים ישנים, לא מוצג בחיפוש
     area = areas.get(a['area'], {}).get('name', '')
     items.append({
         'type': 'place', 'title': a['name'], 'cat': area,

@@ -363,7 +363,8 @@
       .catch(function () { return null; })
   ]).then(function (loaded) {
     PLACES = {};
-    (loaded[0].attractions || []).forEach(function (a) { PLACES[a.id] = a; });
+    /* מקום שנסגר לצמיתות (closed) לא מוצג בהמלצות של האזור */
+    (loaded[0].attractions || []).forEach(function (a) { if (!a.closed) PLACES[a.id] = a; });
     INFO = loaded[1];
     wire();
   }).catch(function (err) {

@@ -683,6 +683,11 @@
     .tray-item button{background:none;border:none;cursor:pointer;font-size:13px;padding:0;line-height:1;font-family:inherit;}
     .tray-add{color:#15803D;font-weight:900;}
     .tray-del{color:#b0b4c0;}
+    /* מקום שנסגר לצמיתות: נשאר גלוי במסלול ישן וברשימה, עם סטטוס ברור */
+    .tray-item--closed{opacity:.75;}
+    .tray-closed{font-size:12px;font-weight:800;color:#991b1b;}
+    .stop--closed .stop-name{text-decoration:line-through;text-decoration-thickness:1px;}
+    .fact.closed{color:#991b1b !important;border-color:rgba(153,27,27,.35) !important;background:rgba(220,38,38,.07) !important;font-weight:800;}
     .tray-del:hover{color:#DC2626;}
     .tray-all{background:#DC2626;border:1px solid #DC2626;color:#fff;font-family:inherit;
       font-size:13.5px;font-weight:800;padding:10px 18px;border-radius:10px;cursor:pointer;}
@@ -1093,6 +1098,7 @@
     var hasChildren = state.childAges.length > 0;
 
     var pool = DATA.attractions.filter(function (a) {
+      if (a.closed) return false;   /* נסגר לצמיתות: לא נכנס למסלול חדש */
       if (needsStrictKidFilter && !a.kids) return false;
       if (state.budget === 'free' && !a.free) return false;
       return true;
@@ -1382,7 +1388,9 @@
 
     var facts = document.createElement('div');
     facts.className = 'stop-facts';
+    if (it.closed) stop.classList.add('stop--closed');
     facts.innerHTML =
+      (it.closed ? '<span class="fact closed"><i class="fas fa-ban"></i>נסגר לצמיתות</span>' : '') +
       '<span class="fact ' + (it.free ? 'free' : 'paid') + '">' +
         '<i class="fas ' + (it.free ? 'fa-check' : 'fa-tag') + '"></i>' + (it.priceBand || (it.free ? 'כניסה חינם' : 'בתשלום')) + '</span>' +
       '<span class="fact"><i class="far fa-clock"></i>' + hoursText(it.hours) + '</span>' +
@@ -1395,7 +1403,8 @@
 
     var tip = document.createElement('p');
     tip.className = 'stop-tip';
-    tip.textContent = it.tip;
+    /* עצירה שנשמרה במסלול ישן ונסגרה מאז: נשארת במקומה, עם הסבר במקום הטיפ */
+    tip.textContent = it.closed ? 'המקום נסגר לצמיתות. העצירה נשארה כאן כי היא הייתה במסלול המקורי, וכדאי להחליף אותה במקום אחר באזור.' : it.tip;
 
     body.appendChild(name);
     body.appendChild(en);
@@ -1417,10 +1426,10 @@
     infoBtn.addEventListener('click', function () { openInfo(it); });
     acts.appendChild(infoBtn);
 
-    var mapBtn = mapPlaceButton(it, 'stop', 'stop-btn');
+    var mapBtn = it.closed ? null : mapPlaceButton(it, 'stop', 'stop-btn');
     if (mapBtn) acts.appendChild(mapBtn);
 
-    var cta = placeCta(it);
+    var cta = it.closed ? null : placeCta(it);
     if (cta) acts.appendChild(ctaAnchor(cta, 'stop-btn'));
 
     body.appendChild(acts);
@@ -1486,7 +1495,7 @@
       var area = DATA.areas[d.area] || { name: '' };
       lines.push('יום ' + d.day + ', ' + area.name);
       d.items.forEach(function (it) {
-        lines.push('  • ' + it.name + ' (' + it.nameEn + ')');
+        lines.push('  • ' + it.name + ' (' + it.nameEn + ')' + (it.closed ? ', נסגר לצמיתות' : ''));
         lines.push('    ' + (it.priceBand || 'ללא תשלום כניסה') + ', ' + hoursText(it.hours) + (it.tube ? ', תחנה: ' + it.tube : ''));
       });
       lines.push('');
@@ -1542,7 +1551,8 @@
   */
   function dayMapUrl(items) {
     var pts = (items || []).filter(function (it) {
-      return it && typeof it.lat === 'number' && typeof it.lng === 'number';
+      /* לא מנווטים אל מקום שנסגר לצמיתות */
+      return it && !it.closed && typeof it.lat === 'number' && typeof it.lng === 'number';
     }).map(function (it) { return coord(it.lat) + ',' + coord(it.lng); });
 
     /*
@@ -1675,9 +1685,10 @@
       var name = areaNameOf(d);
       L.push(DAY_DOTS[i % DAY_DOTS.length] + ' *יום ' + d.day + '*' + (name ? ' · ' + name : ''));
       d.items.forEach(function (it) {
-        L.push(placeEmoji(it) + ' ' + it.name + ' · ' + priceWord(it) + ' · ' + hoursText(it.hours));
+        L.push(it.closed ? '🚫 ' + it.name + ' · נסגר לצמיתות'
+          : placeEmoji(it) + ' ' + it.name + ' · ' + priceWord(it) + ' · ' + hoursText(it.hours));
       });
-      var withTube = d.items.filter(function (it) { return it.tube; })[0];
+      var withTube = d.items.filter(function (it) { return it.tube && !it.closed; })[0];
       if (withTube) L.push('🚇 מתחילים בתחנת ' + withTube.tube);
     });
 
@@ -2038,6 +2049,7 @@
     add.className = 'info-btn info-btn--primary';
     add.innerHTML = '<i class="fas fa-plus"></i> הוספה למסלול';
     add.addEventListener('click', function () { addStop(a.id); closeInfo(); });
+    if (a.closed) { add.disabled = true; add.innerHTML = '<i class="fas fa-ban"></i> נסגר לצמיתות'; }
     actions.appendChild(add);
 
     var mapBtn = mapPlaceButton(a, 'info', 'info-btn');
@@ -2153,9 +2165,10 @@
     box.innerHTML = '';
 
     var counts = {};
-    DATA.attractions.forEach(function (a) { counts[a.area] = (counts[a.area] || 0) + 1; });
+    var open = DATA.attractions.filter(function (a) { return !a.closed; });
+    open.forEach(function (a) { counts[a.area] = (counts[a.area] || 0) + 1; });
 
-    var areas = [{ id: 'all', name: 'כל האזורים', color: 'linear-gradient(135deg,#DC2626,#EA580C)', n: DATA.attractions.length }];
+    var areas = [{ id: 'all', name: 'כל האזורים', color: 'linear-gradient(135deg,#DC2626,#EA580C)', n: open.length }];
     Object.keys(DATA.areas).forEach(function (k) {
       areas.push({ id: k, name: DATA.areas[k].name, color: AREA_COLORS[k] || '#EA580C', n: counts[k] || 0 });
     });
@@ -2188,6 +2201,7 @@
   function filteredAttractions() {
     var q = palState.q.trim().toLowerCase();
     return DATA.attractions.filter(function (a) {
+      if (a.closed) return false;   /* מקום שנסגר לצמיתות לא מוצע להוספה */
       if (palState.area !== 'all' && a.area !== palState.area) return false;
       if (!q) return true;
       return (a.name + ' ' + a.nameEn + ' ' + a.tube + ' ' + (a.desc || '')).toLowerCase().indexOf(q) !== -1;
@@ -2315,6 +2329,11 @@
   }
 
   function addStop(id, dayIdx, component) {
+    var closedPlace = byId(id);
+    if (closedPlace && closedPlace.closed) {
+      toast(closedPlace.name + ' נסגר לצמיתות, ולכן אי אפשר להוסיף אותו');
+      return;
+    }
     var target = typeof dayIdx === 'number' ? dayIdx : manual.active;
     if (target < 0 || target >= manual.days.length) target = 0;
     if (manual.days[target].indexOf(id) !== -1) {
@@ -2557,7 +2576,7 @@
     plan.forEach(function (d) {
       lines.push('יום ' + d.day + ', ' + d.areaLabel.name);
       d.items.forEach(function (it) {
-        lines.push('• ' + it.name + ' (' + it.nameEn + '), ' + it.priceBand + ', תחנה: ' + it.tube);
+        lines.push('• ' + it.name + ' (' + it.nameEn + ')' + (it.closed ? ', נסגר לצמיתות' : ', ' + it.priceBand + ', תחנה: ' + it.tube));
       });
       lines.push('');
     });
@@ -2902,9 +2921,11 @@
     var days = [], rawDayIds = [];
     var re = /[?&]day=([^&]+)/g, m;
     while ((m = re.exec(location.search))) {
+      /* יום מוכן מעמוד מדריך הוא מסלול חדש, ולכן מקום שנסגר לצמיתות לא נכנס אליו.
+         קישור שיתוף ישן (p=) עובר דרך decodePlanCodes ושומר את כל העצירות שלו */
       var ids = decodeURIComponent(m[1]).split(',')
         .map(function (x) { return x.trim(); })
-        .filter(function (x) { return x && byId(x); });
+        .filter(function (x) { return x && byId(x) && !byId(x).closed; });
       days.push(ids);
     }
     var reId = /[?&]did=([^&]+)/g;
@@ -3102,10 +3123,18 @@
         var chip = document.createElement('span');
         chip.className = 'tray-item';
         chip.appendChild(document.createTextNode(a.name));
+        /* מקום שנשמר לפני שנסגר לצמיתות: נשאר ברשימה עם הסבר, בלי כפתור הוספה */
+        if (a.closed) {
+          chip.classList.add('tray-item--closed');
+          var gone = document.createElement('span');
+          gone.className = 'tray-closed'; gone.textContent = 'נסגר לצמיתות';
+          chip.appendChild(gone);
+        }
         var plus = document.createElement('button');
         plus.type = 'button'; plus.className = 'tray-add'; plus.textContent = '\u002B';
         plus.title = 'הוספה ליום המסומן';
         plus.addEventListener('click', function () { addStop(id, undefined, 'tray_box'); });
+        if (a.closed) plus.hidden = true;
         var del = document.createElement('button');
         del.type = 'button'; del.className = 'tray-del'; del.innerHTML = '&times;';
         del.title = 'הסרה מהרשימה';
@@ -3116,7 +3145,7 @@
     }
 
     $('tray-all').addEventListener('click', function () {
-      GoLondonTray.list().forEach(function (id) { if (byId(id)) addStop(id, undefined, 'tray_all'); });
+      GoLondonTray.list().forEach(function (id) { if (byId(id) && !byId(id).closed) addStop(id, undefined, 'tray_all'); });
     });
     $('tray-clear').addEventListener('click', function () { GoLondonTray.clear(); draw(); });
     /* הוספה שהגיעה ממצב סביבי או מכל מקום אחר בעמוד */
@@ -3199,8 +3228,8 @@
 <script src="affiliate.js?v=3" defer></script>
 <script src="community-ask.js?v=4" defer></script>
 <script src="place-info.js?v=11" defer></script>
-<script src="trip-tray.js?v=7" defer></script>
-<script src="planner-nearby.js?v=13" defer></script>
+<script src="trip-tray.js?v=8" defer></script>
+<script src="planner-nearby.js?v=14" defer></script>
 <script src="analytics.js?v=5" defer></script>
 </body>
 </html>

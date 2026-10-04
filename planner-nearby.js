@@ -920,7 +920,8 @@
       fetch('attractions-info.json', { cache: 'no-cache' })
         .then(function (r) { return r.ok ? r.json() : {}; }).catch(function () { return {}; })
     ]).then(function (both) {
-      DATA = both[0].attractions || [];
+      /* מקום שנסגר לצמיתות (closed) לא מוצג כמקום לבקר בו */
+      DATA = (both[0].attractions || []).filter(function (p) { return !p.closed; });
       TAX = both[1];
       INFO = both[2] || {};
       if (dataReadyResolve) dataReadyResolve(true);

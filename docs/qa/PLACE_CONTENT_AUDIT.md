@@ -190,11 +190,41 @@ Each place was checked against its official website where one could be read (sev
 | boxpark-camden | B | No tip; Description could say more (three floors, events) | desc, tip |
 | horizon-22 | D | No tip; Desc hedges ('as far as we know'); official site states it is London's highest free viewing platform; kids null although official site welcomes families; interests and audi | desc, tip, source, kids |
 
-## Closed places, decision pending
+## Permanently closed places
 
-Confirmed closed on 4 Oct 2026. Left untouched (ids and codes are permanent; old shared links decode by code).
+Confirmed closed on 4 Oct 2026 and marked `"closed": true` in planner-data.json (ids and codes are permanent):
+boiler-house-food-hall (the food hall no longer operates; the Boiler House is an events space), blitz-london
+(vintage department store closed; its domain now redirects to an unrelated site, link removed), beyond-retro (the
+Cheshire Street store closed; not in the official UK store list), chin-chin-labs (the Camden shop closed; the
+official site lists Seven Dials and Soho only).
 
-- boiler-house-food-hall: the food hall no longer operates; the Boiler House is an events space.
-- blitz-london: vintage department store closed; its domain now redirects to an unrelated site (link removed).
-- beyond-retro: the Cheshire Street store closed; not in the official UK store list.
-- chin-chin-labs: the Camden shop closed; the official site lists Seven Dials and Soho only.
+Behaviour (checked by `docs/qa/closed-places-harness.js`):
+- New routes never get a closed place: automatic builds skip it; the manual list, its search and its counts
+  leave it out; adding it is refused with a toast; a guide page's `?day=` link skips it; area guide cards,
+  nearby mode, automatic place links in articles, add-to-trip buttons and site search do not offer it.
+- An old shared `/t/` link keeps every stop in its place and the same route code. The closed stop shows
+  "נסגר לצמיתות", a note to replace it, no booking or navigation button, and the info window offers no "add".
+  The day's walking link skips it; WhatsApp and Copy say it is closed; the status is printed.
+- A closed place saved earlier stays in the Planner's saved list with the status and no add button.
+
+## Decisions in the final cleanup
+
+- **Portobello Road (notting-hill)**: the market's own site and the council disagree on days and hours. Only
+  the Saturday antiques market is common to both; the rest is described in general terms with a pointer to
+  the current official schedule.
+- **Kosher wording (beigel-bake, ottolenghi-spitalfields)**: neither the kosher map (kosher-places.json) nor
+  the kosher verification registry lists them, so "not kosher, no certificate" became "not on GoLondon's list
+  of kosher places". The kosher datasets were not changed.
+- **Royal Observatory planetarium** and **Curtain Theatre visitor centre**: no reliable current status, so the
+  closure / planned opening is no longer in the text (evergreen wording instead).
+- **Camden Lock Bridge (camden-lock-bridge)**: the current coordinates are on the 1878 road bridge that carries
+  Camden High Street over the canal. The well-known "Camden Lock" lettering is on the railway bridge over
+  Chalk Farm Road, about 100 m north. Coordinates unchanged here; for a separate location / navigation QA.
+- **Not applied (Planner behaviour, separate decision)**: visit length for hms-belfast (proposed 3 h) and
+  piccadilly-circus (proposed 0.5 h); the Highgate Cemetery category; bookAhead for british-museum and sea-life.
+- **Guide pages, confirmed facts only**: National Maritime Museum no longer "the largest in the world"
+  (guide-attractions, guide-areas-greenwich); Kenwood lists Rembrandt, Vermeer, Gainsborough and Turner, no
+  Renoir (guide-attractions); the Monument stands 61 m from where the fire began (guide-areas-the-city);
+  "פרימרוז היל" spelling (guide-areas-camden, 13 places incl. FAQ data); the closed ice cream shop removed from
+  the Camden text and its food card (now boxpark-camden); Brick Lane mosque became a Methodist chapel in 1819
+  and Beigel Bake opened in the late 1970s (guide-areas-shoreditch).
