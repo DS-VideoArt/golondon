@@ -517,6 +517,8 @@
       border-radius: 16px; padding: 20px 22px; font-size: 14.5px; color: rgba(255,255,255,0.8);
     }
     .closing strong { color: #fdba74; }
+    /* חלקים שקיימים רק בהדפסה: כותרת המסלול הידני, ההערה בסופו ומספור הימים שיוצא החוצה */
+    .print-only, .dn-print { display: none !important; }
 
     .seo-text { margin-top: 46px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08); }
     .seo-text h2 { font-size: 19px; font-weight: 800; color: #fff; margin: 26px 0 10px; padding-right: 13px; border-right: 3px solid #EA580C; }
@@ -556,10 +558,40 @@
         למשהו שנראה כמו צילום מסך מודפס.
       */
       .navbar, .builder, .results-actions, .page-hero, .seo-text, .aff-block,
-      .closing, .mode-tabs, .manual, .nearby, #panel-nearby, .tray-box, .toast,
+      .mode-tabs, .nearby, #panel-nearby, .tray-box, .toast,
       .compare-wrap, .stay-tip, .day-btn, .board-day-actions, .board-actions,
       .stop-actions, .stop-btn, .pal, .palette, .versions, #versions,
       #gl-skip-link, #a11y-toggle-btn, #install-app-btn { display: none !important; }
+
+      /*
+        עד 4.10.2026 הרשימה למעלה הסתירה גם את כל הלוח הידני (.manual) ואת ההערה על
+        שעות ומחירים (.closing). מסלול ידני, וכל מסלול שנפתח מקישור שיתוף, הודפס כדף
+        שאין בו מסלול בכלל, רק טופס הקהילה. עכשיו הלוח מודפס, ומוסתרים בו רק הכלים:
+        ההסבר, הרשימה, שורת הכפתורים, כפתורי הסידור ויום ריק. טופס הקהילה (.ca-wrap)
+        אינו חלק מהמסלול ולא מודפס בשום מצב.
+      */
+      .manual-intro, .board-head, .stop-controls, .board-day.is-empty, .dn-board,
+      .ca-wrap { display: none !important; }
+      .manual-layout { display: block !important; }
+      /*
+        יום שלם לא נשבר בין עמודים, אבל יום ידני של חמש עצירות ומעלה גבוה מעמוד, ואז
+        הכלל הזה דחף אותו לעמוד הבא והשאיר את הכותרת לבד בעמוד הראשון. יום כזה נשבר
+        בין עצירות (עצירה בודדת עדיין לא נשברת), וכפתור המפה נשאר צמוד לעצירה האחרונה.
+      */
+      .board-day.is-long { break-inside: auto; page-break-inside: auto; }
+      .board-day.is-long .day-head { break-after: avoid; page-break-after: avoid; }
+      .board-day .day-map { break-before: avoid; page-break-before: avoid; }
+      .board-day.is-active, .board-day.drop-on { border-color: #d6d6de !important; }
+      /* הריווח שבתחתית העמוד באתר יצר עמוד ריק בסוף כשהמסלול מילא את העמוד האחרון */
+      .wrap { padding-bottom: 0 !important; }
+      .print-only { display: block !important; }
+      .dn-print { display: inline !important; }
+
+      .closing { break-inside: avoid; page-break-inside: avoid;
+        background: #fff !important; border: 1px solid #d6d6de !important;
+        border-radius: 3mm !important; padding: 4mm 5mm !important; margin: 6mm 0 0 !important;
+        color: #3d3c48 !important; font-size: 9.5pt !important; line-height: 1.5 !important; max-width: none !important; }
+      .closing strong { color: #17161d !important; }
 
       html, body { background: #fff !important; color: #17161d !important; }
       body { font-size: 11pt; }
@@ -621,7 +653,7 @@
         padding: 2mm 3mm !important; margin-top: 3mm !important; }
 
       /* כותרת תחתונה שמופיעה רק בהדפסה */
-      #results::after {
+      #results::after, #panel-manual::after {
         content: 'נבנה בבונה המסלול של גו לונדון · golondon.co.il/planner';
         display: block; margin-top: 8mm; padding-top: 3mm;
         border-top: 1px solid #d6d6de; color: #6b6a76; font-size: 9pt; text-align: center;
@@ -773,6 +805,11 @@
       </aside>
 
       <div class="board">
+        <!-- מופיע רק בהדפסה: כותרת המסלול, כמו בראש המסלול האוטומטי -->
+        <div class="results-head print-only">
+          <h2 id="board-print-title">המסלול שלכם</h2>
+          <p class="results-sub" id="board-print-sub"></p>
+        </div>
         <div class="board-head">
           <div class="board-summary" id="board-summary"></div>
           <div class="board-actions">
@@ -784,6 +821,11 @@
           </div>
         </div>
         <div id="board-days"></div>
+        <!-- מופיע רק בהדפסה: אותה הערה שמופיעה בסוף המסלול האוטומטי -->
+        <div class="closing print-only">
+          <strong>לפני שיוצאים:</strong> המסלול הזה הוא נקודת פתיחה, לא חוזה. שעות הפתיחה והמחירים משתנים מעת לעת,
+          ולכן שווה לוודא באתר הרשמי של כל אתר ביום שלפני. אטרקציות שמסומנות כדורשות הזמנה מראש נגמרות לעיתים שבועות מראש.
+        </div>
       </div>
     </div>
   </section>
@@ -841,6 +883,7 @@
 
 <div class="toast" id="toast"></div>
 
+<script src="route-code.js?v=1"></script>
 <script>
 (function () {
   'use strict';
@@ -1528,28 +1571,21 @@
     הקוד של כל מקום לעולם אינו משתנה, ולכן קישור שנשלח למשפחה לפני
     חודשיים ימשיך לפתוח את אותו מסלול בדיוק.
   */
+  /* הקידוד והפענוח עצמם יושבים ב route-code.js, המקור היחיד לייצוג של מסלול */
+  var RouteCode = window.GoLondonRouteCode;
+
   function encodePlan(plan) {
-    return plan.map(function (d) {
-      return d.items.map(function (it) { return it.code || ''; }).join('');
-    }).filter(function (chunk) { return chunk; }).join('.');
+    return RouteCode.encode(plan.map(function (d) { return d.items; }), function (it) { return it.code; });
   }
 
   function decodePlanCodes(str) {
     var byCode = {};
     DATA.attractions.forEach(function (a) { if (a.code) byCode[a.code] = a.id; });
-    return String(str || '').split('.').map(function (chunk) {
-      var ids = [];
-      for (var i = 0; i + 2 <= chunk.length; i += 2) {
-        var id = byCode[chunk.substr(i, 2)];
-        if (id) ids.push(id);
-      }
-      return ids;
-    }).filter(function (ids) { return ids.length; });
+    return RouteCode.decode(str, function (c) { return byCode[c]; });
   }
 
   function tripLink(plan) {
-    var code = encodePlan(plan);
-    return code ? 'https://golondon.co.il/t/' + code : 'https://golondon.co.il/planner';
+    return RouteCode.link(encodePlan(plan));
   }
 
   function areaNameOf(d) {
@@ -2345,30 +2381,47 @@
   }
 
   /* ממיר את הלוח הידני למבנה מסלול רגיל, כדי שההעתקה וההדפסה יעבדו בלי קוד נפרד */
+  /*
+    המסלול הידני כפי שהוא יוצא החוצה, לוואטסאפ, להעתקה, להדפסה ולקישור. ימים ריקים
+    יוצאים לפני המספור (route-code.js), ולכן יום 1, יום 2 ריק ויום 3 יוצאים כיום 1
+    ויום 2 בכל הפלטים. עד 4.10.2026 המספור נעשה לפני הסינון, והוואטסאפ כתב יום 1
+    ויום 3 בזמן שהקישור ששותף פתח את אותו מסלול כיום 1 ויום 2.
+  */
   function manualPlan() {
-    return manual.days.map(function (ids, i) {
-      var items = ids.map(byId).filter(Boolean);
-      var lbl = dayAreaLabel(ids);
+    var days = manual.days.map(function (ids) { return ids.map(byId).filter(Boolean); });
+    return RouteCode.normalizeDays(days).map(function (items, i) {
+      var lbl = dayAreaLabel(items.map(function (it) { return it.id; }));
       var hours = items.reduce(function (s, it) { return s + (it.hours || 0); }, 0);
       return { day: i + 1, area: null, areaLabel: lbl, items: items, hours: hours };
-    }).filter(function (d) { return d.items.length; });
+    });
   }
 
   function renderBoard() {
     var out = $('board-days');
     out.innerHTML = '';
 
+    /*
+      בלוח עצמו כל יום שומר את המקום שלו, גם יום ריק, כי זה המקום שאליו מוסיפים. בהדפסה
+      יום ריק לא מודפס, והמספר שמודפס הוא המספר שלו במסלול שיוצא החוצה (manualPlan),
+      כדי שהדף המודפס, הוואטסאפ והקישור ששותף יספרו את הימים אותו דבר.
+    */
+    var printDay = 0;
+    /* יום אוטומטי הוא עד ארבע עצירות ונכנס לעמוד אחד. יום ידני ארוך מזה מודפס על פני שני עמודים */
+    var LONG_PRINT_DAY = 4;
     manual.days.forEach(function (ids, di) {
       var items = ids.map(byId).filter(Boolean);
       var lbl = dayAreaLabel(ids);
+      var outNum = items.length ? ++printDay : 0;
 
       var card = document.createElement('article');
-      card.className = 'day-card board-day' + (di === manual.active ? ' is-active' : '');
+      card.className = 'day-card board-day' + (di === manual.active ? ' is-active' : '') +
+        (items.length ? '' : ' is-empty') + (items.length > LONG_PRINT_DAY ? ' is-long' : '');
 
       var head = document.createElement('div');
       head.className = 'day-head board-day-head';
       head.innerHTML =
-        '<div class="day-num">' + (di + 1) + '</div>' +
+        '<div class="day-num"><span class="dn-board">' + (di + 1) + '</span>' +
+          (outNum ? '<span class="dn-print">' + outNum + '</span>' : '') + '</div>' +
         '<div class="day-title">' + lbl.emoji + ' ' + lbl.name + '</div>';
 
       var headActions = document.createElement('div');
@@ -2486,6 +2539,9 @@
     $('board-summary').textContent = total
       ? manual.days.length + (manual.days.length === 1 ? ' יום' : ' ימים') + ', ' + total + ' עצירות, ' + freeTotal + ' מהן בלי תשלום כניסה'
       : 'המסלול שלכם עדיין ריק';
+    /* כותרת ההדפסה, באותה צורה כמו במסלול האוטומטי, וסופרת רק ימים שיש בהם מקומות */
+    $('board-print-title').textContent = 'המסלול שלכם, ' + plan.length + (plan.length === 1 ? ' יום' : ' ימים');
+    $('board-print-sub').textContent = total + ' עצירות בסך הכל, ' + freeTotal + ' מהן בלי תשלום כניסה.';
   }
 
   function syncManual() {
