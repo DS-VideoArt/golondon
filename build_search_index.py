@@ -9,7 +9,9 @@
 import html as _html
 import json, re, os, glob, collections
 
-ROOT = '/Users/mymac/דפי נחיתה ואתרים/golondon'
+# התיקייה של הסקריפט עצמו, ולא נתיב קבוע: נתיב קבוע כתב את הפלט לעותק הראשי של הריפו
+# גם כשהסקריפט הורץ מעותק עבודה אחר
+ROOT = os.path.dirname(os.path.abspath(__file__))
 os.chdir(ROOT)
 
 # עמודים שאין טעם לחפש בהם
