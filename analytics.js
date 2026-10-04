@@ -12,7 +12,9 @@
   הפונקציה פשוט לא עושה כלום.
 
   מה נמדד לבד, בלי לגעת באף עמוד:
-    planner_open      לחיצה על כל קישור לבונה המסלול, כולל מאיפה באתר
+    planner_open      מאז 4.10.2026 נשלח מתוך המתכנן עצמו (planner-funnel.js), פעם אחת
+                      לכל סשן, בכל דרך כניסה. כאן לחיצה על קישור למתכנן רק רושמת
+                      מאיפה באתר הגיעו, והפתיחה במתכנן שולחת את זה כפרמטרים
     kosher_map_open   לחיצה על כל קישור למפת הכשרות
     month_select      לחיצה על חודש, כולל שם החודש
     category_open     כניסה לאשכול תוכן מדף הבית
@@ -149,7 +151,15 @@
     var file = href.split('?')[0].split('#')[0].split('/').pop() || '';
 
     if (/^planner(\.html?)?$/i.test(file)) {
-      track('planner_open', { link_text: (a.textContent || '').trim().slice(0, 60) });
+      /* העמוד, הטקסט והרכיב עוברים לפתיחה במתכנן. לא נשלח אירוע מכאן */
+      try {
+        localStorage.setItem('gl_planner_handoff', JSON.stringify({
+          t: Date.now(),
+          page: pageId(),
+          text: (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60),
+          component: a.classList.contains('gl-tray-pill') ? 'tray_pill' : (a.getAttribute('data-planner-src') || 'link')
+        }));
+      } catch (err) {}
       return;
     }
 

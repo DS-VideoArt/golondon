@@ -9,6 +9,8 @@
     gtag('js', new Date());
     gtag('config', 'G-QWWEWYZWCK');
   </script>
+  <!-- משפך המתכנן: planner_open/start/complete פעם אחת לכל סשן. נטען כאן כדי לרשום את הכניסה מיד -->
+  <script src="planner-funnel.js?v=1"></script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -2276,7 +2278,7 @@
     });
   }
 
-  function addStop(id, dayIdx) {
+  function addStop(id, dayIdx, component) {
     var target = typeof dayIdx === 'number' ? dayIdx : manual.active;
     if (target < 0 || target >= manual.days.length) target = 0;
     if (manual.days[target].indexOf(id) !== -1) {
@@ -2287,7 +2289,21 @@
     manual.active = target;
     syncManual();
     var a = byId(id);
-    if (window.glTrack) glTrack('add_to_trip', { place_id: id, place: a ? a.name : '', day: target + 1 });
+    if (window.glTrack) {
+      var ev = { place_id: id, place: a ? a.name : '', day: target + 1 };
+      if (component) ev.source_component = component;
+      glTrack('add_to_trip', ev);
+    }
+    funnel('start', 'add_place', 'manual');
+    /* מסלול ידני הושלם כשהמשתמש בנה יום עם שני מקומות לפחות */
+    if (manual.days.some(function (d) { return d.length >= 2; })) {
+      var full = manual.days.filter(function (d) { return d.length; });
+      funnel('complete', {
+        planner_mode: 'manual',
+        day_count: full.length,
+        place_count: full.reduce(function (n, d) { return n + d.length; }, 0)
+      });
+    }
     toast((a ? a.name : 'המקום') + ' נוסף ליום ' + (target + 1));
   }
 
@@ -2318,6 +2334,7 @@
     manual.dayIds.push(null);
     manual.active = manual.days.length - 1;
     syncManual();
+    funnel('start', 'add_day', 'manual');
   }
 
   function removeDay(idx) {
@@ -2503,7 +2520,7 @@
     }
   }
 
-  function setMode(mode) {
+  function setMode(mode, trigger) {
     var isManual = mode === 'manual';
     $('panel-auto').hidden = isManual;
     $('panel-manual').hidden = !isManual;
@@ -2512,7 +2529,7 @@
     $('tab-manual').classList.toggle('active', isManual);
     $('tab-auto').setAttribute('aria-selected', String(!isManual));
     $('tab-manual').setAttribute('aria-selected', String(isManual));
-    if (window.glTrack) glTrack('planner_mode', { mode: mode });
+    if (window.glTrack) glTrack('planner_mode', trigger ? { mode: mode, trigger: trigger } : { mode: mode });
     if (isManual) syncManual();
   }
 
@@ -2568,14 +2585,16 @@
   function run() {
     VERSIONS = [];
     LAST = build();
-    if (window.glTrack) {
-      glTrack('planner_complete', {
-        days: state.days,
-        budget: state.budget,
-        interests: state.interests.join(',') || 'ללא',
-        child_ages: state.childAges.join(',') || 'מבוגרים בלבד'
-      });
-    }
+    /* השלמה אחת לסשן. בנייה חוזרת היא אותו ניסיון תכנון ולא השלמה נוספת */
+    funnel('complete', {
+      days: state.days,
+      budget: state.budget,
+      interests: state.interests.join(',') || 'ללא',
+      child_ages: state.childAges.join(',') || 'מבוגרים בלבד',
+      planner_mode: 'auto',
+      day_count: LAST.length,
+      place_count: LAST.reduce(function (n, d) { return n + d.items.length; }, 0)
+    });
     pushVersion(LAST);
     render(LAST);
     $('compare').hidden = true;
@@ -2583,14 +2602,21 @@
     $('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
+  /* משפך המתכנן (planner-funnel.js). העטיפה מוודאת שאין שבירה אם הקובץ לא נטען */
+  function funnel(method, a, b) {
+    if (window.GoLondonFunnel) window.GoLondonFunnel[method](a, b);
+  }
+
   function wire() {
-    /* הנגיעה הראשונה בכלי, לא משנה באיזה שדה. זה מה שמאפשר לדעת
-       כמה מהנכנסים בכלל התחילו, וכמה מהם הגיעו עד מסלול מוכן. */
-    var started = false;
-    document.querySelector('.wrap').addEventListener('click', function () {
-      if (started) return;
-      started = true;
-      if (window.glTrack) glTrack('planner_start', {});
+    /*
+      planner_start הוא פעולת התכנון הראשונה, לא הלחיצה הראשונה. עד 4.10.2026
+      כל לחיצה בעמוד נספרה, גם על לשונית או קישור, ולכן היו יותר התחלות
+      מפתיחות. כאן נספרות רק בחירה בטופס האוטומטי ולחיצה על הבנייה. במצב
+      הידני ההתחלה היא הוספת מקום או יום, ובמצב הסביבי בחירת מיקום או סינון.
+    */
+    $('panel-auto').addEventListener('click', function (e) {
+      var el = e.target && e.target.closest ? e.target.closest('.chip, #build') : null;
+      if (el) funnel('start', el.id === 'build' ? 'build' : 'choice', 'auto');
     }, true);
 
     $('build').addEventListener('click', run);
@@ -2997,9 +3023,18 @@
     המקומות שנאספו בשאר האתר. trip-tray.js מחזיק אותם במפתח נפרד משלו,
     ולכן שיבוץ ליום כאן לא נוגע ברשימה עד שהמשתמש מסיר אותה בעצמו.
   */
-  function wireTray() {
+  function wireTray(tries) {
     var box = $('tray-box'), list = $('tray-list');
-    if (!box || !window.GoLondonTray) return;
+    if (!box) return;
+    /*
+      trip-tray.js נטען ב-defer, ונתוני המתכנן מגיעים לפעמים לפניו, למשל כשהם
+      במטמון. עד 4.10.2026 הבדיקה כאן פשוט ויתרה, ותיבת המקומות שנאספו לא הוצגה
+      בכלל באותה כניסה. עכשיו ממתינים לו עד שלוש שניות, כמו hookAffiliate.
+    */
+    if (!window.GoLondonTray) {
+      if ((tries || 0) < 60) setTimeout(function () { wireTray((tries || 0) + 1); }, 50);
+      return;
+    }
 
     function draw() {
       var ids = GoLondonTray.list().filter(function (id) { return !!byId(id); });
@@ -3014,7 +3049,7 @@
         var plus = document.createElement('button');
         plus.type = 'button'; plus.className = 'tray-add'; plus.textContent = '\u002B';
         plus.title = 'הוספה ליום המסומן';
-        plus.addEventListener('click', function () { addStop(id); });
+        plus.addEventListener('click', function () { addStop(id, undefined, 'tray_box'); });
         var del = document.createElement('button');
         del.type = 'button'; del.className = 'tray-del'; del.innerHTML = '&times;';
         del.title = 'הסרה מהרשימה';
@@ -3025,12 +3060,42 @@
     }
 
     $('tray-all').addEventListener('click', function () {
-      GoLondonTray.list().forEach(function (id) { if (byId(id)) addStop(id); });
+      GoLondonTray.list().forEach(function (id) { if (byId(id)) addStop(id, undefined, 'tray_all'); });
     });
     $('tray-clear').addEventListener('click', function () { GoLondonTray.clear(); draw(); });
     /* הוספה שהגיעה ממצב סביבי או מכל מקום אחר בעמוד */
     document.addEventListener('gl:tray-change', draw);
     draw();
+    openSavedPlaces();
+  }
+
+  /*
+    מי שאסף מקומות באתר ונכנס למתכנן בלי קישור מוכן, נוחת על המקומות שלו
+    ===================================================================
+    המקומות שנאספו מוצגים רק בלשונית "אני מרכיב לבד", והמתכנן נפתח תמיד
+    בשאלון האוטומטי. מי שאסף שני מקומות בעמוד האטרקציות ולחץ "המסלול שלי 2"
+    נחת על "כמה ימים אתם בלונדון?" בלי שום סימן למקומות שבחר. כאן המתכנן
+    נפתח ישר בלשונית הידנית, ואם הגיעו מהגלולה גם גולל אל המקומות.
+    קישור מוכן (day, p, route) או מצב סביבי גוברים תמיד, והלשונית האוטומטית
+    נשארת בלחיצה אחת. נמדד: planner_mode עם trigger=saved_places, ו-add_to_trip
+    עם source_component של tray_box או tray_all.
+  */
+  function openSavedPlaces() {
+    if (/[?&](day|p|route|mode)=/.test(location.search)) return;
+    var ids = window.GoLondonTray ? GoLondonTray.list().filter(function (id) { return !!byId(id); }) : [];
+    if (!ids.length) return;
+    setMode('manual', 'saved_places');
+    var fromPill = window.GoLondonFunnel && GoLondonFunnel.arrival() === 'tray_pill';
+    if (!fromPill) return;
+    setTimeout(function () {
+      var box = $('tray-box');
+      if (!box || box.hidden) return;
+      var nav = document.querySelector('.navbar');
+      var off = (nav ? nav.getBoundingClientRect().height : 0) + 12;
+      var y = box.getBoundingClientRect().top + window.pageYOffset - off;
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
+    }, 400);
   }
 
   /*
@@ -3078,8 +3143,8 @@
 <script src="affiliate.js?v=3" defer></script>
 <script src="community-ask.js?v=4" defer></script>
 <script src="place-info.js?v=11" defer></script>
-<script src="trip-tray.js?v=6" defer></script>
-<script src="planner-nearby.js?v=12" defer></script>
-<script src="analytics.js?v=4" defer></script>
+<script src="trip-tray.js?v=7" defer></script>
+<script src="planner-nearby.js?v=13" defer></script>
+<script src="analytics.js?v=5" defer></script>
 </body>
 </html>

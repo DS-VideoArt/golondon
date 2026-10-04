@@ -473,8 +473,9 @@
       <div class="section-header">
         <h2>מתי אתם טסים?</h2>
         <p>בוחרים חודש ומקבלים מזג אוויר, שעות אור, עומס, מה קורה בעיר ומה כדאי להזמין מראש</p>
-        <!-- לונדון החודש: ברירת מחדל סטטית שמתעדכנת פעם בחודש, והסקריפט למטה מתקן לפי תאריך הגולש -->
-        <p class="ms-now">📅 לונדון החודש: <a href="london-september.html" data-now="cur"><span data-now-name>ספטמבר 2026</span></a>, והחודש הבא: <a href="london-october.html" data-now="next"><span data-now-name>אוקטובר 2026</span></a></p>
+        <!-- לונדון החודש: ב-HTML אין שם חודש, כדי שקורא בלי סקריפט (מנוע חיפוש, מטמון) לא יראה חודש שעבר.
+             הסקריפט בסוף העמוד מכניס את החודש הנוכחי והבא לפי תאריך הגולש, ואין צורך בעדכון חודשי -->
+        <p class="ms-now">📅 לונדון החודש: <a href="london-by-month.html" data-now="cur"><span data-now-name>מזג אוויר ואירועים</span></a>, והחודש הבא: <a href="london-by-month.html" data-now="next"><span data-now-name>מה להזמין מראש</span></a></p>
       </div>
       <div class="ms-scroll">
         <div class="ms-grid">
@@ -823,9 +824,9 @@
   <input type="checkbox" name="consent" />
   <input type="text" name="bot-field" />
 </form>
-<script src="trip-tray.js?v=6" defer></script>
+<script src="trip-tray.js?v=7" defer></script>
 <script>
-  /* מעדכן את כרטיסי "לונדון החודש" ו"החודש הבא" לפי תאריך הגולש, כדי שה-HTML הסטטי לא יתיישן */
+  /* מכניס את "לונדון החודש" ו"החודש הבא" לפי תאריך הגולש. ה-HTML הסטטי בכוונה בלי שם חודש, ולכן לעולם לא מתיישן */
   (function () {
     var M = [['january','ינואר','❄️'],['february','פברואר','🌂'],['march','מרץ','🌼'],['april','אפריל','🌸'],['may','מאי','🌳'],['june','יוני','☀️'],['july','יולי','🎾'],['august','אוגוסט','🎭'],['september','ספטמבר','🍂'],['october','אוקטובר','🍁'],['november','נובמבר','🎆'],['december','דצמבר','🎄']];
     var d = new Date(), c = d.getMonth(), y = d.getFullYear(), n = (c + 1) % 12, ny = n === 0 ? y + 1 : y;
@@ -833,6 +834,6 @@
     set(document.querySelector('[data-now="cur"]'), c, y); set(document.querySelector('[data-now="next"]'), n, ny);
   })();
 </script>
-<script src="analytics.js?v=4" defer></script>
+<script src="analytics.js?v=5" defer></script>
 </body>
 </html>

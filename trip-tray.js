@@ -182,9 +182,12 @@
     pill.className = 'gl-tray-pill';
     pill.href = 'planner.html';
     pill.setAttribute('aria-live', 'polite');
-    pill.addEventListener('click', function () {
-      if (window.glTrack) glTrack('planner_open', { source_component: 'tray_pill', places: ids.length });
-    });
+    /*
+      אין כאן מדידה משלו. עד 4.10.2026 הגלולה שלחה planner_open בעצמה, וגם
+      ההאזנה הכללית ב-analytics.js ספרה אותה כקישור למתכנן, כלומר שתי פתיחות
+      ללחיצה אחת. מעכשיו analytics.js רק רושם שהלחיצה באה מהגלולה, והמתכנן
+      שולח את planner_open פעם אחת עם planner_entry=tray_pill ומספר המקומות.
+    */
     document.body.appendChild(pill);
   }
 

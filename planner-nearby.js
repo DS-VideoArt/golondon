@@ -88,6 +88,15 @@
 
   function track(name, params) {
     if (window.glTrack) glTrack(name, params || {});
+    /*
+      במצב הסביבי, בחירת מיקום או סינון היא פעולת התכנון הראשונה (planner-funnel.js).
+      רק בחירה של המשתמש נספרת: הקשה על המפה, מיקום נוכחי או כפתור מרכז האזור.
+      area_default הוא המרכוז האוטומטי בפתיחה, ו-api קריאה מתוכנתת.
+    */
+    var userPick = name === 'location_selected' && params && /^(tap|gps|zone_center)$/.test(params.method || '');
+    if ((userPick || name === 'filter_used') && window.GoLondonFunnel) {
+      window.GoLondonFunnel.start(userPick ? 'nearby_location' : 'nearby_filter', 'nearby');
+    }
   }
 
   /*
