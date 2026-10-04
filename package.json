@@ -1,0 +1,16 @@
+{
+  "name": "golondon-site-tools",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Local QA and Travel Pack prototype tooling only. The site has no build step: netlify.toml keeps publish = \".\" and no build command.",
+  "scripts": {
+    "qa:print": "node docs/qa/print-harness.js",
+    "qa:route-code": "node docs/qa/route-code-test.js",
+    "travel-pack:render": "node docs/qa/travel-pack-render.js"
+  },
+  "devDependencies": {
+    "@fontsource/heebo": "5.3.0",
+    "puppeteer-core": "25.12.0",
+    "qrcode-generator": "2.0.4"
+  }
+}
