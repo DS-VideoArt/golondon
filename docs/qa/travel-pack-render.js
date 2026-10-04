@@ -79,10 +79,13 @@ const words = s => String(s || '').split(/\s+/).flatMap(w => w.split(/['׳]/)).m
             pins: [...d.querySelectorAll('.tp-overlay .tp-pin-n')].map(t => ({ label: t.textContent, approx: t.getAttribute('fill') !== '#ffffff' })),
             orderPaths: d.querySelectorAll('.tp-overlay path.tp-order').length,
             legend: [...d.querySelectorAll('.tp-legend li')].map(l => l.textContent.trim()),
+            meta: (d.querySelector('.tp-day-meta') || {}).textContent || '',
             close: !!d.querySelector('.tp-close'),
             closeMm: d.querySelector('.tp-close') ? d.querySelector('.tp-close').getBoundingClientRect().height * 25.4 / 96 : 0
           })),
           coverRows: document.querySelectorAll('.tp-ov-row').length,
+          coverDetails: [...document.querySelectorAll('.tp-ov-row')].map(r => (r.querySelector('.tp-ov-details') || {}).textContent || ''),
+          bookAlert: !!document.querySelector('.tp-stat--alert'),
           bgStamp: !!document.querySelector('.tp-bg-stamp'),
           dashes: (document.body.innerText.match(/[–—]| - /g) || []).length,
           qrHrefs: [...document.querySelectorAll('.tp-qr, .tp-close-qr')].map(a => a.href)
@@ -136,6 +139,11 @@ print(json.dumps({'pages': d.page_count, 'size': [round(d[0].rect.width / 72 * 2
     d.legend.some(l => /מיקום משוער/.test(l) && /לא כתובת מדויקת/.test(l))), '');
   ok('no wording claims a walking path', !/מסלול ההליכה|מסלול הליכה של היום/.test(text), '');
   ok('prototype background marks itself as not a map', last.bgStamp, '');
+  /* a day with a paid or partly paid stop must never be summarised as all free (cover row and day page) */
+  const notFree = a => !a.free || /בתשלום/.test(a.priceBand || '');
+  ok('free summary never hides a paid or partly paid stop', last.days.every((d, i) => !expDays[i].some(notFree) || !/כולן בלי תשלום|^בלי תשלום/.test(d.meta)) &&
+    last.coverDetails.every((t, i) => !expDays[i].some(notFree) || !/בלי תשלום כניסה$/.test(t) || /בחינם/.test(t)), JSON.stringify(last.days.map(d => d.meta)));
+  ok('book-ahead zero is not highlighted', expDays.flat().some(a => a.bookAhead) === last.bookAlert, String(last.bookAlert));
   ok('closing block only on the last day, about 18 to 22 mm', last.days.map(d => d.close).join() === last.days.map((_, i) => i === last.days.length - 1).join() &&
     last.days[last.days.length - 1].closeMm >= 16 && last.days[last.days.length - 1].closeMm <= 24, last.days[last.days.length - 1].closeMm.toFixed(1) + ' mm');
   const minPages = 1 + expDays.length;

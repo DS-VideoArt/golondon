@@ -76,7 +76,7 @@ bdi { unicode-bidi: isolate; }
 .tp-stats div { border-top: .5mm solid rgba(255,255,255,.35); padding-top: 2.5mm; }
 .tp-stats dt { font-size: 8.5pt; font-weight: 700; color: rgba(255,255,255,.7); }
 .tp-stats dd { font-size: 26pt; font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums; }
-.tp-stats div:last-child dd { color: #fca5a5; }
+.tp-stats .tp-stat--alert dd { color: #fca5a5; }
 
 .tp-ov-head { margin-top: 9mm; font-size: 9pt; font-weight: 800; letter-spacing: .05em; color: var(--red); padding-bottom: 2mm; border-bottom: .5mm solid var(--ink); }
 .tp-ov { list-style: none; }
@@ -169,7 +169,7 @@ bdi { unicode-bidi: isolate; }
 .tp-fact { font-size: 8pt; border: 1px solid var(--line); border-radius: 1.2mm; padding: .2mm 1.6mm; color: var(--ink); }
 .tp-fact b { font-weight: 700; color: var(--muted); }
 .tp-fact--free { color: var(--green); border-color: #bfe3cb; }
-.tp-fact--paid { color: var(--amber); border-color: #f1d3a9; }
+.tp-fact--paid, .tp-fact--mixed { color: var(--amber); border-color: #f1d3a9; }
 .tp-fact--book { color: #fff; background: var(--ink); border-color: var(--ink); font-weight: 700; }
 .tp-fact--approx { color: var(--red-deep); border: 1px dashed var(--red); }
 .tp-tip { font-size: 8.5pt; line-height: 1.38; color: var(--ink-soft); margin-top: .8mm; }

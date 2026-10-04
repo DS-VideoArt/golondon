@@ -88,3 +88,18 @@ Page count, measured with `docs/qa/travel-pack-render.js`: 1 day = 2 pages, 3 da
 redirect `/t/*` tags every visit as utm_source=whatsapp, so scans from the pack would be counted as
 WhatsApp. Before any production use the pack needs its own source (separate redirect rule or tag).
 Production redirects were not changed.
+
+## Content polish (4 Oct 2026)
+
+- **Free / paid rule (`payState` in travel-pack.js).** Each stop is classified from what it displays:
+  `paid` when `free` is false; `mixed` when `free` is true but the price text says part is paid
+  ("בתשלום", 6 places, e.g. Buckingham Palace, Tower Bridge); otherwise `free`. `partlyPaid` is not used:
+  it also marks free-entry museums with paid exhibitions, whose price text is "כניסה חינם".
+  Summaries: all free "כולן בלי תשלום כניסה"; all paid "כולן בתשלום"; otherwise counts, e.g.
+  "5 בחינם · 1 בתשלום חלקי" or "4 בחינם · 1 בתשלום · 1 בתשלום חלקי". A partly paid stop never lets a
+  day look free. Price chips of partly paid stops use the paid (amber) style.
+- **1-day cover subtitle:** "יום אחד · 6 עצירות · מסלול מסודר לפי אזור". Multi-day keeps "כל יום מסודר לפי אזור".
+- **Book-ahead zero state:** the count is shown in the same neutral white as the other stats; red only when > 0.
+
+Note for later, outside the prototype: the live Planner (planner.html) summarises days with the same single
+`free` boolean ("כולן אפשריות בלי תשלום כניסה"), so it has the same issue on the website.

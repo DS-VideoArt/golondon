@@ -69,12 +69,34 @@
   function domainOf(u) { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } }
   function isUrl(u) { return /^https?:\/\//.test(String(u || '')); }
   function shortLink(u) { return u.replace(/^https:\/\//, ''); }
-  /* כמה מהעצירות בלי תשלום כניסה, בניסוח שעובד גם לעצירה אחת וגם לאפס */
+  /*
+    מצב התשלום של עצירה, לפי מה שהעצירה עצמה מציגה. בנתונים free=true מסמן שאפשר לבקר
+    בלי לשלם, אבל אצל שישה מקומות טקסט המחיר אומר במפורש שחלק בתשלום, למשל בקינגהאם
+    ("החילופים חינם, הארמון בתשלום") או גשר המגדלים. מקום כזה הוא "בתשלום חלקי", ולעולם
+    לא נספר כחינם בסיכום. partlyPaid בנתונים לא משמש כאן, כי הוא מסמן גם מקומות שהכניסה
+    אליהם חינם ורק תערוכות בתשלום (המוזיאון הבריטי, טייט מודרן), ושם הטקסט "כניסה חינם".
+      free   free=true, וטקסט המחיר לא מזכיר תשלום
+      mixed  free=true, וטקסט המחיר אומר שחלק בתשלום
+      paid   free=false
+  */
+  function payState(it) {
+    if (!it.free) return 'paid';
+    return /בתשלום/.test(it.priceBand || '') ? 'mixed' : 'free';
+  }
+
+  /* סיכום התשלום של קבוצת עצירות. מסלול נראה חינמי רק אם כל עצירה בו חינם בלי סייג */
   function freeText(items) {
-    var free = items.filter(function (it) { return it.free; }).length;
-    if (free === items.length) return items.length === 1 ? 'בלי תשלום כניסה' : 'כולן בלי תשלום כניסה';
-    if (!free) return items.length === 1 ? 'כניסה בתשלום' : 'כולן בתשלום';
-    return free + ' מתוך ' + items.length + ' בלי תשלום כניסה';
+    var n = { free: 0, mixed: 0, paid: 0 };
+    items.forEach(function (it) { n[payState(it)]++; });
+    var one = items.length === 1;
+    if (n.free === items.length) return one ? 'בלי תשלום כניסה' : 'כולן בלי תשלום כניסה';
+    if (n.paid === items.length) return one ? 'כניסה בתשלום' : 'כולן בתשלום';
+    if (n.mixed === items.length) return one ? 'בתשלום חלקי' : 'כולן בתשלום חלקי';
+    var parts = [];
+    if (n.free) parts.push(n.free + ' בחינם');
+    if (n.paid) parts.push(n.paid + ' בתשלום');
+    if (n.mixed) parts.push(n.mixed + ' בתשלום חלקי');
+    return parts.join(' · ');
   }
   function sum(arr, f) { return arr.reduce(function (n, x) { return n + f(x); }, 0); }
 
@@ -175,12 +197,15 @@
         '<div class="tp-hero">' +
           '<p class="tp-hero-kicker">חוברת טיול אישית</p>' +
           '<h1>הטיול שלי בלונדון</h1>' +
-          '<p class="tp-hero-sub">' + daysWord(days.length) + ', ' + stopsWord(stops) + ', כל יום מסודר לפי אזור</p>' +
+          '<p class="tp-hero-sub">' + (days.length === 1
+            ? 'יום אחד · ' + stopsWord(stops) + ' · מסלול מסודר לפי אזור'
+            : daysWord(days.length) + ', ' + stopsWord(stops) + ', כל יום מסודר לפי אזור') + '</p>' +
           '<dl class="tp-stats">' +
             '<div><dt>ימים</dt><dd>' + days.length + '</dd></div>' +
             '<div><dt>עצירות</dt><dd>' + stops + '</dd></div>' +
             '<div><dt>אזורים</dt><dd>' + Object.keys(areaKeys).length + '</dd></div>' +
-            '<div><dt>להזמין מראש</dt><dd>' + bookList.length + '</dd></div>' +
+            /* ספירה של אפס היא חדשות טובות, ולכן היא לא מודגשת באדום */
+            '<div' + (bookList.length ? ' class="tp-stat--alert"' : '') + '><dt>להזמין מראש</dt><dd>' + bookList.length + '</dd></div>' +
           '</dl>' +
         '</div>' +
         '<h2 class="tp-ov-head">המסלול בקצרה</h2>' +
@@ -224,7 +249,7 @@
       var facts = [
         '<span class="tp-fact"><b>תחנה</b> <bdi dir="ltr">' + esc(it.tube) + '</bdi></span>',
         '<span class="tp-fact"><b>זמן</b> ' + esc(hoursText(it.hours)) + '</span>',
-        '<span class="tp-fact ' + (it.free ? 'tp-fact--free' : 'tp-fact--paid') + '">' + esc(it.priceBand || (it.free ? 'כניסה חינם' : 'בתשלום')) + '</span>'
+        '<span class="tp-fact tp-fact--' + payState(it) + '">' + esc(it.priceBand || (it.free ? 'כניסה חינם' : 'בתשלום')) + '</span>'
       ];
       if (it.bookAhead) facts.push('<span class="tp-fact tp-fact--book">להזמין מראש</span>');
       if (approx) facts.push('<span class="tp-fact tp-fact--approx">מיקום משוער</span>');
