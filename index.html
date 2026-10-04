@@ -504,46 +504,93 @@
     נדרס בכל בנייה.
   -->
   <!-- WHATS-NEW:START -->
-  <section class="whats-new" id="whats-new">
+  <section class="whats-new" id="whats-new" data-wn-mode="hidden_fallback" hidden>
+    <style>
+    #whats-new[hidden] { display: none !important; }
+    @media (max-width: 560px) {
+      #whats-new .wnc-grid { gap: 12px; }
+      #whats-new .wnc { flex-direction: row; align-items: stretch; border-radius: 16px; }
+      #whats-new .wnc-img { flex: 0 0 96px; width: 96px; height: auto; min-height: 100%; }
+      #whats-new .wnc-body { padding: 12px 14px; gap: 5px; }
+      #whats-new .wnc-title { font-size: 15px; }
+      #whats-new .wnc-sum { font-size: 13px; line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+      #whats-new .wnc-go { font-size: 13px; padding-top: 2px; }
+    }
+  </style>
     <div class="container">
       <div class="section-header">
         <h2>מה חדש בלונדון עכשיו</h2>
         <p>אטרקציות שנפתחות, אירועים שמתקרבים ושינויים שכדאי להכיר לפני שטסים</p>
       </div>
-      <div class="wnc-grid">
-          <a href="guide-attractions-va-east.html" class="wnc"
-             data-wn-title="מוזיאון חדש לגמרי נפתח במזרח לונדון, והכניסה חינם"
-             data-wn-type="אטרקציות"
-             data-wn-pubdate="2026-08-17">
-            <span class="wnc-img" style="background-image:url('images/whats-new/va-east-museum.jpg');background-image:image-set(url('images/whats-new/va-east-museum.webp') type('image/webp'), url('images/whats-new/va-east-museum.jpg') type('image/jpeg'))"></span>
-            <span class="wnc-body">
-              <span class="wnc-meta">
-                <span class="wnc-cat"><i class="fas fa-ticket"></i> אטרקציות</span>
-                <time datetime="2026-08-17" data-wn-date="2026-08-17">17 באוגוסט 2026</time>
-              </span>
-              <span class="wnc-title">מוזיאון חדש לגמרי נפתח במזרח לונדון, והכניסה חינם</span>
-              <span class="wnc-sum">ב 18 באפריל 2026 נפתח בסטרטפורד מוזיאון חדש ממשפחת ויקטוריה ואלברט. הכניסה חינם, והוא פתוח בכל יום עד שש בערב ובימי חמישי ושבת עד עשר בלילה.</span>
-              <span class="wnc-go">לפרטים <i class="fas fa-arrow-left"></i></span>
-            </span>
-          </a>
-          <a href="whats-new-2026-08-17.html#premier-league-opens" class="wnc"
-             data-wn-title="עונת הפרמייר ליג 2026/27 נפתחה ב 21 באוגוסט"
-             data-wn-type="כדורגל"
-             data-wn-pubdate="2026-08-17">
-            <span class="wnc-img" style="background-image:url('images/football-matchday.jpg');background-image:image-set(url('images/football-matchday.webp') type('image/webp'), url('images/football-matchday.jpg') type('image/jpeg'))"></span>
-            <span class="wnc-body">
-              <span class="wnc-meta">
-                <span class="wnc-cat"><i class="fas fa-futbol"></i> כדורגל</span>
-                <time datetime="2026-08-17" data-wn-date="2026-08-17">17 באוגוסט 2026</time>
-              </span>
-              <span class="wnc-title">עונת הפרמייר ליג 2026/27 נפתחה ב 21 באוגוסט</span>
-              <span class="wnc-sum">עונת 2026/27 יצאה לדרך ביום שישי, 21 באוגוסט 2026. לישראלים שרוצים לשלב משחק בטיול, זה הזמן לבדוק את לוח המשחקים ואת ערוצי המכירה הרשמיים של הקבוצות.</span>
-              <span class="wnc-go">לפרטים <i class="fas fa-arrow-left"></i></span>
-            </span>
-          </a>
-      </div>
+      <div class="wnc-grid" data-wn-grid></div>
       <a href="whats-new.html" class="wnc-all">לכל העדכונים <i class="fas fa-arrow-left"></i></a>
     </div>
+    <template id="wn-items">
+          <a href="guide-winter-lights.html" class="wnc"
+             data-wn-title="הדלקת תאורת החג: קרנבי, מרילבון וקובנט גארדן"
+             data-wn-type="אירועים"
+             data-wn-pubdate="2026-10-04"
+             data-wn-kind="upcoming_event" data-wn-from="2026-09-05" data-wn-expires="2026-11-13" data-wn-sort="2026-11-04|2026-11-12|2026-10-04-christmas-lights-switch-on">
+            <span class="wnc-img" style="background-image:url('images/winter-lights.jpg');background-image:image-set(url('images/winter-lights.webp') type('image/webp'), url('images/winter-lights.jpg') type('image/jpeg'))"></span>
+            <span class="wnc-body">
+              <span class="wnc-meta">
+                <span class="wnc-cat"><i class="fas fa-calendar-check"></i> אירועים</span>
+                <time datetime="2026-11-04" data-wn-event-start="2026-11-04" data-wn-event-end="2026-11-12">4 עד 12 בנובמבר 2026</time>
+              </span>
+              <span class="wnc-title">הדלקת תאורת החג: קרנבי, מרילבון וקובנט גארדן</span>
+              <span class="wnc-sum">קרנבי סטריט נדלקת ב-4 בנובמבר, מרילבון ב-11 וקובנט גארדן ב-12. המועד באוקספורד סטריט וברג׳נט סטריט מתפרסם באוקטובר.</span>
+              <span class="wnc-go">למסלול תאורת החג <i class="fas fa-arrow-left"></i></span>
+            </span>
+          </a>
+          <a href="guide-events-bonfire.html" class="wnc"
+             data-wn-title="ליל המדורות ב-5 בנובמבר: זיקוקים ומדורות בכל העיר"
+             data-wn-type="אירועים"
+             data-wn-pubdate="2026-10-04"
+             data-wn-kind="upcoming_event" data-wn-from="2026-09-06" data-wn-expires="2026-11-06" data-wn-sort="2026-11-05|2026-11-05|2026-10-04-bonfire-night-2026">
+            <span class="wnc-img" style="background-image:url('images/events-bonfire.jpg');background-image:image-set(url('images/events-bonfire.webp') type('image/webp'), url('images/events-bonfire.jpg') type('image/jpeg'))"></span>
+            <span class="wnc-body">
+              <span class="wnc-meta">
+                <span class="wnc-cat"><i class="fas fa-calendar-check"></i> אירועים</span>
+                <time datetime="2026-11-05" data-wn-event-start="2026-11-05" data-wn-event-end="2026-11-05">5 בנובמבר 2026</time>
+              </span>
+              <span class="wnc-title">ליל המדורות ב-5 בנובמבר: זיקוקים ומדורות בכל העיר</span>
+              <span class="wnc-sum">בחמישה בנובמבר מדליקים מדורות ומשגרים זיקוקים בכל לונדון. הרבה אירועים מתקיימים בסוף השבוע הקרוב לתאריך, והגדולים מוכרים כרטיסים מראש.</span>
+              <span class="wnc-go">למדריך ליל המדורות <i class="fas fa-arrow-left"></i></span>
+            </span>
+          </a>
+          <a href="guide-winter-christmas.html" class="wnc"
+             data-wn-title="כריסמס בקיו: מסלול האורות נפתח ב-13 בנובמבר"
+             data-wn-type="אירועים"
+             data-wn-pubdate="2026-10-04"
+             data-wn-kind="upcoming_event" data-wn-from="2026-09-14" data-wn-expires="2027-01-04" data-wn-sort="2026-11-13|2027-01-03|2026-10-04-christmas-at-kew-2026">
+            <span class="wnc-img" style="background-image:url('images/posts/kew-palm-house-hero.jpg');background-image:image-set(url('images/posts/kew-palm-house-hero.webp') type('image/webp'), url('images/posts/kew-palm-house-hero.jpg') type('image/jpeg'))"></span>
+            <span class="wnc-body">
+              <span class="wnc-meta">
+                <span class="wnc-cat"><i class="fas fa-calendar-check"></i> אירועים</span>
+                <time datetime="2026-11-13" data-wn-event-start="2026-11-13" data-wn-event-end="2027-01-03">13 בנובמבר 2026 עד 3 בינואר 2027</time>
+              </span>
+              <span class="wnc-title">כריסמס בקיו: מסלול האורות נפתח ב-13 בנובמבר</span>
+              <span class="wnc-sum">מסלול האורות בגני קיו פועל מ-13 בנובמבר 2026 עד 3 בינואר 2027, וסגור ב-25 בדצמבר ובכמה ערבים בנובמבר. הערבים הפופולריים נמכרים עד הסוף, אז מזמינים מראש.</span>
+              <span class="wnc-go">למדריך כריסמס בלונדון <i class="fas fa-arrow-left"></i></span>
+            </span>
+          </a>
+          <a href="guide-winter-markets.html" class="wnc"
+             data-wn-title="ויינטר וונדרלנד בהייד פארק נפתח ב-19 בנובמבר"
+             data-wn-type="אירועים"
+             data-wn-pubdate="2026-10-04"
+             data-wn-kind="upcoming_event" data-wn-from="2026-09-20" data-wn-expires="2027-01-04" data-wn-sort="2026-11-19|2027-01-03|2026-10-04-winter-wonderland-2026">
+            <span class="wnc-img" style="background-image:url('images/winter-markets.jpg');background-image:image-set(url('images/winter-markets.webp') type('image/webp'), url('images/winter-markets.jpg') type('image/jpeg'))"></span>
+            <span class="wnc-body">
+              <span class="wnc-meta">
+                <span class="wnc-cat"><i class="fas fa-calendar-check"></i> אירועים</span>
+                <time datetime="2026-11-19" data-wn-event-start="2026-11-19" data-wn-event-end="2027-01-03">19 בנובמבר 2026 עד 3 בינואר 2027</time>
+              </span>
+              <span class="wnc-title">ויינטר וונדרלנד בהייד פארק נפתח ב-19 בנובמבר</span>
+              <span class="wnc-sum">פתוח מ-19 בנובמבר 2026 עד 3 בינואר 2027, וסגור ביום הכריסמס. חובה להזמין מראש כרטיס כניסה עם חלון זמן, גם למי שרק רוצה להסתובב.</span>
+              <span class="wnc-go">למדריך שוקי החורף <i class="fas fa-arrow-left"></i></span>
+            </span>
+          </a>
+    </template>
   </section>
   <!-- WHATS-NEW:END -->
 
@@ -805,7 +852,7 @@
   </script>
 <script src="accessibility-widget.js?v=2" defer></script>
 <script src="install-prompt.js" defer></script>
-<script src="whats-new.js?v=1" defer></script>
+<script src="whats-new.js?v=2" defer></script>
 
 <form name="golondon-suggestions" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
   <input type="hidden" name="form-name" value="golondon-suggestions" />

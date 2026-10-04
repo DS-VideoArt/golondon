@@ -3,15 +3,34 @@
 בונה את כל מה שקשור ל"מה חדש בלונדון עכשיו".
 
 מקור האמת היחיד הוא whats-new.json. מהקובץ הזה נבנים:
-  1. עמוד יומי אחד לכל תאריך, whats-new-YYYY-MM-DD.html, עם כל האייטמים של אותו יום
-  2. עמוד הארכיון whats-new.html, כל האייטמים מהחדש לישן
-  3. מקטע ארבעת האייטמים האחרונים בדף הבית, בין סימני ההתחלה והסיום
+  1. עמוד הארכיון whats-new.html, כל האייטמים מהחדש לישן, כולל אלה שפג תוקפם
+  2. העמודים היומיים שכבר קיימים, whats-new-YYYY-MM-DD.html. לא נוצרים עמודים יומיים
+     חדשים: כל כרטיס מוביל ישירות למדריך באתר (primary_guide_url), ועמוד יומי היה דק
+  3. המקטע בדף הבית, בין סימני ההתחלה והסיום
   4. שורות במפת האתר
 
+כללי הטריות (אותם כללים בדיוק ב-whats-new.js, שמריץ אותם שוב בדפדפן):
+  news             מוצג בדף הבית 30 יום מתאריך הפרסום, ואחר כך רק בארכיון
+  upcoming_event   מוצג בדף הבית רק כש-event_start בתוך 60 יום, ועד event_end כולל
+  expires          אופציונלי, עוקף את ברירת המחדל. היום הראשון שבו האייטם כבר לא מוצג
+  דף הבית          עד 4 אייטמים תקפים: קודם אירועים לפי הקרוב ביותר, אחר כך חדשות מהחדשה לישנה
+  אין אייטם תקף    המקטע מוסתר כולו (display_mode=hidden_fallback). מקטע החודשים שמעליו
+                   בדף הבית הוא ממשק התכנון החודשי הקנוני, ולכן לא מוצג כאן זוג חודשים נוסף
+
+ה-HTML הסטטי של המקטע מוסתר, והכרטיסים יושבים בתוך template. הסקריפט בוחר מהם לפי תאריך
+הגולש ומציג את המקטע רק אם יש לפחות כרטיס תקף אחד. כך קורא בלי סקריפט, מנוע חיפוש בלי
+רינדור או מטמון, לעולם לא רואים כרטיס שפג תוקפו, גם אם לא בנו מחדש.
+
 אין לערוך אף אחד מהקבצים האלה ביד. עורכים את whats-new.json ומריצים:
-    python3 build_whats_new.py
+    python3 build_whats_new.py                     בונה לפי התאריך של היום
+    python3 build_whats_new.py --report 2026-11-30 רק מדפיס מה יוצג בתאריך הזה, בלי לכתוב
+
+נקודת החיבור לזרימת עבודה עתידית (לא קיימת עדיין, ולא תפעל בלי אישור אדם): משימה
+שאוספת מועמדים מאומתים, מריצה whats_new_dedup.check, וכותבת טיוטות לקובץ נפרד שאינו נבנה.
+רק אחרי אישור הטיוטה עוברת ל-whats-new.json, ואז build, commit ו-deploy. התפוגה עצמה
+אינה צריכה שום משימה, היא חלק מהכללים כאן.
 """
-import json, os, re, html, collections, datetime
+import json, os, re, html, collections, datetime, sys
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -21,6 +40,11 @@ ARCHIVE = 'whats-new.html'
 HOME = 'index.html'
 SITEMAP = 'sitemap.xml'
 HOME_CARDS = 4
+NEWS_DAYS = 30            # news מוצג בדף הבית 30 יום מתאריך הפרסום
+EVENT_WINDOW_DAYS = 60    # upcoming_event מוצג רק כשהוא מתחיל בתוך 60 יום
+TEMPLATE_MAX = 12         # כמה כרטיסים לא פגי תוקף נשמרים ב-template לטובת הבדיקה בדפדפן
+ITEM_TYPES = ('news', 'upcoming_event')
+GENERIC_LABELS = ('לפרטים', 'לכתבה', 'קראו עוד', 'עוד')
 
 HE_MONTHS = ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני',
              'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר']
@@ -42,6 +66,61 @@ def canon(page):
 def he_date(iso):
     y, m, d = (int(x) for x in iso.split('-'))
     return '%d ב%s %d' % (d, HE_MONTHS[m - 1], y)
+
+
+def to_date(iso):
+    return datetime.date.fromisoformat(iso)
+
+
+def window(it):
+    """
+    החלון שבו האייטם מוצג בדף הבית: (מאיזה יום, היום הראשון שבו כבר לא).
+    התחלה כוללת, סוף לא כולל. אותה חישוביות בדיוק נכתבת לכרטיס כ-data-wn-from
+    ו-data-wn-expires, ו-whats-new.js רק משווה אליהן את תאריך הגולש.
+    """
+    if it['item_type'] == 'upcoming_event':
+        show_from = to_date(it['event_start']) - datetime.timedelta(days=EVENT_WINDOW_DAYS)
+        expires = to_date(it['event_end']) + datetime.timedelta(days=1)
+    else:
+        show_from = to_date(it['date'])
+        expires = to_date(it['date']) + datetime.timedelta(days=NEWS_DAYS)
+    if it.get('expires'):
+        expires = to_date(it['expires'])
+    return show_from, expires
+
+
+def is_valid(it, today):
+    show_from, expires = window(it)
+    return show_from <= today < expires
+
+
+def is_past(it, today):
+    return today >= window(it)[1]
+
+
+def home_order(items):
+    """אירועים קודם, לפי מועד ההתחלה הקרוב ביותר. אחריהם חדשות, מהחדשה לישנה."""
+    events = sorted((i for i in items if i['item_type'] == 'upcoming_event'),
+                    key=lambda i: (i['event_start'], i['event_end'], i['id']))
+    news = sorted((i for i in items if i['item_type'] == 'news'),
+                  key=lambda i: (i['date'], i['id']), reverse=True)
+    return events + news
+
+
+def home_selection(items, today):
+    return home_order([i for i in items if is_valid(i, today)])[:HOME_CARDS]
+
+
+def event_label(it):
+    """התאריך שמוצג בכרטיס של אירוע: מועד האירוע, לא מועד הפרסום."""
+    a, b = to_date(it['event_start']), to_date(it['event_end'])
+    if a == b:
+        return '%d ב%s %d' % (a.day, HE_MONTHS[a.month - 1], a.year)
+    if a.year == b.year and a.month == b.month:
+        return '%d עד %d ב%s %d' % (a.day, b.day, HE_MONTHS[a.month - 1], a.year)
+    if a.year == b.year:
+        return '%d ב%s עד %d ב%s %d' % (a.day, HE_MONTHS[a.month - 1], b.day, HE_MONTHS[b.month - 1], b.year)
+    return '%s עד %s' % (he_date(it['event_start']), he_date(it['event_end']))
 
 
 def head(title, desc, canonical, image, extra_ld=''):
@@ -125,6 +204,8 @@ def head(title, desc, canonical, image, extra_ld=''):
       .navbar {{ padding: 0 14px; }}
       .back-btn {{ font-size: 12.5px; padding: 7px 12px; white-space: nowrap; }}
     }}
+    .wn-when {{ display: inline-flex; align-items: center; gap: 5px; font-weight: 800; }}
+    .wn-past {{ display: inline-block; padding: 2px 9px; border-radius: 50px; font-size: 11.5px; font-weight: 800; background: rgba(100,116,139,0.14); color: #475569; }}
   </style>
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#DC2626" />
@@ -157,7 +238,7 @@ FOOT = '''</main>
 <script src="kosher-places-modal.js?v=4" defer></script>
 <script src="auto-link-places.js?v=4" defer></script>
 <script src="analytics.js?v=5" defer></script>
-<script src="whats-new.js?v=1" defer></script>
+<script src="whats-new.js?v=2" defer></script>
 </body>
 </html>
 '''
@@ -190,20 +271,29 @@ def item_html(it, show_day_link=True):
         full = ('<a class="wn-full" href="%s"><i class="fas fa-book-open"></i> לכתבה המלאה</a>'
                 % html.escape(it['standalone']))
 
-    daylink = ''
-    if show_day_link:
-        daylink = ('<a href="%s#%s"><i class="far fa-clock"></i></a>'
-                   % (day_file(it['date']), html.escape(it['anchor'])))
+    show_from, expires = window(it)
+    when = ''
+    past = ''
+    if it['item_type'] == 'upcoming_event':
+        when = ('<span class="wn-when"><i class="far fa-calendar"></i> %s</span>' % event_label(it))
+        if is_past(it, BUILD_DAY):
+            past = '<span class="wn-past">האירוע הסתיים</span>'
+    guide = ''
+    if it.get('primary_guide_url'):
+        guide = ('<a class="wn-full" href="%s"><i class="fas fa-book-open"></i> %s</a>'
+                 % (html.escape(it['primary_guide_url']), html.escape(it['primary_guide_label'])))
 
-    return f'''<article class="wn-item" id="{html.escape(it['anchor'])}">
+    return f'''<article class="wn-item" id="{html.escape(it['anchor'])}" data-wn-kind="{it['item_type']}" data-wn-expires="{expires.isoformat()}">
 {img}
 <div class="wn-item-in">
   <div class="wn-meta">
     <span class="wn-cat"><i class="fas {icon}"></i> {html.escape(cat)}</span>
     <time datetime="{it['date']}" data-wn-date="{it['date']}">{he_date(it['date'])}</time>
+    {when}{past}
   </div>
   <h2>{html.escape(it['title'])}</h2>
   {it['body']}
+  {guide if guide and (not it.get('standalone') or it['standalone'] != it.get('primary_guide_url')) else ''}
   {full}
   {src}
   {more}
@@ -304,11 +394,69 @@ def build_archive(by_day):
     print('  ארכיון: %s, %d אייטמים' % (ARCHIVE, total))
 
 
+def home_card(it):
+    """כרטיס אחד בדף הבית. מוביל ישירות למדריך, וכפתור עם יעד ספציפי."""
+    target = it['primary_guide_url']
+    icon = CAT_ICON.get(it['category'], 'fa-circle-info')
+    show_from, expires = window(it)
+    img = ''
+    if it.get('image'):
+        # נפילה לאחור ואז image-set, כמו בשאר האתר. אם אין גרסת webp לתמונה, מוגשת רק המקורית.
+        jpg = it['image']
+        webp = jpg.rsplit('.', 1)[0] + '.webp'
+        css = "background-image:url('%s')" % html.escape(jpg)
+        if os.path.exists(webp):
+            css += ";background-image:image-set(url('%s') type('image/webp'), url('%s') type('image/jpeg'))" % (
+                html.escape(webp), html.escape(jpg))
+        img = '<span class="wnc-img" style="%s"></span>' % css
+    # מפתח מיון זהה לזה של home_order, כדי שהדפדפן ימיין בדיוק כמו הבונה גם כשיש תיקו
+    if it['item_type'] == 'upcoming_event':
+        sort = '%s|%s|%s' % (it['event_start'], it['event_end'], it['id'])
+        when = ('<time datetime="%s" data-wn-event-start="%s" data-wn-event-end="%s">%s</time>'
+                % (it['event_start'], it['event_start'], it['event_end'], event_label(it)))
+    else:
+        sort = '%s|%s' % (it['date'], it['id'])
+        when = '<time datetime="%s" data-wn-date="%s">%s</time>' % (it['date'], it['date'], he_date(it['date']))
+    return f'''
+          <a href="{html.escape(target)}" class="wnc"
+             data-wn-title="{html.escape(it['title'])}"
+             data-wn-type="{html.escape(it['category'])}"
+             data-wn-pubdate="{it['date']}"
+             data-wn-kind="{it['item_type']}" data-wn-from="{show_from.isoformat()}" data-wn-expires="{expires.isoformat()}" data-wn-sort="{sort}">
+            {img}
+            <span class="wnc-body">
+              <span class="wnc-meta">
+                <span class="wnc-cat"><i class="fas {icon}"></i> {html.escape(it['category'])}</span>
+                {when}
+              </span>
+              <span class="wnc-title">{html.escape(it['title'])}</span>
+              <span class="wnc-sum">{html.escape(it['summary'])}</span>
+              <span class="wnc-go">{html.escape(it['primary_guide_label'])} <i class="fas fa-arrow-left"></i></span>
+            </span>
+          </a>'''
+
+
+# תוספת עיצוב מקומית למקטע, באותם טוקנים. לא נוגעים ב-theme-light.css המשותף.
+# במובייל הכרטיס הופך לשורה עם תמונה קטנה, כדי שארבעה כרטיסים לא ימתחו את דף הבית.
+HOME_STYLE = '''<style>
+    #whats-new[hidden] { display: none !important; }
+    @media (max-width: 560px) {
+      #whats-new .wnc-grid { gap: 12px; }
+      #whats-new .wnc { flex-direction: row; align-items: stretch; border-radius: 16px; }
+      #whats-new .wnc-img { flex: 0 0 96px; width: 96px; height: auto; min-height: 100%; }
+      #whats-new .wnc-body { padding: 12px 14px; gap: 5px; }
+      #whats-new .wnc-title { font-size: 15px; }
+      #whats-new .wnc-sum { font-size: 13px; line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+      #whats-new .wnc-go { font-size: 13px; padding-top: 2px; }
+    }
+  </style>'''
+
+
 def build_home(items):
     """
-    מזריק את ארבעת האייטמים האחרונים לדף הבית, בין שני הסימנים.
-    ה-HTML נכתב סטטי כדי שגוגל יראה אותו, וסקריפט זעיר הופך את התאריך
-    ל"היום" או "אתמול" בצד הגולש, כך שהתווית תמיד נכונה גם אם הבנייה דילגה על יום.
+    המקטע בדף הבית. ב-HTML הסטטי הוא מוסתר. כל האייטמים שעוד לא פג תוקפם נכתבים לתוך
+    template, ו-whats-new.js בוחר מהם לפי אותם כללים בדיוק ולפי תאריך הגולש: עד ארבעה
+    תקפים, ומציג את המקטע רק אם יש לפחות אחד. אם אין, המקטע נשאר מוסתר.
     """
     s = open(HOME, encoding='utf-8').read()
     start, end = '<!-- WHATS-NEW:START -->', '<!-- WHATS-NEW:END -->'
@@ -316,55 +464,29 @@ def build_home(items):
         problems.append('לא נמצאו סימני המקטע בדף הבית. המקטע לא עודכן.')
         return
 
-    cards = ''
-    for it in items[:HOME_CARDS]:
-        target = it['standalone'] or ('%s#%s' % (day_file(it['date']), it['anchor']))
-        icon = CAT_ICON.get(it['category'], 'fa-circle-info')
-        img = ''
-        if it.get('image'):
-            # נפילה לאחור ואז image-set, כמו בשאר האתר. אם אין גרסת webp
-            # לתמונה הזאת, מוגשת רק המקורית.
-            jpg = it['image']
-            webp = jpg.rsplit('.', 1)[0] + '.webp'
-            css = "background-image:url('%s')" % html.escape(jpg)
-            if os.path.exists(webp):
-                css += ";background-image:image-set(url('%s') type('image/webp'), url('%s') type('image/jpeg'))" % (
-                    html.escape(webp), html.escape(jpg))
-            img = '<span class="wnc-img" style="%s"></span>' % css
-        cards += f'''
-          <a href="{html.escape(target)}" class="wnc"
-             data-wn-title="{html.escape(it['title'])}"
-             data-wn-type="{html.escape(it['category'])}"
-             data-wn-pubdate="{it['date']}">
-            {img}
-            <span class="wnc-body">
-              <span class="wnc-meta">
-                <span class="wnc-cat"><i class="fas {icon}"></i> {html.escape(it['category'])}</span>
-                <time datetime="{it['date']}" data-wn-date="{it['date']}">{he_date(it['date'])}</time>
-              </span>
-              <span class="wnc-title">{html.escape(it['title'])}</span>
-              <span class="wnc-sum">{html.escape(it['summary'])}</span>
-              <span class="wnc-go">לפרטים <i class="fas fa-arrow-left"></i></span>
-            </span>
-          </a>'''
+    pending = home_order([i for i in items if not is_past(i, BUILD_DAY)])[:TEMPLATE_MAX]
+    cards = ''.join(home_card(it) for it in pending)
 
     block = f'''{start}
-  <section class="whats-new" id="whats-new">
+  <section class="whats-new" id="whats-new" data-wn-mode="hidden_fallback" hidden>
+    {HOME_STYLE}
     <div class="container">
       <div class="section-header">
         <h2>מה חדש בלונדון עכשיו</h2>
         <p>אטרקציות שנפתחות, אירועים שמתקרבים ושינויים שכדאי להכיר לפני שטסים</p>
       </div>
-      <div class="wnc-grid">{cards}
-      </div>
+      <div class="wnc-grid" data-wn-grid></div>
       <a href="{ARCHIVE}" class="wnc-all">לכל העדכונים <i class="fas fa-arrow-left"></i></a>
     </div>
+    <template id="wn-items">{cards}
+    </template>
   </section>
   {end}'''
 
     s = re.sub(re.escape(start) + r'.*?' + re.escape(end), lambda m: block, s, flags=re.S)
     open(HOME, 'w', encoding='utf-8').write(s)
-    print('  דף הבית: %d כרטיסים' % min(HOME_CARDS, len(items)))
+    print('  דף הבית: %d כרטיסים ב-template, מוצגים היום: %d'
+          % (len(pending), len(home_selection(items, BUILD_DAY))))
 
 
 def update_sitemap(pages):
@@ -409,12 +531,58 @@ def validate(items):
             problems.append('%s: הוגדר עמוד עצמאי שלא קיים, %s' % (it['id'], it['standalone']))
         if re.search(r'[֐-׿][^<>]{0,30}[–—]', it['body']):
             problems.append('%s: מקף ארוך בטקסט עברי' % it['id'])
+        if it.get('item_type') not in ITEM_TYPES:
+            problems.append('%s: item_type חייב להיות news או upcoming_event' % it['id'])
+            continue
+        if it['item_type'] == 'upcoming_event':
+            try:
+                if to_date(it['event_end']) < to_date(it['event_start']):
+                    problems.append('%s: event_end לפני event_start' % it['id'])
+            except (KeyError, TypeError, ValueError):
+                problems.append('%s: לאירוע חייבים event_start ו-event_end בפורמט YYYY-MM-DD' % it['id'])
+        if it.get('expires'):
+            try:
+                to_date(it['expires'])
+            except ValueError:
+                problems.append('%s: expires לא בפורמט YYYY-MM-DD' % it['id'])
+        if not it.get('primary_guide_url') or not os.path.exists(it['primary_guide_url'].split('#')[0]):
+            problems.append('%s: חסר primary_guide_url, או שהמדריך לא קיים: %s' % (it['id'], it.get('primary_guide_url')))
+        label = (it.get('primary_guide_label') or '').strip()
+        if not label or label in GENERIC_LABELS:
+            problems.append('%s: primary_guide_label חסר או כללי מדי ("%s")' % (it['id'], label))
+        for f in ('title', 'summary', 'primary_guide_label'):
+            if re.search(r'[–—]', it.get(f) or ''):
+                problems.append('%s: מקף ארוך ב-%s' % (it['id'], f))
 
 
-def main():
+BUILD_DAY = datetime.date.today()
+
+
+def load_items():
     d = json.load(open(DATA, encoding='utf-8'))
     items = d['items']
     items.sort(key=lambda i: (i['date'], i['id']), reverse=True)
+    return items
+
+
+def report(items, day):
+    """מה יוצג בדף הבית בתאריך נתון, לפי אותם כללים. לא כותב שום קובץ."""
+    sel = home_selection(items, day)
+    print('%s: %s' % (day.isoformat(), 'מוסתר, אין אייטם תקף' if not sel else '%d כרטיסים' % len(sel)))
+    for it in sel:
+        print('   %-15s %-42s %s' % (it['item_type'], it['id'], event_label(it) if it['item_type'] == 'upcoming_event' else it['date']))
+    return sel
+
+
+def main():
+    global BUILD_DAY
+    items = load_items()
+    if '--report' in sys.argv:
+        for arg in sys.argv[sys.argv.index('--report') + 1:]:
+            report(items, to_date(arg))
+        return
+    if '--today' in sys.argv:          # לבדיקות בלבד: בנייה כאילו היום הוא התאריך הזה
+        BUILD_DAY = to_date(sys.argv[sys.argv.index('--today') + 1])
 
     validate(items)
 
@@ -425,6 +593,9 @@ def main():
     print('בונה "מה חדש בלונדון":')
     pages = []
     for day, day_items in by_day.items():
+        # רק עמודים יומיים שכבר קיימים נבנים מחדש, כדי לא לשבור כתובות. חדשים לא נוצרים.
+        if not os.path.exists(day_file(day)):
+            continue
         pages.append(build_day(day, day_items))
         print('  עמוד יומי: %s, %d אייטמים' % (day_file(day), len(day_items)))
 
@@ -441,4 +612,5 @@ def main():
         print('אין בעיות. לכל אייטם יש מקור, תמונה קיימת וקישורים פנימיים תקינים.')
 
 
-main()
+if __name__ == '__main__':
+    main()

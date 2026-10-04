@@ -2,6 +2,86 @@
  "_מה_זה_הקובץ_הזה": "מרשם היסטורי מלא של כל מה שפורסם ב\"מה חדש בלונדון\". משמש למניעת פרסום כפול. אין למחוק ממנו רשומות.",
  "published": [
   {
+   "id": "2026-10-04-christmas-lights-switch-on",
+   "title": "הדלקת תאורת החג: קרנבי, מרילבון וקובנט גארדן",
+   "titleNorm": "הדלקת תאורת החג קרנבי מרילבון וקובנט גארדן",
+   "slug": "christmas-lights-switch-on",
+   "datePublished": "2026-10-04",
+   "sourceUrls": [
+    "https://londonist.com/london/christmas-in-london/when-are-london-s-christmas-lights-switched-on",
+    "https://www.newwestend.com/"
+   ],
+   "sourceDomains": [
+    "londonist.com",
+    "www.newwestend.com"
+   ],
+   "entity": "London Christmas lights switch-on 2026",
+   "entityNorm": "christmas lights switch 2026",
+   "category": "אירועים",
+   "summary": "קרנבי סטריט נדלקת ב-4 בנובמבר, מרילבון ב-11 וקובנט גארדן ב-12. המועד באוקספורד סטריט וברג׳נט סטריט מתפרסם באוקטובר.",
+   "summaryNorm": "קרנבי סטריט נדלקת בנובמבר מרילבון 11 וקובנט גארדן 12 המועד באוקספורד סטריט וברג׳נט סטריט מתפרסם באוקטובר",
+   "summaryHash": "26f5813b3b2f05c1"
+  },
+  {
+   "id": "2026-10-04-bonfire-night-2026",
+   "title": "ליל המדורות ב-5 בנובמבר: זיקוקים ומדורות בכל העיר",
+   "titleNorm": "ליל המדורות בנובמבר זיקוקים ומדורות בכל העיר",
+   "slug": "bonfire-night-2026",
+   "datePublished": "2026-10-04",
+   "sourceUrls": [
+    "https://www.visitlondon.com/things-to-do/whats-on",
+    "https://en.wikipedia.org/wiki/Guy_Fawkes_Night"
+   ],
+   "sourceDomains": [
+    "en.wikipedia.org",
+    "www.visitlondon.com"
+   ],
+   "entity": "Bonfire Night 2026",
+   "entityNorm": "bonfire night 2026",
+   "category": "אירועים",
+   "summary": "בחמישה בנובמבר מדליקים מדורות ומשגרים זיקוקים בכל לונדון. הרבה אירועים מתקיימים בסוף השבוע הקרוב לתאריך, והגדולים מוכרים כרטיסים מראש.",
+   "summaryNorm": "בחמישה בנובמבר מדליקים מדורות ומשגרים זיקוקים בכל הרבה אירועים מתקיימים בסוף השבוע הקרוב לתאריך והגדולים מוכרים כרטיסים מראש",
+   "summaryHash": "da4417c622d4603d"
+  },
+  {
+   "id": "2026-10-04-christmas-at-kew-2026",
+   "title": "כריסמס בקיו: מסלול האורות נפתח ב-13 בנובמבר",
+   "titleNorm": "כריסמס בקיו מסלול האורות נפתח 13 בנובמבר",
+   "slug": "christmas-at-kew-2026",
+   "datePublished": "2026-10-04",
+   "sourceUrls": [
+    "https://www.kew.org/kew-gardens/whats-on/christmas/everything-you-need-to-know"
+   ],
+   "sourceDomains": [
+    "www.kew.org"
+   ],
+   "entity": "Christmas at Kew 2026",
+   "entityNorm": "christmas kew 2026",
+   "category": "אירועים",
+   "summary": "מסלול האורות בגני קיו פועל מ-13 בנובמבר 2026 עד 3 בינואר 2027, וסגור ב-25 בדצמבר ובכמה ערבים בנובמבר. הערבים הפופולריים נמכרים עד הסוף, אז מזמינים מראש.",
+   "summaryNorm": "מסלול האורות בגני קיו פועל 13 בנובמבר 2026 עד בינואר 2027 וסגור 25 בדצמבר ובכמה ערבים בנובמבר הערבים הפופולריים נמכרים עד הסוף אז מזמינים מראש",
+   "summaryHash": "03aac357ad77b299"
+  },
+  {
+   "id": "2026-10-04-winter-wonderland-2026",
+   "title": "ויינטר וונדרלנד בהייד פארק נפתח ב-19 בנובמבר",
+   "titleNorm": "ויינטר וונדרלנד בהייד פארק נפתח 19 בנובמבר",
+   "slug": "winter-wonderland-2026",
+   "datePublished": "2026-10-04",
+   "sourceUrls": [
+    "https://hydeparkwinterwonderland.com/tickets-guide/"
+   ],
+   "sourceDomains": [
+    "hydeparkwinterwonderland.com"
+   ],
+   "entity": "Hyde Park Winter Wonderland 2026",
+   "entityNorm": "hyde park winter wonderland 2026",
+   "category": "אירועים",
+   "summary": "פתוח מ-19 בנובמבר 2026 עד 3 בינואר 2027, וסגור ביום הכריסמס. חובה להזמין מראש כרטיס כניסה עם חלון זמן, גם למי שרק רוצה להסתובב.",
+   "summaryNorm": "פתוח 19 בנובמבר 2026 עד בינואר 2027 וסגור ביום הכריסמס חובה להזמין מראש כרטיס כניסה חלון זמן למי שרק רוצה להסתובב",
+   "summaryHash": "48647d8eac7de9b3"
+  },
+  {
    "id": "2026-08-17-va-east-museum",
    "title": "מוזיאון חדש לגמרי נפתח במזרח לונדון, והכניסה חינם",
    "titleNorm": "מוזיאון לגמרי נפתח במזרח והכניסה חינם",
