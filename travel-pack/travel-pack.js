@@ -17,17 +17,19 @@
   העמוד מסמן data-pack-ready="1" על html כשהכל מוכן להדפסה, או data-pack-error.
   שום מידע אישי לא נכנס לכאן. הקלט היחיד הוא קוד המסלול, ושום דבר לא נשמר.
 
-  הערה פנימית, לא סופית: ה-QR מוביל לקישור ‎/t/‎, וההפניה ‎/t/*‎ בפרודקשן מתייגת כל
-  כניסה כ-utm_source=whatsapp. סריקה מהחוברת תיספר לכן כוואטסאפ. לפני עלייה לאתר
-  צריך מקור נפרד לחוברת (כלל הפניה משלה או תיוג אחר). לא משנים את ההפניות במשימה הזו.
+  ה-QR והקישור המודפס מובילים ל-‎/tp/<קוד>‎, אותו קוד מסלול כמו ב-‎/t/‎. ההפניה של ‎/tp/‎
+  מתייגת את הכניסה כחוברת הטיול (utm_source=travel_pack), כך שסריקה מהחוברת לא נספרת
+  כוואטסאפ. קישורי ‎/t/‎ שנשלחו בוואטסאפ ממשיכים לעבוד ולהתייג בדיוק כמו קודם.
 */
 (function () {
   'use strict';
 
   var RC = window.GoLondonRouteCode;
   var MAP = window.GoLondonMapOverlay;
-  var BG = window.GoLondonMapBackground;
+  var AC = window.GoLondonAccessCost;
   var html = document.documentElement;
+  /* ספק רקע המפה (map-background.js). שכבת הסימון של גו לונדון לא תלויה בו */
+  var BG = window.GoLondonMapBackgrounds.get(html.getAttribute('data-map-provider') || 'prototype');
 
   /* המפה בעמוד היום: 184 מ"מ רוחב. גובה רגיל 84 מ"מ, ובעמוד האחרון עד 64 מ"מ לכל הפחות */
   var MAP_W = 696, MAP_PAD = 42;
@@ -70,24 +72,16 @@
   function isUrl(u) { return /^https?:\/\//.test(String(u || '')); }
   function shortLink(u) { return u.replace(/^https:\/\//, ''); }
   /*
-    מצב התשלום של עצירה, לפי מה שהעצירה עצמה מציגה. בנתונים free=true מסמן שאפשר לבקר
-    בלי לשלם, אבל אצל שישה מקומות טקסט המחיר אומר במפורש שחלק בתשלום, למשל בקינגהאם
-    ("החילופים חינם, הארמון בתשלום") או גשר המגדלים. מקום כזה הוא "בתשלום חלקי", ולעולם
-    לא נספר כחינם בסיכום. partlyPaid בנתונים לא משמש כאן, כי הוא מסמן גם מקומות שהכניסה
-    אליהם חינם ורק תערוכות בתשלום (המוזיאון הבריטי, טייט מודרן), ושם הטקסט "כניסה חינם".
-      free   free=true, וטקסט המחיר לא מזכיר תשלום
-      mixed  free=true, וטקסט המחיר אומר שחלק בתשלום
-      paid   free=false
+    מצב התשלום של עצירה מגיע מ-access-cost.js, המקור האחד לכל האתר: free, partly_paid
+    או paid, לפי שדות הנתונים ולא לפי טקסט המחיר.
   */
-  function payState(it) {
-    if (!it.free) return 'paid';
-    return /בתשלום/.test(it.priceBand || '') ? 'mixed' : 'free';
-  }
+  var PAY_CLASS = { free: 'free', partly_paid: 'mixed', paid: 'paid' };
+  function payState(it) { return PAY_CLASS[AC.status(it)]; }
 
   /* סיכום התשלום של קבוצת עצירות. מסלול נראה חינמי רק אם כל עצירה בו חינם בלי סייג */
   function freeText(items) {
-    var n = { free: 0, mixed: 0, paid: 0 };
-    items.forEach(function (it) { n[payState(it)]++; });
+    var c = AC.count(items);
+    var n = { free: c.free, mixed: c.partly_paid, paid: c.paid };
     var one = items.length === 1;
     if (n.free === items.length) return one ? 'בלי תשלום כניסה' : 'כולן בלי תשלום כניסה';
     if (n.paid === items.length) return one ? 'כניסה בתשלום' : 'כולן בתשלום';
@@ -132,7 +126,7 @@
   }
   function round5(n) { return String(Math.round(Number(n) * 100000) / 100000); }
 
-  /* QR לקישור החי. ראו בראש הקובץ: מקור המדידה של הסריקה עדיין לא סופי */
+  /* QR לקישור החי של החוברת (‎/tp/‎) */
   function qrSvg(text) {
     var q = window.qrcode(0, 'M');
     q.addData(text);
@@ -339,7 +333,8 @@
         var days = dayIds.map(function (ids) { return ids.map(function (id) { return byId[id]; }); });
         /* הקוד הקנוני של מה שבאמת הוצג, לקישור ול-QR: אותו מסלול, בלי קודים שלא מוכרים */
         var canonical = RC.encode(days, function (it) { return it.code; });
-        var link = RC.link(canonical);
+        /* הקישור מהחוברת מתויג כחוברת הטיול, לא כוואטסאפ (‎/tp/‎ ב-_redirects) */
+        var link = RC.link(canonical, 'pack');
 
         function build(lastMapMm) {
           var out = renderCover(days, link, data.areas);

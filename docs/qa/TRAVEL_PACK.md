@@ -103,3 +103,35 @@ Production redirects were not changed.
 
 Note for later, outside the prototype: the live Planner (planner.html) summarises days with the same single
 `free` boolean ("כולן אפשריות בלי תשלום כניסה"), so it has the same issue on the website.
+
+## Phase 2: server PDF, map adapter, access cost (4 Oct 2026, Deploy Preview only)
+
+**Map provider.** No written licensing confirmation from Geoapify, so no provider is wired in. The
+background goes through one adapter (`travel-pack/map-background.js`): a provider gets only center, zoom
+and size and returns the background; `staticImage()` wraps any static-map service whose URL points at a
+server route of ours (the key never reaches the browser). The active provider is chosen with
+`data-map-provider` on travel-pack.html; today only `prototype` (the temporary schematic) is registered.
+
+**Access cost.** `access-cost.js` is the one classifier (free / partly_paid / paid) for the pack and, later,
+the Planner. It reads data, not Hebrew text: `access` when present, otherwise `free`. Five places carry
+`"access": "partly_paid"` in planner-data.json (buckingham, tower-bridge, greenwich, royal-opera-house,
+somerset-house). `docs/qa/access-cost-lint.js` compares the data with the price text and fails on drift.
+For review: 27 food/drink/nightlife places are `paid` by spend level, not by a ticket; big-ben (outside
+viewing), sky-garden and horizon-22 (free with booking) are `free`.
+
+**Server PDF.** `netlify/functions/travel-pack.mjs`, path `/pack/<code>` (`?dl=1` for attachment):
+validates the code (route-code.js form, max 14 days, 20 stops a day, 100 stops), opens only
+`<same origin>/travel-pack?p=<code>` in @sparticuz/chromium + puppeteer-core (every other request blocked,
+host must be golondon.co.il or a golondon Netlify deploy), returns the PDF. Nothing stored; CDN may cache
+the PDF for a day (`Netlify-CDN-Cache-Control`), purged on every deploy. Netlify rate limit: 20 requests a
+minute per IP (429 beyond). `Server-Timing` reports launch, render, pdf, total and memory.
+netlify.toml: esbuild with Chromium and puppeteer as external modules for this function only; 404 for
+/node_modules/*, /package.json, /package-lock.json.
+
+**QR source.** Pack links use `/tp/<code>` (route-code.js `link(code, 'pack')`), redirected to the Planner
+with from=travel_pack and utm_source=travel_pack. `/t/` links are unchanged.
+
+**Planner UI.** `travel-pack-ui.js` adds "הורדת חוברת הטיול" to the results and the manual board (hidden
+until the Planner exposes `GoLondonPlannerPack`): preparing, success (share when files can be shared,
+download always), error (retry, direct link, print). Events: travel_pack_generate, travel_pack_download,
+travel_pack_error. No funnel event changes. `docs/qa/travel-pack-ui-harness.js` checks the states.

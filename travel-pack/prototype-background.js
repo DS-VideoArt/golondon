@@ -9,9 +9,8 @@
   שהוקלד ידנית מכמה נקודות מקורבות. אין בו שום נתון מספק מפות, אין בו אריחים ואין בו
   פנייה לרשת, ולכן אין בו בעיית רישיון.
 
-  הממשק הוא הממשק שכל רקע יקבל, כדי שאפשר יהיה להחליף אותו בספק אמיתי בלי לגעת
-  בשכבת העל: render(view) מחזיר מחרוזת SVG בגודל view.width על view.height, מתוך
-  מרכז וזום בלבד.
+  נרשם כספק "prototype" בממשק של map-background.js, אותו ממשק שספק אמיתי יקבל, כדי
+  שאפשר יהיה להחליף אותו בלי לגעת בשכבת העל.
 */
 (function (root) {
   'use strict';
@@ -64,5 +63,5 @@
     return { lat: 180 / Math.PI * Math.atan(0.5 * (Math.exp(n) - Math.exp(-n))), lng: wx / T * 360 - 180 };
   }
 
-  root.GoLondonMapBackground = { name: 'prototype', attribution: 'רקע זמני לבדיקה בלבד, לא מבוסס על נתוני מפה', render: render };
+  root.GoLondonMapBackgrounds.register({ id: 'prototype', attribution: 'רקע זמני לבדיקה בלבד, לא מבוסס על נתוני מפה', render: render });
 })(typeof self !== 'undefined' ? self : this);

@@ -271,6 +271,7 @@
     "late"
    ],
    "free": true,
+   "access": "partly_paid",
    "priceBand": "החילופים חינם, הארמון בתשלום",
    "hours": 1,
    "tube": "Green Park",
@@ -486,6 +487,7 @@
     "late"
    ],
    "free": true,
+   "access": "partly_paid",
    "priceBand": "מעבר חינם, התערוכה בתשלום",
    "hours": 1,
    "tube": "Tower Hill",
@@ -1506,6 +1508,7 @@
     "late"
    ],
    "free": true,
+   "access": "partly_paid",
    "priceBand": "הפארק חינם, המצפה בתשלום",
    "hours": 4,
    "tube": "Cutty Sark",
@@ -2165,6 +2168,7 @@
     "late"
    ],
    "free": true,
+   "access": "partly_paid",
    "priceBand": "הכניסה לבניין חינם, סיורים ומופעים בתשלום",
    "hours": 1,
    "tube": "Covent Garden",
@@ -2213,6 +2217,7 @@
     "late"
    ],
    "free": true,
+   "access": "partly_paid",
    "priceBand": "החצר חינם, הגלריה והתערוכות בתשלום",
    "hours": 1,
    "tube": "Temple",

@@ -121,8 +121,10 @@ print(json.dumps({'pages': d.page_count, 'size': [round(d[0].rect.width / 72 * 2
     .trim().split('\n').map(l => l.split('\t')[1]);
 
   const checks = []; let fail = 0; const ok = (n, c, d) => { checks.push([n, !!c, d]); if (!c) fail++; };
-  const link = RC.link(CODE);
+  /* links from the pack use the pack channel (/tp/), never the WhatsApp-tagged /t/ */
+  const link = RC.link(CODE, 'pack');
   const expDays = expected.map(d => d.map(id => byId[id]));
+  /* the base can be a deploy (Deploy Preview QA); default is this checkout served locally */
   ok('page built without error', !last.error && !last.errors.length, last.error || last.errors.join(' | '));
   ok('route code round trip (input = rendered = re-encoded)', last.code === CODE && RC.encode(expected, id => byId[id].code) === CODE, last.code);
   ok('one day page per route day, cover lists every day', last.days.length === expDays.length && last.coverRows === expDays.length, last.days.length + ' / ' + last.coverRows);
@@ -165,6 +167,7 @@ print(json.dumps({'pages': d.page_count, 'size': [round(d[0].rect.width / 72 * 2
   ok('text selectable (all stop names in PDF text)', expDays.flat().every(a => words(a.name).every(w => text.includes(w))), '');
   ok('links clickable and all absolute: live route, official sites, navigation per day', pdf.links.includes(link) && pdf.links.filter(u => /google\.com\/maps\/dir/.test(u)).length >= expDays.filter(d => d.length > 1).length &&
     expDays.flat().every(a => !/^https?:\/\//.test(a.source || '') || pdf.links.includes(a.source)) && !pdf.links.some(u => !/^https?:/.test(u)), pdf.links.length + ' links');
+  ok('pack never links to the WhatsApp-tagged /t/ path', !pdf.links.some(u => /golondon\.co\.il\/t\//.test(u)) && link.indexOf('/tp/') > 0, link);
   ok('cover QR and closing QR decode to the live route link', qr.length === 2 && qr.every(q => q === link) && last.qrHrefs.every(h => h === link), JSON.stringify(qr));
   ok('print-quality logo (600 px source embedded)', pdf.images.some(([w]) => w >= 600), JSON.stringify(pdf.images));
   ok('Hebrew writing rules: no long dash, no spaced hyphen', last.dashes === 0, last.dashes);

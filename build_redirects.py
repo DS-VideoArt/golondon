@@ -41,6 +41,10 @@ HEAD = """# נוצר אוטומטית על ידי build_redirects.py. אין ל�
 
 /t/*    /planner?p=:splat&from=share&utm_source=whatsapp&utm_medium=share&utm_campaign=trip-share    301!
 
+# אותו קוד מסלול מתוך חוברת הטיול (ה-QR והקישור המודפס ב-PDF). נתיב נפרד כדי שסריקה
+# מהחוברת לא תיספר כוואטסאפ. from=travel_pack נשמר במשפך המתכנן כ-route_source.
+/tp/*   /planner?p=:splat&from=travel_pack&utm_source=travel_pack&utm_medium=pdf&utm_campaign=travel-pack    301!
+
 # קישורי קמפיין קצרים. הכתובת שמתפרסמת נשארת קצרה ונקייה, וההפניה
 # היא שמוסיפה את תיוג המדידה, כך שאף מקור לא הולך לאיבוד.
 # להוסיף כאן שורה לכל קמפיין חדש, ולא לפרסם כתובת עם UTM גלוי.
