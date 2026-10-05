@@ -6064,7 +6064,7 @@
    "area": "camden",
    "hood": "chalk-farm",
    "interests": [
-    "museums"
+    "street"
    ],
    "categories": [
     "show"
@@ -6629,7 +6629,7 @@
    "priceBand": "כניסה חינם",
    "hours": 0.5,
    "tube": "Camden Town",
-   "kids": true,
+   "kids": null,
    "anchor": false,
    "bookAhead": null,
    "tip": "הפסל קרוב לכניסה הראשית של הסטייבלס מצ'וק פארם רוד, ממש ליד סייברדוג, אז קל לשלב אותו בסיבוב בשוק. מספיקות כמה דקות.",
@@ -6639,7 +6639,8 @@
    "checked": "2026-10",
    "_review": [
     "audiences",
-    "attrs"
+    "attrs",
+    "kids"
    ],
    "imageAlt": "כיכר הסטייבלס בשוק קמדן"
   },
@@ -6669,7 +6670,7 @@
    "priceBand": "זול",
    "hours": 0.5,
    "tube": "Camden Town",
-   "kids": false,
+   "kids": null,
    "anchor": false,
    "bookAhead": null,
    "tip": "מתאים לקפה בדרך מהתחנה לריג'נטס פארק ולגן החיות, שנמצאים בקצה של פארקוויי. המקום קטן, אז לרוב לוקחים בכוס וממשיכים.",
@@ -6679,7 +6680,8 @@
    "_review": [
     "audiences",
     "attrs",
-    "tip"
+    "tip",
+    "kids"
    ],
    "imageAlt": "פנים בית קפה עצמאי קטן עם מכונת אספרסו על דלפק עץ"
   },
