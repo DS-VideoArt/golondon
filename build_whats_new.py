@@ -130,14 +130,8 @@ def head(title, desc, canonical, image, extra_ld=''):
     return f'''<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QWWEWYZWCK"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){{dataLayer.push(arguments);}}
-    gtag('js', new Date());
-    gtag('config', 'G-QWWEWYZWCK');
-  </script>
+  <!-- Google tag (GA4), loaded only on golondon.co.il: see ga4.js -->
+  <script src="/ga4.js?v=1"></script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />

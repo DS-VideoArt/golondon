@@ -37,6 +37,9 @@ async function guardPage(page, opts) {
   const allow = (opts && opts.allow) || (() => true);
   const blocked = [], escaped = [];
   await page.evaluateOnNewDocument(id => { window['ga-disable-' + id] = true; }, GA_ID);
+  /* ה-service worker של האתר מביא עמודים מהרשת בעצמו, מחוץ ליירוט של הדף. עוקפים אותו כדי
+     שכל בקשה תעבור דרך השער ושהבדיקה תראה בדיוק את מה שהיא הגישה */
+  await page.setBypassServiceWorker(true);
   await page.setRequestInterception(true);
   page.on('request', r => {
     const u = r.url();
@@ -79,10 +82,12 @@ if (require.main === module && process.argv.includes('--selftest')) {
       /* רק השרת המקומי עובר. כל השאר נחסם, כך שהבדיקה לא פונה לאינטרנט */
       const guard = await guardPage(page, { allow: u => u.startsWith(BASE) || u.startsWith('data:') });
       await page.goto(BASE + p, { waitUntil: 'networkidle2' });
-      const st = await page.evaluate(id => ({ off: window['ga-disable-' + id] === true, h1: !!document.querySelector('h1') }), GA_ID);
-      const ok = st.off && st.h1 && guard.blocked() > 0 && guard.escaped().length === 0;
+      const st = await page.evaluate(id => ({ off: window['ga-disable-' + id] === true, h1: !!document.querySelector('h1'),
+        lib: !!document.querySelector('script[src*="googletagmanager.com"]') }), GA_ID);
+      /* מאז ga4.js, כשהמתג דולק הספרייה לא מתבקשת בכלל: אפס בקשות לגוגל, לא רק חסומות */
+      const ok = st.off && st.h1 && !st.lib && guard.blocked() === 0 && guard.escaped().length === 0;
       if (!ok) fail++;
-      console.log((ok ? 'PASS ' : 'FAIL ') + p + '  ga-disable=' + st.off + ' blocked=' + guard.blocked() + ' escaped=' + guard.escaped().length);
+      console.log((ok ? 'PASS ' : 'FAIL ') + p + '  ga-disable=' + st.off + ' library-tag=' + st.lib + ' google-requests=' + guard.blocked() + ' escaped=' + guard.escaped().length);
       await page.close();
     }
     await browser.close(); server.close();
