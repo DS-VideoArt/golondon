@@ -819,6 +819,7 @@
           <div class="board-summary" id="board-summary"></div>
           <div class="board-actions">
             <button class="mini-btn" id="add-day" type="button"><i class="fas fa-plus"></i> הוספת יום</button>
+            <button class="mini-btn mini-btn--pack" id="m-pack" type="button" hidden><i class="fas fa-file-arrow-down"></i> הורדת חוברת הטיול</button>
             <button class="mini-btn mini-btn--wa" id="m-wa" type="button"><i class="fab fa-whatsapp"></i> שליחה בוואטסאפ</button>
             <button class="mini-btn" id="m-copy" type="button"><i class="far fa-copy"></i> העתקה</button>
             <button class="mini-btn" id="m-print" type="button" title="נפתח חלון ההדפסה של הדפדפן. שם בוחרים שמירה כ PDF, או מדפיסים על נייר."><i class="fas fa-file-pdf"></i> שמירה כ PDF</button>
@@ -839,6 +840,7 @@
     <div class="results-head">
       <h2 id="results-title">המסלול שלכם</h2>
       <div class="results-actions">
+        <button class="mini-btn mini-btn--pack" id="pack" type="button" hidden><i class="fas fa-file-arrow-down"></i> הורדת חוברת הטיול</button>
         <button class="mini-btn mini-btn--wa" id="wa" type="button"><i class="fab fa-whatsapp"></i> שליחה בוואטסאפ</button>
         <button class="mini-btn" id="copy" type="button"><i class="far fa-copy"></i> העתקה</button>
         <button class="mini-btn" id="print" type="button" title="נפתח חלון ההדפסה של הדפדפן. שם בוחרים שמירה כ PDF, או מדפיסים על נייר."><i class="fas fa-file-pdf"></i> שמירה כ PDF</button>
@@ -888,7 +890,7 @@
 
 <div class="toast" id="toast"></div>
 
-<script src="route-code.js?v=1"></script>
+<script src="route-code.js?v=2"></script>
 <script>
 (function () {
   'use strict';
@@ -1597,6 +1599,24 @@
   function tripLink(plan) {
     return RouteCode.link(encodePlan(plan));
   }
+
+  /*
+    חוברת הטיול (travel-pack-ui.js) מבקשת מכאן את המסלול שמוצג עכשיו, כקוד מסלול. אותו
+    קוד כמו בקישור השיתוף, בלי מודל נוסף. המתכנן לא תלוי בחוברת: בלי הקובץ הזה הכפתור
+    פשוט לא מוצג.
+  */
+  window.GoLondonPlannerPack = {
+    current: function (source) {
+      var plan = source === 'board' ? manualPlan() : LAST;
+      if (!plan || !plan.length) return null;
+      return {
+        code: encodePlan(plan),
+        planner_mode: source === 'board' ? 'manual' : 'auto',
+        day_count: plan.length,
+        place_count: plan.reduce(function (n, d) { return n + d.items.length; }, 0)
+      };
+    }
+  };
 
   function areaNameOf(d) {
     if (d.areaLabel) return d.areaLabel.name;
@@ -3231,5 +3251,6 @@
 <script src="trip-tray.js?v=8" defer></script>
 <script src="planner-nearby.js?v=14" defer></script>
 <script src="analytics.js?v=5" defer></script>
+<script src="travel-pack-ui.js?v=1" defer></script>
 </body>
 </html>
