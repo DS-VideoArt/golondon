@@ -1573,7 +1573,7 @@
    "tip": "בסופי שבוע המתחם צפוף מאוד, ובוקר של יום חול נעים הרבה יותר. כשתחנת קמדן טאון עמוסה היא הופכת לפעמים ליציאה בלבד, ואז נוח לחזור מתחנת צ׳וק פארם, כעשר דקות הליכה.",
    "lat": 51.54126,
    "lng": -0.14619,
-   "precision": "exact",
+   "precision": "approx",
    "coordSource": {
     "provider": "OpenStreetMap",
     "osm_type": "way",
@@ -4530,7 +4530,7 @@
    "tip": "המקומות מוגבלים, ולכן כדאי להזמין באתר מראש, כרטיסים במקום נמכרים רק אם נשאר מקום. ביקור הערב לאור נרות הוא הקלאסי, ומי שרוצה לדבר במהלך הביקור יבחר בביקור הרגוע ביום.",
    "lat": 51.520943,
    "lng": -0.07779,
-   "precision": "approx",
+   "precision": "exact",
    "coordSource": {
     "provider": "OpenStreetMap",
     "osm_type": "node",
@@ -8551,7 +8551,7 @@
    "audiences": [],
    "lat": 51.540056,
    "lng": -0.143068,
-   "precision": "approx",
+   "precision": "exact",
    "coordSource": {
     "provider": "OpenStreetMap",
     "osm_type": "way",
@@ -8603,7 +8603,7 @@
    "audiences": [],
    "lat": 51.514367,
    "lng": -0.083149,
-   "precision": "approx",
+   "precision": "exact",
    "coordSource": {
     "provider": "OpenStreetMap",
     "osm_type": "node",

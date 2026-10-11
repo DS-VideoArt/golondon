@@ -7,7 +7,8 @@
     identity    same 161 ids, same codes, same name and nameEn, same coordinates as the baseline, except the
                 exact transitions listed in approved-coordinate-changes.json
     coordinates every place has coordSource: an active place carries OpenStreetMap provenance (object type,
-                id, version, data date, extract, method, accuracy); a closed place is marked not map-eligible
+                id, version, data date, extract, method, accuracy); a closed place is marked not map-eligible;
+                precision (which drives the Nearby label and navigation analytics) agrees with the OSM accuracy
     description present, 2 to 4 sentences, 100 to 450 characters
     tip         present and at least 30 characters (or the place is listed in NO_TIP with a reason)
     writing     no long dash or spaced hyphen, no filler or brochure words, no product words,
@@ -49,6 +50,7 @@ function checkCoordSource(a) {
   if (!/\.osm\.pbf$/.test(c.extract || '')) bad(a.id, 'extract ' + c.extract);
   if (OSM_METHODS.indexOf(c.method) === -1) bad(a.id, 'unknown method ' + c.method);
   if (['exact', 'approximate'].indexOf(c.accuracy) === -1) bad(a.id, 'accuracy ' + c.accuracy);
+  else if (a.precision !== (c.accuracy === 'exact' ? 'exact' : 'approx')) bad(a.id, 'precision ' + a.precision + ' disagrees with OSM accuracy ' + c.accuracy);
   if ('objects' in c && !(Array.isArray(c.objects) && c.objects.length > 1 && c.objects.every(o => ['node', 'way', 'relation'].indexOf(o.osm_type) !== -1 && isId(o.osm_id) && isId(o.osm_version)))) bad(a.id, 'objects list invalid');
 }
 function checkCoords(a, b) {
