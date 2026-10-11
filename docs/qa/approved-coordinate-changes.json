@@ -1,0 +1,257 @@
+{
+ "_about": "Coordinate changes approved by management on 10 Oct 2026 (OSM remediation, DS-VideoArt/golondon-kids-journal tag coordinate-remediation-approved-2026-10-10, 17c3c33). docs/qa/place-data-check.js allows a coordinate to differ from the baseline only for these exact transitions.",
+ "changes": [
+  {
+   "id": "southbank-walk",
+   "from": {
+    "lat": 51.5056,
+    "lng": -0.114
+   },
+   "to": {
+    "lat": 51.507727,
+    "lng": -0.114605
+   },
+   "metres": 240.2,
+   "method": "nearest_point_on_geometry",
+   "accuracy": "approximate"
+  },
+  {
+   "id": "notting-hill-pastel-streets",
+   "from": {
+    "lat": 51.5164,
+    "lng": -0.2068
+   },
+   "to": {
+    "lat": 51.517526,
+    "lng": -0.206268
+   },
+   "metres": 130.5,
+   "method": "street_intersection",
+   "accuracy": "approximate"
+  },
+  {
+   "id": "dickens-museum",
+   "from": {
+    "lat": 51.5235,
+    "lng": -0.1167
+   },
+   "to": {
+    "lat": 51.523594,
+    "lng": -0.116323
+   },
+   "metres": 28.1,
+   "method": "direct_place_object",
+   "accuracy": "exact"
+  },
+  {
+   "id": "postal-museum",
+   "from": {
+    "lat": 51.525,
+    "lng": -0.1119
+   },
+   "to": {
+    "lat": 51.524724,
+    "lng": -0.113998
+   },
+   "metres": 148.4,
+   "method": "direct_place_object",
+   "accuracy": "exact"
+  },
+  {
+   "id": "old-operating-theatre",
+   "from": {
+    "lat": 51.5043,
+    "lng": -0.0877
+   },
+   "to": {
+    "lat": 51.505041,
+    "lng": -0.088511
+   },
+   "metres": 99.7,
+   "method": "geometry_centroid",
+   "accuracy": "exact"
+  },
+  {
+   "id": "sea-life",
+   "from": {
+    "lat": 51.5019,
+    "lng": -0.1196
+   },
+   "to": {
+    "lat": 51.501626,
+    "lng": -0.119466
+   },
+   "metres": 31.8,
+   "method": "direct_place_object",
+   "accuracy": "exact"
+  },
+  {
+   "id": "little-venice",
+   "from": {
+    "lat": 51.5231,
+    "lng": -0.1835
+   },
+   "to": {
+    "lat": 51.5212514,
+    "lng": -0.1823549
+   },
+   "metres": 220.3,
+   "method": "geometry_centroid",
+   "accuracy": "approximate"
+  },
+  {
+   "id": "spitalfields-market",
+   "from": {
+    "lat": 51.519,
+    "lng": -0.0787
+   },
+   "to": {
+    "lat": 51.519594,
+    "lng": -0.075368
+   },
+   "metres": 239.8,
+   "method": "geometry_centroid",
+   "accuracy": "exact"
+  },
+  {
+   "id": "dennis-severs",
+   "from": {
+    "lat": 51.5207,
+    "lng": -0.0756
+   },
+   "to": {
+    "lat": 51.520943,
+    "lng": -0.07779
+   },
+   "metres": 153.9,
+   "method": "direct_place_object",
+   "accuracy": "exact"
+  },
+  {
+   "id": "greenwich-foot-tunnel",
+   "from": {
+    "lat": 51.4847,
+    "lng": -0.0103
+   },
+   "to": {
+    "lat": 51.483293,
+    "lng": -0.010166
+   },
+   "metres": 156.7,
+   "method": "entrance_or_station",
+   "accuracy": "exact"
+  },
+  {
+   "id": "cable-car",
+   "from": {
+    "lat": 51.49991,
+    "lng": 0.00557
+   },
+   "to": {
+    "lat": 51.499774,
+    "lng": 0.008335
+   },
+   "metres": 192.0,
+   "method": "entrance_or_station",
+   "accuracy": "approximate"
+  },
+  {
+   "id": "raf-museum",
+   "from": {
+    "lat": 51.5968,
+    "lng": -0.2416
+   },
+   "to": {
+    "lat": 51.5974134,
+    "lng": -0.2377348
+   },
+   "metres": 275.6,
+   "method": "entrance_or_station",
+   "accuracy": "exact"
+  },
+  {
+   "id": "st-leonards-shoreditch",
+   "from": {
+    "lat": 51.5259,
+    "lng": -0.0779
+   },
+   "to": {
+    "lat": 51.526823,
+    "lng": -0.077225
+   },
+   "metres": 112.8,
+   "method": "geometry_centroid",
+   "accuracy": "exact"
+  },
+  {
+   "id": "curtain-theatre",
+   "from": {
+    "lat": 51.5231,
+    "lng": -0.08
+   },
+   "to": {
+    "lat": 51.524564,
+    "lng": -0.080182
+   },
+   "metres": 163.3,
+   "method": "direct_place_object",
+   "accuracy": "approximate"
+  },
+  {
+   "id": "spitalfields-city-farm",
+   "from": {
+    "lat": 51.5216,
+    "lng": -0.0658
+   },
+   "to": {
+    "lat": 51.5220016,
+    "lng": -0.0662085
+   },
+   "metres": 52.8,
+   "method": "derived_entrance_nearest_site_point_to_address",
+   "accuracy": "exact"
+  },
+  {
+   "id": "young-va",
+   "from": {
+    "lat": 51.5284,
+    "lng": -0.0556
+   },
+   "to": {
+    "lat": 51.529051,
+    "lng": -0.05487
+   },
+   "metres": 88.3,
+   "method": "geometry_centroid",
+   "accuracy": "exact"
+  },
+  {
+   "id": "boxpark-camden",
+   "from": {
+    "lat": 51.53975,
+    "lng": -0.14301
+   },
+   "to": {
+    "lat": 51.540056,
+    "lng": -0.143068
+   },
+   "metres": 34.3,
+   "method": "geometry_centroid",
+   "accuracy": "exact"
+  },
+  {
+   "id": "horizon-22",
+   "from": {
+    "lat": 51.51472,
+    "lng": -0.08288
+   },
+   "to": {
+    "lat": 51.514367,
+    "lng": -0.083149
+   },
+   "metres": 43.4,
+   "method": "direct_place_object",
+   "accuracy": "exact"
+  }
+ ]
+}

@@ -1,6 +1,7 @@
 {
  "_מה_זה_הקובץ_הזה": "מאגר האטרקציות של בונה המסלול. תהליך התחזוקה החודשי מעדכן כאן מחירים, שעות ומידע שהתיישן, בלי לגעת בקוד של הכלי עצמו.",
- "_עודכן": "2026-10-04",
+ "_עודכן": "2026-10-11",
+ "_מקור_הקואורדינטות": "כל הקואורדינטות של המקומות הפעילים מבוססות על OpenStreetMap, מתוך קובצי Geofabrik של 8.10.2026 (greater-london, berkshire, hertfordshire), לפי מאגר התיקון המאושר DS-VideoArt/golondon-kids-journal, התגית coordinate-remediation-approved-2026-10-10 (17c3c33), system/maps/coordinate-remediation.json. בכל מקום השדה coordSource מתעד את אובייקט ה-OSM, הגרסה, תאריך הנתונים, השיטה והדיוק. © OpenStreetMap contributors, ODbL 1.0.",
  "areas": {
   "westminster": {
    "name": "וסטמינסטר ומרכז העיר",
@@ -108,6 +109,16 @@
    "lat": 51.5194,
    "lng": -0.1269,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 177044,
+    "osm_version": 78,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.britishmuseum.org/visit",
    "checked": "2026-10"
   },
@@ -155,6 +166,16 @@
    "lat": 51.5089,
    "lng": -0.1283,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 4372002,
+    "osm_version": 81,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.nationalgallery.org.uk/visiting",
    "checked": "2026-10"
   },
@@ -200,6 +221,16 @@
    "lat": 51.4993,
    "lng": -0.1273,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 364313092,
+    "osm_version": 74,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.westminster-abbey.org/visit-us",
    "checked": "2026-10"
   },
@@ -241,6 +272,16 @@
    "lat": 51.50072,
    "lng": -0.12462,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 1802652184,
+    "osm_version": 48,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "source": "https://www.parliament.uk/visiting",
    "checked": "2026-10"
   },
@@ -283,6 +324,16 @@
    "lat": 51.5014,
    "lng": -0.1419,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 5208404,
+    "osm_version": 69,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.rct.uk/visit/buckingham-palace",
    "checked": "2026-10"
   },
@@ -326,6 +377,16 @@
    "lat": 51.5022,
    "lng": -0.1291,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 197206542,
+    "osm_version": 21,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "source": "https://www.iwm.org.uk/visits/churchill-war-rooms",
    "checked": "2026-10"
   },
@@ -365,6 +426,16 @@
    "lat": 51.5026,
    "lng": -0.1344,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 374960368,
+    "osm_version": 48,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://www.royalparks.org.uk/visit/parks/st-jamess-park",
    "checked": "2026-10"
   },
@@ -410,6 +481,16 @@
    "lat": 51.512,
    "lng": -0.1226,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 633369346,
+    "osm_version": 14,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.coventgarden.london/Shop/Markets",
    "checked": "2026-10"
   },
@@ -454,6 +535,16 @@
    "lat": 51.5081,
    "lng": -0.0759,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 370870741,
+    "osm_version": 48,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.hrp.org.uk/tower-of-london/visit/",
    "checked": "2026-10"
   },
@@ -499,6 +590,16 @@
    "lat": 51.5055,
    "lng": -0.0754,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 378541210,
+    "osm_version": 37,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.towerbridge.org.uk/your-visit",
    "checked": "2026-10"
   },
@@ -545,6 +646,16 @@
    "lat": 51.5138,
    "lng": -0.0984,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 369161987,
+    "osm_version": 51,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.stpauls.co.uk/visit-us",
    "checked": "2026-10"
   },
@@ -585,6 +696,16 @@
    "lat": 51.5112,
    "lng": -0.0836,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 201247295,
+    "osm_version": 31,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://skygarden.london/plan-your-visit/",
    "checked": "2026-10"
   },
@@ -627,6 +748,16 @@
    "lat": 51.5054,
    "lng": -0.091,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 24282400,
+    "osm_version": 26,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://boroughmarket.org.uk/visit-us/",
    "checked": "2026-10"
   },
@@ -676,6 +807,16 @@
    "lat": 51.5076,
    "lng": -0.0993,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 24642569,
+    "osm_version": 99,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.tate.org.uk/visit/tate-modern",
    "checked": "2026-10"
   },
@@ -721,6 +862,16 @@
    "lat": 51.5033,
    "lng": -0.1195,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 204068874,
+    "osm_version": 46,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "source": "https://www.londoneye.com/plan-your-visit/",
    "checked": "2026-10"
   },
@@ -763,9 +914,19 @@
    "anchor": false,
    "bookAhead": false,
    "tip": "נוח להתחיל בגשר וסטמינסטר וללכת מזרחה, כך שהנוף לפניכם, ולשלב עצירות בטייט מודרן, בגלוב ובשוק בורו. במרכז סאותבנק שעל הטיילת יש לאורך השנה אירועים, תערוכות ואמנות ציבורית בחינם.",
-   "lat": 51.5056,
-   "lng": -0.114,
+   "lat": 51.507727,
+   "lng": -0.114605,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 4338129,
+    "osm_version": 23,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "nearest_point_on_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://www.southbankcentre.co.uk/visit-us/",
    "checked": "2026-10"
   },
@@ -805,6 +966,16 @@
    "lat": 51.5045,
    "lng": -0.0865,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 31110737,
+    "osm_version": 45,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.theviewfromtheshard.com/plan-your-visit/",
    "checked": "2026-10"
   },
@@ -850,6 +1021,16 @@
    "lat": 51.4967,
    "lng": -0.1764,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 24436446,
+    "osm_version": 55,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.nhm.ac.uk/visit.html",
    "checked": "2026-10"
   },
@@ -895,6 +1076,16 @@
    "lat": 51.4974,
    "lng": -0.17467,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 27765411,
+    "osm_version": 32,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.sciencemuseum.org.uk/visit",
    "checked": "2026-10"
   },
@@ -940,6 +1131,16 @@
    "lat": 51.4966,
    "lng": -0.1722,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 29795,
+    "osm_version": 65,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.vam.ac.uk/south-kensington/visit",
    "checked": "2026-10"
   },
@@ -979,6 +1180,16 @@
    "lat": 51.5073,
    "lng": -0.1657,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 372975520,
+    "osm_version": 79,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://www.royalparks.org.uk/visit/parks/hyde-park",
    "checked": "2026-10"
   },
@@ -1018,6 +1229,16 @@
    "lat": 51.505,
    "lng": -0.1877,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 904705,
+    "osm_version": 25,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.hrp.org.uk/kensington-palace/visit/",
    "checked": "2026-10"
   },
@@ -1067,6 +1288,16 @@
    "lat": 51.5159,
    "lng": -0.2052,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 3976263603,
+    "osm_version": 7,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "approximate"
+   },
    "source": "https://visitportobello.com/",
    "checked": "2026-10"
   },
@@ -1105,9 +1336,33 @@
    "anchor": false,
    "bookAhead": false,
    "tip": "הבתים הם בתים פרטיים: מצלמים מהמדרכה, לא נכנסים לחצרות ולא יושבים על המדרגות, ולא מצלמים אנשים בחלונות. בבוקר יום חול הרחובות ריקים והאור הכי טוב, בשבת בצהריים עומדים בתור לצילום.",
-   "lat": 51.5164,
-   "lng": -0.2068,
+   "lat": 51.517526,
+   "lng": -0.206268,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 197047943,
+    "osm_version": 10,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "street_intersection",
+    "accuracy": "approximate",
+    "objects": [
+     {
+      "osm_type": "way",
+      "osm_id": 197047943,
+      "osm_version": 10,
+      "role": "primary"
+     },
+     {
+      "osm_type": "way",
+      "osm_id": 772696887,
+      "osm_version": 6,
+      "role": "primary"
+     }
+    ]
+   },
    "checked": "2026-10"
   },
   {
@@ -1148,6 +1403,16 @@
    "lat": 51.5162,
    "lng": -0.2112,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 402345096,
+    "osm_version": 11,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://museumofbrands.com/plan-your-visit/admissions/",
    "checked": "2026-10"
   },
@@ -1195,6 +1460,16 @@
    "lat": 51.5227,
    "lng": -0.207,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 23889503,
+    "osm_version": 7,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "approximate"
+   },
    "source": "https://visitportobello.com/golborne-road/",
    "checked": "2026-10"
   },
@@ -1240,6 +1515,16 @@
    "lat": 51.5155,
    "lng": -0.2051,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 357556094,
+    "osm_version": 7,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.electriccinema.co.uk/portobello/booking-info/",
    "checked": "2026-10"
   },
@@ -1289,6 +1574,16 @@
    "lat": 51.54126,
    "lng": -0.14619,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 104240016,
+    "osm_version": 14,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://www.camdenmarket.com/visit",
    "checked": "2026-10",
    "image": "images/places/camden-market-arches",
@@ -1330,7 +1625,16 @@
    "lat": 51.53013,
    "lng": -0.15376,
    "precision": "approx",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 1384127,
+    "osm_version": 53,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://www.royalparks.org.uk/visit/parks/regents-park-primrose-hill",
    "checked": "2026-10",
    "image": "images/places/regents-park-gardens",
@@ -1377,7 +1681,16 @@
    "lat": 51.53481,
    "lng": -0.15481,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 231792,
+    "osm_version": 32,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.londonzoo.org/",
    "checked": "2026-10",
    "image": "images/places/london-zoo-entrance",
@@ -1421,6 +1734,16 @@
    "lat": 51.5243,
    "lng": -0.0767,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 1425579385,
+    "osm_version": 1,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "approximate"
+   },
    "source": "https://www.towerhamlets.gov.uk",
    "checked": "2026-10",
    "image": "images/places/shoreditch-street-art",
@@ -1473,6 +1796,16 @@
    "lat": 51.5225,
    "lng": -0.0716,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 841779168,
+    "osm_version": 9,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "approximate"
+   },
    "source": "https://www.trumanbrewery.com/",
    "checked": "2026-10",
    "image": "images/places/brick-lane-market",
@@ -1522,6 +1855,16 @@
    "lat": 51.4769,
    "lng": -0.0005,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 4483968,
+    "osm_version": 132,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://www.royalparks.org.uk/visit/parks/greenwich-park",
    "checked": "2026-10"
   },
@@ -1565,6 +1908,16 @@
    "lat": 51.481,
    "lng": -0.0055,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 183090506,
+    "osm_version": 35,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.rmg.co.uk/national-maritime-museum/plan-your-visit",
    "checked": "2026-10"
   },
@@ -1609,6 +1962,16 @@
    "lat": 51.4788,
    "lng": -0.2956,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 8048808,
+    "osm_version": 31,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.kew.org/kew-gardens/visit-kew-gardens",
    "checked": "2026-10"
   },
@@ -1654,6 +2017,16 @@
    "lat": 51.6908,
    "lng": -0.4181,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 14898112,
+    "osm_version": 5,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "hertfordshire-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.wbstudiotour.co.uk/plan-your-visit/",
    "checked": "2026-10"
   },
@@ -1700,6 +2073,16 @@
    "lat": 51.4036,
    "lng": -0.3378,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 21104,
+    "osm_version": 11,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.hrp.org.uk/hampton-court-palace/visit/",
    "checked": "2026-10"
   },
@@ -1748,6 +2131,16 @@
    "lat": 51.5094,
    "lng": -0.128,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 59161723,
+    "osm_version": 62,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.npg.org.uk/visit",
    "checked": "2026-10"
   },
@@ -1795,6 +2188,16 @@
    "lat": 51.4911,
    "lng": -0.1277,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 24553580,
+    "osm_version": 32,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.tate.org.uk/visit/tate-britain",
    "checked": "2026-10"
   },
@@ -1840,6 +2243,16 @@
    "lat": 51.5171,
    "lng": -0.1532,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 83488820,
+    "osm_version": 19,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "source": "https://www.wallacecollection.org/visit/",
    "checked": "2026-10"
   },
@@ -1884,6 +2297,16 @@
    "lat": 51.517,
    "lng": -0.1174,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 61453261,
+    "osm_version": 16,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.soane.org/your-visit",
    "checked": "2026-10"
   },
@@ -1924,6 +2347,16 @@
    "lat": 51.5119,
    "lng": -0.1214,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 44599803,
+    "osm_version": 23,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.ltmuseum.co.uk/visit",
    "checked": "2026-10"
   },
@@ -1965,6 +2398,16 @@
    "lat": 51.508,
    "lng": -0.128,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 3962877,
+    "osm_version": 32,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://www.london.gov.uk/who-we-are/city-halls-buildings-and-squares/trafalgar-square",
    "checked": "2026-10"
   },
@@ -2009,6 +2452,16 @@
    "lat": 51.5112,
    "lng": -0.1314,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 189773715,
+    "osm_version": 18,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://chinatown.co.uk/",
    "checked": "2026-10"
   },
@@ -2049,6 +2502,16 @@
    "lat": 51.51,
    "lng": -0.1344,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 8250949,
+    "osm_version": 3,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://www.visitlondon.com/things-to-do/place/77552-piccadilly-circus",
    "checked": "2026-10"
   },
@@ -2088,9 +2551,19 @@
    "anchor": false,
    "bookAhead": false,
    "tip": "המוזיאון פתוח מרביעי עד ראשון בלבד, אז כדאי לבדוק את היום לפני שמגיעים. משתלב היטב עם המוזיאון הבריטי, שנמצא באותה שכונה במרחק הליכה קצר.",
-   "lat": 51.5235,
-   "lng": -0.1167,
+   "lat": 51.523594,
+   "lng": -0.116323,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 334631276,
+    "osm_version": 17,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "direct_place_object",
+    "accuracy": "exact"
+   },
    "source": "https://dickensmuseum.com/",
    "checked": "2026-10"
   },
@@ -2133,6 +2606,16 @@
    "lat": 51.51443,
    "lng": -0.12639,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 175155024,
+    "osm_version": 8,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://www.coventgarden.london/experience/visit/neal-s-yard",
    "checked": "2026-10"
   },
@@ -2181,6 +2664,16 @@
    "lat": 51.5129,
    "lng": -0.1224,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 33721672,
+    "osm_version": 59,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.rbo.org.uk/visit/visitor-information",
    "checked": "2026-10"
   },
@@ -2230,6 +2723,16 @@
    "lat": 51.5111,
    "lng": -0.117,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 372841786,
+    "osm_version": 16,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "source": "https://www.somersethouse.org.uk/visit-us",
    "checked": "2026-10"
   },
@@ -2277,6 +2780,16 @@
    "lat": 51.5116,
    "lng": -0.124,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 173544229,
+    "osm_version": 25,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "source": "https://actorschurch.org/visit/",
    "checked": "2026-10"
   },
@@ -2323,6 +2836,16 @@
    "lat": 51.5128,
    "lng": -0.0834,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 143113935,
+    "osm_version": 21,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://leadenhallmarket.co.uk/",
    "checked": "2026-10"
   },
@@ -2362,6 +2885,16 @@
    "lat": 51.51014,
    "lng": -0.08595,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 3374550,
+    "osm_version": 16,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.themonument.org.uk/",
    "checked": "2026-10"
   },
@@ -2407,6 +2940,16 @@
    "lat": 51.5095,
    "lng": -0.0826,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 237519508,
+    "osm_version": 6,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.cityoflondon.gov.uk/things-to-do/city-gardens/find-a-garden/st-dunstan-in-the-east-church-garden",
    "checked": "2026-10"
   },
@@ -2448,6 +2991,16 @@
    "lat": 51.5141,
    "lng": -0.0878,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 553472,
+    "osm_version": 43,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.bankofengland.co.uk/museum/plan-your-visit",
    "checked": "2026-10"
   },
@@ -2490,6 +3043,16 @@
    "lat": 51.5156,
    "lng": -0.0917,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 156172966,
+    "osm_version": 15,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.cityoflondon.gov.uk/things-to-do/attractions-museums-entertainment/guildhall-art-gallery/visit-guildhall-art-gallery",
    "checked": "2026-10"
   },
@@ -2537,6 +3100,16 @@
    "lat": 51.5202,
    "lng": -0.0938,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 34038687,
+    "osm_version": 33,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "source": "https://www.barbican.org.uk/your-visit",
    "checked": "2026-10"
   },
@@ -2581,6 +3154,16 @@
    "lat": 51.5071,
    "lng": -0.0712,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 403190624,
+    "osm_version": 12,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://www.skdocks.co.uk/",
    "checked": "2026-10"
   },
@@ -2619,9 +3202,19 @@
    "anchor": false,
    "bookAhead": true,
    "tip": "לכל כרטיס יש חלון זמן לנסיעה ברכבת, ולכן כדאי להזמין מראש. למי שלא אוהב מקומות סגורים, וגם לילדים קטנים מאוד, הנסיעה עלולה להיות לא נוחה.",
-   "lat": 51.525,
-   "lng": -0.1119,
+   "lat": 51.524724,
+   "lng": -0.113998,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 4973585223,
+    "osm_version": 14,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "direct_place_object",
+    "accuracy": "exact"
+   },
    "source": "https://www.postalmuseum.org/visit-us/",
    "checked": "2026-10"
   },
@@ -2667,6 +3260,16 @@
    "lat": 51.4958,
    "lng": -0.1087,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 8614496,
+    "osm_version": 34,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.iwm.org.uk/visits/iwm-london",
    "checked": "2026-10"
   },
@@ -2707,6 +3310,16 @@
    "lat": 51.5066,
    "lng": -0.0814,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 5006061,
+    "osm_version": 40,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.iwm.org.uk/visits/hms-belfast",
    "checked": "2026-10"
   },
@@ -2753,6 +3366,16 @@
    "lat": 51.5082,
    "lng": -0.0972,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 1239793,
+    "osm_version": 26,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.shakespearesglobe.com/visit/",
    "checked": "2026-10"
   },
@@ -2795,6 +3418,16 @@
    "lat": 51.5062,
    "lng": -0.0892,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 658695413,
+    "osm_version": 14,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://cathedral.southwark.anglican.org/visiting/",
    "checked": "2026-10"
   },
@@ -2834,6 +3467,16 @@
    "lat": 51.50135,
    "lng": -0.11474,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 23486557,
+    "osm_version": 21,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "approximate"
+   },
    "source": "https://leakestreetarches.london/",
    "checked": "2026-10"
   },
@@ -2873,9 +3516,19 @@
    "anchor": false,
    "bookAhead": false,
    "tip": "פתוח רק מחמישי עד ראשון, וביקור נמשך בדרך כלל כשלושת רבעי שעה. אין שירותים במקום ואין כניסה לעגלות ולתיקים גדולים, אז כדאי להתארגן לפני שעולים.",
-   "lat": 51.5043,
-   "lng": -0.0877,
+   "lat": 51.505041,
+   "lng": -0.088511,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 90404358,
+    "osm_version": 8,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "geometry_centroid",
+    "accuracy": "exact"
+   },
    "source": "https://oldoperatingtheatre.com/visiting-us/",
    "checked": "2026-10"
   },
@@ -2913,9 +3566,19 @@
    "anchor": false,
    "bookAhead": false,
    "tip": "כרטיס שנקנה באתר מראש זול יותר מבקופה, ויש גם כרטיסים משולבים עם אטרקציות נוספות בעיר. כדאי לבדוק באתר את שעות ההאכלה וההרצאות ולתכנן את הביקור סביבן.",
-   "lat": 51.5019,
-   "lng": -0.1196,
+   "lat": 51.501626,
+   "lng": -0.119466,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 9777763616,
+    "osm_version": 3,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "direct_place_object",
+    "accuracy": "exact"
+   },
    "source": "https://www.visitsealife.com/london/plan-your-visit/",
    "checked": "2026-10"
   },
@@ -2958,6 +3621,16 @@
    "lat": 51.4997,
    "lng": -0.1999,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 640554759,
+    "osm_version": 11,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://designmuseum.org/plan-your-visit",
    "checked": "2026-10"
   },
@@ -3000,6 +3673,16 @@
    "lat": 51.5025,
    "lng": -0.2029,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 8137262,
+    "osm_version": 43,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://www.rbkc.gov.uk/parks-leisure-and-culture/parks/your-local-park/holland-park",
    "checked": "2026-10"
   },
@@ -3043,6 +3726,16 @@
    "lat": 51.4994,
    "lng": -0.1633,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 25739565,
+    "osm_version": 37,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.harrods.com/en-gb/store-guide",
    "checked": "2026-10"
   },
@@ -3086,6 +3779,16 @@
    "lat": 51.501,
    "lng": -0.1774,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 372860405,
+    "osm_version": 26,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.royalalberthall.com/visit/",
    "checked": "2026-10"
   },
@@ -3130,7 +3833,16 @@
    "lat": 51.52991,
    "lng": -0.12769,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 4680891,
+    "osm_version": 50,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.bl.uk/visit",
    "checked": "2026-10"
   },
@@ -3171,7 +3883,16 @@
    "lat": 51.52597,
    "lng": -0.13402,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 2617821322,
+    "osm_version": 19,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "source": "https://wellcomecollection.org/visit-us",
    "checked": "2026-10"
   },
@@ -3214,6 +3935,16 @@
    "lat": 51.5238,
    "lng": -0.1585,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 2404286595,
+    "osm_version": 9,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "source": "https://www.sherlock-holmes.co.uk/",
    "checked": "2026-10"
   },
@@ -3253,6 +3984,16 @@
    "lat": 51.5228,
    "lng": -0.1548,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 684695074,
+    "osm_version": 11,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.madametussauds.com/london/plan-your-visit/",
    "checked": "2026-10"
   },
@@ -3296,7 +4037,16 @@
    "lat": 51.56415,
    "lng": -0.16714,
    "precision": "approx",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 21255243,
+    "osm_version": 1,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://www.cityoflondon.gov.uk/things-to-do/green-spaces/hampstead-heath",
    "checked": "2026-10"
   },
@@ -3343,7 +4093,16 @@
    "lat": 51.57155,
    "lng": -0.16734,
    "precision": "approx",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 24653374,
+    "osm_version": 22,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://www.english-heritage.org.uk/visit/places/kenwood/",
    "checked": "2026-10"
   },
@@ -3385,7 +4144,16 @@
    "lat": 51.56778,
    "lng": -0.14859,
    "precision": "approx",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 1612806,
+    "osm_version": 35,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://highgatecemetery.org/visit",
    "checked": "2026-10"
   },
@@ -3428,7 +4196,16 @@
    "lat": 51.5358,
    "lng": -0.12667,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 500008118,
+    "osm_version": 25,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.kingscross.co.uk/coal-drops-yard",
    "checked": "2026-10"
   },
@@ -3470,9 +4247,19 @@
    "anchor": false,
    "bookAhead": false,
    "tip": "ההליכה לאורך התעלה, ליד גן החיות ועד קמדן, לוקחת בערך שעה. מי שמעדיף לשבת יכול לעשות את אותו קטע בסירת המעבורת שיוצאת מונציה הקטנה לקמדן לוק.",
-   "lat": 51.5231,
-   "lng": -0.1835,
+   "lat": 51.5212514,
+   "lng": -0.1823549,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 5305428,
+    "osm_version": 4,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "geometry_centroid",
+    "accuracy": "approximate"
+   },
    "source": "https://canalrivertrust.org.uk/enjoy-the-waterways/canal-and-river-network/regents-canal",
    "checked": "2026-10"
   },
@@ -3517,9 +4304,19 @@
    "anchor": true,
    "bookAhead": false,
    "tip": "בכל יום חמישי מתקיים כאן שוק עתיקות ווינטג' שפותח מוקדם, ובשאר הימים יש בעיקר דוכני עיצוב, אופנה ואוכל. כנסיית כרייסט צ'רץ' ורחוב פורנייה נמצאים ממש ליד, וקל לחבר את שלושתם לסיבוב אחד.",
-   "lat": 51.519,
-   "lng": -0.0787,
+   "lat": 51.519594,
+   "lng": -0.075368,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 16306646,
+    "osm_version": 35,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "geometry_centroid",
+    "accuracy": "exact"
+   },
    "source": "https://oldspitalfieldsmarket.com/opening-times",
    "checked": "2026-10",
    "image": "images/places/covered-market-hall",
@@ -3565,6 +4362,16 @@
    "lat": 51.5294,
    "lng": -0.0694,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 350349593,
+    "osm_version": 6,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://columbiaroad.info/",
    "checked": "2026-10",
    "image": "images/places/flower-market-street",
@@ -3610,6 +4417,16 @@
    "lat": 51.5315,
    "lng": -0.0764,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 706183718,
+    "osm_version": 19,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.museumofthehome.org.uk/",
    "checked": "2026-10",
    "image": "images/places/candlelit-house",
@@ -3658,6 +4475,16 @@
    "lat": 51.5162,
    "lng": -0.0703,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 264131965,
+    "osm_version": 16,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.whitechapelgallery.org/",
    "checked": "2026-10",
    "image": "images/places/gallery-white",
@@ -3701,9 +4528,19 @@
    "anchor": false,
    "bookAhead": true,
    "tip": "המקומות מוגבלים, ולכן כדאי להזמין באתר מראש, כרטיסים במקום נמכרים רק אם נשאר מקום. ביקור הערב לאור נרות הוא הקלאסי, ומי שרוצה לדבר במהלך הביקור יבחר בביקור הרגוע ביום.",
-   "lat": 51.5207,
-   "lng": -0.0756,
+   "lat": 51.520943,
+   "lng": -0.07779,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 2244751330,
+    "osm_version": 8,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "direct_place_object",
+    "accuracy": "exact"
+   },
    "source": "https://www.dennissevershouse.co.uk/",
    "checked": "2026-10",
    "image": "images/places/candlelit-house",
@@ -3749,6 +4586,16 @@
    "lat": 51.4769,
    "lng": -0.0005,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 268533448,
+    "osm_version": 50,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.rmg.co.uk/royal-observatory/plan-your-visit",
    "checked": "2026-10"
   },
@@ -3789,6 +4636,16 @@
    "lat": 51.4828,
    "lng": -0.0096,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 25608663,
+    "osm_version": 51,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.rmg.co.uk/cutty-sark/plan-your-visit",
    "checked": "2026-10"
   },
@@ -3834,6 +4691,16 @@
    "lat": 51.4812,
    "lng": -0.0037,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 15327162,
+    "osm_version": 5,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.rmg.co.uk/queens-house/plan-your-visit",
    "checked": "2026-10"
   },
@@ -3879,6 +4746,16 @@
    "lat": 51.4816,
    "lng": -0.009,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 25696035,
+    "osm_version": 16,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.greenwichmarket.london/",
    "checked": "2026-10"
   },
@@ -3917,9 +4794,19 @@
    "anchor": false,
    "bookAhead": false,
    "tip": "בצד השני נפתח הנוף הקלאסי על גריניץ׳ מעבר לנהר, וזו הדרך החינמית להגיע אליו.",
-   "lat": 51.4847,
-   "lng": -0.0103,
+   "lat": 51.483293,
+   "lng": -0.010166,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 43649840,
+    "osm_version": 15,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "entrance_or_station",
+    "accuracy": "exact"
+   },
    "source": "https://www.royalgreenwich.gov.uk/greenwich-and-woolwich-foot-tunnels",
    "checked": "2026-10"
   },
@@ -3963,6 +4850,16 @@
    "lat": 51.43851,
    "lng": -0.27474,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 51260440,
+    "osm_version": 87,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "source": "https://www.royalparks.org.uk/visit/parks/richmond-park",
    "checked": "2026-10"
   },
@@ -4005,6 +4902,16 @@
    "lat": 51.48379,
    "lng": -0.60404,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 23580556,
+    "osm_version": 72,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "berkshire-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.rct.uk/visit/windsor-castle",
    "checked": "2026-10"
   },
@@ -4049,6 +4956,16 @@
    "lat": 51.556,
    "lng": -0.2796,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 12942436,
+    "osm_version": 27,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.wembleystadium.com/tours",
    "checked": "2026-10"
   },
@@ -4088,9 +5005,19 @@
    "anchor": false,
    "bookAhead": false,
    "tip": "נסיעה קצרה אבל הנוף פתוח לכל הכיוונים, ובשעת השקיעה זה הזמן היפה ביותר.",
-   "lat": 51.49991,
-   "lng": 0.00557,
+   "lat": 51.499774,
+   "lng": 0.008335,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 170081286,
+    "osm_version": 23,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "entrance_or_station",
+    "accuracy": "approximate"
+   },
    "source": "https://tfl.gov.uk/modes/london-cable-car/",
    "checked": "2026-10"
   },
@@ -4131,6 +5058,16 @@
    "lat": 51.50763,
    "lng": -0.02387,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 140144139,
+    "osm_version": 18,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://www.londonmuseum.org.uk/docklands/visit/",
    "checked": "2026-10"
   },
@@ -4178,6 +5115,16 @@
    "lat": 51.4818,
    "lng": -0.1445,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 4965216,
+    "osm_version": 61,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "source": "https://batterseapowerstation.co.uk/plan-your-visit/",
    "checked": "2026-10"
   },
@@ -4218,9 +5165,33 @@
    "anchor": true,
    "bookAhead": false,
    "tip": "הכניסה חינם, אבל כדאי להזמין כרטיס באתר מראש. מתחנת קולינדייל הולכים כעשר דקות, וזו אפשרות טובה במיוחד ליום גשום.",
-   "lat": 51.5968,
-   "lng": -0.2416,
+   "lat": 51.5974134,
+   "lng": -0.2377348,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 3841869297,
+    "osm_version": 3,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "entrance_or_station",
+    "accuracy": "exact",
+    "objects": [
+     {
+      "osm_type": "node",
+      "osm_id": 3841869297,
+      "osm_version": 3,
+      "role": "primary"
+     },
+     {
+      "osm_type": "way",
+      "osm_id": 118906069,
+      "osm_version": 17,
+      "role": "site"
+     }
+    ]
+   },
    "source": "https://www.rafmuseum.org.uk/london/plan-your-day/",
    "checked": "2026-10"
   },
@@ -4250,6 +5221,16 @@
    "lat": 51.526,
    "lng": -0.0815,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 81558813,
+    "osm_version": 21,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "approximate"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -4292,6 +5273,16 @@
    "lat": 51.5203,
    "lng": -0.0738,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 157012199,
+    "osm_version": 17,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "approximate"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -4337,6 +5328,16 @@
    "lat": 51.5244,
    "lng": -0.0746,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 8137163,
+    "osm_version": 14,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "approximate"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -4382,6 +5383,16 @@
    "lat": 51.5194,
    "lng": -0.0721,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 126483845,
+    "osm_version": 9,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -4428,6 +5439,16 @@
    "lat": 51.5189,
    "lng": -0.0745,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 419932886,
+    "osm_version": 12,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -4478,6 +5499,16 @@
    "lat": 51.5213,
    "lng": -0.0703,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 841787240,
+    "osm_version": 4,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 2,
@@ -4522,6 +5553,16 @@
    "lat": 51.5193,
    "lng": -0.074,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 126482346,
+    "osm_version": 16,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "approximate"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -4567,6 +5608,16 @@
    "lat": 51.5259,
    "lng": -0.0753,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 797748916,
+    "osm_version": 7,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -4608,9 +5659,19 @@
    "audiences": [
     "returning"
    ],
-   "lat": 51.5259,
-   "lng": -0.0779,
+   "lat": 51.526823,
+   "lng": -0.077225,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 111796688,
+    "osm_version": 8,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "geometry_centroid",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -4654,6 +5715,16 @@
    "lat": 51.5235,
    "lng": -0.0873,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 14168519,
+    "osm_version": 2,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 0.5,
@@ -4691,9 +5762,19 @@
    "audiences": [
     "returning"
    ],
-   "lat": 51.5231,
-   "lng": -0.08,
+   "lat": 51.524564,
+   "lng": -0.080182,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 7988657199,
+    "osm_version": 5,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "direct_place_object",
+    "accuracy": "approximate"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -4742,6 +5823,16 @@
    "lat": 51.5245,
    "lng": -0.0718,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 271641402,
+    "osm_version": 14,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "low",
@@ -4790,6 +5881,16 @@
    "lat": 51.5244,
    "lng": -0.0717,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 271641407,
+    "osm_version": 9,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "low",
@@ -4835,6 +5936,16 @@
    "lat": 51.5245,
    "lng": -0.0768,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 276329431,
+    "osm_version": 12,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "mid",
@@ -4879,6 +5990,16 @@
    "lat": 51.5183,
    "lng": -0.0748,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 12543995831,
+    "osm_version": 2,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "mid",
@@ -4923,6 +6044,16 @@
    "lat": 51.5198,
    "lng": -0.0742,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 157322992,
+    "osm_version": 3,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "mid",
@@ -4966,6 +6097,16 @@
    "lat": 51.5202,
    "lng": -0.074,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 157323015,
+    "osm_version": 9,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "mid",
@@ -5016,6 +6157,11 @@
    "lat": 51.5218,
    "lng": -0.0715,
    "precision": "exact",
+   "coordSource": {
+    "status": "closed_not_map_eligible",
+    "map_eligible": false,
+    "note": "historical coordinate kept for old shared routes; no OSM match required"
+   },
    "free": false,
    "access": "free",
    "spend": "low",
@@ -5059,6 +6205,16 @@
    "lat": 51.5207,
    "lng": -0.0717,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 156872559,
+    "osm_version": 8,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "mid",
@@ -5103,6 +6259,16 @@
    "lat": 51.5182,
    "lng": -0.0773,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 338799778,
+    "osm_version": 10,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "mid",
@@ -5149,6 +6315,16 @@
    "lat": 51.5242,
    "lng": -0.0769,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 12448591501,
+    "osm_version": 4,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "mid",
@@ -5193,6 +6369,16 @@
    "lat": 51.5247,
    "lng": -0.0867,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 630379321,
+    "osm_version": 6,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "low",
@@ -5236,6 +6422,16 @@
    "lat": 51.5244,
    "lng": -0.0742,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 11959060817,
+    "osm_version": 2,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "low",
@@ -5283,6 +6479,16 @@
    "lat": 51.526,
    "lng": -0.0882,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 154856449,
+    "osm_version": 14,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "low",
@@ -5331,6 +6537,16 @@
    "lat": 51.5212,
    "lng": -0.0724,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 270424948,
+    "osm_version": 9,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -5377,6 +6593,11 @@
    "lat": 51.5203,
    "lng": -0.0709,
    "precision": "exact",
+   "coordSource": {
+    "status": "closed_not_map_eligible",
+    "map_eligible": false,
+    "note": "historical coordinate kept for old shared routes; no OSM match required"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -5418,6 +6639,16 @@
    "lat": 51.5247,
    "lng": -0.0733,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 373262259,
+    "osm_version": 6,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -5464,6 +6695,11 @@
    "lat": 51.5239,
    "lng": -0.0668,
    "precision": "exact",
+   "coordSource": {
+    "status": "closed_not_map_eligible",
+    "map_eligible": false,
+    "note": "historical coordinate kept for old shared routes; no OSM match required"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -5511,6 +6747,16 @@
    "lat": 51.5236,
    "lng": -0.0787,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 205296759,
+    "osm_version": 8,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "mid",
@@ -5557,6 +6803,16 @@
    "lat": 51.5255,
    "lng": -0.0858,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 155362965,
+    "osm_version": 11,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "mid",
@@ -5601,6 +6857,16 @@
    "lat": 51.5265,
    "lng": -0.0878,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 5213657021,
+    "osm_version": 4,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "high",
@@ -5648,6 +6914,16 @@
    "lat": 51.5244,
    "lng": -0.0801,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 157236295,
+    "osm_version": 10,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "low",
@@ -5693,9 +6969,19 @@
     "families",
     "kids-young"
    ],
-   "lat": 51.5216,
-   "lng": -0.0658,
+   "lat": 51.5220016,
+   "lng": -0.0662085,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 281967274,
+    "osm_version": 9,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "derived_entrance_nearest_site_point_to_address",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -5736,9 +7022,19 @@
     "kids-young",
     "teens"
    ],
-   "lat": 51.5284,
-   "lng": -0.0556,
+   "lat": 51.529051,
+   "lng": -0.05487,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 10790633,
+    "osm_version": 15,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "geometry_centroid",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 2,
@@ -5785,6 +7081,16 @@
    "lat": 51.5317,
    "lng": -0.0666,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 79338949,
+    "osm_version": 9,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -5830,6 +7136,16 @@
    "lat": 51.5178,
    "lng": -0.0781,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 4563250,
+    "osm_version": 33,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "approximate"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -5875,6 +7191,16 @@
    "lat": 51.53905,
    "lng": -0.16246,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 4082666,
+    "osm_version": 36,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -5920,6 +7246,16 @@
    "lat": 51.5124,
    "lng": -0.0907,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 512846335,
+    "osm_version": 14,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -5958,7 +7294,16 @@
    "lat": 51.54231,
    "lng": -0.14795,
    "precision": "approx",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 163695685,
+    "osm_version": 10,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -5999,6 +7344,16 @@
    "lat": 51.54223,
    "lng": -0.14425,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 11645106,
+    "osm_version": 4,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -6036,7 +7391,16 @@
    "lat": 51.53949,
    "lng": -0.14407,
    "precision": "approx",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 856806600,
+    "osm_version": 5,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 0.5,
@@ -6076,6 +7440,16 @@
    "lat": 51.54325,
    "lng": -0.15198,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 1110282368,
+    "osm_version": 6,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "priceBand": "כרטיס בתשלום",
    "hours": 2,
@@ -6113,7 +7487,16 @@
    "lat": 51.53972,
    "lng": -0.14294,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 14206898628,
+    "osm_version": 1,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": false,
    "priceBand": "כרטיס בתשלום",
    "hours": 2,
@@ -6152,7 +7535,16 @@
    "lat": 51.53858,
    "lng": -0.14303,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 14206898659,
+    "osm_version": 1,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": false,
    "priceBand": "כרטיס בתשלום",
    "hours": 2,
@@ -6193,6 +7585,16 @@
    "lat": 51.53475,
    "lng": -0.13816,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 225465155,
+    "osm_version": 14,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "priceBand": "כרטיס בתשלום",
    "hours": 2,
@@ -6230,7 +7632,16 @@
    "lat": 51.53751,
    "lng": -0.1457,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 451762775,
+    "osm_version": 5,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "low",
@@ -6270,7 +7681,16 @@
    "lat": 51.54092,
    "lng": -0.14391,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 3138186730,
+    "osm_version": 5,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "mid",
@@ -6309,7 +7729,12 @@
    "lat": 51.5414,
    "lng": -0.14631,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "status": "closed_not_map_eligible",
+    "map_eligible": false,
+    "note": "historical coordinate kept for old shared routes; no OSM match required",
+    "prior": "nominatim/osm"
+   },
    "free": false,
    "access": "free",
    "spend": "low",
@@ -6350,7 +7775,16 @@
    "lat": 51.54287,
    "lng": -0.1477,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 79813535,
+    "osm_version": 9,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "mid",
@@ -6390,7 +7824,16 @@
    "lat": 51.53946,
    "lng": -0.14461,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 26610587,
+    "osm_version": 10,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "low",
@@ -6430,7 +7873,16 @@
    "lat": 51.5361,
    "lng": -0.14486,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 770081717,
+    "osm_version": 4,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "mid",
@@ -6470,7 +7922,16 @@
    "lat": 51.54222,
    "lng": -0.14743,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 560040794,
+    "osm_version": 12,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 0.5,
@@ -6510,7 +7971,16 @@
    "lat": 51.54114,
    "lng": -0.1462,
    "precision": "approx",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 6968377,
+    "osm_version": 27,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "approximate"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -6548,7 +8018,16 @@
    "lat": 51.54133,
    "lng": -0.14509,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 557947572,
+    "osm_version": 5,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 0.5,
@@ -6586,7 +8065,16 @@
    "lat": 51.53751,
    "lng": -0.14141,
    "precision": "approx",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 51960889,
+    "osm_version": 20,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "approximate"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -6624,7 +8112,16 @@
    "lat": 51.54238,
    "lng": -0.14782,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 4838976521,
+    "osm_version": 4,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 0.5,
@@ -6663,7 +8160,16 @@
    "lat": 51.53723,
    "lng": -0.14533,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 451583446,
+    "osm_version": 2,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "low",
@@ -6705,7 +8211,16 @@
    "lat": 51.54204,
    "lng": -0.15654,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 1028386432,
+    "osm_version": 9,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "mid",
@@ -6745,7 +8260,16 @@
    "lat": 51.54164,
    "lng": -0.15701,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 265649514,
+    "osm_version": 4,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "mid",
@@ -6786,7 +8310,16 @@
    "lat": 51.53524,
    "lng": -0.1254,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 14727721,
+    "osm_version": 2,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -6824,7 +8357,16 @@
    "lat": 51.53702,
    "lng": -0.12815,
    "precision": "approx",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 453267219,
+    "osm_version": 7,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 0.5,
@@ -6862,7 +8404,16 @@
    "lat": 51.53497,
    "lng": -0.12709,
    "precision": "approx",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "relation",
+    "osm_id": 12727580,
+    "osm_version": 5,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "approximate"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 0.5,
@@ -6900,7 +8451,16 @@
    "lat": 51.53193,
    "lng": -0.12661,
    "precision": "exact",
-   "coordSource": "nominatim/osm",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 4256246,
+    "osm_version": 54,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_representative_point_within_osm_geometry",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 0.5,
@@ -6941,6 +8501,16 @@
    "lat": 51.53612,
    "lng": -0.12552,
    "precision": "exact",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 3501612811,
+    "osm_version": 16,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "existing_point_within_tolerance_of_osm_object",
+    "accuracy": "exact"
+   },
    "free": false,
    "access": "free",
    "spend": "mid",
@@ -6979,9 +8549,19 @@
    ],
    "attrs": [],
    "audiences": [],
-   "lat": 51.53975,
-   "lng": -0.14301,
+   "lat": 51.540056,
+   "lng": -0.143068,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "way",
+    "osm_id": 849129441,
+    "osm_version": 5,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "geometry_centroid",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם",
    "hours": 1,
@@ -7021,9 +8601,19 @@
     "book-ahead"
    ],
    "audiences": [],
-   "lat": 51.51472,
-   "lng": -0.08288,
+   "lat": 51.514367,
+   "lng": -0.083149,
    "precision": "approx",
+   "coordSource": {
+    "provider": "OpenStreetMap",
+    "osm_type": "node",
+    "osm_id": 11262672466,
+    "osm_version": 4,
+    "source_date": "2026-10-08T20:21:06Z",
+    "extract": "greater-london-261008.osm.pbf",
+    "method": "direct_place_object",
+    "accuracy": "exact"
+   },
    "free": true,
    "priceBand": "כניסה חינם בהזמנה מראש",
    "hours": 1,
