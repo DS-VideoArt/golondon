@@ -83,13 +83,42 @@ class MemoryStore {
   };
   const page1 = (code, fam) => '/kids-journal-beta.html#r=' + code + '&f=' + (fam === false ? 0 : 1) + '&m=auto&e=planner_cta';
 
-  /* ---------- Planner CTA ---------- */
-  { const { ctx, page, errors } = await open('/planner.html');
-    await chip(page, 'ילדים (5'); await page.evaluate(() => document.getElementById('build').click()); await sleep(800);
-    ok(await page.evaluate(() => document.getElementById('jb-cta').hidden && document.getElementById('jb-cta').textContent === ''), 'Beta disabled (production default): no CTA, even for a family route');
-    ok((await events(page, 'planner_complete')).length === 1 && (await events(page, 'journal_beta_start')).length === 0, 'disabled: planner_complete once, no journal_beta_start');
-    ok(errors.length === 0, 'disabled: no page errors'); await ctx.close(); }
-  { const { ctx, page } = await open('/planner.html?journal_beta=preview');
+  /* ---------- feature flag OFF (the server switch is the only switch) ---------- */
+  env.enabled = false;
+  for (const url of ['/planner.html', '/planner.html?journal_beta=preview', '/planner.html?journal_beta=1&beta=on']) {
+    const { ctx, page, errors } = await open(url);
+    await page.evaluate(() => { try { sessionStorage.setItem('gl_jb_preview', '1'); localStorage.setItem('gl_jb_preview', '1'); } catch (e) {} });
+    await chip(page, 'ילדים (5'); await page.evaluate(() => document.getElementById('build').click()); await sleep(900);
+    ok(await page.evaluate(() => document.getElementById('jb-cta').hidden && document.getElementById('jb-cta').textContent === ''), 'flag OFF ' + url + ': no CTA for a family route (no query parameter or stored value opens it)');
+    ok((await events(page, 'planner_complete')).length === 1 && (await events(page, 'journal_beta_start')).length === 0, 'flag OFF: planner_complete once, no journal_beta_start');
+    ok(errors.length === 0, 'flag OFF: no page errors'); await ctx.close(); }
+  { const code = [C('big-ben') + C('westminster-abbey'), C('tate-modern')].join('.');
+    const { ctx, page } = await open('/planner.html?journal_beta=preview&p=' + code + '&from=share');
+    await chip(page, 'ילדים (5'); await sleep(900);
+    ok(await page.evaluate(() => document.getElementById('m-jb-cta').hidden), 'flag OFF: no CTA on the manual board either'); await ctx.close(); }
+  { const n0 = calls.length;
+    const { ctx, page } = await open(page1(C('big-ben')));
+    const st = await page.evaluate(() => ({ form: document.getElementById('jb-request').hidden, closed: !document.getElementById('jb-closed').hidden, txt: document.getElementById('jb-closed').textContent,
+      inputs: [...document.querySelectorAll('#jb-request input, #jb-request button')].filter(e => e.offsetParent).length }));
+    ok(st.form && st.closed && /עדיין לא פתוח לבקשות/.test(st.txt) && st.inputs === 0, 'flag OFF: page shows the Hebrew "not open" card, no visible form or button');
+    const r = await page.evaluate(async () => { const x = await fetch('/.netlify/functions/journal-beta-request', { method: 'POST', body: JSON.stringify({ route_code: 'AA', family_route: true, planner_mode: 'auto', email: 'a@b.co', first_name: null, beta_ack: true, website: '' }) }); return x.status; });
+    ok(r === 503 && env.store.m.size === 0, 'flag OFF: a direct POST is refused (503) and nothing is written');
+    await ctx.close(); }
+  { env.enabled = true; const keep = env.secret; env.secret = '';
+    const { ctx, page } = await open(page1(C('big-ben')));
+    ok(await page.evaluate(() => document.getElementById('jb-request').hidden && !document.getElementById('jb-closed').hidden), 'server flag on but no secret: still closed (fails closed)');
+    await ctx.close();
+    const p = await open('/planner.html'); await chip(p.page, 'ילדים (5'); await p.page.evaluate(() => document.getElementById('build').click()); await sleep(900);
+    ok(await p.page.evaluate(() => document.getElementById('jb-cta').hidden), 'server flag on but no secret: no CTA'); await p.ctx.close();
+    env.secret = keep; }
+  { const g0 = calls.filter(c => c.method === 'GET').length;
+    const { ctx, page } = await open('/planner.html'); await page.evaluate(() => document.getElementById('build').click()); await sleep(900);
+    await chip(page, 'נוער'); await sleep(300);
+    ok(calls.filter(c => c.method === 'GET').length === g0, 'adult-only and teen-only routes never ask the server'); await ctx.close(); }
+
+  /* ---------- feature flag ON ---------- */
+  env.enabled = true;
+  { const { ctx, page } = await open('/planner.html');
     await page.evaluate(() => document.getElementById('build').click()); await sleep(800);
     ok(!(await ctaHref(page, 'jb-cta')), 'adult-only route (default "מבוגרים בלבד"): no CTA');
     await chip(page, 'נוער'); await sleep(200);
@@ -99,7 +128,7 @@ class MemoryStore {
     await chip(page, 'מבוגרים בלבד'); await sleep(200);
     ok(!(await ctaHref(page, 'jb-cta')), 'back to adults only: CTA hidden again');
     await ctx.close(); }
-  { const { ctx, page, errors } = await open('/planner.html?journal_beta=preview');
+  { const { ctx, page, errors } = await open('/planner.html');
     await chip(page, 'תינוקות'); await page.evaluate(() => document.getElementById('build').click()); await sleep(800);
     const href = await ctaHref(page, 'jb-cta'), h = hashOf(href), code = await waCode(page, 'wa');
     ok(!!href && h.f === '1' && h.m === 'auto', 'family auto route: CTA shown, family flag 1');
@@ -114,14 +143,14 @@ class MemoryStore {
     ok(errors.length === 0, 'family auto: no page errors'); await ctx.close(); }
   { const code = [C('big-ben') + C('westminster-abbey'), C('tate-modern') + C('chin-chin-labs')].join('.');
     /* "מי נוסע" נבחר בלשונית האוטומטית, ובאותו עמוד הקריאה מופיעה גם על הלוח הידני */
-    const { ctx, page, errors } = await open('/planner.html?journal_beta=preview&p=' + code + '&from=share');
+    const { ctx, page, errors } = await open('/planner.html?p=' + code + '&from=share');
     ok(!(await ctaHref(page, 'm-jb-cta')), 'manual route before any child age is chosen: no CTA');
     await chip(page, 'ילדים (5'); await sleep(300);
     const href = await ctaHref(page, 'm-jb-cta'), wa = await waCode(page, 'm-wa');
     ok(!!href && hashOf(href).m === 'manual', 'family manual route: CTA shown on the board');
     ok(hashOf(href).r === code && wa === code, 'family manual route: CTA code == shared /t/ code == WhatsApp code, closed stop kept (' + hashOf(href).r + ')');
     ok(errors.length === 0, 'family manual: no page errors'); await ctx.close();
-    const adult = await open('/planner.html?journal_beta=preview&p=' + code + '&from=share');
+    const adult = await open('/planner.html?p=' + code + '&from=share');
     ok(!(await ctaHref(adult.page, 'm-jb-cta')), 'adult manual route: no CTA'); await adult.ctx.close(); }
 
   /* ---------- strict validation on the page: nothing is sent ---------- */
@@ -194,9 +223,11 @@ class MemoryStore {
     const v = await events(page, 'journal_beta_view'); ok(v.length === 1 && v[0].beta_state === 'full', 'journal_beta_view reports beta_state full'); await ctx.close(); }
 
   /* ---------- server switched off ---------- */
+  { const p = await open('/planner.html'); await chip(p.page, 'ילדים (5'); await p.page.evaluate(() => document.getElementById('build').click()); await sleep(900);
+    ok(await p.page.evaluate(() => document.getElementById('jb-cta').hidden), 'Beta full: the Planner no longer offers the CTA'); await p.ctx.close(); }
   { env.enabled = false;
     const { ctx, page } = await open(page1(C('big-ben')));
-    ok(await page.evaluate(() => document.getElementById('jb-submit').disabled && /עדיין לא פתוחה/.test(document.getElementById('jb-draft').textContent)), 'JOURNAL_BETA_ENABLED off: "not open yet", submit disabled');
+    ok(await page.evaluate(() => document.getElementById('jb-request').hidden && !document.getElementById('jb-closed').hidden), 'switched off again after launch: "not open" card, no form');
     await ctx.close(); env.enabled = true; }
 
   /* ---------- gallery, privacy, layout, site search ---------- */
@@ -220,7 +251,7 @@ class MemoryStore {
     const o = await overflow(page);
     ok(o.d <= 0 && o.out.length === 0 && errors.length === 0, 'page @' + w + ': no horizontal overflow, nothing outside the viewport ' + JSON.stringify(o));
     await ctx.close();
-    const p2 = await open('/planner.html?journal_beta=preview', { width: w });
+    const p2 = await open('/planner.html', { width: w });
     await chip(p2.page, 'ילדים (5'); await p2.page.evaluate(() => document.getElementById('build').click()); await sleep(800);
     ok((await p2.page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)) <= 0 && !!(await ctaHref(p2.page, 'jb-cta')), 'planner CTA @' + w + ': visible, no overflow');
     await p2.ctx.close(); }

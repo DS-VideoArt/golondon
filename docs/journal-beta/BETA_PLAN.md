@@ -16,9 +16,23 @@ Planner, a FAMILY itinerary on screen (a child under 12 in "מי נוסע", the 
   -> operator: route code -> snapshot (Kids Journal) -> PDF -> email                  journal_beta_delivered (ops)
 ```
 
-CTA visibility: Beta switch on (today: a session opened with `?journal_beta=preview`), a real itinerary, and a family
-selection. It updates at once when "מי נוסע" changes. Adult-only and teen-only routes never see it. On the manual board
-the family signal is the same "מי נוסע" selection (it lives on the auto tab); see section 12.
+CTA visibility: the Beta feature flag is on (section 1a), a real itinerary, and a family selection. It updates at once
+when "מי נוסע" changes. Adult-only and teen-only routes never see it. On the manual board the family signal is the same
+"מי נוסע" selection (it lives on the auto tab); see section 12.
+
+## 1a. Feature flag (one switch, on the server)
+
+The only switch is the pair of Netlify environment variables read by the request function:
+`JOURNAL_BETA_ENABLED=true` and `JOURNAL_BETA_SECRET` (both, per deploy context). Default: neither is set, Beta OFF.
+
+- Function: `GET` answers `{enabled, open}`; `enabled` is true only when both variables are set. `POST` is refused
+  (503) unless both are set. The server is authoritative.
+- Planner: asks that `GET` only when a family itinerary is on screen, once per page load, and shows the CTA only for
+  exactly `{enabled: true, open: true}`. 404, error, timeout (5 s), `enabled:false` or `open:false` keep it hidden.
+- Page: the request form is hidden in the HTML and shown only for `{enabled: true, open: true}`; `open:false` shows
+  "ההרצה התמלאה"; anything else shows the Hebrew "not open" card. No form without JavaScript either.
+- No query parameter, cookie or browser storage value can turn anything on. The flag is not personal data.
+- Fail closed: UI off whenever the server is off or unreachable; server off whenever either variable is missing.
 
 ## 2. Handoff
 
@@ -127,11 +141,24 @@ client-side.
 
 ## 12. Open points for management
 
-1. Manual-board families: "מי נוסע" sits on the auto tab, so a family that only uses the manual board sees the CTA only
-   after choosing a child age there. A one-line prompt on the board would fix it; not added (no redesign).
-2. Launch switches: set `JOURNAL_BETA_SECRET` and `JOURNAL_BETA_ENABLED=true` in Netlify, and replace the
-   `?journal_beta=preview` CTA switch with a reviewed config change.
-3. Operator notification: none automatic; check the store daily during the Beta.
+1. Accepted for the 25-family Beta (management, 12 Oct 2026): "מי נוסע" sits on the auto tab, so a family that only
+   uses the manual board, or opens a shared /t/ link, sees the CTA only after choosing a child age on the auto tab.
+   Fix before a wider launch.
+2. Operator notification: none automatic; check the store daily during the Beta.
+
+## 12a. Launch switch (production context)
+
+TO OPEN BETA:
+1. `netlify env:set JOURNAL_BETA_ENABLED true --context production --scope functions`
+2. `netlify env:set JOURNAL_BETA_SECRET <new random 64 hex> --context production --scope functions --secret`
+3. `netlify blobs:list journal-beta` shows no keys (empty production store)
+4. deploy the approved main (env vars apply from that deploy on)
+5. smoke test: `GET /.netlify/functions/journal-beta-request` -> `{"enabled":true,"open":true}`; a family route shows the CTA
+6. `netlify blobs:list journal-beta --prefix slots/` -> 0 of 25
+
+TO CLOSE BETA:
+- `netlify env:unset JOURNAL_BETA_ENABLED --context production`, then redeploy (functions read env at deploy time)
+- keep accepted requests until processed or the 7-day purge removes them
 
 ## 13. Files
 

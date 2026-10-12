@@ -76,7 +76,6 @@
     .jb-state h2 { font-size: 22px; margin-bottom: 8px; }
     .jb-links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 16px; }
     .jb-link { border: 1px solid var(--line); border-radius: 10px; padding: 10px 16px; font-weight: 700; font-size: 14.5px; color: var(--navy, #1E3A8A); background: #fff; }
-    .jb-draft { font-size: 13px; background: #FEF3C7; color: #78350F; border: 1px solid #FCD34D; border-radius: 10px; padding: 10px 14px; margin-top: 16px; }
 
     @media (max-width: 560px) {
       .jb-hero { padding-top: 34px; }
@@ -167,7 +166,8 @@
     <p class="jb-muted">אנחנו עדיין משפרים את המוצר. במהלך הבטא היומן ניתן ללא עלות, ונשמח לפידבק קצר לאחר שתקבלו אותו.</p>
   </section>
 
-  <section class="jb-card" id="jb-request">
+  <!-- מוסתר עד שהשרת עונה שהבטא פתוחה (journal-beta.js). בלי תשובה, בלי JavaScript או כשהבטא כבויה: אין טופס פעיל -->
+  <section class="jb-card" id="jb-request" hidden>
     <h2>בקשת יומן למסלול שלכם</h2>
     <form class="jb-form" id="jb-form" novalidate>
       <div class="jb-field">
@@ -212,7 +212,15 @@
     </div>
   </section>
 
-  <p class="jb-draft" id="jb-draft" hidden></p>
+  <section class="jb-card jb-state" id="jb-closed" hidden>
+    <h2>יומן המסע לילדים עדיין לא פתוח לבקשות</h2>
+    <p class="jb-muted">כרגע אי אפשר לבקש יומן. בינתיים המסלול שלכם נשאר במתכנן, ואפשר להמשיך לתכנן איתו.</p>
+    <div class="jb-links">
+      <a class="jb-link" href="planner.html"><i class="fas fa-route"></i> למתכנן</a>
+      <a class="jb-link" href="guide-kids.html"><i class="fas fa-child"></i> לונדון עם ילדים</a>
+    </div>
+  </section>
+
 </main>
 
 <script src="route-code.js?v=1"></script>

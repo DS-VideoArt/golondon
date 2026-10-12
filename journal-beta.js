@@ -52,7 +52,7 @@
 
   var H = readHash();
   var ROUTE = null;            /* תוצאת GoLondonJournalRoute.validate */
-  var STATE = 'open';          /* open | full | closed | draft */
+  var STATE = 'pending';       /* pending | open | full | closed. רק open מציג טופס פעיל */
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function routeLink() { return window.GoLondonRouteCode.link(H.code); }
@@ -84,12 +84,16 @@
     }).join('') + '</div>';
   }
 
-  function setState(s, notice) {
+  /*
+    השרת הוא המקור היחיד: הטופס מוצג רק כשהוא עונה enabled ו-open. כבוי, חסר, שגיאה או חוסר תשובה
+    מציגים את הודעת "עדיין לא פתוח", והטופס נשאר מוסתר (הוא מוסתר כבר ב-HTML).
+  */
+  function setState(s) {
     STATE = s;
+    $('jb-request').hidden = s !== 'open';
     $('jb-full').hidden = s !== 'full';
-    $('jb-request').hidden = s === 'full';
+    $('jb-closed').hidden = s !== 'closed';
     if (s === 'full' && H.code) $('jb-full-route').href = routeLink();
-    if (notice) { $('jb-draft').textContent = notice; $('jb-draft').hidden = false; }
   }
 
   function canSubmit() { return !!(H.code && H.family && ROUTE && ROUTE.ok && STATE === 'open'); }
@@ -139,8 +143,7 @@
       } else if (res.status === 422 && b.code === 'route_invalid') {
         routeError(b.reason);
       } else if (res.status === 503 || res.status === 404) {
-        setState('closed', 'הבטא עדיין לא פתוחה לבקשות. הבקשה לא נשלחה ושום פרט לא נשמר.');
-        btn.disabled = false;
+        setState('closed');
       } else {
         showError('משהו השתבש בשליחה. בדקו את הפרטים ונסו שוב בעוד רגע.');
         btn.disabled = false;
@@ -153,7 +156,7 @@
 
   function init() {
     $('jb-go').addEventListener('click', function () {
-      var target = $('jb-request').hidden ? $('jb-full') : $('jb-request');
+      var target = [$('jb-request'), $('jb-full'), $('jb-closed')].filter(function (x) { return !x.hidden; })[0] || $('jb-route');
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       if (!$('jb-request').hidden && !$('jb-email').disabled) setTimeout(function () { $('jb-email').focus(); }, 400);
     });
@@ -163,13 +166,13 @@
     var dataP = H.code ? fetch('/planner-data.json').then(function (r) { return r.json(); }).then(function (d) {
       ROUTE = window.GoLondonJournalRoute.validate(H.code, d.attractions);
     }).catch(function () { ROUTE = null; }) : Promise.resolve();
-    var statusP = fetch(ENDPOINT, { method: 'GET' }).then(function (r) {
-      return r.status === 404 ? { missing: true } : r.json();
+    var statusP = fetch(ENDPOINT, { method: 'GET', cache: 'no-store' }).then(function (r) {
+      return r.ok ? r.json() : null;
     }).then(function (j) {
-      if (j.missing) setState('draft', 'טיוטה: השרת שמקבל בקשות לא זמין בסביבה הזאת.');
-      else if (!j.enabled) setState('closed', 'הבטא עדיין לא פתוחה לבקשות.');
-      else if (j.open === false) setState('full');
-    }).catch(function () { setState('closed', 'כרגע אי אפשר לבדוק אם יש מקום בבטא. נסו שוב בעוד רגע.'); });
+      if (j && j.enabled === true && j.open === true) setState('open');
+      else if (j && j.enabled === true && j.open === false) setState('full');
+      else setState('closed');
+    }).catch(function () { setState('closed'); });
 
     Promise.all([dataP, statusP]).then(function () {
       renderRoute();

@@ -1043,7 +1043,7 @@
 
   /* בחירת "מי נוסע" השתנתה: הקריאה ליומן מתעדכנת מיד, בלי לבנות את המסלול מחדש */
   function journalBetaRefresh() {
-    if (!JOURNAL_BETA || !DATA) return;
+    if (!DATA) return;
     if (LAST && LAST.length && $('results').classList.contains('show')) journalBetaCta('jb-cta', LAST, 'auto', true);
     try {
       var mp = manualPlan();
@@ -1626,14 +1626,28 @@
       r  קוד המסלול שעל המסך, אותו קוד בדיוק של קישור השיתוף ‎/t/‎ (encodePlan)
       f  1 כשבמסלול ילד עד גיל 11, בדיוק כמו הסינון הקשיח של build (needsStrictKidFilter)
       m  auto או manual, למדידה בלבד
-    כבויה עד אישור ההנהלה. לבדיקה פותחים את המתכנן עם ‎?journal_beta=preview‎, והבחירה נשמרת לסשן.
+
+    מתג אחד, בשרת: משתני הסביבה JOURNAL_BETA_ENABLED ו-JOURNAL_BETA_SECRET בנטליפיי. המתכנן שואל את
+    פונקציית הבקשה (GET, בלי שום מידע) רק כשמוצג מסלול משפחתי, ופעם אחת לכל טעינת עמוד. הקריאה מופיעה רק
+    כשהתשובה היא בדיוק {enabled: true, open: true}. כל דבר אחר, וגם 404, שגיאה או המתנה של יותר מ-5 שניות,
+    משאיר אותה מוסתרת. שום פרמטר בכתובת ושום ערך בדפדפן לא פותח אותה, והשרת ממילא דוחה בקשה כשהוא כבוי.
   */
-  var JOURNAL_BETA = (function () {
-    try {
-      if (/[?&]journal_beta=preview(&|$)/.test(location.search)) sessionStorage.setItem('gl_jb_preview', '1');
-      return sessionStorage.getItem('gl_jb_preview') === '1';
-    } catch (e) { return false; }
-  })();
+  var JB_STATUS = { asked: false, open: false };
+
+  function journalBetaAsk() {
+    if (JB_STATUS.asked || !window.fetch) return;
+    JB_STATUS.asked = true;
+    var late = false, timer = setTimeout(function () { late = true; }, 5000);
+    fetch('/.netlify/functions/journal-beta-request', { method: 'GET', cache: 'no-store', credentials: 'omit' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        clearTimeout(timer);
+        if (late || !j || j.enabled !== true || j.open !== true) return;
+        JB_STATUS.open = true;
+        journalBetaRefresh();
+      })
+      .catch(function () { /* בלי תשובה הקריאה נשארת מוסתרת */ });
+  }
 
   /* מסלול משפחתי = ילד עד גיל 11 בבחירת "מי נוסע", בדיוק התנאי של הסינון הקשיח ב-build (needsStrictKidFilter) */
   function journalBetaFamily() {
@@ -1651,7 +1665,9 @@
     var box = $(boxId);
     if (!box) return;
     /* היומן הוא לילדים: הקריאה מופיעה רק במסלול משפחתי, לא במסלול של מבוגרים או של נוער בלבד */
-    box.hidden = !(JOURNAL_BETA && show && journalBetaFamily());
+    var wanted = show && journalBetaFamily();
+    if (wanted) journalBetaAsk();
+    box.hidden = !(wanted && JB_STATUS.open);
     if (box.hidden) return;
     if (!box.firstChild) {
       box.innerHTML = '<span class="jb-cta-text"><strong>הופכים את המסלול ליומן מסע לילדים</strong>' +
