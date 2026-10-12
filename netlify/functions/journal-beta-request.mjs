@@ -34,7 +34,16 @@ import JournalRoute from '../../journal-beta-route.js';
 
 export const CAP = 25;
 export const RETENTION_DAYS = 7;
-export const STORE_NAME = 'journal-beta';
+export const STORE_NAME = 'journal-beta';                 /* האתר האמיתי בלבד */
+export const PREVIEW_STORE_NAME = 'journal-beta-preview';  /* כל השאר: תצוגות מקדימות, ענפים, פיתוח */
+/*
+  מאגר לפי סביבת הפריסה. מאגרים ברמת האתר משותפים לכל הפריסות ("shared across all deploys of your site"),
+  ולכן תצוגה מקדימה שהייתה כותבת ל-journal-beta הייתה תופסת משבצות אמיתיות של הבטא. רק פריסה שהקשר
+  שלה production כותבת למאגר האמיתי. כל הקשר אחר, וגם הקשר חסר, הולך למאגר הבדיקות.
+*/
+export function storeNameFor(context) {
+  return context && context.deploy && context.deploy.context === 'production' ? STORE_NAME : PREVIEW_STORE_NAME;
+}
 const STALE_CLAIM_MS = 2 * 60 * 1000;
 const MAX_BODY = 4096;
 const FIELDS = ['route_code', 'family_route', 'planner_mode', 'email', 'first_name', 'beta_ack', 'website'];
@@ -147,8 +156,8 @@ async function loadPlacesFrom(req) {
 
 const env = k => (globalThis.Netlify && Netlify.env ? Netlify.env.get(k) : process.env[k]);
 
-export default async (req) => handle(req, {
-  store: getStore({ name: STORE_NAME, consistency: 'strong' }),
+export default async (req, context) => handle(req, {
+  store: getStore({ name: storeNameFor(context), consistency: 'strong' }),
   secret: env('JOURNAL_BETA_SECRET') || '',
   enabled: env('JOURNAL_BETA_ENABLED') === 'true',
   loadPlaces: () => loadPlacesFrom(req)

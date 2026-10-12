@@ -51,6 +51,10 @@ no install scripts).
 
 ## 5. Blob data model (site-wide store `journal-beta`, strong consistency)
 
+Site-wide stores are shared by all deploys of the site, so the store is chosen by deploy context: `journal-beta` only when
+the function runs in a `production` deploy, `journal-beta-preview` for Deploy Previews, branch deploys, dev and any
+unknown context (`storeNameFor`). Preview QA can never claim a real Beta slot or read real requests.
+
 | key | value | personal data | deleted |
 |---|---|---|---|
 | `slots/01` .. `slots/25` | `{request_id, created_at}` | none | never (it is the count) |

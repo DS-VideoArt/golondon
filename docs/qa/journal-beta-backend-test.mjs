@@ -18,7 +18,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { getStore } from '@netlify/blobs';
 import { BlobsServer } from '@netlify/blobs/server';
-import { handle, CAP, dedupeKey } from '../../netlify/functions/journal-beta-request.mjs';
+import { handle, CAP, dedupeKey, storeNameFor } from '../../netlify/functions/journal-beta-request.mjs';
 import { purge } from '../../netlify/functions/journal-beta-purge.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
@@ -120,6 +120,11 @@ async function flows(makeStore, label) {
     ok(res.requests === 1 && res.dedupe === 1, label + 'purge: the 7-day-old request and its dedupe key deleted ' + JSON.stringify(res));
     ok((await s.list({ prefix: 'requests/' })).blobs.length === 1 && (await s.list({ prefix: 'slots/' })).blobs.length === 2, label + 'purge: newer request kept, slots kept (no personal data)'); }
 }
+
+/* ---- store isolation: only a production deploy may touch the real store ---- */
+ok(storeNameFor({ deploy: { context: 'production' } }) === 'journal-beta', 'store: production context -> journal-beta');
+for (const c of ['deploy-preview', 'branch-deploy', 'dev', '', undefined]) ok(storeNameFor(c === undefined ? undefined : { deploy: { context: c } }) === 'journal-beta-preview', 'store: context ' + JSON.stringify(c) + ' -> journal-beta-preview');
+ok(storeNameFor(null) === 'journal-beta-preview' && storeNameFor({}) === 'journal-beta-preview', 'store: missing context -> journal-beta-preview (fail safe)');
 
 /* ---- layer 1: memory store, including concurrency ---- */
 await flows(() => new MemoryStore(), 'memory: ');

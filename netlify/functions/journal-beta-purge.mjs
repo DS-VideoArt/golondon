@@ -9,7 +9,7 @@
   שמבטיחה שגם בקשה שנשכחה לא נשמרת יותר מ-7 ימים ועוד יום ריצה אחד לכל היותר.
 */
 import { getStore } from '@netlify/blobs';
-import { STORE_NAME, RETENTION_DAYS } from './journal-beta-request.mjs';
+import { storeNameFor, RETENTION_DAYS } from './journal-beta-request.mjs';
 
 export async function purge(store, now) {
   const limit = (now || new Date()).getTime() - RETENTION_DAYS * 864e5;
@@ -28,8 +28,9 @@ export async function purge(store, now) {
   return deleted;
 }
 
-export default async () => {
-  const deleted = await purge(getStore({ name: STORE_NAME, consistency: 'strong' }));
+/* בפריסה האמיתית המחיקה רצה על journal-beta; בתצוגה מקדימה (Run now) על מאגר הבדיקות */
+export default async (req, context) => {
+  const deleted = await purge(getStore({ name: storeNameFor(context), consistency: 'strong' }));
   /* ספירה בלבד, בלי מפתחות ובלי תוכן, כדי שאין מידע אישי ביומן הריצה */
   console.log('journal-beta purge', JSON.stringify(deleted));
   return new Response(null, { status: 204 });
