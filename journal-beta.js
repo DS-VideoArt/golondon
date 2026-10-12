@@ -2,29 +2,33 @@
   יומן המסע לילדים, בטא חינמית: עמוד הבקשה
   =========================================
   המסלול מגיע מהמתכנן בחלק שאחרי # בכתובת, ולא בפרמטר רגיל:
-    /kids-journal-beta#r=<קוד המסלול>&f=<1 אם במסלול ילד עד גיל 11, אחרת 0>&m=<auto|manual>
-  קוד המסלול הוא בדיוק הקוד של קישור השיתוף ‎/t/‎ (route-code.js), כלומר המסלול שעל המסך,
-  באותו סדר ימים ומקומות. מה שאחרי # לא נשלח לשרת ולא נרשם בגוגל אנליטיקס.
+    /kids-journal-beta#r=<קוד המסלול>&f=<1 אם במסלול ילד עד גיל 11>&m=<auto|manual>&e=planner_cta
+  קוד המסלול הוא בדיוק הקוד של קישור השיתוף ‎/t/‎, כלומר המסלול שעל המסך, באותו סדר ימים ומקומות.
+  מה שאחרי # לא נשלח לשרת ולא נרשם בגוגל אנליטיקס.
 
-  כאן לא מריצים את המתכנן ולא בונים מסלול: רק מפענחים את הקוד, מציגים אותו כדי שהמשפחה
-  תוודא שזה המסלול שלה, ושולחים בקשה. מקום שנסגר לצמיתות נשאר במקומו, מסומן כסגור,
-  כמו בקישור שיתוף ישן, והיומן יציג אותו כהודעת מקום סגור.
+  הבדיקה קפדנית (journal-beta-route.js, אותו קובץ שהשרת מריץ): קוד לא מוכר, קטוע או לא תקין לא מדולג
+  בשקט כמו בקישור שיתוף. במקום זה מוצגת הודעה וכפתור חזרה למתכנן, ושום בקשה לא נשלחת.
+  מקום שנסגר לצמיתות נשאר במקומו ומסומן סגור, והיומן יציג אותו כהודעת מקום סגור.
 
-  מדידה (analytics.js, glTrack), בלי שום מידע אישי ובלי קוד המסלול:
-    journal_beta_view    צפייה בעמוד. entry, has_route, route_ok, state
+  מדידה (analytics.js, glTrack), בלי מייל, בלי שם, בלי קוד המסלול ובלי מזהה הבקשה:
+    journal_beta_view    צפייה בעמוד: entry, has_route, route_ok, beta_state
     journal_beta_start   פעם אחת לסשן: לחיצה על הקריאה במתכנן, או פעולה ראשונה בטופס כאן
-    journal_beta_submit  רק אחרי שהשרת אישר שהבקשה נקלטה
+    journal_beta_submit  רק כשהשרת קיבל בקשה חדשה (status received). בקשה כפולה לא נספרת שוב
   journal_beta_delivered ו-journal_beta_feedback נרשמים בתהליך הידני, לא כאן.
-
-  השרת (‎/.netlify/functions/journal-beta-request‎) עדיין לא קיים בענף הזה. הוא מתואר
-  ב-docs/journal-beta/BETA_PLAN.md וממתין לאישור. בלעדיו העמוד מציג הודעת טיוטה ולא מעמיד פנים.
 */
 (function () {
   'use strict';
 
   var ENDPOINT = '/.netlify/functions/journal-beta-request';
-  var LIMITS = { maxDays: 7, maxStopsPerDay: 12 };       /* גבולות המוצר של היומן, גרסה 1 */
   var START_KEY = 'gl_jb_start';
+  var REASONS = {
+    malformed: 'קוד המסלול לא שלם.',
+    unknown_place: 'אחד המקומות במסלול לא מוכר לנו.',
+    trip_length: 'בשלב הבטא היומן נבנה למסלולים של יום אחד עד 7 ימים.',
+    stops_per_day: 'בשלב הבטא היומן נבנה למסלולים של עד 12 עצירות ביום.',
+    repeated_in_day: 'אותו מקום מופיע פעמיים באותו יום.',
+    no_open_place: 'במסלול הזה אין מקומות פתוחים.'
+  };
 
   var $ = function (id) { return document.getElementById(id); };
   function track(name, params) { try { if (window.glTrack) window.glTrack(name, params || {}); } catch (e) { /* מדידה לא מפילה עמוד */ } }
@@ -35,81 +39,82 @@
   function readHash() {
     var out = {};
     String(location.hash || '').replace(/^#/, '').split('&').forEach(function (kv) {
-      var i = kv.indexOf('='); if (i > 0) out[decodeURIComponent(kv.slice(0, i))] = decodeURIComponent(kv.slice(i + 1));
+      var i = kv.indexOf('=');
+      if (i > 0) { try { out[decodeURIComponent(kv.slice(0, i))] = decodeURIComponent(kv.slice(i + 1)); } catch (e) { /* קידוד שבור */ } }
     });
     return {
-      code: /^[A-Za-z0-9.]{2,400}$/.test(out.r || '') ? out.r : '',
+      code: typeof out.r === 'string' ? out.r : '',
       family: out.f === '1',
-      mode: out.m === 'manual' ? 'manual' : (out.m === 'auto' ? 'auto' : ''),
+      mode: out.m === 'manual' ? 'manual' : 'auto',
       entry: out.e === 'planner_cta' ? 'planner_cta' : 'direct'
     };
   }
 
   var H = readHash();
-  var ROUTE = null;            /* { days: [[place]], ok, reason } */
-  var STATE = 'open';          /* open | full | unavailable */
+  var ROUTE = null;            /* תוצאת GoLondonJournalRoute.validate */
+  var STATE = 'open';          /* open | full | closed | draft */
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function routeLink() { return window.GoLondonRouteCode.link(H.code); }
 
-  function describeRoute(data) {
-    var byCode = {}, byId = {};
-    data.attractions.forEach(function (a) { byId[a.id] = a; if (a.code) byCode[a.code] = a.id; });
-    var ids = window.GoLondonRouteCode.decode(H.code, function (c) { return byCode[c]; });
-    var days = ids.map(function (d) { return d.map(function (id) { return byId[id]; }); });
-    var active = days.reduce(function (n, d) { return n + d.filter(function (a) { return !a.closed; }).length; }, 0);
-    var reason = '';
-    if (!days.length || !active) reason = 'empty';
-    else if (days.length > LIMITS.maxDays) reason = 'too_many_days';
-    else if (days.some(function (d) { return d.length > LIMITS.maxStopsPerDay; })) reason = 'too_many_stops';
-    return { days: days, ok: !reason, reason: reason, stops: days.reduce(function (n, d) { return n + d.length; }, 0) };
+  function routeError(reason) {
+    $('jb-route-error').hidden = false;
+    $('jb-route-error-text').textContent = 'לא הצלחנו להכין את המסלול הזה ליומן. ' + (REASONS[reason] || '') +
+      ' אפשר לחזור למתכנן, לבדוק את המסלול ולפתוח את היומן משם שוב.';
+    $('jb-submit').disabled = true;
   }
 
   function renderRoute() {
     var body = $('jb-route-body');
     if (!H.code) {
-      body.innerHTML = 'היומן נבנה רק ממסלול אמיתי שבניתם במתכנן. בונים מסלול, ובסופו לוחצים על "הופכים את המסלול ליומן מסע לילדים".' +
+      body.innerHTML = 'היומן נבנה רק ממסלול משפחתי אמיתי שבניתם במתכנן. בונים מסלול, ובסופו לוחצים על "הופכים את המסלול ליומן מסע לילדים".' +
         '<div class="jb-links"><a class="jb-link" href="planner.html"><i class="fas fa-route"></i> לבניית מסלול</a></div>';
+      $('jb-submit').disabled = true;
       return;
     }
-    if (!ROUTE) { body.textContent = 'לא הצלחנו לטעון את המסלול. נסו לחזור למתכנן ולפתוח את היומן משם.'; return; }
-    var html = '<div class="jb-route-days">' + ROUTE.days.map(function (d, i) {
+    if (!ROUTE) { body.textContent = ''; routeError('load'); return; }
+    if (!ROUTE.ok) { body.textContent = ''; routeError(ROUTE.reason); return; }
+    if (!H.family) { body.textContent = ''; $('jb-route-error').hidden = false;
+      $('jb-route-error-text').textContent = 'יומן המסע נבנה למסלולים משפחתיים עם ילד עד גיל 11. במתכנן בוחרים את הגילים ב"מי נוסע", ואז פותחים את היומן שוב.';
+      $('jb-submit').disabled = true; return; }
+    body.innerHTML = '<div class="jb-route-days">' + ROUTE.days.map(function (d, i) {
       return '<div class="jb-route-day"><b>יום ' + (i + 1) + ':</b> ' + d.map(function (a) {
         return a.closed ? '<s>' + esc(a.name) + '</s> (נסגר)' : esc(a.name);
       }).join(' · ') + '</div>';
     }).join('') + '</div>';
-    var note = {
-      empty: 'במסלול הזה אין מקומות פתוחים, ולכן אי אפשר לבנות ממנו יומן.',
-      too_many_days: 'בשלב הבטא היומן נבנה למסלולים של עד 7 ימים.',
-      too_many_stops: 'בשלב הבטא היומן נבנה למסלולים של עד 12 מקומות ביום.'
-    }[ROUTE.reason];
-    if (note) html += '<p class="jb-error" style="margin-top:10px">' + note + ' אפשר לחזור למתכנן ולקצר את המסלול.</p>';
-    body.innerHTML = html;
   }
 
-  function setState(s, draftMsg) {
+  function setState(s, notice) {
     STATE = s;
     $('jb-full').hidden = s !== 'full';
     $('jb-request').hidden = s === 'full';
-    if (draftMsg) { $('jb-draft').textContent = draftMsg; $('jb-draft').hidden = false; }
+    if (s === 'full' && H.code) $('jb-full-route').href = routeLink();
+    if (notice) { $('jb-draft').textContent = notice; $('jb-draft').hidden = false; }
   }
 
-  function canSubmit() { return !!(H.code && ROUTE && ROUTE.ok && STATE !== 'full'); }
+  function canSubmit() { return !!(H.code && H.family && ROUTE && ROUTE.ok && STATE === 'open'); }
 
   function startOnce(entry) {
     if (session(START_KEY)) return;
     session(START_KEY, '1');
-    track('journal_beta_start', { entry: entry, trip_days: ROUTE ? ROUTE.days.length : 0, family_route: H.family ? 1 : 0 });
+    track('journal_beta_start', { entry: entry, trip_days: ROUTE && ROUTE.ok ? ROUTE.days.length : 0, family_route: H.family ? 1 : 0 });
   }
 
   function showError(msg) { var e = $('jb-error'); e.textContent = msg; e.hidden = !msg; }
-
   function validName(s) { return !s || /^[֐-׿A-Za-z][֐-׿A-Za-z '׳’-]{0,23}$/.test(s); }
+
+  function success(already) {
+    $('jb-request').hidden = true; $('jb-success').hidden = false;
+    if (already) $('jb-success-text').textContent = 'כבר קיבלנו מכם בקשה למסלול הזה, ואין צורך לשלוח שוב. היומן יישלח למייל שמסרתם.';
+    $('jb-back-route').href = routeLink();
+    $('jb-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 
   function submit(ev) {
     ev.preventDefault();
     showError('');
     var email = $('jb-email').value.trim(), name = $('jb-name').value.trim(), ack = $('jb-ack').checked;
-    if (!canSubmit()) return showError('צריך מסלול תקין מהמתכנן כדי לבקש יומן.');
+    if (!canSubmit()) return showError(STATE === 'open' ? 'צריך מסלול משפחתי תקין מהמתכנן כדי לבקש יומן.' : 'כרגע אי אפשר לשלוח בקשה.');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return showError('בדקו את כתובת המייל.');
     if (!validName(name)) return showError('בשדה השם כותבים שם פרטי בלבד, באותיות.');
     if (!ack) return showError('צריך לאשר שזו גרסת בטא.');
@@ -117,22 +122,27 @@
     var btn = $('jb-submit'); btn.disabled = true;
     fetch(ENDPOINT, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ route_code: H.code, family_route: H.family, planner_mode: H.mode, email: email, first_name: name || null, beta_ack: true })
+      body: JSON.stringify({ route_code: H.code, family_route: true, planner_mode: H.mode, email: email,
+        first_name: name || null, beta_ack: true, website: $('jb-website').value })
     }).then(function (r) {
-      return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, body: j }; });
+      return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, body: j || {} }; });
     }).then(function (res) {
-      if (res.status === 200 && res.body && res.body.ok) {
-        track('journal_beta_submit', { trip_days: ROUTE.days.length, stop_count: ROUTE.stops, family_route: H.family ? 1 : 0, planner_mode: H.mode || 'unknown', first_name_given: name ? 1 : 0 });
-        $('jb-request').hidden = true; $('jb-success').hidden = false;
-        $('jb-back-route').href = window.GoLondonRouteCode.link(H.code);
-        $('jb-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else if (res.status === 409 || (res.body && res.body.full)) {
+      var b = res.body;
+      if (res.status === 200 && b.ok && b.status === 'received') {
+        track('journal_beta_submit', { trip_days: ROUTE.days.length, stop_count: ROUTE.days.reduce(function (n, d) { return n + d.length; }, 0),
+          family_route: 1, planner_mode: H.mode, first_name_given: name ? 1 : 0 });
+        success(false);
+      } else if (res.status === 200 && b.ok && b.status === 'already_received') {
+        success(true);
+      } else if (res.status === 409) {
         setState('full');
-      } else if (res.status === 404) {
-        setState(STATE, 'טיוטה: השליחה עדיין לא מחוברת לשרת. הבקשה לא נשלחה ושום פרט לא נשמר.');
+      } else if (res.status === 422 && b.code === 'route_invalid') {
+        routeError(b.reason);
+      } else if (res.status === 503 || res.status === 404) {
+        setState('closed', 'הבטא עדיין לא פתוחה לבקשות. הבקשה לא נשלחה ושום פרט לא נשמר.');
         btn.disabled = false;
       } else {
-        showError((res.body && res.body.message) || 'משהו השתבש בשליחה. נסו שוב בעוד רגע.');
+        showError('משהו השתבש בשליחה. בדקו את הפרטים ונסו שוב בעוד רגע.');
         btn.disabled = false;
       }
     }).catch(function () {
@@ -143,25 +153,27 @@
 
   function init() {
     $('jb-go').addEventListener('click', function () {
-      $('jb-request').hidden ? $('jb-full').scrollIntoView({ behavior: 'smooth' }) : $('jb-request').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      if (!$('jb-request').hidden) setTimeout(function () { $('jb-email').focus(); }, 400);
+      var target = $('jb-request').hidden ? $('jb-full') : $('jb-request');
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!$('jb-request').hidden && !$('jb-email').disabled) setTimeout(function () { $('jb-email').focus(); }, 400);
     });
     $('jb-form').addEventListener('submit', submit);
-    $('jb-form').addEventListener('focusin', function () { if (H.code) startOnce('form'); }, { once: true });
+    $('jb-form').addEventListener('focusin', function () { if (canSubmit()) startOnce('form'); }, { once: true });
 
-    var dataP = H.code ? fetch('/planner-data.json').then(function (r) { return r.json(); }).then(function (d) { ROUTE = describeRoute(d); }).catch(function () { ROUTE = null; }) : Promise.resolve();
+    var dataP = H.code ? fetch('/planner-data.json').then(function (r) { return r.json(); }).then(function (d) {
+      ROUTE = window.GoLondonJournalRoute.validate(H.code, d.attractions);
+    }).catch(function () { ROUTE = null; }) : Promise.resolve();
     var statusP = fetch(ENDPOINT, { method: 'GET' }).then(function (r) {
-      if (r.status === 404) return { draft: true };
-      return r.json();
+      return r.status === 404 ? { missing: true } : r.json();
     }).then(function (j) {
-      if (j && j.draft) setState('open', 'טיוטה לבדיקת ההנהלה: עדיין אין שרת שמקבל בקשות ומנהל את מכסת 25 המשפחות.');
-      else if (j && j.open === false) setState('full');
-    }).catch(function () { setState('open', 'טיוטה: בדיקת המקום הפנוי בבטא לא זמינה כרגע.'); });
+      if (j.missing) setState('draft', 'טיוטה: השרת שמקבל בקשות לא זמין בסביבה הזאת.');
+      else if (!j.enabled) setState('closed', 'הבטא עדיין לא פתוחה לבקשות.');
+      else if (j.open === false) setState('full');
+    }).catch(function () { setState('closed', 'כרגע אי אפשר לבדוק אם יש מקום בבטא. נסו שוב בעוד רגע.'); });
 
     Promise.all([dataP, statusP]).then(function () {
       renderRoute();
-      if (H.code && ROUTE && !ROUTE.ok) $('jb-submit').disabled = true;
-      if (!H.code) $('jb-submit').disabled = true;
+      if (!canSubmit() && STATE !== 'full') $('jb-submit').disabled = true;
       track('journal_beta_view', { entry: H.entry, has_route: H.code ? 1 : 0, route_ok: ROUTE && ROUTE.ok ? 1 : 0, beta_state: STATE });
     });
   }

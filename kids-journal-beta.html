@@ -50,11 +50,16 @@
     .jb-route-day b { color: var(--navy, #1E3A8A); }
     .jb-route-day s { color: var(--ink-faint, #858a9c); }
 
-    .jb-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
-    .jb-shot { border: 2px dashed var(--line); border-radius: 12px; aspect-ratio: 210 / 297; display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 10px; font-size: 13px; color: var(--ink-soft); background: repeating-linear-gradient(45deg, rgba(30,58,138,.03) 0 10px, transparent 10px 20px); }
-    .jb-shot b { color: var(--ink); font-size: 14px; }
-    .jb-shot--wide { grid-column: 1 / -1; aspect-ratio: 16 / 7; }
+    .jb-sample { font-size: 14px; color: var(--ink-soft); margin: -4px 0 14px; }
+    .jb-gallery { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+    .jb-shot { display: flex; flex-direction: column; gap: 7px; color: var(--ink); font-size: 13.5px; font-weight: 700; text-align: center; }
+    .jb-shot img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--line); box-shadow: 0 2px 10px rgba(16,24,40,.08); background: #fff; }
+    .jb-shot:focus-visible { outline: 3px solid #1E3A8A; outline-offset: 3px; border-radius: 8px; }
+    .jb-shot--wide { grid-column: 1 / -1; margin-top: 6px; }
+    .jb-zoom-hint { font-size: 12.5px; color: var(--ink-faint, #858a9c); margin-top: 10px; }
+    @media (max-width: 700px) { .jb-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    /* שדה מלכודת: מוסתר מעין ומקורא מסך, בלי היסט שיוצר גלילה אופקית בעמוד מימין לשמאל */
+    .jb-hp { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
     .jb-form { display: grid; gap: 14px; }
     .jb-field label { display: block; font-weight: 700; font-size: 14.5px; margin-bottom: 5px; }
@@ -110,6 +115,10 @@
   <section class="jb-card" id="jb-route" aria-live="polite">
     <h2>המסלול שהיומן ייבנה ממנו</h2>
     <div id="jb-route-body" class="jb-muted">טוענים את המסלול…</div>
+    <div id="jb-route-error" hidden>
+      <p class="jb-error" id="jb-route-error-text">לא הצלחנו להכין את המסלול הזה ליומן.</p>
+      <div class="jb-links"><a class="jb-link" href="planner.html"><i class="fas fa-route"></i> חזרה למתכנן</a></div>
+    </div>
   </section>
 
   <section class="jb-card">
@@ -123,15 +132,35 @@
 
   <section class="jb-card">
     <h2>מה יש ביומן</h2>
-    <!-- טיוטה: כל משבצת מחכה לעמוד אמיתי מתוך ספרי הבדיקה המאושרים של היומן. ראו docs/journal-beta/BETA_PLAN.md, סעיף הנכסים -->
+    <p class="jb-sample">דוגמה מיומן אישי שנוצר למסלול לדוגמה</p>
+    <!-- עמודים אמיתיים מהיומן המאושר (1-day-westminster-family.pdf, sha256 c62d192b…), בלי שינוי. מקור: images/journal-beta/SOURCE.json -->
     <div class="jb-gallery">
-      <div class="jb-shot"><b>שער אישי</b>עמוד 1, ספר הבדיקה של יום אחד</div>
-      <div class="jb-shot"><b>מפה יומית</b>עמוד 3, עם ייחוס OpenStreetMap</div>
-      <div class="jb-shot"><b>עמוד מקום מלא</b>עמוד 4, ביג בן</div>
-      <div class="jb-shot"><b>דרכון המסע</b>עמוד 8</div>
-      <div class="jb-shot"><b>צביעה וציור</b>עמוד 5</div>
-      <div class="jb-shot jb-shot--wide"><b>כל הספר במבט אחד</b>11 העמודים של ספר הבדיקה של יום אחד</div>
+      <a class="jb-shot" href="images/journal-beta/cover.webp" target="_blank" rel="noopener" aria-label="שער אישי, פתיחה בגודל מלא">
+        <picture><source srcset="images/journal-beta/cover.webp" type="image/webp"><img src="images/journal-beta/cover.jpg" alt="שער היומן לדוגמה: יומן המסע של נועה, הרפתקה בלונדון" width="1000" height="1416" loading="lazy" decoding="async"></picture>
+        <span>שער אישי</span>
+      </a>
+      <a class="jb-shot" href="images/journal-beta/daily-map.webp" target="_blank" rel="noopener" aria-label="מפה יומית, פתיחה בגודל מלא">
+        <picture><source srcset="images/journal-beta/daily-map.webp" type="image/webp"><img src="images/journal-beta/daily-map.jpg" alt="מפת היום לדוגמה: שבע תחנות ממוספרות באזור וסטמינסטר, מחוברות בקו המסלול" width="1000" height="1416" loading="lazy" decoding="async"></picture>
+        <span>מפה יומית</span>
+      </a>
+      <a class="jb-shot" href="images/journal-beta/big-ben-module.webp" target="_blank" rel="noopener" aria-label="עמוד מקום מלא, פתיחה בגודל מלא">
+        <picture><source srcset="images/journal-beta/big-ben-module.webp" type="image/webp"><img src="images/journal-beta/big-ben-module.jpg" alt="עמוד מקום לדוגמה על ביג בן: תמונה, הסבר, שלוש עובדות מפתיעות ומשימת חיפוש קטנה" width="1000" height="1416" loading="lazy" decoding="async"></picture>
+        <span>עמוד מקום מלא</span>
+      </a>
+      <a class="jb-shot" href="images/journal-beta/colouring.webp" target="_blank" rel="noopener" aria-label="צביעה וציור, פתיחה בגודל מלא">
+        <picture><source srcset="images/journal-beta/colouring.webp" type="image/webp"><img src="images/journal-beta/colouring.jpg" alt="עמוד צביעה לדוגמה: ביג בן ובתי הפרלמנט לצביעה, עם מקום לציור ולזיכרון מהביקור" width="1000" height="1416" loading="lazy" decoding="async"></picture>
+        <span>צביעה וציור</span>
+      </a>
+      <a class="jb-shot" href="images/journal-beta/passport.webp" target="_blank" rel="noopener" aria-label="דרכון המסע, פתיחה בגודל מלא">
+        <picture><source srcset="images/journal-beta/passport.webp" type="image/webp"><img src="images/journal-beta/passport.jpg" alt="דרכון המסע לדוגמה: כרטיס לכל תחנה ביום, עם משימה קטנה וסימון ביקרנו כאן" width="1000" height="1416" loading="lazy" decoding="async"></picture>
+        <span>דרכון המסע</span>
+      </a>
+      <a class="jb-shot jb-shot--wide" href="images/journal-beta/contact-sheet.webp" target="_blank" rel="noopener" aria-label="כל הספר במבט אחד, פתיחה בגודל מלא">
+        <picture><source srcset="images/journal-beta/contact-sheet.webp" type="image/webp"><img src="images/journal-beta/contact-sheet.jpg" alt="כל 11 העמודים של היומן לדוגמה: שער, סקירת המסלול, מפה, עמודי מקום, עמודי צביעה, דרכון, עמודי זיכרונות ותעודת סיום" width="1970" height="932" loading="lazy" decoding="async"></picture>
+        <span>כל הספר במבט אחד, 11 עמודים</span>
+      </a>
     </div>
+    <p class="jb-zoom-hint">לחיצה על עמוד פותחת אותו בגודל מלא.</p>
   </section>
 
   <section class="jb-card">
@@ -154,27 +183,32 @@
         <input type="checkbox" id="jb-ack" name="beta_ack" required />
         <span>ידוע לי שזו גרסת בטא, ושהיומן נבנה מהמסלול שמופיע למעלה.</span>
       </label>
+      <div class="jb-hp" aria-hidden="true">
+        <label for="jb-website">לא למילוי</label>
+        <input type="text" id="jb-website" name="website" tabindex="-1" autocomplete="off" />
+      </div>
       <p class="jb-error" id="jb-error" role="alert" hidden></p>
       <div><button class="jb-btn" type="submit" id="jb-submit"><i class="fas fa-paper-plane"></i> שליחת הבקשה</button></div>
-      <p class="jb-privacy">המייל משמש רק לשליחת היומן. המסלול, היומן והשם הפרטי נשמרים אצלנו לכל היותר 7 ימים ונמחקים. אנחנו לא שואלים על שם משפחה, גיל, בית ספר, מלון או כתובת, ולא שומרים פרופיל של הילד. <a href="privacy.html">מדיניות הפרטיות</a></p>
+      <p class="jb-privacy">המייל משמש רק כדי לשלוח לכם את יומן הבטא, ולא נרשם לשום רשימת דיוור. המסלול, השם הפרטי והמייל נשמרים אצלנו לכל היותר 7 ימים ונמחקים. אנחנו לא שואלים על שם משפחה, גיל, בית ספר, מלון או כתובת, ולא שומרים פרופיל של הילד. <a href="privacy.html#journal-beta">מדיניות הפרטיות</a></p>
     </form>
   </section>
 
   <section class="jb-card jb-state" id="jb-success" hidden>
     <h2>הבקשה התקבלה</h2>
-    <p class="jb-muted">נבנה את היומן לפי המסלול שלכם ונשלח אותו למייל שמסרתם. אפשר בינתיים לחזור למסלול ולהמשיך לתכנן.</p>
+    <p class="jb-muted" id="jb-success-text">נכין את יומן הבטא לפי המסלול שלכם ונשלח אותו למייל שמסרתם. בינתיים אפשר לחזור למסלול ולהמשיך לתכנן.</p>
     <div class="jb-links">
       <a class="jb-link" id="jb-back-route" href="planner.html"><i class="fas fa-route"></i> חזרה למסלול שלנו</a>
       <a class="jb-link" href="guide-kids.html"><i class="fas fa-child"></i> לונדון עם ילדים</a>
+      <a class="jb-link" href="index.html"><i class="fas fa-house"></i> לדף הבית</a>
     </div>
   </section>
 
   <section class="jb-card jb-state" id="jb-full" hidden>
     <h2>ההרצה התמלאה</h2>
-    <p class="jb-muted">רוצים לדעת כשהיומן יהיה זמין שוב? מצטרפים למועדון גו לונדון, ונעדכן שם.</p>
+    <p class="jb-muted">כל 25 המקומות בבטא כבר תפוסים, ולכן כרגע אנחנו לא מקבלים בקשות נוספות. המסלול שלכם נשאר במתכנן, ואפשר להמשיך לתכנן איתו.</p>
     <div class="jb-links">
-      <a class="jb-link" href="join.html"><i class="fas fa-bell"></i> להצטרפות למועדון</a>
-      <a class="jb-link" href="planner.html"><i class="fas fa-route"></i> חזרה למתכנן</a>
+      <a class="jb-link" id="jb-full-route" href="planner.html"><i class="fas fa-route"></i> חזרה למסלול</a>
+      <a class="jb-link" href="guide-kids.html"><i class="fas fa-child"></i> לונדון עם ילדים</a>
     </div>
   </section>
 
@@ -182,6 +216,7 @@
 </main>
 
 <script src="route-code.js?v=1"></script>
+<script src="journal-beta-route.js?v=1"></script>
 <script src="accessibility-widget.js?v=2" defer></script>
 <script src="analytics.js?v=5" defer></script>
 <script src="journal-beta.js?v=1" defer></script>

@@ -1038,6 +1038,17 @@
         }));
       });
     }
+    journalBetaRefresh();
+  }
+
+  /* בחירת "מי נוסע" השתנתה: הקריאה ליומן מתעדכנת מיד, בלי לבנות את המסלול מחדש */
+  function journalBetaRefresh() {
+    if (!JOURNAL_BETA || !DATA) return;
+    if (LAST && LAST.length && $('results').classList.contains('show')) journalBetaCta('jb-cta', LAST, 'auto', true);
+    try {
+      var mp = manualPlan();
+      journalBetaCta('m-jb-cta', mp, 'manual', mp.some(function (d) { return d.items.length >= 2; }));
+    } catch (e) { /* הלוח הידני עוד לא מוכן */ }
   }
 
   /*
@@ -1624,18 +1635,23 @@
     } catch (e) { return false; }
   })();
 
-  function journalBetaHref(plan, mode) {
-    var family = state.childAges.some(function (id) {
+  /* מסלול משפחתי = ילד עד גיל 11 בבחירת "מי נוסע", בדיוק התנאי של הסינון הקשיח ב-build (needsStrictKidFilter) */
+  function journalBetaFamily() {
+    return state.childAges.some(function (id) {
       return AGE_BANDS.some(function (b) { return b.id === id && b.strict; });
     });
-    return 'kids-journal-beta.html#r=' + encodePlan(plan) + '&f=' + (family ? 1 : 0) + '&m=' + mode + '&e=planner_cta';
+  }
+
+  function journalBetaHref(plan, mode) {
+    return 'kids-journal-beta.html#r=' + encodePlan(plan) + '&f=' + (journalBetaFamily() ? 1 : 0) + '&m=' + mode + '&e=planner_cta';
   }
 
   /* הטקסט נכתב רק כשהקריאה מוצגת, כדי שלא ייכנס לאינדקס החיפוש של האתר כל עוד הבטא כבויה */
   function journalBetaCta(boxId, plan, mode, show) {
     var box = $(boxId);
     if (!box) return;
-    box.hidden = !(JOURNAL_BETA && show);
+    /* היומן הוא לילדים: הקריאה מופיעה רק במסלול משפחתי, לא במסלול של מבוגרים או של נוער בלבד */
+    box.hidden = !(JOURNAL_BETA && show && journalBetaFamily());
     if (box.hidden) return;
     if (!box.firstChild) {
       box.innerHTML = '<span class="jb-cta-text"><strong>הופכים את המסלול ליומן מסע לילדים</strong>' +
@@ -1653,7 +1669,7 @@
         if (!sessionStorage.getItem('gl_jb_start')) {
           sessionStorage.setItem('gl_jb_start', '1');
           if (window.glTrack) window.glTrack('journal_beta_start', { entry: 'planner_cta', planner_mode: mode, trip_days: p.length,
-            family_route: link.href.indexOf('&f=1') !== -1 ? 1 : 0 });
+            family_route: 1 });
         }
       } catch (e) { /* מדידה לא חוסמת מעבר */ }
     });
