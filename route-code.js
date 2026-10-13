@@ -28,6 +28,11 @@
 
   var CODE_LENGTH = 2;
   var SHORT_BASE = 'https://golondon.co.il/t/';
+  /*
+    הקישור מתוך חוברת הטיול (QR וקישור מודפס). אותו קוד בדיוק, נתיב אחר: ההפניה של
+    ‎/t/‎ מתייגת כל כניסה כוואטסאפ, ו-‎/tp/‎ מתייגת אותה כחוברת הטיול (_redirects).
+  */
+  var PACK_BASE = 'https://golondon.co.il/tp/';
   var PLANNER_URL = 'https://golondon.co.il/planner';
 
   /* ימים ריקים יוצאים, הסדר נשמר. המספור של הפלט הוא המיקום ברשימה שחוזרת, פלוס אחד */
@@ -61,9 +66,10 @@
     }));
   }
 
-  /* הקישור הקצר למסלול, או למתכנן הריק כשאין מה לקודד */
-  function link(code) {
-    return code ? SHORT_BASE + code : PLANNER_URL;
+  /* הקישור הקצר למסלול, או למתכנן הריק כשאין מה לקודד. channel "pack" לקישורים מתוך החוברת */
+  function link(code, channel) {
+    if (!code) return PLANNER_URL;
+    return (channel === 'pack' ? PACK_BASE : SHORT_BASE) + code;
   }
 
   /* הצורה שהמתכנן מקבל בפרמטר p. בודק צורה בלבד, לא שהקודים קיימים */

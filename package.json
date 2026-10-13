@@ -1,0 +1,20 @@
+{
+  "name": "golondon-site-tools",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Travel Pack PDF function (netlify/functions/travel-pack.mjs) and local QA tooling. The site has no build step: netlify.toml keeps publish = \".\" and no build command.",
+  "scripts": {
+    "qa:print": "node docs/qa/print-harness.js",
+    "qa:route-code": "node docs/qa/route-code-test.js",
+    "travel-pack:render": "node docs/qa/travel-pack-render.js",
+    "qa:access-cost": "node docs/qa/access-cost-lint.js"
+  },
+  "devDependencies": {
+    "@fontsource/heebo": "5.3.0",
+    "qrcode-generator": "2.0.4"
+  },
+  "dependencies": {
+    "@sparticuz/chromium": "153.0.0",
+    "puppeteer-core": "25.12.0"
+  }
+}
