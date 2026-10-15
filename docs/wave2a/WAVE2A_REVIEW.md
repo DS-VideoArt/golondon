@@ -37,7 +37,7 @@ local folder `/Users/mymac/דפי נחיתה ואתרים/golondon-wave2a-review
 ## D. Homepage AFTER (390px: 7,189px, 1440px: 4,754px)
 
 1. Hero `#home-hero`: same H1 and subtitle, exactly two actions (Planner primary, Kosher Map secondary), no splash, no intro animation. Trust strip inside the hero: "חינם, בלי הרשמה", "מידע שנבדק ומתעדכן", "בעברית, למטיילים ישראלים" (all factual: the site is free, no tool requires an account, prices/kosher list carry check dates).
-2. `#categories` "מה אתם צריכים עכשיו?": 8 compact tiles (תכנון מסלול, אטרקציות, איפה לישון, אוכל וכשרות, תחבורה, לפי חודש ועונה, לפני הטיסה, עם ילדים) + "עוד נושאים" chips (areas, events, shows, football, winter, before-you-fly, checklist, mistakes, search). Id `categories` kept (5 pages link to `index.html#categories`).
+2. `#categories` "מה אתם צריכים עכשיו?" (after the minor-fix round, section R): 6 tiles (אטרקציות, איפה לישון, אוכל וכשרות, תחבורה, לפני הטיסה, עם ילדים) + 7 "עוד נושאים" chips (אזורים, אירועים, הצגות, כדורגל, חורף, טעויות נפוצות, צ'קליסט): 13 choices instead of 17. Planner, by-month, before-you-fly and search left the block and stay reachable from the hero, planner preview, month section, header, mobile menu and footer. Id `categories` kept (5 pages link to `index.html#categories`).
 3. `#home-planner` "בונה המסלול: מה מקבלים בסוף?": 4 factual bullets + one CTA. Planner itself untouched.
 4. `#months` "באיזה חודש אתם טסים?": 12 photo cards, current month marked "החודש", current/next month line, compare-all and Christmas links.
 5. Selected guides `#home-guides`: the existing What's New block (builder-owned markers unchanged, `whats_new_view`/`whats_new_click` measurement series preserved), plus "לכל העדכונים".
@@ -52,7 +52,7 @@ local folder `/Users/mymac/דפי נחיתה ואתרים/golondon-wave2a-review
 | Tools: Planner card | hero primary CTA, category tile, planner preview | planner.html |
 | Tools: Kosher card | hero secondary CTA | kosher-map.html, guide-kosher.html |
 | Tools: month card | month section | london-by-month.html |
-| Tools small links (checklist, mistakes, before-you-fly) | "עוד נושאים" chips | checklist.html, guide-mistakes.html, before-you-fly.html |
+| Tools small links (checklist, mistakes, before-you-fly) | chips "צ'קליסט", "טעויות נפוצות"; before-you-fly via header, mobile menu and footer ("לפני שטסים") | checklist.html, guide-mistakes.html, before-you-fly.html |
 | 10 guide cards | 8 tiles + chips (events, shows, football, winter, areas) | guide-flight, guide-attractions, guide-transport, guide-stay, guide-kosher, guide-kids, guide-events, guide-attractions-westend, guide-football, guide-winter, guide-areas |
 | Months strip | month photo cards + current/next line + 2 links | london-january..december, london-by-month, guide-winter-christmas |
 | What's New | same block, framed as selected guides | its 4 guides + whats-new.html |
@@ -207,3 +207,28 @@ Unknown: the team's remaining credit balance and overage settings (not visible r
 - Branding unchanged: same logo, header, hero photo and H1, colours, fonts.
 - Kids Journal untouched, PR #2 untouched, production untouched.
 - No push, no PR, no Deploy Preview, no deploy, no env or config change.
+
+## R. Final minor fixes (review verdict: APPROVE AFTER MINOR FIXES)
+
+1. Category block: 6 tiles (אטרקציות, איפה לישון, אוכל וכשרות, תחבורה, לפני הטיסה, עם ילדים) + 7 chips (אזורים, אירועים, הצגות, כדורגל, חורף, טעויות נפוצות, צ'קליסט) = 13 choices (was 17). Removed from the block: תכנון מסלול (hero CTA, planner preview, nav, mobile menu: 5 links remain), לפי חודש ועונה (month section + nav: 3 links remain), the "לפני שטסים" chip (before-you-fly stays in nav, mobile menu, footer: 4 links) and "חיפוש באתר" (nav icon, mobile menu: 2 links). One pre-trip label in the block: "לפני הטיסה" (guide-flight). Grid 3 x 2 on desktop, 2 x 3 on mobile; block height at 390px: 622 to 471px; page 7,189 to 7,038px.
+   homepage_cta_click category_grid positions now: 1 guide-attractions, 2 guide-stay, 3 guide-kosher, 4 guide-transport, 5 guide-flight, 6 guide-kids (category_open), 7 guide-areas, 8 guide-events, 9 guide-attractions-westend, 10 guide-football, 11 guide-winter, 12 guide-mistakes (category_open), 13 checklist (checklist_open).
+2. Tiqets copy: `extra.note` of tower-of-london, st-pauls, kensington-palace and sea-life is now "לפני התשלום בדקו שהמוצר, השעה והמחיר מתאימים לתאריך שלכם." Nothing else in attractions-info.json changed (verified field by field).
+3. Cache-busting: affiliate.js?v=4 (129 HTML files) and place-info.js?v=12 (133 HTML files); 0 old, 0 mixed. The generators that write these tags were aligned too (build_article.py was still on affiliate.js?v=2, build_whats_new.py on place-info.js?v=11). Pre-existing, not changed: build_whats_new.py still writes trip-tray.js?v=7 and auto-link-places.js?v=4 while the pages carry v=8 and v=5 (same drift on main).
+4. Dead CSS: the five `.fb-bubble` rules removed from style.css (no reference anywhere). Nothing else.
+
+Performance after the fixes (homepage mobile, 5 consecutive runs each, medians):
+
+| | perf | FCP | LCP | CLS | TBT | transfer | LCP element |
+|---|---|---|---|---|---|---|---|
+| simulated before | 79 (64 to 79) | 1.79s | 5.34s (one run 8.81s) | 0.008 | 28ms | 1,818KB | header logo (behind the splash) |
+| simulated after | 68 (66 to 87) | 3.89s | 6.29s (one run 3.98s) | 0.008 | 0 | 990KB | hero section |
+| applied before | 73 (67 to 81) | 1.91s | 2.54s | 0.011 | 755ms | 1,818KB | splash title |
+| applied after | 95 (92 to 96) | 2.29s | 2.29s | 0.005 | 52ms | 990KB | H1 |
+| desktop simulated before / after (3) | 98 / 99 | 0.53 / 0.70s | 1.05 / 0.91s | 0.011 / 0.005 | 0 / 0 | 1,832 / 1,036KB | hero |
+
+The simulated anomaly is still there (79 to 68 in this set). It compares different elements: before, the splash hides the hero, so Lantern's LCP is the 25KB logo; after, the LCP is the hero itself (118KB background image on mobile), and the simulated FCP inherits the late first paint of the unthrottled local trace (about 2.3s on both versions; a plain browser paints the new homepage at about 0.6s). Applied throttling shows the real-load picture: higher score, earlier LCP, much lower TBT, smaller transfer.
+
+Planner CLS: fixed throttle trace before 0.158 (3/3 runs) and after 0.040 to 0.041 (3/3). Lighthouse simulated 5 runs: before median 0.129, after 0.112 (a second 5-run set: 0, 0.091, 0, 0.114, 0.119). The mode-tab shift no longer appears in any after run; the remaining shift is pre-existing: the hero subtitle re-wraps when the Heebo web font loads (also present before). Not changed here (outside this task).
+
+Regression after the fixes: Wave 2A harness 193/193 (adds block structure, reachability, Tiqets label and disclosure once each in all four boxes, cache versions, generators, every page 200); Planner funnel 17/17; GA4 guard 201/201; What's New all pass (9 date checks + raw HTML); closed places 26/26; route codes 15,350/0; place data pass; print pass; search index regenerated (homepage entry only); axe home 0, Kosher 0, Planner unchanged pre-existing (contrast 9, link-in-text-block 6).
+Screenshots: `screenshots/fix-home-390-full.png`, `fix-home-1440-full.png`, `fix-crop-categories-390|1440.png`, `fix-crop-months-390|1440.png`, `fix-crop-hero-390|1440.png`, `fix-crop-h-planner-390|1440.png`, `fix-crop-h-guides-390|1440.png`, `fix-planner-390.png`, `fix-kosher-390.png`.
