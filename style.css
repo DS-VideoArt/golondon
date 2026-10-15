@@ -1,86 +1,3 @@
-/* ===== מסך פתיחה =====
-   כל המראה כאן נשאר כפי שהיה: אותה תמונה, אותם צבעים, אותה הילה
-   אדומה ואותם צללים. מה שהשתנה הוא הקצב בלבד. הפתיח היה נמשך
-   כשנייה וארבע עשיריות ועוד ארבע עשיריות של דעיכה, וזה בדיוק הזמן
-   שבו המבקר אמור להבין מה האתר עושה. עכשיו כל האנימציה מתכווצת
-   לתוך חלון של כשש עשיריות שנייה, בלי לוותר על אף אלמנט.
-*/
-#splash-screen {
-  position: fixed; inset: 0; z-index: 99999;
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
-  transition: opacity 0.26s ease, visibility 0.26s ease;
-  opacity: 1; visibility: visible;
-}
-#splash-screen::before {
-  content: ''; position: absolute; inset: -2%;
-  background: url('images/splash.jpg') center center / cover no-repeat;
-  background: image-set(url('images/splash.webp') type('image/webp'), url('images/splash.jpg') type('image/jpeg')) center center / cover no-repeat;
-  animation: splashZoom 2.2s ease-out forwards;
-  z-index: 0;
-}
-#splash-screen::after {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 85% 55% at 50% 55%, rgba(8,16,36,0.4) 0%, rgba(8,16,36,0.18) 55%, rgba(8,16,36,0.04) 100%);
-  z-index: 1;
-}
-#splash-screen.splash-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-/*
-  נעילת הגלילה בזמן הפתיח. בעבר היה כאן גם height: 100% על body,
-  וזה כפה על העמוד גובה זמני אחר מהגובה האמיתי שלו. ברגע שהפתיח
-  ירד הגובה חזר, והתוכן קפץ. זו הייתה קפיצת פריסה אמיתית, ולכן
-  הוסר. overflow לבדו מספיק כדי למנוע גלילה מאחורי הפתיח.
-*/
-html.splash-active, html.splash-active body { overflow: hidden; }
-.splash-content { position: relative; z-index: 2; text-align: center; padding: 24px; }
-.splash-content::before {
-  content: ''; position: absolute; inset: -50px -80px; z-index: -1;
-  background: radial-gradient(ellipse at center, rgba(220,38,38,0.35) 0%, rgba(220,38,38,0) 70%);
-  filter: blur(6px);
-  animation: splashGlowPulse 2s ease-in-out 0.2s infinite;
-}
-.splash-flag-icon {
-  width: 96px; height: auto; margin: 0 auto 22px; display: block;
-  border-radius: 5px; overflow: hidden;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.25);
-  animation: fadeInDown 0.34s ease both, splashFlagWave 3.2s ease-in-out 0.34s infinite;
-  transform-origin: 15% 50%;
-}
-.splash-title {
-  font-size: clamp(34px, 7.5vw, 66px); font-weight: 900; color: #fff8ec;
-  letter-spacing: -0.5px;
-  text-shadow: 0 4px 24px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.55);
-  animation: splashIn 0.4s ease 0.05s both;
-}
-.splash-home {
-  color: #DC2626;
-  text-shadow: 0 0 40px rgba(220,38,38,0.9), 0 0 80px rgba(220,38,38,0.55), 0 4px 20px rgba(0,0,0,0.55);
-  animation: splashHomeGlow 1.6s ease-in-out 0.35s infinite;
-}
-@keyframes splashHomeGlow {
-  0%, 100% { text-shadow: 0 0 40px rgba(220,38,38,0.9), 0 0 80px rgba(220,38,38,0.55), 0 4px 20px rgba(0,0,0,0.55); }
-  50% { text-shadow: 0 0 58px rgba(220,38,38,1), 0 0 105px rgba(220,38,38,0.8), 0 4px 20px rgba(0,0,0,0.55); }
-}
-@keyframes splashGlowPulse {
-  0%, 100% { opacity: 0.55; }
-  50% { opacity: 1; }
-}
-@keyframes splashIn {
-  from { opacity: 0; transform: translateY(16px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-@keyframes splashZoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.1); }
-}
-@keyframes splashFlagWave {
-  0%, 100% { transform: rotate(0deg) skewY(0deg); }
-  50% { transform: rotate(-1.5deg) skewY(-1.5deg); }
-}
-@media (prefers-reduced-motion: reduce) {
-  #splash-screen { display: none; }
-}
-
 /* ===== פס מידע חי ===== */
 .topbar {
   position: fixed; top: 0; right: 0; left: 0; z-index: 1100;
@@ -198,7 +115,6 @@ a { text-decoration: none; color: inherit; }
   border: 1px solid rgba(255,255,255,0.2);
   color: #fff; padding: 8px 20px; border-radius: 50px;
   font-size: 14px; font-weight: 600; margin-bottom: 28px;
-  animation: fadeInDown 0.6s ease;
 }
 .badge-dot {
   width: 8px; height: 8px; border-radius: 50%; background: #4ade80;
@@ -208,19 +124,16 @@ a { text-decoration: none; color: inherit; }
   line-height: 1.15; margin-bottom: 20px;
   text-wrap: balance;
   text-shadow: 0 2px 24px rgba(0,0,0,0.55), 0 1px 4px rgba(0,0,0,0.4);
-  animation: fadeInUp 0.6s ease 0.05s both;
 }
 .hero-highlight { color: #f97316; }
 .hero-sub {
   font-size: clamp(16px, 2.2vw, 20px); color: rgba(255,255,255,0.9);
   margin-bottom: 40px; font-weight: 400;
   text-shadow: 0 2px 12px rgba(0,0,0,0.5);
-  animation: fadeInUp 0.6s ease 0.1s both;
 }
 .hero-actions {
   display: flex; align-items: center; justify-content: center;
   gap: 12px; flex-wrap: wrap; margin-bottom: 56px;
-  animation: fadeInUp 0.6s ease 0.15s both;
 }
 .btn-hero-club {
   background: linear-gradient(135deg, #d97706, #DC2626);
@@ -234,7 +147,6 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-stats {
   display: flex; align-items: center; justify-content: center;
-  animation: fadeInUp 0.6s ease 0.2s both;
 }
 .stat { display: flex; flex-direction: column; align-items: center; padding: 0 40px; }
 .stat strong { font-size: 36px; font-weight: 900; color: #fff; line-height: 1; }
@@ -482,16 +394,6 @@ a { text-decoration: none; color: inherit; }
 .banner-visual {
   flex-shrink: 0; width: 320px; position: relative; height: 200px;
 }
-.fb-bubble {
-  position: absolute; background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15); color: #fff;
-  padding: 10px 18px; border-radius: 20px; font-size: 14px; font-weight: 500;
-  max-width: 260px;
-}
-.fb-bubble--1 { top: 0; right: 0; }
-.fb-bubble--2 { top: 52px; right: 40px; background: rgba(220,38,38,0.18); border-color: rgba(220,38,38,0.25); font-size: 12px; }
-.fb-bubble--3 { top: 110px; right: 0; }
-.fb-bubble--4 { top: 164px; right: 40px; background: rgba(220,38,38,0.18); border-color: rgba(220,38,38,0.25); font-size: 12px; }
 
 /* ===== ניוזלטר ===== */
 .newsletter {
@@ -523,6 +425,8 @@ a { text-decoration: none; color: inherit; }
 }
 .social-links a:hover { background: #DC2626; transform: translateY(-2px); }
 .footer-col h4 { font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 18px; }
+/* בדף הבית כותרות העמודות הן h2, כדי שסדר הכותרות לא יקפוץ מ-h2 ל-h4. אותו מראה בדיוק */
+.footer-col .footer-h { font-size: 14px; font-weight: 800; line-height: 1.7; margin-bottom: 18px; color: #201f2b !important; }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,0.72); transition: color 0.2s; }
 .footer-col ul li a:hover { color: #fff; }
@@ -535,9 +439,6 @@ a { text-decoration: none; color: inherit; }
   flex-wrap: wrap; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.3);
 }
 
-/* ===== אנימציות ===== */
-@keyframes fadeInDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeInUp   { from { opacity: 0; transform: translateY(20px); }  to { opacity: 1; transform: translateY(0); } }
 
 /* ===== מסכים קטנים ===== */
 @media (max-width: 1024px) {
@@ -600,151 +501,6 @@ a { text-decoration: none; color: inherit; }
   .newsletter-inner { flex-direction: column; align-items: flex-start; }
   .newsletter-form { width: 100%; }
   .newsletter-form input { width: 100%; }
-}
-
-/* ===== באנר מרחף מפת כשרות ===== */
-.kosher-float {
-  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(120px);
-  z-index: 9999; width: calc(100% - 32px); max-width: 400px;
-  background: #fff;
-  border-radius: 16px; padding: 14px 16px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.06);
-  display: flex; align-items: center; gap: 12px;
-  opacity: 0; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.3s ease;
-  pointer-events: none;
-}
-.kosher-float--visible {
-  transform: translateX(-50%) translateY(0);
-  opacity: 1; pointer-events: all;
-}
-.kosher-float-close {
-  position: absolute; top: 8px; left: 10px;
-  background: rgba(0,0,0,0.06); border: none; color: rgba(32,31,43,0.6);
-  width: 22px; height: 22px; border-radius: 50%; font-size: 10px;
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s; flex-shrink: 0;
-}
-.kosher-float-close:hover { background: rgba(0,0,0,0.12); color: #201f2b; }
-.kosher-float-badge { display: none; }
-.kosher-float-icon { font-size: 28px; line-height: 1; flex-shrink: 0; }
-.kosher-float-content { display: contents; }
-.kosher-float-text { flex: 1; min-width: 0; }
-.kosher-float-text strong {
-  display: block; font-size: 14px; font-weight: 900; color: #201f2b; margin-bottom: 2px; white-space: nowrap;
-}
-.kosher-float-text span {
-  font-size: 11px; color: rgba(32,31,43,0.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;
-}
-.kosher-float-btn {
-  flex-shrink: 0;
-  background: linear-gradient(135deg, #f59e0b, #ef4444);
-  color: #fff; font-weight: 800; font-size: 13px;
-  padding: 9px 16px; border-radius: 50px;
-  text-decoration: none; transition: all 0.2s; white-space: nowrap;
-  box-shadow: 0 4px 14px rgba(239,68,68,0.3);
-}
-.kosher-float-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(239,68,68,0.4); }
-
-.kosher-float-desktop { display: none; }
-.kosher-float-mobile { display: contents; }
-
-@media (min-width: 700px) {
-  .kosher-float {
-    bottom: auto; left: auto;
-    right: 0; top: 50%;
-    transform: translateY(-50%) translateX(105%);
-    width: 220px; max-width: 220px;
-    flex-direction: column; align-items: stretch;
-    padding: 0; gap: 0;
-    border-radius: 20px 0 0 20px;
-    overflow: hidden;
-    box-shadow: -12px 0 36px rgba(0,0,0,0.14), 0 0 0 1px rgba(0,0,0,0.06);
-  }
-  .kosher-float--visible {
-    transform: translateY(-50%) translateX(0);
-    opacity: 1; pointer-events: all;
-  }
-  .kosher-float-close {
-    position: absolute; top: 10px; left: 10px; z-index: 2;
-    width: 26px; height: 26px; font-size: 11px;
-    background: rgba(255,255,255,0.7);
-  }
-  .kosher-float-mobile { display: none; }
-  .kosher-float-desktop { display: flex; flex-direction: column; align-items: stretch; }
-
-  .kfd-visual {
-    background: linear-gradient(160deg, #1e1b4b 0%, #312e81 100%);
-    padding: 36px 20px 28px;
-    display: flex; flex-direction: column; align-items: center;
-    position: relative; overflow: hidden;
-  }
-  .kfd-visual::after {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-  }
-  .kfd-map-emoji {
-    font-size: 64px; line-height: 1; position: relative; z-index: 1;
-  }
-  .kfd-dots {
-    display: grid; grid-template-columns: repeat(3,1fr); gap: 5px;
-    margin-top: 16px; opacity: 0.4;
-  }
-  .kfd-dots span {
-    width: 5px; height: 5px; border-radius: 50%;
-    background: #fff; display: block;
-  }
-
-  .kfd-body {
-    background: #fff;
-    padding: 20px 18px 22px;
-    display: flex; flex-direction: column; align-items: center;
-    text-align: center; gap: 12px;
-  }
-  .kfd-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, #7c3aed, #ef4444);
-    color: #fff; font-size: 10px; font-weight: 900;
-    padding: 4px 12px; border-radius: 50px; letter-spacing: 0.5px;
-  }
-  .kfd-title {
-    font-size: 22px; font-weight: 900; color: #201f2b; line-height: 1.2;
-    margin: 0;
-  }
-  .kfd-sub {
-    font-size: 12px; color: rgba(32,31,43,0.55); line-height: 1.5; margin: 0;
-  }
-  .kfd-stats {
-    display: flex; align-items: center; justify-content: center; gap: 12px;
-    background: #F1F0EB; border-radius: 12px;
-    padding: 10px 16px; width: 100%;
-  }
-  .kfd-stat { text-align: center; }
-  .kfd-stat-num { display: block; font-size: 22px; font-weight: 900; color: #201f2b; line-height: 1; }
-  .kfd-stat-label { font-size: 10px; color: rgba(32,31,43,0.5); }
-  .kfd-stat-div { width: 1px; height: 28px; background: rgba(0,0,0,0.1); }
-  .kfd-features {
-    list-style: none; padding: 0; margin: 0; width: 100%;
-    display: flex; flex-direction: column; gap: 7px;
-    text-align: right;
-  }
-  .kfd-features li {
-    font-size: 12px; color: rgba(32,31,43,0.65);
-    display: flex; align-items: center; gap: 8px;
-  }
-  .kfd-features li i { color: #16a34a; font-size: 11px; flex-shrink: 0; }
-  .kfd-btn {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    width: 100%; padding: 13px;
-    background: linear-gradient(135deg, #7c3aed, #ef4444);
-    color: #fff; font-family: 'Heebo', sans-serif; font-size: 15px; font-weight: 800;
-    border-radius: 12px; text-decoration: none;
-    box-shadow: 0 6px 20px rgba(124,58,237,0.3);
-    transition: all 0.2s;
-  }
-  .kfd-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(124,58,237,0.4); }
-  .kfd-free {
-    font-size: 11px; color: rgba(32,31,43,0.4); margin: 0;
-  }
 }
 
 /* ===== מועדון חברים ===== */
@@ -853,3 +609,263 @@ a { text-decoration: none; color: inherit; }
   outline: 3px solid #DC2626;
   outline-offset: 2px;
 }
+
+/* =====================================================================
+   דף הבית כשער כניסה (גל 2א, 15.10.2026)
+   =====================================================================
+   הקובץ הזה נטען רק בדף הבית, ו-theme-light.css נטען אחריו. לכן כל צבע
+   של טקסט כאן מגיע עם !important ברמת מחלקה: הכלל הגורף בתמה הבהירה
+   צובע כל span, p ו-li באפור עם !important, ומחלקה גוברת עליו.
+   טקסט על רקע בהיר משתמש ב-#55596b לכל הפחות (יחס ניגודיות 6.9 על לבן),
+   וקישורים אדומים בגוון #B91C1C (6.4 על לבן), כדי לעמוד ב-AA גם בגודל רגיל.
+*/
+
+/* ---------- גיבור: קצר יותר, בלי אנימציית כניסה ----------
+   הכפתור המשני ותגיות האמון יושבים על תצלום, ולכן הרקע שלהם כהה מספיק (0.62) כדי שטקסט לבן
+   יעמוד ביחס 4.5 לפחות גם מעל החלק הבהיר ביותר של התמונה */
+.hero { min-height: 74vh; padding-top: 110px; }
+.hero-content { padding: 40px 24px 92px; }
+.hero-actions { margin-bottom: 26px; }
+.btn-hero-main { box-shadow: 0 8px 22px rgba(220,38,38,0.35); }
+.hero .btn-outline--green {
+  background: rgba(10,20,40,0.62) !important;
+  border-color: rgba(255,255,255,0.75) !important;
+  color: #fff !important;
+  backdrop-filter: blur(6px);
+}
+.hero .btn-outline--green:hover { background: rgba(10,20,40,0.75) !important; border-color: #fff !important; }
+.home-trust {
+  list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 10px;
+  margin: 0 auto; padding: 0; max-width: 760px;
+}
+.home-trust li {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 6px 13px; border-radius: 50px;
+  background: rgba(10,20,40,0.62); border: 1px solid rgba(255,255,255,0.28);
+  backdrop-filter: blur(6px);
+  font-size: 13.5px; font-weight: 700; line-height: 1.3;
+  color: #fff !important;
+}
+.home-trust li i { font-size: 11px; color: #86efac !important; }
+.hero a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; box-shadow: 0 0 0 7px rgba(30,58,138,0.9); }
+
+@media (max-width: 700px) {
+  .hero {
+    min-height: 0;
+    background:
+      linear-gradient(180deg, rgba(10,20,40,0.12) 0%, rgba(10,20,40,0.22) 30%, rgba(10,20,40,0.5) 66%, rgba(10,20,40,0.72) 90%, #FAF9F6 100%),
+      url('images/home/hero-mobile.jpg') center 40% / cover no-repeat;
+    background:
+      linear-gradient(180deg, rgba(10,20,40,0.12) 0%, rgba(10,20,40,0.22) 30%, rgba(10,20,40,0.5) 66%, rgba(10,20,40,0.72) 90%, #FAF9F6 100%),
+      image-set(url('images/home/hero-mobile.webp') type('image/webp'), url('images/home/hero-mobile.jpg') type('image/jpeg')) center 40% / cover no-repeat;
+  }
+  .hero-content { padding: 26px 18px 58px; }
+  .hero-badge { margin-bottom: 18px; font-size: 13px; padding: 6px 14px; }
+  .hero-title { font-size: clamp(28px, 7.8vw, 36px); margin-bottom: 14px; }
+  .hero-actions .btn { padding-block: 13px; }
+  .hero-sub { font-size: 16px; margin-bottom: 24px; line-height: 1.6; }
+  .hero-actions { margin-bottom: 20px; gap: 10px; }
+  .home-trust { gap: 7px; }
+  .home-trust li { font-size: 12.5px; padding: 5px 11px; }
+}
+
+/* ---------- כותרת מקטע אחידה ---------- */
+.home-head { text-align: center; margin: 0 auto 26px; max-width: 720px; }
+.home-head h2 { font-size: clamp(25px, 3.4vw, 34px); font-weight: 900; line-height: 1.25; margin-bottom: 8px; color: #201f2b !important; text-wrap: balance; }
+.home-head p { font-size: 16px; line-height: 1.6; color: #55596b !important; }
+
+/* מסגרת מיקוד אחת לכל רכיבי דף הבית, על רקע בהיר */
+#main-content .hc-tile:focus-visible, #main-content .hm-card:focus-visible, #main-content .hc-more a:focus-visible,
+#main-content .hm-all:focus-visible, #main-content .hmt-more a:focus-visible, #main-content .hp-cta:focus-visible,
+#main-content .social-tile:focus-visible, #main-content .ms-now a:focus-visible, #whats-new a:focus-visible {
+  outline: 3px solid #1E3A8A; outline-offset: 3px;
+}
+/* שדות טופס בדף הבית (ניוזלטר, ושדות "חיפשתם משהו") מקבלים טבעת מיקוד ברורה, ולא רק שינוי צבע של המסגרת */
+#main-content input:focus-visible, #main-content textarea:focus-visible, #main-content select:focus-visible,
+#main-content button:focus-visible { outline: 3px solid #1E3A8A !important; outline-offset: 2px; }
+
+/* ---------- מה אתם צריכים עכשיו ---------- */
+.home-cats { padding: 40px 0 34px; }
+.hc-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 980px; margin-inline: auto; }
+.hc-tile {
+  display: flex; align-items: center; gap: 13px; height: 100%;
+  padding: 15px 16px; border-radius: 16px;
+  background: #fff; border: 1px solid rgba(32,31,43,0.10);
+  box-shadow: 0 1px 2px rgba(16,24,40,0.05), 0 4px 14px rgba(16,24,40,0.05);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.hc-tile:hover { transform: translateY(-2px); border-color: rgba(220,38,38,0.35); box-shadow: 0 10px 26px rgba(16,24,40,0.10); }
+.hc-icon {
+  flex: 0 0 44px; width: 44px; height: 44px; border-radius: 13px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: #fff;
+}
+.hc-icon i { color: #fff !important; }
+.hc-icon--red    { background: linear-gradient(135deg, #DC2626, #EA580C); }
+.hc-icon--violet { background: linear-gradient(135deg, #7C3AED, #DB2777); }
+.hc-icon--teal   { background: linear-gradient(135deg, #0F766E, #0891B2); }
+.hc-icon--green  { background: linear-gradient(135deg, #15803D, #65A30D); }
+.hc-icon--orange { background: linear-gradient(135deg, #C2410C, #DC2626); }
+.hc-icon--blue   { background: linear-gradient(135deg, #1E40AF, #0EA5E9); }
+.hc-icon--navy   { background: linear-gradient(135deg, #1E3A8A, #7C3AED); }
+.hc-icon--sky    { background: linear-gradient(135deg, #0891B2, #2563EB); }
+.hc-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.hc-title { font-size: 16px; font-weight: 900; line-height: 1.3; color: #201f2b !important; }
+.hc-sub { font-size: 13px; line-height: 1.45; color: #55596b !important; }
+.hc-more {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px;
+  margin-top: 18px;
+}
+.hc-more-label { font-size: 14px; font-weight: 800; color: #201f2b !important; margin-inline-end: 2px; }
+.hc-more a {
+  display: inline-flex; align-items: center; min-height: 34px;
+  padding: 5px 13px; border-radius: 50px;
+  background: rgba(30,58,138,0.06); border: 1px solid rgba(30,58,138,0.16);
+  font-size: 13.5px; font-weight: 700; color: #1E3A8A !important;
+}
+.hc-more a:hover { background: rgba(30,58,138,0.12); }
+
+@media (max-width: 900px) { .hc-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) {
+  .home-cats { padding: 32px 0 26px; }
+  .hc-grid { gap: 9px; }
+  /* במובייל אריח קומפקטי: סמל ושם בלבד. ההסבר הקצר נשאר בקישור כשם נגיש, ולא תופס גובה */
+  .hc-tile { gap: 10px; padding: 11px 11px; border-radius: 14px; min-height: 60px; }
+  .hc-icon { flex: 0 0 36px; width: 36px; height: 36px; border-radius: 11px; font-size: 15px; }
+  .hc-title { font-size: 14.5px; line-height: 1.25; }
+  .hc-sub { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+  .hc-more { justify-content: flex-start; gap: 7px; }
+  .hc-more-label { width: 100%; }
+  .hc-more a { font-size: 13px; padding: 4px 11px; }
+}
+
+/* ---------- בונה המסלול ---------- */
+.home-planner { padding: 18px 0 40px; }
+.hp-card {
+  display: grid; grid-template-columns: 1fr 1.15fr; align-items: stretch;
+  background: #fff; border: 1px solid rgba(32,31,43,0.10); border-radius: 22px; overflow: hidden;
+  box-shadow: 0 2px 4px rgba(16,24,40,0.05), 0 12px 30px rgba(16,24,40,0.08);
+}
+.hp-photo { position: relative; min-height: 260px; }
+.hp-photo picture, .hp-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hp-body { padding: 30px 32px; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.hp-kicker { font-size: 12.5px; font-weight: 900; letter-spacing: .3px; color: #B91C1C !important; }
+.hp-body h2 { font-size: clamp(22px, 2.6vw, 28px); font-weight: 900; line-height: 1.25; color: #201f2b !important; }
+.hp-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
+.hp-list li { display: flex; gap: 10px; align-items: baseline; font-size: 15.5px; line-height: 1.55; color: #3b3e4c !important; }
+.hp-list i { color: #15803D !important; font-size: 14px; flex: 0 0 auto; }
+.hp-cta { margin-top: 6px; }
+@media (max-width: 760px) {
+  .home-planner { padding: 10px 0 32px; }
+  .hp-card { grid-template-columns: 1fr; border-radius: 18px; }
+  .hp-photo { min-height: 0; height: 150px; }
+  .hp-body { padding: 20px 20px 22px; gap: 10px; }
+  .hp-list li { font-size: 14.5px; }
+  .hp-cta { align-self: stretch; justify-content: center; }
+}
+
+/* ---------- באיזה חודש אתם טסים ---------- */
+/*
+  עד עכשיו המקטע הזה היה כרטיס עם תצלום פארק כללי, בהיר ושטוף, שבמובייל נחתך
+  לרצועה דקה של דשא, ומתחתיו שתים עשרה משבצות לבנות עם טקסט אפור על רקע שמנת.
+  עכשיו לכל חודש יש תצלום אמיתי מלונדון באותו חודש (התמונות של עמודי החודשים,
+  בגרסה קטנה), והשם והטמפרטורה כתובים בלבן על הצללה כהה בתחתית, ולא על תמונה דהויה.
+*/
+.home-months {
+  padding: 42px 0 40px;
+  background: linear-gradient(180deg, #EEF2FA 0%, #F6F7FB 60%, #FAF9F6 100%);
+  border-block: 1px solid rgba(30,58,138,0.10);
+}
+.home-months .ms-now { margin-top: 10px; font-size: 15px; font-weight: 700; color: #3b3e4c !important; }
+.home-months .ms-now a { font-weight: 900; color: #B91C1C !important; text-decoration: underline; text-underline-offset: 3px; }
+.home-months .ms-now a span { color: inherit !important; }
+.hm-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.hm-card {
+  position: relative; display: block; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden;
+  background: #1E3A8A;
+  box-shadow: 0 2px 6px rgba(16,24,40,0.10), 0 8px 20px rgba(16,24,40,0.08);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.hm-card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(16,24,40,0.18); }
+.hm-card picture, .hm-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hm-card::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(8,14,32,0) 38%, rgba(8,14,32,0.62) 78%, rgba(8,14,32,0.82) 100%);
+}
+.hm-label {
+  position: absolute; inset: auto 0 0 0; z-index: 1;
+  display: flex; flex-direction: column; align-items: flex-start; padding: 8px 11px 9px; line-height: 1.2;
+}
+.hm-name { font-size: 16px; font-weight: 900; color: #fff !important; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
+.hm-temp { font-size: 12.5px; font-weight: 700; color: #f1f5f9 !important; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
+.hm-card.is-now { box-shadow: 0 0 0 3px #DC2626, 0 10px 24px rgba(220,38,38,0.25); }
+.hm-now {
+  position: absolute; top: 8px; inset-inline-start: 8px; z-index: 1;
+  padding: 3px 9px; border-radius: 50px; background: #DC2626;
+  font-size: 11.5px; font-weight: 900; color: #fff !important;
+}
+.hm-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; margin-top: 20px; }
+.hm-all { display: inline-flex; align-items: center; gap: 7px; font-size: 15px; font-weight: 800; color: #B91C1C !important; }
+.hm-all:hover { text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 900px) { .hm-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 620px) {
+  .home-months { padding: 32px 0 30px; }
+  .hm-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .hm-card { border-radius: 12px; }
+  .hm-label { padding: 6px 8px 7px; }
+  .hm-name { font-size: 14.5px; }
+  .hm-temp { font-size: 11.5px; }
+  .hm-now { top: 6px; inset-inline-start: 6px; font-size: 10.5px; padding: 2px 7px; }
+  .hm-links { justify-content: flex-start; flex-direction: column; gap: 10px; }
+  .hm-all { font-size: 14.5px; }
+}
+
+/* ---------- מדריכים נבחרים (מה חדש) ---------- */
+#whats-new .section-header { margin-bottom: 24px; }
+#whats-new .section-header h2 { font-size: clamp(25px, 3.4vw, 34px); }
+#whats-new .section-header p { font-size: 16px; color: #55596b !important; }
+/* ניגודיות AA לתווית הקטגוריה ולתאריך בכרטיסים (בעבר 4.1 ו-3.4 לאחד) */
+#whats-new .wnc-cat, #whats-new .wnc-cat * { color: #B91C1C !important; }
+#whats-new .wnc-meta time { color: #5f6577 !important; }
+
+/* ---------- איך אנחנו בודקים מידע ---------- */
+.home-method { padding: 36px 0; }
+.hmt-card {
+  max-width: 880px; margin: 0 auto; padding: 26px 30px;
+  background: #fff; border: 1px solid rgba(32,31,43,0.10); border-radius: 20px;
+  box-shadow: 0 1px 2px rgba(16,24,40,0.05), 0 4px 14px rgba(16,24,40,0.05);
+}
+.hmt-card h2 { font-size: clamp(21px, 2.6vw, 25px); font-weight: 900; margin-bottom: 14px; color: #201f2b !important; }
+.hmt-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.hmt-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; line-height: 1.6; color: #3b3e4c !important; }
+.hmt-list li span { color: #3b3e4c !important; }
+.hmt-list li strong { color: #201f2b !important; }
+.hmt-list i { flex: 0 0 32px; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(30,58,138,0.08); color: #1E3A8A !important; font-size: 14px; margin-top: 2px; }
+.hmt-more { display: flex; gap: 18px; margin-top: 16px; }
+.hmt-more a { font-size: 14.5px; font-weight: 800; color: #1E3A8A !important; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 760px) {
+  .home-method { padding: 26px 0; }
+  .hmt-card { padding: 20px 18px; border-radius: 16px; }
+  .hmt-list { grid-template-columns: 1fr; gap: 12px; }
+}
+
+/* ---------- קהילה וניוזלטר ---------- */
+.home-community { padding: 40px 0 !important; }
+.hcm-inner { display: grid; grid-template-columns: 0.8fr 1.6fr; gap: 24px; align-items: center; }
+.hcm-text h2 { font-size: clamp(23px, 3vw, 30px); font-weight: 900; line-height: 1.25; margin-bottom: 6px; color: #201f2b !important; }
+.hcm-text p { font-size: 15.5px; color: #55596b !important; }
+.home-community .social-strip { margin-top: 0; }
+@media (max-width: 860px) { .hcm-inner { grid-template-columns: 1fr; gap: 16px; } }
+@media (max-width: 620px) {
+  .home-community { padding: 30px 0 !important; }
+  .home-community .social-strip { grid-template-columns: 1fr; gap: 9px; }
+  .home-community .social-tile { flex-direction: row; align-items: center; gap: 12px; padding: 13px 16px; }
+  .home-community .social-tile i { margin-bottom: 0; font-size: 22px; width: 26px; text-align: center; }
+  .home-community .social-tile .social-name { font-size: 15.5px; }
+  .home-community .social-tile .social-sub { font-size: 12.5px; }
+}
+.newsletter-text .nl-title { font-size: 22px; font-weight: 800; color: #201f2b !important; margin-bottom: 6px; }
+.newsletter-text p { color: #55596b !important; }
+/* בלוק "חיפשתם משהו ולא מצאתם" (community-ask.js) בדף הבית: ניגודיות AA לתווית ולהערה הקטנה */
+body .ca-badge, body .ca-badge * { color: #14532D !important; }
+body .ca-note, body .ca-note * { color: #5f6577 !important; }
