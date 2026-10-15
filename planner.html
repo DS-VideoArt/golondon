@@ -126,6 +126,14 @@
     .stay-tip i { color: #93c5fd; margin-inline-end: 5px; }
     .stay-tip strong { color: #fff; }
     .stay-tip a { color: #93c5fd; font-weight: 700; }
+    /* יומן המסע לילדים, בטא: קריאה שקטה אחרי מסלול אמיתי. כבויה עד אישור ההנהלה */
+    .jb-cta { max-width: 800px; margin: 4px 0 22px; padding: 12px 16px; border-radius: 13px; font-size: 14px; line-height: 1.6;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+      background: rgba(21,128,61,0.10); border: 1px solid rgba(21,128,61,0.32); }
+    .jb-cta[hidden] { display: none; }
+    .jb-cta-text strong { display: block; font-size: 15px; }
+    .jb-cta-link { font-weight: 800; padding: 9px 15px; border-radius: 10px; color: #fff !important; background: #15803D; white-space: nowrap; }
+    .jb-cta-link:focus-visible { outline: 3px solid #1E3A8A; outline-offset: 2px; }
     .stay-tip--suggest { background: rgba(234,88,12,0.12); border-color: rgba(234,88,12,0.32); }
     .stay-tip--suggest i { color: #fdba74; }
     .stay-tip--suggest a { color: #fdba74; }
@@ -556,7 +564,7 @@
       */
       .navbar, .builder, .results-actions, .page-hero, .seo-text, .aff-block,
       .mode-tabs, .nearby, #panel-nearby, .tray-box, .toast,
-      .compare-wrap, .stay-tip, .day-btn, .board-day-actions, .board-actions,
+      .compare-wrap, .stay-tip, .jb-cta, .day-btn, .board-day-actions, .board-actions,
       .stop-actions, .stop-btn, .pal, .palette, .versions, #versions,
       #gl-skip-link, #a11y-toggle-btn, #install-app-btn { display: none !important; }
 
@@ -822,6 +830,7 @@
             <button class="mini-btn mini-btn--danger" id="m-clear" type="button"><i class="far fa-trash-can"></i> ניקוי</button>
           </div>
         </div>
+        <div class="jb-cta" id="m-jb-cta" hidden></div>
         <div id="board-days"></div>
         <!-- מופיע רק בהדפסה: אותה הערה שמופיעה בסוף המסלול האוטומטי -->
         <div class="closing print-only">
@@ -845,6 +854,7 @@
     </div>
     <p class="results-sub" id="results-sub"></p>
     <div class="stay-tip" id="stay-tip" hidden></div>
+    <div class="jb-cta" id="jb-cta" hidden></div>
 
     <div class="versions" id="versions" hidden></div>
     <div class="compare" id="compare" hidden></div>
@@ -1028,6 +1038,17 @@
         }));
       });
     }
+    journalBetaRefresh();
+  }
+
+  /* בחירת "מי נוסע" השתנתה: הקריאה ליומן מתעדכנת מיד, בלי לבנות את המסלול מחדש */
+  function journalBetaRefresh() {
+    if (!DATA) return;
+    if (LAST && LAST.length && $('results').classList.contains('show')) journalBetaCta('jb-cta', LAST, 'auto', true);
+    try {
+      var mp = manualPlan();
+      journalBetaCta('m-jb-cta', mp, 'manual', mp.some(function (d) { return d.items.length >= 2; }));
+    } catch (e) { /* הלוח הידני עוד לא מוכן */ }
   }
 
   /*
@@ -1486,6 +1507,7 @@
         tip.hidden = true;
       }
     }
+    journalBetaCta('jb-cta', plan, 'auto', plan.length > 0);
   }
 
   function asText(plan) {
@@ -1595,6 +1617,78 @@
 
   function tripLink(plan) {
     return RouteCode.link(encodePlan(plan));
+  }
+
+  /*
+    יומן המסע לילדים, בטא חינמית (docs/journal-beta/BETA_PLAN.md).
+    הקריאה מופיעה רק אחרי מסלול אמיתי, ולא משנה את המסלול, את הבנייה או את planner_complete.
+    היא מעבירה לעמוד הבקשה רק את מה שהיומן צריך, ואחרי #, כך שזה לא נשלח לשרת ולא לאנליטיקס:
+      r  קוד המסלול שעל המסך, אותו קוד בדיוק של קישור השיתוף ‎/t/‎ (encodePlan)
+      f  1 כשבמסלול ילד עד גיל 11, בדיוק כמו הסינון הקשיח של build (needsStrictKidFilter)
+      m  auto או manual, למדידה בלבד
+
+    מתג אחד, בשרת: משתני הסביבה JOURNAL_BETA_ENABLED ו-JOURNAL_BETA_SECRET בנטליפיי. המתכנן שואל את
+    פונקציית הבקשה (GET, בלי שום מידע) רק כשמוצג מסלול משפחתי, ופעם אחת לכל טעינת עמוד. הקריאה מופיעה רק
+    כשהתשובה היא בדיוק {enabled: true, open: true}. כל דבר אחר, וגם 404, שגיאה או המתנה של יותר מ-5 שניות,
+    משאיר אותה מוסתרת. שום פרמטר בכתובת ושום ערך בדפדפן לא פותח אותה, והשרת ממילא דוחה בקשה כשהוא כבוי.
+  */
+  var JB_STATUS = { asked: false, open: false };
+
+  function journalBetaAsk() {
+    if (JB_STATUS.asked || !window.fetch) return;
+    JB_STATUS.asked = true;
+    var late = false, timer = setTimeout(function () { late = true; }, 5000);
+    fetch('/.netlify/functions/journal-beta-request', { method: 'GET', cache: 'no-store', credentials: 'omit' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        clearTimeout(timer);
+        if (late || !j || j.enabled !== true || j.open !== true) return;
+        JB_STATUS.open = true;
+        journalBetaRefresh();
+      })
+      .catch(function () { /* בלי תשובה הקריאה נשארת מוסתרת */ });
+  }
+
+  /* מסלול משפחתי = ילד עד גיל 11 בבחירת "מי נוסע", בדיוק התנאי של הסינון הקשיח ב-build (needsStrictKidFilter) */
+  function journalBetaFamily() {
+    return state.childAges.some(function (id) {
+      return AGE_BANDS.some(function (b) { return b.id === id && b.strict; });
+    });
+  }
+
+  function journalBetaHref(plan, mode) {
+    return 'kids-journal-beta.html#r=' + encodePlan(plan) + '&f=' + (journalBetaFamily() ? 1 : 0) + '&m=' + mode + '&e=planner_cta';
+  }
+
+  /* הטקסט נכתב רק כשהקריאה מוצגת, כדי שלא ייכנס לאינדקס החיפוש של האתר כל עוד הבטא כבויה */
+  function journalBetaCta(boxId, plan, mode, show) {
+    var box = $(boxId);
+    if (!box) return;
+    /* היומן הוא לילדים: הקריאה מופיעה רק במסלול משפחתי, לא במסלול של מבוגרים או של נוער בלבד */
+    var wanted = show && journalBetaFamily();
+    if (wanted) journalBetaAsk();
+    box.hidden = !(wanted && JB_STATUS.open);
+    if (box.hidden) return;
+    if (!box.firstChild) {
+      box.innerHTML = '<span class="jb-cta-text"><strong>הופכים את המסלול ליומן מסע לילדים</strong>' +
+        'יומן PDF אישי לפי המקומות שבמסלול הזה. בטא חינמית.</span>' +
+        '<a class="jb-cta-link" href="kids-journal-beta.html">ליומן של המסלול</a>';
+    }
+    var link = box.querySelector('.jb-cta-link');
+    link.href = journalBetaHref(plan, mode);
+    if (link.dataset.wired) return;
+    link.dataset.wired = '1';
+    link.addEventListener('click', function () {
+      var p = mode === 'auto' ? LAST : manualPlan();
+      link.href = journalBetaHref(p, mode);
+      try {
+        if (!sessionStorage.getItem('gl_jb_start')) {
+          sessionStorage.setItem('gl_jb_start', '1');
+          if (window.glTrack) window.glTrack('journal_beta_start', { entry: 'planner_cta', planner_mode: mode, trip_days: p.length,
+            family_route: 1 });
+        }
+      } catch (e) { /* מדידה לא חוסמת מעבר */ }
+    });
   }
 
   function areaNameOf(d) {
@@ -2560,6 +2654,7 @@
     /* כותרת ההדפסה, באותה צורה כמו במסלול האוטומטי, וסופרת רק ימים שיש בהם מקומות */
     $('board-print-title').textContent = 'המסלול שלכם, ' + plan.length + (plan.length === 1 ? ' יום' : ' ימים');
     $('board-print-sub').textContent = total + ' עצירות בסך הכל, ' + freeTotal + ' מהן בלי תשלום כניסה.';
+    journalBetaCta('m-jb-cta', plan, 'manual', plan.some(function (d) { return d.items.length >= 2; }));
   }
 
   function syncManual() {

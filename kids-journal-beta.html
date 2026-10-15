@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <!-- Google tag (GA4), loaded only on golondon.co.il: see ga4.js -->
+  <script src="/ga4.js?v=1"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- טיוטה לבדיקת ההנהלה: לא מקושרת מאף עמוד, לא במפת האתר ולא בחיפוש -->
+  <meta name="robots" content="noindex, nofollow" />
+  <title>יומן המסע האישי שלי בלונדון, בטא חינמית | גו לונדון</title>
+  <meta name="description" content="יומן מסע אישי לילדים שנבנה לפי המסלול המשפחתי שלכם ב־GoLondon, עם מפות יומיות, משימות, עובדות, צביעה, ציור ודרכון מסע." />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Heebo', sans-serif; direction: rtl; line-height: 1.75; }
+    a { text-decoration: none; }
+    .navbar { padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .logo { direction: ltr; display: flex; align-items: center; gap: 8px; }
+    .logo-img { height: 44px; width: auto; object-fit: contain; }
+    .logo-text-fallback { display: none; align-items: baseline; gap: 2px; }
+    .logo-go, .logo-london { font-size: 22px; font-weight: 900; }
+    .logo-slogan { font-size: 11px; font-weight: 600; direction: rtl; white-space: nowrap; border-right: 1px solid; padding-right: 10px; }
+    .back-btn { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 8px; border: 1px solid; }
+
+    .jb-wrap { max-width: 860px; margin: 0 auto; padding: 0 20px 56px; }
+    .jb-hero { text-align: center; padding: 48px 8px 28px; }
+    .jb-label { display: inline-block; font-size: 13px; font-weight: 800; padding: 6px 14px; border-radius: 999px;
+      background: rgba(21,128,61,.10); color: var(--green, #15803D); margin-bottom: 18px; }
+    .jb-hero h1 { font-size: 34px; line-height: 1.25; font-weight: 900; color: var(--ink, #201f2b); margin-bottom: 14px; text-wrap: balance; }
+    .jb-hero h1 span { display: block; color: var(--brand, #DC2626); }
+    .jb-hero p { font-size: 17px; color: var(--ink-soft, #55596b); max-width: 620px; margin: 0 auto 24px; }
+    .jb-btn { display: inline-flex; align-items: center; gap: 10px; font-family: inherit; font-size: 16px; font-weight: 800; border: 0; cursor: pointer;
+      padding: 14px 26px; border-radius: 12px; color: #fff; background: linear-gradient(135deg, #DC2626, #EA580C); box-shadow: 0 6px 18px rgba(220,38,38,.25); }
+    .jb-btn:focus-visible { outline: 3px solid #1E3A8A; outline-offset: 3px; }
+    .jb-btn[disabled] { opacity: .55; cursor: not-allowed; }
+
+    .jb-card { background: var(--surface, #fff); border: 1px solid var(--line, rgba(32,31,43,.1)); border-radius: 16px; padding: 22px 22px; margin: 18px 0; box-shadow: var(--shadow-sm); }
+    .jb-card h2 { font-size: 20px; font-weight: 800; margin-bottom: 12px; color: var(--ink, #201f2b); }
+    .jb-muted { color: var(--ink-soft, #55596b); font-size: 15px; }
+
+    .jb-steps { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; counter-reset: s; }
+    .jb-steps li { counter-increment: s; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px 14px 14px; font-weight: 700; display: flex; gap: 12px; align-items: flex-start; }
+    .jb-steps li::before { content: counter(s); flex: 0 0 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--navy, #1E3A8A); color: #fff; font-weight: 800; font-size: 15px; }
+
+    .jb-route-days { display: grid; gap: 8px; margin-top: 6px; }
+    .jb-route-day { font-size: 14.5px; }
+    .jb-route-day b { color: var(--navy, #1E3A8A); }
+    .jb-route-day s { color: var(--ink-faint, #858a9c); }
+
+    .jb-sample { font-size: 14px; color: var(--ink-soft); margin: -4px 0 14px; }
+    .jb-gallery { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+    .jb-shot { display: flex; flex-direction: column; gap: 7px; color: var(--ink); font-size: 13.5px; font-weight: 700; text-align: center; }
+    .jb-shot img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--line); box-shadow: 0 2px 10px rgba(16,24,40,.08); background: #fff; }
+    .jb-shot:focus-visible { outline: 3px solid #1E3A8A; outline-offset: 3px; border-radius: 8px; }
+    .jb-shot--wide { grid-column: 1 / -1; margin-top: 6px; }
+    .jb-zoom-hint { font-size: 12.5px; color: var(--ink-faint, #858a9c); margin-top: 10px; }
+    @media (max-width: 700px) { .jb-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    /* שדה מלכודת: מוסתר מעין ומקורא מסך, בלי היסט שיוצר גלילה אופקית בעמוד מימין לשמאל */
+    .jb-hp { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+    .jb-form { display: grid; gap: 14px; }
+    .jb-field label { display: block; font-weight: 700; font-size: 14.5px; margin-bottom: 5px; }
+    .jb-field input[type="email"], .jb-field input[type="text"] { width: 100%; font-family: inherit; font-size: 16px; padding: 12px 14px;
+      border: 1px solid rgba(32,31,43,.22); border-radius: 10px; background: #fff; color: var(--ink); }
+    .jb-field input:focus-visible { outline: 3px solid rgba(30,58,138,.35); border-color: var(--navy); }
+    .jb-hint { font-size: 13px; color: var(--ink-faint, #858a9c); margin-top: 4px; }
+    .jb-check { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; }
+    .jb-check input { margin-top: 5px; width: 18px; height: 18px; flex: 0 0 18px; }
+    .jb-error { color: #B91C1C; font-size: 14px; font-weight: 700; }
+    .jb-privacy { font-size: 13.5px; color: var(--ink-soft); border-top: 1px solid var(--line); padding-top: 12px; }
+
+    .jb-state { text-align: center; padding: 28px 18px; }
+    .jb-state h2 { font-size: 22px; margin-bottom: 8px; }
+    .jb-links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 16px; }
+    .jb-link { border: 1px solid var(--line); border-radius: 10px; padding: 10px 16px; font-weight: 700; font-size: 14.5px; color: var(--navy, #1E3A8A); background: #fff; }
+
+    @media (max-width: 560px) {
+      .jb-hero { padding-top: 34px; }
+      .jb-hero h1 { font-size: 27px; }
+      .logo-slogan { display: none; }
+      .navbar { padding: 0 14px; }
+      .back-btn { font-size: 12.5px; padding: 7px 12px; white-space: nowrap; }
+      .jb-card { padding: 18px 16px; }
+    }
+  </style>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="stylesheet" href="accessibility-widget.css" />
+  <link rel="stylesheet" href="theme-light.css?v=16" />
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">
+    <img src="images/logo.png?v=2" alt="גו לונדון" class="logo-img" width="86" height="48" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <div class="logo-text-fallback"><span class="logo-go">GO</span><span class="logo-london">LONDON</span></div>
+    <span class="logo-slogan">המדריך הישראלי ללונדון</span>
+  </a>
+  <a href="planner.html" class="back-btn"><i class="fas fa-arrow-right"></i> חזרה למתכנן</a>
+</nav>
+
+<main class="jb-wrap">
+
+  <section class="jb-hero">
+    <span class="jb-label">בטא חינמית · מוגבל ל־25 משפחות ראשונות</span>
+    <h1>המסלול שלכם בלונדון. <span>עכשיו גם הילד מקבל אחד משלו.</span></h1>
+    <!-- הנוסח המאושר כולל קו מפריד ארוך; לפי כללי הכתיבה של האתר הוא הוחלף בפסיק -->
+    <p>יומן מסע אישי שנבנה לפי המקומות שבאמת נמצאים במסלול המשפחתי שלכם, עם מפות יומיות, משימות, עובדות, צביעה, ציור ודרכון מסע.</p>
+    <button class="jb-btn" type="button" id="jb-go"><i class="fas fa-book-open"></i> אני רוצה יומן למסלול שלנו</button>
+  </section>
+
+  <section class="jb-card" id="jb-route" aria-live="polite">
+    <h2>המסלול שהיומן ייבנה ממנו</h2>
+    <div id="jb-route-body" class="jb-muted">טוענים את המסלול…</div>
+    <div id="jb-route-error" hidden>
+      <p class="jb-error" id="jb-route-error-text">לא הצלחנו להכין את המסלול הזה ליומן.</p>
+      <div class="jb-links"><a class="jb-link" href="planner.html"><i class="fas fa-route"></i> חזרה למתכנן</a></div>
+    </div>
+  </section>
+
+  <section class="jb-card">
+    <h2>איך זה עובד</h2>
+    <ol class="jb-steps">
+      <li>בונים מסלול ב־GoLondon</li>
+      <li>מבקשים את היומן</li>
+      <li>מקבלים PDF אישי ומדפיסים לפני הטיול</li>
+    </ol>
+  </section>
+
+  <section class="jb-card">
+    <h2>מה יש ביומן</h2>
+    <p class="jb-sample">דוגמה מיומן אישי שנוצר למסלול לדוגמה</p>
+    <!-- עמודים אמיתיים מהיומן המאושר (1-day-westminster-family.pdf, sha256 c62d192b…), בלי שינוי. מקור: images/journal-beta/SOURCE.json -->
+    <div class="jb-gallery">
+      <a class="jb-shot" href="images/journal-beta/cover.webp" target="_blank" rel="noopener" aria-label="שער אישי, פתיחה בגודל מלא">
+        <picture><source srcset="images/journal-beta/cover.webp" type="image/webp"><img src="images/journal-beta/cover.jpg" alt="שער היומן לדוגמה: יומן המסע של נועה, הרפתקה בלונדון" width="1000" height="1416" loading="lazy" decoding="async"></picture>
+        <span>שער אישי</span>
+      </a>
+      <a class="jb-shot" href="images/journal-beta/daily-map.webp" target="_blank" rel="noopener" aria-label="מפה יומית, פתיחה בגודל מלא">
+        <picture><source srcset="images/journal-beta/daily-map.webp" type="image/webp"><img src="images/journal-beta/daily-map.jpg" alt="מפת היום לדוגמה: שבע תחנות ממוספרות באזור וסטמינסטר, מחוברות בקו המסלול" width="1000" height="1416" loading="lazy" decoding="async"></picture>
+        <span>מפה יומית</span>
+      </a>
+      <a class="jb-shot" href="images/journal-beta/big-ben-module.webp" target="_blank" rel="noopener" aria-label="עמוד מקום מלא, פתיחה בגודל מלא">
+        <picture><source srcset="images/journal-beta/big-ben-module.webp" type="image/webp"><img src="images/journal-beta/big-ben-module.jpg" alt="עמוד מקום לדוגמה על ביג בן: תמונה, הסבר, שלוש עובדות מפתיעות ומשימת חיפוש קטנה" width="1000" height="1416" loading="lazy" decoding="async"></picture>
+        <span>עמוד מקום מלא</span>
+      </a>
+      <a class="jb-shot" href="images/journal-beta/colouring.webp" target="_blank" rel="noopener" aria-label="צביעה וציור, פתיחה בגודל מלא">
+        <picture><source srcset="images/journal-beta/colouring.webp" type="image/webp"><img src="images/journal-beta/colouring.jpg" alt="עמוד צביעה לדוגמה: ביג בן ובתי הפרלמנט לצביעה, עם מקום לציור ולזיכרון מהביקור" width="1000" height="1416" loading="lazy" decoding="async"></picture>
+        <span>צביעה וציור</span>
+      </a>
+      <a class="jb-shot" href="images/journal-beta/passport.webp" target="_blank" rel="noopener" aria-label="דרכון המסע, פתיחה בגודל מלא">
+        <picture><source srcset="images/journal-beta/passport.webp" type="image/webp"><img src="images/journal-beta/passport.jpg" alt="דרכון המסע לדוגמה: כרטיס לכל תחנה ביום, עם משימה קטנה וסימון ביקרנו כאן" width="1000" height="1416" loading="lazy" decoding="async"></picture>
+        <span>דרכון המסע</span>
+      </a>
+      <a class="jb-shot jb-shot--wide" href="images/journal-beta/contact-sheet.webp" target="_blank" rel="noopener" aria-label="כל הספר במבט אחד, פתיחה בגודל מלא">
+        <picture><source srcset="images/journal-beta/contact-sheet.webp" type="image/webp"><img src="images/journal-beta/contact-sheet.jpg" alt="כל 11 העמודים של היומן לדוגמה: שער, סקירת המסלול, מפה, עמודי מקום, עמודי צביעה, דרכון, עמודי זיכרונות ותעודת סיום" width="1970" height="932" loading="lazy" decoding="async"></picture>
+        <span>כל הספר במבט אחד, 11 עמודים</span>
+      </a>
+    </div>
+    <p class="jb-zoom-hint">לחיצה על עמוד פותחת אותו בגודל מלא.</p>
+  </section>
+
+  <section class="jb-card">
+    <p class="jb-muted">אנחנו עדיין משפרים את המוצר. במהלך הבטא היומן ניתן ללא עלות, ונשמח לפידבק קצר לאחר שתקבלו אותו.</p>
+  </section>
+
+  <!-- מוסתר עד שהשרת עונה שהבטא פתוחה (journal-beta.js). בלי תשובה, בלי JavaScript או כשהבטא כבויה: אין טופס פעיל -->
+  <section class="jb-card" id="jb-request" hidden>
+    <h2>בקשת יומן למסלול שלכם</h2>
+    <form class="jb-form" id="jb-form" novalidate>
+      <div class="jb-field">
+        <label for="jb-email">המייל שאליו נשלח את היומן</label>
+        <input type="email" id="jb-email" name="email" autocomplete="email" inputmode="email" required maxlength="254" />
+      </div>
+      <div class="jb-field">
+        <label for="jb-name">השם הפרטי של הילד (לא חובה)</label>
+        <input type="text" id="jb-name" name="first_name" autocomplete="off" maxlength="24" />
+        <p class="jb-hint">שם פרטי בלבד, עד 24 תווים. הוא מופיע על השער ועל תעודת הסיום, ולא נשמר אחרי שהיומן נשלח.</p>
+      </div>
+      <label class="jb-check">
+        <input type="checkbox" id="jb-ack" name="beta_ack" required />
+        <span>ידוע לי שזו גרסת בטא, ושהיומן נבנה מהמסלול שמופיע למעלה.</span>
+      </label>
+      <div class="jb-hp" aria-hidden="true">
+        <label for="jb-website">לא למילוי</label>
+        <input type="text" id="jb-website" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+      <p class="jb-error" id="jb-error" role="alert" hidden></p>
+      <div><button class="jb-btn" type="submit" id="jb-submit"><i class="fas fa-paper-plane"></i> שליחת הבקשה</button></div>
+      <p class="jb-privacy">המייל משמש רק כדי לשלוח לכם את יומן הבטא, ולא נרשם לשום רשימת דיוור. המסלול, השם הפרטי והמייל נשמרים אצלנו לכל היותר 7 ימים ונמחקים. אנחנו לא שואלים על שם משפחה, גיל, בית ספר, מלון או כתובת, ולא שומרים פרופיל של הילד. <a href="privacy.html#journal-beta">מדיניות הפרטיות</a></p>
+    </form>
+  </section>
+
+  <section class="jb-card jb-state" id="jb-success" hidden>
+    <h2>הבקשה התקבלה</h2>
+    <p class="jb-muted" id="jb-success-text">נכין את יומן הבטא לפי המסלול שלכם ונשלח אותו למייל שמסרתם. בינתיים אפשר לחזור למסלול ולהמשיך לתכנן.</p>
+    <div class="jb-links">
+      <a class="jb-link" id="jb-back-route" href="planner.html"><i class="fas fa-route"></i> חזרה למסלול שלנו</a>
+      <a class="jb-link" href="guide-kids.html"><i class="fas fa-child"></i> לונדון עם ילדים</a>
+      <a class="jb-link" href="index.html"><i class="fas fa-house"></i> לדף הבית</a>
+    </div>
+  </section>
+
+  <section class="jb-card jb-state" id="jb-full" hidden>
+    <h2>ההרצה התמלאה</h2>
+    <p class="jb-muted">כל 25 המקומות בבטא כבר תפוסים, ולכן כרגע אנחנו לא מקבלים בקשות נוספות. המסלול שלכם נשאר במתכנן, ואפשר להמשיך לתכנן איתו.</p>
+    <div class="jb-links">
+      <a class="jb-link" id="jb-full-route" href="planner.html"><i class="fas fa-route"></i> חזרה למסלול</a>
+      <a class="jb-link" href="guide-kids.html"><i class="fas fa-child"></i> לונדון עם ילדים</a>
+    </div>
+  </section>
+
+  <section class="jb-card jb-state" id="jb-closed" hidden>
+    <h2>יומן המסע לילדים עדיין לא פתוח לבקשות</h2>
+    <p class="jb-muted">כרגע אי אפשר לבקש יומן. בינתיים המסלול שלכם נשאר במתכנן, ואפשר להמשיך לתכנן איתו.</p>
+    <div class="jb-links">
+      <a class="jb-link" href="planner.html"><i class="fas fa-route"></i> למתכנן</a>
+      <a class="jb-link" href="guide-kids.html"><i class="fas fa-child"></i> לונדון עם ילדים</a>
+    </div>
+  </section>
+
+</main>
+
+<script src="route-code.js?v=1"></script>
+<script src="journal-beta-route.js?v=1"></script>
+<script src="accessibility-widget.js?v=2" defer></script>
+<script src="analytics.js?v=5" defer></script>
+<script src="journal-beta.js?v=1" defer></script>
+</body>
+</html>

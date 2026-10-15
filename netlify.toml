@@ -18,6 +18,26 @@
   status = 404
   force = true
 
+# תלויות של הפונקציות (package.json, ‎@netlify/blobs‎). האתר מתפרסם מהשורש, ולכן גם אם התיקייה
+# node_modules תגיע לפריסה, היא וקובצי החבילה לא מוגשים לעולם.
+[[redirects]]
+  from = "/node_modules/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package.json"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package-lock.json"
+  to = "/404.html"
+  status = 404
+  force = true
+
 # כותרות אבטחה לכל האתר. בלי CSP כופה, כי העמודים בנויים על סקריפטים
 # מוטבעים ושבירתם מסוכנת מהתועלת. ארבע הכותרות האלה בטוחות לחלוטין.
 [[headers]]
