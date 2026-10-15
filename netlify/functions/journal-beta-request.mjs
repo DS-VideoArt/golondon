@@ -27,10 +27,18 @@
 
   לא נשמרים: כתובת IP, שם משפחה, תאריך לידה, גיל, בית ספר, מלון, כתובת, מיקום או תמונה.
   מחיקה: journal-beta-purge.mjs, פעם ביום. פירוט ב-docs/journal-beta/BETA_PLAN.md.
+
+  הפקה אוטומטית (רק כשמוגדר JOURNAL_GITHUB_DISPATCH_TOKEN, ורק בסביבה שיש לה מאגר מסירה מותר, כלומר לא
+  production בשלב הזה): אחרי שהבקשה נשמרה נשלח repository_dispatch לעובד (journal-lib/journal-automation.mjs).
+  הצליח: received כרגיל. נכשל: 502 dispatch_failed, הבקשה נשארת עם המשבצת שלה במצב dispatch_failed, ושליחה
+  חוזרת של אותו טופס (אותו מייל ואותו מסלול) שולחת שוב עם אותו request_id, בלי משבצת ובלי רשומה נוספת.
+  בלי האסימון: המסלול הידני המאושר, בדיוק כמו קודם.
 */
 import { getStore } from '@netlify/blobs';
 import crypto from 'node:crypto';
 import JournalRoute from '../../journal-beta-route.js';
+import { readRecord, normStatus } from '../journal-lib/journal-state.mjs';
+import { dispatchRequest, dispatcherFor } from '../journal-lib/journal-automation.mjs';
 
 export const CAP = 25;
 export const RETENTION_DAYS = 7;
@@ -76,7 +84,22 @@ async function claimSlot(store, value) {
   return null;
 }
 
-/* deps: { store, secret, enabled, loadPlaces, now, newId } */
+const DISPATCH_FAILED = () => json(502, { ok: false, code: 'dispatch_failed', retryable: true });
+
+/* בקשה קיימת שהשליחה שלה נכשלה או נתקעה: עוד ניסיון עם אותו מזהה. אחרת already_received */
+async function retryExisting(store, requestId, deps, now) {
+  const cur = deps.dispatcher && await readRecord(store, requestId);
+  const rec = cur && cur.record;
+  const s = rec && normStatus(rec.status);
+  if (s === 'dispatch_failed' || (s === 'accepted' && rec.dispatch_attempts > 0)) {
+    const d = await dispatchRequest(store, requestId, deps.dispatcher, now);
+    if (d.state === 'dispatched') return json(200, { ok: true, status: 'received' });
+    if (d.state === 'dispatch_failed') return DISPATCH_FAILED();
+  }
+  return json(200, { ok: true, status: 'already_received' });
+}
+
+/* deps: { store, secret, enabled, loadPlaces, now, newId, dispatcher } */
 export async function handle(req, deps) {
   const now = deps.now || (() => new Date());
   if (req.method === 'GET') {
@@ -118,7 +141,8 @@ export async function handle(req, deps) {
   const prior = await store.get(dKey, { type: 'json' });
   if (prior) {
     const done = prior.request_id && await store.get('requests/' + prior.request_id);
-    if (done || now() - new Date(prior.created_at) < STALE_CLAIM_MS) return json(200, { ok: true, status: 'already_received' });
+    if (done) return retryExisting(store, prior.request_id, deps, now);
+    if (now() - new Date(prior.created_at) < STALE_CLAIM_MS) return json(200, { ok: true, status: 'already_received' });
     await store.delete(dKey);
   }
 
@@ -133,13 +157,17 @@ export async function handle(req, deps) {
   }
 
   const expires = new Date(t.getTime() + RETENTION_DAYS * 864e5).toISOString();
-  const record = { request_id: requestId, created_at: created, expires_at: expires, status: 'received',
+  const record = { request_id: requestId, created_at: created, expires_at: expires, status: 'accepted',
     email, first_name: firstName, route_code: routeCode, family_route: true, planner_mode: mode };
   try {
     await store.set('requests/' + requestId, JSON.stringify(record), { metadata: { created_at: created, expires_at: expires } });
   } catch (e) {
     await store.delete(slot); await store.delete(dKey);
     return json(500, { code: 'store_failed' });
+  }
+  if (deps.dispatcher) {
+    const d = await dispatchRequest(store, requestId, deps.dispatcher, now);
+    if (d.state !== 'dispatched' && d.state !== 'ready') return DISPATCH_FAILED();
   }
   return json(200, { ok: true, status: 'received' });
 }
@@ -160,5 +188,7 @@ export default async (req, context) => handle(req, {
   store: getStore({ name: storeNameFor(context), consistency: 'strong' }),
   secret: env('JOURNAL_BETA_SECRET') || '',
   enabled: env('JOURNAL_BETA_ENABLED') === 'true',
-  loadPlaces: () => loadPlacesFrom(req)
+  loadPlaces: () => loadPlacesFrom(req),
+  /* שליחה לעובד רק עם אסימון בשרת וגם מאגר מסירה מותר לסביבה. production: אין, ולכן ידני */
+  dispatcher: dispatcherFor(context, env('JOURNAL_GITHUB_DISPATCH_TOKEN'))
 });

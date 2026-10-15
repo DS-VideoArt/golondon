@@ -25,9 +25,14 @@ let pass = 0, fail = 0;
 const ok = (c, m) => { if (c) pass++; else { fail++; console.log('FAIL ' + m); } };
 
 class MemoryStore {
-  constructor() { this.m = new Map(); }
+  constructor() { this.m = new Map(); this.tags = new Map(); this.n = 0; }
   async get(k, o) { if (!this.m.has(k)) return null; const v = this.m.get(k); return o && o.type === 'json' ? JSON.parse(v) : v; }
-  async set(k, v, o) { if (o && o.onlyIfNew && this.m.has(k)) return { modified: false }; this.m.set(k, String(v)); return { modified: true }; }
+  async getWithMetadata(k, o) { const d = await this.get(k, o); return d === null ? null : { data: d, etag: this.tags.get(k), metadata: {} }; }
+  async set(k, v, o) {
+    if (o && o.onlyIfNew && this.m.has(k)) return { modified: false };
+    if (o && o.onlyIfMatch !== undefined && this.tags.get(k) !== o.onlyIfMatch) return { modified: false };
+    const etag = '"' + (++this.n) + '"'; this.m.set(k, String(v)); this.tags.set(k, etag); return { modified: true, etag };
+  }
   async delete(k) { this.m.delete(k); }
   async list(o) { return { blobs: [...this.m.keys()].filter(k => k.startsWith((o && o.prefix) || '')).map(key => ({ key })) }; }
   keys(p) { return [...this.m.keys()].filter(k => k.startsWith(p)); }
@@ -199,6 +204,26 @@ class MemoryStore {
     ok(await page.evaluate(() => document.getElementById('jb-success').hidden && !document.getElementById('jb-error').hidden), 'honeypot filled: rejected, error shown, no success');
     ok(env.store.m.size === before, 'honeypot: nothing stored, no slot claimed');
     ok((await events(page, 'journal_beta_submit')).length === 0, 'honeypot: no journal_beta_submit'); await ctx.close(); }
+
+  /* ---------- automation: the start of generation fails, the family presses send again (mocked dispatcher, no GitHub) ---------- */
+  { const sent = [];
+    env.dispatcher = async p => { sent.push(p); return sent.length === 1 ? { ok: false, code: 'unavailable' } : { ok: true }; };
+    const { ctx, page, errors } = await open(page1(C('science-museum')));
+    await fill(page, 'retry@example.com', 'דן');
+    const st = await page.evaluate(() => ({ err: document.getElementById('jb-error').textContent, shown: !document.getElementById('jb-error').hidden,
+      ok: !document.getElementById('jb-success').hidden, dis: document.getElementById('jb-submit').disabled }));
+    ok(st.shown && /הבקשה נשמרה, אבל הכנת היומן לא התחילה/.test(st.err) && !st.ok && !st.dis, 'dispatch failed: honest Hebrew message, no success, send enabled again');
+    ok(!/[\u2013\u2014]| - /.test(st.err), 'dispatch failed message: no dashes');
+    ok((await events(page, 'journal_beta_submit')).length === 0, 'dispatch failed: no journal_beta_submit');
+    const slots = env.store.keys('slots/').length;
+    await page.evaluate(() => document.getElementById('jb-form').requestSubmit()); await sleep(700);
+    ok(await page.evaluate(() => !document.getElementById('jb-success').hidden), 'press send again: re-dispatched, success state');
+    ok(sent.length === 2 && sent[0].request_id === sent[1].request_id && Object.keys(sent[1]).length === 6 && !JSON.stringify(sent).includes('retry@'), 'retry used the same request_id and the six-field payload without the email');
+    ok(env.store.keys('slots/').length === slots, 'retry: no extra slot');
+    ok((await events(page, 'journal_beta_submit')).length === 1, 'retry success: journal_beta_submit exactly once');
+    const dl = await page.evaluate(() => JSON.stringify(window.dataLayer || []));
+    ok(!/retry@|example\.com|דן/.test(dl) && dl.indexOf(sent[0].request_id) === -1, 'automation: no email, name or request id in GA4');
+    ok(errors.length === 0, 'automation: no page errors'); await ctx.close(); env.dispatcher = undefined; }
 
   /* ---------- the cap: fill to 24, the page takes slot 25, the next distinct family is full ---------- */
   for (let i = env.store.keys('slots/').length + 1; i <= 24; i++) {

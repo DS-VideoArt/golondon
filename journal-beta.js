@@ -14,6 +14,7 @@
     journal_beta_view    צפייה בעמוד: entry, has_route, route_ok, beta_state
     journal_beta_start   פעם אחת לסשן: לחיצה על הקריאה במתכנן, או פעולה ראשונה בטופס כאן
     journal_beta_submit  רק כשהשרת קיבל בקשה חדשה (status received). בקשה כפולה לא נספרת שוב
+                         כשהכנת היומן לא התחילה (502 dispatch_failed) לא נספר. אם שליחה חוזרת מצליחה, נספר אז, פעם אחת
   journal_beta_delivered ו-journal_beta_feedback נרשמים בתהליך הידני, לא כאן.
 */
 (function () {
@@ -142,6 +143,10 @@
         setState('full');
       } else if (res.status === 422 && b.code === 'route_invalid') {
         routeError(b.reason);
+      } else if (res.status === 502 && b.code === 'dispatch_failed') {
+        /* הבקשה נשמרה ותפסה מקום, רק התחלת ההכנה נכשלה. שליחה חוזרת מנסה שוב עם אותה בקשה */
+        showError('הבקשה נשמרה, אבל הכנת היומן לא התחילה. אפשר ללחוץ שוב על שליחת הבקשה, זה לא יתפוס מקום נוסף.');
+        btn.disabled = false;
       } else if (res.status === 503 || res.status === 404) {
         setState('closed');
       } else {

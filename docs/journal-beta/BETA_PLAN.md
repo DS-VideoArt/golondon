@@ -74,6 +74,12 @@ unknown context (`storeNameFor`). Preview QA can never claim a real Beta slot or
 | `slots/01` .. `slots/25` | `{request_id, created_at}` | none | never (it is the count) |
 | `requests/<request_id>` | `{request_id, created_at, expires_at, status:"received", email, first_name, route_code, family_route:true, planner_mode}`, metadata `{created_at, expires_at}` | normalized email, optional first name, route | after delivery by the operator, at the latest by the daily purge after 7 days |
 | `dedupe/<hmac>` | `{request_id, created_at}` | none in the key or value (HMAC-SHA256 of normalized email + route code, keyed by JOURNAL_BETA_SECRET) | daily purge after 7 days |
+| `downloads/<download_token>` | `{request_id, delivery_store, delivery_token, created_at, expires_at}`, metadata `{expires_at}` (automation only, section 15) | none (opaque tokens) | daily purge at its `expires_at` (at most the request's 7 days) |
+
+New records are written with `status:"accepted"`; `received` is the legacy name and is read as `accepted`. With
+automation on, the record also carries the state fields of section 15 (`dispatch_attempts`, `dispatch_claimed_at`,
+`dispatched_at`, `dispatch_error`, `ready_at`, `download_token`, `download_expires_at`, `pdf_size`, `page_count`,
+`worker_version`, `worker_status`, `failed_at`, `delivered_at`); never the worker's `delivery_token`.
 
 `request_id` = `r` + 24 random hex characters, unrelated to the child, route or date. Never stored: IP address,
 surname, date of birth, age, school, hotel, address, location, photo. No child profile, no marketing list.
@@ -167,6 +173,11 @@ New: `kids-journal-beta.html`, `journal-beta.js`, `journal-beta-route.js`, `netl
 JPEG + SOURCE.json), `docs/qa/journal-beta-harness.js`, `docs/qa/journal-beta-backend-test.mjs`, this document.
 Changed: `planner.html` (gated family-only CTA), `privacy.html` (Beta section), `netlify.toml` (404 rules),
 `build_search_index.py` (skip the draft), `_redirects` (generated line for the draft page).
+Automation foundation (section 15): new `netlify/journal-lib/journal-state.mjs`, `netlify/journal-lib/journal-automation.mjs`,
+`netlify/functions/journal-worker-callback.mjs`, `netlify/functions/journal-download.mjs`,
+`netlify/functions/journal-beta-reconcile.mjs`, `docs/qa/journal-automation-test.mjs`; changed
+`netlify/functions/journal-beta-request.mjs` (dispatch, same-id retry, `accepted`), `netlify/functions/journal-beta-purge.mjs`
+(download mappings, delivery store), `journal-beta.js` (dispatch_failed message), `docs/qa/journal-beta-harness.js`.
 
 ## 14. Operator runbook (Netlify CLI, logged in to the site)
 
@@ -178,3 +189,99 @@ netlify blobs:delete journal-beta requests/<id>         # right after sending
 netlify blobs:list journal-beta --prefix slots/         # how many of the 25 are taken
 ```
 Never paste request contents into tickets, chats or logs.
+
+## 15. Automation foundation (website side, code only, nothing configured)
+
+Off unless configured. Without `JOURNAL_GITHUB_DISPATCH_TOKEN` the request function behaves exactly as above (manual
+operator flow). Production has no accepted delivery store, so in a `production` deploy dispatch, callback, download and
+reconciliation are all off even if a token were set (`deliveryStoreFor` returns null; fail closed). Shared code:
+`netlify/journal-lib/journal-state.mjs`, `netlify/journal-lib/journal-automation.mjs`.
+
+### State machine (record `requests/<id>`, every change an `onlyIfMatch` write on the etag just read)
+
+| state | meaning | next |
+|---|---|---|
+| `accepted` | stored, slot held; not dispatched yet (manual flow), or a dispatch in flight (`dispatch_claimed_at`) | dispatched, dispatch_failed, ready, failed |
+| `dispatch_failed` | GitHub refused or was unreachable; typed `dispatch_error` (auth, not_found, invalid, unavailable, timeout, network, http_NNN) | accepted (retry claim, same id), ready, failed |
+| `dispatched` | GitHub answered 204 | ready, failed |
+| `ready` | a validated worker result; one website download capability created | delivered (explicit step only) |
+| `delivered` | set only by `markDelivered`, which nothing calls yet (no email in this phase) | none |
+| `failed` | the worker reported a signed non-ready status (`worker_status`), no file | ready (an operator re-run that succeeds) |
+| `expired` | derived: now >= `expires_at`; the daily purge deletes the record | none |
+
+No downgrade (a failure after `ready` changes nothing), no second `ready`. A read without an etag is never followed by
+a write. Public status (`publicStatus`) is `{status, download_ready}` only.
+
+### Dispatch
+
+After the record is stored: claim (accepted + `dispatch_claimed_at`, conditional write; only the winner sends), then
+`POST https://api.github.com/repos/DS-VideoArt/golondon-kids-journal/dispatches` with
+`{"event_type":"journal_generate","client_payload":{request_id, route_code, family_route, planner_mode, first_name, created_at}}`,
+exactly those six keys (`first_name` null when not given). Bearer token from the server env only; 8 s timeout; the
+response body is never read or logged. 204 -> `dispatched`, page gets `received`. Anything else -> `dispatch_failed`,
+page gets `502 {code:"dispatch_failed", retryable:true}` and shows a Hebrew "saved, but preparation did not start, press
+send again" message (no `journal_beta_submit`). Pressing send again hits the duplicate key, finds the same record and
+re-dispatches with the same `request_id`: no new slot, no new record; `journal_beta_submit` fires once when that
+succeeds. The reconciliation also retries `dispatch_failed`. At most 5 attempts per request.
+
+### Signed callback `POST /.netlify/functions/journal-worker-callback`
+
+What the approved worker (journal-worker-1.2.0) sends: body `json.dumps(result, ensure_ascii=False, sort_keys=True)`
+UTF-8, headers `X-Journal-Signature: sha256=<hex HMAC-SHA256 of that body, key JOURNAL_CALLBACK_SECRET>` and
+`X-Journal-Worker: journal-worker-x.y.z`. Order: POST only -> secret and delivery store configured (else 503) -> body
+read as raw bytes, max 16 KB -> signature verified on those bytes with `timingSafeEqual` (missing, malformed or wrong:
+401) -> worker header -> JSON parse -> `applyWorkerResult`: request id shape, known request (404), not expired (410),
+`status` ready (other worker statuses: 422 `not_ready`, record -> `failed` with the status only, never `detail`),
+`delivery_store` exactly `journal-delivery-preview` (422 `wrong_store`), `delivery_token` 64 lowercase hex (422),
+`expires_at` in the future, optional numeric fields well formed, and `pdf/<delivery_token>` exists in the delivery
+store with metadata `request_id` equal to the request (409 `delivery_missing`). Then finalization. Repeats (including
+the worker's `reused:true`) answer 200 with `created:false`. Responses carry `{ok, status, created}` or `{ok:false, code}`,
+never a token or the request id; the function logs the HTTP status only.
+
+### Download `GET /journal-download/<download_token>`
+
+On the first finalization a new website token (32 random bytes, base64url, 43 characters) is written as
+`downloads/<token>` (`onlyIfNew`), then the record moves to `ready` with that token (conditional write); a writer that
+loses the race deletes its mapping, so exactly one capability exists. Expiry = min(request `expires_at`, PDF
+`expires_at`). The function checks the token shape, the mapping, its expiry (410), that the record still names this
+token and is ready or delivered, the store, the PDF metadata (`request_id`, `expires_at`), then streams
+`journal-delivery-preview/pdf/<delivery_token>` with `application/pdf`, `attachment; filename="golondon-kids-journal.pdf"`,
+`no-store, private`, `noindex`, `no-referrer`. No redirect, no Blob URL, no PII in the URL, no token in headers or logs.
+Downloading does not change the state.
+
+Limit: Netlify streamed function responses are documented at 20 MB. A PDF above `MAX_STREAM_BYTES` (20,000,000) is
+refused with 503 instead of being cut. The worker's documented example is 48,354,720 bytes, so real books need either a
+smaller delivery PDF or a different serving path before customer delivery (see the open points).
+
+### Reconciliation `journal-beta-reconcile` (scheduled `*/15 * * * *` UTC)
+
+Only Beta records awaiting generation (`dispatched`, `dispatch_failed`, `accepted` with a dispatch attempt; never the
+manual flow). For each, a direct read of `index/<request_id>` in the delivery store of the context (preview:
+`journal-delivery-preview`; production: none, the function does nothing). A ready index goes through the same
+`applyWorkerResult` as the callback (same validation, same single capability); an index whose `request_id` differs from
+its key is rejected. No index: `dispatch_failed` is re-dispatched (same id), the rest waits. No listing or scanning of
+the delivery store. Logs counts only. Scheduled functions run only on published deploys; on a Deploy Preview use
+"Run now" in the Netlify UI.
+
+### Retention
+
+`journal-beta-purge` (daily) also deletes `downloads/*` at their `expires_at`, and, through `purgeDelivery`, the
+context's delivery store only (preview: `journal-delivery-preview`; production: none): `pdf/*` at the `expires_at` in
+their metadata and `index/*` at their `expires_at`. The download expiry is never later than the PDF expiry, so a file
+is never deleted while its link is valid; a PDF without metadata cannot be downloaded and is removed.
+
+### Settings for the first Deploy Preview end to end run (not set by this change)
+
+Netlify, context `deploy-preview`, scope Functions: `JOURNAL_BETA_ENABLED=true`, `JOURNAL_BETA_SECRET` (secret),
+`JOURNAL_GITHUB_DISPATCH_TOKEN` (secret; fine-grained PAT, only DS-VideoArt/golondon-kids-journal, Contents read and
+write), `JOURNAL_CALLBACK_SECRET` (secret, same value as the worker's). Then "Retry with latest branch commit".
+Worker repository (operator): secrets `NETLIFY_SITE_ID`, `NETLIFY_BLOBS_TOKEN`, `JOURNAL_CALLBACK_URL` =
+`https://deploy-preview-2--<site>.netlify.app/.netlify/functions/journal-worker-callback`, `JOURNAL_CALLBACK_SECRET`;
+variable `JOURNAL_DELIVERY_STORE=journal-delivery-preview`.
+
+### Tests
+
+`docs/qa/journal-automation-test.mjs` (offline; mocked dispatch; python3 produces the callback bytes and HMAC with the
+worker's exact serialization; MemoryStore with atomic `onlyIfNew`/`onlyIfMatch`, plus the real client against the local
+BlobsServer). The local BlobsServer returns no ETag on reads (the hosted API does), so that layer fills the read etag
+from `list()`; the production code itself refuses to write without an etag.
