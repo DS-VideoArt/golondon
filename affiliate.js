@@ -50,7 +50,12 @@
     '.aff-group-panel{margin-top:12px;}',
     '.aff-group-panel[hidden]{display:none;}',
     '.aff-group-panel .aff-group{margin-bottom:0;}',
-    '.aff-group-title:focus:not(:focus-visible){outline:none;}'
+    '.aff-group-title:focus:not(:focus-visible){outline:none;}',
+    /* תווית הסוג של כל קישור (מ-15.10.2026). הצבעים עם !important כי התמה הבהירה צובעת כל span ו-p */
+    '.aff-trust{display:inline-flex;align-items:center;align-self:flex-start;font-size:11.5px;font-weight:800;line-height:1.3;padding:3px 9px;border-radius:50px;}',
+    '.aff-trust--aff{background:#FEF3C7;color:#78350F!important;border:1px solid #F59E0B;}',
+    '.aff-trust--official{background:#DCFCE7;color:#14532D!important;border:1px solid #22C55E;}',
+    '.aff-disc{font-size:12px;line-height:1.5;margin:0;color:#55596b!important;}'
   ].join('');
 
   function injectStyles() {
@@ -122,6 +127,25 @@
     return 'official_direct';
   }
 
+  /*
+    תווית גלויה לכל קישור, לפי אותו סיווג בדיוק (statusFor), כדי שהתווית והמדידה לא יסתרו זו את זו:
+      official_direct           "אתר רשמי"
+      affiliate, agent_referral "קישור שותפים", ולידו משפט הגילוי
+      commercial_direct         בלי תווית שותפים. אין שם עמלה (למשל Booking), ולכן לא מציגים אותו כשותפים
+    בלי טענה על מחיר זהה, כי היא לא נבדקה לכל ספק.
+  */
+  var TRUST_LABEL = { official_direct: 'אתר רשמי', affiliate: 'קישור שותפים', agent_referral: 'קישור שותפים' };
+  var TRUST_DISCLOSURE = 'אם תבוצע הזמנה דרך הקישור, GoLondon עשויה לקבל עמלה.';
+  function trustFor(url) {
+    var st = statusFor(url);
+    var paid = st === 'affiliate' || st === 'agent_referral';
+    return { status: st, label: TRUST_LABEL[st] || '', disclosure: paid ? TRUST_DISCLOSURE : '', paid: paid };
+  }
+  function relFor(status) {
+    if (status === 'affiliate' || status === 'agent_referral') return 'sponsored noopener nofollow';
+    return status === 'commercial_direct' ? 'noopener nofollow' : 'noopener';
+  }
+
   function reportClick(d) {
     d = d || {};
     var clicked = cleanUrl(d.clicked_url);
@@ -180,8 +204,10 @@
     a.className = 'aff-card';
     a.href = buildUrl(cfg, offer, slotId, offerId);
     a.target = '_blank';
-    /* sponsored הוא הסימון שגוגל דורש על קישור שיש מאחוריו תמורה כספית */
-    a.rel = 'sponsored noopener nofollow';
+    /* sponsored הוא הסימון שגוגל דורש על קישור שיש מאחוריו תמורה כספית. רק שם, ולא על ספק ישיר בלי עמלה */
+    var trust = trustFor(a.href);
+    a.rel = relFor(trust.status);
+    a.setAttribute('data-aff-status', trust.status);
     a.setAttribute('data-offer', offerId);
     a.setAttribute('data-slot', slotId);
 
@@ -210,6 +236,18 @@
 
     a.appendChild(head);
     a.appendChild(desc);
+    if (trust.label) {
+      var tag = document.createElement('span');
+      tag.className = 'aff-trust ' + (trust.paid ? 'aff-trust--aff' : 'aff-trust--official');
+      tag.textContent = trust.label;
+      a.appendChild(tag);
+    }
+    if (trust.disclosure) {
+      var disc = document.createElement('p');
+      disc.className = 'aff-disc';
+      disc.textContent = trust.disclosure;
+      a.appendChild(disc);
+    }
     a.appendChild(cta);
 
     a.addEventListener('click', function () {
@@ -404,9 +442,11 @@
     note.className = 'aff-note';
     /* בבלוק שמכיל קישורים המשויכים לסוכן (ולא רק קישורי שותפים) הניסוח מגיע מהקבוצה עצמה,
        בלי טענה על מחיר זהה לרכישה ישירה */
+    /* בלוק שאין בו אף קישור שותפים (למשל ספק ישיר בלבד) לא מקבל משפט על עמלה, רק את הקישור לגילוי הנאות */
+    var hasPaid = !!block.querySelector('[data-aff-status="affiliate"],[data-aff-status="agent_referral"]');
     note.innerHTML = (groupNote
       ? groupNote.replace(/</g, '&lt;') + ' אנחנו ממליצים רק על שירותים שהיינו ממליצים עליהם גם בלי זה. '
-      : 'חלק מהקישורים כאן הם קישורי שותפים. אם תזמינו דרכם, גו לונדון עשוי לקבל עמלה מהספק. ') +
+      : (hasPaid ? 'קישור שמסומן "קישור שותפים": אם תבוצע הזמנה דרכו, GoLondon עשויה לקבל עמלה. ' : '')) +
       '<a href="' + DISCLOSURE_URL + '">גילוי נאות מלא</a>';
     block.appendChild(note);
 
@@ -434,6 +474,9 @@
     /* דיווח קליק מסחרי מכל רכיב באתר, באותה סכימה של הכרטיסים */
     reportClick: reportClick,
     statusFor: statusFor,
+    /* התווית והגילוי לכל קישור, לשימוש חלון המקום ועמודים שבונים קישורים בעצמם */
+    trustFor: trustFor,
+    relFor: relFor,
     brandFor: brandFor,
     hostOf: hostOf
   };
