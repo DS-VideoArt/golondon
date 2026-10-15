@@ -560,8 +560,12 @@
     var d = new Date(), c = d.getMonth(), y = d.getFullYear(), n = (c + 1) % 12, ny = n === 0 ? y + 1 : y;
     function set(el, i, yr) { if (!el) return; el.setAttribute('href', 'london-' + M[i][0] + '.html'); var t = el.querySelector('[data-now-name]') || el.querySelector('.m-now-name') || el; t.textContent = (el.classList.contains('m-now-card') ? M[i][2] + ' ' : '') + M[i][1] + ' ' + yr; }
     set(document.querySelector('[data-now="cur"]'), c, y); set(document.querySelector('[data-now="next"]'), n, ny);
-    /* כרטיס החודש הנוכחי במקטע החודשים מקבל מסגרת ותווית "החודש". התווית ממוקמת מעל התמונה, בלי להזיז דבר */
-    var card = document.querySelector('.hm-card[href="london-' + M[c][0] + '.html"]');
+    /* כרטיס החודש הנוכחי במקטע החודשים מקבל מסגרת ותווית "החודש". התווית ממוקמת מעל התמונה, בלי להזיז דבר.
+       ההשוואה על הנתיב שהדפדפן פענח ולא על טקסט ה-href: נטליפיי מגישה את london-october.html כ-/london-october */
+    var want = 'london-' + M[c][0], card = null, cards = document.querySelectorAll('.hm-card');
+    for (var i = 0; i < cards.length && !card; i++) {
+      if (cards[i].pathname.split('/').pop().replace(/\.html?$/i, '') === want) card = cards[i];
+    }
     if (card) { card.classList.add('is-now'); var b = document.createElement('span'); b.className = 'hm-now'; b.textContent = 'החודש'; card.appendChild(b); card.setAttribute('aria-current', 'date'); }
   })();
 </script>
