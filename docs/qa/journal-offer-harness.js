@@ -180,14 +180,58 @@ class MemoryStore {
     ok((await events(page, 'planner_complete')).length === 1, 'switch off planner: planner_complete unchanged');
     await ctx.close(); }
   env.enabled = true;
-  { /* the server answer is cached per browser session: one GET for several pages */
+  { /* no cross-page cache: every page load asks the server once (two planner boxes share one request) */
     const { ctx, page } = await open('/guide-kids.html');
     const n0 = calls.filter(c => c.method === 'GET').length;
     await page.goto(B + '/guide-kids-museums.html', { waitUntil: 'networkidle2' }); await sleep(400);
     await page.goto(B + '/guide-winter.html', { waitUntil: 'networkidle2' }); await sleep(400);
-    const n1 = calls.filter(c => c.method === 'GET').length, shown = await page.evaluate(() => ({ hidden: document.querySelector('[data-journal-offer]').hidden, ss: sessionStorage.getItem('gl_jo_enabled') }));
-    ok(n1 === n0 && !shown.hidden, 'switch cache: later pages in the same session render the card without another GET (gets before ' + n0 + ', after ' + n1 + ', ' + JSON.stringify(shown) + ')');
+    const n1 = calls.filter(c => c.method === 'GET').length;
+    ok(n1 === n0 + 2 && await page.evaluate(() => !document.querySelector('[data-journal-offer]').hidden && sessionStorage.getItem('gl_jo_enabled') === null), 'no cache: each page load asks once (gets ' + n0 + ' -> ' + n1 + '), nothing stored between pages');
+    const n2 = calls.filter(c => c.method === 'GET').length;
+    await page.goto(B + '/planner.html', { waitUntil: 'networkidle2' }); await sleep(500);
+    await page.evaluate(() => { [...document.querySelectorAll('#who .chip')].find(x => x.textContent.includes('ילדים (5')).click(); document.getElementById('build').click(); }); await sleep(900);
+    await page.evaluate(() => { [...document.querySelectorAll('#who .chip')].find(x => x.textContent.includes('מבוגרים בלבד')).click(); }); await sleep(200);
+    await page.evaluate(() => { [...document.querySelectorAll('#who .chip')].find(x => x.textContent.includes('ילדים (5')).click(); }); await sleep(600);
+    ok(calls.filter(c => c.method === 'GET').length === n2 + 1 && await visible(page, 'jo-cta'), 'dedupe: the planner\'s two boxes and three refreshes make exactly one GET per page load');
     await ctx.close(); }
+  { /* transition OFF -> ON inside one browser session: the next page load shows the offer everywhere */
+    const ctx = await browser.createBrowserContext(); const page = await ctx.newPage(); await page.setViewport({ width: 1280, height: 900 });
+    await page.setRequestInterception(true); page.on('request', r => (r.url().startsWith(B) || r.url().startsWith('data:')) ? r.continue() : r.abort());
+    const go = async u => { await page.goto(B + u, { waitUntil: 'networkidle2' }); await sleep(600); };
+    const card = () => page.evaluate(() => { const b = document.querySelector('[data-journal-offer]'); return !b.hidden && b.offsetParent !== null; });
+    const offerOpen = () => page.evaluate(() => document.getElementById('jo-form').offsetParent !== null && document.getElementById('jo-not-open').offsetParent === null);
+    const plannerFamily = async () => { await go('/planner.html'); await page.evaluate(() => { [...document.querySelectorAll('#who .chip')].find(x => x.textContent.includes('ילדים (5')).click(); document.getElementById('build').click(); }); await sleep(900); return visible(page, 'jo-cta'); };
+    env.enabled = false;
+    await go('/guide-kids.html'); const g0 = await card(); const p0 = await plannerFamily(); await go('/kids-journal-offer.html?e=guide'); const o0 = await offerOpen();
+    env.enabled = true;
+    await go('/guide-kids.html'); const g1 = await card(); await go('/guide-winter-kids.html'); const w1 = await card(); const p1 = await plannerFamily(); await go('/kids-journal-offer.html?e=guide'); const o1 = await offerOpen();
+    ok(!g0 && !p0 && !o0 && g1 && w1 && p1 && o1, 'transition OFF -> ON (same session): closed everywhere before, open everywhere on the next loads (' + [g0, p0, o0, g1, w1, p1, o1].join() + ')');
+    /* ON -> OFF in the same session */
+    env.enabled = false;
+    await go('/guide-kids.html'); const g2 = await card(); const p2 = await plannerFamily(); await go('/kids-journal-offer.html?e=guide'); const o2 = await offerOpen();
+    const st = await page.evaluate(async () => (await fetch('/.netlify/functions/journal-interest', { method: 'POST', body: JSON.stringify({ email: 'stale@example.com', willing: 'yes', consent: true, website: '' }) })).status);
+    ok(!g2 && !p2 && !o2 && st === 503, 'transition ON -> OFF (same session): no card, planner closed, offer page closed, direct submission refused (503)');
+    /* back-forward cache: a restored page revalidates and closes */
+    env.enabled = true;
+    await go('/guide-kids.html'); const before = await card();
+    env.enabled = false;
+    await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true }))); await sleep(600);
+    const after = await card();
+    env.enabled = true;
+    await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true }))); await sleep(600);
+    const again = await card();
+    ok(before && !after && again, 'bfcache: a restored guide page re-asks the server: open -> closed -> open (' + [before, after, again].join() + ')');
+    await go('/kids-journal-offer.html?e=guide'); const ob = await offerOpen();
+    env.enabled = false;
+    await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true }))); await sleep(600);
+    const oa = await offerOpen(), views = (await events(page, 'journal_offer_view')).length;
+    ok(ob && !oa && views === 1, 'bfcache: a restored offer page closes when the switch is off, without a second view event');
+    env.enabled = true;
+    await page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true }))); await sleep(600);
+    ok(await offerOpen() && (await events(page, 'journal_offer_view')).length === 1, 'bfcache: reopens when the switch is on, still one view event');
+    const src = fs.readFileSync(path.join(ROOT, 'journal-offer-card.js'), 'utf8');
+    ok(!/gl_jo_enabled|ENABLED_KEY/.test(src) && /pageshow/.test(src) && /pageshow/.test(fs.readFileSync(path.join(ROOT, 'kids-journal-offer.js'), 'utf8')), 'source: no cross-page cache key; both scripts listen to pageshow');
+    await ctx.close(); env.enabled = true; }
   { /* unreachable function (no answer): closed, nothing visible */
     env.enabled = 'hang';
     const { ctx, page } = await open('/guide-kids.html'); await sleep(300);

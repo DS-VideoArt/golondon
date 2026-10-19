@@ -3,7 +3,8 @@
   ============================================
   העמוד מציג הצעה, דף דוגמה להורדה וטופס התעניינות. אין כאן הזמנה, תשלום, הפעלת עובד או מייל אוטומטי.
   שערה אחת, בשרת: כל מה שמעבר לכותרת (כפתורים, מחיר, דוגמה, טופס) מוסתר ב-HTML ונפתח רק כשהפונקציה עונה
-  enabled. כבוי, שגיאה או חוסר תשובה משאירים את העמוד במצב "עדיין לא פתוח", בלי הצעה פעילה עם טופס סגור.
+  enabled, בכל טעינה. כבוי, שגיאה או חוסר תשובה משאירים את העמוד במצב "עדיין לא פתוח", בלי הצעה פעילה עם טופס
+  סגור. עמוד שחוזר מהמטמון של הדפדפן (pageshow עם persisted) נסגר ושואל שוב, בלי אירוע צפייה נוסף.
   ?e=<planner|guide|winter|direct> בכתובת אומר מאיפה הגיעו (למדידה בלבד, בלי מידע אישי).
 
   מדידה (analytics.js, glTrack), בלי מייל ובלי תשובות הטופס מעבר לנכונות לשלם:
@@ -48,18 +49,19 @@
   }
 
   /* השרת הוא המקור היחיד: ההצעה, הדוגמה והטופס נפתחים רק כשהוא עונה enabled. אחרת העמוד נשאר "עדיין לא פתוח" */
-  function openOffer() {
+  function setOpen(open) {
     var gated = document.querySelectorAll('[data-jo-open]');
-    for (var i = 0; i < gated.length; i++) gated[i].hidden = false;
-    $('jo-not-open').hidden = true;
-    $('jo-form').hidden = false; $('jo-closed').hidden = true;
+    for (var i = 0; i < gated.length; i++) gated[i].hidden = !open;
+    $('jo-not-open').hidden = open;
+    if (open) { $('jo-form').hidden = false; $('jo-closed').hidden = true; }
   }
-  function ask() {
-    var done = false;
+  var asking = 0;
+  function ask(silent) {
+    var mine = ++asking, done = false;
     function finish(open) {
-      if (done) return; done = true;
-      if (open) openOffer();
-      track('journal_offer_view', { entry: entry, offer_price: OFFER_PRICE, open: open ? 1 : 0 });
+      if (done || mine !== asking) return; done = true;
+      setOpen(open);
+      if (!silent) track('journal_offer_view', { entry: entry, offer_price: OFFER_PRICE, open: open ? 1 : 0 });
     }
     if (!window.fetch) return finish(false);
     var timer = setTimeout(function () { finish(false); }, 5000);
@@ -114,6 +116,11 @@
       a.addEventListener('click', function () { once('gl_jo_sample', function () { track('journal_sample_download', { entry: entry, offer_price: OFFER_PRICE }); }); });
     });
     $('jo-form').addEventListener('submit', submit);
+    /* חזרה מהמטמון של הדפדפן: סוגרים ושואלים שוב, בלי לספור צפייה נוספת ובלי לגעת בכרטיס ההצלחה */
+    window.addEventListener('pageshow', function (e) {
+      if (!e.persisted || !$('jo-success').hidden) return;
+      setOpen(false); ask(true);
+    });
     if (entry !== 'planner') { var back = $('jo-back'); back.href = 'guide-kids.html'; back.innerHTML = '<i class="fas fa-arrow-right"></i> חזרה'; }
   }
 
