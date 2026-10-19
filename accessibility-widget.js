@@ -60,8 +60,8 @@
           <div class="a11y-stepper">
             <span>התאמת גודל</span>
             <div class="a11y-stepper-controls">
-              <button data-action="fs-down" aria-label="הקטן טקסט">A-</button>
-              <button data-action="fs-up" aria-label="הגדל טקסט">A+</button>
+              <button data-action="fs-down" aria-label="A- הקטנת טקסט">A-</button>
+              <button data-action="fs-up" aria-label="A+ הגדלת טקסט">A+</button>
             </div>
           </div>
         </div>

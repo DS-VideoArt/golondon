@@ -261,23 +261,23 @@
         <input type="hidden" name="form-name" value="golondon-members" />
 
         <div class="form-group">
-          <label>שם מלא <span>*</span></label>
-          <input type="text" name="name" placeholder="הכנס את שמך" required />
+          <label for="join-name">שם מלא <span>*</span></label>
+          <input type="text" id="join-name" name="name" placeholder="הכנס את שמך" required />
         </div>
 
         <div class="form-group">
-          <label>כתובת מייל <span>*</span></label>
-          <input type="email" name="email" placeholder="your@email.com" required />
+          <label for="join-email">כתובת מייל <span>*</span></label>
+          <input type="email" id="join-email" name="email" placeholder="your@email.com" required />
         </div>
 
         <div class="form-group">
-          <label>מספר טלפון</label>
-          <input type="tel" name="phone" placeholder="05X-XXXXXXX" />
+          <label for="join-phone">מספר טלפון</label>
+          <input type="tel" id="join-phone" name="phone" placeholder="05X-XXXXXXX" />
         </div>
 
         <div class="form-group">
-          <label>אני נמצא/ת ב...</label>
-          <select name="location">
+          <label for="join-location">אני נמצא/ת ב...</label>
+          <select id="join-location" name="location">
             <option value="">בחר...</option>
             <option value="london">לונדון עצמה</option>
             <option value="planning">ישראל, מתכנן/ת לבקר</option>
@@ -356,7 +356,7 @@ function handleSubmit(e) {
 </script>
 
 </main>
-<script src="accessibility-widget.js?v=2" defer></script>
+<script src="accessibility-widget.js?v=3" defer></script>
 <script src="install-prompt.js" defer></script>
 <script src="trip-tray.js?v=8" defer></script>
 <script src="analytics.js?v=5" defer></script>

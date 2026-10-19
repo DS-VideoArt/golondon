@@ -187,7 +187,7 @@
 
     @media (max-width: 600px) {
       .toolbar { padding: 10px 12px; gap: 7px; }
-      .toolbar-title { display: none; }
+      .toolbar-title { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
       .filter-btn { padding: 7px 12px; font-size: 12px; }
     }
   </style>
@@ -550,7 +550,7 @@ function locateMe() {
 </section>
 
 </main>
-<script src="accessibility-widget.js?v=2" defer></script>
+<script src="accessibility-widget.js?v=3" defer></script>
 <script src="install-prompt.js" defer></script>
 
 <div class="ki-overlay" id="kashrusInfo" role="dialog" aria-modal="true" aria-labelledby="kiTitle" hidden>
