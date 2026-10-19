@@ -29,6 +29,16 @@ kids' journal (ages 6 to 10) at a displayed planned price of 14.90 ₪ (changed 
   `/node_modules/*`, `/package.json` and `/package-lock.json`.
 - Privacy: `privacy.html#journal-interest` explains the form, the single email, the 90-day deletion, no marketing list.
 
+## Gating: one switch, one controlled release
+
+The server switch `JOURNAL_INTEREST_ENABLED` gates everything, not only the form. Every placement card (planner and
+guides) is rendered only after `GET /.netlify/functions/journal-interest` answered `{enabled: true}` (one request per
+browser session, cached in `sessionStorage`); the offer page keeps only its headline and a "not open yet" card until
+the same answer arrives, then opens the buttons, price, sample and form together. Closed, unreachable or slow (5 s):
+nothing is shown anywhere, so a visitor can never meet an active offer with a disabled form. Release is therefore one
+step: set the variable in the production context and deploy; to end the experiment, remove it and redeploy, and all
+cards and the page close at once.
+
 ## Placements (no home page)
 
 - Planner: `#jo-cta` (auto results) and `#m-jo-cta` (manual board), rendered by `journal-offer-card.js` only after a

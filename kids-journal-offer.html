@@ -106,13 +106,23 @@
     <span class="jo-label">בקרוב · עדיין לא זמין לרכישה</span>
     <h1>המסלול שלכם בלונדון. <span>ההרפתקה שלהם.</span></h1>
     <p>חוברת טיול אישית לילדים בגילאי 6 עד 10, שנבנית לפי האטרקציות שבחרתם במתכנן. כל עמוד עוסק במקום שבאמת תבקרו בו.</p>
-    <div class="jo-actions">
+    <div class="jo-actions" data-jo-open hidden>
       <a class="jo-btn" id="jo-sample-top" href="samples/kids-journal-sample-big-ben.pdf" download="golondon-kids-journal-sample.pdf"><i class="fas fa-file-pdf"></i> להורדת דף דוגמה</a>
       <a class="jo-btn jo-btn--ghost" href="#jo-interest"><i class="fas fa-bell"></i> לעדכון כשזה יוצא</a>
     </div>
   </section>
 
-  <section class="jo-card">
+  <!-- הניסוי כבוי: רק הכותרת וההודעה הזאת. כל השאר נפתח רק כשהשרת עונה enabled (fail closed) -->
+  <section class="jo-card jo-state" id="jo-not-open">
+    <h2>ההצעה עדיין לא פתוחה</h2>
+    <p class="jo-muted">עדיין לא אפשר לבקש או לרכוש את החוברת. בינתיים אפשר לחזור למתכנן ולהמשיך לתכנן את הטיול.</p>
+    <div class="jo-links">
+      <a class="jo-link" href="planner.html"><i class="fas fa-route"></i> למתכנן</a>
+      <a class="jo-link" href="guide-kids.html"><i class="fas fa-child"></i> לונדון עם ילדים</a>
+    </div>
+  </section>
+
+  <section class="jo-card" data-jo-open hidden>
     <h2>מה יש בחוברת</h2>
     <ul class="jo-list">
       <li><i class="fas fa-circle-check"></i> עובדות מעניינות על כל מקום במסלול</li>
@@ -123,7 +133,7 @@
     </ul>
   </section>
 
-  <section class="jo-card" id="jo-price">
+  <section class="jo-card" id="jo-price" data-jo-open hidden>
     <h2>מחיר מתוכנן</h2>
     <div class="jo-price">
       <div class="jo-price-num">14.90 ₪<small>לחוברת, קובץ PDF להדפסה</small></div>
@@ -131,7 +141,7 @@
     <div class="jo-notice" role="note">החוברת עדיין לא זמינה לרכישה. בעמוד הזה אין הזמנה ואין תשלום, ואנחנו לא מתחייבים למועד השקה או לאספקה. אפשר להוריד דף דוגמה ולהשאיר מייל לעדכון חד-פעמי.</div>
   </section>
 
-  <section class="jo-card">
+  <section class="jo-card" data-jo-open hidden>
     <h2>ככה זה נראה</h2>
     <p class="jo-muted">עמודים אמיתיים מחוברת שנבנתה למסלול לדוגמה, בלי שינוי.</p>
     <!-- העמודים מהספר המאושר: images/journal-offer/SOURCE.json -->
@@ -158,7 +168,7 @@
     </div>
   </section>
 
-  <section class="jo-card" id="jo-interest">
+  <section class="jo-card" id="jo-interest" data-jo-open hidden>
     <h2>מתעניינים? ספרו לנו</h2>
     <p class="jo-muted">תשובה קצרה עוזרת לנו להחליט אם ומתי להשיק. זה לא הזמנה ולא התחייבות.</p>
     <form class="jo-form" id="jo-form" novalidate hidden>
@@ -213,6 +223,6 @@
 
 <script src="accessibility-widget.js?v=2" defer></script>
 <script src="analytics.js?v=5" defer></script>
-<script src="kids-journal-offer.js?v=2" defer></script>
+<script src="kids-journal-offer.js?v=3" defer></script>
 </body>
 </html>

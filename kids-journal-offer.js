@@ -2,10 +2,12 @@
   חוברת הטיול לילדים, ניסוי ביקוש: עמוד ההצעה
   ============================================
   העמוד מציג הצעה, דף דוגמה להורדה וטופס התעניינות. אין כאן הזמנה, תשלום, הפעלת עובד או מייל אוטומטי.
+  שערה אחת, בשרת: כל מה שמעבר לכותרת (כפתורים, מחיר, דוגמה, טופס) מוסתר ב-HTML ונפתח רק כשהפונקציה עונה
+  enabled. כבוי, שגיאה או חוסר תשובה משאירים את העמוד במצב "עדיין לא פתוח", בלי הצעה פעילה עם טופס סגור.
   ?e=<planner|guide|winter|direct> בכתובת אומר מאיפה הגיעו (למדידה בלבד, בלי מידע אישי).
 
   מדידה (analytics.js, glTrack), בלי מייל ובלי תשובות הטופס מעבר לנכונות לשלם:
-    journal_offer_view       פעם אחת לכל טעינת עמוד: entry, offer_price
+    journal_offer_view       פעם אחת לכל טעינת עמוד, אחרי תשובת השרת: entry, offer_price, open (1 פתוח, 0 סגור)
     journal_sample_download  פעם אחת לסשן: entry, offer_price
     journal_interest_submit  רק כשהשרת קיבל רשומה חדשה (status received), פעם אחת לסשן:
                              entry, willing (yes | maybe | no), has_month, has_age, offer_price
@@ -45,13 +47,26 @@
     for (var a = 3; a <= 14; a++) { var ao = document.createElement('option'); ao.value = String(a); ao.textContent = String(a); age.appendChild(ao); }
   }
 
-  /* השרת הוא המקור היחיד: הטופס מוצג רק כשהוא עונה enabled */
+  /* השרת הוא המקור היחיד: ההצעה, הדוגמה והטופס נפתחים רק כשהוא עונה enabled. אחרת העמוד נשאר "עדיין לא פתוח" */
+  function openOffer() {
+    var gated = document.querySelectorAll('[data-jo-open]');
+    for (var i = 0; i < gated.length; i++) gated[i].hidden = false;
+    $('jo-not-open').hidden = true;
+    $('jo-form').hidden = false; $('jo-closed').hidden = true;
+  }
   function ask() {
-    if (!window.fetch) return;
+    var done = false;
+    function finish(open) {
+      if (done) return; done = true;
+      if (open) openOffer();
+      track('journal_offer_view', { entry: entry, offer_price: OFFER_PRICE, open: open ? 1 : 0 });
+    }
+    if (!window.fetch) return finish(false);
+    var timer = setTimeout(function () { finish(false); }, 5000);
     fetch(ENDPOINT, { method: 'GET', cache: 'no-store', credentials: 'omit' })
       .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (j) { if (j && j.enabled === true) { $('jo-form').hidden = false; $('jo-closed').hidden = true; } })
-      .catch(function () { /* בלי תשובה הטופס נשאר סגור */ });
+      .then(function (j) { clearTimeout(timer); finish(!!(j && j.enabled === true)); })
+      .catch(function () { clearTimeout(timer); finish(false); });
   }
 
   function submit(ev) {
@@ -94,7 +109,6 @@
   function init() {
     fillMonths();
     ask();
-    track('journal_offer_view', { entry: entry, offer_price: OFFER_PRICE });
     ['jo-sample', 'jo-sample-top'].forEach(function (id) {
       var a = $(id); if (!a) return;
       a.addEventListener('click', function () { once('gl_jo_sample', function () { track('journal_sample_download', { entry: entry, offer_price: OFFER_PRICE }); }); });

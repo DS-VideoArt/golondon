@@ -2674,7 +2674,8 @@
   function journalOfferBox(boxId, show) {
     var box = $(boxId);
     if (!box) return;
-    if (!show || !window.GoLondonJournalOffer) { box.hidden = true; return; }
+    if (!window.GoLondonJournalOffer) { box.hidden = true; return; }
+    if (!show) { window.GoLondonJournalOffer.hide(box); return; }
     window.GoLondonJournalOffer.render(box, 'planner');
   }
   function journalOfferRefresh() {
@@ -3259,6 +3260,6 @@
 <script src="trip-tray.js?v=8" defer></script>
 <script src="planner-nearby.js?v=14" defer></script>
 <script src="analytics.js?v=5" defer></script>
-<script src="journal-offer-card.js?v=2" defer></script>
+<script src="journal-offer-card.js?v=3" defer></script>
 </body>
 </html>

@@ -35,6 +35,7 @@ class MemoryStore {
   const server = http.createServer(async (q, s) => {
     const u = new URL(q.url, 'http://x');
     if (u.pathname === ENDPOINT) {
+      if (env.enabled === 'hang') { calls.push({ method: q.method, body: '' }); return; }   /* never answers */
       const chunks = []; for await (const c of q) chunks.push(c);
       const body = Buffer.concat(chunks).toString('utf8');
       calls.push({ method: q.method, body });
@@ -94,11 +95,12 @@ class MemoryStore {
     ok(d.sample === 'samples/kids-journal-sample-big-ben.pdf' && d.dl === 'golondon-kids-journal-sample.pdf', 'offer: sample link with a download name');
     ok(d.imgs.length === 3 && d.imgs.every(a => a && a.length > 20), 'offer: three sample images with descriptive alt text');
     ok(d.form === false && d.closed === true, 'offer: the form is shown only after the server answered enabled');
+    ok(await page.evaluate(() => [...document.querySelectorAll('[data-jo-open]')].every(s => !s.hidden) && document.getElementById('jo-not-open').hidden), 'offer: with the switch on, every gated section is open and the "not open" card is hidden');
     ok(d.labels && d.radios && d.alert === 'alert' && d.links && d.buttons, 'a11y: every field has a label, radios in a fieldset with a legend, error is an alert, links and buttons named');
     ok(d.overflow, 'offer desktop: no horizontal overflow');
     ok(d.back === 'guide-kids.html', 'offer from a guide: the back link goes to the kids guide');
     const v = await events(page, 'journal_offer_view');
-    ok(v.length === 1 && v[0].entry === 'guide' && v[0].offer_price === 14.9 && !/@|email/.test(JSON.stringify(v)), 'event: journal_offer_view once per load, entry = guide, offer_price 14.9, no personal data');
+    ok(v.length === 1 && v[0].entry === 'guide' && v[0].offer_price === 14.9 && v[0].open === 1 && !/@|email/.test(JSON.stringify(v)), 'event: journal_offer_view once per load, entry = guide, offer_price 14.9, open = 1, no personal data');
     ok((await allEvents(page)).filter(n => n.startsWith('journal_')).length === 1, 'event: no other journal event on load');
     ok(errors.length === 0, 'offer: no page errors');
     ok(!requests.some(u => /journal-beta-request|journal-worker|dispatch|github|stripe|paypal/.test(u)), 'offer: no request to the Beta function, the worker, GitHub or a payment provider');
@@ -157,15 +159,44 @@ class MemoryStore {
     await ctx.close(); }
   { env.enabled = false;
     const { ctx, page } = await open('/kids-journal-offer.html');
-    ok(!(await visible(page, 'jo-form')) && await visible(page, 'jo-closed') && await page.evaluate(() => /עדיין לא פתוח/.test(document.getElementById('jo-closed').textContent)), 'switch off: form hidden, Hebrew "not open yet" text');
+    const d = await page.evaluate(() => ({ gatedHidden: [...document.querySelectorAll('[data-jo-open]')].every(s => s.hidden), notOpen: !document.getElementById('jo-not-open').hidden && /עדיין לא פתוחה/.test(document.getElementById('jo-not-open').textContent),
+      h1: document.querySelector('h1').textContent.trim(), priceVisible: document.getElementById('jo-price').offsetParent !== null, sampleVisible: document.getElementById('jo-sample').offsetParent !== null, formVisible: document.getElementById('jo-form').offsetParent !== null, inputs: [...document.querySelectorAll('input, button.jo-btn')].filter(e => e.offsetParent).length }));
+    ok(d.gatedHidden && d.notOpen && d.priceVisible === false && d.sampleVisible === false && d.formVisible === false && d.inputs === 0, 'switch off: only the headline and the "not open" card; no price, sample, form or button is visible');
+    ok(d.h1 === 'המסלול שלכם בלונדון. ההרפתקה שלהם.', 'switch off: the headline stays (noindex page, unlinked)');
     const st = await page.evaluate(async () => (await fetch('/.netlify/functions/journal-interest', { method: 'POST', body: JSON.stringify({ email: 'x@example.com', willing: 'yes', consent: true, website: '' }) })).status);
     ok(st === 503 && env.store.m.size === 2, 'switch off: a direct POST is refused (503), nothing written');
-    ok((await events(page, 'journal_offer_view')).length === 1 && await page.evaluate(() => document.getElementById('jo-sample').getAttribute('href').endsWith('.pdf')), 'switch off: the offer and the sample still work');
+    const v = await events(page, 'journal_offer_view');
+    ok(v.length === 1 && v[0].open === 0 && (await allEvents(page)).filter(n => n.startsWith('journal_')).length === 1, 'switch off: one view event with open = 0, nothing else');
+    await ctx.close(); }
+  { /* switch off: no card anywhere, so a visitor cannot reach a closed offer */
+    for (const url of ['/guide-kids.html', '/guide-winter-kids.html']) {
+      const { ctx, page } = await open(url);
+      ok(await page.evaluate(() => { const b = document.querySelector('[data-journal-offer]'); return b.hidden && b.textContent === ''; }), 'switch off ' + url + ': the card is not rendered');
+      ok((await allEvents(page)).filter(n => n.startsWith('journal_')).length === 0, 'switch off ' + url + ': no event');
+      await ctx.close(); }
+    const { ctx, page } = await open('/planner.html');
+    await chip(page, 'ילדים (5'); await page.evaluate(() => document.getElementById('build').click()); await sleep(1200);
+    ok(!(await visible(page, 'jo-cta')) && await page.evaluate(() => document.getElementById('jo-cta').textContent === ''), 'switch off planner: a family route shows no offer card');
+    ok((await events(page, 'planner_complete')).length === 1, 'switch off planner: planner_complete unchanged');
+    await ctx.close(); }
+  env.enabled = true;
+  { /* the server answer is cached per browser session: one GET for several pages */
+    const { ctx, page } = await open('/guide-kids.html');
+    const n0 = calls.filter(c => c.method === 'GET').length;
+    await page.goto(B + '/guide-kids-museums.html', { waitUntil: 'networkidle2' }); await sleep(400);
+    await page.goto(B + '/guide-winter.html', { waitUntil: 'networkidle2' }); await sleep(400);
+    const n1 = calls.filter(c => c.method === 'GET').length, shown = await page.evaluate(() => ({ hidden: document.querySelector('[data-journal-offer]').hidden, ss: sessionStorage.getItem('gl_jo_enabled') }));
+    ok(n1 === n0 && !shown.hidden, 'switch cache: later pages in the same session render the card without another GET (gets before ' + n0 + ', after ' + n1 + ', ' + JSON.stringify(shown) + ')');
+    await ctx.close(); }
+  { /* unreachable function (no answer): closed, nothing visible */
+    env.enabled = 'hang';
+    const { ctx, page } = await open('/guide-kids.html'); await sleep(300);
+    ok(await page.evaluate(() => document.querySelector('[data-journal-offer]').hidden), 'no answer: the card stays hidden (fail closed)');
     await ctx.close(); env.enabled = true; }
 
   /* ---------- placements ---------- */
   for (const [url, entry] of [['/guide-kids.html', 'guide'], ['/guide-kids-museums.html', 'guide'], ['/guide-stay-family.html', 'guide'], ['/guide-winter-kids.html', 'winter'], ['/london-december.html', 'winter'], ['/guide-winter.html', 'winter']]) {
-    const { ctx, page, errors } = await open(url);
+    const { ctx, page, errors } = await open(url); await sleep(300);
     const d = await page.evaluate(() => { const b = document.querySelector('[data-journal-offer]'); const a = b && b.querySelector('a'); return { n: document.querySelectorAll('[data-journal-offer]').length, hidden: !b || b.hidden, href: a && a.getAttribute('href'), text: b && b.textContent, overflow: document.documentElement.scrollWidth <= window.innerWidth }; });
     ok(d.n === 1 && !d.hidden && d.href === 'kids-journal-offer.html?e=' + entry && /המסלול שלכם בלונדון\. ההרפתקה שלהם\./.test(d.text) && /בקרוב/.test(d.text), 'placement ' + url + ': one card, link to the offer with entry ' + entry);
     ok(d.overflow && errors.length === 0, 'placement ' + url + ': no overflow, no page errors');
