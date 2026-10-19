@@ -185,7 +185,7 @@
   <div class="login-box">
     <div class="logo"><span>GO</span><span style="color:#fff">LONDON</span></div>
     <p>ניהול פוסטים, כניסה מורשית בלבד</p>
-    <input type="password" id="passwordInput" placeholder="סיסמה" onkeydown="if(event.key==='Enter') login()" />
+    <input type="password" id="passwordInput" placeholder="סיסמה" aria-label="סיסמה" autocomplete="current-password" onkeydown="if(event.key==='Enter') login()" />
     <button id="loginBtn" onclick="login()"><i class="fas fa-sign-in-alt"></i> כניסה</button>
     <div class="login-error" id="loginError">סיסמה שגויה. נסה שוב.</div>
   </div>
