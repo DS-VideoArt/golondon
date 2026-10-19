@@ -1,0 +1,36 @@
+{
+ "source_pdf": "1-day-westminster-family.pdf",
+ "source_sha256": "c62d192bf61acdbbbb791d02df4e85a3890a1c69c1b61c0f99ff48a4e0c3403c",
+ "approved_record": "golondon-kids-journal system/book/final-render-approved-2026-10-11.json (tag final-render-pdf-approved-2026-10-11)",
+ "processing": "PyMuPDF raster at 2x target width, Pillow LANCZOS downscale, WebP q82 + JPEG q84 fallback. No crop, no retouch, no artwork change.",
+ "images": {
+  "big-ben-module": {
+   "page": 4,
+   "size": [
+    1000,
+    1416
+   ],
+   "webp_bytes": 181754,
+   "jpg_bytes": 271155
+  },
+  "colouring": {
+   "page": 5,
+   "size": [
+    1000,
+    1416
+   ],
+   "webp_bytes": 75218,
+   "jpg_bytes": 156684
+  },
+  "passport": {
+   "page": 8,
+   "size": [
+    1000,
+    1416
+   ],
+   "webp_bytes": 69960,
+   "jpg_bytes": 140648
+  }
+ },
+ "note": "three pages of the approved sample journal for the demand test offer page; copied from the Beta branch without change"
+}

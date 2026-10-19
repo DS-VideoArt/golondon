@@ -822,6 +822,7 @@
             <button class="mini-btn mini-btn--danger" id="m-clear" type="button"><i class="far fa-trash-can"></i> ניקוי</button>
           </div>
         </div>
+        <div id="m-jo-cta" data-journal-offer="planner" hidden></div>
         <div id="board-days"></div>
         <!-- מופיע רק בהדפסה: אותה הערה שמופיעה בסוף המסלול האוטומטי -->
         <div class="closing print-only">
@@ -850,6 +851,7 @@
     <div class="compare" id="compare" hidden></div>
 
     <div id="days-out"></div>
+    <div id="jo-cta" data-journal-offer="planner" hidden></div>
 
     <div class="closing">
       <strong>לפני שיוצאים:</strong> המסלול הזה הוא נקודת פתיחה, לא חוזה. שעות הפתיחה והמחירים משתנים מעת לעת,
@@ -985,6 +987,7 @@
     whoBox.appendChild(makeChip('מבוגרים בלבד', '🧑‍🤝‍🧑', state.childAges.length === 0, function () {
       state.childAges = [];
       renderControls();
+      journalOfferRefresh();
     }));
     AGE_BANDS.forEach(function (band) {
       var on = state.childAges.indexOf(band.id) !== -1;
@@ -992,6 +995,7 @@
         var i = state.childAges.indexOf(band.id);
         if (i === -1) state.childAges.push(band.id); else state.childAges.splice(i, 1);
         renderControls();
+        journalOfferRefresh();
       }));
     });
 
@@ -2560,6 +2564,7 @@
     /* כותרת ההדפסה, באותה צורה כמו במסלול האוטומטי, וסופרת רק ימים שיש בהם מקומות */
     $('board-print-title').textContent = 'המסלול שלכם, ' + plan.length + (plan.length === 1 ? ' יום' : ' ימים');
     $('board-print-sub').textContent = total + ' עצירות בסך הכל, ' + freeTotal + ' מהן בלי תשלום כניסה.';
+    journalOfferRefresh();
   }
 
   function syncManual() {
@@ -2656,6 +2661,30 @@
     });
   }
 
+  /*
+    ניסוי הביקוש לחוברת הטיול לילדים (journal-offer-card.js): כרטיס "בקרוב" אחרי מסלול משפחתי (ילד עד גיל 11
+    ב"מי נוסע", אותו תנאי של הסינון הקשיח). בלי הזמנה, בלי תשלום, בלי שינוי במסלול או במשפך, ובלי אירוע
+    מדידה עד לחיצה (journal_offer_click). בלי הרכיב, התיבות נשארות מוסתרות.
+  */
+  function journalOfferFamily() {
+    return state.childAges.some(function (id) {
+      return AGE_BANDS.some(function (b) { return b.id === id && b.strict; });
+    });
+  }
+  function journalOfferBox(boxId, show) {
+    var box = $(boxId);
+    if (!box) return;
+    if (!window.GoLondonJournalOffer) { box.hidden = true; return; }
+    if (!show) { window.GoLondonJournalOffer.hide(box); return; }
+    window.GoLondonJournalOffer.render(box, 'planner');
+  }
+  function journalOfferRefresh() {
+    var fam = journalOfferFamily();
+    journalOfferBox('jo-cta', fam && !!LAST && LAST.length > 0 && $('results').classList.contains('show'));
+    var mp = typeof manualPlan === 'function' ? manualPlan() : [];
+    journalOfferBox('m-jo-cta', fam && mp.some(function (d) { return d.items.length >= 2; }));
+  }
+
   function run() {
     VERSIONS = [];
     LAST = build();
@@ -2673,6 +2702,7 @@
     render(LAST);
     $('compare').hidden = true;
     $('results').classList.add('show');
+    journalOfferRefresh();
     $('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
@@ -3230,5 +3260,6 @@
 <script src="trip-tray.js?v=8" defer></script>
 <script src="planner-nearby.js?v=14" defer></script>
 <script src="analytics.js?v=5" defer></script>
+<script src="journal-offer-card.js?v=4" defer></script>
 </body>
 </html>
