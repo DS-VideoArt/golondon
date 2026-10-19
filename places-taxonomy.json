@@ -208,7 +208,7 @@
    "guide": "guide-areas-camden"
   },
   "primrose-hill": {
-   "name": "פריטרוז היל",
+   "name": "פרימרוז היל",
    "cluster": "camden",
    "center": [
     51.53905,
@@ -518,7 +518,7 @@
    },
    {
     "id": "camden",
-    "label": "קמדן ופריטרוז היל",
+    "label": "קמדן ופרימרוז היל",
     "center": [
      51.54,
      -0.152
