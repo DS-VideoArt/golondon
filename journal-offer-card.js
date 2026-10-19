@@ -4,7 +4,7 @@
   כל אלמנט עם data-journal-offer="<entry>" (guide | winter | planner) מקבל כרטיס קטן עם קישור לעמוד ההצעה
   kids-journal-offer.html?e=<entry>. המתכנן קורא ל-window.GoLondonJournalOffer.render(box, 'planner') בעצמו,
   רק אחרי מסלול משפחתי, ורק כשהבטא החינמית לא פתוחה.
-  מדידה: journal_offer_click פעם אחת לסשן (entry, placement = שם העמוד). בלי שום מידע אישי. אין כאן הזמנה.
+  מדידה: journal_offer_click פעם אחת לסשן (entry, placement = שם העמוד, offer_price). בלי שום מידע אישי. אין כאן הזמנה.
 */
 (function () {
   'use strict';
@@ -16,6 +16,7 @@
     '.jo-card-link:focus-visible{outline:3px solid #DC2626;outline-offset:2px}.jo-card-tag{display:inline-block;font-size:12px;font-weight:800;color:#1E3A8A;margin-bottom:2px}' +
     '@media print{.jo-card-box{display:none}}';
   var ENTRIES = { guide: 1, winter: 1, planner: 1 };
+  var OFFER_PRICE = 14.9;   /* המחיר המוצג בניסוי, בשקלים (כמו בעמוד ההצעה) */
 
   function track(name, params) { try { if (window.glTrack) window.glTrack(name, params || {}); } catch (e) { /* מדידה לא מפילה עמוד */ } }
   function session(k, v) {
@@ -40,7 +41,7 @@
       box.querySelector('.jo-card-link').addEventListener('click', function () {
         if (session('gl_jo_click')) return;
         session('gl_jo_click', '1');
-        track('journal_offer_click', { entry: entry, placement: pageId() });
+        track('journal_offer_click', { entry: entry, placement: pageId(), offer_price: OFFER_PRICE });
       });
     }
     box.hidden = false;

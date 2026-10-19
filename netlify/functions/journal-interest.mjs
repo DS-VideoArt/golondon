@@ -15,7 +15,7 @@
   אחסון: Netlify Blobs, מאגר לפי הקשר הפריסה (מאגרים ברמת האתר משותפים לכל הפריסות):
     production -> journal-interest    כל השאר (תצוגה מקדימה, ענף, פיתוח) -> journal-interest-preview
   מפתח: interest/<sha256 של המייל המנורמל>, כתיבה ב-onlyIfNew, כך שאותו מייל נספר פעם אחת (already).
-  ערך: { created_at, expires_at, email, trip_month, child_age, willing, consent_at }. נמחק אחרי 90 ימים
+  ערך: { created_at, expires_at, email, trip_month, child_age, willing, consent_at, price_shown }. נמחק אחרי 90 ימים
   במחיקה היומית (journal-interest-purge.mjs), או מוקדם יותר אחרי שליחת העדכון החד-פעמי.
   לא נשמרים: שם, כתובת IP, מסלול, פרטי ילד מעבר לגיל אופציונלי, שום דבר אחר. ביומן: קוד HTTP בלבד.
 */
@@ -27,6 +27,7 @@ export const PREVIEW_STORE_NAME = 'journal-interest-preview';
 export const RETENTION_DAYS = 90;
 export const FIELDS = ['email', 'trip_month', 'child_age', 'willing', 'consent', 'website'];
 export const WILLING = ['yes', 'maybe', 'no'];
+export const OFFER_PRICE = 14.9;   /* המחיר שהוצג בניסוי, בשקלים; נשמר ברשומה כדי שכל תשובה תשויך למחיר שהוצג */
 const MAX_BODY = 2048;
 const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,}$/;
 const MONTH = /^(202[6-9]|203\d)-(0[1-9]|1[0-2])$/;
@@ -67,7 +68,7 @@ export async function handle(req, deps) {
 
   const t = now();
   const record = { created_at: t.toISOString(), expires_at: new Date(t.getTime() + RETENTION_DAYS * 864e5).toISOString(),
-    email, trip_month: month, child_age: age, willing: b.willing, consent_at: t.toISOString() };
+    email, trip_month: month, child_age: age, willing: b.willing, consent_at: t.toISOString(), price_shown: OFFER_PRICE };
   const w = await deps.store.set(interestKey(email), JSON.stringify(record), { onlyIfNew: true, metadata: { created_at: record.created_at, expires_at: record.expires_at } });
   if (!w || !w.modified) return json(200, { ok: true, status: 'already' });
   return json(200, { ok: true, status: 'received' });

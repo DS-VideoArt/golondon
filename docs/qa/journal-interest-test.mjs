@@ -12,7 +12,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { getStore } from '@netlify/blobs';
 import { BlobsServer } from '@netlify/blobs/server';
-import { handle, purgeInterest, storeNameFor, interestKey, FIELDS, WILLING, RETENTION_DAYS } from '../../netlify/functions/journal-interest.mjs';
+import { handle, purgeInterest, storeNameFor, interestKey, FIELDS, WILLING, RETENTION_DAYS, OFFER_PRICE } from '../../netlify/functions/journal-interest.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 let pass = 0, fail = 0;
@@ -49,7 +49,8 @@ async function flows(makeStore, label) {
     const keys = s.keys('interest/');
     ok(r.status === 200 && r.body.status === 'received' && keys.length === 1 && keys[0] === interestKey('parent@example.com'), label + 'valid: received, one record keyed by the hash of the normalised email');
     const rec = s.json(keys[0]);
-    ok(Object.keys(rec).sort().join() === 'child_age,consent_at,created_at,email,expires_at,trip_month,willing', label + 'record: exactly the minimal fields ' + Object.keys(rec).join());
+    ok(Object.keys(rec).sort().join() === 'child_age,consent_at,created_at,email,expires_at,price_shown,trip_month,willing', label + 'record: exactly the minimal fields ' + Object.keys(rec).join());
+    ok(rec.price_shown === 14.9 && OFFER_PRICE === 14.9, label + 'record: the price shown (14.90 ₪) is stored with the answer');
     ok(rec.email === 'parent@example.com' && rec.trip_month === '2026-12' && rec.child_age === 8 && rec.willing === 'yes' && rec.consent_at === T0.toISOString() && rec.expires_at === at(RETENTION_DAYS * DAY).toISOString(), label + 'record: normalised email, month, age, answer, consent time, 90-day expiry');
     ok(!/\b(name|first_name|ip|address|route|route_code|token|order|payment|price)\b/.test(Object.keys(rec).join()), label + 'record: no name, IP, route, order or payment field');
     const again = await post(s, form({ email: ' PARENT@example.com ', willing: 'no', trip_month: null }));
@@ -93,7 +94,8 @@ ok(storeNameFor({ deploy: { context: 'production' } }) === 'journal-interest' &&
   const client = fs.readFileSync(path.join(ROOT, 'kids-journal-offer.js'), 'utf8') + fs.readFileSync(path.join(ROOT, 'kids-journal-offer.html'), 'utf8') + fs.readFileSync(path.join(ROOT, 'journal-offer-card.js'), 'utf8');
   ok(!/journal-beta-request|journal-worker|repository_dispatch|stripe|paypal|checkout|JOURNAL_[A-Z]|api\.github/.test(client), 'client: no Beta request endpoint, worker, dispatch, payment or configuration name in the offer files');
   ok(/עדיין לא זמינה לרכישה/.test(client) && /אין הזמנה ואין תשלום/.test(client) && /לא מתחייבים למועד השקה/.test(client), 'offer: the page says the product is not for sale, no order or payment, no launch promise');
-  ok(/34 ₪/.test(client) && /המסלול שלכם בלונדון\. <span>ההרפתקה שלהם\.<\/span>/.test(client), 'offer: planned price and the approved headline');
+  ok(/14\.90 ₪/.test(client) && !/\b34 ₪/.test(client) && /ב-14\.90 ₪\?/.test(client) && /המסלול שלכם בלונדון\. <span>ההרפתקה שלהם\.<\/span>/.test(client), 'offer: planned price 14.90 ₪ (old price gone), the question names it, the approved headline');
+  ok(/OFFER_PRICE = 14\.9;/.test(fs.readFileSync(path.join(ROOT, 'kids-journal-offer.js'), 'utf8')) && /OFFER_PRICE = 14\.9;/.test(fs.readFileSync(path.join(ROOT, 'journal-offer-card.js'), 'utf8')), 'events: both scripts carry offer_price 14.9');
   ok(/samples\/kids-journal-sample-big-ben\.pdf/.test(client) && fs.existsSync(path.join(ROOT, 'samples/kids-journal-sample-big-ben.pdf')), 'sample: the download points at the extracted Big Ben pages');
   const meta = JSON.parse(fs.readFileSync(path.join(ROOT, 'samples/SOURCE.json'), 'utf8'));
   ok(meta.pages_taken.join() === '4,5' && /1-day-westminster-family/.test(meta.source_pdf) && /^[0-9a-f]{64}$/.test(meta.source_sha256), 'sample: provenance recorded (approved fixture book, pages 4 and 5)');

@@ -88,7 +88,8 @@ class MemoryStore {
       overflow: document.documentElement.scrollWidth <= window.innerWidth, back: document.getElementById('jo-back').getAttribute('href') }));
     ok(d.lang === 'he' && d.dir === 'rtl' && d.h1s === 1 && d.h1 === 'המסלול שלכם בלונדון. ההרפתקה שלהם.', 'offer: Hebrew, RTL, one h1 with the approved headline');
     ok(/noindex/.test(d.robots), 'offer: noindex');
-    ok(/34 ₪/.test(d.price) && /מחיר מתוכנן/.test(d.price), 'offer: planned price 34 ₪');
+    ok(/14\.90 ₪/.test(d.price) && !/34 ₪/.test(d.price) && /מחיר מתוכנן/.test(d.price), 'offer: planned price 14.90 ₪');
+    ok(await page.evaluate(() => /ב-14\.90 ₪\?/.test(document.querySelector('fieldset legend').textContent)), 'form: the willingness question names 14.90 ₪');
     ok(/עדיין לא זמינה לרכישה/.test(d.notice) && /אין הזמנה ואין תשלום/.test(d.notice) && /לא מתחייבים למועד השקה או לאספקה/.test(d.notice), 'offer: not for sale, no order, no payment, no launch or delivery promise');
     ok(d.sample === 'samples/kids-journal-sample-big-ben.pdf' && d.dl === 'golondon-kids-journal-sample.pdf', 'offer: sample link with a download name');
     ok(d.imgs.length === 3 && d.imgs.every(a => a && a.length > 20), 'offer: three sample images with descriptive alt text');
@@ -97,7 +98,7 @@ class MemoryStore {
     ok(d.overflow, 'offer desktop: no horizontal overflow');
     ok(d.back === 'guide-kids.html', 'offer from a guide: the back link goes to the kids guide');
     const v = await events(page, 'journal_offer_view');
-    ok(v.length === 1 && v[0].entry === 'guide' && !/@|email/.test(JSON.stringify(v)), 'event: journal_offer_view once per load, entry = guide, no personal data');
+    ok(v.length === 1 && v[0].entry === 'guide' && v[0].offer_price === 14.9 && !/@|email/.test(JSON.stringify(v)), 'event: journal_offer_view once per load, entry = guide, offer_price 14.9, no personal data');
     ok((await allEvents(page)).filter(n => n.startsWith('journal_')).length === 1, 'event: no other journal event on load');
     ok(errors.length === 0, 'offer: no page errors');
     ok(!requests.some(u => /journal-beta-request|journal-worker|dispatch|github|stripe|paypal/.test(u)), 'offer: no request to the Beta function, the worker, GitHub or a payment provider');
@@ -135,7 +136,7 @@ class MemoryStore {
     ok(posts.length === 1 && Object.keys(body).sort().join() === 'child_age,consent,email,trip_month,website,willing' && body.email === 'parent@example.com' && body.willing === 'maybe' && body.trip_month === '2026-12' && body.child_age === 8 && body.consent === true && body.website === '', 'form: one POST with exactly the six fields');
     ok(await visible(page, 'jo-success') && !(await visible(page, 'jo-form')), 'form: success card shown, form hidden');
     const e = await events(page, 'journal_interest_submit');
-    ok(e.length === 1 && e[0].entry === 'winter' && e[0].willing === 'maybe' && e[0].has_month === 1 && e[0].has_age === 1 && !/@|example|2026-12|\b8\b/.test(JSON.stringify(e)), 'event: journal_interest_submit once, willing = maybe, no email, month or age value');
+    ok(e.length === 1 && e[0].entry === 'winter' && e[0].willing === 'maybe' && e[0].has_month === 1 && e[0].has_age === 1 && e[0].offer_price === 14.9 && !/@|example|2026-12|\b8\b/.test(JSON.stringify(e)), 'event: journal_interest_submit once, willing = maybe, offer_price 14.9, no email, month or age value');
     ok(env.store.m.size === 1 && !/name|route/.test([...env.store.m.values()].join()), 'store: one interest record, no name or route');
     ok(errors.length === 0, 'form: no page errors');
     await ctx.close(); }
@@ -171,7 +172,7 @@ class MemoryStore {
     ok((await allEvents(page)).filter(n => n.startsWith('journal_')).length === 0, 'placement ' + url + ': rendering the card sends no event');
     await page.evaluate(() => { const a = document.querySelector('[data-journal-offer] a'); a.addEventListener('click', e => e.preventDefault()); a.click(); a.click(); });
     const c = await events(page, 'journal_offer_click');
-    ok(c.length === 1 && c[0].entry === entry && c[0].placement === url.replace(/^\/|\.html$/g, ''), 'placement ' + url + ': journal_offer_click once per session with entry and placement');
+    ok(c.length === 1 && c[0].entry === entry && c[0].placement === url.replace(/^\/|\.html$/g, '') && c[0].offer_price === 14.9, 'placement ' + url + ': journal_offer_click once per session with entry, placement and offer_price');
     await ctx.close(); }
   { const { ctx, page } = await open('/guide-kids.html', { width: 375, height: 740, mobile: true });
     ok(await page.evaluate(() => { const b = document.querySelector('[data-journal-offer]'); const r = b.getBoundingClientRect(); return r.width > 300 && r.right <= window.innerWidth + 1 && document.documentElement.scrollWidth <= window.innerWidth; }), 'placement mobile: the card fits the viewport');

@@ -5,16 +5,17 @@
   ?e=<planner|guide|winter|direct> בכתובת אומר מאיפה הגיעו (למדידה בלבד, בלי מידע אישי).
 
   מדידה (analytics.js, glTrack), בלי מייל ובלי תשובות הטופס מעבר לנכונות לשלם:
-    journal_offer_view       פעם אחת לכל טעינת עמוד: entry
-    journal_sample_download  פעם אחת לסשן: entry
+    journal_offer_view       פעם אחת לכל טעינת עמוד: entry, offer_price
+    journal_sample_download  פעם אחת לסשן: entry, offer_price
     journal_interest_submit  רק כשהשרת קיבל רשומה חדשה (status received), פעם אחת לסשן:
-                             entry, willing (yes | maybe | no), has_month, has_age
+                             entry, willing (yes | maybe | no), has_month, has_age, offer_price
   רשומה כפולה (already) לא נספרת. התעניינות היא לא רכישה, והאירועים לא מדווחים על הכנסה.
 */
 (function () {
   'use strict';
 
   var ENDPOINT = '/.netlify/functions/journal-interest';
+  var OFFER_PRICE = 14.9;   /* המחיר המוצג בניסוי, בשקלים. נשלח כפרמטר מספרי באירועים כדי שכל תשובה תשויך למחיר שהוצג */
   var $ = function (id) { return document.getElementById(id); };
   var ENTRIES = { planner: 1, guide: 1, winter: 1 };
   var entry = (function () {
@@ -71,7 +72,7 @@
     }).then(function (res) {
       var b = res.body;
       if (res.status === 200 && b.ok && b.status === 'received') {
-        once('gl_jo_submit', function () { track('journal_interest_submit', { entry: entry, willing: willing, has_month: month ? 1 : 0, has_age: age ? 1 : 0 }); });
+        once('gl_jo_submit', function () { track('journal_interest_submit', { entry: entry, willing: willing, has_month: month ? 1 : 0, has_age: age ? 1 : 0, offer_price: OFFER_PRICE }); });
         success(false);
       } else if (res.status === 200 && b.ok && b.status === 'already') {
         success(true);
@@ -93,10 +94,10 @@
   function init() {
     fillMonths();
     ask();
-    track('journal_offer_view', { entry: entry });
+    track('journal_offer_view', { entry: entry, offer_price: OFFER_PRICE });
     ['jo-sample', 'jo-sample-top'].forEach(function (id) {
       var a = $(id); if (!a) return;
-      a.addEventListener('click', function () { once('gl_jo_sample', function () { track('journal_sample_download', { entry: entry }); }); });
+      a.addEventListener('click', function () { once('gl_jo_sample', function () { track('journal_sample_download', { entry: entry, offer_price: OFFER_PRICE }); }); });
     });
     $('jo-form').addEventListener('submit', submit);
     if (entry !== 'planner') { var back = $('jo-back'); back.href = 'guide-kids.html'; back.innerHTML = '<i class="fas fa-arrow-right"></i> חזרה'; }

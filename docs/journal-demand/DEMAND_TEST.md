@@ -4,25 +4,26 @@ Branch `journal-demand-main-2026-10-19`, based on `origin/main` only (the earlie
 on the automation branch is kept unchanged as the source). This branch holds the demand test alone: no Beta request
 flow, no worker, no PDF generation, no SES, no automation library. Sample images live in `images/journal-offer/`
 (provenance in `SOURCE.json`). Local only: not pushed, not deployed, not approved for the live site. Goal: measure whether Israeli families planning London want a personal
-kids' journal (ages 6 to 10) at a displayed planned price of 34 ₪, over 21 days once activated on the live site.
+kids' journal (ages 6 to 10) at a displayed planned price of 14.90 ₪ (changed from 14.90 ₪ on 19 Oct 2026), over 21 days once activated on the live site.
 
 ## What it is, and what it is not
 
 - An offer page `kids-journal-offer.html` (noindex, not in the sitemap, not in the search index, not on the home page):
-  headline "המסלול שלכם בלונדון. ההרפתקה שלהם.", the five content points, the planned price 34 ₪, a visible notice
+  headline "המסלול שלכם בלונדון. ההרפתקה שלהם.", the five content points, the planned price 14.90 ₪, a visible notice
   that the product is not for sale yet (no order, no payment, no launch or delivery promise), three real pages of
   the approved sample journal, a sample PDF download, and an interest form.
 - The sample `samples/kids-journal-sample-big-ben.pdf` = pages 4 and 5 (the Big Ben place page and its colouring
   page) of the approved 1-day fixture book, copied without change (`samples/SOURCE.json` has the provenance and
   hashes). The Master and the journal production system are untouched.
-- The interest form: email (required), trip month and child age (optional), "would you consider buying at 34 ₪"
+- The interest form: email (required), trip month and child age (optional), "would you consider buying at 14.90 ₪"
   (yes / maybe / no), and an explicit consent checkbox for a single availability email. Honeypot field. No name,
   no route, no payment, no order, no worker dispatch, no automatic email.
 - Function `netlify/functions/journal-interest.mjs`: `GET` -> `{enabled}`, `POST` -> `received` / `already`. Open
   only with the plain environment variable `JOURNAL_INTEREST_ENABLED=true` (not a secret); otherwise 503 and nothing
   written. Store by deploy context: `journal-interest` (production only) / `journal-interest-preview` (everything
   else). Key `interest/<sha256(email)>`, written with `onlyIfNew` (one record per email, first answer kept). Record:
-  `created_at, expires_at (+90 days), email, trip_month, child_age, willing, consent_at`. Deleted by the existing daily
+  `created_at, expires_at (+90 days), email, trip_month, child_age, willing, consent_at, price_shown` (the price in
+  effect when the answer was given). Deleted by the existing daily
   scheduled function `journal-interest-purge` (`@daily`) at 90 days, in the same context's store. Logs: HTTP status
   only. Dependency: `@netlify/blobs` 11.1.4 (pinned, `package.json` + lock); `netlify.toml` answers 404 for
   `/node_modules/*`, `/package.json` and `/package-lock.json`.
@@ -42,10 +43,12 @@ kids' journal (ages 6 to 10) at a displayed planned price of 34 ₪, over 21 day
 
 | event | when | params | duplicates |
 |---|---|---|---|
-| `journal_offer_view` | offer page load | `entry` (planner / guide / winter / direct) | once per page load |
-| `journal_offer_click` | click on a placement card | `entry`, `placement` (page id) | once per session |
-| `journal_sample_download` | click on either sample button | `entry` | once per session |
-| `journal_interest_submit` | only when the server answered `received` | `entry`, `willing` (yes / maybe / no), `has_month`, `has_age` | once per session; `already` never counts |
+| `journal_offer_view` | offer page load | `entry` (planner / guide / winter / direct), `offer_price` | once per page load |
+| `journal_offer_click` | click on a placement card | `entry`, `placement` (page id), `offer_price` | once per session |
+| `journal_sample_download` | click on either sample button | `entry`, `offer_price` | once per session |
+| `journal_interest_submit` | only when the server answered `received` | `entry`, `willing` (yes / maybe / no), `has_month`, `has_age`, `offer_price` | once per session; `already` never counts |
+
+`offer_price` is the numeric price shown (14.9), so answers can be read per price if it changes again.
 
 Users who answered `willing = yes` can be segmented in GA4 by the event parameter. Interest is never reported as
 a purchase: there is no e-commerce event.
