@@ -197,6 +197,35 @@ class ConcurrentRunsTest(unittest.TestCase):
             shutil.rmtree(tmp, ignore_errors=True)
 
 
+class RelativePathsTest(unittest.TestCase):
+    """ה-workflow מעביר נתיבים יחסיים מתיקיית ה-runner. כולם חייבים להיפתר מולה, לא מול תיקיית הקוד."""
+
+    def test_runner_style_relative_paths(self):
+        tmp = tempfile.mkdtemp(prefix='news-rel-')
+        try:
+            cloud = Cloud(tmp, BASIC)
+            runner_dir = cloud.fresh_clone()
+            os.makedirs(os.path.join(runner_dir, 'site-main'))
+            for n in ('whats-new.json', 'whats-new-registry.json'):
+                shutil.copyfile(os.path.join(REPO, n), os.path.join(runner_dir, 'site-main', n))
+            shutil.copytree(BASIC, os.path.join(runner_dir, 'fx'))
+            args = [sys.executable, os.path.join(PKG, 'run.py'), '--fixtures', 'fx', '--now', '2026-10-20T05:00:00Z',
+                    '--state-git', 'state', '--out', 'out', '--registry', 'site-main/whats-new-registry.json',
+                    '--whats-new', 'site-main/whats-new.json', '--json']
+            p = subprocess.run(args + ['--init-state'], cwd=runner_dir, capture_output=True, text=True, timeout=120)
+            self.assertEqual(p.returncode, 0, p.stderr)
+            d = json.loads(p.stdout.strip().splitlines()[-1])
+            self.assertEqual(d['outcome'], 'drafts_ready')
+            self.assertTrue(d['out_dir'].startswith(os.path.realpath(runner_dir)) or d['out_dir'].startswith(runner_dir))
+            self.assertTrue(os.path.isdir(os.path.join(runner_dir, 'out', d['run_id'])))
+            self.assertEqual(d['published_check']['sources'], ['whats-new.json', 'whats-new-registry.json'])
+            self.assertIn('state.json', cloud.files())
+            p2 = subprocess.run(args, cwd=runner_dir, capture_output=True, text=True, timeout=120)
+            self.assertEqual(json.loads(p2.stdout.strip().splitlines()[-1])['outcome'], 'nothing_to_publish', p2.stderr)
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
+
 class PublishedTest(FileRunsMixin, unittest.TestCase):
 
     def test_url_normalisation(self):

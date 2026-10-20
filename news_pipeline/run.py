@@ -73,7 +73,8 @@ def verify_code(expected, repo=REPO):
 def _make_store(a, state_dir):
     from news_pipeline.store import FileStore, GitStore
     if a.state_git:
-        return GitStore(os.path.abspath(a.state_git), branch=a.state_branch, init=a.init_state)
+        # הנתיב כבר מוחלט: נפתר ב-run() לפני הייבוא של whats_new_dedup, שמשנה את תיקיית העבודה
+        return GitStore(a.state_git, branch=a.state_branch, init=a.init_state)
     return FileStore(state_dir)
 
 
@@ -159,7 +160,10 @@ def run(argv=None, fetcher=None):
             print('code check failed: %s' % problem, file=sys.stderr)
             return EXIT_CODE
 
+    # כל נתיב יחסי נפתר כאן, מול תיקיית העבודה של מי שהריץ. אחרי הייבוא של whats_new_dedup
+    # תיקיית העבודה היא שורש הקוד, ונתיב יחסי היה מצביע למקום אחר
     out_root, state_dir = os.path.abspath(a.out), os.path.abspath(a.state)
+    a.state_git = os.path.abspath(a.state_git) if a.state_git else None
     fixtures = os.path.abspath(a.fixtures) if a.fixtures else None
     registry_path = os.path.abspath(a.registry) if a.registry else None
     whats_new_path = os.path.abspath(a.whats_new) if a.whats_new else os.path.join(REPO, 'whats-new.json')
