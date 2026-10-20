@@ -256,6 +256,9 @@ def record(item):
         'summaryNorm': norm(item.get('summary', '')),
         'summaryHash': content_hash(item.get('summary', '')),
     })
+    if item.get('news_fingerprint'):
+        # קישור לפריט שמנוע החדשות הציע, כדי שהמנוע יזהה שהוא פורסם (news_pipeline/published.py)
+        d['published'][-1]['newsFingerprint'] = item['news_fingerprint']
     d['published'].sort(key=lambda p: p['datePublished'], reverse=True)
     _save(d)
     return True

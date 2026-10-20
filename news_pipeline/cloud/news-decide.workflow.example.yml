@@ -1,0 +1,66 @@
+# דוגמה בלבד, לא פעילה. מיועד למאגר הפרטי golondon-news-ops, לתיקייה .github/workflows שלו.
+#
+# רישום החלטות על פריטים בתור. זו בחירה עריכתית בלבד: approve מסמן "להעביר לניסוח" ו-reject מוציא
+# מהתור. ההחלטה לא מאשרת שום פעולה מוגבלת. פרסום, מיזוג ופריסה עוברים רק דרך approval_decision
+# של DS AI Operations. גם DS AI Operations יכול להפעיל את ה-workflow הזה עם gh workflow run.
+
+name: golondon-news-decide
+
+on:
+  workflow_dispatch:
+    inputs:
+      decisions:
+        description: 'space separated, up to 20: <id or unique prefix>=approve|reject'
+        required: true
+        type: string
+
+permissions: {}
+
+concurrency:
+  group: golondon-news-state
+  cancel-in-progress: false
+
+env:
+  GOLONDON_CODE_SHA: '0000000000000000000000000000000000000000'
+
+jobs:
+  decide:
+    if: github.actor == github.repository_owner
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: State repository, this private repo
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          path: state
+          fetch-depth: 10
+          persist-credentials: true
+
+      - name: News engine code at the pinned commit, read only
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          repository: DS-VideoArt/golondon
+          ref: ${{ env.GOLONDON_CODE_SHA }}
+          path: code
+          persist-credentials: false
+
+      - name: Record decisions
+        env:
+          DECISIONS: ${{ inputs.decisions }}
+        run: |
+          set -euf
+          ARGS=()
+          for d in $DECISIONS; do
+            if ! printf '%s' "$d" | grep -Eq '^[a-z_]+:[0-9a-f]{4,12}=(approve|reject)$'; then
+              echo "rejected input: each decision must look like source_id:abcdef=approve"
+              exit 1
+            fi
+            ARGS+=(--decide "$d")
+          done
+          if [ "${#ARGS[@]}" -eq 0 ] || [ "${#ARGS[@]}" -gt 40 ]; then
+            echo "between 1 and 20 decisions are required"
+            exit 1
+          fi
+          python3 code/news_pipeline/run.py --expect-code-sha "$GOLONDON_CODE_SHA" --state-git state "${ARGS[@]}"

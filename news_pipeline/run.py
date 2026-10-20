@@ -17,7 +17,8 @@
 קודי יציאה: 0 הריצה הושלמה, כולל "אין מה לפרסם", "לא הזמן של החלון", "החלון הזה כבר רץ"
               ו"ריצה אחרת מחזיקה את הזיכרון כרגע"
             1 שגיאת שימוש, 2 כל המקורות נכשלו, 3 התנגשות בכתיבת הזיכרון (לא נשמר דבר),
-            4 הזיכרון תפוס (רק ב-‎--decide‎), 5 הזיכרון חסר, פגום או לא נגיש (הריצה לא התחילה)
+            4 הזיכרון תפוס (רק ב-‎--decide‎), 5 הזיכרון חסר, פגום או לא נגיש (הריצה לא התחילה),
+            6 הקוד שנטען אינו ה-commit הנעוץ ב-‎--expect-code-sha‎ (הריצה לא התחילה)
 
 זיכרון התור: ברירת המחדל היא קובץ מקומי (‎--state‎). בענף ענן משתמשים ב-‎--state-git‎, שכפול של
 מאגר פרטי נפרד. ראו store.py.
@@ -39,7 +40,34 @@ except ImportError:  # pragma: no cover
 
 PHASE = 'phase0.2'
 PENDING, BACKLOG = 'PENDING', 'BACKLOG'   # החלטות תור, בנוסף ל-ACCEPT, HOLD ו-REJECT של scoring
-EXIT_OK, EXIT_USAGE, EXIT_ALL_FAILED, EXIT_CONFLICT, EXIT_BUSY, EXIT_STATE = 0, 1, 2, 3, 4, 5
+EXIT_OK, EXIT_USAGE, EXIT_ALL_FAILED, EXIT_CONFLICT, EXIT_BUSY, EXIT_STATE, EXIT_CODE = 0, 1, 2, 3, 4, 5, 6
+RE_SHA = __import__('re').compile(r'^[0-9a-f]{40}$')
+
+
+def code_identity(repo=REPO):
+    """(sha, dirty) של הקוד שנטען בפועל. dirty אם יש שינוי בקובץ שנמצא במעקב. None אם אין git."""
+    import subprocess
+    try:
+        sha = subprocess.run(['git', '-C', repo, 'rev-parse', 'HEAD'], capture_output=True, text=True, check=True).stdout.strip()
+        st = subprocess.run(['git', '-C', repo, 'status', '--porcelain', '--untracked-files=no'],
+                            capture_output=True, text=True, check=True).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return None, None
+    return sha, bool(st)
+
+
+def verify_code(expected, repo=REPO):
+    """בענן הקוד נטען מ-SHA נעוץ. כל סטייה, כולל שינוי מקומי, עוצרת לפני קריאה לרשת או לזיכרון."""
+    if not RE_SHA.match(expected or ''):
+        return 'expected code sha must be 40 lowercase hex characters, not a branch or tag name'
+    sha, dirty = code_identity(repo)
+    if sha is None:
+        return 'code is not a git checkout, cannot verify the pinned commit'
+    if sha != expected:
+        return 'loaded code is %s, expected %s' % (sha, expected)
+    if dirty:
+        return 'loaded code has local modifications'
+    return None
 
 
 def _make_store(a, state_dir):
@@ -61,6 +89,25 @@ def slot_due(slot, now_utc):
     if slot not in config.SLOT_HOURS:
         return True
     return now_utc.astimezone(ZoneInfo(config.RUN_TZ)).hour == config.SLOT_HOURS[slot]
+
+
+def slot_window(slot, now_utc):
+    """
+    מצב החלון לפי שעון ישראל: due (בין שעת החלון לסוף זמן החסד), early, late, או manual.
+    מחזיר גם את מזהה החלון: התאריך המקומי ושם החלון, למשל 2026-10-20-morning. המזהה נקבע לפי
+    התאריך בישראל, ולכן גם ריצה מאוחרת בתוך החלון שייכת לאותו חלון ולא נספרת פעמיים.
+    """
+    from news_pipeline import config
+    local = now_utc.astimezone(ZoneInfo(config.RUN_TZ))
+    if slot not in config.SLOT_HOURS:
+        return 'manual', None
+    window_id = '%s-%s' % (local.date().isoformat(), slot)
+    start = local.replace(hour=config.SLOT_HOURS[slot], minute=0, second=0, microsecond=0)
+    if local < start:
+        return 'early', window_id
+    if local >= start + datetime.timedelta(hours=config.SLOT_GRACE_HOURS):
+        return 'late', window_id
+    return 'due', window_id
 
 
 def _load_json(path, default):
@@ -89,6 +136,7 @@ def run(argv=None, fetcher=None):
     p.add_argument('--out', default=os.path.join(HERE, 'out'))
     p.add_argument('--state', default=os.path.join(HERE, 'state'))
     p.add_argument('--registry', help='registry JSON to classify against (default: whats-new-registry.json, read only)')
+    p.add_argument('--whats-new', help="whats-new.json used to detect items already published (default: the repo copy, read only)")
     p.add_argument('--no-state-write', action='store_true')
     p.add_argument('--json', action='store_true', help='print a one line JSON summary at the end')
     p.add_argument('--decide', action='append', metavar='ID=approve|reject',
@@ -97,6 +145,7 @@ def run(argv=None, fetcher=None):
     p.add_argument('--state-branch', default='main')
     p.add_argument('--init-state', action='store_true', help='allow starting from an empty state repository, once')
     p.add_argument('--force-rerun', action='store_true', help='run a morning/evening slot that already completed')
+    p.add_argument('--expect-code-sha', metavar='SHA', help='refuse to run unless the loaded code is exactly this commit (cloud)')
     a = p.parse_args(argv)
 
     if a.mode != 'draft':
@@ -104,13 +153,21 @@ def run(argv=None, fetcher=None):
               file=sys.stderr)
         return EXIT_USAGE
 
+    if a.expect_code_sha:
+        problem = verify_code(a.expect_code_sha)
+        if problem:
+            print('code check failed: %s' % problem, file=sys.stderr)
+            return EXIT_CODE
+
     out_root, state_dir = os.path.abspath(a.out), os.path.abspath(a.state)
     fixtures = os.path.abspath(a.fixtures) if a.fixtures else None
     registry_path = os.path.abspath(a.registry) if a.registry else None
+    whats_new_path = os.path.abspath(a.whats_new) if a.whats_new else os.path.join(REPO, 'whats-new.json')
 
     # הייבוא כאן, אחרי שכל הנתיבים נפתרו: whats_new_dedup משנה את תיקיית העבודה בזמן הייבוא
     import whats_new_dedup as dedup
     from news_pipeline import config, drafts as drafts_mod, factcheck, ledger, priority as priority_mod, scoring, sources as S
+    from news_pipeline import published as published_mod
     from news_pipeline.fetch import FixtureFetcher, LiveFetcher, SourceError
 
     now = (datetime.datetime.fromisoformat(a.now.replace('Z', '+00:00')) if a.now
@@ -122,6 +179,8 @@ def run(argv=None, fetcher=None):
     summary = {'run_id': run_id, 'phase': PHASE, 'slot': a.slot, 'mode': 'draft',
                'started_utc': now.strftime('%Y-%m-%dT%H:%M:%SZ'), 'started_local': local.strftime('%Y-%m-%d %H:%M %Z'),
                'today_london': today.isoformat()}
+    _sha, _dirty = code_identity()
+    summary['code'] = {'sha': _sha, 'dirty': _dirty, 'pinned': bool(a.expect_code_sha)}
 
     from news_pipeline.store import AlreadyDone, Busy, StoreError
     store = _make_store(a, state_dir)
@@ -154,9 +213,13 @@ def run(argv=None, fetcher=None):
             raise
         return EXIT_OK
 
-    if a.respect_slot and not slot_due(a.slot, now):
-        summary.update(outcome='skipped_not_due', detail='local hour %d is not the %s slot hour %d' % (
-            local.hour, a.slot, config.SLOT_HOURS[a.slot]))
+    window, window_id = slot_window(a.slot, now)
+    summary['window_id'] = window_id
+    if a.respect_slot and window in ('early', 'late'):
+        summary.update(outcome='skipped_not_due' if window == 'early' else 'skipped_late',
+                       detail='%s: local time %s is %s for the %s window (%02d:00 + %d h)' % (
+                           window_id, local.strftime('%H:%M'), window, a.slot, config.SLOT_HOURS[a.slot],
+                           config.SLOT_GRACE_HOURS))
         print('skipped: %s' % summary['detail'])
         if a.json:
             print(json.dumps(summary, ensure_ascii=False))
@@ -169,7 +232,7 @@ def run(argv=None, fetcher=None):
         return EXIT_USAGE
 
     # זיכרון התור: נעילה עם תוקף, מניעת ריצה כפולה של אותו חלון, ושחזור מריצה שקרסה
-    slot_key = '%s-%s' % (local.date().isoformat(), a.slot) if a.slot in config.SLOT_HOURS else None
+    slot_key = window_id   # מזהה ייחודי לכל תאריך וחלון. חלון שהושלם לא מעובד שוב
     try:
         if a.no_state_write:
             state, notes = store.peek()
@@ -214,6 +277,11 @@ def run(argv=None, fetcher=None):
 
         # 2. סיווג, בדיקת עובדות וכשירות. ההיסטוריה של כל פריט מגיעה מזיכרון התור
         items = ledger.load(state)
+        # מה שכבר עלה לאתר: נקרא כנתונים מ-whats-new.json ומהמרשם. פריט שפורסם יוצא מהתור לתמיד
+        pub_index = published_mod.Index(whats_new_path, registry_path or os.path.join(REPO, 'whats-new-registry.json'))
+        newly_published = ledger.reconcile_published(items, pub_index, today)
+        summary['published_check'] = {'sources': pub_index.sources, 'known_published': len(pub_index),
+                                      'newly_detected': len(newly_published)}
         run_seen, results = [], []
         for c in candidates:
             fp = c['fingerprint']
@@ -237,6 +305,16 @@ def run(argv=None, fetcher=None):
             decision = scoring.decide(total, rej, hold, br['tourist_relevance'])
             prio, pbr, pnotes = priority_mod.priority(c, today)
             main = None if decision != scoring.REJECT else scoring.why_not(total, rej, br['tourist_relevance'])
+            pub = pub_index.match(fp, c.get('item_url'))
+            published_as = None
+            if pub or life == 'published':
+                published_as = ({'id': pub[0]['id'], 'date': pub[0]['date'], 'matched_by': pub[1]} if pub
+                                else (hist or {}).get('published_as') or {})
+                decision = scoring.REJECT
+                main = 'כבר פורסם ב"מה חדש": %s (%s), זוהה לפי %s' % (
+                    published_as.get('id'), published_as.get('date'), published_as.get('matched_by'))
+                shown_cls = dict(shown_cls, verdict=dedup.DUPLICATE, layer='published', reason=main)
+                life = 'published'
             if decision != scoring.REJECT and life in ('approved', 'rejected_owner'):
                 decision = scoring.REJECT
                 main = '%s ב-%s, ולא השתנה מאז' % (ledger.LIFECYCLE_HE[life], (hist.get('decided') or {}).get('at', ''))
@@ -248,7 +326,8 @@ def run(argv=None, fetcher=None):
                             'priority': prio, 'priority_breakdown': pbr, 'priority_notes': pnotes,
                             'queue': {'lifecycle': life, 'first_seen': (hist or {}).get('first_seen') or today.isoformat(),
                                       'first_seen_run': (hist or {}).get('first_seen_run') or run_id},
-                            'reject_reasons': rej, 'hold_reasons': hold, 'decision': decision, 'main_reason': main})
+                            'reject_reasons': rej, 'hold_reasons': hold, 'decision': decision, 'main_reason': main,
+                            'published': published_as})
 
         # 3. התור. פריט ממתין נשאר ממתין ותופס מקום. מקומות פנויים מתמלאים לפי סדר העדיפות,
         #    מתוך פריטים חדשים ופריטים שחיכו בתור. עדכון מהותי מוצג תמיד. דחוף במיוחד נכנס גם לתור מלא
@@ -308,7 +387,9 @@ def run(argv=None, fetcher=None):
         # 4. עדכון הזיכרון
         for r in results:
             c, d, life = r['candidate'], r['decision'], r['queue']['lifecycle']
-            if d in (scoring.ACCEPT, scoring.HOLD):
+            if r.get('published') is not None:
+                ledger.upsert(items, c, ledger.PUBLISHED, run_id, today, published_as=r['published'])
+            elif d in (scoring.ACCEPT, scoring.HOLD):
                 ledger.upsert(items, c, ledger.PENDING, run_id, today, shown_run=run_id, shown_decision=d,
                               priority=r['priority'])
             elif d == PENDING:
@@ -323,7 +404,10 @@ def run(argv=None, fetcher=None):
                 ledger.upsert(items, c, ledger.REJECTED_RULES, run_id, today)
         ledger.forget_old(items, today)
         queue_left = [{'title': r['candidate']['title'], 'reason': r['main_reason']} for r in dropped] + \
-                     [{'title': rec['title'], 'reason': rec['expired_reason']} for rec in dropped_unseen]
+                     [{'title': rec['title'], 'reason': rec['expired_reason']} for rec in dropped_unseen] + \
+                     [{'title': rec['title'], 'reason': 'פורסם ב"מה חדש" כ-%s' % rec['published_as']['id']}
+                      for rec in newly_published if rec['published_as'].get('previous_status') in
+                      (ledger.PENDING, ledger.APPROVED, ledger.BACKLOG, ledger.REJECTED_OWNER)]
         pending_unseen = [rec for rec in items.values() if rec['status'] == ledger.PENDING and rec['fingerprint'] not in seen_fps]
 
         drafts = drafts_mod.build(results, today)

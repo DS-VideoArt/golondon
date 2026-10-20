@@ -8,6 +8,7 @@
   approved        אושר על ידי הבעלים. לא מוצג שוב, אלא אם השתנה מהותית
   rejected_owner  נדחה על ידי הבעלים. לא מוצג שוב, אלא אם השתנה מהותית
   expired         יצא מהתור כי פג תוקפו או כי כבר אינו כשיר
+  published       עלה ל"מה חדש" באתר (זוהה ב-published.py). סופי, לא מוצג שוב
 
 מצב הריצה (lifecycle) נגזר מכאן: new, pending, backlog, known, updated, approved, rejected_owner.
 """
@@ -16,10 +17,10 @@ import datetime
 import whats_new_dedup as dedup
 
 PENDING, BACKLOG, REJECTED_RULES = 'pending', 'backlog', 'rejected_rules'
-APPROVED, REJECTED_OWNER, EXPIRED = 'approved', 'rejected_owner', 'expired'
-STATUSES = (PENDING, BACKLOG, REJECTED_RULES, APPROVED, REJECTED_OWNER, EXPIRED)
+APPROVED, REJECTED_OWNER, EXPIRED, PUBLISHED = 'approved', 'rejected_owner', 'expired', 'published'
+STATUSES = (PENDING, BACKLOG, REJECTED_RULES, APPROVED, REJECTED_OWNER, EXPIRED, PUBLISHED)
 # רשומות שמשמשות לזיהוי כפילויות מול פריטים אחרים
-DEDUP_STATUSES = (PENDING, BACKLOG, APPROVED, REJECTED_OWNER)
+DEDUP_STATUSES = (PENDING, BACKLOG, APPROVED, REJECTED_OWNER, PUBLISHED)
 FORGET_DAYS = 30
 
 LIFECYCLE_HE = {
@@ -31,6 +32,7 @@ LIFECYCLE_HE = {
     'approved': 'כבר אושר',
     'rejected_owner': 'נדחה על ידי הבעלים',
     'expired': 'יצא מהתור בעבר',
+    'published': 'כבר פורסם ב"מה חדש"',
 }
 
 
@@ -52,7 +54,7 @@ def lifecycle(hist):
     if not hist:
         return 'new'
     return {PENDING: 'pending', BACKLOG: 'backlog', REJECTED_RULES: 'known', EXPIRED: 'known',
-            APPROVED: 'approved', REJECTED_OWNER: 'rejected_owner'}[hist['status']]
+            APPROVED: 'approved', REJECTED_OWNER: 'rejected_owner', PUBLISHED: 'published'}[hist['status']]
 
 
 def upsert(items, c, status, run_id, today, **extra):
@@ -69,7 +71,7 @@ def upsert(items, c, status, run_id, today, **extra):
         'valid_to': c.get('valid_to'),
         'item_url': c.get('item_url'),
     })
-    for k in ('shown_run', 'shown_decision', 'decided', 'priority'):
+    for k in ('shown_run', 'shown_decision', 'decided', 'priority', 'published_as'):
         if k in old:
             rec[k] = old[k]
     rec.update(extra)
@@ -87,6 +89,22 @@ def expire_unseen(items, seen_fps, today):
         if vt and datetime.date.fromisoformat(vt) < today:
             rec['status'] = EXPIRED
             rec['expired_reason'] = 'התוקף הסתיים ב-%s' % vt
+            out.append(rec)
+    return out
+
+
+def reconcile_published(items, index, today):
+    """פריטים בזיכרון שעלו לאתר מאז, גם אם לא נראו בריצה הזו, מסומנים published ויוצאים מהתור."""
+    out = []
+    for rec in items.values():
+        if rec['status'] in (PUBLISHED, REJECTED_RULES, EXPIRED):
+            continue
+        hit = index.match(rec.get('fingerprint'), rec.get('item_url'))
+        if hit:
+            pub, how = hit
+            was = rec['status']
+            rec.update(status=PUBLISHED, published_as={'id': pub['id'], 'date': pub['date'], 'matched_by': how,
+                                                       'detected': today.isoformat(), 'previous_status': was})
             out.append(rec)
     return out
 

@@ -1,0 +1,143 @@
+# דוגמה בלבד, לא פעילה. מיועד למאגר הפרטי golondon-news-ops, לתיקייה .github/workflows שלו.
+# כאן הקובץ נמצא מחוץ ל-.github/workflows, ולכן GitHub לא מריץ אותו בשום מצב.
+# התזמון בהערה. הוא מופעל רק אחרי אישור בעלים ואחרי הפעלה ידנית מוצלחת. ראו cloud/README.md.
+#
+# מה הריצה עושה: סריקה וכתיבת טיוטות לזיכרון במאגר הזה בלבד. בלי פרסום, בלי מודל שפה, בלי תשלום.
+
+name: golondon-news-scan
+
+on:
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: 'manual, or morning/evening to process that window by hand'
+        type: choice
+        options: [manual, morning, evening]
+        default: manual
+      init_state:
+        description: 'first run only: allow an empty state repository'
+        type: boolean
+        default: false
+  # התזמון כבוי. 05:00 ו-16:00 UTC הם 08:00 ו-19:00 בשעון קיץ בישראל, 06:00 ו-17:00 UTC בשעון חורף.
+  # ההפעלה השנייה של כל חלון היא גם ניסיון חוזר. חלון שהושלם לא רץ שוב.
+  # schedule:
+  #   - cron: '0 5 * * *'
+  #   - cron: '0 6 * * *'
+  #   - cron: '0 16 * * *'
+  #   - cron: '0 17 * * *'
+
+permissions: {}
+
+concurrency:
+  group: golondon-news-state
+  cancel-in-progress: false
+
+env:
+  # ה-commit המלא של קוד המנוע במאגר golondon, אחרי אישור. אפסים עוצרים כל ריצה בקוד 6
+  GOLONDON_CODE_SHA: '0000000000000000000000000000000000000000'
+  NEWS_QUEUE_ISSUE: '1'
+
+jobs:
+  scan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - name: State repository, this private repo
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          path: state
+          fetch-depth: 10
+          persist-credentials: true
+
+      - name: News engine code at the pinned commit, read only
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          repository: DS-VideoArt/golondon
+          ref: ${{ env.GOLONDON_CODE_SHA }}
+          path: code
+          persist-credentials: false
+
+      - name: Published items from golondon main, data only
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          repository: DS-VideoArt/golondon
+          ref: main
+          path: site-main
+          sparse-checkout: |
+            whats-new.json
+            whats-new-registry.json
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+
+      - name: Scan, drafts only
+        id: scan
+        env:
+          EVENT: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+          INPUT_SLOT: ${{ inputs.slot }}
+          INPUT_INIT: ${{ inputs.init_state }}
+        run: |
+          set -u
+          case "$EVENT:$SCHEDULE" in
+            "schedule:0 5 * * *"|"schedule:0 6 * * *") SLOT=morning; RESPECT=--respect-slot ;;
+            "schedule:0 16 * * *"|"schedule:0 17 * * *") SLOT=evening; RESPECT=--respect-slot ;;
+            workflow_dispatch:*) SLOT="$INPUT_SLOT"; RESPECT= ;;
+            *) echo "unexpected trigger"; exit 1 ;;
+          esac
+          INIT=
+          if [ "$INPUT_INIT" = "true" ]; then INIT=--init-state; fi
+          mkdir -p out
+          set +e
+          python3 code/news_pipeline/run.py --slot "$SLOT" $RESPECT $INIT \
+            --expect-code-sha "$GOLONDON_CODE_SHA" \
+            --state-git state --out out \
+            --registry site-main/whats-new-registry.json --whats-new site-main/whats-new.json \
+            --json > out/stdout.txt
+          CODE=$?
+          set -e
+          echo "exit_code=$CODE" >> "$GITHUB_OUTPUT"
+          head -n 1 out/stdout.txt
+
+      - name: One comment on the News queue issue, only when something new or a failure
+        if: always() && steps.scan.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CODE: ${{ steps.scan.outputs.exit_code }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          FALLBACK_ID: gh-${{ github.run_id }}
+        run: |
+          set -eu
+          DECISION=$(python3 code/news_pipeline/notify.py --stdout out/stdout.txt --out out \
+            --exit-code "$CODE" --repo "$REPO" --run-url "$RUN_URL" --fallback-id "$FALLBACK_ID" \
+            --body-file out/comment.md)
+          if [ "$DECISION" = "post" ]; then
+            MARKER=$(head -n 1 out/comment.md)
+            if gh api "repos/$REPO/issues/$NEWS_QUEUE_ISSUE/comments" --paginate --jq '.[].body' | grep -qF -- "$MARKER"; then
+              echo "comment for this run already exists"
+            else
+              gh issue comment "$NEWS_QUEUE_ISSUE" --repo "$REPO" --body-file out/comment.md
+            fi
+          fi
+
+      - name: Report a broken workflow, when the scan step itself did not run
+        if: failure() && steps.scan.outcome != 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          printf '<!-- golondon-news run=gh-%s -->\n**ריצת הסריקה לא התחילה.** בדיקה ביומן: %s\n' "$RUN_ID" "$RUN_URL" > workflow-failure.md
+          gh issue comment "$NEWS_QUEUE_ISSUE" --repo "$REPO" --body-file workflow-failure.md
+
+      - name: Fail the job when the scan failed
+        if: steps.scan.outputs.exit_code != '0'
+        env:
+          CODE: ${{ steps.scan.outputs.exit_code }}
+        run: |
+          echo "scan exit code $CODE"
+          exit 1
