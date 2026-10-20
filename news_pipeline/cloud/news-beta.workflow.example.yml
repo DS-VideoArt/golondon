@@ -1,0 +1,63 @@
+# דוגמה בלבד, לא פעילה. הקובץ לא נמצא ב-.github/workflows, ולכן GitHub לא מריץ אותו.
+# הפעלה דורשת אישור בעלים, מאגר זיכרון פרטי, וטוקן בסודות. ראו news_pipeline/NEXT_PHASE_SPEC.md, סעיף 3.6.
+#
+# עקרונות:
+#   * כל חלון מתוזמן פעמיים ב-UTC (שעון קיץ וחורף). --respect-slot מריץ רק את מה שנופל על 08:00 או 19:00 בישראל,
+#     ומניעת הכפילות של החלון בזיכרון מדלגת על הפעלה שנייה גם אם GitHub עיכב את שתיהן לאותה שעה.
+#   * concurrency מונע שתי ריצות במקביל בתוך GitHub. הנעילה שבזיכרון מגינה גם מפני הפעלה ידנית או מ-DS AI Operations.
+#   * timeout-minutes (20) קצר מתוקף הנעילה (30 דקות ב-store.LEASE_MINUTES). חובה לשמור על היחס הזה.
+#   * הטוקן מוגבל למאגר הזיכרון בלבד, contents: read and write, ולא נכתב לשום קובץ.
+#   * לפני הפעלה: להחליף כל tag של action ב-SHA מלא.
+
+name: golondon-news-beta
+
+on:
+  # 05:00 ו-16:00 UTC הם 08:00 ו-19:00 בשעון קיץ בישראל. 06:00 ו-17:00 UTC הם אותן שעות בשעון חורף
+  schedule:
+    - cron: '0 5 * * *'
+    - cron: '0 6 * * *'
+    - cron: '0 16 * * *'
+    - cron: '0 17 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: golondon-news-state
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Checkout the private state repository
+        uses: actions/checkout@v4
+        with:
+          repository: DS-VideoArt/golondon-news-state
+          token: ${{ secrets.NEWS_STATE_TOKEN }}
+          path: news-state
+          fetch-depth: 10
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run the news beta (drafts only)
+        run: |
+          if [ "$(date -u +%H)" -lt 12 ]; then SLOT=morning; else SLOT=evening; fi
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then SLOT=manual; fi
+          python3 news_pipeline/run.py --slot "$SLOT" --respect-slot \
+            --state-git news-state --out run-output --json
+
+      - name: Keep the full decisions for 14 days
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: news-run-${{ github.run_id }}
+          path: run-output
+          retention-days: 14
+          if-no-files-found: ignore

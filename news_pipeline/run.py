@@ -14,8 +14,13 @@
     report.md       דוח קריא בעברית
     run.json        תקציר הריצה ומבנה handoff לאישור בעלים
 
-קודי יציאה: 0 הריצה הושלמה (כולל "אין מה לפרסם" ו"לא הזמן של החלון"),
-            1 שגיאת שימוש, 2 כל המקורות נכשלו.
+קודי יציאה: 0 הריצה הושלמה, כולל "אין מה לפרסם", "לא הזמן של החלון", "החלון הזה כבר רץ"
+              ו"ריצה אחרת מחזיקה את הזיכרון כרגע"
+            1 שגיאת שימוש, 2 כל המקורות נכשלו, 3 התנגשות בכתיבת הזיכרון (לא נשמר דבר),
+            4 הזיכרון תפוס (רק ב-‎--decide‎), 5 הזיכרון חסר, פגום או לא נגיש (הריצה לא התחילה)
+
+זיכרון התור: ברירת המחדל היא קובץ מקומי (‎--state‎). בענף ענן משתמשים ב-‎--state-git‎, שכפול של
+מאגר פרטי נפרד. ראו store.py.
 
 מה הסקריפט לא עושה בשום מצב: לא כותב ל-whats-new.json, למרשם, ל-index.html או לשום קובץ של
 האתר. לא מפרסם. לא קורא למודל שפה. לא משתמש בשירות בתשלום.
@@ -32,9 +37,22 @@ try:
 except ImportError:  # pragma: no cover
     sys.exit('Python 3.9 or newer is required (zoneinfo)')
 
-PHASE = 'phase0.1'
+PHASE = 'phase0.2'
 PENDING, BACKLOG = 'PENDING', 'BACKLOG'   # החלטות תור, בנוסף ל-ACCEPT, HOLD ו-REJECT של scoring
-EXIT_OK, EXIT_USAGE, EXIT_ALL_FAILED = 0, 1, 2
+EXIT_OK, EXIT_USAGE, EXIT_ALL_FAILED, EXIT_CONFLICT, EXIT_BUSY, EXIT_STATE = 0, 1, 2, 3, 4, 5
+
+
+def _make_store(a, state_dir):
+    from news_pipeline.store import FileStore, GitStore
+    if a.state_git:
+        return GitStore(os.path.abspath(a.state_git), branch=a.state_branch, init=a.init_state)
+    return FileStore(state_dir)
+
+
+def _state_exit(e):
+    from news_pipeline.store import Busy, Conflict
+    print('state %s: %s' % (e.kind, e), file=sys.stderr)
+    return EXIT_CONFLICT if isinstance(e, Conflict) else (EXIT_BUSY if isinstance(e, Busy) else EXIT_STATE)
 
 
 def slot_due(slot, now_utc):
@@ -75,6 +93,10 @@ def run(argv=None, fetcher=None):
     p.add_argument('--json', action='store_true', help='print a one line JSON summary at the end')
     p.add_argument('--decide', action='append', metavar='ID=approve|reject',
                    help='record an owner decision on a queued item (full id or unique prefix) and exit; no fetching')
+    p.add_argument('--state-git', metavar='DIR', help='clone of the private state repository (cloud runs)')
+    p.add_argument('--state-branch', default='main')
+    p.add_argument('--init-state', action='store_true', help='allow starting from an empty state repository, once')
+    p.add_argument('--force-rerun', action='store_true', help='run a morning/evening slot that already completed')
     a = p.parse_args(argv)
 
     if a.mode != 'draft':
@@ -101,24 +123,35 @@ def run(argv=None, fetcher=None):
                'started_utc': now.strftime('%Y-%m-%dT%H:%M:%SZ'), 'started_local': local.strftime('%Y-%m-%d %H:%M %Z'),
                'today_london': today.isoformat()}
 
-    state_file = os.path.join(state_dir, 'state.json')
+    from news_pipeline.store import AlreadyDone, Busy, StoreError
+    store = _make_store(a, state_dir)
     if a.decide:
-        # החלטת בעלים: מעדכנת רק את זיכרון התור המקומי. לא מפרסמת ולא כותבת לשום קובץ של האתר
-        state = _load_json(state_file, {})
-        items = ledger.load(state)
-        for spec in a.decide:
-            ref, _, verdict = spec.partition('=')
-            if verdict not in ('approve', 'reject'):
-                print('bad --decide %r, expected ID=approve or ID=reject' % spec, file=sys.stderr)
-                return EXIT_USAGE
-            try:
-                rec = ledger.decide(items, ref.strip(), verdict, summary['started_utc'])
-            except KeyError as e:
-                print('cannot decide %r: %s' % (ref, e), file=sys.stderr)
-                return EXIT_USAGE
-            print('%s: %s -> %s' % (rec['fingerprint'], rec['title'], rec['status']))
-        os.makedirs(state_dir, exist_ok=True)
-        _write_json(state_file, state)
+        # החלטת בעלים: מעדכנת רק את זיכרון התור. לא מפרסמת ולא כותבת לשום קובץ של האתר
+        try:
+            state, _ = store.begin('decide-%s' % local.strftime('%Y%m%d-%H%M%S'), None, now)
+        except StoreError as e:
+            return _state_exit(e)
+        try:
+            items = ledger.load(state)
+            for spec in a.decide:
+                ref, _, verdict = spec.partition('=')
+                if verdict not in ('approve', 'reject'):
+                    print('bad --decide %r, expected ID=approve or ID=reject' % spec, file=sys.stderr)
+                    store.abort(now, 'bad --decide argument')
+                    return EXIT_USAGE
+                try:
+                    rec = ledger.decide(items, ref.strip(), verdict, summary['started_utc'])
+                except KeyError as e:
+                    print('cannot decide %r: %s' % (ref, e), file=sys.stderr)
+                    store.abort(now, 'unknown id')
+                    return EXIT_USAGE
+                print('%s: %s -> %s' % (rec['fingerprint'], rec['title'], rec['status']))
+            store.commit(state, now, 'owner_decision')
+        except StoreError as e:
+            return _state_exit(e)
+        except BaseException as e:
+            store.abort(now, '%s: %s' % (type(e).__name__, e))
+            raise
         return EXIT_OK
 
     if a.respect_slot and not slot_due(a.slot, now):
@@ -135,187 +168,217 @@ def run(argv=None, fetcher=None):
         print('unknown sources: %s' % sorted(set(wanted) - set(S.BY_ID)), file=sys.stderr)
         return EXIT_USAGE
 
-    state = _load_json(state_file, {'items': {}, 'govuk_watch': {}})
-    registry = _load_json(registry_path, {'published': []})['published'] if registry_path else None
-    ctx = {'now': now, 'today': today, 'verified_at': summary['started_utc'], 'state': state}
-
-    # 1. איסוף
-    src_report, candidates = [], []
-    for s in S.ALL:
-        if wanted and s['id'] not in wanted:
-            continue
-        entry = {'id': s['id'], 'name': s['name'], 'url': s['url'], 'licence': s.get('licence'),
-                 'terms': s.get('terms'), 'status': 'ok', 'detail': '', 'candidates': 0}
-        try:
-            got = s['collect'](fetcher, ctx)
-            entry['candidates'] = len(got)
-            skipped = ctx.get('filtered', {}).get(s['id'])
-            if skipped:
-                entry['detail'] = '%d entries skipped as not about entry to the UK' % len(skipped)
-            candidates.extend(got)
-        except SourceError as e:
-            entry.update(status=e.kind, detail=e.detail)
-        except Exception as e:  # מקור אחד שבור לא מפיל את כל הריצה
-            entry.update(status='parse_error', detail='%s: %s' % (type(e).__name__, e))
-        src_report.append(entry)
-
-    # 2. סיווג, בדיקת עובדות וכשירות. ההיסטוריה של כל פריט מגיעה מזיכרון התור
-    items = ledger.load(state)
-    run_seen, results = [], []
-    for c in candidates:
-        fp = c['fingerprint']
-        hist = items.get(fp)
-        others = [r for f_, r in items.items() if f_ != fp and r['status'] in ledger.DEDUP_STATUSES] + run_seen
-        cls = dedup.classify(c, today=today, registry=registry, drafted=others)
-        life = ledger.lifecycle(hist)
-        shown_cls = cls
-        if hist:
-            own = dedup.classify(c, today=today, registry=[], drafted=[hist])
-            if own['verdict'] in (dedup.UPDATE, dedup.CANCELLATION):
-                cls = shown_cls = own
-                # רק פריט שכבר הוצג לאדם חוזר אוטומטית כשהוא משתנה. פריט מהתור נשאר בתור
-                if hist['status'] in (ledger.PENDING, ledger.APPROVED, ledger.REJECTED_OWNER):
-                    life = 'updated'
-            elif own['verdict'] == dedup.DUPLICATE and cls['verdict'] == dedup.NEW:
-                shown_cls = dict(own, reason='כבר מוכר מהריצה %s (%s)' % (hist.get('first_seen_run'), ledger.LIFECYCLE_HE[life]))
-        fact = factcheck.verify_candidate(c)
-        total, br, reasons = scoring.score(c, cls, today, now)
-        rej, hold = scoring.gates(c, cls, fact, today, now)
-        decision = scoring.decide(total, rej, hold, br['tourist_relevance'])
-        prio, pbr, pnotes = priority_mod.priority(c, today)
-        main = None if decision != scoring.REJECT else scoring.why_not(total, rej, br['tourist_relevance'])
-        if decision != scoring.REJECT and life in ('approved', 'rejected_owner'):
-            decision = scoring.REJECT
-            main = '%s ב-%s, ולא השתנה מאז' % (ledger.LIFECYCLE_HE[life], (hist.get('decided') or {}).get('at', ''))
-        if decision != scoring.REJECT:
-            run_seen.append(dedup.draft_record(dict(c, drafted_on=today.isoformat()), run_id))
-        results.append({'candidate': c, 'classification': {k: v for k, v in shown_cls.items() if k != 'matched'},
-                        'matched': (shown_cls.get('matched') or {}).get('title'), 'fact_check': fact,
-                        'score': total, 'score_breakdown': br, 'reasons': reasons,
-                        'priority': prio, 'priority_breakdown': pbr, 'priority_notes': pnotes,
-                        'queue': {'lifecycle': life, 'first_seen': (hist or {}).get('first_seen') or today.isoformat(),
-                                  'first_seen_run': (hist or {}).get('first_seen_run') or run_id},
-                        'reject_reasons': rej, 'hold_reasons': hold, 'decision': decision, 'main_reason': main})
-
-    # 3. התור. פריט ממתין נשאר ממתין ותופס מקום. מקומות פנויים מתמלאים לפי סדר העדיפות,
-    #    מתוך פריטים חדשים ופריטים שחיכו בתור. עדכון מהותי מוצג תמיד. דחוף במיוחד נכנס גם לתור מלא
-    seen_fps = {r['candidate']['fingerprint'] for r in results}
-    dropped = []
-    for r in results:
-        if r['queue']['lifecycle'] == 'pending':
-            if r['decision'] == scoring.REJECT:
-                dropped.append(r)
-                r['queue']['left_queue'] = r['main_reason']
-            else:
-                r['decision'] = PENDING
-                r['main_reason'] = None
-    dropped_unseen = ledger.expire_unseen(items, seen_fps, today)
-
-    pending_recs = [rec for rec in items.values() if rec['status'] == ledger.PENDING
-                    and rec['fingerprint'] not in {r['candidate']['fingerprint'] for r in dropped}]
-    n_acc = sum(1 for rec in pending_recs if rec.get('shown_decision') == scoring.ACCEPT)
-    n_hold = len(pending_recs) - n_acc
-    per_acc, per_hold = {}, {}
-    for rec in pending_recs:
-        bucket = per_acc if rec.get('shown_decision') == scoring.ACCEPT else per_hold
-        bucket[rec.get('source_id')] = bucket.get(rec.get('source_id'), 0) + 1
-
-    contenders = sorted((r for r in results if r['decision'] in (scoring.ACCEPT, scoring.HOLD)),
-                        key=lambda r: (-r['priority'], r['candidate']['fingerprint']))
-    urgent_used = 0
-    for r in contenders:
-        sid = r['candidate']['source_id']
-        life = r['queue']['lifecycle']
-        if life == 'updated':
-            r['queue']['admitted'] = 'update'
-            continue
-        if (r['decision'] == scoring.ACCEPT and n_acc < config.MAX_ACCEPT_PER_RUN
-                and per_acc.get(sid, 0) < config.MAX_ACCEPT_PER_SOURCE):
-            n_acc += 1
-            per_acc[sid] = per_acc.get(sid, 0) + 1
-            r['queue']['admitted'] = 'slot'
-            continue
-        if n_hold < config.MAX_HOLD_PER_RUN and per_hold.get(sid, 0) < config.MAX_HOLD_PER_SOURCE:
-            if r['decision'] == scoring.ACCEPT:
-                r['decision'] = scoring.HOLD
-                r['hold_reasons'].append('עבר את הסף, אבל אין מקום פנוי בהמלצות (%d בסך הכול, %d לכל מקור, כולל מה שממתין)' % (
-                    config.MAX_ACCEPT_PER_RUN, config.MAX_ACCEPT_PER_SOURCE))
-            n_hold += 1
-            per_hold[sid] = per_hold.get(sid, 0) + 1
-            r['queue']['admitted'] = 'slot'
-            continue
-        if r['priority'] >= config.URGENT_PRIORITY and urgent_used < config.MAX_URGENT_OVER_CAP:
-            urgent_used += 1
-            r['queue']['admitted'] = 'urgent'
-            r['hold_reasons'].append('עדיפות %d: נכנס לתור גם מעבר למכסה' % r['priority'])
-            continue
-        r['decision'] = BACKLOG
-        r['main_reason'] = 'כשיר, אבל התור מלא. נשאר בתור ההמתנה מאז %s, ולא יוצג כחדש' % r['queue']['first_seen']
-
-    # 4. עדכון הזיכרון
-    for r in results:
-        c, d, life = r['candidate'], r['decision'], r['queue']['lifecycle']
-        if d in (scoring.ACCEPT, scoring.HOLD):
-            ledger.upsert(items, c, ledger.PENDING, run_id, today, shown_run=run_id, shown_decision=d,
-                          priority=r['priority'])
-        elif d == PENDING:
-            ledger.upsert(items, c, ledger.PENDING, run_id, today, priority=r['priority'])
-        elif d == BACKLOG:
-            ledger.upsert(items, c, ledger.BACKLOG, run_id, today, priority=r['priority'])
-        elif life in ('approved', 'rejected_owner'):
-            items[c['fingerprint']]['last_seen'] = today.isoformat()
-        elif life == 'pending':
-            ledger.upsert(items, c, ledger.EXPIRED, run_id, today, expired_reason=r['main_reason'])
+    # זיכרון התור: נעילה עם תוקף, מניעת ריצה כפולה של אותו חלון, ושחזור מריצה שקרסה
+    slot_key = '%s-%s' % (local.date().isoformat(), a.slot) if a.slot in config.SLOT_HOURS else None
+    try:
+        if a.no_state_write:
+            state, notes = store.peek()
+            info = {'recovered_lock': None, 'notes': notes}
         else:
-            ledger.upsert(items, c, ledger.REJECTED_RULES, run_id, today)
-    ledger.forget_old(items, today)
-    queue_left = [{'title': r['candidate']['title'], 'reason': r['main_reason']} for r in dropped] + \
-                 [{'title': rec['title'], 'reason': rec['expired_reason']} for rec in dropped_unseen]
-    pending_unseen = [rec for rec in items.values() if rec['status'] == ledger.PENDING and rec['fingerprint'] not in seen_fps]
+            state, info = store.begin(run_id, slot_key, now, force=a.force_rerun)
+    except (AlreadyDone, Busy) as e:
+        summary.update(outcome='skipped_duplicate_slot' if isinstance(e, AlreadyDone) else 'skipped_busy', detail=str(e))
+        print('skipped: %s' % e)
+        if a.json:
+            print(json.dumps(summary, ensure_ascii=False))
+        return EXIT_OK
+    except StoreError as e:
+        return _state_exit(e)
+    summary['state'] = {'store': type(store).__name__, 'slot_key': slot_key,
+                        'version_read': state['_meta'].get('version'),
+                        'recovered_lock': (info['recovered_lock'] or {}).get('run_id'), 'notes': info['notes']}
 
-    drafts = drafts_mod.build(results, today)
-    queue_view = drafts_mod.queue_view(results, pending_unseen, queue_left)
-    ok_sources = [s for s in src_report if s['status'] == 'ok']
-    if src_report and not ok_sources:
-        outcome = 'all_sources_failed'
-    elif not drafts:
-        outcome = 'nothing_to_publish'
-    else:
-        outcome = 'drafts_ready'
+    try:
+        registry = _load_json(registry_path, {'published': []})['published'] if registry_path else None
+        ctx = {'now': now, 'today': today, 'verified_at': summary['started_utc'], 'state': state}
 
-    counts = {d: sum(1 for r in results if r['decision'] == d)
-              for d in (scoring.ACCEPT, scoring.HOLD, PENDING, BACKLOG, scoring.REJECT)}
-    counts.update(new_admitted=sum(1 for r in results if r['decision'] in (scoring.ACCEPT, scoring.HOLD)
-                                   and r['queue']['lifecycle'] == 'new'),
-                  updated=sum(1 for r in results if r['queue'].get('admitted') == 'update'),
-                  from_backlog=sum(1 for r in results if r['decision'] in (scoring.ACCEPT, scoring.HOLD)
-                                   and r['queue']['lifecycle'] in ('backlog', 'known')),
-                  pending_total=sum(1 for rec in items.values() if rec['status'] == ledger.PENDING),
-                  backlog_total=sum(1 for rec in items.values() if rec['status'] == ledger.BACKLOG),
-                  left_queue=len(queue_left))
-    summary.update({
-        'outcome': outcome, 'fetch_mode': fetcher.mode,
-        'sources': [{k: s[k] for k in ('id', 'status', 'candidates', 'detail')} for s in src_report],
-        'counts': dict(counts, candidates=len(results), drafts=len(drafts)),
-        'finished_utc': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
-        'handoff': {
-            'type': 'golondon_news_drafts', 'requires_owner_approval': True, 'approval_decision': None,
-            'publish_allowed': False, 'drafts_file': 'drafts.json', 'report_file': 'report.md',
-            'next_action': 'owner reviews drafts.json; nothing is published by this run',
-        },
-    })
+        # 1. איסוף
+        src_report, candidates = [], []
+        for s in S.ALL:
+            if wanted and s['id'] not in wanted:
+                continue
+            entry = {'id': s['id'], 'name': s['name'], 'url': s['url'], 'licence': s.get('licence'),
+                     'terms': s.get('terms'), 'status': 'ok', 'detail': '', 'candidates': 0}
+            try:
+                got = s['collect'](fetcher, ctx)
+                entry['candidates'] = len(got)
+                skipped = ctx.get('filtered', {}).get(s['id'])
+                if skipped:
+                    entry['detail'] = '%d entries skipped as not about entry to the UK' % len(skipped)
+                candidates.extend(got)
+            except SourceError as e:
+                entry.update(status=e.kind, detail=e.detail)
+            except Exception as e:  # מקור אחד שבור לא מפיל את כל הריצה
+                entry.update(status='parse_error', detail='%s: %s' % (type(e).__name__, e))
+            src_report.append(entry)
 
-    out_dir = os.path.join(out_root, run_id)
-    os.makedirs(out_dir, exist_ok=True)
-    _write_json(os.path.join(out_dir, 'drafts.json'), dict({'run_id': run_id, 'drafts': drafts}, **queue_view))
-    _write_json(os.path.join(out_dir, 'decisions.json'), {'run_id': run_id, 'results': results})
-    _write_json(os.path.join(out_dir, 'run.json'), dict(summary, fetch_log=fetcher.log))
-    with open(os.path.join(out_dir, 'report.md'), 'w', encoding='utf-8') as f:
-        f.write(drafts_mod.report(summary, src_report, results, drafts, queue_view))
+        # 2. סיווג, בדיקת עובדות וכשירות. ההיסטוריה של כל פריט מגיעה מזיכרון התור
+        items = ledger.load(state)
+        run_seen, results = [], []
+        for c in candidates:
+            fp = c['fingerprint']
+            hist = items.get(fp)
+            others = [r for f_, r in items.items() if f_ != fp and r['status'] in ledger.DEDUP_STATUSES] + run_seen
+            cls = dedup.classify(c, today=today, registry=registry, drafted=others)
+            life = ledger.lifecycle(hist)
+            shown_cls = cls
+            if hist:
+                own = dedup.classify(c, today=today, registry=[], drafted=[hist])
+                if own['verdict'] in (dedup.UPDATE, dedup.CANCELLATION):
+                    cls = shown_cls = own
+                    # רק פריט שכבר הוצג לאדם חוזר אוטומטית כשהוא משתנה. פריט מהתור נשאר בתור
+                    if hist['status'] in (ledger.PENDING, ledger.APPROVED, ledger.REJECTED_OWNER):
+                        life = 'updated'
+                elif own['verdict'] == dedup.DUPLICATE and cls['verdict'] == dedup.NEW:
+                    shown_cls = dict(own, reason='כבר מוכר מהריצה %s (%s)' % (hist.get('first_seen_run'), ledger.LIFECYCLE_HE[life]))
+            fact = factcheck.verify_candidate(c)
+            total, br, reasons = scoring.score(c, cls, today, now)
+            rej, hold = scoring.gates(c, cls, fact, today, now)
+            decision = scoring.decide(total, rej, hold, br['tourist_relevance'])
+            prio, pbr, pnotes = priority_mod.priority(c, today)
+            main = None if decision != scoring.REJECT else scoring.why_not(total, rej, br['tourist_relevance'])
+            if decision != scoring.REJECT and life in ('approved', 'rejected_owner'):
+                decision = scoring.REJECT
+                main = '%s ב-%s, ולא השתנה מאז' % (ledger.LIFECYCLE_HE[life], (hist.get('decided') or {}).get('at', ''))
+            if decision != scoring.REJECT:
+                run_seen.append(dedup.draft_record(dict(c, drafted_on=today.isoformat()), run_id))
+            results.append({'candidate': c, 'classification': {k: v for k, v in shown_cls.items() if k != 'matched'},
+                            'matched': (shown_cls.get('matched') or {}).get('title'), 'fact_check': fact,
+                            'score': total, 'score_breakdown': br, 'reasons': reasons,
+                            'priority': prio, 'priority_breakdown': pbr, 'priority_notes': pnotes,
+                            'queue': {'lifecycle': life, 'first_seen': (hist or {}).get('first_seen') or today.isoformat(),
+                                      'first_seen_run': (hist or {}).get('first_seen_run') or run_id},
+                            'reject_reasons': rej, 'hold_reasons': hold, 'decision': decision, 'main_reason': main})
+
+        # 3. התור. פריט ממתין נשאר ממתין ותופס מקום. מקומות פנויים מתמלאים לפי סדר העדיפות,
+        #    מתוך פריטים חדשים ופריטים שחיכו בתור. עדכון מהותי מוצג תמיד. דחוף במיוחד נכנס גם לתור מלא
+        seen_fps = {r['candidate']['fingerprint'] for r in results}
+        dropped = []
+        for r in results:
+            if r['queue']['lifecycle'] == 'pending':
+                if r['decision'] == scoring.REJECT:
+                    dropped.append(r)
+                    r['queue']['left_queue'] = r['main_reason']
+                else:
+                    r['decision'] = PENDING
+                    r['main_reason'] = None
+        dropped_unseen = ledger.expire_unseen(items, seen_fps, today)
+
+        pending_recs = [rec for rec in items.values() if rec['status'] == ledger.PENDING
+                        and rec['fingerprint'] not in {r['candidate']['fingerprint'] for r in dropped}]
+        n_acc = sum(1 for rec in pending_recs if rec.get('shown_decision') == scoring.ACCEPT)
+        n_hold = len(pending_recs) - n_acc
+        per_acc, per_hold = {}, {}
+        for rec in pending_recs:
+            bucket = per_acc if rec.get('shown_decision') == scoring.ACCEPT else per_hold
+            bucket[rec.get('source_id')] = bucket.get(rec.get('source_id'), 0) + 1
+
+        contenders = sorted((r for r in results if r['decision'] in (scoring.ACCEPT, scoring.HOLD)),
+                            key=lambda r: (-r['priority'], r['candidate']['fingerprint']))
+        urgent_used = 0
+        for r in contenders:
+            sid = r['candidate']['source_id']
+            life = r['queue']['lifecycle']
+            if life == 'updated':
+                r['queue']['admitted'] = 'update'
+                continue
+            if (r['decision'] == scoring.ACCEPT and n_acc < config.MAX_ACCEPT_PER_RUN
+                    and per_acc.get(sid, 0) < config.MAX_ACCEPT_PER_SOURCE):
+                n_acc += 1
+                per_acc[sid] = per_acc.get(sid, 0) + 1
+                r['queue']['admitted'] = 'slot'
+                continue
+            if n_hold < config.MAX_HOLD_PER_RUN and per_hold.get(sid, 0) < config.MAX_HOLD_PER_SOURCE:
+                if r['decision'] == scoring.ACCEPT:
+                    r['decision'] = scoring.HOLD
+                    r['hold_reasons'].append('עבר את הסף, אבל אין מקום פנוי בהמלצות (%d בסך הכול, %d לכל מקור, כולל מה שממתין)' % (
+                        config.MAX_ACCEPT_PER_RUN, config.MAX_ACCEPT_PER_SOURCE))
+                n_hold += 1
+                per_hold[sid] = per_hold.get(sid, 0) + 1
+                r['queue']['admitted'] = 'slot'
+                continue
+            if r['priority'] >= config.URGENT_PRIORITY and urgent_used < config.MAX_URGENT_OVER_CAP:
+                urgent_used += 1
+                r['queue']['admitted'] = 'urgent'
+                r['hold_reasons'].append('עדיפות %d: נכנס לתור גם מעבר למכסה' % r['priority'])
+                continue
+            r['decision'] = BACKLOG
+            r['main_reason'] = 'כשיר, אבל התור מלא. נשאר בתור ההמתנה מאז %s, ולא יוצג כחדש' % r['queue']['first_seen']
+
+        # 4. עדכון הזיכרון
+        for r in results:
+            c, d, life = r['candidate'], r['decision'], r['queue']['lifecycle']
+            if d in (scoring.ACCEPT, scoring.HOLD):
+                ledger.upsert(items, c, ledger.PENDING, run_id, today, shown_run=run_id, shown_decision=d,
+                              priority=r['priority'])
+            elif d == PENDING:
+                ledger.upsert(items, c, ledger.PENDING, run_id, today, priority=r['priority'])
+            elif d == BACKLOG:
+                ledger.upsert(items, c, ledger.BACKLOG, run_id, today, priority=r['priority'])
+            elif life in ('approved', 'rejected_owner'):
+                items[c['fingerprint']]['last_seen'] = today.isoformat()
+            elif life == 'pending':
+                ledger.upsert(items, c, ledger.EXPIRED, run_id, today, expired_reason=r['main_reason'])
+            else:
+                ledger.upsert(items, c, ledger.REJECTED_RULES, run_id, today)
+        ledger.forget_old(items, today)
+        queue_left = [{'title': r['candidate']['title'], 'reason': r['main_reason']} for r in dropped] + \
+                     [{'title': rec['title'], 'reason': rec['expired_reason']} for rec in dropped_unseen]
+        pending_unseen = [rec for rec in items.values() if rec['status'] == ledger.PENDING and rec['fingerprint'] not in seen_fps]
+
+        drafts = drafts_mod.build(results, today)
+        queue_view = drafts_mod.queue_view(results, pending_unseen, queue_left)
+        ok_sources = [s for s in src_report if s['status'] == 'ok']
+        if src_report and not ok_sources:
+            outcome = 'all_sources_failed'
+        elif not drafts:
+            outcome = 'nothing_to_publish'
+        else:
+            outcome = 'drafts_ready'
+
+        counts = {d: sum(1 for r in results if r['decision'] == d)
+                  for d in (scoring.ACCEPT, scoring.HOLD, PENDING, BACKLOG, scoring.REJECT)}
+        counts.update(new_admitted=sum(1 for r in results if r['decision'] in (scoring.ACCEPT, scoring.HOLD)
+                                       and r['queue']['lifecycle'] == 'new'),
+                      updated=sum(1 for r in results if r['queue'].get('admitted') == 'update'),
+                      from_backlog=sum(1 for r in results if r['decision'] in (scoring.ACCEPT, scoring.HOLD)
+                                       and r['queue']['lifecycle'] in ('backlog', 'known')),
+                      pending_total=sum(1 for rec in items.values() if rec['status'] == ledger.PENDING),
+                      backlog_total=sum(1 for rec in items.values() if rec['status'] == ledger.BACKLOG),
+                      left_queue=len(queue_left))
+        summary.update({
+            'outcome': outcome, 'fetch_mode': fetcher.mode,
+            'sources': [{k: s[k] for k in ('id', 'status', 'candidates', 'detail')} for s in src_report],
+            'counts': dict(counts, candidates=len(results), drafts=len(drafts)),
+            'finished_utc': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
+            'handoff': {
+                'type': 'golondon_news_drafts', 'requires_owner_approval': True, 'approval_decision': None,
+                'publish_allowed': False, 'drafts_file': 'drafts.json', 'report_file': 'report.md',
+                'next_action': 'owner reviews drafts.json; nothing is published by this run',
+            },
+        })
+
+        out_dir = os.path.join(out_root, run_id)
+        os.makedirs(out_dir, exist_ok=True)
+        _write_json(os.path.join(out_dir, 'drafts.json'), dict({'run_id': run_id, 'drafts': drafts}, **queue_view))
+        _write_json(os.path.join(out_dir, 'decisions.json'), {'run_id': run_id, 'results': results})
+        _write_json(os.path.join(out_dir, 'run.json'), dict(summary, fetch_log=fetcher.log))
+        with open(os.path.join(out_dir, 'report.md'), 'w', encoding='utf-8') as f:
+            f.write(drafts_mod.report(summary, src_report, results, drafts, queue_view))
+
+    except BaseException as e:
+        # שום שינוי של הריצה לא נכתב. הנעילה משתחררת והריצה מסומנת כנכשלה, כך שהחלון יכול לרוץ שוב
+        if not a.no_state_write:
+            store.abort(now, '%s: %s' % (type(e).__name__, e))
+        raise
 
     if not a.no_state_write:
-        os.makedirs(state_dir, exist_ok=True)
-        _write_json(state_file, state)
+        try:
+            store.commit(state, now, outcome, out_dir=out_dir,
+                         counts={k: counts[k] for k in ('new_admitted', 'updated', 'pending_total', 'backlog_total')})
+        except StoreError as e:
+            store.abort(now, e)
+            return _state_exit(e)
 
     print('%s: %s, %d candidates, %d new for review (%d accept, %d hold), %d pending, %d in backlog, output %s' % (
         run_id, outcome, len(results), len(drafts), counts[scoring.ACCEPT], counts[scoring.HOLD],
