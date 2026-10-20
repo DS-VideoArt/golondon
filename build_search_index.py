@@ -120,7 +120,7 @@ for f in sorted(glob.glob('*.html')):
     items.append({
         'type': typ, 'title': t, 'cat': cat, 'url': f,
         'alias': ALIASES.get(f, ''),
-        'desc': meta(html, 'description'),
+        'desc': _html.unescape(meta(html, 'description')),
         'img': hero_img(html),
         'text': body_text(html)[:1400],
     })

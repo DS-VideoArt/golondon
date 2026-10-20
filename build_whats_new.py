@@ -180,7 +180,7 @@ def head(title, desc, canonical, image, extra_ld=''):
     .wn-item li {{ margin-bottom: 8px; }}
     .wn-note {{ border-radius: 13px; border: 1px solid; padding: 15px 17px; font-size: 14.5px; margin: 16px 0; }}
     .wn-more {{ margin-top: 20px; padding-top: 17px; border-top: 1px solid; }}
-    .wn-more h4 {{ font-size: 13.5px; font-weight: 900; margin-bottom: 10px; }}
+    .wn-more h3 {{ font-size: 13.5px; font-weight: 900; margin-bottom: 10px; }}
     .wn-more-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 8px; }}
     .wn-more a {{ display: flex; align-items: center; gap: 8px; border: 1px solid; border-radius: 11px; padding: 11px 13px; font-size: 13.5px; font-weight: 700; }}
     .wn-src {{ margin-top: 15px; font-size: 12.5px; }}
@@ -252,7 +252,7 @@ def item_html(it, show_day_link=True):
         for l in it.get('links', []))
     more = ''
     if links:
-        more = ('<div class="wn-more"><h4>יכול לעזור לכם גם</h4>'
+        more = ('<div class="wn-more"><h3>יכול לעזור לכם גם</h3>'
                 '<div class="wn-more-grid">%s</div></div>' % links)
 
     srcs = ' · '.join(

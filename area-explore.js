@@ -95,7 +95,7 @@
       '.ax-plan{font-size:13.5px;font-weight:800;color:#55596b;text-decoration:underline;}',
       '.ax-none{background:#fff;border:1px dashed rgba(32,31,43,.22);border-radius:15px;',
         'padding:22px 16px;text-align:center;color:#55596b;font-size:13.5px;line-height:1.7;}',
-      '.exp-c[aria-pressed="true"]{border-color:#DC2626;box-shadow:0 0 0 2px rgba(220,38,38,.14);}',
+      '.exp-c[aria-expanded="true"]{border-color:#DC2626;box-shadow:0 0 0 2px rgba(220,38,38,.14);}',
       /* המיקוד מועבר לכותרת למען קוראי מסך, בלי טבעת כחולה למי שהגיע בעכבר */
       '.ax-h:focus{outline:none;}',
       '.ax-h:focus-visible{outline:2px solid #DC2626;outline-offset:3px;border-radius:4px;}',
@@ -207,7 +207,7 @@
     if (panel) { panel.hidden = true; panel.innerHTML = ''; }
     document.body.classList.remove('ax-open');
     current = null;
-    grid.querySelectorAll('.exp-c').forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
+    grid.querySelectorAll('.exp-c').forEach(function (c) { c.setAttribute('aria-expanded', 'false'); });
     if (push) history.pushState({ cat: null }, '', location.pathname);
   }
 
@@ -221,7 +221,7 @@
     current = slug;
 
     grid.querySelectorAll('.exp-c').forEach(function (c) {
-      c.setAttribute('aria-pressed', String(c === card));
+      c.setAttribute('aria-expanded', String(c === card));
     });
 
     var top = el('div', 'ax-top');
@@ -330,7 +330,7 @@
       var orig = card.getAttribute('href');
       if (orig && !card.getAttribute('data-ax-href')) card.setAttribute('data-ax-href', orig);
       card.setAttribute('href', location.pathname + '?cat=' + encodeURIComponent(card.getAttribute('data-exp')));
-      card.setAttribute('aria-pressed', 'false');
+      card.setAttribute('aria-expanded', 'false');
       card.addEventListener('click', function (e) {
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
         e.preventDefault();

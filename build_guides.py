@@ -8,7 +8,7 @@
 צריך להריץ מחדש אחרי כל הוספה של עמוד לאשכול או שינוי של תמונת שער:
     python3 build_guides.py
 """
-import re, json, os, collections
+import re, json, os, collections, html
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -84,7 +84,7 @@ def main():
                 problems.append('עמוד חסר: ' + p)
                 continue
             s = open(p, encoding='utf-8').read()
-            a = {'url': p, 'title': h1(s), 'desc': meta(s, 'description'), 'img': hero(s)}
+            a = {'url': p, 'title': html.unescape(h1(s)), 'desc': html.unescape(meta(s, 'description')), 'img': hero(s)}
             for field in ('title', 'desc', 'img'):
                 if not a[field]:
                     problems.append('%s: חסר %s' % (p, field))
