@@ -25,12 +25,16 @@ HOLD_THRESHOLD = 50
 # תנאי נפרד: בלעדיה פריט לא עובר, גם כשהניקוד הכולל גבוה
 ACCEPT_MIN_RELEVANCE = 15
 HOLD_MIN_RELEVANCE = 10
-# תור הבדיקה של אדם, פעמיים ביום. מה שמעבר למכסה לא נרשם, ולכן חוזר לבדיקה בריצה הבאה
+# קיבולת התור הפתוח לבדיקת אדם. פריטים שממתינים להחלטה תופסים מקום עד שמחליטים עליהם,
+# ולכן ריצה חוזרת על אותם נתונים לא מוסיפה פריטים. מה שכשיר ומחוץ למכסה נשמר כ-backlog
 MAX_ACCEPT_PER_RUN = 6
 MAX_HOLD_PER_RUN = 8
-# גיוון: מקור אחד לא ממלא את כל התור. 2 המלצות ו-3 פריטים ממתינים לכל מקור בריצה
+# גיוון: מקור אחד לא ממלא את כל התור. 2 המלצות ו-3 פריטים ממתינים לכל מקור, כולל מה שכבר בתור
 MAX_ACCEPT_PER_SOURCE = 2
 MAX_HOLD_PER_SOURCE = 3
+# פריט בעדיפות גבוהה במיוחד (למשל סגירה מלאה של קו לשדה התעופה) נכנס גם כשהתור מלא, עד 2 בריצה
+URGENT_PRIORITY = 55
+MAX_URGENT_OVER_CAP = 2
 
 # שיוך סוג פריט לקטגוריה הקיימת באתר (CAT_ICON ב-build_whats_new.py) ולסוג האייטם
 KINDS = {
@@ -73,6 +77,8 @@ TOURIST_LINES = ['Piccadilly', 'Elizabeth', 'Central', 'Jubilee', 'District', 'C
 # הקו שהשיבוש עליו, לפי מזהה TfL. קו שמוזכר רק כחלופה בטקסט אינו נספר
 TOURIST_LINE_IDS = ('piccadilly', 'elizabeth', 'central', 'jubilee', 'district', 'circle', 'northern',
                     'victoria', 'bakerloo', 'hammersmith-city', 'waterloo-city')
+# קווי TfL שמגיעים לשדה תעופה
+AIRPORT_LINE_IDS = ('piccadilly', 'elizabeth')
 FAMILY_WORDS = ['family', 'families', 'kids', 'children', 'child', 'half term', 'half-term']
 # "free" לבד לא נחשב: בכרטיסי טייט מופיע FREE FOR MEMBERS, שאינו כניסה חופשית
 FREE_WORDS = ['free entry', 'free admission', 'free event', 'free to attend', 'free to visit', 'admission free']
