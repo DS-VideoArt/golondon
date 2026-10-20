@@ -1,0 +1,15 @@
+[
+ {"id": "piccadilly", "name": "Piccadilly", "lineStatuses": [
+  {"statusSeverity": 4, "statusSeverityDescription": "Planned Closure",
+   "reason": "PICCADILLY LINE: Saturday 31 October and Sunday 1 November, no service on the entire line. Use ELIZABETH LINE services between Central London and Heathrow.",
+   "created": "2026-09-01T09:00:00Z",
+   "validityPeriods": [{"fromDate": "2026-10-31T01:00:00Z", "toDate": "2026-11-02T01:29:00Z"}],
+   "disruption": {"category": "PlannedWork"}}]},
+ {"id": "windrush", "name": "Windrush", "lineStatuses": [
+  {"statusSeverity": 5, "statusSeverityDescription": "Part Closure",
+   "reason": "WINDRUSH LINE: Sunday 25 October, no service between Dalston Junction and New Cross Gate.",
+   "created": "2026-09-01T09:00:00Z",
+   "validityPeriods": [{"fromDate": "2026-10-25T04:30:00Z", "toDate": "2026-10-26T01:29:00Z"}],
+   "disruption": {"category": "PlannedWork"}}]},
+ {"id": "jubilee", "name": "Jubilee", "lineStatuses": [{"statusSeverity": 10, "statusSeverityDescription": "Good Service", "validityPeriods": []}]}
+]

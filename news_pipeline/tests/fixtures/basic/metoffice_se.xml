@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+<title>Met Office warnings for London &amp; South East England</title>
+<item>
+<title>Yellow warning of wind affecting London &amp; South East England</title>
+<link>https://www.metoffice.gov.uk/weather/warnings-and-advice/uk-warnings#?date=2026-10-22&amp;id=test-1</link>
+<description>Yellow warning of wind affecting London &amp; South East England: Greater London, Kent, Surrey valid from 2300 Thu 22 Oct to 1100 Fri 23 Oct</description>
+<guid isPermaLink="false">test-1</guid>
+</item>
+</channel></rss>

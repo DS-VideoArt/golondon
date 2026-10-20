@@ -8,3 +8,8 @@ videos/
 # תיקיות עבודה מקומיות
 .netlify/
 node_modules/
+
+# פלט וזיכרון של איסוף החדשות. טיוטות לבדיקה, לא תוכן של האתר
+news_pipeline/out/
+news_pipeline/state/
+__pycache__/

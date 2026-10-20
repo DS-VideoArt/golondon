@@ -1,0 +1,11 @@
+[
+ {"id": "central", "name": "Central", "lineStatuses": [
+  {"statusSeverity": 6, "statusSeverityDescription": "Severe Delays",
+   "reason": "Central Line: Severe delays due to a signal failure at Holborn.",
+   "created": "2026-10-20T04:40:00Z",
+   "validityPeriods": [{"fromDate": "2026-10-20T04:40:00Z", "toDate": "2026-10-21T00:29:00Z"}],
+   "disruption": {"category": "RealTime"}}]},
+ {"id": "jubilee", "name": "Jubilee", "lineStatuses": [{"statusSeverity": 10, "statusSeverityDescription": "Good Service", "validityPeriods": []}]},
+ {"id": "piccadilly", "name": "Piccadilly", "lineStatuses": [{"statusSeverity": 10, "statusSeverityDescription": "Good Service", "validityPeriods": []}]},
+ {"id": "windrush", "name": "Windrush", "lineStatuses": [{"statusSeverity": 10, "statusSeverityDescription": "Good Service", "validityPeriods": []}]}
+]

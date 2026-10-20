@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>tag:www.gov.uk,2005:/search/news-and-communications</id>
+  <title>News and communications</title>
+  <updated>2026-10-19T12:00:00+01:00</updated>
+  <entry>
+    <id>tag:www.gov.uk,2005:/government/news/eta-reminder-for-visitors</id>
+    <updated>2026-10-19T12:00:00+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://www.gov.uk/government/news/eta-reminder-for-visitors"/>
+    <title>Reminder: visitors to the UK need an ETA before they travel</title>
+    <summary type="html">Visitors from eligible countries should apply for an ETA before booking travel.</summary>
+  </entry>
+  <entry>
+    <id>tag:www.gov.uk,2005:/government/news/fishing-quotas</id>
+    <updated>2026-10-19T10:00:00+01:00</updated>
+    <link rel="alternate" type="text/html" href="https://www.gov.uk/government/news/fishing-quotas"/>
+    <title>New fishing quotas agreed</title>
+    <summary type="html">Quotas for 2027 were agreed.</summary>
+  </entry>
+</feed>
