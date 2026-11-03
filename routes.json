@@ -41,7 +41,7 @@
     },
     {
       "route_id": "five-days",
-      "route_version": 1,
+      "route_version": 2,
       "page": "london-5-days.html",
       "url": "/london-5-days",
       "name": "לונדון ב-5 ימים",
@@ -79,14 +79,14 @@
           "day_id": "greenwich",
           "day_position": 5,
           "title": "יום 5: גריניץ', היום הנהרי",
-          "stops": ["greenwich-market", "royal-observatory", "maritime-museum"],
+          "stops": ["greenwich-market", "queens-house", "maritime-museum"],
           "alternatives": ["cutty-sark"]
         }
       ]
     },
     {
       "route_id": "seven-days",
-      "route_version": 1,
+      "route_version": 2,
       "page": "london-7-days.html",
       "url": "/london-7-days",
       "name": "לונדון ב-7 ימים",
@@ -124,7 +124,7 @@
           "day_id": "greenwich",
           "day_position": 5,
           "title": "יום 5: גריניץ', היום הנהרי",
-          "stops": ["greenwich-market", "royal-observatory", "maritime-museum"],
+          "stops": ["greenwich-market", "queens-house", "maritime-museum"],
           "alternatives": ["cutty-sark"]
         },
         {

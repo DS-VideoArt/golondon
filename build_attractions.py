@@ -28,7 +28,7 @@ THEMES = collections.OrderedDict([
  ('אייקונים שאי אפשר לפספס', ['big-ben','tower-bridge','tower-of-london','buckingham','westminster-abbey','st-pauls','london-eye','trafalgar-square','piccadilly-circus']),
  ('המוזיאונים הגדולים, כניסה חינם', ['british-museum','national-gallery','natural-history','science-museum','va-museum','tate-modern','tate-britain','national-portrait-gallery','imperial-war-museum','maritime-museum','british-library','design-museum']),
  ('מוזיאונים קטנים שמעטים מכירים', ['wallace-collection','soane-museum','transport-museum','museum-of-brands','dickens-museum','bank-museum','postal-museum','wellcome-collection','sherlock-museum','museum-of-home','whitechapel-gallery','docklands-museum','raf-museum','old-operating-theatre','churchill-rooms','dennis-severs']),
- ('תצפיות ונקודות נוף', ['sky-garden','shard','royal-observatory','primrose-hill','monument','cable-car']),
+ ('תצפיות ונקודות נוף', ['sky-garden','shard','primrose-hill','monument','cable-car']),
  ('שווקים, אוכל וקניות', ['borough-market','camden-market','spitalfields-market','columbia-road','leadenhall-market','greenwich-market','brick-lane','chinatown-soho','coal-drops-yard','horizon-22','harrods']),
  ('פארקים ושטחים פתוחים', ['hyde-park','st-james-park','regents-park','hampstead-heath','holland-park','richmond-park','kew-gardens','little-venice']),
  ('שכונות ורחובות לשיטוט', ['covent-garden','notting-hill','notting-hill-pastel-streets','golborne-road','shoreditch-art','neals-yard','southbank-walk','greenwich','st-katharine-docks','battersea-power-station']),
