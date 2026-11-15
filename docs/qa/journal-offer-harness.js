@@ -261,8 +261,8 @@ class MemoryStore {
     await page.evaluate(() => document.getElementById('build').click()); await sleep(900);
     ok(!(await visible(page, 'jo-cta')), 'planner: adult-only itinerary -> no offer');
     await chip(page, 'ילדים (5'); await sleep(400);
-    const d = await page.evaluate(() => { const b = document.getElementById('jo-cta'); const a = b.querySelector('a'); return { shown: !b.hidden && b.offsetParent !== null, href: a && a.getAttribute('href'), beta: !document.getElementById('jb-cta') }; });
-    ok(d.shown && d.href === 'kids-journal-offer.html?e=planner' && d.beta, 'planner: a child under 12 shows the offer after the route; no Beta element exists on this branch');
+    const d = await page.evaluate(() => { const b = document.getElementById('jo-cta'); const a = b.querySelector('a'); const jb = document.getElementById('jb-cta'); return { shown: !b.hidden && b.offsetParent !== null, href: a && a.getAttribute('href'), betaHidden: !jb || jb.hidden }; });
+    ok(d.shown && d.href === 'kids-journal-offer.html?e=planner' && d.betaHidden, 'planner: a child under 12 shows the offer after the route; the free Beta CTA stays hidden while the Beta is closed');
     ok((await events(page, 'planner_complete')).length === 1 && (await allEvents(page)).filter(n => n.startsWith('journal_')).length === 0, 'planner: planner_complete once, no journal event until a click');
     await chip(page, 'מבוגרים בלבד'); await sleep(300);
     ok(!(await visible(page, 'jo-cta')), 'planner: back to adults only -> offer hidden');
@@ -276,7 +276,7 @@ class MemoryStore {
     await chip(page, 'ילדים (5'); await page.evaluate(() => document.getElementById('build').click()); await sleep(900);
     await page.evaluate(() => document.getElementById('again').click()); await sleep(600);
     ok(await visible(page, 'jo-cta') && (await events(page, 'planner_complete')).length === 1, 'planner: "another version" keeps the offer and still counts one completion');
-    ok(!(await page.evaluate(() => document.documentElement.innerHTML)).includes('kids-journal-beta'), 'planner: no link to a Beta page on this branch');
+    ok(await page.evaluate(() => { const jb = document.getElementById('jb-cta'); return !jb || (jb.hidden && jb.textContent === ''); }), 'planner: the Beta CTA is not rendered while the Beta is closed');
     await ctx.close(); }
   { const DATA = JSON.parse(fs.readFileSync(path.join(ROOT, 'planner-data.json'), 'utf8')).attractions; const C = id => DATA.find(a => a.id === id).code;
     const code = [C('big-ben') + C('westminster-abbey'), C('tate-modern')].join('.');
@@ -287,8 +287,7 @@ class MemoryStore {
     await ctx.close(); }
 
   /* ---------- isolation ---------- */
-  ok(others.length === 0, 'no request reached any other function (' + others.join(', ') + ')');
-  ok(!fs.existsSync(path.join(ROOT, 'kids-journal-beta.html')) && !fs.existsSync(path.join(ROOT, 'netlify', 'journal-lib')), 'branch: no Beta page and no journal library');
+  ok(others.every(p => p === '/.netlify/functions/journal-beta-request'), 'no request reached any function other than the interest function and the planner\'s own Beta switch check (' + [...new Set(others)].join(', ') + ')');
   ok(!blocked.some(u => /github|amazonaws|stripe|paypal/.test(u)), 'no attempt to reach GitHub, AWS or a payment provider');
   ok(calls.every(c => !/route_code|first_name|delivery|token/.test(c.body)), 'the interest function never receives a route, a name or a token');
 

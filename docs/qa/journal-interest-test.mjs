@@ -106,7 +106,8 @@ ok(storeNameFor({ deploy: { context: 'production' } }) === 'journal-interest' &&
   const purge = fs.readFileSync(path.join(ROOT, 'netlify/functions/journal-interest-purge.mjs'), 'utf8');
   ok(/purgeInterest/.test(purge) && /storeNameFor\(context\)/.test(purge) && /schedule: '@daily'/.test(purge), 'retention: a daily scheduled purge covers the interest store of the same context');
   const fns = fs.readdirSync(path.join(ROOT, 'netlify/functions')).join();
-  ok(!/journal-beta|journal-worker|journal-download|reconcile/.test(fns) && !fs.existsSync(path.join(ROOT, 'netlify/journal-lib')) && !fs.existsSync(path.join(ROOT, 'netlify/edge-functions')) && !fs.existsSync(path.join(ROOT, 'kids-journal-beta.html')), 'isolation: no Beta request, worker callback, download, reconciliation, journal library or Beta page on this branch');
+  const interestSrc = fs.readFileSync(path.join(ROOT, 'netlify/functions/journal-interest.mjs'), 'utf8') + fs.readFileSync(path.join(ROOT, 'netlify/functions/journal-interest-purge.mjs'), 'utf8');
+  ok(!/journal-lib|journal-beta|journal-worker|journal-download|reconcile/.test(interestSrc.replace(/\/\*[\s\S]*?\*\//g, '')), 'isolation: the interest functions import nothing from the free Beta (which coexists on this tree, closed by its own switch)');
   const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
   ok(Object.keys(pkg.dependencies || {}).join() === '@netlify/blobs' && !pkg.devDependencies && !pkg.scripts, 'dependencies: only @netlify/blobs, no scripts'); }
 { const all = LOGS.join('\n');

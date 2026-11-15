@@ -110,7 +110,7 @@
 
   function success(already) {
     $('jb-request').hidden = true; $('jb-success').hidden = false;
-    if (already) $('jb-success-text').textContent = 'כבר קיבלנו מכם בקשה למסלול הזה, ואין צורך לשלוח שוב. היומן יישלח למייל שמסרתם.';
+    if (already) $('jb-success-text').textContent = 'כבר קיבלנו מכם בקשה למסלול הזה, ואין צורך לשלוח שוב. קישור להורדת היומן יישלח למייל שמסרתם, בדרך כלל תוך כמה ימים.';
     $('jb-back-route').href = routeLink();
     $('jb-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
