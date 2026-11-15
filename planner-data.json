@@ -1816,7 +1816,7 @@
    "code": "Ac",
    "name": "גריניץ׳ וקו האפס",
    "nameEn": "Greenwich and the Prime Meridian",
-   "desc": "שכונה נהרית עם פארק, שווקים ומוזיאונים, על גבעה שממנה נשקפים מגדלי קנרי וורף. השיטוט באזור, הפארק, המוזיאון הימי ובית המלכה אינם עולים דבר. קו האפס עצמו נמצא בחצר מצפה הכוכבים שהכניסה אליה בתשלום, אבל קטע מהקו מסומן גם מחוץ לחצר ואפשר לעמוד עליו בלי כרטיס.",
+   "desc": "שכונה נהרית עם פארק, שווקים ומוזיאונים, על גבעה שממנה נשקפים מגדלי קנרי וורף. השיטוט באזור, הפארק, המוזיאון הימי ובית המלכה אינם עולים דבר. קו האפס עצמו נמצא בחצר מצפה הכוכבים, שסגור לשיפוץ ארוך.",
    "area": "greenwich",
    "hood": "greenwich",
    "interests": [
@@ -1843,15 +1843,14 @@
     "late"
    ],
    "free": true,
-   "access": "partly_paid",
-   "priceBand": "הפארק חינם, המצפה בתשלום",
+   "access": "free",
+   "priceBand": "הפארק חינם, המצפה סגור לשיפוץ",
    "hours": 4,
    "tube": "Cutty Sark",
    "kids": true,
    "anchor": true,
    "bookAhead": false,
-   "tip": "כדאי להגיע בשיט על התמזה מהמרכז אל מזח גריניץ׳ ולחזור ברכבת הקלה, כך רואים את העיר מהמים בלי להקדיש לזה יום נפרד. התצפית הכי טובה היא מראש הגבעה ליד המצפה, והיא פתוחה לכולם גם בלי כרטיס.",
-   "partlyPaid": true,
+   "tip": "כדאי להגיע בשיט על התמזה מהמרכז אל מזח גריניץ׳ ולחזור ברכבת הקלה, כך רואים את העיר מהמים בלי להקדיש לזה יום נפרד. התצפית הכי טובה היא מראש הגבעה ליד המצפה, והיא בתוך הפארק ופתוחה לכולם.",
    "lat": 51.4769,
    "lng": -0.0005,
    "precision": "approx",
@@ -1866,7 +1865,7 @@
     "accuracy": "approximate"
    },
    "source": "https://www.royalparks.org.uk/visit/parks/greenwich-park",
-   "checked": "2026-10"
+   "checked": "2026-11"
   },
   {
    "id": "maritime-museum",
@@ -4551,7 +4550,7 @@
    "code": "BO",
    "name": "מצפה הכוכבים המלכותי",
    "nameEn": "Royal Observatory Greenwich",
-   "desc": "המקום שבו נקבע קו האורך אפס ושעון גריניץ׳, על גבעה עם אחד הנופים היפים בלונדון. הגבעה, הפארק והנוף סביב המצפה פתוחים ללא עלות, והכניסה למצפה עצמו ולחצר שבה מסומן קו האפס היא בתשלום. חלקים מהמתחם נסגרים לפעמים לעבודות, ולכן כדאי לבדוק באתר הרשמי מה פתוח לפני הביקור.",
+   "desc": "המקום שבו נקבע קו האורך אפס ושעון גריניץ׳, בראש הגבעה של פארק גריניץ׳. כל אתר המצפה, כולל חצר קו האפס והפלנטריום, סגור לשיפוץ ארוך החל מ-2 בנובמבר 2026, ומועד הפתיחה מחדש עוד לא מובטח. הפארק והתצפית מהגבעה פתוחים בלי כרטיס.",
    "area": "greenwich",
    "hood": "greenwich",
    "interests": [
@@ -4563,7 +4562,6 @@
     "viewpoint"
    ],
    "attrs": [
-    "book-ahead",
     "anchor"
    ],
    "audiences": [
@@ -4576,13 +4574,13 @@
     "late"
    ],
    "free": false,
-   "priceBand": "כרטיס בתשלום",
+   "priceBand": "סגור לשיפוץ",
    "hours": 2,
    "tube": "Cutty Sark",
    "kids": true,
    "anchor": true,
-   "bookAhead": true,
-   "tip": "העלייה לגבעה תלולה, אבל התצפית ממנה חינמית גם בלי כרטיס למצפה עצמו.",
+   "bookAhead": false,
+   "tip": "את הנוף מראש הגבעה, ליד פסל הגנרל וולף, אפשר לראות גם בתקופת השיפוץ, כי הוא בתוך הפארק ולא בשטח המצפה.",
    "lat": 51.4769,
    "lng": -0.0005,
    "precision": "exact",
@@ -4594,10 +4592,15 @@
     "source_date": "2026-10-08T20:21:06Z",
     "extract": "greater-london-261008.osm.pbf",
     "method": "existing_representative_point_within_osm_geometry",
-    "accuracy": "exact"
+    "accuracy": "exact",
+    "status": "closed_not_map_eligible",
+    "map_eligible": false,
+    "note": "temporary closure from 2026-11-02 (First Light refurbishment); remove status, map_eligible and closed when it reopens"
    },
-   "source": "https://www.rmg.co.uk/royal-observatory/plan-your-visit",
-   "checked": "2026-10"
+   "source": "https://www.rmg.co.uk/royal-observatory/plan-your-visit/closures",
+   "checked": "2026-11",
+   "closed": true,
+   "closedNote": "סגור לשיפוץ מ-2.11.2026"
   },
   {
    "id": "cutty-sark",

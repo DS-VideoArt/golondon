@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <!-- Google tag (GA4), loaded only on golondon.co.il: see ga4.js -->
+  <script src="/ga4.js?v=1"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ניסוי ביקוש: לא במפת האתר ולא בחיפוש. מקושר רק מהמתכנן ומדפי המדריכים שנבחרו -->
+  <meta name="robots" content="noindex, nofollow" />
+  <title>חוברת טיול אישית לילדים, לפי המסלול שלכם | גו לונדון</title>
+  <meta name="description" content="חוברת טיול אישית לילדים בגילאי 6 עד 10, שנבנית לפי האטרקציות שבחרתם במתכנן של גו לונדון. עובדות, משימות, צביעה וזיכרונות. דף דוגמה להורדה." />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Heebo', sans-serif; direction: rtl; line-height: 1.75; }
+    a { text-decoration: none; }
+    .navbar { padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .logo { direction: ltr; display: flex; align-items: center; gap: 8px; }
+    .logo-img { height: 44px; width: auto; object-fit: contain; }
+    .logo-text-fallback { display: none; align-items: baseline; gap: 2px; }
+    .logo-go, .logo-london { font-size: 22px; font-weight: 900; }
+    .logo-slogan { font-size: 11px; font-weight: 600; direction: rtl; white-space: nowrap; border-right: 1px solid; padding-right: 10px; }
+    .back-btn { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: 8px; border: 1px solid; }
+
+    .jo-wrap { max-width: 860px; margin: 0 auto; padding: 0 20px 56px; }
+    .jo-hero { text-align: center; padding: 44px 8px 26px; }
+    .jo-label { display: inline-block; font-size: 13px; font-weight: 800; padding: 6px 14px; border-radius: 999px;
+      background: rgba(30,58,138,.10); color: var(--navy, #1E3A8A); margin-bottom: 18px; }
+    .jo-hero h1 { font-size: 34px; line-height: 1.25; font-weight: 900; color: var(--ink, #201f2b); margin-bottom: 14px; text-wrap: balance; }
+    .jo-hero h1 span { display: block; color: var(--brand, #DC2626); }
+    .jo-hero p { font-size: 17px; color: var(--ink-soft, #55596b); max-width: 620px; margin: 0 auto 22px; }
+    .jo-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .jo-btn { display: inline-flex; align-items: center; gap: 10px; font-family: inherit; font-size: 16px; font-weight: 800; border: 0; cursor: pointer;
+      padding: 14px 24px; border-radius: 12px; color: #fff !important; background: linear-gradient(135deg, #DC2626, #EA580C); box-shadow: 0 6px 18px rgba(220,38,38,.25); }
+    .jo-btn--ghost { color: var(--navy, #1E3A8A) !important; background: #fff; border: 2px solid var(--navy, #1E3A8A); box-shadow: none; }
+    .jo-btn:focus-visible { outline: 3px solid #1E3A8A; outline-offset: 3px; }
+    .jo-btn[disabled] { opacity: .55; cursor: not-allowed; }
+
+    .jo-card { background: var(--surface, #fff); border: 1px solid var(--line, rgba(32,31,43,.1)); border-radius: 16px; padding: 22px 22px; margin: 18px 0; box-shadow: var(--shadow-sm); }
+    .jo-card h2 { font-size: 20px; font-weight: 800; margin-bottom: 12px; color: var(--ink, #201f2b); }
+    .jo-muted { color: var(--ink-soft, #55596b); font-size: 15px; }
+    .jo-list { list-style: none; display: grid; gap: 10px; }
+    .jo-list li { display: flex; gap: 12px; align-items: flex-start; font-weight: 700; font-size: 15.5px; }
+    .jo-list li i { color: var(--green, #15803D); margin-top: 6px; }
+
+    .jo-price { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+    .jo-price-num { font-size: 40px; font-weight: 900; color: var(--navy, #1E3A8A); line-height: 1; }
+    .jo-price-num small { font-size: 16px; font-weight: 700; color: var(--ink-soft, #55596b); margin-right: 6px; }
+    .jo-notice { border: 1px solid rgba(220,38,38,.35); background: rgba(220,38,38,.06); border-radius: 12px; padding: 12px 14px; font-size: 14.5px; font-weight: 700; margin-top: 14px; }
+
+    .jo-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .jo-shot { display: flex; flex-direction: column; gap: 7px; color: var(--ink); font-size: 13.5px; font-weight: 700; text-align: center; }
+    .jo-shot img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--line); box-shadow: 0 2px 10px rgba(16,24,40,.08); background: #fff; }
+    .jo-shot:focus-visible { outline: 3px solid #1E3A8A; outline-offset: 3px; border-radius: 8px; }
+    .jo-sample-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .jo-hint { font-size: 13px; color: var(--ink-faint, #858a9c); margin-top: 6px; }
+
+    .jo-hp { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .jo-form { display: grid; gap: 14px; }
+    .jo-field label, .jo-field legend { display: block; font-weight: 700; font-size: 14.5px; margin-bottom: 5px; }
+    .jo-field input[type="email"], .jo-field select { width: 100%; font-family: inherit; font-size: 16px; padding: 12px 14px;
+      border: 1px solid rgba(32,31,43,.22); border-radius: 10px; background: #fff; color: var(--ink); }
+    .jo-field input:focus-visible, .jo-field select:focus-visible { outline: 3px solid rgba(30,58,138,.35); border-color: var(--navy); }
+    .jo-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    fieldset.jo-field { border: 0; padding: 0; min-width: 0; }
+    .jo-radios { display: flex; flex-wrap: wrap; gap: 10px; }
+    .jo-radio { display: flex; align-items: center; gap: 8px; border: 1px solid rgba(32,31,43,.22); border-radius: 10px; padding: 10px 14px; font-weight: 700; cursor: pointer; }
+    .jo-radio input { width: 18px; height: 18px; }
+    .jo-radio:has(input:checked) { border-color: var(--navy, #1E3A8A); background: rgba(30,58,138,.06); }
+    .jo-check { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; }
+    .jo-check input { margin-top: 5px; width: 18px; height: 18px; flex: 0 0 18px; }
+    .jo-error { color: #B91C1C; font-size: 14px; font-weight: 700; }
+    .jo-privacy { font-size: 13.5px; color: var(--ink-soft); border-top: 1px solid var(--line); padding-top: 12px; }
+    .jo-state { text-align: center; padding: 28px 18px; }
+    .jo-state h2 { font-size: 22px; margin-bottom: 8px; }
+    .jo-links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 16px; }
+    .jo-link { border: 1px solid var(--line); border-radius: 10px; padding: 10px 16px; font-weight: 700; font-size: 14.5px; color: var(--navy, #1E3A8A); background: #fff; }
+    @media (max-width: 700px) { .jo-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } .jo-shot--wide { grid-column: 1 / -1; } }
+    @media (max-width: 560px) {
+      .navbar { padding: 0 14px; } .logo-slogan { display: none; }
+      .jo-hero { padding-top: 32px; } .jo-hero h1 { font-size: 27px; }
+      .jo-card { padding: 18px 16px; } .jo-two { grid-template-columns: 1fr; }
+      .jo-btn { width: 100%; justify-content: center; }
+    }
+  </style>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="stylesheet" href="accessibility-widget.css" />
+  <link rel="stylesheet" href="theme-light.css?v=16" />
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="logo">
+    <img src="images/logo.png?v=2" alt="גו לונדון" class="logo-img" width="86" height="48" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+    <div class="logo-text-fallback"><span class="logo-go">GO</span><span class="logo-london">LONDON</span></div>
+    <span class="logo-slogan">המדריך הישראלי ללונדון</span>
+  </a>
+  <a href="planner.html" class="back-btn" id="jo-back"><i class="fas fa-arrow-right"></i> חזרה למתכנן</a>
+</nav>
+
+<main class="jo-wrap">
+
+  <section class="jo-hero">
+    <span class="jo-label">בקרוב · עדיין לא זמין לרכישה</span>
+    <h1>המסלול שלכם בלונדון. <span>ההרפתקה שלהם.</span></h1>
+    <p>חוברת טיול אישית לילדים בגילאי 6 עד 10, שנבנית לפי האטרקציות שבחרתם במתכנן. כל עמוד עוסק במקום שבאמת תבקרו בו.</p>
+    <div class="jo-actions" data-jo-open hidden>
+      <a class="jo-btn" id="jo-sample-top" href="samples/kids-journal-sample-big-ben.pdf" download="golondon-kids-journal-sample.pdf"><i class="fas fa-file-pdf"></i> להורדת דף דוגמה</a>
+      <a class="jo-btn jo-btn--ghost" href="#jo-interest"><i class="fas fa-bell"></i> לעדכון כשזה יוצא</a>
+    </div>
+  </section>
+
+  <!-- הניסוי כבוי: רק הכותרת וההודעה הזאת. כל השאר נפתח רק כשהשרת עונה enabled (fail closed) -->
+  <section class="jo-card jo-state" id="jo-not-open">
+    <h2>ההצעה עדיין לא פתוחה</h2>
+    <p class="jo-muted">עדיין לא אפשר לבקש או לרכוש את החוברת. בינתיים אפשר לחזור למתכנן ולהמשיך לתכנן את הטיול.</p>
+    <div class="jo-links">
+      <a class="jo-link" href="planner.html"><i class="fas fa-route"></i> למתכנן</a>
+      <a class="jo-link" href="guide-kids.html"><i class="fas fa-child"></i> לונדון עם ילדים</a>
+    </div>
+  </section>
+
+  <section class="jo-card" data-jo-open hidden>
+    <h2>מה יש בחוברת</h2>
+    <ul class="jo-list">
+      <li><i class="fas fa-circle-check"></i> עובדות מעניינות על כל מקום במסלול</li>
+      <li><i class="fas fa-circle-check"></i> משימות ומשחקים</li>
+      <li><i class="fas fa-circle-check"></i> דפי צביעה</li>
+      <li><i class="fas fa-circle-check"></i> מקום לציורים ולזיכרונות</li>
+      <li><i class="fas fa-circle-check"></i> פעילויות הקשורות למסלול המשפחתי שלכם</li>
+    </ul>
+  </section>
+
+  <section class="jo-card" id="jo-price" data-jo-open hidden>
+    <h2>מחיר מתוכנן</h2>
+    <div class="jo-price">
+      <div class="jo-price-num">14.90 ₪<small>לחוברת, קובץ PDF להדפסה</small></div>
+    </div>
+    <div class="jo-notice" role="note">החוברת עדיין לא זמינה לרכישה. בעמוד הזה אין הזמנה ואין תשלום, ואנחנו לא מתחייבים למועד השקה או לאספקה. אפשר להוריד דף דוגמה ולהשאיר מייל לעדכון חד-פעמי.</div>
+  </section>
+
+  <section class="jo-card" data-jo-open hidden>
+    <h2>ככה זה נראה</h2>
+    <p class="jo-muted">עמודים אמיתיים מחוברת שנבנתה למסלול לדוגמה, בלי שינוי.</p>
+    <!-- העמודים מהספר המאושר: images/journal-offer/SOURCE.json -->
+    <div class="jo-gallery">
+      <a class="jo-shot" href="images/journal-offer/big-ben-module.webp" target="_blank" rel="noopener" aria-label="עמוד מקום מלא, פתיחה בגודל מלא">
+        <picture><source srcset="images/journal-offer/big-ben-module.webp" type="image/webp"><img src="images/journal-offer/big-ben-module.jpg" alt="עמוד מקום לדוגמה על ביג בן: תמונה, הסבר, שלוש עובדות מפתיעות ומשימת חיפוש קטנה" width="1000" height="1416" loading="lazy" decoding="async"></picture>
+        <span>עמוד מקום מלא</span>
+      </a>
+      <a class="jo-shot" href="images/journal-offer/colouring.webp" target="_blank" rel="noopener" aria-label="צביעה וציור, פתיחה בגודל מלא">
+        <picture><source srcset="images/journal-offer/colouring.webp" type="image/webp"><img src="images/journal-offer/colouring.jpg" alt="עמוד צביעה לדוגמה: ביג בן ובתי הפרלמנט לצביעה, עם מקום לציור ולזיכרון מהביקור" width="1000" height="1416" loading="lazy" decoding="async"></picture>
+        <span>צביעה וציור</span>
+      </a>
+      <a class="jo-shot" href="images/journal-offer/passport.webp" target="_blank" rel="noopener" aria-label="דרכון המסע, פתיחה בגודל מלא">
+        <picture><source srcset="images/journal-offer/passport.webp" type="image/webp"><img src="images/journal-offer/passport.jpg" alt="דרכון המסע לדוגמה: כרטיס לכל תחנה ביום, עם משימה קטנה וסימון ביקרנו כאן" width="1000" height="1416" loading="lazy" decoding="async"></picture>
+        <span>דרכון המסע</span>
+      </a>
+    </div>
+    <div class="jo-sample-row">
+      <div>
+        <strong>דף דוגמה להורדה</strong>
+        <p class="jo-hint">שני עמודים על ביג בן מתוך החוברת לדוגמה, קובץ PDF של כ-4.5 MB.</p>
+      </div>
+      <a class="jo-btn" id="jo-sample" href="samples/kids-journal-sample-big-ben.pdf" download="golondon-kids-journal-sample.pdf"><i class="fas fa-file-pdf"></i> להורדת דף הדוגמה</a>
+    </div>
+  </section>
+
+  <section class="jo-card" id="jo-interest" data-jo-open hidden>
+    <h2>מתעניינים? ספרו לנו</h2>
+    <p class="jo-muted">תשובה קצרה עוזרת לנו להחליט אם ומתי להשיק. זה לא הזמנה ולא התחייבות.</p>
+    <form class="jo-form" id="jo-form" novalidate hidden>
+      <div class="jo-field">
+        <label for="jo-email">המייל לעדכון חד-פעמי</label>
+        <input type="email" id="jo-email" name="email" autocomplete="email" inputmode="email" required maxlength="254" />
+      </div>
+      <div class="jo-two">
+        <div class="jo-field">
+          <label for="jo-month">חודש הטיול (לא חובה)</label>
+          <select id="jo-month" name="trip_month"><option value="">עדיין לא יודעים</option></select>
+        </div>
+        <div class="jo-field">
+          <label for="jo-age">גיל הילד (לא חובה)</label>
+          <select id="jo-age" name="child_age"><option value="">בלי לציין</option></select>
+        </div>
+      </div>
+      <fieldset class="jo-field">
+        <legend>הייתם שוקלים לרכוש חוברת כזו ב-14.90 ₪?</legend>
+        <div class="jo-radios">
+          <label class="jo-radio"><input type="radio" name="willing" value="yes" /> כן</label>
+          <label class="jo-radio"><input type="radio" name="willing" value="maybe" /> אולי</label>
+          <label class="jo-radio"><input type="radio" name="willing" value="no" /> לא</label>
+        </div>
+      </fieldset>
+      <label class="jo-check">
+        <input type="checkbox" id="jo-consent" name="consent" required />
+        <span>אני מסכים/ה לקבל מייל אחד בלבד כשהחוברת תהיה זמינה. בלי דיוור נוסף ובלי רשימת תפוצה.</span>
+      </label>
+      <div class="jo-hp" aria-hidden="true">
+        <label for="jo-website">לא למילוי</label>
+        <input type="text" id="jo-website" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+      <p class="jo-error" id="jo-error" role="alert" hidden></p>
+      <div><button class="jo-btn" type="submit" id="jo-submit"><i class="fas fa-paper-plane"></i> שליחה</button></div>
+      <p class="jo-privacy">המייל משמש רק לעדכון חד-פעמי על זמינות החוברת ונמחק אחרי העדכון, ולכל המאוחר אחרי 90 יום. לא נשמרים שם, כתובת או פרטים על הילד מעבר לגיל אם ציינתם. <a href="privacy.html#journal-interest">מדיניות הפרטיות</a></p>
+    </form>
+    <div class="jo-state" id="jo-closed">
+      <p class="jo-muted">הטופס עדיין לא פתוח. בינתיים אפשר להוריד את דף הדוגמה ולהמשיך לתכנן במתכנן.</p>
+    </div>
+    <div class="jo-state" id="jo-success" hidden>
+      <h2>תודה, רשמנו</h2>
+      <p class="jo-muted" id="jo-success-text">נשלח מייל אחד כשהחוברת תהיה זמינה. בינתיים אפשר להמשיך לתכנן את המסלול.</p>
+      <div class="jo-links">
+        <a class="jo-link" href="planner.html"><i class="fas fa-route"></i> למתכנן</a>
+        <a class="jo-link" href="guide-kids.html"><i class="fas fa-child"></i> לונדון עם ילדים</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="accessibility-widget.js?v=2" defer></script>
+<script src="analytics.js?v=5" defer></script>
+<script src="kids-journal-offer.js?v=4" defer></script>
+</body>
+</html>

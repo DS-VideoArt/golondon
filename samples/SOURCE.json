@@ -1,0 +1,12 @@
+{
+ "source_pdf": "golondon-kids-journal build/pdf/1-day-westminster-family.pdf (customer_ready, final render gate PASS, re-rendered 13 Oct 2026 after the approved print-only highlight fix)",
+ "source_sha256": "f0e629eaaf80e420a319b4fab28e6e95b30d808309fbfc3177ca37fd29666134",
+ "pages_taken": [
+  4,
+  5
+ ],
+ "what": "the Big Ben module page and its colouring page of the approved 1-day fixture book, copied without any change (PyMuPDF insert_pdf); metadata cleared of personal fields",
+ "approved_master": "golondon-kids-journal master/big-ben (locked Master v1.0) built through the v1.1 content system; fidelity pinned by system/tests/fidelity.py",
+ "sample_sha256": "1196dfaef96a40b1edfa43578fb046c3731e01d550cd60f456ea2c32139ad6c6",
+ "sample_bytes": 4458458
+}

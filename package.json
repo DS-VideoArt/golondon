@@ -1,0 +1,9 @@
+{
+  "name": "golondon-site",
+  "private": true,
+  "description": "Static site published from the repository root, no build step. These dependencies exist only for Netlify Functions (netlify/functions); node_modules is git-ignored and blocked from the public site in netlify.toml.",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@netlify/blobs": "11.1.4"
+  }
+}

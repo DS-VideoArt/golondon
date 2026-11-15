@@ -16,7 +16,8 @@ os.chdir(ROOT)
 
 # עמודים שאין טעם לחפש בהם
 SKIP = {'404.html', 'admin.html', 'search.html', 'category.html',
-        'privacy.html', 'terms.html', 'accessibility.html', 'disclosure.html'}
+        'privacy.html', 'terms.html', 'accessibility.html', 'disclosure.html',
+        'kids-journal-offer.html'}  # ניסוי ביקוש: noindex, מקושר רק מהמתכנן ומהמדריכים
 
 TYPE_LABEL = {
     'guide': 'מדריך',

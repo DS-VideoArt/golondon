@@ -24,6 +24,9 @@
     var css = [
       '.place{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease;}',
       '.place:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(16,24,40,.08);}',
+      '.kp-details-btn{display:inline-flex;align-items:center;margin-top:8px;font:inherit;font-size:13px;font-weight:800;padding:6px 12px;border-radius:9px;background:rgba(32,31,43,.06);color:#201f2b;border:1px solid rgba(32,31,43,.12);cursor:pointer;}',
+      '.kp-details-btn:hover{background:rgba(32,31,43,.1);}',
+      '.kp-details-btn:focus-visible{outline:2px solid #DC2626;outline-offset:2px;}',
       '.kp-overlay{position:fixed;inset:0;z-index:2000;background:rgba(20,20,30,.46);backdrop-filter:blur(2px);display:none;align-items:flex-end;justify-content:center;}',
       '.kp-overlay.kp-open{display:flex;}',
       '@media(min-width:640px){.kp-overlay.kp-open{align-items:center;padding:24px;}}',
@@ -137,11 +140,25 @@
       var p = byName[name];
       if (!p) return;
       el.__kpWired = true;
-      el.setAttribute('role', 'button');
-      el.setAttribute('tabindex', '0');
-      el.addEventListener('click', function () { open(p); });
-      el.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(p); }
+      /* הכרטיס עצמו אינו כפתור, כי יש בתוכו קישור טלפון. כפתור פרטים
+         אמיתי נותן גישה מהמקלדת, ו Enter/רווח מגיעים ממנו כ click רגיל. */
+      var btn = el.querySelector('.kp-details-btn');
+      if (!btn) {
+        btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'kp-details-btn';
+        btn.textContent = 'פרטים נוספים';
+        btn.setAttribute('aria-label', 'פרטים נוספים על ' + name);
+        btn.setAttribute('aria-haspopup', 'dialog');
+        el.appendChild(btn);
+      }
+      btn.addEventListener('click', function () { open(p); });
+      /* לחיצה על גוף הכרטיס נשארת קיצור דרך, אבל לא על קישורים או
+         כפתורים בתוכו, כדי שהטלפון יחייג בלי לפתוח חלון ובלי כפילות. */
+      el.addEventListener('click', function (e) {
+        var t = e.target && e.target.closest ? e.target.closest('a, button') : null;
+        if (t && el.contains(t)) return;
+        open(p);
       });
     });
   }
