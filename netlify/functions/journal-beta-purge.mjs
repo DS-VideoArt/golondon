@@ -12,10 +12,12 @@
   לא נמחק: slots/NN, שמכיל רק מזהה אקראי ותאריך ומשמש כספירת המכסה.
   המפעיל מוחק בקשה מיד אחרי שהיומן נשלח (docs/journal-beta/BETA_PLAN.md), והמחיקה כאן היא הרשת
   שמבטיחה שגם בקשה שנשכחה לא נשמרת יותר מ-7 ימים ועוד יום ריצה אחד לכל היותר.
+  אחרי המחיקה, כל עוד נשארו בקשות פתוחות, נשלחת תזכורת יומית למפעיל (journal-lib/journal-notify.mjs).
 */
 import { getStore } from '@netlify/blobs';
 import { storeNameFor, RETENTION_DAYS } from './journal-beta-request.mjs';
 import { purgeDownloads, purgeDelivery, deliveryStoreFor } from '../journal-lib/journal-automation.mjs';
+import { formNotifier, notifySafely, pendingDigest } from '../journal-lib/journal-notify.mjs';
 
 export async function purge(store, now) {
   const limit = (now || new Date()).getTime() - RETENTION_DAYS * 864e5;
@@ -35,6 +37,8 @@ export async function purge(store, now) {
   return deleted;
 }
 
+const env = k => (globalThis.Netlify && Netlify.env ? Netlify.env.get(k) : process.env[k]);
+
 /* בפריסה האמיתית המחיקה רצה על journal-beta; בתצוגה מקדימה (Run now) על מאגר הבדיקות */
 export default async (req, context) => {
   const now = new Date();
@@ -43,6 +47,13 @@ export default async (req, context) => {
   deleted.delivery = await purgeDelivery(dName ? getStore({ name: dName, consistency: 'strong' }) : null, dName, now);
   /* ספירה בלבד, בלי מפתחות ובלי תוכן, כדי שאין מידע אישי ביומן הריצה */
   console.log('journal-beta purge', JSON.stringify(deleted));
+  /* תזכורת יומית למפעיל כל עוד יש בקשות פתוחות: טופס Netlify נסתר journal-beta-digest, בלי מידע אישי */
+  const digest = await pendingDigest(getStore({ name: storeNameFor(context), consistency: 'strong' }), now);
+  if (digest.pending > 0) {
+    const sent = await notifySafely(formNotifier(env('DEPLOY_PRIME_URL') || env('URL'), 'journal-beta-digest'),
+      Object.assign({ context: context && context.deploy ? context.deploy.context : '' }, digest));
+    console.log('journal-beta digest', JSON.stringify({ pending: digest.pending, days_left: digest.days_left, sent }));
+  }
   return new Response(null, { status: 204 });
 };
 

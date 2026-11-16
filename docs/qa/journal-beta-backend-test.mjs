@@ -20,6 +20,7 @@ import { getStore } from '@netlify/blobs';
 import { BlobsServer } from '@netlify/blobs/server';
 import { handle, CAP, dedupeKey, storeNameFor } from '../../netlify/functions/journal-beta-request.mjs';
 import { purge } from '../../netlify/functions/journal-beta-purge.mjs';
+import { formNotifier, notifySafely, pendingDigest } from '../../netlify/journal-lib/journal-notify.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const PLACES = JSON.parse(fs.readFileSync(path.join(ROOT, 'planner-data.json'), 'utf8')).attractions;
@@ -147,6 +148,41 @@ await flows(() => new MemoryStore(), 'memory: ');
   await s.set(dedupeKey(SECRET, 'parent@example.com', route2), JSON.stringify({ request_id: 'rdead', created_at: '2026-01-01T00:00:00Z' }));
   const r = await post(s, req());
   ok(r.body.status === 'received' && s.keys('requests/').length === 1, 'stale half-finished claim is recovered, not counted as a duplicate'); }
+
+/* ---- operator notifications (Netlify Forms), no personal data, never failing the request ---- */
+{ const s = new MemoryStore(); const calls = [];
+  const r = await post(s, req(), { notify: async f => { calls.push(f); }, contextName: 'production' });
+  const f = calls[0] || {};
+  ok(r.body.status === 'received' && calls.length === 1 && f.context === 'production' && /^r[0-9a-f]{24}$/.test(f.request_id) && f.created_at && f.expires_at,
+    'accepted request: one alert with context, request id and dates');
+  ok(Object.keys(f).sort().join() === 'context,created_at,expires_at,request_id', 'alert carries no email, name or route');
+  const again = await post(s, req(), { notify: async f => { calls.push(f); } });
+  ok(again.body.status === 'already_received' && calls.length === 1, 'duplicate request: no second alert'); }
+{ const s = new MemoryStore();
+  const r = await post(s, req(), { notify: async () => { throw new Error('forms down'); } });
+  ok(r.status === 200 && r.body.status === 'received' && s.keys('requests/').length === 1, 'alert failure: request still received and stored'); }
+{ const s = new MemoryStore();
+  const r = await post(s, req(), { notify: null });
+  ok(r.status === 200 && r.body.status === 'received', 'no notifier configured: request works as before'); }
+{ const seen = [];
+  const n = formNotifier('https://deploy-preview-9--golondon.netlify.app', 'journal-beta-alert', async (url, init) => { seen.push({ url: String(url), init }); return { ok: true }; });
+  await n({ context: 'deploy-preview', request_id: 'rabc', created_at: 'c', expires_at: 'e' });
+  const q = new URLSearchParams(seen[0].init.body);
+  ok(seen[0].url === 'https://deploy-preview-9--golondon.netlify.app/' && seen[0].init.method === 'POST' && seen[0].init.headers['content-type'] === 'application/x-www-form-urlencoded'
+    && q.get('form-name') === 'journal-beta-alert' && q.get('request_id') === 'rabc' && q.get('context') === 'deploy-preview', 'form notifier posts a urlencoded Netlify form submission to the site root');
+  ok(formNotifier('', 'x') === null && formNotifier('https://x', '') === null, 'form notifier: no site URL or form name means no notifier');
+  const bad = formNotifier('https://x', 'f', async () => ({ ok: false, status: 404 }));
+  const logs = []; const sent = await notifySafely(bad, { a: 1 }, m => logs.push(m));
+  ok(sent === false && logs.length === 1 && /404/.test(logs[0]), 'notifySafely: a failing form post is logged, not thrown'); }
+{ const s = new MemoryStore();
+  ok((await pendingDigest(s, new Date('2026-11-16T06:00:00Z'))).pending === 0, 'digest: empty store has no pending requests');
+  for (const [i, d] of [['2026-11-14T10:00:00Z'], ['2026-11-10T10:00:00Z'], ['2026-11-15T10:00:00Z']].map((x, i) => [i, x[0]])) {
+    const created = new Date(d); const expires = new Date(created.getTime() + 7 * 864e5).toISOString();
+    await s.set('requests/rid' + i, JSON.stringify({ request_id: 'rid' + i, created_at: d, expires_at: expires, email: 'p' + i + '@example.com', first_name: 'נועה', route_code: route2 }));
+  }
+  const g = await pendingDigest(s, new Date('2026-11-16T06:00:00Z'));
+  ok(g.pending === 3 && g.soonest_expires_at === '2026-11-17T10:00:00.000Z' && g.days_left === 1 && g.ids === 'rid1 rid0 rid2', 'digest: count, soonest expiry, days left and ids ordered by expiry');
+  ok(!JSON.stringify(g).includes('example.com') && !JSON.stringify(g).includes('נועה') && !JSON.stringify(g).includes(route2), 'digest carries no email, name or route'); }
 
 /* ---- layer 2: real @netlify/blobs client against the local BlobsServer ---- */
 const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'jb-blobs-'));

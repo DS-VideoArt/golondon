@@ -865,6 +865,23 @@
   <input type="checkbox" name="consent" />
   <input type="text" name="bot-field" />
 </form>
+
+<!-- יומן הילדים, בטא: התראות למפעיל מהפונקציות, בלי מידע אישי (netlify/journal-lib/journal-notify.mjs) -->
+<form name="journal-beta-alert" method="POST" data-netlify="true" hidden>
+  <input type="hidden" name="form-name" value="journal-beta-alert" />
+  <input type="text" name="context" />
+  <input type="text" name="request_id" />
+  <input type="text" name="created_at" />
+  <input type="text" name="expires_at" />
+</form>
+<form name="journal-beta-digest" method="POST" data-netlify="true" hidden>
+  <input type="hidden" name="form-name" value="journal-beta-digest" />
+  <input type="text" name="context" />
+  <input type="text" name="pending" />
+  <input type="text" name="soonest_expires_at" />
+  <input type="text" name="days_left" />
+  <input type="text" name="ids" />
+</form>
 <script src="trip-tray.js?v=8" defer></script>
 <script>
   /* מכניס את "לונדון החודש" ו"החודש הבא" לפי תאריך הגולש. ה-HTML הסטטי בכוונה בלי שם חודש, ולכן לעולם לא מתיישן */

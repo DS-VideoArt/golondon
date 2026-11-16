@@ -27,6 +27,8 @@
 
   לא נשמרים: כתובת IP, שם משפחה, תאריך לידה, גיל, בית ספר, מלון, כתובת, מיקום או תמונה.
   מחיקה: journal-beta-purge.mjs, פעם ביום. פירוט ב-docs/journal-beta/BETA_PLAN.md.
+  התראה למפעיל: אחרי שבקשה נשמרה נשלח submission לטופס Netlify נסתר journal-beta-alert (journal-lib/journal-notify.mjs),
+  ונטליפיי שולח מייל לתיבת Go London. רק מזהה ותאריכים, בלי מידע אישי. כישלון בהתראה לא משפיע על הבקשה.
 
   הפקה אוטומטית (רק כשמוגדר JOURNAL_GITHUB_DISPATCH_TOKEN, ורק בסביבה שיש לה מאגר מסירה מותר, כלומר לא
   production בשלב הזה): אחרי שהבקשה נשמרה נשלח repository_dispatch לעובד (journal-lib/journal-automation.mjs).
@@ -39,6 +41,7 @@ import crypto from 'node:crypto';
 import JournalRoute from '../../journal-beta-route.js';
 import { readRecord, normStatus } from '../journal-lib/journal-state.mjs';
 import { dispatchRequest, dispatcherFor } from '../journal-lib/journal-automation.mjs';
+import { formNotifier, notifySafely } from '../journal-lib/journal-notify.mjs';
 
 export const CAP = 25;
 export const RETENTION_DAYS = 7;
@@ -99,7 +102,7 @@ async function retryExisting(store, requestId, deps, now) {
   return json(200, { ok: true, status: 'already_received' });
 }
 
-/* deps: { store, secret, enabled, loadPlaces, now, newId, dispatcher } */
+/* deps: { store, secret, enabled, loadPlaces, now, newId, dispatcher, notify, contextName } */
 export async function handle(req, deps) {
   const now = deps.now || (() => new Date());
   if (req.method === 'GET') {
@@ -165,6 +168,8 @@ export async function handle(req, deps) {
     await store.delete(slot); await store.delete(dKey);
     return json(500, { code: 'store_failed' });
   }
+  /* התראה למפעיל (Netlify Forms, בלי מידע אישי). כישלון בה לא משנה את התשובה לגולש */
+  await notifySafely(deps.notify, { context: deps.contextName || '', request_id: requestId, created_at: created, expires_at: expires });
   if (deps.dispatcher) {
     const d = await dispatchRequest(store, requestId, deps.dispatcher, now);
     if (d.state !== 'dispatched' && d.state !== 'ready') return DISPATCH_FAILED();
@@ -189,6 +194,8 @@ export default async (req, context) => handle(req, {
   secret: env('JOURNAL_BETA_SECRET') || '',
   enabled: env('JOURNAL_BETA_ENABLED') === 'true',
   loadPlaces: () => loadPlacesFrom(req),
+  notify: formNotifier(env('DEPLOY_PRIME_URL') || env('URL'), 'journal-beta-alert'),
+  contextName: context && context.deploy ? context.deploy.context : '',
   /* שליחה לעובד רק עם אסימון בשרת וגם מאגר מסירה מותר לסביבה. production: אין, ולכן ידני */
   dispatcher: dispatcherFor(context, env('JOURNAL_GITHUB_DISPATCH_TOKEN'))
 });
