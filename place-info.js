@@ -76,6 +76,20 @@
     return cta.deep || cta.href || '#';
   }
 
+  /*
+    התווית הגלויה של קישור יוצא: "אתר רשמי", או "קישור שותפים" ולידו משפט הגילוי.
+    הסיווג מגיע מ-affiliate.js (trustFor), אותו סיווג שנשלח ב-affiliate_click. ספק ישיר
+    בלי עמלה (commercial_direct, למשל Booking) לא מקבל תווית שותפים.
+    כששכבת הקישורים לא בעמוד, קישור רשמי של המקום (cta.custom) עדיין מסומן "אתר רשמי".
+  */
+  function trustHtml(href, isOfficial) {
+    var A = window.GoLondonAffiliate;
+    var t = A && A.trustFor ? A.trustFor(href) : (isOfficial ? { label: 'אתר רשמי', disclosure: '', paid: false } : null);
+    if (!t || !t.label) return '';
+    return '<div class="pi-trust-row"><span class="pi-trust ' + (t.paid ? 'pi-trust--aff' : 'pi-trust--official') + '">' + t.label + '</span>' +
+      (t.disclosure ? '<span class="pi-trust-disc">' + t.disclosure + '</span>' : '') + '</div>';
+  }
+
   function hookAffiliate(tries) {
     tries = tries || 0;
     if (window.GoLondonAffiliate && window.GoLondonAffiliate.whenReady) {
@@ -161,7 +175,13 @@
         'padding:9px 16px;border-radius:10px;border:1px solid #DC2626;background:#fff;',
         'color:#DC2626!important;text-decoration:none!important;}',
       '.pi-extra a:hover{background:#DC2626;color:#fff!important;}',
-      '.pi-extra-n{font-size:12px;color:#858a9c!important;line-height:1.55;margin-top:9px;}',
+      '.pi-extra-n{font-size:12px;color:#5f6577!important;line-height:1.55;margin-top:9px;}',
+      /* תווית הסוג של הקישור, צמודה לכפתור (מ-15.10.2026). אותה תווית ואותו משפט כמו בכרטיסי ההכנסה */
+      '.pi-trust-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-top:8px;}',
+      '.pi-trust{display:inline-flex;align-items:center;font-size:11.5px;font-weight:800;line-height:1.3;padding:3px 9px;border-radius:50px;}',
+      '.pi-trust--aff{background:#FEF3C7;color:#78350F!important;border:1px solid #F59E0B;}',
+      '.pi-trust--official{background:#DCFCE7;color:#14532D!important;border:1px solid #22C55E;}',
+      '.pi-trust-disc{font-size:12px;line-height:1.5;color:#55596b!important;}',
       /* בלוק כרטיסים בתוך עמוד תוכן (פיילוט טיקטס) */
       '.pi-inline{border:1px dashed rgba(220,38,38,.34);background:rgba(220,38,38,.04);border-radius:12px;padding:14px 16px;margin:14px 0 18px;}',
       '.pi-inline-h{font-size:14px;font-weight:800;color:#B91C1C!important;margin-bottom:4px;display:flex;align-items:center;gap:7px;}',
@@ -172,7 +192,7 @@
       '.pi-inline-tq:hover{opacity:.92;}',
       '.pi-inline-of{background:#fff;border:1px solid rgba(32,31,43,.18);color:#201f2b!important;}',
       '.pi-inline-of:hover{background:#F4F2ED;}',
-      '.pi-inline-n{font-size:12px;color:#858a9c!important;line-height:1.55;margin-top:9px;}',
+      '.pi-inline-n{font-size:12px;color:#5f6577!important;line-height:1.55;margin-top:9px;}',
       '@media(max-width:520px){.pi-inline a{width:100%;justify-content:center;}}',
       '.pi-updated{font-size:11.5px;color:#858a9c;margin-top:16px;}',
       '[data-place]{cursor:pointer;}'
@@ -332,6 +352,7 @@
         (e.priceNote ? '<div class="pi-extra-p">' + e.priceNote + '</div>' : '') +
         '<a href="' + ctaUrl(e, id + '__extra') + '" target="_blank" rel="sponsored noopener nofollow">' +
         '<i class="fas ' + (e.icon || 'fa-ship') + '"></i> ' + (e.label || 'לפרטים ולהזמנה') + '</a>' +
+        trustHtml(ctaUrl(e, id + '__extra'), false) +
         /* גילוי נאות קצר צמוד לקישור המסחרי, כשהרשומה מבקשת זאת (פיילוט טיקטס) */
         (e.note ? '<div class="pi-extra-n">' + e.note + '</div>' : '');
       var extraLink = extraEl.querySelector('a');
@@ -367,6 +388,7 @@
         a.addEventListener('click', function () { reportCta(item.cta, id, a); });
       }
       ctaWrap.appendChild(a);
+      if (!item.cta.internal) ctaWrap.insertAdjacentHTML('beforeend', trustHtml(a.href, !!item.cta.custom));
     }
 
     /*
@@ -470,6 +492,7 @@
           (official ? '<a class="pi-inline-of" href="' + escapeHtml(official.href) + '" target="_blank" rel="noopener">' +
             '<i class="fas fa-up-right-from-square"></i> ' + escapeHtml(e.officialLabel || 'האתר הרשמי') + '</a>' : '') +
         '</div>' +
+        trustHtml(ctaUrl(e, id, 'inline'), false) +
         (e.note ? '<div class="pi-inline-n">' + escapeHtml(e.note) + '</div>' : '');
 
       var tq = host.querySelector('.pi-inline-tq');

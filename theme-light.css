@@ -651,8 +651,7 @@ input::placeholder, textarea::placeholder { color: var(--ink-faint) !important; 
 .toast, .toast *,
 .nav-cta, .nav-cta *,
 .popup-waze, .popup-waze *,
-.locate-btn i,
-.splash-title, .splash-title * {
+.locate-btn i {
   color: #fff !important;
 }
 

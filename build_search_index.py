@@ -18,7 +18,8 @@ os.chdir(ROOT)
 SKIP = {'404.html', 'admin.html', 'search.html', 'category.html',
         'privacy.html', 'terms.html', 'accessibility.html', 'disclosure.html',
         'kids-journal-beta.html',   # טיוטת בטא: noindex, לא בחיפוש עד אישור
-        'kids-journal-offer.html'}  # ניסוי ביקוש: noindex, מקושר רק מהמתכנן ומהמדריכים
+        'kids-journal-offer.html',  # ניסוי ביקוש: noindex, מקושר רק מהמתכנן ומהמדריכים
+        'bio.html'}  # עמוד ניווט לקישור בביו של אינסטגרם: noindex, ולא מדריך תוכן
 
 TYPE_LABEL = {
     'guide': 'מדריך',
