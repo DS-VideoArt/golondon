@@ -58,6 +58,16 @@ HEAD = """# נוצר אוטומטית על ידי build_redirects.py. אין ל�
 /planner-areas       /planner?utm_source=facebook&utm_medium=organic_social&utm_campaign=planner_areas_distance_01    301!
 /planner-areas-ig    /planner?utm_source=instagram&utm_medium=bio&utm_campaign=planner_areas_distance_01    301!
 
+# קישורים קבועים לפי יעד וערוץ, מ-17.11.2026. לא נוצר קיצור חדש לכל פוסט.
+# המתכנן ממשיך להשתמש ב-/fb /gr /ig שלמעלה, כדי לא לנתק את רצף המדידה.
+
+/kosher-fb    /kosher-map?utm_source=facebook&utm_medium=page&utm_campaign=kosher-map        301!
+/kosher-gr    /kosher-map?utm_source=facebook&utm_medium=group&utm_campaign=kosher-map       301!
+/kosher-ig    /kosher-map?utm_source=instagram&utm_medium=bio&utm_campaign=kosher-map        301!
+/guides-fb    /guide-areas?utm_source=facebook&utm_medium=page&utm_campaign=guides           301!
+/guides-gr    /guide-areas?utm_source=facebook&utm_medium=group&utm_campaign=guides          301!
+/guides-ig    /guide-areas?utm_source=instagram&utm_medium=bio&utm_campaign=guides           301!
+
 """
 
 
