@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.golondon.journal-beta-daily-check</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/sh</string>
+    <string>/Users/mymac/Library/Application Support/GoLondon/journal-beta/beta-daily-check-launchd.sh</string>
+  </array>
+  <!-- כל בוקר ב-09:00 לפי שעון המחשב. אם המק ישן בשעה הזאת, launchd מריץ את המשימה ברגע ההתעוררות. -->
+  <key>StartCalendarInterval</key>
+  <dict><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+  <!-- גם בכל כניסה למשתמש: רשת ביטחון ליום שבו המק היה כבוי ב-09:00 -->
+  <key>RunAtLoad</key><true/>
+  <key>StandardOutPath</key><string>/Users/mymac/Library/Logs/golondon-journal-beta-launchd.log</string>
+  <key>StandardErrorPath</key><string>/Users/mymac/Library/Logs/golondon-journal-beta-launchd.log</string>
+</dict>
+</plist>
