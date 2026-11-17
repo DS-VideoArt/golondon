@@ -28,6 +28,9 @@
       month_hub_open, whats_new_click, toc_jump, navigation_click,
       form_error, area_guide_open
 
+    בדף הבית בלבד, בהאזנה נפרדת (מ-15.10.2026):
+      homepage_cta_click  destination, component, position. פירוט למטה
+
     מפת הכשרות ומצב סביבי במתכנן:
       map_open          פתיחת מפה, עם האזור ומספר המקומות בו
       filter_used       שימוש בסינון, עם השדה, הערך ומספר התוצאות
@@ -208,6 +211,46 @@
       track('video_click', { video_url: href.slice(0, 100) });
       return;
     }
+  }, true);
+
+  /* ============================================================
+     homepage_cta_click: לחיצות ברכיבי דף הבית (מ-15.10.2026)
+     ============================================================
+     האזנה נפרדת, כדי שהזרימה של האירועים הקיימים למעלה לא תשתנה בכלל:
+     לחיצה על כרטיס נושא עדיין שולחת category_open, חודש עדיין month_select,
+     ובנוסף, רק בדף הבית ורק בתוך רכיב שמסומן data-hcta-component, יוצא
+     אירוע homepage_cta_click אחד בדיוק לכל לחיצה:
+       destination  שם העמוד בלי סיומת (planner, guide-stay, london-may), או
+                    external:<דומיין> לקישור חיצוני. בלי שאילתה ובלי עוגן
+       component    hero, category_grid, planner_preview, month_section,
+                    guide_highlights, trust, community. ערך אחר לא נשלח
+       position     מיקום הקישור בתוך הרכיב, מ-1, לפי סדר הקישורים בעמוד
+     אין כאן טקסט חופשי, מייל או מזהה, רק ערכים קבועים.
+  */
+  var HOME_COMPONENTS = ['hero', 'category_grid', 'planner_preview', 'month_section', 'guide_highlights', 'trust', 'community'];
+
+  function homeDestination(a) {
+    var u;
+    try { u = new URL(a.getAttribute('href') || '', location.href); } catch (err) { return ''; }
+    if (u.origin !== location.origin) return 'external:' + u.hostname.replace(/^www\./, '').slice(0, 50);
+    var name = u.pathname.replace(/\/+$/, '').split('/').pop().replace(/\.html?$/i, '');
+    return (name || 'index').slice(0, 60);
+  }
+
+  document.addEventListener('click', function (e) {
+    if (pageId() !== 'index') return;
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    var box = a.closest('[data-hcta-component]');
+    if (!box) return;
+    var component = box.getAttribute('data-hcta-component');
+    if (HOME_COMPONENTS.indexOf(component) === -1) return;
+    var links = Array.prototype.slice.call(box.querySelectorAll('a[href]'));
+    track('homepage_cta_click', {
+      destination: homeDestination(a),
+      component: component,
+      position: links.indexOf(a) + 1
+    });
   }, true);
 
   /*

@@ -24,20 +24,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!--
-    שתי התמונות האלה הן רקע ב-CSS ולא תגית img, ולכן הדפדפן מגלה אותן
+    תמונת הגיבור היא רקע ב-CSS ולא תגית img, ולכן הדפדפן מגלה אותה
     רק אחרי שהוא מוריד ומפענח את גיליון הסגנון. הטעינה המוקדמת מזיזה
     את הגילוי לרגע קריאת ה-HTML, וזה בדיוק מה שקובע את זמן הציור
     של האלמנט הגדול בעמוד.
-    תמונת הפתיח מסומנת למי שלא ביקש להפחית תנועה, כי מי שביקש
-    לא רואה את הפתיח בכלל ואין טעם להוריד אצלו את הקובץ.
+    במובייל נטענת גרסה חתוכה של אותו תצלום (images/home/hero-mobile.webp),
+    ובמסך רחב התצלום המלא. ה-media כאן זהה לזה שב-style.css, כך שאין הורדה כפולה.
     ה-type חיוני: דפדפן שלא תומך ב-webp מתעלם מהטעינה המוקדמת
     ומוריד את קובץ ה-jpg דרך גיליון הסגנון, בלי הורדה כפולה.
   -->
-  <link rel="preload" as="image" href="images/splash.webp" type="image/webp" fetchpriority="high" media="(prefers-reduced-motion: no-preference)" />
-  <link rel="preload" as="image" href="images/hero.webp" type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="images/home/hero-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 700px)" />
+  <link rel="preload" as="image" href="images/hero.webp" type="image/webp" fetchpriority="high" media="(min-width: 701px)" />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css?v=8" />
+  <link rel="stylesheet" href="style.css?v=9" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -83,82 +83,6 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">דילוג לתוכן הראשי</a>
-
-  <!-- מסך פתיחה -->
-  <div id="splash-screen" role="dialog" aria-label="ברוכים הבאים לגו לונדון">
-    <div class="splash-content">
-      <svg class="splash-flag-icon" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
-        <rect width="60" height="30" fill="#012169"/>
-        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
-        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/>
-        <rect x="25" width="10" height="30" fill="#fff"/>
-        <rect y="12" width="60" height="6" fill="#fff"/>
-        <rect x="27" width="6" height="30" fill="#C8102E"/>
-        <rect y="13.5" width="60" height="3" fill="#C8102E"/>
-      </svg>
-      <!--
-        זו כותרת ויזואלית של מסך הפתיחה בלבד, ולכן היא לא h1.
-        הכותרת הראשית היחידה של העמוד היא זו שבגיבור, וזו שמדברת על תכנון.
-      -->
-      <div class="splash-title">ברוכים הבאים <span class="splash-home">הביתה</span></div>
-    </div>
-  </div>
-  <script>
-    (function() {
-      var splash = document.getElementById('splash-screen');
-      if (!splash) return;
-      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      var navEntries = performance.getEntriesByType ? performance.getEntriesByType('navigation') : [];
-      var navType = navEntries.length ? navEntries[0].type : 'navigate';
-      var referrerIsInternal = false;
-      if (document.referrer) {
-        try { referrerIsInternal = new URL(document.referrer).origin === location.origin; } catch (e) {}
-      }
-      var isFreshEntry = navType === 'reload' || !referrerIsInternal;
-
-      /*
-        פעם אחת לכל ביקור באתר. מי שכבר ראה את הפתיח וחזר לדף הבית
-        באותו ביקור לא רואה אותו שוב. sessionStorage נמחק לבד כשסוגרים
-        את הלשונית, ולכן בביקור הבא הפתיח יופיע כרגיל.
-        גלישה פרטית בחלק מהדפדפנים זורקת כאן חריגה, ולכן try.
-      */
-      var seenThisSession = false;
-      try { seenThisSession = sessionStorage.getItem('gl_splash') === '1'; } catch (e) {}
-
-      if (reduceMotion || !isFreshEntry || seenThisSession) {
-        splash.remove();
-        return;
-      }
-      try { sessionStorage.setItem('gl_splash', '1'); } catch (e) {}
-
-      var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      document.documentElement.classList.add('splash-active');
-      if (scrollbarWidth > 0) { document.body.style.paddingRight = scrollbarWidth + 'px'; }
-
-      function hideSplash() {
-        splash.classList.add('splash-hidden');
-        setTimeout(function () {
-          splash.remove();
-          document.documentElement.classList.remove('splash-active');
-          document.body.style.paddingRight = '';
-        }, 260);
-      }
-
-      /*
-        שנייה ושש עשיריות, ואז דעיכה של עוד רבע שנייה. הוארך מ-600
-        לבקשת בעל האתר: בשש עשיריות הפתיח הרגיש כהבהוב מפריע ולא
-        כקבלת פנים, וההחזקה הנוספת נותנת לזום ולפעימת הזוהר של הרקע
-        (2.2 שניות) מקום לנשום. העמוד נטען מאחורי הפתיח כל הזמן הזה,
-        ולחיצה או Escape עדיין מדלגות מיד.
-      */
-      var timer = setTimeout(hideSplash, 1600);
-      splash.addEventListener('click', function () { clearTimeout(timer); hideSplash(); });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') { clearTimeout(timer); hideSplash(); }
-      });
-    })();
-  </script>
 
   <!-- פס מידע חי -->
   <div class="topbar" id="topbar">
@@ -226,16 +150,17 @@
 
   <main id="main-content" tabindex="-1">
 
-  <!-- גיבור -->
-  <section class="hero">
-    <div class="hero-bg">
-      <div class="hero-glow hero-glow--red"></div>
-      <div class="hero-glow hero-glow--blue"></div>
-    </div>
+  <!--
+    דף הבית הוא שער כניסה. הוא מראה מה יש באתר ולאן הולכים, והתוכן המלא
+    נשאר בעמודי הנושא עצמם. כל רכיב לחיץ כאן מסומן ב-data-hcta-component,
+    ו-analytics.js שולח homepage_cta_click עם היעד, הרכיב והמיקום.
+  -->
 
+  <!-- גיבור: שתי פעולות בלבד -->
+  <section class="hero" id="home-hero" data-hcta-component="hero">
     <div class="hero-content container">
       <div class="hero-badge">
-        <span class="badge-dot"></span>
+        <span class="badge-dot" aria-hidden="true"></span>
         תכנון טיול ללונדון, בעברית
       </div>
       <h1 class="hero-title">
@@ -245,253 +170,128 @@
       <p class="hero-sub">
         בונים מסלול יומי מותאם, מוצאים אוכל כשר על המפה, ויודעים בדיוק למה לצפות בחודש שבו אתם טסים
       </p>
-
       <div class="hero-actions">
         <a href="planner.html" class="btn btn-red btn-glow btn-hero-main">
-          <i class="fas fa-wand-magic-sparkles"></i> בנו לי מסלול
+          <i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i> בנו לי מסלול
         </a>
         <a href="kosher-map.html" class="btn btn-outline btn-hero-sm btn-outline--green">
-          <i class="fas fa-map-location-dot"></i> מפת הכשרות
+          <i class="fas fa-map-location-dot" aria-hidden="true"></i> מפת הכשרות
         </a>
       </div>
-    </div>
-
-    <div class="hero-wave">
-      <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#0a0a1a"/>
-      </svg>
+      <ul class="home-trust" id="home-trust" aria-label="על האתר">
+        <li><i class="fas fa-check" aria-hidden="true"></i> חינם, בלי הרשמה</li>
+        <li><i class="fas fa-check" aria-hidden="true"></i> מידע שנבדק ומתעדכן</li>
+        <li><i class="fas fa-check" aria-hidden="true"></i> בעברית, למטיילים ישראלים</li>
+      </ul>
     </div>
   </section>
 
-
-
-  <!--
-    שכבת התכנון. אלה לא עוד שלושה קישורים באתר, אלה הכלים שבשבילם באים לכאן,
-    ולכן הם יושבים מיד מתחת לגיבור ולפני כל התוכן.
-  -->
-  <section class="why-us" id="tools">
+  <!-- מה אתם צריכים עכשיו: ניווט לפי נושא, בלי קטלוג -->
+  <section class="home-cats" id="categories" data-hcta-component="category_grid" aria-labelledby="home-cats-h">
     <div class="container">
-      <div class="section-header section-header--tools">
-        <h2>הכלים שמתכננים איתם</h2>
-        <p>אלה הדברים שאין באף אתר אחר בעברית, וזו הסיבה שהאתר הזה קיים</p>
+      <div class="home-head">
+        <h2 id="home-cats-h">מה אתם צריכים עכשיו?</h2>
+        <p>בוחרים נושא ומגיעים ישר למדריך המלא שלו</p>
       </div>
-      <div class="why-grid">
-        <a href="planner.html" class="why-card">
-          <span class="why-photo"><picture aria-hidden="true"><source srcset="images/why-planner.webp" type="image/webp"><img src="images/why-planner.jpg" alt="" width="900" height="600" loading="lazy" decoding="async" fetchpriority="low"></picture>
-            <span class="why-chip">הכלי המרכזי שלנו</span>
-          </span>
-          <span class="why-body">
-            <span class="why-icon"><i class="fas fa-wand-magic-sparkles"></i></span>
-            <span class="why-title">אני רוצה שתרכיבו מסלול מושלם עבורי</span>
-            <span class="why-text">לא עוד רשימת אטרקציות לקרוא. עונים על ארבע שאלות ומקבלים מסלול יומי מסודר לפי אזורים, או מרכיבים אותו לבד מתוך יותר מ-150 מקומות, עם הסבר וכפתור הזמנה על כל אחד.</span>
-            <span class="why-link">לבניית המסלול <i class="fas fa-arrow-left"></i></span>
-          </span>
-        </a>
-        <a href="kosher-map.html" class="why-card">
-          <span class="why-photo"><picture aria-hidden="true"><source srcset="images/why-kosher.webp" type="image/webp"><img src="images/why-kosher.jpg" alt="" width="900" height="600" loading="lazy" decoding="async" fetchpriority="low"></picture>
-            <span class="why-chip">77 מקומות על המפה</span>
-          </span>
-          <span class="why-body">
-            <span class="why-icon why-icon--green"><i class="fas fa-map-location-dot"></i></span>
-            <span class="why-title">מפת כשרות שאין בשום מקום</span>
-            <span class="why-text">מסעדות, מאפיות וחנויות כשרות על מפה אחת, עם סינון לפי בשרי, חלבי ומאפייה, וניווט ישיר לכל מקום. זה המידע שהכי קשה למצוא בעברית.</span>
-            <span class="why-link">לפתיחת המפה <i class="fas fa-arrow-left"></i></span>
-          </span>
-        </a>
-        <a href="london-by-month.html" class="why-card">
-          <span class="why-photo"><picture aria-hidden="true"><source srcset="images/why-months.webp" type="image/webp"><img src="images/why-months.jpg" alt="" width="900" height="600" loading="lazy" decoding="async" fetchpriority="low"></picture>
-            <span class="why-chip">12 עמודי חודש</span>
-          </span>
-          <span class="why-body">
-            <span class="why-icon why-icon--blue"><i class="fas fa-calendar-days"></i></span>
-            <span class="why-title">באיזה חודש אתם טסים?</span>
-            <span class="why-text">לכל חודש עמוד משלו: מזג האוויר האמיתי, כמה שעות אור יש, מה קורה בעיר, מה לארוז ומה נגמר אם לא מזמינים מראש.</span>
-            <span class="why-link">לבחירת החודש <i class="fas fa-arrow-left"></i></span>
-          </span>
-        </a>
-      </div>
+      <ul class="hc-grid">
+        <li><a class="hc-tile" href="guide-attractions.html">
+          <span class="hc-icon hc-icon--violet" aria-hidden="true"><i class="fas fa-landmark"></i></span>
+          <span class="hc-text"><span class="hc-title">אטרקציות</span><span class="hc-sub">מה בחינם ומה שווה תשלום</span></span>
+        </a></li>
+        <li><a class="hc-tile" href="guide-stay.html">
+          <span class="hc-icon hc-icon--teal" aria-hidden="true"><i class="fas fa-bed"></i></span>
+          <span class="hc-text"><span class="hc-title">איפה לישון</span><span class="hc-sub">שכונות, מחיר מול מיקום</span></span>
+        </a></li>
+        <li><a class="hc-tile" href="guide-kosher.html">
+          <span class="hc-icon hc-icon--green" aria-hidden="true"><i class="fas fa-utensils"></i></span>
+          <span class="hc-text"><span class="hc-title">אוכל וכשרות</span><span class="hc-sub">בשרי, חלבי ומאפיות לפי אזור</span></span>
+        </a></li>
+        <li><a class="hc-tile" href="guide-transport.html">
+          <span class="hc-icon hc-icon--orange" aria-hidden="true"><i class="fas fa-train-subway"></i></span>
+          <span class="hc-text"><span class="hc-title">תחבורה</span><span class="hc-sub">מהשדה למרכז, תחתית ואוטובוס</span></span>
+        </a></li>
+        <li><a class="hc-tile" href="guide-flight.html">
+          <span class="hc-icon hc-icon--navy" aria-hidden="true"><i class="fas fa-plane-departure"></i></span>
+          <span class="hc-text"><span class="hc-title">לפני הטיסה</span><span class="hc-sub">כניסה לבריטניה, כסף וכבודה</span></span>
+        </a></li>
+        <li><a class="hc-tile" href="guide-kids.html">
+          <span class="hc-icon hc-icon--sky" aria-hidden="true"><i class="fas fa-children"></i></span>
+          <span class="hc-text"><span class="hc-title">עם ילדים</span><span class="hc-sub">מה בחינם, עגלה ויום גשום</span></span>
+        </a></li>
+      </ul>
+      <nav class="hc-more" aria-label="עוד נושאים">
+        <span class="hc-more-label">עוד נושאים:</span>
+        <a href="guide-areas.html">אזורים</a>
+        <a href="guide-events.html">אירועים</a>
+        <a href="guide-attractions-westend.html">הצגות</a>
+        <a href="guide-football.html">כדורגל</a>
+        <a href="guide-winter.html">חורף</a>
+        <a href="guide-mistakes.html">טעויות נפוצות</a>
+        <a href="checklist.html">צ'קליסט</a>
+      </nav>
     </div>
-        <p class="why-more">
-          <a href="checklist.html"><i class="fas fa-square-check"></i> צ'קליסט לפני הטיסה</a>
-          <a href="guide-mistakes.html"><i class="fas fa-triangle-exclamation"></i> הטעויות שכדאי להכיר</a>
-          <a href="before-you-fly.html"><i class="fas fa-suitcase-rolling"></i> לפני שטסים</a>
-        </p>
-      
   </section>
 
-    <section class="categories" id="categories">
+  <!-- בונה המסלול: מה מקבלים -->
+  <section class="home-planner" id="home-planner" data-hcta-component="planner_preview" aria-labelledby="home-planner-h">
     <div class="container">
-      <div class="section-header">
-        <h2>המדריכים שמאחורי התכנון</h2>
-        <p>כשצריך תשובה מדויקת לשאלה אחת. כל נושא הוא אשכול עמודים מלא</p>
-      </div>
-
-      <!-- שורה ראשונה, שני כרטיסים גדולים -->
-      <div class="cat-row cat-row--hero">
-
-        <a href="guide-flight.html" class="cat-card cat-card--large" style="--grad: linear-gradient(135deg, #1E3A8A 0%, #7C3AED 100%);">
-          <picture class="cat-card-bg" aria-hidden="true"><source srcset="images/cat-planning.webp" type="image/webp"><img src="images/cat-planning.jpg" alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low"></picture>
-          <div class="cat-emoji">✈️</div>
-          <h3>תכנון הטיול ללונדון</h3>
-          <ul class="cat-sub">
-            <li>כניסה לבריטניה ומסמכים</li>
-            <li>מזג אוויר וארזה</li>
-            <li>כסף וטעויות נפוצות</li>
+      <div class="hp-card">
+        <div class="hp-photo">
+          <picture>
+            <source srcset="images/why-planner.webp" type="image/webp">
+            <img src="images/why-planner.jpg" alt="" width="900" height="600" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="hp-body">
+          <span class="hp-kicker">הכלי המרכזי שלנו</span>
+          <h2 id="home-planner-h">בונה המסלול: מה מקבלים בסוף?</h2>
+          <ul class="hp-list">
+            <li><i class="fas fa-circle-check" aria-hidden="true"></i> מסלול לפי ימים, כשכל יום מרוכז באזור אחד של העיר</li>
+            <li><i class="fas fa-circle-check" aria-hidden="true"></i> מסלול אוטומטי מכמה שאלות קצרות, או בנייה לבד מתוך יותר מ-150 מקומות</li>
+            <li><i class="fas fa-circle-check" aria-hidden="true"></i> מפה לכל יום, ושיתוף המסלול בקישור</li>
+            <li><i class="fas fa-circle-check" aria-hidden="true"></i> הסבר קצר על כל מקום, וקישור להזמנה כשצריך</li>
           </ul>
-          <span class="cat-link">קראו את המדריך <i class="fas fa-arrow-left"></i></span>
-        </a>
-
-        <a href="guide-attractions.html" class="cat-card cat-card--large" style="--grad: linear-gradient(135deg, #7C3AED 0%, #DB2777 100%);">
-          <picture class="cat-card-bg" aria-hidden="true"><source srcset="images/cat-attractions.webp" type="image/webp"><img src="images/cat-attractions.jpg" alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low"></picture>
-          <div class="cat-emoji">🎡</div>
-          <h3>אטרקציות בלונדון</h3>
-          <ul class="cat-sub">
-            <li>92 מקומות ברשימה המלאה</li>
-            <li>אייקונים ופינות נסתרות</li>
-            <li>מה בחינם ומה שווה תשלום</li>
-          </ul>
-          <span class="cat-link">קראו את המדריך <i class="fas fa-arrow-left"></i></span>
-        </a>
-
-      </div>
-
-      <!-- שורה שנייה, ארבעה כרטיסים בינוניים, כל אחד הוא אשכול עמודים שלם -->
-      <div class="cat-row cat-row--4">
-
-        <a href="guide-transport.html" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #DC2626 0%, #EA580C 100%);">
-          <picture class="cat-card-bg" aria-hidden="true"><source srcset="images/cat-transport.webp" type="image/webp"><img src="images/cat-transport.jpg" alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low"></picture>
-          <div class="cat-emoji">🚇</div>
-          <h3>תחבורה בלונדון</h3>
-          <ul class="cat-sub">
-            <li>מנמל התעופה למרכז</li>
-            <li>רכבת תחתית ואוטובוס</li>
-            <li>כמה זה עולה באמת</li>
-          </ul>
-          <span class="cat-link">קראו את המדריך <i class="fas fa-arrow-left"></i></span>
-        </a>
-
-        <a href="guide-stay.html" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #0F766E 0%, #0891B2 100%);">
-          <picture class="cat-card-bg" aria-hidden="true"><source srcset="images/cat-stay.webp" type="image/webp"><img src="images/cat-stay.jpg" alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low"></picture>
-          <div class="cat-emoji">🏨</div>
-          <h3>לינה בלונדון</h3>
-          <ul class="cat-sub">
-            <li>שש שכונות מומלצות</li>
-            <li>הכלל שחוסך הכי הרבה</li>
-            <li>מחיר מול מיקום</li>
-          </ul>
-          <span class="cat-link">קראו את המדריך <i class="fas fa-arrow-left"></i></span>
-        </a>
-
-        <a href="guide-kosher.html" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #15803D 0%, #65A30D 100%);">
-          <picture class="cat-card-bg" aria-hidden="true"><source srcset="images/cat-kosher.webp" type="image/webp"><img src="images/cat-kosher.jpg" alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low"></picture>
-          <div class="cat-emoji">🥙</div>
-          <h3>אוכל כשר בלונדון</h3>
-          <ul class="cat-sub">
-            <li>77 מקומות בהשגחה</li>
-            <li>לפי אזור בעיר</li>
-            <li>בשרי, חלבי ומאפיות</li>
-          </ul>
-          <span class="cat-link">קראו את המדריך <i class="fas fa-arrow-left"></i></span>
-        </a>
-
-        <a href="guide-kids.html" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #0891B2 0%, #2563EB 100%);">
-          <picture class="cat-card-bg" aria-hidden="true"><source srcset="images/cat-kids.webp" type="image/webp"><img src="images/cat-kids.jpg" alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low"></picture>
-          <div class="cat-emoji">👨‍👩‍👧‍👦</div>
-          <h3>לונדון עם ילדים</h3>
-          <ul class="cat-sub">
-            <li>מה בחינם</li>
-            <li>לזוז עם עגלה</li>
-            <li>מה לעשות ביום גשום</li>
-          </ul>
-          <span class="cat-link">קראו את המדריך <i class="fas fa-arrow-left"></i></span>
-        </a>
-
-        <a href="guide-events.html" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #B91C1C 0%, #7C3AED 100%);">
-          <picture class="cat-card-bg" aria-hidden="true"><source srcset="images/cat-events.webp" type="image/webp"><img src="images/cat-events.jpg" alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low"></picture>
-          <div class="cat-emoji">🎆</div>
-          <h3>אירועים ומועדים</h3>
-          <ul class="cat-sub">
-            <li>בונפייר נייט וקרנבל נוטינג היל</li>
-            <li>טקסים מלכותיים ומרתון</li>
-            <li>מה סגור בכל חג רשמי</li>
-          </ul>
-          <span class="cat-link">קראו את המדריך <i class="fas fa-arrow-left"></i></span>
-        </a>
-
-        <a href="guide-attractions-westend.html" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #7C3AED 0%, #DB2777 100%);">
-            <picture class="cat-card-bg" aria-hidden="true"><source srcset="images/attractions-westend.webp" type="image/webp"><img src="images/attractions-westend.jpg" alt="" width="750" height="1000" loading="lazy" decoding="async" fetchpriority="low"></picture>
-            <div class="cat-emoji">🎭</div>
-            <h3>הצגות ומופעים</h3>
-            <ul class="cat-sub">
-              <li>ווסט אנד, מה רץ עכשיו</li>
-              <li>איך משיגים כרטיס בזול</li>
-              <li>מופעים שמתאימים למשפחות</li>
-            </ul>
-            <span class="cat-link">קראו את המדריך <i class="fas fa-arrow-left"></i></span>
+          <a href="planner.html" class="btn btn-red hp-cta">
+            <i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i> לבניית המסלול
           </a>
-          <a href="guide-football.html" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #15803D 0%, #0F766E 100%);">
-          <picture class="cat-card-bg" aria-hidden="true"><source srcset="images/cat-football.webp" type="image/webp"><img src="images/cat-football.jpg" alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low"></picture>
-          <div class="cat-emoji">⚽</div>
-          <h3>כדורגל בלונדון</h3>
-          <ul class="cat-sub">
-            <li>עשר קבוצות בשתי הליגות</li>
-            <li>איך משיגים כרטיס באמת</li>
-            <li>סיורים באצטדיונים</li>
-          </ul>
-          <span class="cat-link">קראו את המדריך <i class="fas fa-arrow-left"></i></span>
-        </a>
-
-        <a href="guide-winter.html" class="cat-card cat-card--med" style="--grad: linear-gradient(135deg, #1E40AF 0%, #0EA5E9 100%);">
-          <picture class="cat-card-bg" aria-hidden="true"><source srcset="images/cat-winter.webp" type="image/webp"><img src="images/cat-winter.jpg" alt="" width="1200" height="675" loading="lazy" decoding="async" fetchpriority="low"></picture>
-          <div class="cat-emoji">❄️</div>
-          <h3>לונדון בחורף</h3>
-          <ul class="cat-sub">
-            <li>שוקי חורף וחנוכה בלונדון</li>
-            <li>החלקה על קרח ותאורת החג</li>
-            <li>בוקסינג דיי ומזג האוויר</li>
-          </ul>
-          <span class="cat-link">קראו את המדריך <i class="fas fa-arrow-left"></i></span>
-        </a>
-
-      </div>
-
-        <p class="why-more">
-          <a href="guide-areas.html"><i class="fas fa-map-location-dot"></i> חדש: אזורים ושכונות בלונדון</a>
-        </p>
-
-    </div>
-  </section>
-
-    <section class="months-strip" id="months">
-    <div class="container">
-      <div class="section-header">
-        <h2>מתי אתם טסים?</h2>
-        <p>בוחרים חודש ומקבלים מזג אוויר, שעות אור, עומס, מה קורה בעיר ומה כדאי להזמין מראש</p>
-        <!-- לונדון החודש: ב-HTML אין שם חודש, כדי שקורא בלי סקריפט (מנוע חיפוש, מטמון) לא יראה חודש שעבר.
-             הסקריפט בסוף העמוד מכניס את החודש הנוכחי והבא לפי תאריך הגולש, ואין צורך בעדכון חודשי -->
-        <p class="ms-now">📅 לונדון החודש: <a href="london-by-month.html" data-now="cur"><span data-now-name>מזג אוויר ואירועים</span></a>, והחודש הבא: <a href="london-by-month.html" data-now="next"><span data-now-name>מה להזמין מראש</span></a></p>
-      </div>
-      <div class="ms-scroll">
-        <div class="ms-grid">
-          <a href="london-january.html" class="ms-card"><span class="ms-emoji">❄️</span><span class="ms-name">ינואר</span><span class="ms-temp">3 עד 8°</span></a>
-          <a href="london-february.html" class="ms-card"><span class="ms-emoji">🌂</span><span class="ms-name">פברואר</span><span class="ms-temp">3 עד 9°</span></a>
-          <a href="london-march.html" class="ms-card"><span class="ms-emoji">🌼</span><span class="ms-name">מרץ</span><span class="ms-temp">3 עד 10°</span></a>
-          <a href="london-april.html" class="ms-card"><span class="ms-emoji">🌸</span><span class="ms-name">אפריל</span><span class="ms-temp">5 עד 13°</span></a>
-          <a href="london-may.html" class="ms-card"><span class="ms-emoji">🌳</span><span class="ms-name">מאי</span><span class="ms-temp">8 עד 17°</span></a>
-          <a href="london-june.html" class="ms-card"><span class="ms-emoji">☀️</span><span class="ms-name">יוני</span><span class="ms-temp">11 עד 20°</span></a>
-          <a href="london-july.html" class="ms-card"><span class="ms-emoji">🎾</span><span class="ms-name">יולי</span><span class="ms-temp">13 עד 22°</span></a>
-          <a href="london-august.html" class="ms-card"><span class="ms-emoji">🎭</span><span class="ms-name">אוגוסט</span><span class="ms-temp">13 עד 22°</span></a>
-          <a href="london-september.html" class="ms-card"><span class="ms-emoji">🍂</span><span class="ms-name">ספטמבר</span><span class="ms-temp">11 עד 19°</span></a>
-          <a href="london-october.html" class="ms-card"><span class="ms-emoji">🍁</span><span class="ms-name">אוקטובר</span><span class="ms-temp">9 עד 16°</span></a>
-          <a href="london-november.html" class="ms-card"><span class="ms-emoji">🎆</span><span class="ms-name">נובמבר</span><span class="ms-temp">5 עד 11°</span></a>
-          <a href="london-december.html" class="ms-card"><span class="ms-emoji">🎄</span><span class="ms-name">דצמבר</span><span class="ms-temp">2 עד 8°</span></a>
         </div>
       </div>
-      <a href="london-by-month.html" class="ms-all">להשוואה בין כל החודשים <i class="fas fa-arrow-left"></i></a>
-      <a href="guide-winter-christmas.html" class="ms-all ms-season">🎄 מגיעים בדצמבר? כריסמס בלונדון 2026: התאריכים, השווקים ומה פתוח בחג <i class="fas fa-arrow-left"></i></a>
     </div>
   </section>
 
+  <!-- באיזה חודש אתם טסים: תמונה אמיתית מלונדון לכל חודש -->
+  <section class="home-months" id="months" data-hcta-component="month_section" aria-labelledby="home-months-h">
+    <div class="container">
+      <div class="home-head">
+        <h2 id="home-months-h">באיזה חודש אתם טסים?</h2>
+        <p>לכל חודש עמוד משלו: מזג האוויר, שעות האור, מה קורה בעיר ומה להזמין מראש</p>
+        <!-- לונדון החודש: ב-HTML אין שם חודש, כדי שקורא בלי סקריפט (מנוע חיפוש, מטמון) לא יראה חודש שעבר.
+             הסקריפט בסוף העמוד מכניס את החודש הנוכחי והבא לפי תאריך הגולש, ואין צורך בעדכון חודשי -->
+        <p class="ms-now">לונדון החודש: <a href="london-by-month.html" data-now="cur"><span data-now-name>מזג אוויר ואירועים</span></a>, והחודש הבא: <a href="london-by-month.html" data-now="next"><span data-now-name>מה להזמין מראש</span></a></p>
+      </div>
+      <ul class="hm-grid">
+        <li><a class="hm-card" href="london-january.html"><picture><source type="image/avif" srcset="images/home/month-january-320.avif 320w, images/home/month-january-560.avif 560w" sizes="(max-width: 620px) 31vw, 190px"><source type="image/webp" srcset="images/home/month-january-320.webp 320w, images/home/month-january-560.webp 560w" sizes="(max-width: 620px) 31vw, 190px"><img src="images/home/month-january-320.jpg" alt="" width="320" height="240" loading="lazy" decoding="async"></picture><span class="hm-label"><span class="hm-name">ינואר</span><span class="hm-temp">3 עד 8°</span></span></a></li>
+        <li><a class="hm-card" href="london-february.html"><picture><source type="image/avif" srcset="images/home/month-february-320.avif 320w, images/home/month-february-560.avif 560w" sizes="(max-width: 620px) 31vw, 190px"><source type="image/webp" srcset="images/home/month-february-320.webp 320w, images/home/month-february-560.webp 560w" sizes="(max-width: 620px) 31vw, 190px"><img src="images/home/month-february-320.jpg" alt="" width="320" height="240" loading="lazy" decoding="async"></picture><span class="hm-label"><span class="hm-name">פברואר</span><span class="hm-temp">3 עד 9°</span></span></a></li>
+        <li><a class="hm-card" href="london-march.html"><picture><source type="image/avif" srcset="images/home/month-march-320.avif 320w, images/home/month-march-560.avif 560w" sizes="(max-width: 620px) 31vw, 190px"><source type="image/webp" srcset="images/home/month-march-320.webp 320w, images/home/month-march-560.webp 560w" sizes="(max-width: 620px) 31vw, 190px"><img src="images/home/month-march-320.jpg" alt="" width="320" height="240" loading="lazy" decoding="async"></picture><span class="hm-label"><span class="hm-name">מרץ</span><span class="hm-temp">3 עד 10°</span></span></a></li>
+        <li><a class="hm-card" href="london-april.html"><picture><source type="image/avif" srcset="images/home/month-april-320.avif 320w, images/home/month-april-560.avif 560w" sizes="(max-width: 620px) 31vw, 190px"><source type="image/webp" srcset="images/home/month-april-320.webp 320w, images/home/month-april-560.webp 560w" sizes="(max-width: 620px) 31vw, 190px"><img src="images/home/month-april-320.jpg" alt="" width="320" height="240" loading="lazy" decoding="async"></picture><span class="hm-label"><span class="hm-name">אפריל</span><span class="hm-temp">5 עד 13°</span></span></a></li>
+        <li><a class="hm-card" href="london-may.html"><picture><source type="image/avif" srcset="images/home/month-may-320.avif 320w, images/home/month-may-560.avif 560w" sizes="(max-width: 620px) 31vw, 190px"><source type="image/webp" srcset="images/home/month-may-320.webp 320w, images/home/month-may-560.webp 560w" sizes="(max-width: 620px) 31vw, 190px"><img src="images/home/month-may-320.jpg" alt="" width="320" height="240" loading="lazy" decoding="async"></picture><span class="hm-label"><span class="hm-name">מאי</span><span class="hm-temp">8 עד 17°</span></span></a></li>
+        <li><a class="hm-card" href="london-june.html"><picture><source type="image/avif" srcset="images/home/month-june-320.avif 320w, images/home/month-june-560.avif 560w" sizes="(max-width: 620px) 31vw, 190px"><source type="image/webp" srcset="images/home/month-june-320.webp 320w, images/home/month-june-560.webp 560w" sizes="(max-width: 620px) 31vw, 190px"><img src="images/home/month-june-320.jpg" alt="" width="320" height="240" loading="lazy" decoding="async"></picture><span class="hm-label"><span class="hm-name">יוני</span><span class="hm-temp">11 עד 20°</span></span></a></li>
+        <li><a class="hm-card" href="london-july.html"><picture><source type="image/avif" srcset="images/home/month-july-320.avif 320w, images/home/month-july-560.avif 560w" sizes="(max-width: 620px) 31vw, 190px"><source type="image/webp" srcset="images/home/month-july-320.webp 320w, images/home/month-july-560.webp 560w" sizes="(max-width: 620px) 31vw, 190px"><img src="images/home/month-july-320.jpg" alt="" width="320" height="240" loading="lazy" decoding="async"></picture><span class="hm-label"><span class="hm-name">יולי</span><span class="hm-temp">13 עד 22°</span></span></a></li>
+        <li><a class="hm-card" href="london-august.html"><picture><source type="image/avif" srcset="images/home/month-august-320.avif 320w, images/home/month-august-560.avif 560w" sizes="(max-width: 620px) 31vw, 190px"><source type="image/webp" srcset="images/home/month-august-320.webp 320w, images/home/month-august-560.webp 560w" sizes="(max-width: 620px) 31vw, 190px"><img src="images/home/month-august-320.jpg" alt="" width="320" height="240" loading="lazy" decoding="async"></picture><span class="hm-label"><span class="hm-name">אוגוסט</span><span class="hm-temp">13 עד 22°</span></span></a></li>
+        <li><a class="hm-card" href="london-september.html"><picture><source type="image/avif" srcset="images/home/month-september-320.avif 320w, images/home/month-september-560.avif 560w" sizes="(max-width: 620px) 31vw, 190px"><source type="image/webp" srcset="images/home/month-september-320.webp 320w, images/home/month-september-560.webp 560w" sizes="(max-width: 620px) 31vw, 190px"><img src="images/home/month-september-320.jpg" alt="" width="320" height="240" loading="lazy" decoding="async"></picture><span class="hm-label"><span class="hm-name">ספטמבר</span><span class="hm-temp">11 עד 19°</span></span></a></li>
+        <li><a class="hm-card" href="london-october.html"><picture><source type="image/avif" srcset="images/home/month-october-320.avif 320w, images/home/month-october-560.avif 560w" sizes="(max-width: 620px) 31vw, 190px"><source type="image/webp" srcset="images/home/month-october-320.webp 320w, images/home/month-october-560.webp 560w" sizes="(max-width: 620px) 31vw, 190px"><img src="images/home/month-october-320.jpg" alt="" width="320" height="240" loading="lazy" decoding="async"></picture><span class="hm-label"><span class="hm-name">אוקטובר</span><span class="hm-temp">9 עד 16°</span></span></a></li>
+        <li><a class="hm-card" href="london-november.html"><picture><source type="image/avif" srcset="images/home/month-november-320.avif 320w, images/home/month-november-560.avif 560w" sizes="(max-width: 620px) 31vw, 190px"><source type="image/webp" srcset="images/home/month-november-320.webp 320w, images/home/month-november-560.webp 560w" sizes="(max-width: 620px) 31vw, 190px"><img src="images/home/month-november-320.jpg" alt="" width="320" height="240" loading="lazy" decoding="async"></picture><span class="hm-label"><span class="hm-name">נובמבר</span><span class="hm-temp">5 עד 11°</span></span></a></li>
+        <li><a class="hm-card" href="london-december.html"><picture><source type="image/avif" srcset="images/home/month-december-320.avif 320w, images/home/month-december-560.avif 560w" sizes="(max-width: 620px) 31vw, 190px"><source type="image/webp" srcset="images/home/month-december-320.webp 320w, images/home/month-december-560.webp 560w" sizes="(max-width: 620px) 31vw, 190px"><img src="images/home/month-december-320.jpg" alt="" width="320" height="240" loading="lazy" decoding="async"></picture><span class="hm-label"><span class="hm-name">דצמבר</span><span class="hm-temp">2 עד 8°</span></span></a></li>
+      </ul>
+      <div class="hm-links">
+        <a href="london-by-month.html" class="hm-all">להשוואה בין כל החודשים <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+        <a href="guide-winter-christmas.html" class="hm-all hm-season">מגיעים בדצמבר? כריסמס בלונדון 2026: התאריכים, השווקים ומה פתוח בחג <i class="fas fa-arrow-left" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- מדריכים נבחרים: מה שרלוונטי עכשיו. נבנה אוטומטית, ראו ההערה שבתוך הבלוק -->
+  <div class="home-guides" id="home-guides" data-hcta-component="guide_highlights">
   <!--
     מה חדש בלונדון. המקטע הזה נבנה אוטומטית מ-whats-new.json על ידי
     build_whats_new.py, ואין לערוך אותו ביד. כל מה שבין שני הסימנים
@@ -587,74 +387,50 @@
     </template>
   </section>
   <!-- WHATS-NEW:END -->
+  </div>
 
-  <!--
-    שכבת הזמן. הכניסה המהירה לחודש הנסיעה, ישירות מדף הבית.
-    כתוב כ-HTML סטטי ולא נבנה בג'אווהסקריפט, כדי שגוגל יראה את שנים עשר
-    הקישורים הפנימיים האלה, וכדי לא להוסיף עבודה לדפדפן בטעינת דף הבית.
-  -->
-  
-
-  <!-- קטגוריות ראשיות -->
-  
-
-
-  <!-- חמש טעויות נפוצות, קטן, ומתחתן מעבר לבונה המסלול -->
-  <section class="mistakes" id="routes">
+  <!-- איך אנחנו בודקים מידע: קצר, והפירוט בעמודי אודות וגילוי נאות -->
+  <section class="home-method" id="home-method" data-hcta-component="trust" aria-labelledby="home-method-h">
     <div class="container">
-      <div class="mistakes-head">
-        <span class="mistakes-tag">🧭 לפני שמתחילים</span>
-        <h2>חמש טעויות שכמעט כולם עושים</h2>
+      <div class="hmt-card">
+        <h2 id="home-method-h">איך אנחנו בודקים מידע</h2>
+        <ul class="hmt-list">
+          <li><i class="fas fa-calendar-check" aria-hidden="true"></i><span><strong>תאריך בדיקה גלוי.</strong> מחירים ורשימת המקומות הכשרים מציגים מתי נבדקו לאחרונה.</span></li>
+          <li><i class="fas fa-landmark" aria-hidden="true"></i><span><strong>האתר הרשמי של המקום.</strong> כשיש לו אתר רשמי, הקישור אליו מסומן "אתר רשמי".</span></li>
+          <li><i class="fas fa-handshake" aria-hidden="true"></i><span><strong>קישורי שותפים מסומנים.</strong> ליד קישור כזה כתוב שאם תבוצע הזמנה דרכו, GoLondon עשויה לקבל עמלה.</span></li>
+        </ul>
+        <p class="hmt-more">
+          <a href="about.html">מי אנחנו</a>
+          <a href="disclosure.html">גילוי נאות</a>
+        </p>
       </div>
-      <ol class="mistakes-list">
-        <li><strong>לתכנן לפי רשימה ולא לפי מפה.</strong> מעבר מקצה אחד של לונדון לשני שורף יותר משעה לכל כיוון. יום אחד, אזור אחד.</li>
-        <li><strong>לדחוס שש עצירות ליום.</strong> המוזיאון הבריטי לבדו בולע חצי יום. שלוש עצירות זה המספר שעובד.</li>
-        <li><strong>לא להזמין מראש את מה שנגמר.</strong> הסקיי גארדן וסיור האולפנים של הארי פוטר נגמרים שבועות מראש, והסקיי גארדן בכלל חינם.</li>
-        <li><strong>לבחור לינה לפי מרחק מהמרכז.</strong> מה שקובע הוא כמה דקות הליכה לתחנה. אזור 2 ליד תחנה עדיף על אזור 1 רחוק ממנה.</li>
-        <li><strong>להצמיד כרטיסים שונים בכניסה וביציאה.</strong> המערכת רואה שתי נסיעות לא גמורות וגובה מחיר מלא על שתיהן.</li>
-      </ol>
-      <a href="guide-mistakes.html" class="mistakes-cta">
-            <i class="fas fa-triangle-exclamation"></i>
-            עוד שבע טעויות, וההסבר המלא
-          </a>
-          <a href="planner.html" class="mistakes-cta">
-        <i class="fas fa-wand-magic-sparkles"></i> בנו לי מסלול שנמנע מכל אלה
-      </a>
     </div>
   </section>
 
-  <!-- באנר קהילה -->
-  <section class="community-banner" id="community">
-    <div class="community-glow"></div>
+  <!-- הקהילה -->
+  <section class="community-banner home-community" id="community" data-hcta-component="community" aria-labelledby="home-community-h">
     <div class="container">
-      <div class="banner-inner">
-        <div class="banner-text">
-          <div class="banner-badge"><i class="fas fa-users"></i> הקהילה שלנו</div>
-          <h2>הקהילה הישראלית בלונדון</h2>
-          <p>שאלו שאלות, קבלו עצות, מצאו חברים, ביחד הרבה יותר קל</p>
-          <div class="social-strip">
-            <a href="https://www.facebook.com/groups/golondonisrael?locale=he_IL" target="_blank" rel="noopener" class="social-tile social-fb">
-              <i class="fab fa-facebook-f"></i>
-              <span class="social-name">פייסבוק</span>
-              <span class="social-sub">הקבוצה שבה שואלים ועונים</span>
-            </a>
-            <a href="https://www.instagram.com/go.london.group/" target="_blank" rel="noopener" class="social-tile social-ig">
-              <i class="fab fa-instagram"></i>
-              <span class="social-name">אינסטגרם</span>
-              <span class="social-sub">תמונות, טיפים ועדכונים</span>
-            </a>
-            <a href="https://www.tiktok.com/@golondon.il" target="_blank" rel="noopener" class="social-tile social-tt">
-              <i class="fab fa-tiktok"></i>
-              <span class="social-name">טיקטוק</span>
-              <span class="social-sub">לונדון בסרטונים קצרים</span>
-            </a>
-          </div>
+      <div class="hcm-inner">
+        <div class="hcm-text">
+          <h2 id="home-community-h">הקהילה הישראלית בלונדון</h2>
+          <p>שואלים, מתייעצים ומשתפים טיפים עם ישראלים שכבר היו שם</p>
         </div>
-        <div class="banner-visual">
-          <div class="fb-bubble fb-bubble--1">🤔 כמה עולה שכירות בלונדון?</div>
-          <div class="fb-bubble fb-bubble--2">💬 247 תגובות</div>
-          <div class="fb-bubble fb-bubble--3">❓ מה הכי כדאי לעשות בשלושה ימים?</div>
-          <div class="fb-bubble fb-bubble--4">💬 89 תגובות</div>
+        <div class="social-strip">
+          <a href="https://www.facebook.com/groups/golondonisrael?locale=he_IL" target="_blank" rel="noopener" class="social-tile social-fb">
+            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+            <span class="social-name">פייסבוק</span>
+            <span class="social-sub">הקבוצה שבה שואלים ועונים</span>
+          </a>
+          <a href="https://www.instagram.com/go.london.group/" target="_blank" rel="noopener" class="social-tile social-ig">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+            <span class="social-name">אינסטגרם</span>
+            <span class="social-sub">תמונות, טיפים ועדכונים</span>
+          </a>
+          <a href="https://www.tiktok.com/@golondon.il" target="_blank" rel="noopener" class="social-tile social-tt">
+            <i class="fab fa-tiktok" aria-hidden="true"></i>
+            <span class="social-name">טיקטוק</span>
+            <span class="social-sub">לונדון בסרטונים קצרים</span>
+          </a>
         </div>
       </div>
     </div>
@@ -665,7 +441,7 @@
     <div class="container">
       <div class="newsletter-inner">
         <div class="newsletter-text">
-          <h3><i class="fas fa-envelope"></i> שנעדכן אתכם כשיהיה משהו ששווה?</h3>
+          <h2 class="nl-title"><i class="fas fa-envelope" aria-hidden="true"></i> שנעדכן אתכם כשיהיה משהו ששווה?</h2>
           <p>נשלח רק כשיוצא מדריך חדש או כשמשהו משמעותי משתנה בלונדון, לא יותר מפעם בחודש. אפשר להסיר את עצמכם בכל רגע, בלחיצה אחת.</p>
         </div>
         <form class="newsletter-form" name="golondon-newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleNewsletter(event)">
@@ -700,7 +476,7 @@
           </div>
         </div>
         <div class="footer-col">
-          <h4>נושאים</h4>
+          <h2 class="footer-h">נושאים</h2>
           <ul>
             <li><a href="before-you-fly.html">🧳 לפני שטסים</a></li>
             <li><a href="before-you-fly">✈️ תכנון הטיול</a></li>
@@ -712,7 +488,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>עוד נושאים</h4>
+          <h2 class="footer-h">עוד נושאים</h2>
           <ul>
             <li><a href="/guide-attractions-westend">🎭 הצגות ומופעים</a></li>
             <li><a href="category.html?cat=תרבות">🎨 תרבות ואמנות</a></li>
@@ -724,13 +500,13 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>צור קשר</h4>
+          <h2 class="footer-h">צור קשר</h2>
           <ul class="contact-list">
             <li><i class="fab fa-facebook"></i><a href="https://www.facebook.com/groups/golondonisrael?locale=he_IL" target="_blank">קבוצת הפייסבוק</a></li>
             <li><i class="far fa-envelope"></i><a href="mailto:go.london.group@gmail.com">go.london.group@gmail.com</a></li>
             <li><i class="fas fa-paper-plane"></i><a href="contact.html">עמוד יצירת קשר</a></li>
           </ul>
-          <h4 style="margin-top:24px">מידע משפטי</h4>
+          <h2 class="footer-h" style="margin-top:24px">מידע משפטי</h2>
           <ul>
             <li><a href="about.html">אודות</a></li>
             <li><a href="contact.html#partners">פרסום באתר</a></li>
@@ -754,96 +530,7 @@
     </div>
   </footer>
 
-  <!-- באנר מרחף מפת כשרות -->
-  <div class="kosher-float" id="kosherFloat">
-    <button class="kosher-float-close" onclick="closeKosherBanner()" aria-label="סגור">✕</button>
-
-    <!-- מובייל בלבד -->
-    <a href="kosher-map.html" class="kosher-float-mobile">
-      <span class="kosher-float-icon">🗺️</span>
-      <span class="kosher-float-text">
-        <strong>🆕 מפת כשרות לונדון</strong>
-        <span>77 מקומות כשרים עם ניווט וויז</span>
-      </span>
-      <span class="kosher-float-btn">פתח</span>
-    </a>
-
-    <!-- דסקטופ בלבד -->
-    <a href="kosher-map.html" class="kosher-float-desktop">
-      <div class="kfd-visual">
-        <div class="kfd-map-emoji">🗺️</div>
-        <div class="kfd-dots">
-          <span></span><span></span><span></span>
-          <span></span><span></span><span></span>
-          <span></span><span></span><span></span>
-        </div>
-      </div>
-      <div class="kfd-body">
-        <span class="kfd-badge">🆕 חדש באתר</span>
-        <h3 class="kfd-title">מפת כשרות<br/>לונדון</h3>
-        <p class="kfd-sub">המדריך הכשר המלא לבירה הבריטית</p>
-        <div class="kfd-stats">
-          <div class="kfd-stat"><span class="kfd-stat-num">77</span><span class="kfd-stat-label">מקומות</span></div>
-          <div class="kfd-stat-div"></div>
-          <div class="kfd-stat"><span class="kfd-stat-num">4</span><span class="kfd-stat-label">קטגוריות</span></div>
-        </div>
-        <ul class="kfd-features">
-          <li><i class="fas fa-check-circle"></i> ניווט ישיר בוויז</li>
-          <li><i class="fas fa-check-circle"></i> בשרי · חלבי · מאפיות · חנויות</li>
-          <li><i class="fas fa-check-circle"></i> כתובות ומידע כשרות</li>
-        </ul>
-        <span class="kfd-btn">
-          <i class="fas fa-map-marked-alt"></i> פתח את המפה
-        </span>
-        <p class="kfd-free">חינמי לחלוטין</p>
-      </div>
-    </a>
-  </div>
-
   <script src="script.js?v=4"></script>
-  <script>
-    /*
-      באנר מפת הכשרות. לא קופץ על מי שרק הגיע: מופיע פעם אחת אחרי
-      שהגולש עבר 60 אחוזים מהעמוד, וסגירה מכבדת אותו לשבעה ימים.
-      כשהאחסון חסום הסגירה עדיין תופסת לאותה צפייה, בלי שגיאות.
-    */
-    (function () {
-      var KEY = 'golondon_kosher_float_closed_at';
-      var WEEK = 7 * 24 * 60 * 60 * 1000;
-      var shown = false;
-
-      function closedRecently() {
-        try {
-          var t = parseInt(localStorage.getItem(KEY) || '0', 10);
-          return t && (Date.now() - t) < WEEK;
-        } catch (e) { return false; }
-      }
-
-      function maybeShow() {
-        if (shown) return;
-        var doc = document.documentElement;
-        var scrollable = doc.scrollHeight - window.innerHeight;
-        if (scrollable <= 0) return;
-        if ((window.scrollY / scrollable) < 0.6) return;
-        shown = true;
-        window.removeEventListener('scroll', maybeShow);
-        document.getElementById('kosherFloat').classList.add('kosher-float--visible');
-      }
-
-      if (!closedRecently()) {
-        window.addEventListener('scroll', maybeShow, { passive: true });
-      }
-
-      window.closeKosherBanner = function () {
-        try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
-        shown = true;
-        window.removeEventListener('scroll', maybeShow);
-        var el = document.getElementById('kosherFloat');
-        el.classList.remove('kosher-float--visible');
-        setTimeout(function () { el.style.display = 'none'; }, 400);
-      };
-    })();
-  </script>
 <script src="accessibility-widget.js?v=2" defer></script>
 <script src="install-prompt.js" defer></script>
 <script src="whats-new.js?v=2" defer></script>
@@ -873,8 +560,15 @@
     var d = new Date(), c = d.getMonth(), y = d.getFullYear(), n = (c + 1) % 12, ny = n === 0 ? y + 1 : y;
     function set(el, i, yr) { if (!el) return; el.setAttribute('href', 'london-' + M[i][0] + '.html'); var t = el.querySelector('[data-now-name]') || el.querySelector('.m-now-name') || el; t.textContent = (el.classList.contains('m-now-card') ? M[i][2] + ' ' : '') + M[i][1] + ' ' + yr; }
     set(document.querySelector('[data-now="cur"]'), c, y); set(document.querySelector('[data-now="next"]'), n, ny);
+    /* כרטיס החודש הנוכחי במקטע החודשים מקבל מסגרת ותווית "החודש". התווית ממוקמת מעל התמונה, בלי להזיז דבר.
+       ההשוואה על הנתיב שהדפדפן פענח ולא על טקסט ה-href: נטליפיי מגישה את london-october.html כ-/london-october */
+    var want = 'london-' + M[c][0], card = null, cards = document.querySelectorAll('.hm-card');
+    for (var i = 0; i < cards.length && !card; i++) {
+      if (cards[i].pathname.split('/').pop().replace(/\.html?$/i, '') === want) card = cards[i];
+    }
+    if (card) { card.classList.add('is-now'); var b = document.createElement('span'); b.className = 'hm-now'; b.textContent = 'החודש'; card.appendChild(b); card.setAttribute('aria-current', 'date'); }
   })();
 </script>
-<script src="analytics.js?v=5" defer></script>
+<script src="analytics.js?v=6" defer></script>
 </body>
 </html>

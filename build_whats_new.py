@@ -227,7 +227,7 @@ def head(title, desc, canonical, image, extra_ld=''):
 
 FOOT = '''</main>
 <script src="accessibility-widget.js" defer></script>
-<script src="place-info.js?v=11" defer></script>
+<script src="place-info.js?v=12" defer></script>
 <script src="trip-tray.js?v=7" defer></script>
 <script src="kosher-places-modal.js?v=4" defer></script>
 <script src="auto-link-places.js?v=4" defer></script>
