@@ -8,17 +8,20 @@
   3. מקודד מחדש את תמונות הרקע הגדולות (PNG עם שקיפות) כ-JPEG באותן מידות.
 ואז מאמת מול המקור: אותו מספר עמודים, אותו טקסט בכל עמוד, ושינוי פיקסלים קטן בכל עמוד.
 אם התוצאה עדיין מעל 18 MB (הגבול הבטוח לצרופה ב-Gmail), מנסה שוב ב-150 dpi, ואם גם זה לא מספיק
-מפצל לשני חלקים. לא נוגע בטקסט, בפונטים, בווקטורים ובדפוסים.
+מפצל לחלקים לפי עמודים שלמים: כל חלק נמדד בפועל ונשמר רק אם הוא מתחת לגבול, והחלקים נבדקים יחד מול המקור
+(כל העמודים, באותו סדר, אותו טקסט, שינוי פיקסלים קטן). סכום החלקים גדול מהגבול למייל אחד, ולכן הסקריפט מורה
+לשלוח כל חלק במייל נפרד. לא נוגע בטקסט, בפונטים, בווקטורים ובדפוסים.
 
 שימוש (מתיקיית המאגר golondon-kids-journal, אחרי journal_job.py):
     python3 shrink-journal-for-email.py build/pdf/<request_id>.pdf
-יוצר build/pdf/<request_id>-email.pdf (או -email-part1.pdf ו--email-part2.pdf). צריך pymupdf ו-Pillow.
+יוצר build/pdf/<request_id>-email.pdf (או -email-part1.pdf, -email-part2.pdf, ...). צריך pymupdf ו-Pillow.
+לבדיקות בלבד: המשתנה JOURNAL_EMAIL_LIMIT_MB מקטין את הגבול כדי לאלץ פיצול על יומן קטן.
 """
 import hashlib, io, os, re, sys, time
 import fitz
 from PIL import Image
 
-LIMIT = 18 * 1024 * 1024          # גבול בטוח לצרופה אחת ב-Gmail (המגבלה הרשמית 25 MB כוללת קידוד)
+LIMIT = int(float(os.environ.get('JOURNAL_EMAIL_LIMIT_MB') or 18) * 1024 * 1024)  # גבול בטוח לצרופה אחת ולמייל אחד ב-Gmail (הרשמי 25 MB כולל קידוד)
 MAX_PAGE_DIFF = 8.0               # אחוז פיקסלים שהשתנו בעמוד, מעבר לזה הסקריפט מסרב
 fitz.TOOLS.mupdf_display_errors(False)
 
@@ -170,15 +173,19 @@ def build(src, dst, target_dpi, quality):
     return {'duplicates_merged': d1[0], 'page_images_shrunk': s, 'backgrounds_reencoded': r}
 
 
-def verify(src, dst):
-    """אותו מספר עמודים, אותו טקסט, ושינוי פיקסלים קטן בכל עמוד (רינדור גס בגווני אפור)."""
-    o, c = fitz.open(src), fitz.open(dst)
-    if len(o) != len(c): return False, 'page count %d != %d' % (len(o), len(c))
+def verify(src, outputs):
+    """המקור מול הפלט (קובץ אחד או רשימת חלקים לפי הסדר): אותו מספר עמודים, אותו טקסט בכל עמוד ובאותו סדר,
+    ושינוי פיקסלים קטן בכל עמוד (רינדור גס בגווני אפור)."""
+    if isinstance(outputs, str): outputs = [outputs]
+    o = fitz.open(src)
+    parts = [fitz.open(p) for p in outputs]
+    pages = [pg for d in parts for pg in d]
+    if len(o) != len(pages): return False, 'page count %d != %d' % (len(o), len(pages))
     worst = 0.0
     for i in range(len(o)):
-        if o[i].get_text() != c[i].get_text(): return False, 'text differs on page %d' % (i + 1)
+        if o[i].get_text() != pages[i].get_text(): return False, 'text differs on page %d' % (i + 1)
         a = o[i].get_pixmap(dpi=40, colorspace=fitz.csGRAY).samples
-        b = c[i].get_pixmap(dpi=40, colorspace=fitz.csGRAY).samples
+        b = pages[i].get_pixmap(dpi=40, colorspace=fitz.csGRAY).samples
         if len(a) != len(b): return False, 'page size differs on page %d' % (i + 1)
         diff = 100.0 * sum(abs(a[k] - b[k]) > 40 for k in range(len(a))) / len(a)
         worst = max(worst, diff)
@@ -188,14 +195,30 @@ def verify(src, dst):
     return True, 'worst page diff %.1f%%' % worst
 
 
+def save_range(doc, a, b, name):
+    part = fitz.open(); part.insert_pdf(doc, from_page=a, to_page=b)
+    part.save(name, garbage=4, deflate=True); part.close()
+    return os.path.getsize(name)
+
+
 def split(dst):
-    doc = fitz.open(dst); half = (len(doc) + 1) // 2
-    base = dst[:-4]
-    parts = []
-    for n, (a, b) in enumerate(((0, half - 1), (half, len(doc) - 1)), 1):
-        part = fitz.open(); part.insert_pdf(doc, from_page=a, to_page=b)
-        name = '%s-part%d.pdf' % (base, n)
-        part.save(name, garbage=4, deflate=True); part.close(); parts.append(name)
+    """פיצול לחלקים של עמודים שלמים, רצופים ובסדר המקורי. כל חלק נמדד בפועל אחרי השמירה וחייב להיות עד LIMIT:
+    לכל חלק מחפשים (בחיפוש בינארי) את העמוד האחרון שעדיין נכנס, שומרים, וממשיכים מהעמוד שאחריו."""
+    doc = fitz.open(dst); n = len(doc); base = dst[:-4]
+    parts, a = [], 0
+    while a < n:
+        name = '%s-part%d.pdf' % (base, len(parts) + 1)
+        if save_range(doc, a, a, name) > LIMIT:
+            os.remove(name); [os.remove(p) for p in parts]; doc.close()
+            raise SystemExit('FAILED: page %d alone is above the attachment limit. Do not send it.' % (a + 1))
+        lo, hi = a, n - 1                      # lo נכנס בוודאות, מחפשים את ה-b הגדול ביותר שנכנס
+        while lo < hi:
+            mid = (lo + hi + 1) // 2
+            if save_range(doc, a, mid, name) <= LIMIT: lo = mid
+            else: hi = mid - 1
+        size = save_range(doc, a, lo, name)
+        assert size <= LIMIT
+        parts.append(name); a = lo + 1
     doc.close(); os.remove(dst)
     return parts
 
@@ -215,7 +238,21 @@ def main():
         if size <= LIMIT: break
     out = [dst]
     if os.path.getsize(dst) > LIMIT:
-        out = split(dst); print('still above %d MB: split into two attachments' % (LIMIT // 1048576))
+        out = split(dst)
+        ok, why = verify(src, out)
+        sizes = [os.path.getsize(p) for p in out]
+        print('split into %d parts (whole pages, original order), %s, %s' % (len(out), 'verified' if ok else 'REJECTED', why))
+        if not ok or max(sizes) > LIMIT:
+            for p in out: os.remove(p)
+            print('FAILED: the split journal does not match the original or a part is too big. Do not send it.'); sys.exit(1)
+        with fitz.open(src) as o:
+            counts = [len(fitz.open(p)) for p in out]
+            print('pages per part: %s = %d (original %d)' % (' + '.join(map(str, counts)), sum(counts), len(o)))
+        if sum(sizes) > LIMIT:
+            print('SEND EACH PART IN ITS OWN EMAIL (%d emails): together they are %.1f MB, above the %d MB limit for one email.'
+                  % (len(out), sum(sizes) / 1048576, LIMIT // 1048576))
+        else:
+            print('all parts fit one email together (%.1f MB)' % (sum(sizes) / 1048576))
     print('READY %.0f s:' % (time.time() - t), ', '.join('%s (%.1f MB)' % (p, os.path.getsize(p) / 1048576) for p in out))
 
 
